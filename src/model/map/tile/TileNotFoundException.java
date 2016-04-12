@@ -1,4 +1,4 @@
-package model.map;
+package model.map.tile;
 
 public class TileNotFoundException extends Exception {
 
