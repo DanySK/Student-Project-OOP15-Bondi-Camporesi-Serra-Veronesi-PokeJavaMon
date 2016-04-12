@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAVE MONEY="550" TIME="9067" POSITION="false">
+  <POSITION X="4630.0" Y="2645.0" />
+  <TEAM>
+    <MrMimmo HP="30" EXP="15" M1="ALTRAMOSSA" M2="ULTIMA" M3="MOSSA" M4="ANCORA" NMOVES="4" />
+    <MrPalli HP="25" EXP="40" M1="ALTRAMOSSA" M2="ULTIMA" M3="MOSSA" M4="ANCORA" NMOVES="4" />
+    <MrPalli HP="25" EXP="40" M1="ALTRAMOSSA" M2="ULTIMA" M3="MOSSA" M4="ANCORA" NMOVES="4" />
+  </TEAM>
+  <TRAINERS UNO="false" DUE="true" TRE="true" />
+  <BAG>
+    <STRUM Superozione="15" Pozione="15" />
+    <BASE Mappa="true" />
+    <BALLS Ultraball="50" Pokeball="50" />
+  </BAG>
+  <BOX>
+    <MrMimmo HP="30" EXP="15" M1="ALTRAMOSSA" M2="ULTIMA" M3="MOSSA" M4="ANCORA" NMOVES="4" />
+    <MrPalli HP="25" EXP="40" M1="ALTRAMOSSA" M2="ULTIMA" M3="MOSSA" M4="ANCORA" NMOVES="4" />
+    <MrPalli HP="25" EXP="40" M1="ALTRAMOSSA" M2="ULTIMA" M3="MOSSA" M4="ANCORA" NMOVES="4" />
+  </BOX>
+  <RETURNPOSITION RETX="1634.0" RETY="9676.0" />
+</SAVE>
