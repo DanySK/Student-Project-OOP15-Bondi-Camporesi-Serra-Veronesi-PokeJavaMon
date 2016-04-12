@@ -9,13 +9,15 @@ import model.items.Item;
 import model.items.Pokeball;
 import model.items.Potion;
 import model.items.Item.ItemType;
+import model.items.Pokeball.PokeballType;
+import model.items.Potion.PotionType;
 import model.pokemon.Stat;
 
 public class InventoryImpl implements Inventory {
 
-    private final Map<Pokeball, Integer> pokeballs;
-    private final Map<Potion, Integer> potions;
-    private final Map<Boost, Integer> boosts;
+    protected final Map<Pokeball, Integer> pokeballs;
+    protected final Map<Potion, Integer> potions;
+    protected final Map<Boost, Integer> boosts;
     
     private static Inventory SINGLETON;
     
@@ -38,9 +40,7 @@ public class InventoryImpl implements Inventory {
         }
         
     }
-    
-    
-    
+
     public static Inventory getInventory() {
         if (SINGLETON == null) {
             synchronized (InventoryImpl.class) {
@@ -51,6 +51,46 @@ public class InventoryImpl implements Inventory {
         }
         return SINGLETON;
     }
+
+    public static Inventory initializeInventory(final Map<String, Integer> potions, final Map<String, Integer> boosts, final Map<String, Integer> balls) {
+		final Inventory i = InventoryImpl.getInventory();
+		
+		if (potions != null) {
+			for (final String s : potions.keySet()) {
+				for (final PotionType pt : PotionType.values()) {
+					if (s.toUpperCase().equals(pt.name())) {
+						((InventoryImpl) i).potions.replace(new Potion(pt), potions.get(s));
+					}
+				}
+			}
+		}
+			
+		if (boosts != null) {
+			for (final String s : boosts.keySet()) {
+				for (final Stat stat : Stat.values()) {
+					if (stat == Stat.EXP || stat == Stat.HP || stat == Stat.LVL) {
+						continue;
+					}
+					if (s.toUpperCase().equals(stat.name())) {
+						((InventoryImpl) i).boosts.replace(new Boost(stat), boosts.get(s));
+					}
+				}
+			}
+		}
+		
+		if (balls != null) {
+			for (final String s : balls.keySet()) {
+				for (final PokeballType pbt : PokeballType.values()) {
+					if (s.toUpperCase().equals(pbt.name())) {
+						((InventoryImpl) i).pokeballs.replace(new Pokeball(pbt), balls.get(s));
+					}
+				}
+			}
+		}
+		return i;
+	}
+
+    
     
     @Override
     public Map<Item, Integer> getSubInventory(ItemType type) {

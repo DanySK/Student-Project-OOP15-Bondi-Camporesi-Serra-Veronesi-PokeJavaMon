@@ -17,6 +17,9 @@ import org.jdom2.input.SAXBuilder;
 
 import controller.modelResources.*;
 import controller.parameters.XMLParameters;
+import model.inventory.Inventory;
+import model.pokemon.Pokemon;
+import model.trainer.Trainer;
 
 public class LoadController implements LoadControllerInterface {
     private static final String FILE_NAME = "resources/files/save.xml";
@@ -71,38 +74,38 @@ public class LoadController implements LoadControllerInterface {
             for (int a = MIN_MOVES; a <= cont; a++) {   
                 moves.add(e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a));
             }
-            squadra.add(new Pokemon(e.getName(),hp,exp,moves));
+            //squadra.add(new Pokemon(e.getName(),hp,exp,moves));
         }
         return squadra;
     }
     
-    private List<Trainers> getTrainers() {
-        List<Trainers> trainers = new ArrayList<Trainers>();
+    private List<Trainer> getTrainers() {
+        List<Trainer> trainers = new ArrayList<Trainer>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
-            try {
-                trainers.add(new Trainers(a.getName(),a.getBooleanValue()));
-            } catch (DataConversionException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                trainers.add(new Trainer(a.getName(),a.getBooleanValue()));
+//            } catch (DataConversionException e) {
+//                e.printStackTrace();
+//            }
         }
         return trainers;
     }
     
     private Inventory getInventory() {
         Map<String, Integer> objects = new HashMap<String, Integer>();
-        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.STRUM.getName()).getAttributes()) {
+        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
             objects.put(a.getName(), Integer.parseInt(a.getValue()));
         }
         Set<String> base = new HashSet<String>();
-        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BASE.getName()).getAttributes()) {       
+        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {       
             base.add(a.getName());
         }
         Map<String, Integer> balls = new HashMap<String, Integer>();
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
             balls.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        Inventory inv = new Inventory(objects,base,balls);
-        return inv;
+        //Inventory inv = new Inventory(objects,base,balls);
+        return null;//inv;
     }
 
     private List<Pokemon> getBox() {
@@ -115,7 +118,7 @@ public class LoadController implements LoadControllerInterface {
             for (int a = MIN_MOVES; a <= cont; a++) {      
                 moves.add(e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a));
             }
-            box.add(new Pokemon(e.getName(),hp,exp,moves));
+            //box.add(new Pokemon(e.getName(),hp,exp,moves));
         }
         return box;
     }
@@ -129,6 +132,7 @@ public class LoadController implements LoadControllerInterface {
     }
     
     public General load() {
-        return new General(getTeam(),getTrainers(),getInventory(),getMoney(),getTime(),getBox(),getX(),getY(),getRetX(),getRetY(),getPlace());
+        //return new General(getTeam(),getTrainers(),getInventory(),getMoney(),getTime(),getBox(),getX(),getY(),getRetX(),getRetY(),getPlace());
+    	return null;
     }
 }

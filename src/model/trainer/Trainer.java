@@ -3,6 +3,7 @@ package model.trainer;
 import model.map.AbstractCharacter;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
+import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.utilities.Pair;
@@ -11,15 +12,15 @@ public class Trainer extends AbstractCharacter {
     
     private final Squad squad;
     private final TrainerDB id;
-    private boolean isDefeated;
+    protected boolean isDefeated;
     
-    public Trainer(final int x, final int y, final Direction d, final TrainerDB id) {
+    protected Trainer(final int x, final int y, final Direction d, final TrainerDB id) {
         super(x,y,d);
         
         PokemonInBattle[] tmpSquad = new PokemonInBattle[id.getSquad().size()];
         int counter = 0;
         for (final Pair<PokemonDB, Integer> p : id.getSquad()) {
-            tmpSquad[counter] = new PokemonInBattle(p.getX(), p.getY());
+            tmpSquad[counter] = StaticPokemonFactory.createPokemon(p.getX(), p.getY());
             counter++;
         }
         

@@ -12,7 +12,7 @@ public class PokemonInBattle extends AbstractPokemon{
 	private final Map<Stat, Double> boosts;
 	public static int MAX_LEVEL = 50;
 
-	public PokemonInBattle(PokemonDB pokemon, int lvl) {   
+	protected PokemonInBattle(PokemonDB pokemon, int lvl) {   
 		super(pokemon, lvl);
 		if (lvl > MAX_LEVEL) {
 		    throw new IllegalArgumentException("Level too high");

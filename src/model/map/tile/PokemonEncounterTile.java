@@ -12,6 +12,7 @@ import model.map.tile.AbstractTile;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.PokemonRarity;
+import model.pokemon.StaticPokemonFactory;
 
 public class PokemonEncounterTile extends AbstractTile {
     
@@ -64,7 +65,7 @@ public class PokemonEncounterTile extends AbstractTile {
             if (e.getValue().contains(chance)) {
                 final int levelVariation = r.nextInt(LEVEL_VARIATION * 2);
                 final int level = zone.getAverageLevel() + levelVariation - LEVEL_VARIATION;
-                final PokemonInBattle encounterPokemon = new PokemonInBattle(e.getKey(), level);
+                final PokemonInBattle encounterPokemon = StaticPokemonFactory.createPokemon(e.getKey(), level);
                 this.encountered = false;
                 return encounterPokemon;
             }

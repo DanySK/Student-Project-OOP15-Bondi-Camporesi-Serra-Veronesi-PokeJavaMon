@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="117">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="132">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
   <tile id="0">
@@ -10,18 +10,14 @@
   </tile>
   <tile id="1">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="3">
@@ -181,23 +177,19 @@
   <tile id="27">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
-    <property name="X" type="float" value="17"/>
-    <property name="Y" type="float" value="281"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="30">
@@ -1122,34 +1114,32 @@
   </tile>
   <tile id="177">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="178">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="179">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="180">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="181">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="182">
@@ -1273,46 +1263,44 @@
   </tile>
   <tile id="201">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="202">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="203">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="204">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="205">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="206">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="207">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="208">
@@ -1458,28 +1446,26 @@
   </tile>
   <tile id="230">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="231">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="232">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="233">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="234">
@@ -1616,28 +1602,26 @@
   </tile>
   <tile id="256">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="257">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="258">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="259">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="260">
@@ -1648,8 +1632,8 @@
   </tile>
   <tile id="261">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="262">
@@ -1774,28 +1758,26 @@
   </tile>
   <tile id="282">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="283">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="284">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="285">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="286">
@@ -1934,28 +1916,26 @@
   </tile>
   <tile id="308">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="309">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="310">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="311">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="312">
@@ -2133,22 +2113,20 @@
   </tile>
   <tile id="335">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="336">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="337">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="338">
@@ -2316,22 +2294,20 @@
   </tile>
   <tile id="361">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="362">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="363">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="364">
@@ -2499,22 +2475,20 @@
   </tile>
   <tile id="387">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="388">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="389">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="390">
@@ -2684,8 +2658,8 @@
   </tile>
   <tile id="413">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="414">
@@ -2933,8 +2907,6 @@
   </tile>
   <tile id="448">
    <properties>
-    <property name="X" type="float" value="13"/>
-    <property name="Y" type="float" value="14"/>
     <property name="tileType" value="TELEPORT"/>
     <property name="walkable" type="bool" value="true"/>
    </properties>
@@ -3644,27 +3616,25 @@
   </tile>
   <tile id="542">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="543">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="544">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="545">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3842,27 +3812,25 @@
   </tile>
   <tile id="568">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="569">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="570">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="571">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4056,27 +4024,25 @@
   </tile>
   <tile id="594">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="595">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="596">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="597">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4130,10 +4096,8 @@
   </tile>
   <tile id="604">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="605">
@@ -4270,39 +4234,37 @@
   </tile>
   <tile id="620">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="621">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="622">
    <properties>
-    <property name="tileType" value=""/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="623">
    <properties>
-    <property name="X" type="float" value="0"/>
-    <property name="Y" type="float" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="WALL"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2dTawd1X3Az2XRjxiQWmE2LMAKxoZIdTZZGFcCA5GSbCrVdiXsAO4myibkw4BjW+rHIqrzQRs+vH8lBKht8LKLJO3DYMdeZpeAab2vFKWAKtJF1XP8ZvB5582ZOTNzZv7/mfn9pB/33Xvn3Xef59wf5543994HV8Y8qMx9VgCAEOk20SsASEW6TfQKIJ2vZ3Kg+7WW06qfI90megWQjuvC86t+DtWrvvcruI9rVT9Huk2xXt1m5uPe1Yax3/fPrP9l4n6+4t9nqH+j/8UkpXBdeDx4bIfnp9Ard58vW/8vuOxIIb2iV/RqPr3ycef/0/o1s3H698Xp3xWnf1uc/k1xOlSv2twHd5+vF/e71F32bCG9olfSvfptZp9a9fv+T6wnrCcrPBVcd8ro69W/Fqdlr1IdslepPmf9x8Dj1vOF9IpeaelV386UnuhxO58UvmR9ucIzwXVnjJ5elY/13bfcfJxPrVdvRPTu41rVz6nrxjetBxP8Rsvtm25nab2KtSvs1Fx61aUzbRrXtO0nnuesb1rf8k6dF4rrzheXXzB6elX3OJ9KrxLu41rVz2ma5/ylaXavt/1dprux2wkfU3cnPvan6GeEezVks/q0qE3jYtv6P6fs1SXrL61XrIeKU+fV4rry8qtGT68ytEDl/Zpjr1yrUucqU3SJverzvK7N3Cv8Of4863pwvvSy9zW9GvZ+5ezVTut9gbvM+L1q89xqii6xV31NmU+lPDes87eGXg19v3L26iHrw4H7Db2aY6+GataQc6c+87aUVmnqleLj2/vY+/h295g4ZjZ83PqM9VnrReth65HiOg296rvWP7Tl3xLoVb/ncEPZ1CotvVo6Tb2qakZqZ8bs1T7FzfpG5D5r7tUQzcrVoT5zrj4/i17Jk9qrLp0pdWvk9xTuqLnNvr3SehxEm+ewS+lVnxaNNecKfxa9kmeMXu1NvE16patXuZs11vO/puZ1nZ/RK3no1Ti9OrBKe+4YHi9atc2hGfcq95woZxPplTxT6JXvtpVZc06pV6mtSu1V2ay59Gqo+VBu6ZU89EqXYa+k70/OZo09H6JX84Ne6VJjr3I1K+d8KfU2+h4zSq90MYVelX9fdH9bnOL6Fb3a3Ksc86XU26jbLvXYdk3Hty+dKfTKv5xeTb9XuedQXWzTKk2vH1w6Tb36gml2b8P2Ya/a3s7SerWncOm9Sp1Dte1a2Z+q18RWucvQKy3QK13Sq+G6Vrat7FXVa2Kr3G/olRbolS55PjisJ7xe+a+JPWxuvi626nWy9EoH9EqX9Gp469ao3Ov3r3keM6xfaYJe6ZJeyTaLXumGXulyzr2KtSv3bffR9el7nsci24EMHM+gyzmvt2vq1e+s/134oXc5vdJNjl6Vr487RK+y9Erj/OragEr0yr0Pxs6VWXfaZq3Rq2mQo1ep8y96Ra+U9eqGbXpV/nuADJp6FZun0aubbmtw6F65ryX6klv7HNDNq274YWKv/H+P3OR6X3bp93EfGk29Spl3aexVU0PaGPYq5233aZ3fq7k0q8qqXlX9e+TGteOuyM8KrXqMhNu8aDv8Qo32+qP0Sq5X93RwR6a+SfTqN9b3Mv/sNr0Kle7MnHoVexyEvQq/9o/LeM7Em+VaZa9fp1dyverivkzN6tKGO+zP3V7hV1bmaEqvPrJ+bL19la9bfXo1xWZV/Q6ae+VfH863qnrl/IH1h54/sn5347pZ9irH/CPsVdfvH6JXOX7HvvOomE29um214ccd70PuXk2hYU33V1uvYnOq1F59y/ptz+8YekWv6FUXtTRqir2qmndJ92qMNf4cj/uxnGuvvrQy69srvNO9l2rk+3fZ799tvd/6QE3XNPeqa8u63N5fGHM0RclehW2q6lXd80S/Vz82Mr16frXZfwrO06sNu3xWaq7Pmenbqy5/B9xvv+cR66PWx2bYq9yWLapTc6/qrNtu7F4dXm32X6zvWi9Zz9GrTdfFmvV0Q7Om2KtVxBPWk56ngstO1dzmEnrlvw7Hfz2Oll41HacQ61WV5WcdSPYqtO/PlP6s9rbzoabjr7r8/TLlNd11xtpRZ/j/9rZdivmS9WXPM8FlZ2p+1hJ65Y5r/wN7+oeFf2Q2jm/X2qu64xpSlJpfvWO9Zn2i+DpXr2JIj6+Yc+nVafsY8e1yG1Wes563vlV4wbvszeL80nu1154+aN1n/XOjr1e3VXzttyw8r2m93e/Vc9bj9Ipe1XjJesVsvDemO73qXXaoOE+vptWr8O+CU+iV88fWF1Z5nw/GkB5f9Kq71ysuu+x9vfReHbCnB81Gv//K3OxVqXSvwg7VHcfQ1KtXrT/1fM1Me/0qhvT4mnuvwvWr46Z57ap8DU7fni25V/7rnLetbrRq/XdWv1Fz6ZU7puGFCl804xx/9fZqwzFeYy09vrr2SuI+DfX3wbBV5Wtw+jarS69ubaH0GKnrVWwepaVXVcbW2H9hm/Nz68+s4XWxVvnNGvL49rHfB0J6fMVcaq/C49nDBr1ufaPwbMV5erV1bUpbr3g/me5Ij68l9Mp/3+OmXoXHs4e9ettsrLG/Y3234nxKr2KvwU7xztU0etXFMXoF/ZAeX0voVZv5VXg8+xDPB/2GtvXzE+hVV+mVfqTHF73K9/dCepVf0IX0eKBX47aKXtGrKSM9HuhV3ma1XVOjV/RqSkiPB3qVr1lt7hO9oldTRHo80Ks8zWp7n+gVvZoi0uOBXqX1quk6ekWvloD0eKBX9EqzoAuJMXC3HfP3JEqvNjepb6voFb2aMhKt6vO+7PSKXtGr5TL2/u/7ORL0il7Rq+VCr+gVvaJXU4Fe0St6Ra+mgnSvyrX3HfSKXikUdCHdK/8znekVvdIm6EK6VwdWG58beIhe0SuFgi6ke8X6Fb3SLGymeL/StSaH+vn0anm9umNljm5fmfUu3rkya+/b23hf4N9/yr2Seh/k3O+L7G7jeTvw/mO1cVp6xPuaXtGrXL06nuHfgV61xz3Of2XdaZufopvLNl3fxl+ZfL36rr29D1abP7/r2eL0LL2iVzXXvy+odEum1ivbmbXd9vSBBj/XsG1x/dG2zcrVqxftbT25qv3swbUMP6oSekWv6NV4vXrEnt5vfaLwsYrzX4xsG1z/aa9S52u5ehXrFL2iV0296nKfpBswJXPh96rsTcP5T7/250j+9kWrGuds5XxsiF49Y32dXtErQ680mIuuvXrU3GxOrFePFNd9eXXjs6w/9cvFvKrcnvlVe5fYK/9YgKbt3Xp4XZPo1bjmokuvvmq2PgeM9cq2ae2kMUdvt1+XuvP28qP0qrtT7lUXw/lVyvfUrRMtcQ1J0lx06JU7v+V7FPSq8dgrekWvUq7D/OaiQ6/KtXJVvZJm7P1Pr9KM9WipvQrfk3bHSGMgF216Va5ZlT5pNvcqvN7fjl7llV6lSa+2jptwHIzxc3OR2qtyzSr0qWKb2PXlOhe9yj/ultYrf7099fvo1Wbd6+IPrjZeG+9O3evjj5l8xn5uLlJ61fZ4Kp4PDu8Se8X8qr+uKSvP8HwftfSq5fHvrF+NIL1Kk15tdim9qjqmve74dno1rK5V5dy+rd8sngfQK3o1l1659ainTLRfJnDL88fgeFGzzdOdz328qDRjj7uUVj1dc13ZLOnHT6r0Ko8z7VW4LlW5nhWuVYW9qluD99fq6VV+3fHdczoem17lcU69ih2PEB67EPZqd3G9+/7y9Tl7gjmYP7/yL8/1emdppMeh7xcGVOp3old5nEuvmuZC/nwo7JX73ourDd02Ve8Z4/dqiPeTkUZ6HPrSq5vSq83OoVfF+/UlWdUid/nZwtg2Zz2HeL8+aaTHoS+9uim92uwceqXBqSM9Dn3n2iuOF+3v1HsFeZAeh75z79VXrNsTPW029C+7c7W1V0Me261JegUO6XGYW829amPZqz3B88mqXjW9b/FO632Bu7zvl95nKdIrcEiPw9xq61XXz84qe/Ul+/19e/WQ9eHA/WY+vfqB9Yc1/sjQq7kgPQ5zq61XXS1bE67Xd+nV49ZnrM9aL1oPW4+Y6feq9FvWbxuzFvM7hl7NBelxmNs59spfr6/r1QcJus9hOhZ8v/TvmmLd87+wV+vBeXo1H6THYW7n2KvU+VVKrz4w0+1VTOZXy0F6HOaWXjU/Pwy/X/p3TbFufvWq9ac1vlbzvfRqWkiPw9zSq+X1ir8PLgfpcZhbekWv6NV8kR6HuaVX9IpezRfpcZjbIY+RH/OYenpFr2Ar0uOQXtEregWpSI9DekWvUns1pPRqGkiPQ3pFrzQLupAeD3ORXs1T0IX0eJiL9Gqegi6kx8Nc1NSrE+bGZ89t8VRw3SlDr5oEXUiPh7moqVcvWV+u8Exw3RlDr5oEXUiPh7moqVfnrG9a3/JOnReK684Xl18w9KrJHEi/Z/tc3rvdIT0e5qKmXl2y/tJ6xXqoOHVeLa4rL79q6FWTOXCtOGr33V9br9mvfx/xmncas7yd2G3Ebpdeoa+mXpVer7jMedncXJenV/XmwLXipN13p1bxJqX2qrydAyvz8MEE7Xbrvzf0CjersVdN0qtmc1A1v2rqVdOcaW9Cs1yr9hVzMXqFvpp6ta1BepVuDqrmV7HngU3zq3Ib1yun+yyR/1lt1X2eiGsVvUr3s8asNx0Dbrdp/Xov6TFcJb2apznw51fhadV8qk2vbJuOuve4dp9R75/ay9foVbquK65Xt9rTOrv0SmOz6NU8zYE/vwpPY31qWpP3exW26iK9amXZFL9Xr1vfKDxrtvbK/4y8XaZbwyR7p6lXrF/p61XT88DYehbzq80M1aqwV2+bjc+Sesf6rtnaK/8z8vab4XuVu1v0ap7mwO9V1fp61XPBpnV35lfD9upeU/980H1GnvtcPNe0I2a8XuVqlmSvUvS/h17p6FVsLStl3X2b7VEp86v8vWpav9ptfSCjnzOyvTre8/ba9Cp8rh2ep1c6e1W3ltWmV8yv8vXqj+1pqWuT93fB9fIyt+0j1vutT2TwMesXTf9eTeX9r8Ln2uF5eiXfq6rne7H19NTjr1i/yterqvVz/2+Brld+M1yv2jSmzra3NfVelQ06FjlPr+R71XSMQpv1difrV3l7VbV+Tq/y96rtGjvr7Xp6VXfMVWxeVa51Mb/K26uq9XPtvbo3+F1y9Sq8XXo1HXPgPx9s06awUf6aF/OrvL2KrZ8/aX20xeVdbHtbbvuwA7kNn5OletqYNd8h7pd0EzSbA//49jbHsYevca6aX+2y/9+3bdriTrPx2kF6ldartuvnj7XcPudtue2n2qshPxsG8xC+fjBlThV7/ujPrw5YD9Z4iF616lWb52Qp2ze9zqRUy/pV3zUsZ9PzQenH89zNQd3rB8PTpmPey+2aWuU3i17FHbpXn5h4p/50Ra8wrzmoe/1geOr36hf2Od3PrT+zhvOrpvlZOFejV9Wm9KfqWIdw+6ptmjrF/ApzmwPp90Hm/ZDjpvSq6liHcPuqbWJ9Cudd9ApzCbrIvX9TelV1rEO4fdU2rF/Rq7EFXeTev36v2h5TkPN4htRe1f0u9ApBF7n3b9mBr5phj0Fo8inTr1VOeoWgiyH2cerzMN+cx7f3aZQvvULQxZD7eoxeSY/noaVXsoIuxt7/rjEnrCcLT5mtvfKv97dZWquc9EpW0MWY+77szEvWlwvPmK298q/3t1laq5z0SlbQxZj7vmzNOet565vWC2Zrr8rr3yq8YJbZKie9khV0Mea+L3tzyXrFesh61WztlX/9FW+bpbXKSa9kBV2Mue/L5rj3mrls6o+/uu597b8Xu/T4HVt6JSvoYsx9X3dsVt3xV/6xVNLjd2xdr/YU0qvxBV2Mue9zHM8gPX7HlvmVrKCLMfd9315Jj10J6ZWsoIsx9z29ai+9khV0Mfb+79or6XErJb2SFXQx9v6nV+2kV7KCLiTGQNteSY9ZSemVrKALqXGQ2ivp8SotvZIVdCE9Hpxhr6TvjybplaygC+nx4KRXcemVrKAL6fHgLI95L49jl74/muzbqz9JVPr31CroQno8lN5VeFzBfdEkvZIVdCE9Hpx3BUrfH0029arp9Ut10qtmQRfS48FJr+LSK1lBF9LjwXlroPT90SS9khV0IT0enHPs1d02CPd0cMdq8+00vZ8MvRpW0IX0eHCGveqi9O8QutcG4cEO7qvoFevtcoIupMeDc469OmDbcjDRp72vD9ErVYIupMeDc469CrvSRv92OF5UVtCF9Hhw0it6pVXQhfR4cL7QQXpFr8YQdCE9HpzMr+L9oVeygi6kx4Nzjr1y9m2Vk17JCrqQHg/OufbKSa+mLehCejw459wrZ5+1rNPGrPnSq3EFXUiPB+eU2tPVIXol/TstQdCF9HhwLqFXXQ2fD0rfn6UJupAeD056FZdeyQq6kB4PTnoVl17JCrqQHg/OqvVz3md0Q3olK+hCYgxs66D0uJWSXskKupAYA/QqXXolK+gi137t875xuZUe4zmlV7KCLnLtV+lG0SscQtBFrv0q3Sh6hUMIusi1X/1evG59o/CsoVd9pFeygi5y7Ve/F29bL1rfsb5r8veoqYfSYzyn9EpW0EWu/er34l7r9zqY2qumHkqP8ZzSK1lBF7n2q9+LLq1qY9hDeoVDCbrItV/7PL/r2y96hUMJusi1X3P0ivX2rdIrWUEXufbrEL061lJ6hbkFXeTar0P1KvU26BUOIegi134tW3GH/c/2QHvZWspaVaxBKfMqeoVDCLrItV/LVrjH157A7Rl61TSvmnOvyn9HejW+oItc+7Vtr3Za7/PcZdrPr+gVDi3oItd+bdurh6wPe+438V6lzKvm3CueD8oJusi1X9v26nHrYbNxnLo7PWLS51f0CscSdJFrv/ZZv3LHq3/WML+qkl7JCrrItV/7rrfHepX6d0F6hUMIusi1X8tW3LEyR22f1n3tZevl9Z+JWNWrNtIrHELQRa792qc1dQ3i+HZ6JSnoItd+HaJXXZUe4zmlV7KCLqTHA9ZLr2QFXUiPB6yXXskKupAeD1gvvZIVdCE9HrBeeiUr6EJ6PGC99EpW0IX0eMB66ZWsoAvp8YD10itZQRfS4wHrpVeygi6kxwPWS69kBV1Ijwesl17JCrqQHg9YL72SFXQhPR6wXnolK+hCejxgvfRKVtCF9HjAeumVrKAL6fGA9dIrWQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD68PWears/Q90vAJDHPbZfWd30H1o4VK/q7s8rNQ55vwBAnrIPbTol3SuJ+wUA8vh9qGvAT0buVdVcKuzVaXoFsCjcYzt13iLVq1i7mF8BLAu/V5rWr+ruU1O76BXAPCl7pWn9qupn1a2zh82iVwDzRGuvwrWp1FbRK4D5Uter76/Mupb5VZs1LHoFME+0HZfZZ75HrwBgTDi+HQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACThvdIBYCqUn0nza+tvrO/xWTQAoJSmXv2EXgGAEspefWj9yPox8ysAUErZq1tvMeY26+23tOuV5GerSgsA4+J/pvJHPT9beezPrg8/o77ps+rrjN1W7PboFcD4TL1Xse506VXd5WG/6BXA+PTpVd1zpTF71TQncn8z+HVw2XvBdq8knNIrAFn69qruNr+/Mutjz69ivmr9Z8/X6BXA5BiqV2Ost9etOYV9ifUqpVP0CkAH4XM36XWp3Pe7rlcpnfJvh14ByDL1XtUdz5qjV7H5Gr0CGJ+p9yp1fvVv1n/3XK+ZR9XNszT87gBLJfa4T1nL1t4rt97f9HvE5k/++fLvBv5l9ApgfKY8v5IWAMalrlflvEJjrwBgeTDHAAAAAAAAAAAAAAAAAJgH/w/EM3kYQH4FAA==
+   H4sIAAAAAAAAC+2dWawk1XmAT5EoiweQEjHzQiJAZhjAUvALioeJBMMi2X6JDUwkZgxMXiJky3gZYAwjZZGMgxcSs8xrdIOxIcMyD06cB9vJZVgMD07Mm82S8JbEkZADKMJxFOU/c6u4555be52q/6/q75M+9e3u6uq+Q/fHqXOrq25zzt2GsxVglfDv+SsyW+4Tz3LLcW+2YdXv+zvif7pqP1jy7+OlV7Bq0Ct6BfPB6rg8X+9aSqueR7tP9Kp/r3C1tsX9896fDXOsXg19XdFrXKt6Hu0+0at+vRrjtf4PtlKzVzdFn+34+hx65V/zC+L/RbcdyqVX9IpeLadXIf76v4p/5DYu/yy//NP88k/yyz/OL8fqVZfX4F/zG/nrLvS33ZlLr+iVdq/eTOyt2bDHvyveLd5T4rHovmPOXq/+Pr8setXWMXvV1rvEv4g8Kj6ZS6/olZVeDe1M4d0D1vNu7kPiwyUej+477uz0qvisX3zG5ud8br16vMLgNa5VPU/V5+gz4o0t/HTH5ZvWs2q9qmpX3Kml9KpPZ7o0rmnZdwOfEJ8Snw4uvSfz+57Mbz/p7PSq7nM+l161eI1rVc9TN8653jW7N1j+XNffqvXEn6nzWn725+j7lHs1ZrOGtKhL46qWDZ+n6NXz4g/EF8UD+aX3pfy+4vaXnJ1eJWiByde1xF75VrUdq8zRVezVkO26LmOv+HnCcdYb0fXCF4Kf6dW4rytlr3aLF0XucdP3qsu21RxdxV4Ntc14qs22YZ1vOno19utK2asrxasi9zt6tcRejdWsMcdOQ8ZtbVplqVcW93VN8JrWYquep65XR9yGN4l3iHeKp8SD4qH8Pgu9GjrXP7bF3xLo1bBtuLFsapWVXq06Tb0qa0bbzkzZq32Gm/XpitdsuVdjNCtVh4aMuYY8F73Sp22v+nSm0M+Rn597Qc06h/bK6n4QXbZhV6VXQ1o01Zgrfi56pc8Uvdrbcp30ylavUjdrqu2/pub1HZ/RK33o1TS9uiFrt+0Y7y9atsyBBfcq9ZgoZRPplT5z6FXojsyteefUq7ataturollL6dVY46HU0it96JUt415pv56UzZp6PESvlge9sqXFXqVqVsrxUtt1DN1nlF7ZYg69Kv6+6P+2OMf5K3q1tVcpxktt11G3XNt92y3t377qzKFX4e30av69Sj2G6mOXVln6/uCq09Sry12zexuWj3vVdT2r1qvLcle9V23HUF27VvSn7DuxZe5x9MoK9MqW9Gq8rhVtK3pV9p3YMvc7emUFemVLtgfH9e6gV+F3Yg+6ze/Fln1Pll7ZgF7Zkl6Nb90clf/+/muBRxzzV5agV7akV7rNole2oVe2XHKvqtqVet1D9H26N/BIxXL0Sgf2Z7DlkufbLfXqZ+J/5b4V3E6vbJOiV8X34w7QqyS9sji+em1ENXrlj4OxO3PrXmnWGr2aByl61Xb8Ra/olbFenbZLr4p/D3qlg6VeVY3T6NWmOxocu1f+Z42+pFa2Af246rRvtexV+O+RulepjsuufRz3sbHUqzbjLou9ampIF+NepVz3kNaFvVpKs8os61XZv8cYvTq34rliyz4j8TIPSocfqFHuP0yv9Hp1fg8vSNQ3jV79RHwl8XN36VWsdmeW1Kuqz0Hcq/jncL+Mu1x1s3yr5P51eqXXqz7uS9SsPm04R553Z4kfzdzhNr16W3xHPDtL160hvZpjs8p+B8u9Cu+Px1tlvfJ+Rfxq4NfEL2zct8hepRh/xL3q+/gxepXidxw6jqqyqVdnZRu+0/M1pO7VHBrW9Hqt9apqTNW2V58VPxf4eUev6BW96qOVRs2xV2XjLu1eTTHHX9cray61Vx/O3PrOEnf5Y6lWPH6PPP5i8RLx0pquWe5V35b1Wd/vO3e4jZq9ittU1qu67cSwV193Or26P9vqX0bX6dWGfc6Vmuo8M0N71efvgPvlMVeL14jXLrBXqS1aVKflXtVZt9zUvTqYbfVvxOfE58Un6NWW+6qadXtDs+bYq6zCu8V7Ao9Ftx2rWecq9Cr8Hk74fRwrvWraT6GqV2UW5zrQ7FVsil5pn6+9y3ioaf+rPn+/bPOd7jqr2lFn/P/2rl2q8iHx4cDj0W3Ha55rFXrl92v/Fbn81dxfcxv7t1vtVd1+DW3UGl89K74m3pz/nLJXZWq/v6pcSq/uk89IaJ91lPmE+KT4dO7J4Lan8uur3qu9cnmFuE/8PWevV2eV/By2LL5uab497NVd4tHEvap6Xu33F73q5/Pii27j2Jj+8qXgtgP5dXo1r17FfxecQ6+8XxcfyNJuD1Y9r/b7i171942S214Ifl71Xt0glze6jX7/gdvsVaF2r+IO1e3H0NSrR8VvBn7LzXv+qup5td9fS+9VPH911DXPXRXfwRnas1XuVfg95x3Z6Vat/0wMG7WUXvl9Gh4o8UE3zf5Xz2Qbjv0d6zn3SuM1jfX3wbhVxXdwhjarT6/O7KD2e6SuV1XjKCu9KrNqjv370pzvid8V4/uqWhU2a8z926c8DgS96uYUvYr3Z48b9Jj4eO6Jkuv0avvclLVeabgE6NU0vQqPe9zUq3h/9rhXz7iNOfZnxedKrrfpVdV3sNu4K5tHr/o4Ra+gP/Rqml51GV/F+7OPsT0YNrSrH5xBr/pKr2xDr+z1KqWr2KvU0is70Kvl9qrtNiq9oldzgV7Z6FXKZnWdU6NX9Gou0Cs7vUrRrC6viV7Rq7lBr2z1akizur4mekWv5ga9mk+vmu6jV/Rq6dArekWv6NVc0OrVefKeP7+l9Gprk4a2il7Rq7mi0avzKsZNXY49Sq/oFb1aPTR6NfQ8EvSKXtGr1YRe0St6Ra/mAr2iV/SKXs0FC70q5t4voFf0yqD0yg4WehWe05le0Str0is7WOjVDdnGeQMP0Ct6ZVB6ZQcLvWL+il5Zll5tJT9e6VqTYz03vVq9Xp2TucM7M7fex12ZW3tV1vGqwr//nHuldRzk1MdF9uu4X954/5JtXBYeCn6mV/QqVa+OJvh3oFfd8et5WdwtzW+jH8s23d/FlxP9Ln4dX5D1vZ5tPX/XnfnlCXpFr2ruf1VR7ZbMrVfSmbWL5fLSBj/QsGx+/+GuzUrVqwdlXbdkteceXEvwVKXPTa/oFb2arldXy+Ul4s2515Zcv65i2ej+93rVdryWqldVnaJX9KqpV31ek3YD5uQYvSp603D9vZ/DMVK4fN6qxjFbMR4bo1d3iI/RK3rl6JUFtXt1jdtsTlWvrs7v+0h2+lzW7/mRfFxVLM/4qrur2KtwX4Cm5f18eF2T6NW0avbqE277NmBVr6RNa/c4d/hs+bnQX5fbD9Or/s65V32Mx1dtHlM3T7SKc0iaKvbKX9/2GAO9atz3il7Rqzb3YXoVe1XMlZvqlSb0anz79Mpb1aNV7VV8TNoLJnoPaPSqmLMqvMVt7VV8f7gcvUorvWonvdr+vonfB1M879S9KuasYm/Nl6m6v5jnolfp33er1qtwvr3t4+jVVv334m/MNr4b7y/99+OPuHRWPe+Uveq6PxXbg+O7ir1ifDVc35QsML4+RCu96rj/O/NXE0iv2kmvtroqvSrbp71u/3Z6Na6+VcXYvqufybcD6BW9Wkqv/HzUra6yXy5y2/ZjtL+o2xHor6feX1QTjV61adXtNfcVzdL+/LSVXqVxob2K56VK57Piuaq4V3Vz8OFcPb1Kr9+/e0n7Y9OrNC6pV1X7I8T7LsS9uji/3z+++H7OZdEYLBxfhben+r6zJtZ6dfmIav1O9CqNS+lV01goHA/FvfKPPZVt6JcpO2ZM2KsxjiejCb0aX3qVxiX0Kj9eXyvLWuRvP5FbtcyJwDGO16cJvRpfepXGJfTKgnOGXo0v+4umce69guHQq/ENe/VRcWdL73Mbhrftyrb3asx9uy1Jr8Bar1JouVddLHp1WbQ9WdarpuMW7xYvitwTPF77v1kb6RXQq/Hte+6solcflscP7dWV4lWR+91yevUV8as1fs3RqyVAr+xatCaer+/Tq5vEO8Q7xVPiQfGQm3+vCj8rfs65tSo/7+jVEqBXdg17Fc7X1/Xq9Rb68zAdiR6v/bu2sW77L+7VenSdXi0DemXXPuOrNr163c23V1UyvloN6JVdh/Sqafswfrz279rGuvHVo+I3a/xWzWPp1XygV3alV1tN+fdAejVP6JVd6dVW6RXQK7vSq63SK1ilXmlIr+gVpINe0St6Ra/mAr2iV3Pq1ZjSK/vQK3o1l15pSa/ssMReaUmvlim9sgO9Sie9Wqb0yg70Kp2WenW3O33uuW0ei+475uhVk/TKDvQqnZZ69ZD4cInHo/uOO3rVJL2yA71Kp6VePSE+JT4dXHpP5vc9md9+0tGrJlP0SvuY7Us4druHXqXTUq+eF38gvigeyC+9L+X3Fbe/5OhVk6l6dVj+2/2h+Jr8/PMKXwsuqyzWU7WOqvXSKwy11KvCN0pu877gNufl6VW9qXp1j/y3O5ZVN6ltr4r13JC5q25soSy3/vNEv4c29CqdFnvVJL1qdqzxVVOvmsZMe1s0y7dqXz4Wo1cYaqlXOxqkV+0da3xVtR3YNL4qlvG98vpzifx3tl1/PhHfKnrV3vc7t960D7gs0/n7Xtrv4TLp1TJNPb6KL8vGU116JW067I9x7c9RH17K7Wv0qr2+K75XZ8plnX16ZbFZ9GqZph5fxZdVfWqakw97FbfqFL3qZNGUsFePiY/nnnDbexWeI2+P69cwzd5Z6hXzV/Z61bQdWDWfxfhqkzF6FTYh7NUzbuNcUs+Kz7ntvQrPkbffjd+r1N2iV8s0da/K5tfLtgWb5t0ZX43bqwtd/fagP0eePy+eb9ohN12vUjVLs1dtDB9Dr2z0qmouq828+w7pUSHjq/S9apq/uli8NKEfcLq9OjpwfV16FW9rx9fplc1e1c1ldekV46t0vfp1uSz0bQr+Lrhe3OaXvVq8RLw5gdeK17nhvZrL8a/ibe34Or3S71XZ9l7VfHrb/a+Yv0rXq7L58/Bvgb5XYTN8r7o0ps6u65p7r4oGHam4Tq/0e9W0j0KX+XYv81dpe1U2f06v0veq6xw78+12elW3z1XVuKqY62J8lbZXZfPn1nt1YfS7pOpVvF56NR9Tbw92aVPcqHDOi/FV2l5VzZ/fIl7T4fY+dl2XXz7uQGrjbbK23ufcWugYr0u7CZZNvX97l/3Y4+84l42v9sj/96VN29ztNr47SK/a9arr/Pm1HZdPuS6//Fx7Nea5YXCc7w+2GVNVbT+G46sbxBtrPECvOvWqyzZZm+WbvmdSaGX+augclrdpe1D787x0x/7+YHzZtM97sVxTq8Jm0atqx+7Vu666U7+Z0StM69jfH4wvw159X7bpvid+V4zHV03js3isRq/KbdOfsn0d4uXLlmnqFOMrTC3HQ7aDVq/K9nWIly9bpqpP8biLXmEql/A5XwpavSrb1yFevmwZ5q/o1dTSKzuM3auu+xSk3J+hba/qfhd6hfTKDmP26hNu3H0QmrzVDWuVl14hvbLD2Mfr62LK/duHNCqUXiG9ssPYx2+folfa7+expVe60is7aJwfxzfmbvGe3GNue6/C+8NlVq1VXnqlK72yw9S9KjrzkPhw7nG3vVfh/eEyq9YqL73SlV7ZQatXT4hPik+JJ932XhX3P5170q1mq7z0Sld6ZQetXj0vvigeEF9y23sV3v9isMyqtcpLr3SlV3bQ6pU/1swLrn7/qzeCn8NjsWu/f6eWXulKr+yg1auyfbPq9r8K96XSfv9Ore/VZbn0anrplR20ejVkfwbt9+/UMr7SlV7ZYW690n7vakivdKVXdqBX9qVXutIrO2jtL9qnV9rvWy3pla70yg70yr70Sld6ZQeNXnm79kr7PaspvdKVXtlBq1fetr3Sfr9qS6901ezVEo9pPATNXoXGvdJ+PZakV7pqH7/95jM25fjt+u8HL72qll7pmqpXB7Py447426v0n4kd2abXNSwfP0e4fnqVTt8ov897sR+79uux5NBe/UZLtX9Pq6bsVdlxR1L3Kj72Cb0ax3Nzjxp4LZakV7qm7FXZcUeaevVmYJtexcc+oVfpPTdS+/VYsqlXVft/tJFeNZuyV8VxR065zeOO/MK5tasr9McACHvV5nws8bFP6FV66VW19ErXlL3yvuG2j5vG0I/FXnD0agzPjNR+PZakV7qm7lXZdt5YvQqfk16lc4m9Ok/eI+f38IJs63qajidDr8Z1jF61PdedP8ZS2KAu57u71dGrsYx71Uft3yF2r7xHrujhvpJeMd+uZ6penSP/7XaWuCurnjvvOt9e9xz0Kp1L7NUN8h65saW3Bz8foFemTNUr6cbhl51bK/5bev11uX0tVa/qnoNepXOJvYq70sVwPewvqmvKXoUdKUzdq6rnoFfppFf0yqr0yg5WevVAD+kVvZpCtgftYKVXjK+q+0OvdE3Vq12ZW99Z4q6Evap7DnqVziX2yju0VV56pesY+zO0tc/3caqkV+lcaq+89Gre0is70KtpHDKXdZ9za6H0alrplR2s9kr79YzhGL3S/p1WQXplB3pl33h7UPv1rJqavfqFPO6ZbNP/7bkeepVWelUtvdJV+3jIKZ079Mq+9ErXJXzOl4LVXnk5zuiG9EpXemUHrV7t6KH2+1ZLeqUrvbIDvbIvvdKVXtkhZa8yQ2q/x1NKr3SlV3agV/alV7rSKzvQK/vSK13plR3G6tVj4uO5Jxy9GiK90pVe2WGsXj3jNs6x9qz4nEvfo6Year/HU0qvdKVXdhirVxeK9/awba+aeqj9Hk8pvdKVXtlhrF71aVUX4x7SKxxLemUHK/PtQ/tFr3As6ZUdrPWK+fbt0itd6ZUdrPfqSEfpFaaWXtlhDr1quw56hWNIr+wwRq/Kzoktt621mauqalCbcRW9wjGkV3YYo1f+83VZ5M4EvWoaVy25V8W/I72aXnplB81e7RYvCtzjuo+v6BWO7VKOL7oENHt1pXhV4H5X3as246ol94rtQT1T9epNRenVdrv26ibxoNvYT91fHnLtx1f0CqeSXtnByvyV31/9/Y7xVZn0SleNXv1V5ta/JN4rfjH3U+InxevFD4n0aphD59uretX274L0CsdQo1e/Kz36ZfGnzq3/SPyO+HG5/jHxDDGjV4MtWnFO5g5Ln9ZDz/H/xvn976uwrFddpFc4hvTKDlb2F61rEPu30ytN6ZUdrPeqr9rv8ZTSK13plR2snH8Qq6VXutIrO9Ar+9IrXTV7dbn42+JvieeKv0Sv1N8PWC+90lWjV/8h46l/F/9N/Gfxn8Qfin8n/q34bUev0Kb0SleNXkmPnHTJSZ/cD0XplZNuOemXk475nnVaH73CqaRXumr0Srb3nGz3Odn+c7Id6GR70Ml2oZPtQyfbiX57kV6hSemVrpq9+pj4cfE7ctuPxJ86eqX9fsB66ZWu9MoO9Mq+9EpXemUHemVfeqUrvbIDvbIvvdKVXtmBXtmXXumq0asPyX/n68VPip8Sv5h7r/il7PTxZugVmpRe6crx+uxAr+xLr3TV7tWpbFN6pf9+wHrpla7a55s4kW3K+Sb03w9YL73SVfOzvtTu9GVIrxFXRQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwx20DtfZ6xnpdAKCP/2w/km365x0cq1d1r+eRGsd8XQCgT9GHLp3S7pXG6wIAfcI+1DXgGxP3qmwsFffqPnoFsFL4z3bbcYtWr6raxfgKYLUIe2Vp/qruNTW1i14BLJOiV5bmr8qeq26ePW4WvQJYJlZ7Fc9NtW0VvQJYLnW9+nLm1q2Mr7rMYdErgGVibb/MIeM9egUAU8L+7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAJx0oHgLlQnJPmx+JPxFc4Fw0AGKWpV9+gVwBghKJXb4lvi+8wvgIAoxS9OvMM584Szz6jW680z62qLQBMS3hO5bcHnlt56nPXx+eobzpXfZ1V66paH70CmJ6596qqO316VXd73C96BTA9Q3pVt600Za+axkT+bwY/jm57JVrukRaX9ApAl6G9qlvnlzO3PvX4qspHxb8O/Ba9ApgdY/Vqivn2ujmnuC9VvWrTKXoFYIN42017Xir1667rVZtOheuhVwC6zL1XdfuzpuhV1XiNXgFMz9x71XZ89Q/iPwau14yj6sZZFn53gFWl6nPfZi7beq/8fH/T71E1fgqvF383CG+jVwDTM+fxlbYAMC11vSrGFRZ7BQCrB2MMAAAAAAAAAAAAAAAAgGXw/5tYxN5AfgUA
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3ZsQnAMBADQPPgMTJH5sgcHtuLpHfhkOrz5G4CVUKg1gAAAAAAAAAAAAAA8lyRnQAA4H9OGwwA4NGwmQAA4HNmdgCAjbWjdBYAANR1+AoBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOCVHtkJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADquAHPKvkuQH4FAA==
+   H4sIAAAAAAAAC+3aSQpCMRAFwNjgMcThEuJwA1ficAlxuLMXMUsRko8LjR+rlv02vXo0JCkBAAAAAAAAAAAAALSzjdYbAAD8n7kbDACg08nNBAAAP+feegGAiteO0lkAANBfI2+FAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwlmG03gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoG4aKc3i/Qzg21a5j9aFTqplAAAAAAAAAACfcoiUjk9/FjaDcgbQ0jX30a3QSbUMAAAAAAAA6J9xpDQpvAHWMoBvW+Q+WhY6qZYBtLDLnbSP7hlAa+fcS5fongEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPTFA9huX/xAfgUA
   </data>
  </layer>
  <objectgroup name="obj">
@@ -4622,6 +4584,90 @@
    <properties>
     <property name="DOOR_X" type="float" value="238"/>
     <property name="DOOR_Y" type="float" value="122"/>
+   </properties>
+  </object>
+  <object id="117" x="4016" y="80" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="227"/>
+    <property name="DOOR_Y" type="float" value="149"/>
+   </properties>
+  </object>
+  <object id="118" x="3632" y="2368" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="119" x="4032" y="2368" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="288"/>
+    <property name="DOOR_Y" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="120" x="4544" y="80" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="252"/>
+    <property name="DOOR_Y" type="float" value="149"/>
+   </properties>
+  </object>
+  <object id="121" x="3056" y="704" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="161"/>
+   </properties>
+  </object>
+  <object id="122" x="3808" y="2592" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="191"/>
+    <property name="DOOR_Y" type="float" value="45"/>
+   </properties>
+  </object>
+  <object id="123" x="3824" y="2592" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="191"/>
+    <property name="DOOR_Y" type="float" value="45"/>
+   </properties>
+  </object>
+  <object id="124" x="3840" y="2592" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="191"/>
+    <property name="DOOR_Y" type="float" value="45"/>
+   </properties>
+  </object>
+  <object id="125" x="3840" y="2304" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="201"/>
+   </properties>
+  </object>
+  <object id="127" x="3824" y="2304" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="201"/>
+   </properties>
+  </object>
+  <object id="128" x="3808" y="2304" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="201"/>
+   </properties>
+  </object>
+  <object id="129" x="3824" y="3232" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="145"/>
+   </properties>
+  </object>
+  <object id="130" x="3840" y="3232" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="145"/>
+   </properties>
+  </object>
+  <object id="131" x="3808" y="3232" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" type="float" value="239"/>
+    <property name="DOOR_Y" type="float" value="145"/>
    </properties>
   </object>
  </objectgroup>
