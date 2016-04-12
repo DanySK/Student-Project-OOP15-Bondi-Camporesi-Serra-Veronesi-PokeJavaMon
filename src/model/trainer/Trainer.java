@@ -63,4 +63,8 @@ public class Trainer extends AbstractCharacter {
     public boolean isDefeated() {
         return this.isDefeated;
     }
+    
+    public String toString() {
+        return "Name= " + id.name() + " Defeated= " + isDefeated;
+    }
 }

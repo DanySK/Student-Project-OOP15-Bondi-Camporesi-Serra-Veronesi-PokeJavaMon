@@ -16,4 +16,8 @@ public class Pair<X, Y> {
     public Y getY() {
         return this.y;
     }
+    
+    public String toString() {
+        return "X: " + x + " Y: " + y;
+    }
 }

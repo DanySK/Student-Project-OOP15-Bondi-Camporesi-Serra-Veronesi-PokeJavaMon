@@ -18,7 +18,7 @@ public class Boost extends AbstractItem {
         }
         this.stat = stat;
         this.coeff = 1.05;
-        this.name = stat.toString() + " X";
+        this.name = stat.toString() + "X";
     }
 
     @Override
@@ -66,4 +66,8 @@ public class Boost extends AbstractItem {
         }
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

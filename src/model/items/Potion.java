@@ -69,4 +69,8 @@ public class Potion extends AbstractItem {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return quality.toString();
+    }
 }

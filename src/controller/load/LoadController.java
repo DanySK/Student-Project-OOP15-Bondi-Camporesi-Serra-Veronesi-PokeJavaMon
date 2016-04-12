@@ -4,10 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.jdom2.Attribute;
 import org.jdom2.DataConversionException;
 import org.jdom2.Document;
@@ -17,9 +15,15 @@ import org.jdom2.input.SAXBuilder;
 
 import controller.modelResources.*;
 import controller.parameters.XMLParameters;
+import model.box.Box;
+import model.box.BoxImpl;
 import model.inventory.Inventory;
+import model.inventory.InventoryImpl;
 import model.pokemon.Pokemon;
+import model.pokemon.StaticPokemonFactory;
+import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
+import model.utilities.Pair;
 
 public class LoadController implements LoadControllerInterface {
     private static final String FILE_NAME = "resources/files/save.xml";
@@ -48,33 +52,24 @@ public class LoadController implements LoadControllerInterface {
         return Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName()));
     }
     
-    private int getTime() {
-        return Integer.parseInt(root.getAttributeValue(XMLParameters.TIME.getName()));
-    }
-    
-    private boolean getPlace() {
-        return Boolean.getBoolean(root.getAttributeValue(XMLParameters.PLACE.getName()));
-    }
-    
-    private float getX() {
-        return Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
-    }
-    
-    private float getY() {
-        return Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
+    private Pair<Float, Float> getPosition() {
+        final float x = Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
+        final float y = Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
+        return new Pair<Float, Float> (x, y);
     }
     
     private List<Pokemon> getTeam() {
         List<Pokemon> squadra = new ArrayList<Pokemon>();
         for (Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
+            int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
             int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
-            Set<String> moves = new HashSet<String>();
             int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
+            String[] moves = new String[cont];
             for (int a = MIN_MOVES; a <= cont; a++) {   
-                moves.add(e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a));
+                moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
             }
-            //squadra.add(new Pokemon(e.getName(),hp,exp,moves));
+            squadra.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }
         return squadra;
     }
@@ -82,57 +77,53 @@ public class LoadController implements LoadControllerInterface {
     private List<Trainer> getTrainers() {
         List<Trainer> trainers = new ArrayList<Trainer>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
-//            try {
-//                trainers.add(new Trainer(a.getName(),a.getBooleanValue()));
-//            } catch (DataConversionException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                trainers.add(StaticTrainerFactory.createTrainer(a.getName(),a.getBooleanValue()));
+            } catch (DataConversionException e) {
+                e.printStackTrace();
+            }
         }
         return trainers;
     }
     
     private Inventory getInventory() {
-        Map<String, Integer> objects = new HashMap<String, Integer>();
+        Map<String, Integer> potions = new HashMap<String, Integer>();
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
-            objects.put(a.getName(), Integer.parseInt(a.getValue()));
+            potions.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        Set<String> base = new HashSet<String>();
-        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {       
-            base.add(a.getName());
+        Map<String, Integer> boosts = new HashMap<String, Integer>();
+        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
+            boosts.put(a.getName(), Integer.parseInt(a.getValue()));
         }
         Map<String, Integer> balls = new HashMap<String, Integer>();
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
             balls.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        //Inventory inv = new Inventory(objects,base,balls);
-        return null;//inv;
+        Inventory inv = InventoryImpl.initializeInventory(potions, boosts, balls);
+        return inv;
     }
 
-    private List<Pokemon> getBox() {
+    private Box getBox() {
         List<Pokemon> box = new ArrayList<Pokemon>();
-        for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {         
+        for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
+            int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
-            int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName())); 
-            Set<String> moves = new HashSet<String>();
+            int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
             int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
-            for (int a = MIN_MOVES; a <= cont; a++) {      
-                moves.add(e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a));
+            String[] moves = new String[cont];
+            for (int a = MIN_MOVES; a <= cont; a++) {   
+                moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
             }
-            //box.add(new Pokemon(e.getName(),hp,exp,moves));
+            box.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }
-        return box;
-    }
-    
-    private float getRetX() {
-        return Float.parseFloat(root.getChild(XMLParameters.RETURNPOSITION.getName()).getAttributeValue(XMLParameters.RETX.getName()));
-    }
-    
-    private float getRetY() {
-        return Float.parseFloat(root.getChild(XMLParameters.RETURNPOSITION.getName()).getAttributeValue(XMLParameters.RETY.getName()));
+        Box retBox = BoxImpl.getBox();
+        for (final Pokemon pkmn : box) {
+            retBox.putCapturedPokemon(pkmn);
+        }
+        return retBox;
     }
     
     public General load() {
-        //return new General(getTeam(),getTrainers(),getInventory(),getMoney(),getTime(),getBox(),getX(),getY(),getRetX(),getRetY(),getPlace());
-    	return null;
+        return new General(getTeam(),getBox(),getTrainers(),getInventory(),getMoney(),getPosition());
     }
 }

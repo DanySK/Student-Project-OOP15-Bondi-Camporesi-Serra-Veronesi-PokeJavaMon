@@ -2,7 +2,10 @@ package model.inventory;
 
 import java.util.Map;
 
+import model.items.Boost;
 import model.items.Item;
+import model.items.Pokeball;
+import model.items.Potion;
 
 public interface Inventory {
     
@@ -11,4 +14,10 @@ public interface Inventory {
     public void addItem(final Item item);
 
     public void consumeItem(final Item item);
+    
+    public void setPokeballs(final Map<Pokeball, Integer> balls);
+    
+    public void setBoosts(final Map<Boost, Integer> boosts);
+    
+    public void setPotions(final Map<Potion, Integer> potions);
 }

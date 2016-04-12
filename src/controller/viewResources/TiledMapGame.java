@@ -22,11 +22,6 @@ public class TiledMapGame extends Game {
 
 	public void render() {	    
 	    super.render();
-	    try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 	}
 
 	public void resize(int width, int height) {	

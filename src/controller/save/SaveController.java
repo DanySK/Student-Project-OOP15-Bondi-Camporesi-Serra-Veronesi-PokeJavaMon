@@ -77,17 +77,17 @@ public class SaveController implements SaveControllerInterface {
         Element borsa = new Element(XMLParameters.BAG.getName());
         Element instruments = new Element(XMLParameters.POTIONS.getName());
         for (final Item item : i.getSubInventory(Item.ItemType.POTION).keySet()) {
-            instruments.setAttribute(item.getType().name(),Integer.toString(i.getSubInventory(Item.ItemType.POTION).get(item)));
+            instruments.setAttribute(item.toString(),Integer.toString(i.getSubInventory(Item.ItemType.POTION).get(item)));
         }
         borsa.addContent(instruments);
         Element boosts = new Element(XMLParameters.BOOSTS.getName());
         for (final Item item : i.getSubInventory(Item.ItemType.BOOST).keySet()) {
-            instruments.setAttribute(item.getType().name(),Integer.toString(i.getSubInventory(Item.ItemType.BOOST).get(item)));
+            boosts.setAttribute(item.toString(),Integer.toString(i.getSubInventory(Item.ItemType.BOOST).get(item)));
         }
         borsa.addContent(boosts);
         Element balls = new Element(XMLParameters.BALLS.getName());
         for (final Item item : i.getSubInventory(Item.ItemType.POKEBALL).keySet()) {
-            instruments.setAttribute(item.getType().name(),Integer.toString(i.getSubInventory(Item.ItemType.POKEBALL).get(item)));
+            balls.setAttribute(item.toString(),Integer.toString(i.getSubInventory(Item.ItemType.POKEBALL).get(item)));
         }
         borsa.addContent(balls);
         root.addContent(borsa);

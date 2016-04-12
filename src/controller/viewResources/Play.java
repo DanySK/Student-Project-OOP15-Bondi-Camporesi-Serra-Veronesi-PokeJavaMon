@@ -15,8 +15,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
+import controller.modelResources.General;
 import controller.modelResources.Player;
 import controller.keyboard.KeyboardControllerInterface;
+import controller.load.LoadController;
 import controller.parameters.State;
 
 public class Play implements Screen {  
@@ -71,8 +73,8 @@ public class Play implements Screen {
 		if (newGame) {
 		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {
-		    // Da aggiungere il caricamento
-		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+		    General g = new LoadController().load();
+		    player.setBounds(g.getPosition().getX(), g.getPosition().getY(), 15.9f, 15.9f);
 		}
 		k = State.WALKING.getController();
 		k.setPlayer(player);

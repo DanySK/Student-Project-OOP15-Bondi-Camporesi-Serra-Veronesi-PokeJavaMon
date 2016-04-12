@@ -3,7 +3,11 @@ package controller.keyboard;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
 
+import controller.load.LoadController;
+import controller.modelResources.General;
 import controller.modelResources.Player;
+import controller.save.SaveController;
+import model.utilities.Pair;
 
 public class WalkingController implements KeyboardControllerInterface {
 
@@ -58,28 +62,28 @@ public class WalkingController implements KeyboardControllerInterface {
             case Keys.W:
             case Keys.UP:
                 if(active) {
-                    pl.stopY();
+                    pl.stop();
                     break;
                 }
                 break;
             case Keys.A:
             case Keys.LEFT:
                 if(active) {
-                    pl.stopX();
+                    pl.stop();
                     break;
                 }
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 if(active) {
-                    pl.stopX();
+                    pl.stop();
                     break;
                 }
                 break;
             case Keys.S:
             case Keys.DOWN:
                 if(active) {
-                    pl.stopY();
+                    pl.stop();
                     break;
                 }
                 break;
@@ -94,7 +98,10 @@ public class WalkingController implements KeyboardControllerInterface {
                 break;
             case Keys.SPACE:
                 if(active) {
-                    // Da aggiungere il salvataggio
+                    SaveController sc = new SaveController();
+                    General g = new LoadController().load();
+                    g.setPosition(new Pair<Float, Float>(pl.getX(),pl.getY()));
+                    sc.save(g);
                 }
                 break;
         }

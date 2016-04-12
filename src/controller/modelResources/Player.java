@@ -31,6 +31,8 @@ public class Player extends Sprite {
         private float animationTime = 0;
         private TextureAtlas playerAtlas;
         private MusicController mc = new MusicController();
+        private boolean stopMove = false;
+        private int pos = 0;
 	
 	public Player(Sprite st, TiledMapTileLayer background, TiledMapTileLayer foreground, MapLayer obj, TiledMapTile tl) {	    
 	    super(st);
@@ -49,59 +51,134 @@ public class Player extends Sprite {
 	}
 
 	public void updateMap(float delta) {	    		
-	        speed = background.getTileHeight();		        
+	        speed = background.getTileHeight() / 8;	
 		boolean collisionX = false, collisionY = false;
 		boolean collisionTrainerX = false, collisionTrainerY = false;		
-		if (isDoor(super.getX(),super.getY())) {
-                    for (final MapObject o : this.objectLayer.getObjects()) {
-                        if (isInRectangleObject(o, super.getX(), super.getY())) {
-                            final float x = Float.parseFloat((String)o.getProperties().get("DOOR_X")) * 16;
-                            final float y = (300 - Float.parseFloat((String)o.getProperties().get("DOOR_Y"))-1) * 16;
-                            super.setX(x);
-                            super.setY(y);
-                            return;
+		if (!stopMove) {
+		    if (isDoor(super.getX(),super.getY())) {
+	                    for (final MapObject o : this.objectLayer.getObjects()) {
+	                        if (isInRectangleObject(o, super.getX(), super.getY())) {
+	                            final float x = Float.parseFloat((String)o.getProperties().get("DOOR_X")) * 16;
+	                            final float y = (300 - Float.parseFloat((String)o.getProperties().get("DOOR_Y"))-1) * 16;
+	                            super.setX(x);
+	                            super.setY(y);
+	                            pos = 0;
+	                            return;
+	                        }
+	                    }
+	                }               
+	                oldX = super.getX();
+	                super.setX(super.getX() + velocity.x);                  
+	                if(velocity.x != 0) {
+	                    collisionX = collidesY();
+	                    if (velocity.x < 0) {
+	                        setRegion(left.getKeyFrame(animationTime));
+	                    } else if (velocity.x > 0) {
+	                        setRegion(right.getKeyFrame(animationTime));
+	                    }
+	                    pos ++;
+	                    if (pos == 8) {
+	                        pos = 0;
+	                    }
+	                }               
+	                if(collisionX || collisionTrainerX) {                   
+	                    super.setX(oldX);
+	                    if (velocity.x < 0) {
+	                        setRegion(left_s.getKeyFrame(animationTime));
+	                    } else if (velocity.x > 0) {
+	                        setRegion(right_s.getKeyFrame(animationTime));
+	                    }
+	                    pos = 0;
+	                    velocity.x = 0;
+	                }               
+	                oldY = super.getY();
+	                super.setY(super.getY() + velocity.y);                  
+	                if(velocity.y != 0) {
+	                    collisionY = collidesX();
+	                    if (velocity.y < 0) {
+	                        setRegion(down.getKeyFrame(animationTime));
+	                    } else if (velocity.y > 0) {
+	                        setRegion(up.getKeyFrame(animationTime));
+	                    }
+	                    pos ++;
+                            if (pos == 8) {
+                                pos = 0;
+                            }
+	                }               
+	                if(collisionY || collisionTrainerY) {                   
+	                    super.setY(oldY); 
+	                    if (velocity.y < 0) {
+	                        setRegion(down_s.getKeyFrame(animationTime));
+	                    } else if (velocity.y > 0) {
+	                        setRegion(up_s.getKeyFrame(animationTime));
+	                    }
+	                    velocity.y = 0;
+	                    pos = 0;
+	                }       
+	                animationTime += delta;
+		} else {
+		    if (pos > 0) {
+		        if (isDoor(super.getX(),super.getY())) {
+	                    for (final MapObject o : this.objectLayer.getObjects()) {
+	                        if (isInRectangleObject(o, super.getX(), super.getY())) {
+	                            final float x = Float.parseFloat((String)o.getProperties().get("DOOR_X")) * 16;
+	                            final float y = (300 - Float.parseFloat((String)o.getProperties().get("DOOR_Y"))-1) * 16;
+	                            super.setX(x);
+	                            super.setY(y);
+	                            return;
+	                        }
+	                    }
+	                }               
+	                oldX = super.getX();
+	                super.setX(super.getX() + velocity.x);                  
+	                    if(velocity.x != 0) {
+	                    collisionX = collidesY();
+	                    if (velocity.x < 0) {
+	                        setRegion(left.getKeyFrame(animationTime));
+	                    } else if (velocity.x > 0) {
+	                        setRegion(right.getKeyFrame(animationTime));
+	                    }
+	                }               
+	                if(collisionX || collisionTrainerX) {                   
+	                    super.setX(oldX);
+	                    if (velocity.x < 0) {
+	                        setRegion(left_s.getKeyFrame(animationTime));
+	                    } else if (velocity.x > 0) {
+	                        setRegion(right_s.getKeyFrame(animationTime));
+	                    }
+	                    velocity.x = 0;
+	                }               
+	                oldY = super.getY();
+	                super.setY(super.getY() + velocity.y);                  
+	                if(velocity.y != 0) {
+	                    collisionY = collidesX();
+	                    if (velocity.y < 0) {
+	                        setRegion(down.getKeyFrame(animationTime));
+	                    } else if (velocity.y > 0) {
+	                        setRegion(up.getKeyFrame(animationTime));
+	                    }
+	                }               
+	                if(collisionY || collisionTrainerY) {                   
+	                    super.setY(oldY); 
+	                    if (velocity.y < 0) {
+	                        setRegion(down_s.getKeyFrame(animationTime));
+	                    } else if (velocity.y > 0) {
+	                        setRegion(up_s.getKeyFrame(animationTime));
+	                    }
+	                    velocity.y = 0;
+	                }       
+	                animationTime += delta;
+	                pos ++;
+                        if (pos == 8) {
+                            pos = 0;
                         }
-                    }
-                }               
-                oldX = super.getX();
-                super.setX(super.getX() + velocity.x);                  
-                    if(velocity.x != 0) {
-                    collisionX = collidesY();
-                    if (velocity.x < 0) {
-                        setRegion(left.getKeyFrame(animationTime));
-                    } else if (velocity.x > 0) {
-                        setRegion(right.getKeyFrame(animationTime));
-                    }
-                }               
-                if(collisionX || collisionTrainerX) {                   
-                    super.setX(oldX);
-                    if (velocity.x < 0) {
-                        setRegion(left_s.getKeyFrame(animationTime));
-                    } else if (velocity.x > 0) {
-                        setRegion(right_s.getKeyFrame(animationTime));
-                    }
-                    velocity.x = 0;
-                }               
-                oldY = super.getY();
-                super.setY(super.getY() + velocity.y);                  
-                if(velocity.y != 0) {
-                    collisionY = collidesX();
-                    if (velocity.y < 0) {
-                        setRegion(down.getKeyFrame(animationTime));
-                    } else if (velocity.y > 0) {
-                        setRegion(up.getKeyFrame(animationTime));
-                    }
-                }               
-                if(collisionY || collisionTrainerY) {                   
-                    super.setY(oldY); 
-                    if (velocity.y < 0) {
-                        setRegion(down_s.getKeyFrame(animationTime));
-                    } else if (velocity.y > 0) {
-                        setRegion(up_s.getKeyFrame(animationTime));
-                    }
-                    velocity.y = 0;
-                }       
-                animationTime += delta;
+		    }
+		    if (pos == 0) {
+		        stopMove = false;
+	                stopX();
+	                stopY();
+		    }
+		}
 	}
 	
 	private boolean isInRectangleObject(final MapObject o, final float currentX, final float currentY) {
@@ -231,8 +308,10 @@ public class Player extends Sprite {
 	}
 
 	public void move(float x, float y) {
-	    velocity.x = x;
-	    velocity.y = y;
+	    if (!stopMove && pos == 0) {
+	        velocity.x = x;
+	        velocity.y = y;
+	    }
 	}
 	
 	public void stopX() {
@@ -254,8 +333,7 @@ public class Player extends Sprite {
 	}
 
 	public void stop() {
-	    this.stopY();
-	    this.stopX();
+	    this.stopMove = true;
 	}
 	
 	public void setPos(float x, float y) {

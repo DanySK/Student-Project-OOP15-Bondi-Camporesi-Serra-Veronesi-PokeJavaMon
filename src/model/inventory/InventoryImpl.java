@@ -15,9 +15,9 @@ import model.pokemon.Stat;
 
 public class InventoryImpl implements Inventory {
 
-    protected final Map<Pokeball, Integer> pokeballs;
-    protected final Map<Potion, Integer> potions;
-    protected final Map<Boost, Integer> boosts;
+    protected Map<Pokeball, Integer> pokeballs;
+    protected Map<Potion, Integer> potions;
+    protected Map<Boost, Integer> boosts;
     
     private static Inventory SINGLETON;
     
@@ -52,40 +52,46 @@ public class InventoryImpl implements Inventory {
         return SINGLETON;
     }
 
-    public static Inventory initializeInventory(final Map<String, Integer> potions, final Map<String, Integer> boosts, final Map<String, Integer> balls) {
+    public static Inventory initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList) {
 		final Inventory i = InventoryImpl.getInventory();
 		
-		if (potions != null) {
-			for (final String s : potions.keySet()) {
+		if (potionList != null) {
+		        Map<Potion, Integer> pot = new HashMap<>();
+			for (final String s : potionList.keySet()) {
 				for (final PotionType pt : PotionType.values()) {
-					if (s.toUpperCase().equals(pt.name())) {
-						((InventoryImpl) i).potions.replace(new Potion(pt), potions.get(s));
+					if (s.toUpperCase().equals(pt.name().toUpperCase())) {
+						pot.put(new Potion(pt), potionList.get(s));
 					}
 				}
 			}
+			i.setPotions(pot);
 		}
 			
-		if (boosts != null) {
-			for (final String s : boosts.keySet()) {
+		if (boostList != null) {
+		        Map<Boost, Integer> boo = new HashMap<>();
+			for (final String s : boostList.keySet()) {
 				for (final Stat stat : Stat.values()) {
 					if (stat == Stat.EXP || stat == Stat.HP || stat == Stat.LVL) {
 						continue;
 					}
-					if (s.toUpperCase().equals(stat.name())) {
-						((InventoryImpl) i).boosts.replace(new Boost(stat), boosts.get(s));
+					if (s.toUpperCase().equals(stat.name().toUpperCase()+"X")) {
+					    boo.put(new Boost(stat), boostList.get(s));
 					}
 				}
 			}
+			i.setBoosts(boo);
 		}
 		
-		if (balls != null) {
-			for (final String s : balls.keySet()) {
+		if (ballList != null) {
+		        Map<Pokeball, Integer> bal = new HashMap<>();
+		        for (final String s : ballList.keySet()) {
 				for (final PokeballType pbt : PokeballType.values()) {
-					if (s.toUpperCase().equals(pbt.name())) {
-						((InventoryImpl) i).pokeballs.replace(new Pokeball(pbt), balls.get(s));
+					if (s.toUpperCase().equals(pbt.name().toUpperCase())) {
+						bal.put(new Pokeball(pbt), ballList.get(s));
 					}
 				}
 			}
+		        i.setPokeballs(bal);
 		}
 		return i;
 	}
@@ -134,4 +140,20 @@ public class InventoryImpl implements Inventory {
             this.pokeballs.replace((Pokeball) item, this.pokeballs.get(item) + qty);
         }
     }
+    
+    public void setPokeballs(final Map<Pokeball, Integer> pokeballs) {
+        this.pokeballs = pokeballs;
+    }
+    
+    public void setPotions(final Map<Potion, Integer> potions) {
+        this.potions = potions;
+    }
+    
+    public void setBoosts(final Map<Boost, Integer> boosts) {
+        this.boosts = boosts;
+    }
+    
+    public String toString() {
+        return "Potions: " + potions.toString() + " Boosts: " + boosts.toString() + " Balls: " + pokeballs.toString();
+     }
 }

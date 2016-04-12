@@ -73,7 +73,6 @@ public class PokemonInBattle extends AbstractPokemon{
 	        this.evolvesTo = PokemonDB.MISSINGNO;
 	    }
 	}
-
 	
 	public boolean canEvolve() {
 	    return this.canEvolve;
@@ -119,8 +118,4 @@ public class PokemonInBattle extends AbstractPokemon{
         }
         return false;
     }
-	
-		
-	
-
 }
