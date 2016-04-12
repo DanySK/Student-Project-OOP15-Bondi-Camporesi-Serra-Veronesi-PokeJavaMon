@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="libs/jdom-2.0.6.jar"/>
 	<classpathentry kind="lib" path="libs/tween-engine-api-sources.jar"/>
 	<classpathentry kind="lib" path="libs/tween-engine-api.jar"/>
+	<classpathentry kind="lib" path="libs/guava-19.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
