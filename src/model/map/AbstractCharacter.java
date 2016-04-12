@@ -1,5 +1,6 @@
 package model.map;
 
+import model.map.tile.Tile;
 
 public abstract class AbstractCharacter implements Drawable {
     

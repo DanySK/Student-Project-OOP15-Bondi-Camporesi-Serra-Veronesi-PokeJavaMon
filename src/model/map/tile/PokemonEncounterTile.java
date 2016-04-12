@@ -1,4 +1,4 @@
-package model.map;
+package model.map.tile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,9 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import com.google.common.collect.Range;
-import model.map.AbstractTile;
+
+import model.map.Zone;
+import model.map.tile.AbstractTile;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.PokemonRarity;

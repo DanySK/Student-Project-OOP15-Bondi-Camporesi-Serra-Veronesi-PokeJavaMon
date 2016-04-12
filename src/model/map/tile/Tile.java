@@ -1,4 +1,6 @@
-package model.map;
+package model.map.tile;
+
+import model.map.Drawable;
 
 public interface Tile extends Drawable{
     public static enum TileType {

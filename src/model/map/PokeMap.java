@@ -2,6 +2,10 @@ package model.map;
 
 import java.util.Set;
 
+import model.map.tile.Sign;
+import model.map.tile.Teleport;
+import model.map.tile.Tile;
+import model.map.tile.TileNotFoundException;
 import model.trainer.TrainerDB;
 
 public interface PokeMap {

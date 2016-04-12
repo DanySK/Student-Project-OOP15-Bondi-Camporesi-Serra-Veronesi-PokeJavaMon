@@ -1,4 +1,6 @@
-package model.map;
+package model.map.tile;
+
+import model.map.Position;
 
 public class Teleport extends AbstractTile {
     
