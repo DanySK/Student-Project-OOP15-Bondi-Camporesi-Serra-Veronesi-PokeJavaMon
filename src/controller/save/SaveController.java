@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
@@ -14,6 +12,14 @@ import org.jdom2.output.XMLOutputter;
 
 import controller.modelResources.*;
 import controller.parameters.XMLParameters;
+import model.box.Box;
+import model.inventory.Inventory;
+import model.items.Item;
+import model.pokemon.Move;
+import model.pokemon.Pokemon;
+import model.pokemon.Stat;
+import model.trainer.Trainer;
+import model.utilities.Pair;
 
 public class SaveController implements SaveControllerInterface {
     private static final int MIN_MOVES = 1;
@@ -33,23 +39,23 @@ public class SaveController implements SaveControllerInterface {
         }
     }
     
-    private void setPosition(float x, float y) {
+    private void setPosition(Pair<Float, Float> pos) {
         Element position = new Element(XMLParameters.POSITION.getName());
-        position.setAttribute(XMLParameters.X.getName(),Float.toString(x));
-        position.setAttribute(XMLParameters.Y.getName(),Float.toString(y));
+        position.setAttribute(XMLParameters.X.getName(),Float.toString(pos.getX()));
+        position.setAttribute(XMLParameters.Y.getName(),Float.toString(pos.getY()));
         root.addContent(position);
     }
     
-    private void setTeam(List<Pokemon> l) {
+    private void setTeam(List<Pokemon> team) {
         Element squadra = new Element(XMLParameters.TEAM.getName());
-        List<Pokemon> team = l;
-        for (Pokemon x : team) { 
-            Element e = new Element(x.getNome());
-            e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getHp()));
-            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getExp()));
+        for (final Pokemon x : team) { 
+            Element e = new Element(x.getPokemon().getName());
+            e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
+            e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
+            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
             int contatore = MIN_MOVES;
-            for (String s : x.getMoves()) {
-                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s);
+            for (final Move m : x.getCurrentMoves()) {
+                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,m.name());
                 contatore ++;
             }
             contatore --;
@@ -59,29 +65,29 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(squadra);
     }
     
-    private void setTrainers(List<Trainers> l) {
+    private void setTrainers(List<Trainer> l) {
         Element allenatori = new Element(XMLParameters.TRAINERS.getName());
-        for (Trainers t : l) {
-            allenatori.setAttribute(t.getName(),Boolean.toString(t.isBeaten()));
+        for (final Trainer t : l) {
+            allenatori.setAttribute(t.getTrainerDB().name(),Boolean.toString(t.isDefeated()));
         }
         root.addContent(allenatori);
     }
     
-    private void setBag(Map<String,Integer> a, Set<String> b, Map<String,Integer> c) {
+    private void setBag(Inventory i) {
         Element borsa = new Element(XMLParameters.BAG.getName());
-        Element instruments = new Element(XMLParameters.STRUM.getName());
-        for (String o : a.keySet()) {
-            instruments.setAttribute(o,Integer.toString(a.get(o)));
+        Element instruments = new Element(XMLParameters.POTIONS.getName());
+        for (final Item item : i.getSubInventory(Item.ItemType.POTION).keySet()) {
+            instruments.setAttribute(item.getType().name(),Integer.toString(i.getSubInventory(Item.ItemType.POTION).get(item)));
         }
         borsa.addContent(instruments);
-        Element base = new Element(XMLParameters.BASE.getName());
-        for (String s : b) {
-            base.setAttribute(s,Boolean.toString(true));
+        Element boosts = new Element(XMLParameters.BOOSTS.getName());
+        for (final Item item : i.getSubInventory(Item.ItemType.BOOST).keySet()) {
+            instruments.setAttribute(item.getType().name(),Integer.toString(i.getSubInventory(Item.ItemType.BOOST).get(item)));
         }
-        borsa.addContent(base);
+        borsa.addContent(boosts);
         Element balls = new Element(XMLParameters.BALLS.getName());
-        for (String o : c.keySet()) {   
-            balls.setAttribute(o,Integer.toString(c.get(o)));
+        for (final Item item : i.getSubInventory(Item.ItemType.POKEBALL).keySet()) {
+            instruments.setAttribute(item.getType().name(),Integer.toString(i.getSubInventory(Item.ItemType.POKEBALL).get(item)));
         }
         borsa.addContent(balls);
         root.addContent(borsa);
@@ -91,20 +97,16 @@ public class SaveController implements SaveControllerInterface {
         root.setAttribute(XMLParameters.MONEY.getName(),Integer.toString(i));
     }
     
-    private void setTime(int i) {
-        root.setAttribute(XMLParameters.TIME.getName(),Integer.toString(i));
-    }
-    
-    private void setBox(List<Pokemon> l) {
+    private void setBox(Box b) {
         Element box = new Element(XMLParameters.BOX.getName());
-        List<Pokemon> bx = l;
-        for (Pokemon x : bx) {
-            Element e = new Element(x.getNome());
-            e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getHp()));
-            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getExp()));
+        for (final Pokemon x : b.getPokemonList()) { 
+            Element e = new Element(x.getPokemon().getName());
+            e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
+            e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
+            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
             int contatore = MIN_MOVES;
-            for (String s : x.getMoves()) {
-                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s);
+            for (final Move s : x.getCurrentMoves()) {
+                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s.name());
                 contatore ++;
             }
             contatore --;
@@ -114,28 +116,14 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(box);
     }
     
-    private void setReturnPosition(float x, float y) {
-        Element retPosition = new Element(XMLParameters.RETURNPOSITION.getName());
-        retPosition.setAttribute(XMLParameters.RETX.getName(),Float.toString(x));
-        retPosition.setAttribute(XMLParameters.RETY.getName(),Float.toString(y));
-        root.addContent(retPosition);
-    }
-    
-    private void setPlace(boolean b) {
-        root.setAttribute(XMLParameters.POSITION.getName(),Boolean.toString(b));
-    }
-    
     public void save(General g) {
         setup();
-        setPosition(g.xPos, g.yPos);
-        setTeam(g.team);
-        setTrainers(g.trainers);
-        setBag(g.inv.getOggetti(), g.inv.getBase(), g.inv.getBalls());
-        setMoney(g.money);
-        setTime(g.time);
-        setBox(g.box);
-        setReturnPosition(g.exitX, g.exitY);
-        setPlace(g.place); 
+        setPosition(g.getPosition());
+        setTeam(g.getTeam());
+        setTrainers(g.getTrainers());
+        setBag(g.getInv());
+        setMoney(g.getMoney());
+        setBox(g.getBox());
         try {
             outputter = new XMLOutputter(); 
             outputter.setFormat(Format.getPrettyFormat());

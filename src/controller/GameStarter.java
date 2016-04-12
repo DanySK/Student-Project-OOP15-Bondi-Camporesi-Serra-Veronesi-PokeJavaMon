@@ -1,4 +1,4 @@
-package controller.main;
+package controller;
 import controller.viewResources.TitleWiew;
 
 public class GameStarter {

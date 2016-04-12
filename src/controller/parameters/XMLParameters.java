@@ -3,9 +3,9 @@ package controller.parameters;
 public enum XMLParameters {
 
     MONEY("MONEY"), TIME("TIME"), PLACE("PLACE"), POSITION("POSITION"),
-    X("X"), Y("Y"), TEAM("TEAM"), HP("HP"), EXP("EXP"), NMOVES("NMOVES"),
-    MOVES_ID("M"), TRAINERS("TRAINERS"), BAG("BAG"), STRUM("STRUM"),
-    BASE("BASE"), BALLS("BALLS"), BOX("BOX"), RETURNPOSITION("RETURNPOSITION"),
+    X("X"), Y("Y"), TEAM("TEAM"), LV("LV"), HP("HP"), EXP("EXP"), NMOVES("NMOVES"),
+    MOVES_ID("M"), TRAINERS("TRAINERS"), BAG("BAG"), POTIONS("POTIONS"),
+    BOOSTS("BOOSTS"), BALLS("BALLS"), BOX("BOX"), RETURNPOSITION("RETURNPOSITION"),
     RETX("RETX"), RETY("RETY"), TITLE("SAVE");
     
     private XMLParameters(String s) {
