@@ -73,8 +73,14 @@ public class Play implements Screen {
 		if (newGame) {
 		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {
-		    General g = new LoadController().load();
-		    player.setBounds(g.getPosition().getX(), g.getPosition().getY(), 15.9f, 15.9f);
+		    LoadController lc = new LoadController();
+		    if (lc.saveExists()) {
+		        General g = lc.load();
+	                player.setBounds(g.getPosition().getX(), g.getPosition().getY(), 15.9f, 15.9f);
+		    } else {
+		        System.out.println("SAVE DOES NOT EXIST");
+		        player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+		    }
 		}
 		k = State.WALKING.getController();
 		k.setPlayer(player);

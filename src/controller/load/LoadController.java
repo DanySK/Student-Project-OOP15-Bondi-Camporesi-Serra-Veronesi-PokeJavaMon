@@ -26,15 +26,11 @@ import model.trainer.Trainer;
 import model.utilities.Pair;
 
 public class LoadController implements LoadControllerInterface {
-    private static final String FILE_NAME = "resources/files/save.xml";
+    private static final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private SAXBuilder builder;
     private Document document;
     private Element root;
-    
-    public LoadController() {
-        setup();
-    }
     
     private void setup() {
         builder = new SAXBuilder();
@@ -124,6 +120,11 @@ public class LoadController implements LoadControllerInterface {
     }
     
     public General load() {
+        setup();
         return new General(getTeam(),getBox(),getTrainers(),getInventory(),getMoney(),getPosition());
+    }
+    
+    public boolean saveExists() {
+        return new File(FILE_NAME).exists();
     }
 }

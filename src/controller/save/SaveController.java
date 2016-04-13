@@ -9,7 +9,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-
 import controller.modelResources.*;
 import controller.parameters.XMLParameters;
 import model.box.Box;
@@ -26,7 +25,7 @@ public class SaveController implements SaveControllerInterface {
     private Document document;
     private Element root;
     private XMLOutputter outputter;
-    private static final String FILE_NAME = "resources/files/save.xml";
+    private static final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
     private FileOutputStream fos;
     
     private void setup() {
@@ -35,7 +34,13 @@ public class SaveController implements SaveControllerInterface {
         try {
             fos = new FileOutputStream(new File(FILE_NAME));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            File f = new File(FILE_NAME);
+            try {
+                f.createNewFile();
+                fos = new FileOutputStream(new File(FILE_NAME));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     }
     
