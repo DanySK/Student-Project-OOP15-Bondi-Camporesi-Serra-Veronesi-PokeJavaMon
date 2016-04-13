@@ -21,7 +21,7 @@ public class Player extends Sprite {
         boolean toModifyExit = true, inside;
         Cell door = null;
         TiledMapTile tile;
-	private Vector2 velocity = new Vector2();
+	private Vector2 velocity = new Vector2(), newVelocity = new Vector2();
 	private float speed = 1;
         private TiledMapTileLayer background;
         private TiledMapTileLayer foreground;
@@ -174,9 +174,16 @@ public class Player extends Sprite {
                         }
 		    }
 		    if (pos == 0) {
-		        stopMove = false;
-	                stopX();
-	                stopY();
+		        if (newVelocity.x == 0 && newVelocity.y == 0) {
+		            stopMove = false;
+	                    stopX();
+	                    stopY();
+		        } else {
+		            stopMove = false;
+		            velocity.x = newVelocity.x;
+		            velocity.y = newVelocity.y;
+		            newVelocity.x = newVelocity.y = 0;
+		        }
 		    }
 		}
 	}
@@ -198,42 +205,20 @@ public class Player extends Sprite {
 		
 	private boolean isCellBlockedX(float x, float y) {
 	    final int cell_x = (int) x / (int) background.getTileWidth();
-	    final int cell_y = (int) y / (int) background.getTileHeight();
-            final int remaining_x = (int) x % (int) background.getTileWidth();           
+	    final int cell_y = (int) y / (int) background.getTileHeight();          
 	    Cell cell1 = background.getCell(cell_x, cell_y);
-	    Cell cell2 = foreground.getCell(cell_x, cell_y);
-	    Cell cell1_2 = null;
-	    Cell cell2_2 = null;	    
-	    if (remaining_x != 0) {
-	        cell1_2 = background.getCell(cell_x + 1, cell_y);
-	        cell2_2 = foreground.getCell(cell_x + 1, cell_y);
-	    } 	    
+	    Cell cell2 = foreground.getCell(cell_x, cell_y);	    
 	    final boolean partialControl = checkCellBlocked(cell1) || checkCellBlocked(cell2);
-	    if (cell1_2 == null && cell2_2 == null) {
-	        return partialControl;
-	    }           
-	    final boolean partialControl2 = checkCellBlocked(cell1_2) || checkCellBlocked(cell2_2);
-	    return partialControl || partialControl2;
+	    return partialControl;
 	}
 	
         private boolean isCellBlockedY(float x, float y) {
             final int cell_x = (int) x / (int) background.getTileWidth();
-            final int cell_y = (int) y / (int) background.getTileHeight();
-            final int remaining_y = (int) y % (int) background.getTileHeight();          
+            final int cell_y = (int) y / (int) background.getTileHeight();          
             Cell cell1 = background.getCell(cell_x, cell_y);
-            Cell cell2 = foreground.getCell(cell_x, cell_y);
-            Cell cell1_2 = null;
-            Cell cell2_2 = null;                   
-            if (remaining_y != 0) {
-                cell1_2 = background.getCell(cell_x, cell_y + 1);
-                cell2_2 = foreground.getCell(cell_x, cell_y + 1);
-            }            
+            Cell cell2 = foreground.getCell(cell_x, cell_y);                             
             final boolean partialControl = checkCellBlocked(cell1) || checkCellBlocked(cell2);
-            if (cell1_2 == null && cell2_2 == null) {
-                return partialControl;
-            }           
-            final boolean partialControl2 = checkCellBlocked(cell1_2) || checkCellBlocked(cell2_2);
-            return partialControl || partialControl2;
+            return partialControl;        
         }	
 
 	private boolean checkCellBlocked(Cell cell) {
@@ -311,6 +296,9 @@ public class Player extends Sprite {
 	    if (!stopMove && pos == 0) {
 	        velocity.x = x;
 	        velocity.y = y;
+	    } else {
+	        newVelocity.x = x;
+	        newVelocity.y = y;
 	    }
 	}
 	

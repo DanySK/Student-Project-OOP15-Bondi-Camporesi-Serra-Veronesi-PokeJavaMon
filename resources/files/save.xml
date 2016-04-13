@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SAVE MONEY="500">
-  <POSITION X="736.0" Y="2736.0" />
+  <POSITION X="512.0" Y="4256.0" />
   <TEAM>
     <Blastoise LV="30" HP="77" EXP="0" M1="SURF" M2="AGILITY" M3="CUT" M4="WATERGUN" NMOVES="4" />
   </TEAM>
