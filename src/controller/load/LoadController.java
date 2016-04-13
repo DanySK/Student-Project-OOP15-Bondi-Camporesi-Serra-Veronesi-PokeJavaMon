@@ -101,6 +101,7 @@ public class LoadController implements LoadControllerInterface {
 
     private Box getBox() {
         List<Pokemon> box = new ArrayList<Pokemon>();
+        Box retBox = BoxImpl.getBox();
         for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
             int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
@@ -112,10 +113,7 @@ public class LoadController implements LoadControllerInterface {
             }
             box.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }
-        Box retBox = BoxImpl.getBox();
-        for (final Pokemon pkmn : box) {
-            retBox.putCapturedPokemon(pkmn);
-        }
+        retBox.setPokemons(box);
         return retBox;
     }
     
