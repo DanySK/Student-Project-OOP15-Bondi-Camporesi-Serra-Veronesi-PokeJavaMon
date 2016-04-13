@@ -1,4 +1,4 @@
-package controller.viewResources;
+package view.resources;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;

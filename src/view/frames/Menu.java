@@ -4,7 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import controller.viewResources.TitleWiew;
+import view.resources.TitleWiew;
+import view.resources.ViewController;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,12 +15,14 @@ import java.awt.Toolkit;
 public class Menu  {
 
 	public Menu() {
-		final JFrame f = new JFrame("Menu");
+		final JFrame f = new JFrame();
+		
+		f.setResizable(false);
 		f.setAlwaysOnTop(true);
 
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
 	
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		f.setSize(179,310);
 		f.getContentPane().setLayout(null);
 	
@@ -38,6 +41,7 @@ public class Menu  {
 		salva.addMouseListener(new MouseAdapter() {
 			@Override
         	public void mouseClicked(MouseEvent e) {
+			ViewController.save();
         		JOptionPane.showMessageDialog(salva, "Salvataggio riuscito!");
         	}
         });
@@ -60,13 +64,13 @@ public class Menu  {
 				new Zaino();
 			}});
 		
-		JButton esci = new JButton("Esci");
+		JButton esci = new JButton("Riprendi");
 		esci.setBounds(30, 210, 100, 25);
 		f.getContentPane().add(esci);
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				new TitleWiew();
+				ViewController.resume();
 			}});
 		
 		f.setVisible(true);

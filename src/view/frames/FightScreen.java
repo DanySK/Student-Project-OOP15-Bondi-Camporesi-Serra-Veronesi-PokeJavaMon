@@ -2,6 +2,11 @@ package view.frames;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import controller.music.MusicController;
+import controller.parameters.Music;
+import view.resources.ViewController;
+
 import javax.swing.JButton;
 import java.awt.CardLayout;
 import java.awt.Toolkit;
@@ -14,11 +19,13 @@ public class FightScreen {
 		
 		final JFrame frame = new JFrame("Fight");
 		
+		frame.setResizable(false);
+		
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
 		
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -44,7 +51,9 @@ public class FightScreen {
 		fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				frame.dispose();
-				new Menu();
+				MusicController.stop();
+				MusicController.play(Music.TOWN);
+				ViewController.resume();
 			}
 		});
 				

@@ -7,7 +7,8 @@ import javax.swing.*;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-import controller.viewResources.TiledMapGame;  
+import view.resources.TiledMapGame;
+import view.resources.ViewController;  
   
 public class InserisciNome {  
 	
@@ -49,6 +50,7 @@ public class InserisciNome {
     	           }
     	        else {
     	        
+    	        ViewController.setName(nickname.getText());
                 LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
                 
                 /*cfg.addIcon(  ,  );*/

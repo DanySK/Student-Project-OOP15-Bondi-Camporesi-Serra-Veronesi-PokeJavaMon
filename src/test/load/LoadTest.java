@@ -1,8 +1,8 @@
 package test.load;
 
 import controller.load.LoadController;
-import controller.modelResources.General;
 import model.pokemon.InitializeMoves;
+import model.resources.General;
 
 public class LoadTest {
 

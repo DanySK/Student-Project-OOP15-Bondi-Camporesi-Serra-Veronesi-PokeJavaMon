@@ -17,7 +17,7 @@ public Box() {
 		f.setAlwaysOnTop(true);
 		f.setResizable(false);
 		f.setBounds(100, 100, 450, 300);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		f.getContentPane().setLayout(null);
 		
 		JButton deposita = new JButton("Deposita");

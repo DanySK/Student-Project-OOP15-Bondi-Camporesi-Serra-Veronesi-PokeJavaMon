@@ -1,4 +1,4 @@
-package controller.modelResources;
+package model.resources;
 
 import java.util.List;
 

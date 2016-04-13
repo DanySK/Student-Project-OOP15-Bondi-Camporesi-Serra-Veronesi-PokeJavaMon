@@ -1,4 +1,4 @@
-package controller.viewResources;
+package view.resources;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -20,6 +20,7 @@ public class TitleWiew {
     public static void title() {
         
         final JFrame frame = new JFrame("PokeJavaMon");
+        frame.setResizable(false);
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
         JPanel pane = new JPanel();
         

@@ -1,4 +1,4 @@
-package controller.viewResources;
+package view.resources;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -15,11 +15,11 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import controller.modelResources.General;
-import controller.modelResources.Player;
 import controller.keyboard.KeyboardControllerInterface;
 import controller.load.LoadController;
 import controller.parameters.State;
+import model.resources.General;
+import model.resources.Player;
 
 public class Play implements Screen {  
         private boolean pause = false;

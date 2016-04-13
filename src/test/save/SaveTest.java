@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.modelResources.General;
 import controller.save.SaveController;
 import model.box.Box;
 import model.box.BoxImpl;
@@ -21,6 +20,7 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.Stat;
 import model.pokemon.StaticPokemonFactory;
+import model.resources.General;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 import model.trainer.TrainerDB;

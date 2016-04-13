@@ -12,7 +12,7 @@ public Squadra() {
 		f.setAlwaysOnTop(true);
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
           	
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		f.setSize(650,500);
 		f.getContentPane().setLayout(null);
    	

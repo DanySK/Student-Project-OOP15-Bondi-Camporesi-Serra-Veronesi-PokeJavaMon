@@ -13,7 +13,6 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import controller.modelResources.*;
 import controller.parameters.XMLParameters;
 import model.box.Box;
 import model.box.BoxImpl;
@@ -21,6 +20,7 @@ import model.inventory.Inventory;
 import model.inventory.InventoryImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
+import model.resources.*;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 import model.utilities.Pair;

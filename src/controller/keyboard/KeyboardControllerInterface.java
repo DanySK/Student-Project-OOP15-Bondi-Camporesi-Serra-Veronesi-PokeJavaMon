@@ -2,7 +2,7 @@ package controller.keyboard;
 
 import com.badlogic.gdx.InputProcessor;
 
-import controller.modelResources.Player;
+import model.resources.Player;
 
 public interface KeyboardControllerInterface extends InputProcessor {
     

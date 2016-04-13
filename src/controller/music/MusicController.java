@@ -5,15 +5,15 @@ import com.badlogic.gdx.audio.Sound;
 
 import controller.parameters.Music;
 
-public class MusicController implements MusicControllerInterface {
-    private Sound s;
+public class MusicController {
+    private static Sound s;
     
-    public void play(Music song) {        
+    public static void play(Music song) {        
         s = Gdx.audio.newSound(Gdx.files.classpath(song.getPath()));
         s.loop();
     }
     
-    public void stop() {
+    public static void stop() {
         s.stop();
         s.dispose();
     }

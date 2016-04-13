@@ -1,6 +1,6 @@
 package controller;
-import controller.viewResources.TitleWiew;
 import model.pokemon.InitializeMoves;
+import view.resources.TitleWiew;
 
 public class GameStarter {
 

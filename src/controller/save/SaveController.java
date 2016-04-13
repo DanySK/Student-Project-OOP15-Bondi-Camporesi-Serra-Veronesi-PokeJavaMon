@@ -9,7 +9,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import controller.modelResources.*;
+
 import controller.parameters.XMLParameters;
 import model.box.Box;
 import model.inventory.Inventory;
@@ -17,6 +17,7 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
+import model.resources.*;
 import model.trainer.Trainer;
 import model.utilities.Pair;
 

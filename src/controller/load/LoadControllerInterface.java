@@ -1,6 +1,6 @@
 package controller.load;
 
-import controller.modelResources.General;
+import model.resources.General;
 
 @FunctionalInterface
 public interface LoadControllerInterface {

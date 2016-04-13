@@ -1,4 +1,4 @@
-package controller.modelResources;
+package model.resources;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -30,7 +30,6 @@ public class Player extends Sprite {
         private Animation left_s, right_s, up_s, down_s;
         private float animationTime = 0;
         private TextureAtlas playerAtlas;
-        private MusicController mc = new MusicController();
         private boolean stopMove = false;
         private int pos = 0;
 	
@@ -42,7 +41,7 @@ public class Player extends Sprite {
             tile = tl;
             this.objectLayer = obj;          
             this.setupAnimation();
-            mc.play(Music.TOWN);
+            MusicController.play(Music.TOWN);
 	}
 
 	public void update(SpriteBatch spriteBatch) {
