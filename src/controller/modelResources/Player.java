@@ -248,7 +248,7 @@ public class Player extends Sprite {
 	}
 	
 	private void setupAnimation() {
-	    playerAtlas = new TextureAtlas("resources/img/player.pack");
+	    playerAtlas = new TextureAtlas(this.getClass().getResource("/player.pack").getPath());
             left = new Animation(1 / 6f, playerAtlas.findRegions("left"));
             right = new Animation(1 / 6f, playerAtlas.findRegions("right"));
             up = new Animation(1 / 6f, playerAtlas.findRegions("up"));

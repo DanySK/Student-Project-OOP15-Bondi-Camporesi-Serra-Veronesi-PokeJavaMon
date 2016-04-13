@@ -57,13 +57,13 @@ public class Play implements Screen {
 	}
 	
 	public void show() {			    
-	        map = new TmxMapLoader().load("maps/map.tmx");
+	        map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
 	        renderer = new OrthogonalTiledMapRenderer(map);                    
 		sr = new ShapeRenderer();
 		sr.setColor(Color.CYAN);
 		Gdx.gl.glLineWidth(3);
 		camera = new OrthographicCamera();	
-		Texture tx = new Texture("img/player.png");
+		Texture tx = new Texture(this.getClass().getResource("/player.png").getPath());
 		TextureRegion gain = new TextureRegion(tx);
 		TiledMapTileLayer fg = (TiledMapTileLayer) map.getLayers().get("foreground");
 		TiledMapTileLayer bg = (TiledMapTileLayer) map.getLayers().get("background");
