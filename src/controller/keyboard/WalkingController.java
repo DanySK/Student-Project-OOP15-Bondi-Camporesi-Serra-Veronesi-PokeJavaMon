@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
 
@@ -29,6 +31,7 @@ import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 import model.trainer.TrainerDB;
 import model.utilities.Pair;
+import view.frames.Menu;
 
 public class WalkingController implements KeyboardControllerInterface {
 
@@ -74,6 +77,12 @@ public class WalkingController implements KeyboardControllerInterface {
                     break;
                 }
                 break;
+            case Keys.ENTER:
+                if(active) {
+                	new Menu();
+                    break;
+                }
+                break;    
         }
         return true;
     }
@@ -146,6 +155,7 @@ public class WalkingController implements KeyboardControllerInterface {
                     }
                     g.setPosition(new Pair<Float, Float>(pl.getX(),pl.getY()));
                     sc.save(g);
+                    JOptionPane.showMessageDialog(null, "Salvataggio riuscito!");
                 }
                 break;
         }
