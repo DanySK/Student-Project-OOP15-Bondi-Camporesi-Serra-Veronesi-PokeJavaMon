@@ -98,6 +98,10 @@ public class BoxImpl implements Box {
         return false;
     }
     
+    public void setPokemons(List<Pokemon> pokemons) {
+        this.pokemonInBox = pokemons;
+    }
+    
     @Override
     public String toString() {
         String retString = "";

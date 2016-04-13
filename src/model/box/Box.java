@@ -21,5 +21,7 @@ public interface Box {
     
     public boolean contains(final Pokemon pkmn);
     
+    public void setPokemons(List<Pokemon> pokemons);
+    
     public String toString();
 }
