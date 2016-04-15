@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Optional;
+
 import controller.keyboard.KeyboardController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.music.MusicController;
@@ -14,55 +16,58 @@ import view.resources.ViewController;
 public class MainController {
     
     private static State state;
-    private static KeyboardController keyboardController;
-    private static MusicController musicController;
-
+    private static Optional<KeyboardController> keyboardController;
+    private static Optional<MusicController> musicController;
+    
     public static void updateStatus(State s) {
         state = s;
         switch (s) {
             case FIRST_MENU:
-                keyboardController = null;
-                musicController = null;
+                keyboardController = Optional.empty();
+                musicController = Optional.empty();
                 break;
             case SECOND_MENU:
-                keyboardController = null;
-                musicController = null;
+                keyboardController = Optional.empty();
+                musicController = Optional.empty();
                 break;
             case WALKING:
-                keyboardController = new WalkingKeyboardController(); 
+                keyboardController = Optional.of(new WalkingKeyboardController());
                 Play.updateKeyListener();
-                if (musicController != null) {
-                    if (musicController.playing() != Music.TOWN) {
-                        musicController.stop();
-                        musicController.play(Music.TOWN);
+                if (musicController.isPresent()) {
+                    if (musicController.get().playing() != Music.TOWN) {
+                        musicController.get().stop();
+                        musicController.get().play(Music.TOWN);
                     }
                 } else {
-                    musicController = new MainMusicController();
-                    musicController.play(Music.TOWN);
+                    musicController = Optional.of(new MainMusicController());
+                    musicController.get().play(Music.TOWN);
                 }
                 break;
             case MENU:
-                keyboardController = null;
+                keyboardController = Optional.empty();
                 Player.resetPos();
                 break;
             case FIGHTING:
-                keyboardController = null;
+                keyboardController = Optional.empty();
                 Player.resetPos();
-                if (musicController != null) {
-                    if (musicController.playing() != Music.TRAINER) {
-                        musicController.stop();
-                        musicController.play(Music.TRAINER);
+                if (musicController.isPresent()) {
+                    if (musicController.get().playing() != Music.TRAINER) {
+                        musicController.get().stop();
+                        musicController.get().play(Music.TRAINER);
                     }
                 } else {
-                    musicController = new MainMusicController();
-                    musicController.play(Music.TRAINER);
+                    musicController = Optional.of(new MainMusicController());
+                    musicController.get().play(Music.TRAINER);
                 }
                 break;
         }
     }
     
     public static boolean isKeyPressed() {
-        return keyboardController.isKeyPressed();
+        if (keyboardController.isPresent()) {
+        	return keyboardController.get().isKeyPressed();
+        }
+        	return false;
     }
     
     public static void main(String[] args) {
@@ -71,6 +76,6 @@ public class MainController {
     }
     
     public static KeyboardController getController() {
-        return keyboardController;
+        return keyboardController.get();
     }
 }

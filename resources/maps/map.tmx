@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="181">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="197">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
   <tile id="0">
@@ -100,70 +100,60 @@
   </tile>
   <tile id="16">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="17">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="21">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="22">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="23">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="24">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="25">
    <properties>
-    <property name="text" value="DEATHSIGN"/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
@@ -225,7 +215,6 @@
   </tile>
   <tile id="35">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
@@ -274,63 +263,54 @@
   </tile>
   <tile id="43">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="44">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="45">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="46">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="47">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="48">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="49">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="50">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="51">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
@@ -457,42 +437,36 @@
   </tile>
   <tile id="72">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="73">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="74">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="75">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="76">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="77">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
@@ -619,10 +593,8 @@
   </tile>
   <tile id="98">
    <properties>
-    <property name="X" value="0"/>
-    <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="99">
@@ -743,7 +715,6 @@
   </tile>
   <tile id="118">
    <properties>
-    <property name="text" value=""/>
     <property name="tileType" value="SIGN"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
@@ -814,10 +785,8 @@
   </tile>
   <tile id="129">
    <properties>
-    <property name="X" value="0"/>
-    <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="130">
@@ -1168,19 +1137,19 @@
   </tile>
   <tile id="186">
    <properties>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="TERRAIN"/>
     <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="187">
    <properties>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="TERRAIN"/>
     <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="188">
    <properties>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="TERRAIN"/>
     <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
@@ -2517,8 +2486,6 @@
   </tile>
   <tile id="394">
    <properties>
-    <property name="X" value="0"/>
-    <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
@@ -2907,7 +2874,7 @@
   </tile>
   <tile id="448">
    <properties>
-    <property name="tileType" value="TELEPORT"/>
+    <property name="tileType" value="TERRAIN"/>
     <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
@@ -4259,12 +4226,12 @@
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3aSU7EMBBAUWOJYyCGSyCGG7BCdHMDVojhzlwE70At7HSjxEXMe8uUlHj1VUqSEgAAAAAAAAD8bU/RBwCGpzPAyA5pnB4CS5nqy33u8xyApekQsCaXP+xgOgb0pDlAtH069DzTeyuAKD13LvsdUKMPzO0j+gDQMNU8TRzfbqM0C4D/xj4EjOTEt0IgwBz70r73sJsBAHyxGwGj0TUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgacc5+gQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL9znlO6yIfPAHq7KT26rTSpNQMAAAAAAAAAWMo2p/T47Z+Fu6P6DCDSW+nRe6VJrRkAAAAAAACwPqc5pbPKN8DWDKC3q9Kj60qTWjOACA+lSZs8fQ0g2kvp0muevgYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAWn/9cplJAfgUA
+   H4sIAAAAAAAAC+3azU3DMBiAYdd7VAWWQBQ26Anxs0FPqIV1mI9F8A1UYadFid24z3PMJyU+vfqUJAQAAAAAAAAAOG/b1gcAuqczQM9OaZweAlMZ6stjrPMcgKnpEDAnt3/sYDoG1KQ5QGvHdOhtpPdWAK3U3Lnsd0COPjC2r9YHgIKh5mli/w4bpVkAXBr7ENCTpW+FQANj7EvH3sNuBgDww24E9EbXgB5pGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnJfPResTAAAAAAAAAAAAwP9t/AcHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcNGuYwg38fQZQG33qUcPmSaVZgAAAAAAAAAAU3mJIbz++mdhs8jPAFp6Tz36yDSpNAMAAAAAAADmZxVDuMp8AyzNAGq7Sz1aZ5pUmgG08JSa9ByHrwG0tktd2sfhawAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHPxDUqCLIFAfgUA
   </data>
  </layer>
  <objectgroup name="doorLayer" visible="0">
@@ -4496,19 +4463,19 @@
     <property name="DOOR_Y" value="10"/>
    </properties>
   </object>
-  <object id="97" x="3840" y="736" width="16" height="16">
+  <object id="97" x="3840" y="752" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="13"/>
     <property name="DOOR_Y" value="14"/>
    </properties>
   </object>
-  <object id="101" x="3856" y="736" width="16" height="16">
+  <object id="101" x="3856" y="752" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="13"/>
     <property name="DOOR_Y" value="14"/>
    </properties>
   </object>
-  <object id="102" x="3824" y="736" width="16" height="16">
+  <object id="102" x="3824" y="752" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="13"/>
     <property name="DOOR_Y" value="14"/>
@@ -4526,19 +4493,19 @@
     <property name="DOOR_Y" value="26"/>
    </properties>
   </object>
-  <object id="107" x="3792" y="1968" width="16" height="16">
+  <object id="107" x="3792" y="1984" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="130"/>
     <property name="DOOR_Y" value="91"/>
    </properties>
   </object>
-  <object id="108" x="3808" y="1968" width="16" height="16">
+  <object id="108" x="3808" y="1984" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="130"/>
     <property name="DOOR_Y" value="91"/>
    </properties>
   </object>
-  <object id="109" x="3824" y="1968" width="16" height="16">
+  <object id="109" x="3824" y="1984" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="130"/>
     <property name="DOOR_Y" value="91"/>
@@ -4616,19 +4583,19 @@
     <property name="DOOR_Y" value="161"/>
    </properties>
   </object>
-  <object id="122" x="3808" y="2592" width="16" height="16">
+  <object id="122" x="3808" y="2608" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="191"/>
     <property name="DOOR_Y" value="45"/>
    </properties>
   </object>
-  <object id="123" x="3824" y="2592" width="16" height="16">
+  <object id="123" x="3824" y="2608" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="191"/>
     <property name="DOOR_Y" value="45"/>
    </properties>
   </object>
-  <object id="124" x="3840" y="2592" width="16" height="16">
+  <object id="124" x="3840" y="2608" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="191"/>
     <property name="DOOR_Y" value="45"/>
@@ -4670,11 +4637,53 @@
     <property name="DOOR_Y" value="145"/>
    </properties>
   </object>
+  <object id="190" x="4480" y="1680" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="38"/>
+    <property name="DOOR_Y" value="184"/>
+   </properties>
+  </object>
+  <object id="191" x="4496" y="1680" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="38"/>
+    <property name="DOOR_Y" value="184"/>
+   </properties>
+  </object>
+  <object id="192" x="4512" y="1680" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="38"/>
+    <property name="DOOR_Y" value="184"/>
+   </properties>
+  </object>
+  <object id="193" x="608" y="2928" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="281"/>
+    <property name="DOOR_Y" value="104"/>
+   </properties>
+  </object>
+  <object id="194" x="4432" y="2112" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="52"/>
+    <property name="DOOR_Y" value="174"/>
+   </properties>
+  </object>
+  <object id="195" x="4448" y="2112" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="52"/>
+    <property name="DOOR_Y" value="174"/>
+   </properties>
+  </object>
+  <object id="196" x="832" y="2768" width="16" height="16">
+   <properties>
+    <property name="DOOR_X" value="278"/>
+    <property name="DOOR_Y" value="131"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="signLayer" visible="0">
   <object id="132" x="512" y="1824" width="16" height="16">
    <properties>
-    <property name="signMessage" value="Casa di Tonio Cartonio"/>
+    <property name="signMessage" value="Nobody's home"/>
    </properties>
   </object>
   <object id="134" x="576" y="2160" width="16" height="16">
@@ -4689,17 +4698,17 @@
   </object>
   <object id="136" x="432" y="2768" width="16" height="16">
    <properties>
-    <property name="signMessage" value="Casa di %%Player%%"/>
+    <property name="signMessage" value="%%Player%%'s Home"/>
    </properties>
   </object>
   <object id="137" x="624" y="2944" width="16" height="16">
    <properties>
-    <property name="signMessage" value="Laboratorio di Dr. Ghain"/>
+    <property name="signMessage" value="Dr Ghain's Lab"/>
    </properties>
   </object>
   <object id="138" x="816" y="2784" width="16" height="16">
    <properties>
-    <property name="signMessage" value="Casa del tuo vicino"/>
+    <property name="signMessage" value="Neighbour home"/>
    </properties>
   </object>
   <object id="139" x="2000" y="1712" width="16" height="16">
@@ -4745,6 +4754,46 @@
   <object id="147" x="4048" y="2384" width="16" height="16">
    <properties>
     <property name="signMessage" value="PokeCenter"/>
+   </properties>
+  </object>
+  <object id="182" x="1168" y="1904" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="ROUTE 1"/>
+   </properties>
+  </object>
+  <object id="183" x="1520" y="1904" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="Interrupted Route!"/>
+   </properties>
+  </object>
+  <object id="184" x="1472" y="1840" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="Reading this doesn't seem like the best use of your time"/>
+   </properties>
+  </object>
+  <object id="185" x="704" y="2640" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="Your journey starts here"/>
+   </properties>
+  </object>
+  <object id="186" x="1696" y="1152" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="I don't even know why this is here"/>
+   </properties>
+  </object>
+  <object id="187" x="2080" y="1072" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="ROUTE 2"/>
+   </properties>
+  </object>
+  <object id="188" x="1632" y="2464" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="Endgame Cave"/>
+   </properties>
+  </object>
+  <object id="189" x="2016" y="2448" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="Here lies Java 7"/>
    </properties>
   </object>
  </objectgroup>
@@ -4820,7 +4869,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="zoneLayer">
+ <objectgroup name="zoneLayer" visible="0">
   <object id="161" x="4400" y="48" width="304" height="144">
    <properties>
     <property name="music" value="center.mp3"/>
@@ -4829,67 +4878,67 @@
   </object>
   <object id="163" x="3792" y="48" width="256" height="144">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="mart.mp3"/>
     <property name="zoneName" value="POKEMON_MARKET"/>
    </properties>
   </object>
   <object id="164" x="3632" y="528" width="448" height="224">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneName" value="GYM_GRASS"/>
    </properties>
   </object>
   <object id="165" x="3600" y="1072" width="512" height="288">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneName" value="GYM_WATER"/>
    </properties>
   </object>
   <object id="166" x="3584" y="1696" width="512" height="288">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneName" value="GYM_FIRE"/>
    </properties>
   </object>
-  <object id="167" x="3584" y="2303.47" width="512" height="944">
+  <object id="167" x="3584" y="2304" width="512" height="944">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneName" value="GYM_FINAL"/>
    </properties>
   </object>
-  <object id="168" x="384" y="2352" width="560" height="669.589">
+  <object id="168" x="384" y="2352" width="560" height="672">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="town.mp3"/>
     <property name="zoneType" value="CITY_0"/>
    </properties>
   </object>
   <object id="172" x="384" y="1280" width="1152" height="1072">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="CITY_1"/>
    </properties>
   </object>
   <object id="173" x="128" y="16" width="1472" height="1264">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="route.mp3"/>
     <property name="zoneType" value="MOUNTAIN_1"/>
    </properties>
   </object>
   <object id="174" x="1600" y="480" width="880" height="912">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="CITY_2"/>
    </properties>
   </object>
   <object id="175" x="1536" y="1392" width="976" height="960">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="CITY_3"/>
    </properties>
   </object>
   <object id="176" x="1472" y="2352" width="656" height="256">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="GRAVEYARD"/>
    </properties>
   </object>
@@ -4901,13 +4950,13 @@
   </object>
   <object id="178" x="2480" y="96" width="768" height="704">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="CITY_4"/>
    </properties>
   </object>
   <object id="179" x="2816" y="1232" width="384" height="368">
    <properties>
-    <property name="music" value=""/>
+    <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="RAYQUAZA_ZONE"/>
    </properties>
   </object>
@@ -4915,6 +4964,12 @@
    <properties>
     <property name="music" value="home.mp3"/>
     <property name="zoneName" value="HOME"/>
+   </properties>
+  </object>
+  <object id="181" x="4368" y="1504" width="272" height="192">
+   <properties>
+    <property name="music" value="lab.mp3"/>
+    <property name="zoneName" value="LAB"/>
    </properties>
   </object>
  </objectgroup>
