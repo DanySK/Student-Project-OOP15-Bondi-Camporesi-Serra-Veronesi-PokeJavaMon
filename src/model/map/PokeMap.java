@@ -3,8 +3,8 @@ package model.map;
 import java.util.Set;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
+import model.map.tile.PokemonEncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
@@ -25,28 +25,32 @@ public interface PokeMap {
     }
     
     public float getMapHeight();
-    
     public float getMapWidth();
     
+    public Set<Position> getCollisions();
+    public void removeCollision(final Position p);
+    public void addCollision(final Position p);
+    public boolean isWalkable(final int x, final int y);
+    
     public Set<Teleport> getTeleports();
-    
     public Teleport getTeleport(final int fromX, final int fromY);
-    
     public Teleport getTeleport(final Tile t);
     
     public Set<Sign> getSigns();
-    
     public Sign getSign(final int x, final int y);
-    
     public Sign getSign(final Tile t) throws TileNotFoundException;
     
     public Set<TrainerDB> getTrainers();
+    public TrainerDB getTrainer(final int x, final int y);
     
-    public Tile getTile(final int x, final int y);
+    public Set<PokemonEncounterTile> getPkmnEncounterTiles();
+    public PokemonEncounterTile getPokemonEncounterTile(final int x, final int y);
+
+    public Tile.TileType getTileType(final int x, final int y);
     
-    public Set<Zone> getZones();
+    public Set<WalkableZone> getZones();
+    public WalkableZone getWalkableZone(final int x, final int y);
     
-    public Zone getZone(final int x, final int y);
     
     public void importMap(final TiledMap map);
     

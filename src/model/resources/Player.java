@@ -44,32 +44,35 @@ public class Player extends Sprite {
 	}
 
 	public void updateMap(float delta) {
-	    speed = background.getTileHeight() / 8;	
+		speed = background.getTileHeight() / 8;	
 	    deltaTime = delta;
 	    if (!stopMove) {
 		controlCollision();
 	    } else {
-		if (pos > 0) {
-		    controlCollision();
-		} else {
-		    if (newVelocity.x == 0 && newVelocity.y == 0) {
-		        stopMove = false;
-	                stopX();
-	                stopY();
-		    } else {
-		        stopMove = false;
-		        velocity.x = newVelocity.x;
-		        velocity.y = newVelocity.y;
-		        newVelocity.x = newVelocity.y = 0;
-		    }
-		}
+			if (pos > 0) {
+			    controlCollision();
+			} else {
+			    if (newVelocity.x == 0 && newVelocity.y == 0) {
+			        stopMove = false;
+		                stopX();
+		                stopY();
+			    } else {
+			        stopMove = false;
+			        velocity.x = newVelocity.x;
+			        velocity.y = newVelocity.y;
+			        newVelocity.x = newVelocity.y = 0;
+			    }
+			}
+			
+			
 	    }
 	}
 	
 	private void controlCollision() {
 	    if (isDoor(super.getX(),super.getY())) {
                 for (final MapObject o : this.objectLayer.getObjects()) {
-                    if (isInRectangleObject(o, super.getX(), super.getY())) {
+                	o.getProperties().getKeys().forEachRemaining(s -> System.out.println(s));
+                	if (isInRectangleObject(o, super.getX(), super.getY())) {
                         final float x = Float.parseFloat((String)o.getProperties().get("DOOR_X")) * 16;
                         final float y = (300 - Float.parseFloat((String)o.getProperties().get("DOOR_Y"))-1) * 16;
                         super.setX(x);

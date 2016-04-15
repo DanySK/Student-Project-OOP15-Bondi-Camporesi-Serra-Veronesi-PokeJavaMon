@@ -7,7 +7,7 @@ import java.util.Random;
 
 import com.google.common.collect.Range;
 
-import model.map.Zone;
+import model.map.PokemonEncounterZone;
 import model.map.tile.AbstractTile;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
@@ -16,15 +16,14 @@ import model.pokemon.StaticPokemonFactory;
 
 public class PokemonEncounterTile extends AbstractTile {
     
-    private final Zone zone;
+	public final static String TILE_NAME = "POKEMON_ENCOUNTER";
+	
+    private final PokemonEncounterZone zone;
     private final static double ENCOUNTER_CHANCE = 30 / 187.5;
     private final static int LEVEL_VARIATION = 2;
     private boolean encountered = false;
     
-    public final static String tileName = "POKEMON_ENCOUNTER";
-    
-    
-    public PokemonEncounterTile(final Zone zone, int x, int y) {
+    public PokemonEncounterTile(final PokemonEncounterZone zone, int x, int y) {
         super(TileType.POKEMON_ENCOUNTER, Direction.SOUTH, x, y);
         this.zone = zone;
     }

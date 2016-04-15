@@ -1,7 +1,5 @@
 package model.map;
 
-import model.map.tile.Tile;
-
 public abstract class AbstractCharacter implements Drawable {
     
     protected int tileX;
@@ -58,23 +56,4 @@ public abstract class AbstractCharacter implements Drawable {
         return this.tileY;
     }
     
-
-	@SuppressWarnings("null")
-	public Tile nextTile(Direction d) {
-		final PokeMap pmMap = null; //TODO import map, not null
-		switch (d) {
-		case NORTH :
-			return pmMap.getTile(this.tileX, this.tileY + 1);
-		case EAST :
-			return pmMap.getTile(this.tileX + 1, this.tileY);
-		case WEST :
-			return pmMap.getTile(this.tileX - 1, this.tileY);
-		case SOUTH :
-			return pmMap.getTile(this.tileX, this.tileY -1);
-		default :
-			return null;
-		}
-	}
-
-
 }
