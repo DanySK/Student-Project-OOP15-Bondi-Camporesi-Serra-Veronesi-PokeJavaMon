@@ -2,7 +2,7 @@ package controller.save;
 
 import model.resources.General;
 
-@FunctionalInterface
 public interface SaveControllerInterface {
-    void save(General g);
+    
+    public static void save(General g) {}
 }

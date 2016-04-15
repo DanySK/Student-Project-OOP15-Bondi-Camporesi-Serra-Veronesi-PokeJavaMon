@@ -5,8 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import controller.keyboard.WalkingController;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+import controller.MainController;
 import controller.load.LoadController;
+import controller.parameters.State;
 import controller.save.SaveController;
 import model.box.Box;
 import model.box.BoxImpl;
@@ -27,26 +31,47 @@ import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 import model.trainer.TrainerDB;
 import model.utilities.Pair;
-import view.frames.FightScreen;
-import view.frames.Menu;
+import view.frames.*;
 
 public final class ViewController {
     
-    private static WalkingController w;
-    private static Player p;
     private static String name;
+    static LwjglApplication app;
     
     public static void showMenu() {
+        MainController.updateStatus(State.MENU);
         new Menu();
-        w.stop();
+    }
+    
+    public static void firstMenu() {
+        MainController.updateStatus(State.FIRST_MENU);
+        new TitleWiew();
+        TitleWiew.title();
+    }
+    
+    public static void secondMenu() {
+        MainController.updateStatus(State.SECOND_MENU);
+        new view.frames.InserisciNome();
+    }
+    
+    public static void map(boolean b) {
+        LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+        cfg.title = "PokeJavaMon";
+        cfg.useGL20 = true;
+        cfg.width = 1280;
+        cfg.height = 720;
+        
+        TiledMapGame tl = new TiledMapGame(b);
+        
+        app = new LwjglApplication(tl, cfg);
+        
+        tl.setApp(app);
     }
     
     public static void save() {
-        SaveController sc = new SaveController();
-        LoadController lc = new LoadController();
         General g;
-        if (lc.saveExists()) {
-            g = lc.load();
+        if (LoadController.saveExists()) {
+            g = LoadController.load();
         } else {
             List<Pokemon> team = new ArrayList<>();
             team.add(StaticPokemonFactory.createPokemon(PokemonDB.BLASTOISE,30));
@@ -68,24 +93,24 @@ public final class ViewController {
             g = new General(team,bx,tr,i,500,new Pair<Float, Float>(672f, 2272f));
         }
         System.out.println(name);
-        g.setPosition(new Pair<Float, Float>(p.getX(),p.getY()));
-        sc.save(g);
+        g.setPosition(new Pair<Float, Float>(Player.getPosition().getX(),Player.getPosition().getY()));
+        SaveController.save(g);
     }
     
-    public static void resume() {
-        w.start();
+    public static void box() {
+        new view.frames.Box();
     }
     
-    public static void pause() {
-        w.stop();
-    }
-
-    public static void setupController(WalkingController walkingController) {
-        ViewController.w = walkingController;
+    public static void team() {
+        new Squadra();
     }
     
-    public static void setupPlayer(Player p) {
-        ViewController.p = p;
+    public static void bag() {
+        new Zaino();
+    }
+    
+    public static void stats() {
+        new Stats();
     }
 
     public static void setName(String text) {
@@ -93,6 +118,7 @@ public final class ViewController {
     }
     
     public static void fightScreen() {
+        MainController.updateStatus(State.FIGHTING);
         new FightScreen();
     }
 }

@@ -23,13 +23,13 @@ import model.utilities.Pair;
 
 public class SaveController implements SaveControllerInterface {
     private static final int MIN_MOVES = 1;
-    private Document document;
-    private Element root;
-    private XMLOutputter outputter;
+    private static Document document;
+    private static Element root;
+    private static XMLOutputter outputter;
     private static final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
-    private FileOutputStream fos;
+    private static FileOutputStream fos;
     
-    private void setup() {
+    private static void setup() {
         root = new Element(XMLParameters.TITLE.getName());
         document = new Document(root);
         try {
@@ -45,14 +45,14 @@ public class SaveController implements SaveControllerInterface {
         }
     }
     
-    private void setPosition(Pair<Float, Float> pos) {
+    private static void setPosition(Pair<Float, Float> pos) {
         Element position = new Element(XMLParameters.POSITION.getName());
         position.setAttribute(XMLParameters.X.getName(),Float.toString(pos.getX()));
         position.setAttribute(XMLParameters.Y.getName(),Float.toString(pos.getY()));
         root.addContent(position);
     }
     
-    private void setTeam(List<Pokemon> team) {
+    private static void setTeam(List<Pokemon> team) {
         Element squadra = new Element(XMLParameters.TEAM.getName());
         for (final Pokemon x : team) { 
             Element e = new Element(x.getPokemon().getName());
@@ -71,7 +71,7 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(squadra);
     }
     
-    private void setTrainers(List<Trainer> l) {
+    private static void setTrainers(List<Trainer> l) {
         Element allenatori = new Element(XMLParameters.TRAINERS.getName());
         for (final Trainer t : l) {
             allenatori.setAttribute(t.getTrainerDB().name(),Boolean.toString(t.isDefeated()));
@@ -79,7 +79,7 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(allenatori);
     }
     
-    private void setBag(Inventory i) {
+    private static void setBag(Inventory i) {
         Element borsa = new Element(XMLParameters.BAG.getName());
         Element instruments = new Element(XMLParameters.POTIONS.getName());
         for (final Item item : i.getSubInventory(Item.ItemType.POTION).keySet()) {
@@ -99,11 +99,11 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(borsa);
     }
     
-    private void setMoney(int i) {
+    private static void setMoney(int i) {
         root.setAttribute(XMLParameters.MONEY.getName(),Integer.toString(i));
     }
     
-    private void setBox(Box b) {
+    private static void setBox(Box b) {
         Element box = new Element(XMLParameters.BOX.getName());
         for (final Pokemon x : b.getPokemonList()) { 
             Element e = new Element(x.getPokemon().getName());
@@ -122,7 +122,7 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(box);
     }
     
-    public void save(General g) {
+    public static void save(General g) {
         setup();
         setPosition(g.getPosition());
         setTeam(g.getTeam());

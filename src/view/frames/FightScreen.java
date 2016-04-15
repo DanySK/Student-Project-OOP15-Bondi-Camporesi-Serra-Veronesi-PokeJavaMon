@@ -2,14 +2,10 @@ package view.frames;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import controller.music.MusicController;
-import controller.parameters.Music;
-import view.resources.ViewController;
-
+import controller.MainController;
+import controller.parameters.State;
 import javax.swing.JButton;
 import java.awt.CardLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,12 +16,9 @@ public class FightScreen {
 		final JFrame frame = new JFrame("Fight");
 		
 		frame.setResizable(false);
-		
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
-		
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setUndecorated(true);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -51,9 +44,7 @@ public class FightScreen {
 		fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				frame.dispose();
-				MusicController.stop();
-				MusicController.play(Music.TOWN);
-				ViewController.resume();
+				MainController.updateStatus(State.WALKING);
 			}
 		});
 				

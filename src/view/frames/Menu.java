@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import controller.MainController;
+import controller.parameters.State;
 import view.resources.TitleWiew;
 import view.resources.ViewController;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Toolkit;
-/*import com.badlogic.gdx.Input.Keys;*/
 
 public class Menu  {
 
@@ -18,12 +18,9 @@ public class Menu  {
 		final JFrame f = new JFrame();
 		
 		f.setResizable(false);
-		f.setAlwaysOnTop(true);
-
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
-	
-		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		f.setSize(179,310);
+		f.setAlwaysOnTop(true);	
+		f.setUndecorated(true);
+		f.setBounds(100, 100, 179, 310);
 		f.getContentPane().setLayout(null);
 	
 		JButton squadra = new JButton  ("Squadra");
@@ -32,7 +29,7 @@ public class Menu  {
 		squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				new Squadra();
+				ViewController.team();
 			}});
 		
 		JButton salva = new JButton("Salva");
@@ -52,7 +49,7 @@ public class Menu  {
 		box.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				new Box();
+				ViewController.box();
 			}});
 		
 		JButton zaino = new JButton("Zaino");
@@ -61,7 +58,7 @@ public class Menu  {
 		zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				new Zaino();
+				ViewController.bag();
 			}});
 		
 		JButton esci = new JButton("Riprendi");
@@ -70,7 +67,7 @@ public class Menu  {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.resume();
+				MainController.updateStatus(State.WALKING);
 			}});
 		
 		f.setVisible(true);

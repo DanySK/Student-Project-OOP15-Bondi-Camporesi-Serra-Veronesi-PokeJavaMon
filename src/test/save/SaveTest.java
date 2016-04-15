@@ -29,7 +29,6 @@ import model.utilities.Pair;
 public class SaveTest {
 
     public static void main(String[] args) {
-        SaveController sc = new SaveController();
         InitializeMoves.initAllPokemonsTypes();
         List<Pokemon> team = new ArrayList<>();
         team.add(StaticPokemonFactory.createPokemon(PokemonDB.BLASTOISE,30));
@@ -49,7 +48,7 @@ public class SaveTest {
         i.setPokeballs(balls);
         i.setPotions(potions);
         General g = new General(team,bx,tr,i,500,new Pair<Float, Float>(672f, 2272f));
-        sc.save(g);
+        SaveController.save(g);
         System.out.println("SAVED SUCCESSFULLY");
     }
 }

@@ -1,7 +1,9 @@
 package view.frames;
 import java.awt.*;  
 import java.awt.event.*;  
-import javax.swing.*;  
+import javax.swing.*;
+
+import view.resources.ViewController;  
   
 public class Squadra {
 
@@ -9,11 +11,9 @@ public Squadra() {
 	
 		final JFrame f = new JFrame("Squadra");
 		f.setResizable(false);
-		f.setAlwaysOnTop(true);
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
-          	
-		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		f.setSize(650,500);
+		f.setAlwaysOnTop(true);          	
+		f.setUndecorated(true);
+		f.setBounds(100, 100, 650, 500);
 		f.getContentPane().setLayout(null);
    	
     	JTextArea FirstName = new JTextArea();
@@ -39,7 +39,7 @@ public Squadra() {
     	FirstStats.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent ae) {
     					f.dispose();
-    					new Stats();
+    					ViewController.stats();
     			}
     	});
     	
@@ -178,7 +178,7 @@ public Squadra() {
     	uscita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				new Menu();
+				ViewController.showMenu();
 			}
 		});
     	f.setVisible(true);

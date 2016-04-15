@@ -2,19 +2,24 @@ package controller.music;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-
 import controller.parameters.Music;
 
-public class MusicController {
+public class MainMusicController implements MusicController {
     private static Sound s;
+    private Music m;
     
-    public static void play(Music song) {        
+    public void play(Music song) {        
         s = Gdx.audio.newSound(Gdx.files.classpath(song.getPath()));
         s.loop();
+        m = song;
     }
     
-    public static void stop() {
+    public void stop() {
         s.stop();
         s.dispose();
+    }
+    
+    public Music playing() {
+        return m;
     }
 }
