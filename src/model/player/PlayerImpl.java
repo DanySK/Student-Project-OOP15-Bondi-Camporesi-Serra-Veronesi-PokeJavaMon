@@ -93,6 +93,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.trainersBeaten.add(id);
     }
     
+    @Override
     public void pokemonCenter() {
         //TODO Controllare se si trova nel rettangolo del pokemon center
         

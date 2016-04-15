@@ -67,7 +67,7 @@ public class Play implements Screen {
 		TextureRegion gain = new TextureRegion(tx);
 		TiledMapTileLayer fg = (TiledMapTileLayer) map.getLayers().get("foreground");
 		TiledMapTileLayer bg = (TiledMapTileLayer) map.getLayers().get("background");
-		MapLayer obj = map.getLayers().get("obj");
+		MapLayer obj = map.getLayers().get("doorLayer");
 		Sprite sp = new Sprite(gain);		
 		player = new Player(sp, bg, fg, obj, map.getTileSets().getTile(322));
 		if (newGame) {

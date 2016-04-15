@@ -2,6 +2,9 @@ package model.map;
 
 import java.util.Set;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
@@ -43,9 +46,8 @@ public interface PokeMap {
     
     public Set<Zone> getZones();
     
-    public Zone getZone(final float x, final float y);
+    public Zone getZone(final int x, final int y);
     
-    //public TileLevel getLevel(final String lvl);
-    
+    public void importMap(final TiledMap map);
     
 }

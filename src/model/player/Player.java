@@ -26,4 +26,5 @@ public interface Player extends Character{
     
     public void useItem(final Item item, final PokemonInBattle pkmn) throws ItemNotFoundException;
 
+    public void pokemonCenter();
 }
