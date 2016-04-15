@@ -28,11 +28,11 @@ import model.utilities.Pair;
 public class LoadController implements LoadControllerInterface {
     private static final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
-    private SAXBuilder builder;
-    private Document document;
-    private Element root;
+    private static SAXBuilder builder;
+    private static Document document;
+    private static Element root;
     
-    private void setup() {
+    private static void setup() {
         builder = new SAXBuilder();
         try {
             document = builder.build(new File(FILE_NAME));
@@ -44,17 +44,17 @@ public class LoadController implements LoadControllerInterface {
         }
     }
     
-    private int getMoney() {
+    private static int getMoney() {
         return Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName()));
     }
     
-    private Pair<Float, Float> getPosition() {
+    private static Pair<Float, Float> getPosition() {
         final float x = Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
         final float y = Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
         return new Pair<Float, Float> (x, y);
     }
     
-    private List<Pokemon> getTeam() {
+    private static List<Pokemon> getTeam() {
         List<Pokemon> squadra = new ArrayList<Pokemon>();
         for (Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
             int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
@@ -70,7 +70,7 @@ public class LoadController implements LoadControllerInterface {
         return squadra;
     }
     
-    private List<Trainer> getTrainers() {
+    private static List<Trainer> getTrainers() {
         List<Trainer> trainers = new ArrayList<Trainer>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
@@ -82,7 +82,7 @@ public class LoadController implements LoadControllerInterface {
         return trainers;
     }
     
-    private Inventory getInventory() {
+    private static Inventory getInventory() {
         Map<String, Integer> potions = new HashMap<String, Integer>();
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
             potions.put(a.getName(), Integer.parseInt(a.getValue()));
@@ -99,7 +99,7 @@ public class LoadController implements LoadControllerInterface {
         return inv;
     }
 
-    private Box getBox() {
+    private static Box getBox() {
         List<Pokemon> box = new ArrayList<Pokemon>();
         Box retBox = BoxImpl.getBox();
         for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
@@ -117,12 +117,12 @@ public class LoadController implements LoadControllerInterface {
         return retBox;
     }
     
-    public General load() {
+    public static General load() {
         setup();
         return new General(getTeam(),getBox(),getTrainers(),getInventory(),getMoney(),getPosition());
     }
     
-    public boolean saveExists() {
+    public static boolean saveExists() {
         return new File(FILE_NAME).exists();
     }
 }

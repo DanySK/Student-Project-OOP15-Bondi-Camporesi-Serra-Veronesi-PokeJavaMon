@@ -2,7 +2,13 @@ package controller.load;
 
 import model.resources.General;
 
-@FunctionalInterface
 public interface LoadControllerInterface {
-    General load();
+    
+    public static General load() {
+        return null;
+    }
+    
+    public static boolean saveExists() {
+        return false;
+    }
 }

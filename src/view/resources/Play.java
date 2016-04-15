@@ -14,10 +14,9 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-
-import controller.keyboard.KeyboardControllerInterface;
+import controller.MainController;
+import controller.keyboard.WalkingKeyboardController;
 import controller.load.LoadController;
-import controller.parameters.State;
 import model.resources.General;
 import model.resources.Player;
 
@@ -29,7 +28,6 @@ public class Play implements Screen {
 	private Player player;
 	private int[] background = new int[] {0}, foreground = new int[] {1};
 	private ShapeRenderer sr;
-	private KeyboardControllerInterface k;
 	private boolean newGame;
 	
 	public Play(boolean b) {
@@ -73,19 +71,14 @@ public class Play implements Screen {
 		if (newGame) {
 		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {
-		    LoadController lc = new LoadController();
-		    if (lc.saveExists()) {
-		        General g = lc.load();
+		    if (LoadController.saveExists()) {
+		        General g = LoadController.load();
 	                player.setBounds(g.getPosition().getX(), g.getPosition().getY(), 15.9f, 15.9f);
 		    } else {
 		        System.out.println("SAVE DOES NOT EXIST");
 		        player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		    }
 		}
-		k = State.WALKING.getController();
-		k.setPlayer(player);
-		Gdx.input.setInputProcessor(k);
-		k.start();
 	}
 
 	public void hide() {		
@@ -109,12 +102,16 @@ public class Play implements Screen {
 	}
 	
 	public void setPosition(float x, float y) {	    
-	    player.setPos(x, y);
+	    player.setPlayerPosition(x, y);
 	}
 	
 	public void dispose() {        
 	        map.dispose();
 		renderer.dispose();
 		sr.dispose();
+	}
+	
+	public static void updateKeyListener() {
+	    Gdx.input.setInputProcessor((WalkingKeyboardController)MainController.getController());
 	}
 }

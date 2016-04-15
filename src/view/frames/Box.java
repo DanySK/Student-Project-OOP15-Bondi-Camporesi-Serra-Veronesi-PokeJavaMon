@@ -6,18 +6,19 @@ import javax.swing.JButton;
 import java.awt.*;  
 import java.awt.event.*;  
 import javax.swing.*;
-import javax.swing.border.LineBorder;  
+import javax.swing.border.LineBorder;
+
+import view.resources.ViewController;  
   
 public class Box {
 
 public Box() {
 	final JFrame f = new JFrame("Box");
 	
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
 		f.setAlwaysOnTop(true);
 		f.setResizable(false);
 		f.setBounds(100, 100, 450, 300);
-		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		f.setUndecorated(true);
 		f.getContentPane().setLayout(null);
 		
 		JButton deposita = new JButton("Deposita");
@@ -46,7 +47,7 @@ public Box() {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				new Menu();
+				ViewController.showMenu();
 				}
 		});
 		f.setVisible(true);

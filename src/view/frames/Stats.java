@@ -2,8 +2,10 @@ package view.frames;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+import view.resources.ViewController;
+
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,14 +15,12 @@ public class Stats {
 	
 	public Stats() { {
 		
-		final JFrame frame = new JFrame("Statistiche");
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
-		
+		final JFrame frame = new JFrame("Statistiche");		
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setUndecorated(true);
 		frame.getContentPane().setLayout(null);
 		
 		JTextArea Ruotadifuo = new JTextArea("RuotaDiFuo");
@@ -138,7 +138,8 @@ public class Stats {
 		Indietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				frame.dispose();
-				new Squadra();}	
+				ViewController.team();
+			}	
 		});
 		frame.setVisible(true);
 	}}

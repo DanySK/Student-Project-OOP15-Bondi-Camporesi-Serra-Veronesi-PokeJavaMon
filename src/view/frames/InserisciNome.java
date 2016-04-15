@@ -4,24 +4,20 @@ import java.awt.*;
 import java.awt.event.*;  
 import javax.swing.*;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-
-import view.resources.TiledMapGame;
+import controller.MainController;
+import controller.parameters.State;
 import view.resources.ViewController;  
   
 public class InserisciNome {  
 	
-	static LwjglApplication app;
-	
-	public InserisciNome() {
+    public InserisciNome() {
 		
 		final JFrame f = new JFrame("PokeJavaMon");
 		f.setResizable(false);
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Pictures\\POKEPALLA.png"));
+		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources/images/POKEPALLA.png"));
          
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(400,300);
+		f.setBounds(100, 100, 400, 300);
 		f.getContentPane().setLayout(null);
 
 		JTextArea inserisciNome = new JTextArea();
@@ -46,28 +42,13 @@ public class InserisciNome {
     		public void actionPerformed(ActionEvent e) {
     			String s = nickname.getText();
     	        if (s.length() < 4 || s.length() > 20) {
-    	        	JOptionPane.showMessageDialog(null, "You Naive Idiot");
+    	        	JOptionPane.showMessageDialog(inizia, "You Naive Idiot");
     	           }
     	        else {
     	        
     	        ViewController.setName(nickname.getText());
-                LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-                
-                /*cfg.addIcon(  ,  );*/
-                
-                cfg.title = "PokeJavaMon";
-                cfg.useGL20 = true;
-                cfg.width = 1280;
-                cfg.height = 720;
-                
-    		/*public void actionPerformed(ActionEvent ae) {
-				/*f.dispose();
-				new Mappa();*/
-				TiledMapGame tl = new TiledMapGame(true);
-                
-                app = new LwjglApplication(tl, cfg);
-                
-                tl.setApp(app);
+                ViewController.map(true);
+                MainController.updateStatus(State.WALKING);
                 f.dispose();
     	        }
     		}});
