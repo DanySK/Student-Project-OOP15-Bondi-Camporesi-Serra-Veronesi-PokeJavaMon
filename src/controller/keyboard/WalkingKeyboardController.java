@@ -1,11 +1,12 @@
 package controller.keyboard;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
 import controller.parameters.Direction;
 import model.resources.Player;
 import view.resources.ViewController;
 
-public class WalkingKeyboardController implements KeyboardController {
+public class WalkingKeyboardController implements KeyboardController , InputProcessor {
 
     private int keys = 0;
     

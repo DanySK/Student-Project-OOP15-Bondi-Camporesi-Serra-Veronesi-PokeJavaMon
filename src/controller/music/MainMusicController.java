@@ -5,7 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import controller.parameters.Music;
 
 public class MainMusicController implements MusicController {
-    private static Sound s;
+    private Sound s;
     private Music m;
     
     public void play(Music song) {        

@@ -1,6 +1,10 @@
 package controller;
 
+import java.awt.event.KeyListener;
+
+import controller.keyboard.FirstMenuKeyboardController;
 import controller.keyboard.KeyboardController;
+import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.music.MusicController;
 import controller.music.MainMusicController;
@@ -21,11 +25,11 @@ public class MainController {
         state = s;
         switch (s) {
             case FIRST_MENU:
-                keyboardController = null;
+                keyboardController = new FirstMenuKeyboardController();
                 musicController = null;
                 break;
             case SECOND_MENU:
-                keyboardController = null;
+                keyboardController = new SecondMenuKeyboardController();
                 musicController = null;
                 break;
             case WALKING:
@@ -66,8 +70,9 @@ public class MainController {
     }
     
     public static void main(String[] args) {
+        updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
-        ViewController.firstMenu();
+        ViewController.firstMenu((KeyListener)keyboardController);
     }
     
     public static KeyboardController getController() {

@@ -1,8 +1,6 @@
 package controller.keyboard;
 
-import com.badlogic.gdx.InputProcessor;
-
-public interface KeyboardController extends InputProcessor {
+public interface KeyboardController {
     
     public boolean isKeyPressed();
 }

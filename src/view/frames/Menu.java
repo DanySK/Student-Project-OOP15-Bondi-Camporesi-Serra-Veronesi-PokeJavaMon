@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import controller.MainController;
 import controller.parameters.State;
-import view.resources.TitleWiew;
 import view.resources.ViewController;
 
 import java.awt.event.MouseAdapter;
@@ -71,8 +70,5 @@ public class Menu  {
 			}});
 		
 		f.setVisible(true);
-	}
-	public static void main(String[] args) {
-		new TitleWiew();
 	}
 }
