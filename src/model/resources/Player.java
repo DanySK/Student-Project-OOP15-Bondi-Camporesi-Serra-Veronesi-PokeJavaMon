@@ -19,7 +19,7 @@ public class Player extends Sprite {
         private float oldX = super.getX(), oldY = super.getY(), deltaTime;
         private static float speed = 1;
         private float animationTime = 0;
-        private static Vector2 velocity = new Vector2(), newVelocity = new Vector2();
+        private static Vector2 velocity = new Vector2();
         private TiledMapTileLayer background, foreground;
         private MapLayer objectLayer;
         private static Animation left, right, up, down, left_s, right_s, up_s, down_s;
@@ -44,35 +44,25 @@ public class Player extends Sprite {
 	}
 
 	public void updateMap(float delta) {
-		speed = background.getTileHeight() / 8;	
+	    speed = background.getTileHeight() / 8;	
 	    deltaTime = delta;
 	    if (!stopMove) {
 		controlCollision();
 	    } else {
-			if (pos > 0) {
-			    controlCollision();
-			} else {
-			    if (newVelocity.x == 0 && newVelocity.y == 0) {
-			        stopMove = false;
-		                stopX();
-		                stopY();
-			    } else {
-			        stopMove = false;
-			        velocity.x = newVelocity.x;
-			        velocity.y = newVelocity.y;
-			        newVelocity.x = newVelocity.y = 0;
-			    }
-			}
-			
-			
+		if (pos > 0) {
+		    controlCollision();
+		} else {
+		    stopMove = false;
+	            stopX();
+	            stopY();
+		}
 	    }
 	}
 	
 	private void controlCollision() {
 	    if (isDoor(super.getX(),super.getY())) {
                 for (final MapObject o : this.objectLayer.getObjects()) {
-                	o.getProperties().getKeys().forEachRemaining(s -> System.out.println(s));
-                	if (isInRectangleObject(o, super.getX(), super.getY())) {
+                    if (isInRectangleObject(o, super.getX(), super.getY())) {
                         final float x = Float.parseFloat((String)o.getProperties().get("DOOR_X")) * 16;
                         final float y = (300 - Float.parseFloat((String)o.getProperties().get("DOOR_Y"))-1) * 16;
                         super.setX(x);
@@ -121,38 +111,24 @@ public class Player extends Sprite {
                 } else if (velocity.y > 0) {
                     setRegion(up_s.getKeyFrame(animationTime));
                 }
-                decreasePos();
                 velocity.y = 0;
+                decreasePos();
             }       
             animationTime += deltaTime;
-            updatePos();
-	}
-	
-	private void updatePos() {
-	    if (stopMove) {
-	        pos ++;
-	        if (pos == 8) {
-	            pos = 0;
-	        }
-	    }
 	}
 	
 	private void increasePos() {
-	    if (!stopMove) {
-	        pos ++;
-                if (pos == 8) {
-                    decreasePos();
-                    if (!MainController.isKeyPressed()) {
-                        stop();
-                    }
-                }
-	    }
+	    pos ++;
+            if (pos == 8) {
+                decreasePos();
+            }
+            if (!MainController.isKeyPressed()) {
+                stop();
+            }
 	}
 	
 	private void decreasePos() {
-	    if (!stopMove) {
-	        pos = 0;
-	    }
+	    pos = 0;
 	}
 	
 	public static void resetPos() {
@@ -281,9 +257,6 @@ public class Player extends Sprite {
 	    if (!stopMove && pos == 0) {
 	        velocity.x = x;
 	        velocity.y = y;
-	    } else {
-	        newVelocity.x = x;
-	        newVelocity.y = y;
 	    }
 	}
 	
@@ -310,9 +283,7 @@ public class Player extends Sprite {
 	}
 	
 	public static boolean isMoving() {
-	    final boolean b1 = (velocity.x != 0 || velocity.y != 0);
-	    final boolean b2 = (newVelocity.x != 0 || newVelocity.y != 0);
-	    return (b1 || b2);
+	    return (velocity.x != 0 || velocity.y != 0);
 	}
 	
 	public void setPlayerPosition(float x, float y) {

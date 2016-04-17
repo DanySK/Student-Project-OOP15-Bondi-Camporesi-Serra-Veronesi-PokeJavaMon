@@ -1,5 +1,6 @@
 package view.resources;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,15 +44,15 @@ public final class ViewController {
         new Menu();
     }
     
-    public static void firstMenu() {
+    public static void firstMenu(KeyListener k) {
         MainController.updateStatus(State.FIRST_MENU);
-        new TitleWiew();
-        TitleWiew.title();
+        TitleWiew t = new TitleWiew(k);
+        t.title();
     }
     
-    public static void secondMenu() {
+    public static void secondMenu(KeyListener k) {
         MainController.updateStatus(State.SECOND_MENU);
-        new view.frames.InserisciNome();
+        new view.frames.InserisciNome(k);
     }
     
     public static void map(boolean b) {
@@ -60,11 +61,8 @@ public final class ViewController {
         cfg.useGL20 = true;
         cfg.width = 1280;
         cfg.height = 720;
-        
-        TiledMapGame tl = new TiledMapGame(b);
-        
-        app = new LwjglApplication(tl, cfg);
-        
+        TiledMapGame tl = new TiledMapGame(b);   
+        app = new LwjglApplication(tl, cfg);      
         tl.setApp(app);
     }
     

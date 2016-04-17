@@ -1,8 +1,10 @@
 package controller;
 
-import java.util.Optional;
+import java.awt.event.KeyListener;
 
+import controller.keyboard.FirstMenuKeyboardController;
 import controller.keyboard.KeyboardController;
+import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.music.MusicController;
 import controller.music.MainMusicController;
@@ -16,66 +18,64 @@ import view.resources.ViewController;
 public class MainController {
     
     private static State state;
-    private static Optional<KeyboardController> keyboardController;
-    private static Optional<MusicController> musicController;
-    
+    private static KeyboardController keyboardController;
+    private static MusicController musicController;
+
     public static void updateStatus(State s) {
         state = s;
         switch (s) {
             case FIRST_MENU:
-                keyboardController = Optional.empty();
-                musicController = Optional.empty();
+                keyboardController = new FirstMenuKeyboardController();
+                musicController = null;
                 break;
             case SECOND_MENU:
-                keyboardController = Optional.empty();
-                musicController = Optional.empty();
+                keyboardController = new SecondMenuKeyboardController();
+                musicController = null;
                 break;
             case WALKING:
-                keyboardController = Optional.of(new WalkingKeyboardController());
+                keyboardController = new WalkingKeyboardController(); 
                 Play.updateKeyListener();
-                if (musicController.isPresent()) {
-                    if (musicController.get().playing() != Music.TOWN) {
-                        musicController.get().stop();
-                        musicController.get().play(Music.TOWN);
+                if (musicController != null) {
+                    if (musicController.playing() != Music.TOWN) {
+                        musicController.stop();
+                        musicController.play(Music.TOWN);
                     }
                 } else {
-                    musicController = Optional.of(new MainMusicController());
-                    musicController.get().play(Music.TOWN);
+                    musicController = new MainMusicController();
+                    musicController.play(Music.TOWN);
                 }
                 break;
             case MENU:
-                keyboardController = Optional.empty();
+                keyboardController = null;
                 Player.resetPos();
                 break;
             case FIGHTING:
-                keyboardController = Optional.empty();
+                keyboardController = null;
                 Player.resetPos();
-                if (musicController.isPresent()) {
-                    if (musicController.get().playing() != Music.TRAINER) {
-                        musicController.get().stop();
-                        musicController.get().play(Music.TRAINER);
+                if (musicController != null) {
+                    if (musicController.playing() != Music.TRAINER) {
+                        musicController.stop();
+                        musicController.play(Music.TRAINER);
                     }
                 } else {
-                    musicController = Optional.of(new MainMusicController());
-                    musicController.get().play(Music.TRAINER);
+                    musicController = new MainMusicController();
+                    musicController.play(Music.TRAINER);
                 }
                 break;
         }
     }
     
     public static boolean isKeyPressed() {
-        if (keyboardController.isPresent()) {
-        	return keyboardController.get().isKeyPressed();
-        }
-        	return false;
+        return keyboardController.isKeyPressed();
     }
     
     public static void main(String[] args) {
+        updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
-        ViewController.firstMenu();
+        ViewController.firstMenu((KeyListener)keyboardController);
     }
     
     public static KeyboardController getController() {
-        return keyboardController.get();
+        return keyboardController;
     }
 }
