@@ -2,14 +2,12 @@ package model.map;
 
 import java.util.Set;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
-
 import model.map.tile.PokemonEncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.TileNotFoundException;
-import model.trainer.TrainerDB;
+import model.trainer.Trainer;
 
 public interface PokeMap {
     public static float LIMIT_UP_X = 500;
@@ -40,8 +38,8 @@ public interface PokeMap {
     public Sign getSign(final int x, final int y);
     public Sign getSign(final Tile t) throws TileNotFoundException;
     
-    public Set<TrainerDB> getTrainers();
-    public TrainerDB getTrainer(final int x, final int y);
+    public Set<Trainer> getTrainers();
+    public Trainer getTrainer(final int x, final int y);
     
     public Set<PokemonEncounterTile> getPkmnEncounterTiles();
     public PokemonEncounterTile getPokemonEncounterTile(final int x, final int y);
@@ -50,8 +48,5 @@ public interface PokeMap {
     
     public Set<WalkableZone> getZones();
     public WalkableZone getWalkableZone(final int x, final int y);
-    
-    
-    public void importMap(final TiledMap map);
     
 }

@@ -1,37 +1,52 @@
 package model.trainer;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import model.map.Drawable.Direction;
+import model.pokemon.PokemonDB;
+import model.pokemon.PokemonInBattle;
+import model.pokemon.StaticPokemonFactory;
+import model.squad.SquadImpl;
+
 
 public final class StaticTrainerFactory {
 	
 	private StaticTrainerFactory() {}
 	
-	public static Trainer createTrainer(final String trainerName, final boolean isDefeated) {
-		for (final TrainerDB t : TrainerDB.values()) {
-			if (trainerName.toUpperCase().equals(t.name())) {
-				final Trainer retTrainer = new Trainer(0,0, Direction.SOUTH, t); //TODO get X,Y from map
-				retTrainer.isDefeated = isDefeated;
-				return retTrainer;
+	public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
+										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage) {
+		final ArrayList<PokemonInBattle> tmpList = new ArrayList<>();
+		for (final String pkmn : pkmnList.keySet()) {
+			for (final PokemonDB p : PokemonDB.values()) {
+				if (p.toString().equals(pkmn)) {
+					tmpList.add(StaticPokemonFactory.createPokemon(p, pkmnList.get(pkmn)));
+				}
 			}
 		}
-		throw new IllegalArgumentException("Trainer name not found");
+		return new Trainer(trainerName, x, y, d, isDefeated, new SquadImpl((PokemonInBattle[]) tmpList.toArray()), 
+						   initMessage, trainerWonMessage, trainerDefeatedMessage);
+		
+
 	}
 
-	public static Trainer createTrainer(final String trainerName, final Direction d, final int x, final int y) {
-		for (final TrainerDB t : TrainerDB.values()) {
-			if (trainerName.toUpperCase().equals(t.name())) {
-				return new Trainer(x, y, d, t);
-			}
-		}
-		throw new IllegalArgumentException("Trainer Name not found");
-	}
 	
-	public static Trainer createTrainer(final String trainerName, final int x, final int y) {
-		for (final TrainerDB t : TrainerDB.values()) {
-			if (trainerName.toUpperCase().equals(t.name())) {
-				return new Trainer(x, y, Direction.SOUTH, t);
+	public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
+										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage) {
+		final ArrayList<PokemonInBattle> tmpList = new ArrayList<>();
+		
+		for (final String pkmn_lvl : pkmns_lvl) {
+			final String pkmn = pkmn_lvl.split("=")[0].toUpperCase();
+			final int lvl = Integer.parseInt(pkmn_lvl.split("=")[1]);
+			for (final PokemonDB p : PokemonDB.values()) {
+				if (p.toString().equals(pkmn)) {
+					tmpList.add(StaticPokemonFactory.createPokemon(p, lvl));
+				}
 			}
 		}
-		throw new IllegalArgumentException("Trainer Name not found");
+		
+		return new Trainer(trainerName, x, y, d, isDefeated, new SquadImpl((PokemonInBattle[]) tmpList.toArray()), 
+				   initMessage, trainerWonMessage, trainerDefeatedMessage);
+
 	}
 }

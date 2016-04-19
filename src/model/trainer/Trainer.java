@@ -1,54 +1,48 @@
 package model.trainer;
 
 import model.map.AbstractCharacter;
-import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
-import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
-import model.squad.SquadImpl;
-import model.utilities.Pair;
 
 public class Trainer extends AbstractCharacter {
     
+	public final static String TYPE_TRAINER_NAME = "TRAINER";
+
     private final Squad squad;
-    private final TrainerDB id;
+    private final String name;
     protected boolean isDefeated;
+    private final String initialMessage;
+    private final String trainerWonMessage;
+    private final String trainerLostMessage;
     
-    protected Trainer(final int x, final int y, final Direction d, final TrainerDB id) {
+    
+    protected Trainer(final String name, final int x, final int y, final Direction d, final boolean isDefeated, final Squad squad,
+    				  final String initMessage, final String wonMessage, final String lostMessage) {
         super(x,y,d);
-        
-        PokemonInBattle[] tmpSquad = new PokemonInBattle[id.getSquad().size()];
-        int counter = 0;
-        for (final Pair<PokemonDB, Integer> p : id.getSquad()) {
-            tmpSquad[counter] = StaticPokemonFactory.createPokemon(p.getX(), p.getY());
-            counter++;
-        }
-        
-        squad = new SquadImpl(tmpSquad);
-        this.id = id;
-        isDefeated = false;
+        this.name = name;
+        this.squad = squad;
+        this.isDefeated = isDefeated;
+        this.initialMessage = initMessage;
+        this.trainerWonMessage = wonMessage;
+        this.trainerLostMessage = lostMessage;
         
     }
-    
-    public TrainerDB getTrainerDB() {
-        return this.id;
-    }
-    
+
     public Squad getSquad() {
         return this.squad;
     }
     
     
     public String getInitialMessage() {
-        return this.id.getInitialMessage();
+        return this.initialMessage;
     }
     
-    public String getDefeatedMessage() {
-        return this.id.getDefeatedMessage();
+    public String getTtrainerLostMessage() {
+        return this.trainerLostMessage;
     }
     
-    public String getWinningMessage() {
-        return this.id.getWinningMessage();
+    public String getTrainerWonMessageMessage() {
+        return this.trainerWonMessage;
     }
     
     public void defeat() {
@@ -65,6 +59,6 @@ public class Trainer extends AbstractCharacter {
     }
     
     public String toString() {
-        return "Name= " + id.name() + " Defeated= " + isDefeated;
+        return "Name= " + this.name + " Defeated= " + this.isDefeated;
     }
 }

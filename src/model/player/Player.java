@@ -6,6 +6,7 @@ import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;
 import model.map.Character;
+import model.map.PokeMap;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 import model.trainer.TrainerDB;
@@ -27,4 +28,6 @@ public interface Player extends Character{
     public void useItem(final Item item, final PokemonInBattle pkmn) throws ItemNotFoundException;
 
     public void pokemonCenter();
+    
+    public void move(final Direction d, final PokeMap pm);
 }

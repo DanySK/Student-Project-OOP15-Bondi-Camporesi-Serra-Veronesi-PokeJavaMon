@@ -22,6 +22,7 @@ import model.items.Pokeball;
 import model.items.Potion;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
+import model.map.Drawable.Direction;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.Stat;
@@ -77,7 +78,7 @@ public final class ViewController {
             bx.putCapturedPokemon(StaticPokemonFactory.createPokemon(PokemonDB.CHARIZARD,30));
             bx.putCapturedPokemon(StaticPokemonFactory.createPokemon(PokemonDB.VENUSAUR,30));
             List<Trainer> tr = new ArrayList<>();
-            tr.add(StaticTrainerFactory.createTrainer(TrainerDB.DR_GHAIN.name(), false));
+            tr.add(StaticTrainerFactory.createTrainer("DR. GHAIN", Direction.SOUTH, false, 0, 0, new ArrayList<>(), "1", "2", "3"));
             Map<Pokeball, Integer> balls = new HashMap<>();
             Map<Boost, Integer> boosts = new HashMap<>();
             Map<Potion, Integer> potions = new HashMap<>();

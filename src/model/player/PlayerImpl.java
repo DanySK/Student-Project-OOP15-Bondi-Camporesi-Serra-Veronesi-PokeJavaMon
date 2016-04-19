@@ -10,6 +10,9 @@ import model.inventory.Inventory;
 import model.inventory.InventoryImpl;
 import model.items.Item;
 import model.map.AbstractCharacter;
+import model.map.PokeMap;
+import model.map.tile.Teleport;
+import model.map.tile.Tile.TileType;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -100,6 +103,42 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         for (final Pokemon p : this.squad.getPokemonList()) {
             p.heal(p.getStat(Stat.HP));
         }
+    }
+    
+    private void setPosition(final int x, final int y) {
+    	this.tileX = x;
+    	this.tileY = y;
+    }
+    
+    @Override
+    public void move(final Direction d, final PokeMap pm) {
+    	int newX = this.tileX;
+    	int newY = this.tileY;
+    	switch (d) {
+    	case EAST :
+    		newX += PokeMap.TILE_WIDTH;
+    		break;
+    	case WEST :
+    		newX -= PokeMap.TILE_WIDTH;
+    		break;
+    	case NORTH :
+    		newY -= PokeMap.TILE_HEIGHT;
+    		break;
+    	case SOUTH :
+    		newY +=  PokeMap.TILE_HEIGHT;
+    		break;
+    	}
+    	if (pm.isWalkable(newX, newY)) {
+    		if (pm.getTileType(newX, newY) == TileType.TELEPORT) {
+    			final Teleport tmpTlprt = pm.getTeleport(newX, newY);
+    			if (tmpTlprt == null) {
+    				throw new IllegalStateException("Teleport not found even if it's in the map as a TileType");
+    			}
+    			this.setPosition(tmpTlprt.getDestinationX(), tmpTlprt.getDestinationY());
+    		} else {
+    			this.setPosition(newX, newY);
+    		}
+    	}
     }
 
 }

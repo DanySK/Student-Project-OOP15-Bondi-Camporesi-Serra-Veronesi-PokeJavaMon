@@ -1,26 +1,26 @@
 package model.map;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
+import model.map.Drawable.Direction;
 import model.map.tile.PokemonEncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
-import model.map.tile.Terrain;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
 import model.map.tile.TileNotFoundException;
-import model.map.tile.Wall;
-import model.map.tile.Water;
+import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
-import model.trainer.TrainerDB;
 
 public class PokeMapImpl implements PokeMap {
 
@@ -31,12 +31,14 @@ public class PokeMapImpl implements PokeMap {
 	private Set<Sign> signs;
 	private Set<Trainer> trainers;
 	private Set<PokemonEncounterTile> pokemonEncounters;
+	private Set<PokemonEncounterZone> pokemonEncounterZones;
 	private Set<WalkableZone> walkableZones;
 	
 	private final int mapHeight;
 	private final int mapWidth;
 	
 	public PokeMapImpl(final TiledMap map) {
+		//TODO: cambiare il modo in cui assegna i teleport perché nella mappa di tiled su e giu sono invertiti
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
 		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get("foreground"));
 		final TiledMapTileLayer doorLayer = ((TiledMapTileLayer) map.getLayers().get("doorLayer"));
@@ -53,6 +55,7 @@ public class PokeMapImpl implements PokeMap {
 		setTeleports(doorLayer);
 		setSigns(signLayer);
 		
+		setPokemonEncounterZones(encounterLayer);
 		setWalkableZones(zoneLayer);
 		setBackgroundAndForeground(background, foreground, encounterLayer);
 		
@@ -73,31 +76,69 @@ public class PokeMapImpl implements PokeMap {
 				final Cell backCell = background.getCell(i, j);
 				final Cell frontCell = foreground.getCell(i, j);
 				
-				addCell(backCell, i/TILE_WIDTH, j/TILE_HEIGHT);
-				addCell(frontCell, i/TILE_WIDTH, j/TILE_HEIGHT);
+				if (backCell != null) {
+					addCell(backCell, i/TILE_WIDTH, j/TILE_HEIGHT, encounterLayer);
+				}
+				if (frontCell != null) {
+					addCell(frontCell, i/TILE_WIDTH, j/TILE_HEIGHT, encounterLayer);
+				}
 				
 			}
 		}
 	}
 	
-	private void addCell(final Cell c, final int tileX, final int tileY) {
+	private void addCell(final Cell c, final int tileX, final int tileY, final TiledMapTileLayer encounterLayer) {
 		if (c != null) {
-			String cellProperty = (String) c.getTile().getProperties().get("tileType");
+			MapProperties mp = c.getTile().getProperties();
+			String cellProperty = (mp.get("tileType", String.class)).toUpperCase();
 			Position p = new Position(tileX, tileY);
-
-			if (cellProperty.equals(Wall.TILE_NAME)) {
+			
+			if (cellProperty.equals(TileType.WALL.toString())) {
 				this.collisions.add(p);
 				this.map[tileX][tileY] = TileType.WALL;
-			} else if (cellProperty.equals(Water.TILE_NAME)) {
+			
+			} else if (cellProperty.equals(TileType.WATER.toString())) {
 				this.collisions.add(p);
 				this.map[tileX][tileY] = TileType.WATER;
-			} else if (cellProperty.equals(PokemonEncounterTile.TILE_NAME)) {
 				
-				// TODO finire Mappa e zona this.pokemonEncounters.add(new PokemonEncounterTile(zone, x, y))
+			} else if (cellProperty.equals(TileType.TREE.toString())) {
+				this.collisions.add(p);
+				this.map[tileX][tileY] = TileType.TREE;
+				
+			} else if (cellProperty.equals(TileType.POKEMON_ENCOUNTER.toString())) {
+				
+				for (final PokemonEncounterZone pez : this.pokemonEncounterZones) {
+					if (pez.contains(tileX, tileY)) {
+						this.pokemonEncounters.add(new PokemonEncounterTile(pez, tileX, tileY));
+					}
+				}
 				this.map[tileX / this.mapWidth][tileY / this.mapHeight] = TileType.POKEMON_ENCOUNTER;
-			} else if (cellProperty.equals(Sign.TILE_NAME)) {
+				
+			} else if (cellProperty.equals(TileType.SIGN.toString())) {
 				this.collisions.add(p);
 				this.map[tileX][tileY] = TileType.SIGN;
+				
+			} else if (cellProperty.equals(TileType.TRAINER.toString())) {
+				this.map[tileX / this.mapWidth][tileY / this.mapHeight] = TileType.TRAINER;
+				Direction d = Direction.NORTH;
+				if (mp.get("FRONT_ID").equals("-1")) {
+					d = Direction.SOUTH;
+				} else if(mp.get("LEFT_ID").equals("-1")) {
+					d = Direction.WEST;
+				} else if (mp.get("RIGHT_ID").equals("-1")) {
+					d = Direction.EAST;
+				}
+				final ArrayList<String>	pkmns_lvl = new ArrayList<>();
+				for (int i = 1; i <= 6; i++) {
+					if (mp.containsKey(i + "_POKEMON_LVL") && !mp.get(i + "_POKEMON_LVL", String.class).isEmpty()) {
+						pkmns_lvl.add(mp.get(i + "_POKEMON_LVL", String.class));
+					}
+				}
+				this.map[tileX][tileY] = TileType.TRAINER;
+				this.trainers.add(StaticTrainerFactory.createTrainer(mp.get("name", String.class), d, false, tileX, tileY, pkmns_lvl , mp.get("initMessage", String.class), mp.get("lostMessage", String.class), mp.get("wonMessage", String.class)));
+			
+			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
+				this.map[tileX][tileY] = TileType.TELEPORT;
 			}
 		}
 	}
@@ -113,7 +154,7 @@ public class PokeMapImpl implements PokeMap {
 	public float getMapWidth() {
 		return this.mapWidth;
 	}
-
+	
 	@Override
 	public Set<Position> getCollisions() {
 		return Collections.unmodifiableSet(this.collisions);
@@ -135,7 +176,13 @@ public class PokeMapImpl implements PokeMap {
 
 	@Override
 	public boolean isWalkable(int x, int y) {
-		return this.map[x][y].isWalkable();
+		boolean isCollision = false;
+		for (final Position p : this.collisions) {
+			if (p.getX() == x && p.getY() == y) {
+				isCollision = true;
+			}
+		}
+		return this.map[x][y].isWalkable() && !isCollision;
 	}
 	
 	
@@ -225,16 +272,15 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	
-	public Set<TrainerDB> getTrainers() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Trainer> getTrainers() {
+		return Collections.unmodifiableSet(this.trainers);
 	}
 
 	@Override
 	public Tile.TileType getTileType(int x, int y) {
 		return this.map[x][y];
 	}
-	
+	//TODO: REWORKARE LE POSIZIONI PERCHE X = MAP_HEIGHT-X
 	private void setWalkableZones(final TiledMapTileLayer zoneLayer) {
 		for (final MapObject z : zoneLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
@@ -265,27 +311,46 @@ public class PokeMapImpl implements PokeMap {
 		throw new IllegalArgumentException();
 	}
 
-	@Override
-	public void importMap(TiledMap map) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
-	public TrainerDB getTrainer(int x, int y) {
-		// TODO Auto-generated method stub
+	public Trainer getTrainer(int x, int y) {
+		for (final Trainer t : this.trainers) {
+			if (t.getTileX() == x && t.getTileY() == y) {
+				return t;
+			}
+		}
 		return null;
 	}
+	
+	private void setPokemonEncounterZones(final TiledMapTileLayer encounterLayer) {
+		for (final MapObject z : encounterLayer.getObjects()) {
+			RectangleMapObject rect = (RectangleMapObject) z;
+			final int real_x = (int) (rect.getRectangle().x / TILE_WIDTH);
+			final int real_y = (int) (rect.getRectangle().y / TILE_HEIGHT);
+			final int width = (int) (rect.getRectangle().width / TILE_WIDTH);
+			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT);
+			final int id = Integer.parseInt(rect.getProperties().get("zoneID", String.class));
+			final int avgLvl = Integer.parseInt(rect.getProperties().get("avgLvl", String.class));
+			final String pkmnList = rect.getProperties().get("pokemonList", String.class);
+			this.pokemonEncounterZones.add(new PokemonEncounterZone(id, pkmnList, avgLvl, real_x, real_y, width, height));
+		}
+	}
 
+	//TODO: Cambiare il fatto che i pokemon vengono estratti nel Tile invece che nella Zone, farli generare nella zone
 	@Override
 	public Set<PokemonEncounterTile> getPkmnEncounterTiles() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.unmodifiableSet(this.pokemonEncounters);
 	}
+	
+	
 
 	@Override
 	public PokemonEncounterTile getPokemonEncounterTile(int x, int y) {
-		// TODO Auto-generated method stub
+		for (final PokemonEncounterTile pet : this.pokemonEncounters) {
+			if (pet.getTileX() == x && pet.getTileY() == y) {
+				return pet;
+			}
+		}
 		return null;
 	}
 

@@ -16,8 +16,6 @@ import model.pokemon.StaticPokemonFactory;
 
 public class PokemonEncounterTile extends AbstractTile {
     
-	public final static String TILE_NAME = "POKEMON_ENCOUNTER";
-	
     private final PokemonEncounterZone zone;
     private final static double ENCOUNTER_CHANCE = 30 / 187.5;
     private final static int LEVEL_VARIATION = 2;

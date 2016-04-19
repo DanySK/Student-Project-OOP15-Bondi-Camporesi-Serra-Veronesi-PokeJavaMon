@@ -15,11 +15,11 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 	 */
 	private static final long serialVersionUID = 4501693972739348662L;
 	
-	private final String name;
+	private final int id;
 	private final List<PokemonDB> pokemonList;
 	private final int avgLvl;
 	
-	public PokemonEncounterZone(final String name, final String pokemonList, final int averageLevel, final int tileX, final int tileY, final int width, final int height) {
+	public PokemonEncounterZone(final int id, final String pokemonList, final int averageLevel, final int tileX, final int tileY, final int width, final int height) {
 		this.setBounds(tileX, tileY, width, height);
 		
 		this.pokemonList = new ArrayList<>();
@@ -35,7 +35,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 			throw new IllegalArgumentException("Pokemon Encounter Zone has no valid pokemon found in PokemonDB");
 		}
 		
-		this.name = name;
+		this.id = id;
 		this.avgLvl = averageLevel;
 	}
 
@@ -79,7 +79,9 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 
 	@Override
 	public String getZoneName() {
-		return this.name;
+		return "EncounterZone_" + this.id;
 	}
+
+	
 
 }

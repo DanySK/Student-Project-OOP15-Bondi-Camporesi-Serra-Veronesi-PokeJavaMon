@@ -13,7 +13,7 @@ public enum TrainerDB {
                                   new Pair<PokemonDB, Integer>(PokemonDB.BLASTOISE, 45), 
                                   new Pair<PokemonDB, Integer>(PokemonDB.VENUSAUR, 45)), 2000),
         
-        BULLO_1("Pronto? Non ci andrò piano con te!", "Argh", "YEAHHH",
+        BULLO_1("Pronto? Non ci andro' piano con te!", "Argh", "YEAHHH",
                     Arrays.asList(new Pair<PokemonDB, Integer>(PokemonDB.PIDGEY, 5),
                                   new Pair<PokemonDB, Integer>(PokemonDB.RATTATA,5)), 1000),
         

@@ -128,4 +128,9 @@ public enum PokemonDB {
     public void init(final Map<Integer, Move> m) {
         this.moveset = m;
     }
+    
+    @Override
+    public String toString() {
+    	return this.name().toUpperCase();
+    }
 }
