@@ -15,6 +15,9 @@ import model.resources.Player;
 import view.resources.Play;
 import view.resources.ViewController;
 
+/**
+ * 
+ */
 public class MainController {
     
     private static State state;
