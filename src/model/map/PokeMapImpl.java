@@ -1,10 +1,12 @@
 package model.map;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -41,13 +43,23 @@ public class PokeMapImpl implements PokeMap {
 		//TODO: cambiare il modo in cui assegna i teleport perché nella mappa di tiled su e giu sono invertiti
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
 		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get("foreground"));
-		final TiledMapTileLayer doorLayer = ((TiledMapTileLayer) map.getLayers().get("doorLayer"));
-		final TiledMapTileLayer signLayer = ((TiledMapTileLayer) map.getLayers().get("signLayer"));
-		final TiledMapTileLayer encounterLayer = ((TiledMapTileLayer) map.getLayers().get("encounterLayer"));
-		final TiledMapTileLayer zoneLayer = ((TiledMapTileLayer) map.getLayers().get("zoneLayer"));
+		final MapLayer doorLayer = ((MapLayer) map.getLayers().get("doorLayer"));
+		final MapLayer signLayer = ((MapLayer) map.getLayers().get("signLayer"));
+		final MapLayer encounterLayer = ((MapLayer) map.getLayers().get("pokemonEncounterLayer"));
+		final MapLayer zoneLayer = ((MapLayer) map.getLayers().get("zoneLayer"));
 		
 		this.mapHeight = (int) background.getHeight();
 		this.mapWidth = (int) background.getWidth();
+		
+		this.collisions = new HashSet<>();
+		this.signs = new HashSet<>();
+		this.teleports = new HashSet<>();
+		this.trainers = new HashSet<>();
+		this.pokemonEncounters = new HashSet<>();
+		this.pokemonEncounterZones = new HashSet<>();
+		this.walkableZones = new HashSet<>();
+				
+				
 		
 		initMap();
 		
@@ -70,28 +82,31 @@ public class PokeMapImpl implements PokeMap {
 		}
 	}
 	
-	private void setBackgroundAndForeground(final TiledMapTileLayer background, final TiledMapTileLayer foreground, final TiledMapTileLayer encounterLayer) {
-		for (int i = 0; i < this.mapWidth; i += TILE_WIDTH) {
-			for (int j = 0; j < this.mapHeight; j += TILE_HEIGHT) {
-				final Cell backCell = background.getCell(i, j);
-				final Cell frontCell = foreground.getCell(i, j);
+	private void setBackgroundAndForeground(final TiledMapTileLayer background, final TiledMapTileLayer foreground, final MapLayer encounterLayer) {
+		for (int i = 0; i < this.mapWidth; i += 1) {
+			for (int j = 0; j < this.mapHeight; j += 1) {
+				
+				final Cell backCell = background.getCell(getTileUnitX(i), getTileUnitY(j));
+				final Cell frontCell = foreground.getCell(getTileUnitX(i), getTileUnitY(j));
 				
 				if (backCell != null) {
-					addCell(backCell, i/TILE_WIDTH, j/TILE_HEIGHT, encounterLayer);
+					addCell(backCell, i, j, encounterLayer);
 				}
 				if (frontCell != null) {
-					addCell(frontCell, i/TILE_WIDTH, j/TILE_HEIGHT, encounterLayer);
+					addCell(frontCell, i, j, encounterLayer);
 				}
 				
 			}
 		}
 	}
 	
-	private void addCell(final Cell c, final int tileX, final int tileY, final TiledMapTileLayer encounterLayer) {
+	private void addCell(final Cell c, final int tileX, final int tileY, final MapLayer encounterLayer) {
 		if (c != null) {
 			MapProperties mp = c.getTile().getProperties();
 			String cellProperty = (mp.get("tileType", String.class)).toUpperCase();
 			Position p = new Position(tileX, tileY);
+//			System.out.println("CellPROPR=" + cellProperty);
+//			System.out.println();
 			
 			if (cellProperty.equals(TileType.WALL.toString())) {
 				this.collisions.add(p);
@@ -135,7 +150,7 @@ public class PokeMapImpl implements PokeMap {
 					}
 				}
 				this.map[tileX][tileY] = TileType.TRAINER;
-				this.trainers.add(StaticTrainerFactory.createTrainer(mp.get("name", String.class), d, false, tileX, tileY, pkmns_lvl , mp.get("initMessage", String.class), mp.get("lostMessage", String.class), mp.get("wonMessage", String.class)));
+				this.trainers.add(StaticTrainerFactory.createTrainer(mp.get("name", String.class), d, false, tileX, tileY, pkmns_lvl , mp.get("initMessage", String.class), mp.get("lostMessage", String.class), mp.get("wonMessage", String.class), Integer.parseInt(mp.get("money", String.class)), Integer.parseInt(mp.get("trainerID", String.class))));
 			
 			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
@@ -186,14 +201,14 @@ public class PokeMapImpl implements PokeMap {
 	}
 	
 	
-	private void setTeleports(final TiledMapTileLayer doorLayer) {
+	private void setTeleports(final MapLayer doorLayer) {
 		if (doorLayer.getObjects() == null) {
 			throw new IllegalArgumentException("Layer does not contain objects");
 		} 
 		for (final MapObject mobj : doorLayer.getObjects()) {
 			if (mobj.getProperties().containsKey("DOOR_X")) {
-				final int pixel_x = Integer.parseInt((String)mobj.getProperties().get("x"));
-				final int pixel_y = Integer.parseInt((String)mobj.getProperties().get("y"));
+				final int pixel_x = mobj.getProperties().get("x", Integer.class);
+				final int pixel_y = mobj.getProperties().get("y", Integer.class);
 				final int real_x = (int) (pixel_x / TILE_WIDTH); 
 				final int real_y = (int) (pixel_y / TILE_HEIGHT);
 				final int to_x = Integer.parseInt((String)mobj.getProperties().get("DOOR_X"));
@@ -230,7 +245,7 @@ public class PokeMapImpl implements PokeMap {
 	}
 	
 	
-	private void setSigns(final TiledMapTileLayer signLayer) {
+	private void setSigns(final MapLayer signLayer) {
 		if (signLayer.getObjects() == null) {
 			throw new IllegalArgumentException("Layer does not contain objects");
 		} 
@@ -281,7 +296,7 @@ public class PokeMapImpl implements PokeMap {
 		return this.map[x][y];
 	}
 	//TODO: REWORKARE LE POSIZIONI PERCHE X = MAP_HEIGHT-X
-	private void setWalkableZones(final TiledMapTileLayer zoneLayer) {
+	private void setWalkableZones(final MapLayer zoneLayer) {
 		for (final MapObject z : zoneLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
 			final int real_x = (int) (rect.getRectangle().x / TILE_WIDTH);
@@ -322,7 +337,7 @@ public class PokeMapImpl implements PokeMap {
 		return null;
 	}
 	
-	private void setPokemonEncounterZones(final TiledMapTileLayer encounterLayer) {
+	private void setPokemonEncounterZones(final MapLayer encounterLayer) {
 		for (final MapObject z : encounterLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
 			final int real_x = (int) (rect.getRectangle().x / TILE_WIDTH);
@@ -352,6 +367,19 @@ public class PokeMapImpl implements PokeMap {
 			}
 		}
 		return null;
+	}
+	
+	public int getTileUnitX(final int cellX) {
+		return cellX;
+	}
+	
+	
+	public int getTileUnitY(final int cellY) {
+		return this.mapHeight - cellY - 1;
+	}
+	
+	public Tile.TileType[][] getMap() {
+		return Arrays.copyOf(this.map, this.map.length);
 	}
 
 }

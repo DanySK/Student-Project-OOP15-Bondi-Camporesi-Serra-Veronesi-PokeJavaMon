@@ -14,10 +14,12 @@ public class Trainer extends AbstractCharacter {
     private final String initialMessage;
     private final String trainerWonMessage;
     private final String trainerLostMessage;
+    private final int money;
+    private final int trainerID;
     
     
     protected Trainer(final String name, final int x, final int y, final Direction d, final boolean isDefeated, final Squad squad,
-    				  final String initMessage, final String wonMessage, final String lostMessage) {
+    				  final String initMessage, final String wonMessage, final String lostMessage, final int money, final int trainerID) {
         super(x,y,d);
         this.name = name;
         this.squad = squad;
@@ -25,7 +27,8 @@ public class Trainer extends AbstractCharacter {
         this.initialMessage = initMessage;
         this.trainerWonMessage = wonMessage;
         this.trainerLostMessage = lostMessage;
-        
+        this.money = money;
+        this.trainerID = trainerID;
     }
 
     public Squad getSquad() {

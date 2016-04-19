@@ -2027,21 +2027,19 @@
   </tile>
   <tile id="330">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=36"/>
-    <property name="4_POKEMON=LVL" value="RAICHU=40"/>
-    <property name="5_POKEMON=LVL" value="SANDSLASH=40"/>
-    <property name="6_POKEMON=LVL" value="RATICATE=40"/>
+    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
+    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
+    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2058,9 +2056,10 @@
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2076,9 +2075,10 @@
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2094,9 +2094,10 @@
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2112,9 +2113,10 @@
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2256,9 +2258,10 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2274,9 +2277,10 @@
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2292,9 +2296,10 @@
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2310,9 +2315,10 @@
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2328,9 +2334,10 @@
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="TRAINER_ID" value="0"/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2472,11 +2479,12 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2493,11 +2501,12 @@
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2514,11 +2523,12 @@
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2535,11 +2545,12 @@
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2556,11 +2567,12 @@
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2703,11 +2715,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2724,11 +2737,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2745,11 +2759,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2766,11 +2781,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2787,11 +2803,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2936,11 +2953,12 @@
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2957,11 +2975,12 @@
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2978,11 +2997,12 @@
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -2999,11 +3019,12 @@
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3020,11 +3041,12 @@
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3041,11 +3063,12 @@
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3062,11 +3085,12 @@
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3199,11 +3223,12 @@
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3220,11 +3245,12 @@
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3241,11 +3267,12 @@
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3262,11 +3289,12 @@
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3283,11 +3311,12 @@
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3304,11 +3333,12 @@
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3325,11 +3355,12 @@
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3462,11 +3493,12 @@
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3483,11 +3515,12 @@
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3504,11 +3537,12 @@
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3525,11 +3559,12 @@
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3546,11 +3581,12 @@
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3567,11 +3603,12 @@
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3588,11 +3625,12 @@
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3731,11 +3769,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3752,11 +3791,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3773,11 +3813,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3794,11 +3835,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3815,11 +3857,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3836,11 +3879,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -3857,11 +3901,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4002,11 +4047,12 @@
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4023,11 +4069,12 @@
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4044,11 +4091,12 @@
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4065,11 +4113,12 @@
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4238,11 +4287,12 @@
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4259,11 +4309,12 @@
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4280,11 +4331,12 @@
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4301,11 +4353,12 @@
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4490,11 +4543,12 @@
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4511,11 +4565,12 @@
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4532,11 +4587,12 @@
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4553,11 +4609,12 @@
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4739,12 +4796,13 @@
     <property name="FRONT_ID" value="538"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="564"/>
-    <property name="RIGHT_ID" value="0"/>
-    <property name="TRAINER_ID" value="590"/>
+    <property name="RIGHT_ID" value="590"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4760,12 +4818,13 @@
     <property name="FRONT_ID" value="539"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="565"/>
-    <property name="RIGHT_ID" value="0"/>
-    <property name="TRAINER_ID" value="591"/>
+    <property name="RIGHT_ID" value="591"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4782,11 +4841,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4803,11 +4863,12 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="TRAINER_ID" value="0"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
     <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
+    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
     <property name="winMessage" value=""/>
    </properties>
@@ -4844,10 +4905,10 @@
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3azU3DMBiAYdd7VAWWQBQ26Anxs0FPqIV1mI9F8A1UYadFid24z3PMJyU+vfqUJAQAAAAAAAAAOG/b1gcAuqczQM9OaZweAlMZ6stjrPMcgKnpEDAnt3/sYDoG1KQ5QGvHdOhtpPdWAK3U3Lnsd0COPjC2r9YHgIKh5mli/w4bpVkAXBr7ENCTpW+FQANj7EvH3sNuBgDww24E9EbXgB5pGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnJfPResTAAAAAAAAAAAAwP9t/AcHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcNGuYwg38fQZQG33qUcPmSaVZgAAAAAAAAAAU3mJIbz++mdhs8jPAFp6Tz36yDSpNAMAAAAAAADmZxVDuMp8AyzNAGq7Sz1aZ5pUmgG08JSa9ByHrwG0tktd2sfhawAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHPxDUqCLIFAfgUA
+   H4sIAAAAAAAAC+3cSU7DMBSAYdf3QAyXQAw36Aox3IAVYrgO5+MieEdV1UlbJX6N+b5lntR69espiZISAAAAAAAAAJy21+gDAN3TGaBnhzROD4G5jPXlIbf5H4C56RCwJNc7djAdA1rSHCDaPh16m+i+FUCUljuX/Q6o0Qem9hN9ABgw1jxN7N92ozQLgP/GPgT05MyzQiDAFPvSvr9hNwMA+GM3Anqja0CPtA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE7L9yr6BAAAAAAAAAAAAHC8tffgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADonG/zAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHWK+iTwBQp1EAAAAAAAAAAAAAAAAATO0yp3SVD58BtHZXenRfadLQDAAAAAAAAABgLs85pZeNdxY2vyW+PQOI9Fl69FVp0tAMAAAAAAAAWJ7znNJF5Rng0AygtZvSo9tKk4ZmABEeS5Oe8vg1gGjvpUsfefwaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAUvwCat5XLkB+BQA=
   </data>
  </layer>
- <objectgroup name="doorLayer" visible="0">
+ <objectgroup name="doorLayer">
   <object id="46" x="4464" y="720" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="28"/>
@@ -5293,7 +5354,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="signLayer" visible="0">
+ <objectgroup name="signLayer">
   <object id="132" x="512" y="1824" width="16" height="16">
    <properties>
     <property name="signMessage" value="Nobody's home"/>

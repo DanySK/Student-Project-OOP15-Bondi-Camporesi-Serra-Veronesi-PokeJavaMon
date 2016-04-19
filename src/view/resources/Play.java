@@ -17,6 +17,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import controller.MainController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.load.LoadController;
+import model.map.PokeMap;
+import model.map.PokeMapImpl;
+import model.map.Position;
 import model.resources.General;
 import model.resources.Player;
 
@@ -31,7 +34,7 @@ public class Play implements Screen {
 	private boolean newGame;
 	
 	public Play(boolean b) {
-	    newGame = b;
+        newGame = b;
 	}
 	
 	public void render(float delta) {		
@@ -54,7 +57,7 @@ public class Play implements Screen {
 		camera.viewportHeight = height / 2.5f;
 	}
 	
-	public void show() {			    
+	public void show() {			
 	        map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
 	        renderer = new OrthogonalTiledMapRenderer(map);                    
 		sr = new ShapeRenderer();
@@ -79,6 +82,18 @@ public class Play implements Screen {
 		        player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		    }
 		}
+		final PokeMapImpl pm = new PokeMapImpl(map);
+		System.out.println("ENC_TILE="+pm.getPkmnEncounterTiles());
+		System.out.println("MAPHEIGHT="+pm.getMapHeight());
+		System.out.println("MAPWIDTH"+pm.getMapWidth());
+		System.out.println("TRAINERS="+pm.getTrainers());
+		for (int i = 24; i < 58; i++) {
+			for (int j = 168; j < 188; j++) {
+				System.out.print(new Position(i,j) + " , " + pm.getMap()[i][j] + " || ");
+			}
+			System.out.println();
+		}
+		
 	}
 
 	public void hide() {		
@@ -113,5 +128,10 @@ public class Play implements Screen {
 	
 	public static void updateKeyListener() {
 	    Gdx.input.setInputProcessor((WalkingKeyboardController)MainController.getController());
+	}
+	
+	public TiledMap getMap() {
+		map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
+        return this.map;
 	}
 }

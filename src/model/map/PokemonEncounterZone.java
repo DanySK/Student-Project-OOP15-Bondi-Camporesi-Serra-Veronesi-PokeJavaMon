@@ -26,7 +26,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 		
 		for (final String pkmn : pokemonList.split(" ")) {
 			for (final PokemonDB pkmnID : PokemonDB.values()) {
-				if (pkmn.equals(pkmnID.getName())) {
+				if (pkmn.equals(pkmnID.toString())) {
 					this.pokemonList.add(pkmnID);
 				}
 			}

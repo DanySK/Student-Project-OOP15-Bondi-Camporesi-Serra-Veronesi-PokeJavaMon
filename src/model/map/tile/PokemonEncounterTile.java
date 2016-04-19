@@ -8,6 +8,7 @@ import java.util.Random;
 import com.google.common.collect.Range;
 
 import model.map.PokemonEncounterZone;
+import model.map.Position;
 import model.map.tile.AbstractTile;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
@@ -86,6 +87,10 @@ public class PokemonEncounterTile extends AbstractTile {
         default :
             throw new IllegalArgumentException();
         }
+    }
+    
+    public String toString() {
+    	return "ZoneName= " + this.zone.getZoneName() + (new Position(this.tileX, this.tileY));
     }
 
 }
