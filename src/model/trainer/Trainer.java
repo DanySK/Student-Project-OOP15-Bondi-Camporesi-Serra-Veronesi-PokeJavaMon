@@ -1,6 +1,7 @@
 package model.trainer;
 
 import model.map.AbstractCharacter;
+import model.map.PokeMap;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 
@@ -73,4 +74,10 @@ public class Trainer extends AbstractCharacter {
     	System.out.println(this.squad);
         return "Name= " + this.name + " Defeated= " + this.isDefeated + ", Squad: " + this.squad + ", D: " + this.direction.name();
     }
+
+	@Override
+	public void move(Direction d, PokeMap pm) {
+		// TODO Auto-generated method stub
+		
+	}
 }
