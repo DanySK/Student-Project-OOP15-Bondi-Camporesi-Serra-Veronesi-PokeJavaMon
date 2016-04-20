@@ -43,4 +43,7 @@ public class Teleport extends AbstractTile {
         return new Position(this.toX, this.toY);
     }
     
+    public String toString() {
+    	return "Teleport, from: " + new Position(this.tileX,this.tileY) + ", to: " + new Position(this.toX, this.toY)  ;
+    }
 }

@@ -18,6 +18,7 @@ import controller.MainController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.load.LoadController;
 import model.map.PokeMapImpl;
+import model.map.Position;
 import model.resources.General;
 import model.resources.Player;
 
@@ -82,16 +83,18 @@ public class Play implements Screen {
 		    }
 		}
 		
-		System.out.println(pm.getEncounterZone(49,113));
-		System.out.println(pm.getEncounterZone(31, 112));
-		System.out.println(pm.getEncounterZone(147, 52));
-		System.out.println(pm.getEncounterZone(14, 24));
-		System.out.println(pm.getEncounterZone(41, 159));
-		System.out.println(pm.getEncounterZone(15, 282));
-		System.out.println(pm.getEncounterZone(14, 24));
-		System.out.println(pm.getEncounterZone(14, 24));
-		System.out.println(pm.getEncounterZone(14, 24));
-		System.out.println(pm.getEncounterZone(14, 24));
+		System.out.println(new Position(47,85) + " "  +  pm.getTileType(47,85) + " " + pm.getEncounterZone(47,85).getAvailablePokemon());
+		System.out.println(new Position(31,112) + " "  +  pm.getTileType(31,112) + " "  + pm.getEncounterZone(31, 112).getAvailablePokemon());
+		System.out.println(new Position(147,52) + " "  +  pm.getTileType(147,52) + " "  + pm.getEncounterZone(147, 52).getAvailablePokemon());
+		System.out.println(new Position(14,24) + " "  +  pm.getTileType(14,24) + " "  + pm.getEncounterZone(14, 24).getAvailablePokemon());
+		System.out.println(new Position(41,159) + " "  +  pm.getTileType(41,159) + " "  + pm.getEncounterZone(41, 159).getAvailablePokemon());
+		System.out.println(new Position(15,282) + " "  +  pm.getTileType(15,282) + " "  + pm.getEncounterZone(15, 282).getAvailablePokemon());
+		System.out.println(new Position(67,43) + " "  +  pm.getTileType(67,43) + " "  + pm.getEncounterZone(67, 43).getAvailablePokemon());
+		System.out.println(new Position(175,21) + " "  +  pm.getTileType(175,21) + " "  + pm.getEncounterZone(175, 21).getAvailablePokemon());
+		System.out.println(new Position(195,91) + " "  +  pm.getTileType(195,91) + " "  + pm.getEncounterZone(195, 91).getAvailablePokemon());
+		System.out.println(new Position(58,289) + " "  +  pm.getTileType(58,289) + " "  + pm.getEncounterZone(58,289).getAvailablePokemon());
+		System.out.println(new Position(27,173) + " "  +  pm.getTileType(27,173) + " "  + pm.getSign(27, 173));
+		System.out.println(pm.getSigns());
  		
 	}
 
