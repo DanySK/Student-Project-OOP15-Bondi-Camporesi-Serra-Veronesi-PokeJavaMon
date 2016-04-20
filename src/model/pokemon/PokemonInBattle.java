@@ -42,16 +42,21 @@ public class PokemonInBattle extends AbstractPokemon{
             boosts.replace(Stat.SPD, 1.0);
 	}
 	
-	public void levelUp() {
+	public boolean levelUp() {
 	    if (this.getStat(Stat.LVL) == MAX_LEVEL) {
-	        return;
+	        return false;
 	    }
 	    changeStat(Stat.LVL, this.mapStat.get(Stat.LVL) + 1);
-            if (checkIfEvolves() && canEvolve) {
-                evolve();
-            }
+	    updateStats();
+	    return true;
+    }
+	
+	public void evolveUp(){
+		if (checkIfEvolves() && canEvolve) {
+            evolve();
             updateStats();
         }
+	}
         
 	public boolean checkIfEvolves() {
 	    if (this.getStat(Stat.LVL) >= this.pokemon.getEvolveLevel()) {
@@ -88,7 +93,6 @@ public class PokemonInBattle extends AbstractPokemon{
 	        this.currentHP = 0;
 	    }
 	}
-
 
     @Override
     public int hashCode() {

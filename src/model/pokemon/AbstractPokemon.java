@@ -122,6 +122,7 @@ public abstract class AbstractPokemon implements Pokemon {
         return this.mapStat.get(s);
     }
     
+    @Override
     public Map<Stat, Integer> getAllStats() {
         return Collections.unmodifiableMap(this.mapStat);
     }
@@ -143,7 +144,10 @@ public abstract class AbstractPokemon implements Pokemon {
     }
     
     @Override
-    public abstract void levelUp();
+    public abstract boolean levelUp();
+    
+    @Override
+    public abstract void evolveUp();
 
     @Override
     public void learnMove(Move oldMove, Move newMove) {
