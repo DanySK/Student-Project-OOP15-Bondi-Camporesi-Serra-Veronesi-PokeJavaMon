@@ -105,7 +105,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 	}
 	
 	public int getTrainerMoney(){
-		return this.trainer.getTrainerDB().getMoney();
+		return this.trainer.getMoney();
 	}
 	/*
 	public void playerTakeMoney(){

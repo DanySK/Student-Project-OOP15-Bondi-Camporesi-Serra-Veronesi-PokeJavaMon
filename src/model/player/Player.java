@@ -9,7 +9,7 @@ import model.map.Character;
 import model.map.PokeMap;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
-import model.trainer.TrainerDB;
+import model.trainer.Trainer;
 
 public interface Player extends Character{
     
@@ -19,7 +19,9 @@ public interface Player extends Character{
     
     public Box getBox();
     
-    public Set<TrainerDB> getEnemyBeaten();
+    public Set<Trainer> getEnemyBeaten();
+    
+    public void beatTrainer(final Trainer trainer);
     
     public int getMoney();
     

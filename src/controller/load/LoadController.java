@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import org.jdom2.Attribute;
 import org.jdom2.DataConversionException;
 import org.jdom2.Document;
@@ -18,6 +20,7 @@ import model.box.Box;
 import model.box.BoxImpl;
 import model.inventory.Inventory;
 import model.inventory.InventoryImpl;
+import model.map.PokeMap;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 import model.resources.*;
@@ -70,16 +73,16 @@ public class LoadController implements LoadControllerInterface {
         return squadra;
     }
     
-    private static List<Trainer> getTrainers() {
-        List<Trainer> trainers = new ArrayList<Trainer>();
+    private static void setTrainers(final PokeMap map) {
+        Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
-                trainers.add(StaticTrainerFactory.createTrainer(a.getName(),a.getBooleanValue()));
+            	trainer_isDefeated.put(Integer.parseInt(a.getName()), a.getBooleanValue());
             } catch (DataConversionException e) {
                 e.printStackTrace();
             }
         }
-        return trainers;
+        map.initTrainers(trainer_isDefeated);
     }
     
     private static Inventory getInventory() {
@@ -117,9 +120,9 @@ public class LoadController implements LoadControllerInterface {
         return retBox;
     }
     
-    public static General load() {
+    public static General load(final PokeMap map) {
         setup();
-        return new General(getTeam(),getBox(),getTrainers(),getInventory(),getMoney(),getPosition());
+        return new General(getTeam(),getBox(), new ArrayList<Trainer>(map.getTrainers()),getInventory(),getMoney(),getPosition());
     }
     
     public static boolean saveExists() {

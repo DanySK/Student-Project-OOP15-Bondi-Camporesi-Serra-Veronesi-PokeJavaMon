@@ -1,5 +1,6 @@
 package model.map;
 
+import java.util.Map;
 import java.util.Set;
 
 import model.map.tile.Sign;
@@ -37,6 +38,7 @@ public interface PokeMap {
     
     public Set<Trainer> getTrainers();
     public Trainer getTrainer(final int x, final int y);
+    public void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated);
     
     public Set<PokemonEncounterZone> getEncounterZones();
     public PokemonEncounterZone getEncounterZone(final int x, final int y);

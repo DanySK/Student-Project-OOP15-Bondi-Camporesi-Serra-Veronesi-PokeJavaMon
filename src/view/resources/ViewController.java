@@ -23,6 +23,7 @@ import model.items.Potion;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
 import model.map.Drawable.Direction;
+import model.map.PokeMapImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.Stat;
@@ -31,7 +32,6 @@ import model.resources.General;
 import model.resources.Player;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
-import model.trainer.TrainerDB;
 import model.utilities.Pair;
 import view.frames.*;
 
@@ -39,6 +39,8 @@ public final class ViewController {
     
     private static String name;
     static LwjglApplication app;
+    
+    
     
     public static void showMenu() {
         MainController.updateStatus(State.MENU);
@@ -70,7 +72,7 @@ public final class ViewController {
     public static void save() {
         General g;
         if (LoadController.saveExists()) {
-            g = LoadController.load();
+            g = LoadController.load(new PokeMapImpl(new Play(false).getMap()));
         } else {
             List<Pokemon> team = new ArrayList<>();
             team.add(StaticPokemonFactory.createPokemon(PokemonDB.BLASTOISE,30));

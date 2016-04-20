@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.badlogic.gdx.maps.MapLayer;
@@ -310,6 +312,20 @@ public class PokeMapImpl implements PokeMap {
 		}
 		return null;
 	}
+	
+	public void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated) {
+		for (final Entry<Integer, Boolean> e : trainerID_isDefeated.entrySet()) {
+			if (!e.getValue()) {
+				continue;
+			}
+			for (final Trainer t : this.trainers) {
+				if (e.getKey() == t.getID()) {
+					t.defeat();
+				}
+			}
+		}
+	}
+    
 	
 	private void setPokemonEncounterZones(final MapLayer encounterLayer) {
 		for (final MapObject z : encounterLayer.getObjects()) {

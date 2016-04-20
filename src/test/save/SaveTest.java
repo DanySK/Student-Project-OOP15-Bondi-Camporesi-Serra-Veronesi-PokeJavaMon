@@ -24,7 +24,6 @@ import model.pokemon.StaticPokemonFactory;
 import model.resources.General;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
-import model.trainer.TrainerDB;
 import model.utilities.Pair;
 
 public class SaveTest {

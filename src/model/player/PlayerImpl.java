@@ -18,14 +18,14 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.squad.Squad;
 import model.squad.SquadImpl;
-import model.trainer.TrainerDB;
+import model.trainer.Trainer;
 
 public class PlayerImpl extends AbstractCharacter implements Player{
     
     private final Squad squad;
     private final Box box;
     private final Inventory inv;
-    private final Set<TrainerDB> trainersBeaten;
+    private final Set<Trainer> trainersBeaten;
     private int money = 500;
     
     private static Player SINGLETON;
@@ -68,7 +68,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     }
 
     @Override
-    public Set<TrainerDB> getEnemyBeaten() {
+    public Set<Trainer> getEnemyBeaten() {
         return Collections.unmodifiableSet(trainersBeaten);
     }
 
@@ -91,9 +91,10 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         //TODO CONTROLLARE STATO (BATTAGLIA) e se l'oggetto può essere usato... Exceptions..
     }
     
-    public void beatenTrainer(final TrainerDB id) {
-        this.money += id.getMoney();
-        this.trainersBeaten.add(id);
+    @Override
+    public void beatTrainer(final Trainer trainer) {
+        this.money += trainer.getMoney();
+        this.trainersBeaten.add(trainer);
     }
     
     @Override

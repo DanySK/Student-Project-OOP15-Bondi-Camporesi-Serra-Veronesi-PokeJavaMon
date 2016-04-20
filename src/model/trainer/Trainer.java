@@ -77,7 +77,6 @@ public class Trainer extends AbstractCharacter {
 
 	@Override
 	public void move(Direction d, PokeMap pm) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 }

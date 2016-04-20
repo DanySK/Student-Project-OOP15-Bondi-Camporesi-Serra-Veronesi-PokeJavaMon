@@ -74,7 +74,7 @@ public class SaveController implements SaveControllerInterface {
     private static void setTrainers(List<Trainer> l) {
         Element allenatori = new Element(XMLParameters.TRAINERS.getName());
         for (final Trainer t : l) {
-            allenatori.setAttribute(t.getTrainerDB().name(),Boolean.toString(t.isDefeated()));
+            allenatori.setAttribute("" + t.getID(),Boolean.toString(t.isDefeated()));
         }
         root.addContent(allenatori);
     }

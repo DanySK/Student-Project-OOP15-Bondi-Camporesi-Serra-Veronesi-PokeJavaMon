@@ -1,7 +1,5 @@
 package view.resources;
 
-import java.util.HashSet;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -19,9 +17,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import controller.MainController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.load.LoadController;
-import model.map.PokeMap;
 import model.map.PokeMapImpl;
-import model.map.Position;
 import model.resources.General;
 import model.resources.Player;
 
@@ -73,18 +69,19 @@ public class Play implements Screen {
 		MapLayer obj = map.getLayers().get("doorLayer");
 		Sprite sp = new Sprite(gain);		
 		player = new Player(sp, bg, fg, obj, map.getTileSets().getTile(322));
+		final PokeMapImpl pm = new PokeMapImpl(map);
 		if (newGame) {
 		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {
 		    if (LoadController.saveExists()) {
-		        General g = LoadController.load();
+		        General g = LoadController.load(pm);
 	                player.setBounds(g.getPosition().getX(), g.getPosition().getY(), 15.9f, 15.9f);
 		    } else {
 		        System.out.println("SAVE DOES NOT EXIST");
 		        player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		    }
 		}
-		final PokeMapImpl pm = new PokeMapImpl(map);
+		
 		System.out.println(pm.getEncounterZone(49,113));
 		System.out.println(pm.getEncounterZone(31, 112));
 		System.out.println(pm.getEncounterZone(147, 52));
