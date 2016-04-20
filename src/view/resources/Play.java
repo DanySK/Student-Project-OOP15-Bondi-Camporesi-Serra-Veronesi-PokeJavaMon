@@ -1,5 +1,7 @@
 package view.resources;
 
+import java.util.HashSet;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -83,17 +85,17 @@ public class Play implements Screen {
 		    }
 		}
 		final PokeMapImpl pm = new PokeMapImpl(map);
-		System.out.println("ENC_TILE="+pm.getPkmnEncounterTiles());
-		System.out.println("MAPHEIGHT="+pm.getMapHeight());
-		System.out.println("MAPWIDTH"+pm.getMapWidth());
-		System.out.println("TRAINERS="+pm.getTrainers());
-		for (int i = 24; i < 58; i++) {
-			for (int j = 168; j < 188; j++) {
-				System.out.print(new Position(i,j) + " , " + pm.getMap()[i][j] + " || ");
-			}
-			System.out.println();
-		}
-		
+		System.out.println(pm.getEncounterZone(49,113));
+		System.out.println(pm.getEncounterZone(31, 112));
+		System.out.println(pm.getEncounterZone(147, 52));
+		System.out.println(pm.getEncounterZone(14, 24));
+		System.out.println(pm.getEncounterZone(41, 159));
+		System.out.println(pm.getEncounterZone(15, 282));
+		System.out.println(pm.getEncounterZone(14, 24));
+		System.out.println(pm.getEncounterZone(14, 24));
+		System.out.println(pm.getEncounterZone(14, 24));
+		System.out.println(pm.getEncounterZone(14, 24));
+ 		
 	}
 
 	public void hide() {		

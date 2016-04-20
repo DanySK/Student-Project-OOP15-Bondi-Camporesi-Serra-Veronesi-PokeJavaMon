@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.pokemon.Stat;
 
 public class SquadImpl implements Squad {
     
@@ -80,7 +81,7 @@ public class SquadImpl implements Squad {
     public String toString() {
         String retString = "";
         for (final PokemonInBattle p : this.pokemonInSquad) {
-            retString = retString + " " + p.getPokemon().getName();
+            retString = retString + " " + p.getPokemon().getName() + ",lvl= " + p.getStat(Stat.LVL) + " /";
         }
         return retString;
     }

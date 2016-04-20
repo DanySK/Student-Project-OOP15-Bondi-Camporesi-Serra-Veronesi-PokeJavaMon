@@ -2,11 +2,10 @@ package model.map;
 
 import java.util.Set;
 
-import model.map.tile.PokemonEncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
-import model.map.tile.TileNotFoundException;
+import model.map.tile.Tile.TileType;
 import model.trainer.Trainer;
 
 public interface PokeMap {
@@ -32,21 +31,24 @@ public interface PokeMap {
     
     public Set<Teleport> getTeleports();
     public Teleport getTeleport(final int fromX, final int fromY);
-    public Teleport getTeleport(final Tile t);
     
     public Set<Sign> getSigns();
     public Sign getSign(final int x, final int y);
-    public Sign getSign(final Tile t) throws TileNotFoundException;
     
     public Set<Trainer> getTrainers();
     public Trainer getTrainer(final int x, final int y);
     
-    public Set<PokemonEncounterTile> getPkmnEncounterTiles();
-    public PokemonEncounterTile getPokemonEncounterTile(final int x, final int y);
+    public Set<PokemonEncounterZone> getEncounterZones();
+    public PokemonEncounterZone getEncounterZone(final int x, final int y);
 
     public Tile.TileType getTileType(final int x, final int y);
     
-    public Set<WalkableZone> getZones();
+    public Set<WalkableZone> getWalkableZones();
     public WalkableZone getWalkableZone(final int x, final int y);
     
+    public int getTileUnitX(final int cellX);
+	public int getTileUnitY(final int cellY);
+
+	public TileType[][] getMap();
+	    
 }

@@ -1,7 +1,6 @@
 package model.map;
 
 import java.awt.Rectangle;
-import model.player.Player;
 
 public class WalkableZone extends Rectangle implements Zone{
 
@@ -24,8 +23,8 @@ public class WalkableZone extends Rectangle implements Zone{
 	}
 
 	@Override
-	public boolean isPlayerInZone(Player pl) {
-		return this.contains(pl.getTileX(), pl.getTileY());
+	public boolean isInsideZone(final int x, final int y) {
+		return this.contains(x,y);
 	}
 
 
@@ -56,6 +55,11 @@ public class WalkableZone extends Rectangle implements Zone{
 	@Override
 	public String getZoneName() {
 		return this.name;
+	}
+	
+	@Override
+	public String toString() { 
+		return this.name + " " + this.musicPath + new Position(this.x,this.y) + ", width = " + this.width + ", height = " + this.height;
 	}
 
 }

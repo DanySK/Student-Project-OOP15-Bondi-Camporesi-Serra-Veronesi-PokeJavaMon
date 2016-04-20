@@ -2034,14 +2034,14 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
+    <property name="initMessage" value="What's gucci"/>
+    <property name="lostMessage" value="bruh"/>
     <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
+    <property name="winMessage" value="bruh"/>
    </properties>
   </tile>
   <tile id="331">
@@ -2057,7 +2057,7 @@
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2076,7 +2076,7 @@
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2095,7 +2095,7 @@
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2278,7 +2278,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="383"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2297,7 +2297,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="384"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2316,7 +2316,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="385"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2504,7 +2504,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2526,7 +2526,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2548,7 +2548,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2740,7 +2740,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2762,7 +2762,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2784,7 +2784,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
@@ -3044,7 +3044,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
@@ -3314,7 +3314,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
@@ -3584,7 +3584,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
@@ -3860,7 +3860,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
@@ -4094,7 +4094,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
@@ -4334,7 +4334,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
@@ -4590,7 +4590,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
@@ -4844,7 +4844,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
@@ -5511,35 +5511,35 @@
    <properties>
     <property name="avgLvl" type="int" value="19"/>
     <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL SANDSHREW"/>
-    <property name="zoneID" type="int" value="4"/>
+    <property name="zoneID" type="int" value="5"/>
    </properties>
   </object>
   <object id="155" x="2208" y="736" width="176" height="320">
    <properties>
     <property name="avgLvl" type="int" value="22"/>
     <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL TENTACRUEL SANDSHREW SANDSLASH"/>
-    <property name="zoneID" type="int" value="4"/>
+    <property name="zoneID" type="int" value="6"/>
    </properties>
   </object>
   <object id="157" x="2480" y="96" width="768" height="384">
    <properties>
     <property name="avgLvl" type="int" value="26"/>
     <property name="pokemonList" value="RATICATE PIDGEOTTO PIKACHU RAICHU TENTACOOL TENTACRUEL GOLBAT"/>
-    <property name="zoneID" type="int" value="4"/>
+    <property name="zoneID" type="int" value="7"/>
    </properties>
   </object>
   <object id="159" x="3104" y="1440" width="48" height="48">
    <properties>
     <property name="avgLvl" type="int" value="48"/>
     <property name="pokemonList" value="RAYQUAZA"/>
-    <property name="zoneID" type="int" value="4"/>
+    <property name="zoneID" type="int" value="9"/>
    </properties>
   </object>
   <object id="160" x="704" y="3968" width="704" height="720">
    <properties>
     <property name="avgLvl" type="int" value="35"/>
     <property name="pokemonList" value="GOLBAT"/>
-    <property name="zoneID" type="int" value="3"/>
+    <property name="zoneID" type="int" value="8"/>
    </properties>
   </object>
  </objectgroup>

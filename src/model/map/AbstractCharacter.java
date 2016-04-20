@@ -13,34 +13,7 @@ public abstract class AbstractCharacter implements Drawable {
         this.direction = d;
     }
     
-    public void move(final Direction d) throws OutOfBorderException {
-
-       this.direction = d;
-       switch (d) {
-       case NORTH :
-           if (PokeMap.isOutOfBorder(this.tileX, this.tileY+1)) {
-               throw new OutOfBorderException();
-           }
-           this.tileY++;
-           break;
-       case EAST :
-           if (PokeMap.isOutOfBorder(this.tileX+1, this.tileY)) {
-               throw new OutOfBorderException();
-           }
-           this.tileX ++;
-           break;
-       case SOUTH :
-           if (PokeMap.isOutOfBorder(this.tileX, this.tileY-1)) {
-               throw new OutOfBorderException();
-           }
-           this.tileY --;
-       case WEST :
-           if (PokeMap.isOutOfBorder(this.tileX-1, this.tileY)) {
-               throw new OutOfBorderException();
-           }
-           this.tileX --;
-       }
-    }
+    public abstract void move(final Direction d, final PokeMap pm);
     
     public Direction getDirection() {
         return this.direction;

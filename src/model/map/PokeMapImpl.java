@@ -15,12 +15,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import model.map.Drawable.Direction;
-import model.map.tile.PokemonEncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
-import model.map.tile.TileNotFoundException;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 
@@ -32,13 +30,13 @@ public class PokeMapImpl implements PokeMap {
 	private Set<Teleport> teleports;
 	private Set<Sign> signs;
 	private Set<Trainer> trainers;
-	private Set<PokemonEncounterTile> pokemonEncounters;
 	private Set<PokemonEncounterZone> pokemonEncounterZones;
 	private Set<WalkableZone> walkableZones;
 	
 	private final int mapHeight;
 	private final int mapWidth;
 	
+	//Testato EncounterZones, Trainers, 
 	public PokeMapImpl(final TiledMap map) {
 		//TODO: cambiare il modo in cui assegna i teleport perché nella mappa di tiled su e giu sono invertiti
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
@@ -55,7 +53,6 @@ public class PokeMapImpl implements PokeMap {
 		this.signs = new HashSet<>();
 		this.teleports = new HashSet<>();
 		this.trainers = new HashSet<>();
-		this.pokemonEncounters = new HashSet<>();
 		this.pokemonEncounterZones = new HashSet<>();
 		this.walkableZones = new HashSet<>();
 				
@@ -121,12 +118,6 @@ public class PokeMapImpl implements PokeMap {
 				this.map[tileX][tileY] = TileType.TREE;
 				
 			} else if (cellProperty.equals(TileType.POKEMON_ENCOUNTER.toString())) {
-				
-				for (final PokemonEncounterZone pez : this.pokemonEncounterZones) {
-					if (pez.contains(tileX, tileY)) {
-						this.pokemonEncounters.add(new PokemonEncounterTile(pez, tileX, tileY));
-					}
-				}
 				this.map[tileX / this.mapWidth][tileY / this.mapHeight] = TileType.POKEMON_ENCOUNTER;
 				
 			} else if (cellProperty.equals(TileType.SIGN.toString())) {
@@ -145,13 +136,13 @@ public class PokeMapImpl implements PokeMap {
 				}
 				final ArrayList<String>	pkmns_lvl = new ArrayList<>();
 				for (int i = 1; i <= 6; i++) {
-					if (mp.containsKey(i + "_POKEMON_LVL") && !mp.get(i + "_POKEMON_LVL", String.class).isEmpty()) {
-						pkmns_lvl.add(mp.get(i + "_POKEMON_LVL", String.class));
+					if (mp.containsKey(i + "_POKEMON=LVL") && !mp.get(i + "_POKEMON=LVL", String.class).isEmpty()) {
+						pkmns_lvl.add(mp.get(i + "_POKEMON=LVL", String.class));
 					}
 				}
 				this.map[tileX][tileY] = TileType.TRAINER;
 				this.trainers.add(StaticTrainerFactory.createTrainer(mp.get("name", String.class), d, false, tileX, tileY, pkmns_lvl , mp.get("initMessage", String.class), mp.get("lostMessage", String.class), mp.get("wonMessage", String.class), Integer.parseInt(mp.get("money", String.class)), Integer.parseInt(mp.get("trainerID", String.class))));
-			
+
 			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
 			}
@@ -226,24 +217,15 @@ public class PokeMapImpl implements PokeMap {
 
 	@Override
 	public Teleport getTeleport(int fromX, int fromY) {
-		for (final Teleport t : teleports) {
-			if (t.getFromX() == fromX && t.getFromY() == fromY) {
-				return t;
+		if (this.map[fromX][fromY] == TileType.TELEPORT) {
+			for (final Teleport t : teleports) {
+				if (t.getFromX() == fromX && t.getFromY() == fromY) {
+					return t;
+				}
 			}
 		}
 		return null;
 	}
-
-	@Override
-	public Teleport getTeleport(Tile t) {
-		for (final Teleport telep : this.teleports) {
-			if (t.getTileX() == telep.getFromX() || t.getTileY() == telep.getFromY()) {
-				return telep;
-			}
-		}
-		return null;
-	}
-	
 	
 	private void setSigns(final MapLayer signLayer) {
 		if (signLayer.getObjects() == null) {
@@ -268,27 +250,14 @@ public class PokeMapImpl implements PokeMap {
 
 	@Override
 	public Sign getSign(int x, int y) {
-		for (final Sign s : this.signs) {
-			if (s.getTileX() == x & s.getTileY() == y) {
-				return s;
+		if (this.map[x][y] == TileType.SIGN) {
+			for (final Sign s : this.signs) {
+				if (s.getTileX() == x & s.getTileY() == y) {
+					return s;
+				}
 			}
 		}
 		return null;
-	}
-
-	@Override
-	public Sign getSign(Tile t) throws TileNotFoundException {		
-		for (final Sign s : this.signs) {
-			if (t.getTileX() == s.getTileX() || t.getTileY() == s.getTileY()) {
-				return s;
-			}
-		}
-		return null;
-	}
-
-	
-	public Set<Trainer> getTrainers() {
-		return Collections.unmodifiableSet(this.trainers);
 	}
 
 	@Override
@@ -299,10 +268,10 @@ public class PokeMapImpl implements PokeMap {
 	private void setWalkableZones(final MapLayer zoneLayer) {
 		for (final MapObject z : zoneLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
-			final int real_x = (int) (rect.getRectangle().x / TILE_WIDTH);
-			final int real_y = (int) (rect.getRectangle().y / TILE_HEIGHT);
+			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / TILE_WIDTH));
 			final int width = (int) (rect.getRectangle().width / TILE_WIDTH);
-			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT);
+			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT) - 1;
+			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / TILE_HEIGHT)) - height;
 			final String musicPath = (String) z.getProperties().get("musicPath");
 			final String name = (String) z.getProperties().get("zoneType");
 			this.walkableZones.add(new WalkableZone(name, real_x, real_y, width, height, musicPath));
@@ -311,7 +280,7 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public Set<WalkableZone> getZones() {
+	public Set<WalkableZone> getWalkableZones() {
 		return Collections.unmodifiableSet(this.walkableZones);
 	}
 
@@ -325,13 +294,18 @@ public class PokeMapImpl implements PokeMap {
 		
 		throw new IllegalArgumentException();
 	}
-
-
+	
+	@Override
+	public Set<Trainer> getTrainers() {
+		return Collections.unmodifiableSet(this.trainers);
+	}
 	@Override
 	public Trainer getTrainer(int x, int y) {
-		for (final Trainer t : this.trainers) {
-			if (t.getTileX() == x && t.getTileY() == y) {
-				return t;
+		if (this.map[x][y] == TileType.TRAINER) {
+			for (final Trainer t : this.trainers) {
+				if (t.getTileX() == x && t.getTileY() == y) {
+					return t;
+				}
 			}
 		}
 		return null;
@@ -340,10 +314,10 @@ public class PokeMapImpl implements PokeMap {
 	private void setPokemonEncounterZones(final MapLayer encounterLayer) {
 		for (final MapObject z : encounterLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
-			final int real_x = (int) (rect.getRectangle().x / TILE_WIDTH);
-			final int real_y = (int) (rect.getRectangle().y / TILE_HEIGHT);
+			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / TILE_WIDTH));
 			final int width = (int) (rect.getRectangle().width / TILE_WIDTH);
-			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT);
+			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT) - 1;
+			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / TILE_HEIGHT)) - height;
 			final int id = Integer.parseInt(rect.getProperties().get("zoneID", String.class));
 			final int avgLvl = Integer.parseInt(rect.getProperties().get("avgLvl", String.class));
 			final String pkmnList = rect.getProperties().get("pokemonList", String.class);
@@ -351,33 +325,33 @@ public class PokeMapImpl implements PokeMap {
 		}
 	}
 
-	//TODO: Cambiare il fatto che i pokemon vengono estratti nel Tile invece che nella Zone, farli generare nella zone
 	@Override
-	public Set<PokemonEncounterTile> getPkmnEncounterTiles() {
-		return Collections.unmodifiableSet(this.pokemonEncounters);
+	public Set<PokemonEncounterZone> getEncounterZones() {
+		return Collections.unmodifiableSet(this.pokemonEncounterZones);
 	}
 	
-	
-
 	@Override
-	public PokemonEncounterTile getPokemonEncounterTile(int x, int y) {
-		for (final PokemonEncounterTile pet : this.pokemonEncounters) {
-			if (pet.getTileX() == x && pet.getTileY() == y) {
-				return pet;
+	public PokemonEncounterZone getEncounterZone(final int x, final int y) {
+		for (final PokemonEncounterZone pez : this.pokemonEncounterZones) {
+			if (pez.contains(x, y)) {
+				return pez;
 			}
 		}
 		return null;
 	}
 	
+	
+	@Override
 	public int getTileUnitX(final int cellX) {
 		return cellX;
 	}
 	
-	
+	@Override
 	public int getTileUnitY(final int cellY) {
 		return this.mapHeight - cellY - 1;
 	}
 	
+	@Override
 	public Tile.TileType[][] getMap() {
 		return Arrays.copyOf(this.map, this.map.length);
 	}

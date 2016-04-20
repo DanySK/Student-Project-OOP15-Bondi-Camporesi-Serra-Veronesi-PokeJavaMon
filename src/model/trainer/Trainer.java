@@ -61,7 +61,16 @@ public class Trainer extends AbstractCharacter {
         return this.isDefeated;
     }
     
+    public int getMoney() {
+    	return this.money;
+    }
+    
+    public int getID() {
+    	return this.trainerID;
+    }
+    
     public String toString() {
-        return "Name= " + this.name + " Defeated= " + this.isDefeated;
+    	System.out.println(this.squad);
+        return "Name= " + this.name + " Defeated= " + this.isDefeated + ", Squad: " + this.squad + ", D: " + this.direction.name();
     }
 }
