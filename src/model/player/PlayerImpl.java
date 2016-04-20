@@ -22,6 +22,7 @@ import model.trainer.Trainer;
 
 public class PlayerImpl extends AbstractCharacter implements Player{
     
+	private String name;
     private final Squad squad;
     private final Box box;
     private final Inventory inv;
@@ -29,8 +30,8 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     private int money = 500;
     
     private static Player SINGLETON;
-    private static int START_X = 50;
-    private static int START_Y = 50;
+    private static int START_X = 278;
+    private static int START_Y = 71;
     
     private PlayerImpl() {
         super(START_X, START_Y, Direction.SOUTH);
@@ -50,6 +51,17 @@ public class PlayerImpl extends AbstractCharacter implements Player{
             }
         }
         return SINGLETON;
+    }
+    
+    
+    @Override
+    public void setName(final String name) {
+    	this.name = name;
+    }
+    
+    @Override
+    public String getName() {
+    	return (this.name == null || this.name.isEmpty()) ? "Player" : this.name;
     }
     
     @Override

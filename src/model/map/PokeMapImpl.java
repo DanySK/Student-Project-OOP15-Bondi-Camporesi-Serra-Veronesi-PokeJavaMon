@@ -120,14 +120,14 @@ public class PokeMapImpl implements PokeMap {
 				this.map[tileX][tileY] = TileType.TREE;
 				
 			} else if (cellProperty.equals(TileType.POKEMON_ENCOUNTER.toString())) {
-				this.map[tileX / this.mapWidth][tileY / this.mapHeight] = TileType.POKEMON_ENCOUNTER;
+				this.map[tileX][tileY] = TileType.POKEMON_ENCOUNTER;
 				
 			} else if (cellProperty.equals(TileType.SIGN.toString())) {
 				this.collisions.add(p);
 				this.map[tileX][tileY] = TileType.SIGN;
 				
 			} else if (cellProperty.equals(TileType.TRAINER.toString())) {
-				this.map[tileX / this.mapWidth][tileY / this.mapHeight] = TileType.TRAINER;
+				this.map[tileX][tileY] = TileType.TRAINER;
 				Direction d = Direction.NORTH;
 				if (mp.get("FRONT_ID").equals("-1")) {
 					d = Direction.SOUTH;
@@ -200,10 +200,8 @@ public class PokeMapImpl implements PokeMap {
 		} 
 		for (final MapObject mobj : doorLayer.getObjects()) {
 			if (mobj.getProperties().containsKey("DOOR_X")) {
-				final int pixel_x = mobj.getProperties().get("x", Integer.class);
-				final int pixel_y = mobj.getProperties().get("y", Integer.class);
-				final int real_x = (int) (pixel_x / TILE_WIDTH); 
-				final int real_y = (int) (pixel_y / TILE_HEIGHT);
+				final int real_x = this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / TILE_WIDTH);
+				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / TILE_HEIGHT);
 				final int to_x = Integer.parseInt((String)mobj.getProperties().get("DOOR_X"));
 				final int to_y = Integer.parseInt((String)mobj.getProperties().get("DOOR_Y"));
 				final Teleport tmp = new Teleport(real_x, real_y, to_x, to_y);
@@ -234,12 +232,10 @@ public class PokeMapImpl implements PokeMap {
 			throw new IllegalArgumentException("Layer does not contain objects");
 		} 
 		for (final MapObject mobj : signLayer.getObjects()) {
-			if (mobj.getProperties().containsKey("SIGN_TEXT")) {
-				final int pixel_x = Integer.parseInt((String)mobj.getProperties().get("x"));
-				final int pixel_y = Integer.parseInt((String)mobj.getProperties().get("y"));				
-				final int real_x = (int) (pixel_x / TILE_WIDTH);
-				final int real_y = (int) (pixel_y / TILE_HEIGHT);
-				final Sign tmp = new Sign(real_x, real_y, (String) mobj.getProperties().get("SIGN_TEXT"));
+			if (mobj.getProperties().containsKey("signMessage")) {
+				final int real_x = this.getTileUnitX(this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / TILE_WIDTH));
+				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / TILE_HEIGHT);
+				final Sign tmp = new Sign(real_x, real_y, (String) mobj.getProperties().get("signMessage"));
 				this.signs.add(tmp);
 			}
 		}
@@ -270,9 +266,9 @@ public class PokeMapImpl implements PokeMap {
 	private void setWalkableZones(final MapLayer zoneLayer) {
 		for (final MapObject z : zoneLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
-			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / TILE_WIDTH));
 			final int width = (int) (rect.getRectangle().width / TILE_WIDTH);
 			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT) - 1;
+			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / TILE_WIDTH));
 			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / TILE_HEIGHT)) - height;
 			final String musicPath = (String) z.getProperties().get("musicPath");
 			final String name = (String) z.getProperties().get("zoneType");
@@ -348,9 +344,11 @@ public class PokeMapImpl implements PokeMap {
 	
 	@Override
 	public PokemonEncounterZone getEncounterZone(final int x, final int y) {
-		for (final PokemonEncounterZone pez : this.pokemonEncounterZones) {
-			if (pez.contains(x, y)) {
-				return pez;
+		if (this.map[x][y] == TileType.POKEMON_ENCOUNTER) {
+			for (final PokemonEncounterZone pez : this.pokemonEncounterZones) {
+				if (pez.contains(x, y)) {
+					return pez;
+				}
 			}
 		}
 		return null;

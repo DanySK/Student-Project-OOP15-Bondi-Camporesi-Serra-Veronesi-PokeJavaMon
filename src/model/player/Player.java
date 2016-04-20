@@ -32,4 +32,8 @@ public interface Player extends Character{
     public void pokemonCenter();
     
     public void move(final Direction d, final PokeMap pm);
+    
+    public void setName(final String name);
+    
+    public String getName();
 }

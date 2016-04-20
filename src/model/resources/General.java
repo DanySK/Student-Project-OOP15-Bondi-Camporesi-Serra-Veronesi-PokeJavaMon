@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.box.Box;
 import model.inventory.Inventory;
+import model.map.PokeMap;
 import model.pokemon.Pokemon;
 import model.trainer.Trainer;
 import model.utilities.Pair;
@@ -15,6 +16,7 @@ public class General {
     private Inventory inv;
     private int money;  
     private Pair<Float, Float> position;
+    private PokeMap map;
     
     public General(List<Pokemon> team, Box box, List<Trainer> trainers, Inventory inv, int money, Pair<Float, Float> position) {
         super();
