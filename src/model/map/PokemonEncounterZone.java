@@ -62,6 +62,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
         return false;
     }
     
+    //TODO: Need testing
     protected PokemonInBattle getPokemonEncounter() {
         if (!encountered) {
             throw new IllegalStateException("Cannot encounter Pokemon if the value is false");
@@ -95,6 +96,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
             }
         }
         
+        this.encountered = false;
         throw new IllegalStateException("random chance not in range of chanceMap");
         
         
@@ -108,8 +110,11 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
             return (double) PokemonRarity.UNCOMMON.getCoeff() / 17;
         case RARE :
             return (double) PokemonRarity.RARE.getCoeff() / 9.1;
+        case LEGENDARY :
+        	return (double) PokemonRarity.LEGENDARY.getCoeff() / 7;
+        case STARTER :
         default :
-            throw new IllegalArgumentException();
+        	throw new IllegalArgumentException("PokemonRarity not listed or is Starter so cannot be found");
         }
     }
     

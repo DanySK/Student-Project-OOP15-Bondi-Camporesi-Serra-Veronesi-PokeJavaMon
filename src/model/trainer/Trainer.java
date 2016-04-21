@@ -76,7 +76,11 @@ public class Trainer extends AbstractCharacter {
     }
 
 	@Override
-	public void move(Direction d, PokeMap pm) {
+	public void move(final Direction d, final PokeMap pm) {
 	
+	}
+	
+	public void turn(final Direction d) {
+		this.direction = d;
 	}
 }

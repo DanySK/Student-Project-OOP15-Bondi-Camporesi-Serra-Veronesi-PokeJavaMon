@@ -69,7 +69,7 @@ public class MainController {
     }
     
     public static boolean isKeyPressed() {
-        return keyboardController.isKeyPressed();
+        return keyboardController != null && keyboardController.isKeyPressed();
     }
     
     public static void main(String[] args) {

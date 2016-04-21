@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="197">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="246">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
   <tile id="0">
@@ -2034,24 +2034,22 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="initMessage" value="What's gucci"/>
-    <property name="lostMessage" value="bruh"/>
+    <property name="initMessage" value="That's your final challenge."/>
+    <property name="lostMessage" value="Sorry, you may not pass."/>
     <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="bruh"/>
+    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="331">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
@@ -2065,31 +2063,30 @@
   </tile>
   <tile id="332">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="money" type="int" value="0"/>
+    <property name="initMessage" value="The moment has come, show me your final project!"/>
+    <property name="lostMessage" value="Try again next year."/>
+    <property name="money" type="int" value="5000"/>
     <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
+    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="333">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
+    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
+    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
@@ -2103,9 +2100,9 @@
   </tile>
   <tile id="334">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
+    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
     <property name="4_POKEMON=LVL" value=""/>
     <property name="5_POKEMON=LVL" value=""/>
     <property name="6_POKEMON=LVL" value=""/>
@@ -2114,7 +2111,7 @@
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2248,31 +2245,29 @@
   </tile>
   <tile id="356">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=36"/>
-    <property name="4_POKEMON=LVL" value="RAICHU=40"/>
-    <property name="5_POKEMON=LVL" value="SANDSLASH=40"/>
-    <property name="6_POKEMON=LVL" value="RATICATE=40"/>
+    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
+    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
+    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="330"/>
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="382"/>
+    <property name="initMessage" value="That's your final challenge."/>
+    <property name="lostMessage" value="Sorry, you may not pass."/>
     <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
+    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="357">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="331"/>
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="-1"/>
@@ -2286,31 +2281,30 @@
   </tile>
   <tile id="358">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="332"/>
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="money" type="int" value="0"/>
+    <property name="initMessage" value="The moment has come, show me your final project!"/>
+    <property name="lostMessage" value="Try again next year."/>
+    <property name="money" type="int" value="5000"/>
     <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
+    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="359">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
+    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
+    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="333"/>
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="-1"/>
@@ -2324,9 +2318,9 @@
   </tile>
   <tile id="360">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
+    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
     <property name="4_POKEMON=LVL" value=""/>
     <property name="5_POKEMON=LVL" value=""/>
     <property name="6_POKEMON=LVL" value=""/>
@@ -2335,7 +2329,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="386"/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2469,34 +2463,29 @@
   </tile>
   <tile id="382">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=36"/>
-    <property name="4_POKEMON=LVL" value="RAICHU=40"/>
-    <property name="5_POKEMON=LVL" value="SANDSLASH=40"/>
-    <property name="6_POKEMON=LVL" value="RATICATE=40"/>
+    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
+    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
+    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="330"/>
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
+    <property name="initMessage" value="That's your final challenge."/>
+    <property name="lostMessage" value="Sorry, you may not pass."/>
     <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
+    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="383">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="331"/>
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
@@ -2513,34 +2502,30 @@
   </tile>
   <tile id="384">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="332"/>
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" type="int" value="0"/>
+    <property name="initMessage" value="The moment has come, show me your final project!"/>
+    <property name="lostMessage" value="Try again next year."/>
+    <property name="money" type="int" value="5000"/>
     <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
+    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="385">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
+    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
+    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="333"/>
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
@@ -2557,9 +2542,9 @@
   </tile>
   <tile id="386">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
+    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
     <property name="4_POKEMON=LVL" value=""/>
     <property name="5_POKEMON=LVL" value=""/>
     <property name="6_POKEMON=LVL" value=""/>
@@ -2570,7 +2555,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
@@ -2705,34 +2690,29 @@
   </tile>
   <tile id="408">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=36"/>
-    <property name="4_POKEMON=LVL" value="RAICHU=40"/>
-    <property name="5_POKEMON=LVL" value="SANDSLASH=40"/>
-    <property name="6_POKEMON=LVL" value="RATICATE=40"/>
+    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
+    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
+    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="330"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
+    <property name="initMessage" value="That's your final challenge."/>
+    <property name="lostMessage" value="Sorry, you may not pass."/>
     <property name="money" type="int" value="2000"/>
     <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
+    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="409">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="331"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="357"/>
@@ -2749,34 +2729,30 @@
   </tile>
   <tile id="410">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="332"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" type="int" value="0"/>
+    <property name="initMessage" value="The moment has come, show me your final project!"/>
+    <property name="lostMessage" value="Try again next year."/>
+    <property name="money" type="int" value="5000"/>
     <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
+    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="411">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
+    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
+    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="333"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="359"/>
@@ -2793,9 +2769,9 @@
   </tile>
   <tile id="412">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
+    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
+    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
     <property name="4_POKEMON=LVL" value=""/>
     <property name="5_POKEMON=LVL" value=""/>
     <property name="6_POKEMON=LVL" value=""/>
@@ -2806,7 +2782,7 @@
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
-    <property name="name" value=""/>
+    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
     <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
@@ -4900,15 +4876,15 @@
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   H4sIAAAAAAAAC+2dS6wk1XmAT5EoDw8gJWJmM4kAGRjAUvDGisdEMi9LtjexgYkEw2OyiSxbxo8xjGGkPJBxwDYxGGYb3dgY8PCYRRJn4UcuM4Bh4cTsYg847JI4EnLAiuw4ivIfbhV97rn1rlP1/1X9fdKnvt1dt7vune5vTp1bXfUR59xHcLYCrBP+Nf+ezJaXi2e55bg/27Lq5/098T9dte8s+f146RWsG/SKXsF8sDouzx93I6VVz6PdJ3rVv1e4Xtvi/nnvz4Y5Vq+Grle0jhtVz6PdJ3rVr1djrOv/YCs1e3VD9N6Or8+hV36dnxf/L7rtYC69olf0ajm9CvHX/1X8E7d1+Rf55Z/nl3+WX/5pfjlWr7qsg1/nV/P1LvS33Z5Lr+iVdq9eM+bPxTvFu0o8Gt131Nnr1T/kl0Wv2jpmr9p6h/hXkUfEJ3PpFb1aWq/uzIa1yvuQ+HCJx6L7jjk7vSre6xefsXqfz61Xj1cYrONG1fNUvY8+IV7fwo93XL7pcdatV1Xtiju1lF4N6UyqcVXhE+JT4tPBpfdEft+T+e0nnJ1e1b3P59KrFuu4UfU8deOca12z+4Pl97r+Vj1O/J46t+V7f46+TblXYzZrqrFUm2WLXj0nfk98QTyQX3pfzO8rbn/R2elVghaYXK8l9sq3qu1YZY6uY6+mGm/FzxOOs16Nrhc+H3xNr8Zdr5S9ulC8KHKfm75XXbat5ug69ip1h/puG9b5mqNXY69Xyl69V7wi8kpHr5bYq7GaNcUYqk/H2rTKUq8s7uuaYJ02Yquep65Xh92WN4ifEW8XT4o3igfz+yz0auhc/9gWf0ugV9ONnVKMs8JlLPRq3WnqVVkz2nZmyl5dbrhZH69YZ8u9GqNZGh1KKb3Sp22v+nSm0M+Rn5d7fs1jDu2V1f0gumzDrkuvptjOS/1c9EqfKXq1v+Vj0itbvUrdLGstYnw1P+jVNL26Lmu37fiByLJlDiy4V1OMv/o2kV7pM4dehe7K3IZ3Tr1q26q2vSqaRa8YX60b9MqW8edxtNcnZbOmHg/Rq+VBr2xpsVepmqXdmyrb7HtFr2wwh14Vf1/0f1uc4/wVvdreqxTjpbaPUbdc233bLe3fvu7MoVfh7fRq/r2yYJdWWfr84LrT1Kt3uWb3Nywf96rr46xbry7LXfdejTVvVfSn7DOxZe5z9MoK9MqW9Gr8rhW9KvtMbJlXOnplBXplS7YHx9W3rehV+JnYG93qc7Fln5OlVzagV7akV+NbN0flP7//cuBhx/yVJeiVLemVbrPolW3olS2X3KuqdqV+7CH6Pt0TeLhiOXqlA/sz2HLJ8+2WevVT8b9yXw9up1e2SdGr4vNxB+hVkl5ZHF+9PKIavfLHwbgwc5teadYGvZoHKXrVdvxFr+iVsV69aZdeFb8PeqWDpV5VjdPo1cpdDY7dK/+1Rl9SK9uAflz1pq+37FX4+0jdq1THZdc+jvvYWOpVm3GXxV41NaSLca9SPvaQ1oW9WkqzyizrVdnvY4xe7a14rtiy90i8zFekww/WKPcfold6vTqvh+cn6ptGr34o/ijxc3fpVax2Z5bUq6r3Qdyr+Otwv4w7XHWzfKvk/k16pderPl6eqFl92nCOPO/uEj+YuUNtevWG+DPx7Cxdt4b0ao7NKvsZLPcqvD8eb5X1yvsF8YuBXxI/u3XfInuVYvwR96rv94/RqxQ/49BxVJVNvTor2/JnPdchda/m0LCm9bXWq6oxVdtefVL8VOCnHb2iV/Sqj1YaNcdelY27tHs1xRx/Xa+sudRevT9zm7tL3OOPpVrx/fvk+y8WLxEvrema5V71bVmfx/tD5w61UbNXcZvKelW3nRj26gGn06v7s+1+ObpOr7bsc67UVOeZGdqrPn8HvFK+5yrxavGaBfYqtUWL6rTcqzrrlpu6Vzdm2/2G+Kz4nPgEvdp2X1Wzbmto1hx7lVV4p3hX4NHotqM1j7kOvQo/hxN+HsdKr5r2U6jqVZnFuQ40exWbolfa52vvMh5q2v+qz98v23ymu86qdtQZ/9/etUtVPiQ+HHgsuu1YzXOtQ6/8fu2/Jpe/nvsbbmv/dqu9qtuvoY1a46tT4svizfnXKXtVpvbrq8ql9OpeeY+E9nmMMp8QnxSfzj0R3PZUfn3de7VfLt8jXi7+gbPXq7NKvg5bFl+3NN8e9uoO8UjiXlU9r/bri1718znxBbd1bEx/+WJw24H8Or2aV6/ivwvOoVfeB8QHs7Tbg1XPq/36olf9fbXktueDr9e9V9fJ5fVuq99/5Fa9KtTuVdyhuv0Ymnr1iPj1wEfddL16Jpdezb9X8fzVEdc8d1V8Bmdoz9a5V+HnnHdlb7Zq86di2Kil9Mrv0/BgiV9x0+x/dXfu2J+xnnOvNNZprL8Pxq0qPoMztFl9enVmB7VfI3W9qhpHWelVmVVz7N+R5nxb/JYY31fVqrBZY+7fPuVxIOhVN6foVbw/e9ygx8THc4+XXKdXO+emrPWqq3e76jHMFPuaW4FeTdOr8LjHTb2K92ePe/WM25pjPyU+W3K9Ta+qPoPdxj3ZPHrVxyl61ZWltqcP9GqaXnUZX8X7s4+xPRg2tKvvnEGv+mqxV7CCXtnrVUrXsVeppVd2oFfL7VXbbVR6Ra/mAr2y0auUzeo6p0av6NVcoFd2epWiWV3WiV7Rq7lBr2z1akizuq4TvaJXc4NezadXTffRK3q1dOgVvaJX9GouaPXqXHnNn9dSerW9SUNbRa/o1VzR6NW5FeOmLscepVf0il6tHxq9GnoeCXpFr+jVekKv6BW9oldzgV7RK3pFr+aChV4Vc+/n0yt6ZVB6ZQcLvQrP6Uyv6JU16ZUdLPTqumzrvIEH6BW9Mii9soOFXjF/Ra8sS6+2kx8zcKPJsZ6bXq1fr87J3KHdmdvs457MbZyWxzit8Pufc6/6Hsc4tSl+jvvlhffjbOuy8GDwNb2iV6l6dSTB74Fedcc/zkvihdL8NvqxbNP9XXwp0c/iH+Oz8nivZNvP33V7fnmcXtGrmvtPK6rdkrn1SjqzcbFcXtrgOxqWze8/1LVZqXr1FXmsW6JehdIrekWvltGrq+TyEvHm3GtKrr+vYtno/rd61Xa8lqpXVZ2iV/SqqVd91km7AXNyjF4VvWm4/tbX4RgpXD5vVeOYrRiPjdGrz4iP0St65eiVBbV7dbVbNaeqV1fl930ge/Nc1m/5gXxcVSzP+Kq769ircF+ApuX9fHhdk+jVtGr26ia3cxuwqlfSpo27nDt0tnxd6K/L7YfoVX/n3Ks+xuOrNt9TN0+0jnNImir2yl/f8T0GetW47xW9oldt7sP0KvaqmCs31StN6NX49umVt6pH69qr+Ji050/0GtDoVTFnVXiL296r+P5wOXqVVnrVTnq183UTvw6meN6pe1XMWcXemi9TdX8xz0Wv0r/u1q1X4Xx72++jV9v1n4u/Ptv6bLy/9J+PP+zSWfW8U/aq6/5UbA+O7zr2ivHVcH1TssD4+hCt9Krj/u/MX00gvWonvdruuvSqbJ/2uv3b6dW4+lYVY/uufiLfDqBX9GopvfLzUbe6yn65yB3bj9H+om5XoL+een9RTTR61aZVt9XcVzRL+/3TVnqVxoX2Kp6XKp3Piueq4l7VzcGHc/X0Kr1+/+4l7Y9Nr9K4pF5V7Y8Q77sQ9+ri/H7//cXncy6LxmDh+Cq8PdXnnTWx1qt3jajWz0Sv0riUXjWNhcLxUNwr/70nsy39MmXHjAl7NcbxZDShV+NLr9K4hF7lx+trZVmL/O3Hc6uWOR44xvH6NKFX40uv0riEXllwztCr8WV/0TTOvVcwHHo1vmGvPijubum9bsvwtj3Zzl6NuW+3JekVWOtVCi33qotFry6LtifLetV03OILxYsi9wXfr/1v1kZ6BfRqfPueO6vo1fvl+4f26r3iFZFXuuX06gviF2v8kqNXS4Be2bVoTTxf36dXN4ifEW8XT4o3igfd/HtV+EnxU85tVPnp4PvODKRX84JebXdvpObPEfYqnK+v69UrLfTnYTocfb/2v1kb67b/4l5tRtfp1TKgV9tN1ai4e30a2Gd81aZXr7hl9Irx1fpBr3Z2ZujzV3Vpyl41bR/G36/9b9bGuvmrR8Sv1/ioqx6b0av5QK92NmXIczc1iV71l78P6pPvc9rqfBNjnIeCXvXvSdX306txpFf6+N/Fl+UXdn+gP1/qwQrD5X6cDT/PF73q35Oq76dX40iv9PG/i2/IL+xU7mnxFfH2Ck8Hy75Cr0odcx/5ofvU0yt6NWf878KfD/Um8ea8Q3XnTT0VLJviPKr0arpeMd9Or+ZO0as7xCMte1UsS6/s92qv678/F73a2asxpVfNFL16QHywoVWF4bL0ynavhvwc9MqG9GpF0au+0qu09hkHFdKrZUqvVtArW9IrjKVXK3xvBvZq6POrvx4suZRe3enePPfcDo9G9x119KpJerUiwfhq8PNrvx4suZRePSQ+XOKx6L5jjl41Sa9W+N/F6YoWnQwsu/80vUruUnr1hPiU+HRw6T2R3/dkfvsJR6+aTNEr7WO2pzp2e91j3x041jrQq+323ffAa6lXz4nfE18QD+SX3hfz+4rbX3T0qslU7/ND8m/3x+LL8vUvKnw5uKyyeJyqx6h63DHHiWO0sep5tF8Ploz3l+qipV4Vvlpym/d5t5qXp1f1purVXfJvdzSrblLbXhWPc13mrri+hbLc5i8S/Rza0KvtLq1XTdKrZscaXzX1qmnMtL9Fs3yrLs/HYvQKQy31aleD9Kq9Y42vqrYDm8ZXxTK+V15/LpH/znbqzyfiW0Wv2vt25zab9gGXZTp/3kv7NVwmvVqmqcdX8WXZeKpLr6RNh27J/y4XXsrtG/Sqvb4rvlfh8WfL7NMri82iV8s09fgqvqzqU9OcfNiruFUn6VUni6aEvXpMfDz3uNvZq/Aceftcv4Zp9s5Sr5i/sterpu3AqvksxlcrxuhV2ISwV8+4rXNJnRKfdTt7FZ4j70o3fq9Sd4teLdPUvSqbXy/bFmyad2d8NW6vLnD124P+HHn+vHi+aQfddL1K1SzNXrUx/B56ZaNXVXNZbebdd0mPChlfpe9V0/zVxeKlCX2H0+3VkYGP16VX8bZ2fJ1e2exV3VxWl14xvkrXq9+Uy0LfpuDvgpvFbX7Zq8RLxJsTeI34Pje8V3M5/lW8rR1fp1f6vSrb3quaT2+7/xXzV+l6VTZ/Hv4t0PcqbIbvVZfG1Nn1sebeq6JBhyuu0yv9XjXto9Blvt3L/FXaXpXNn9Or9L3qOsfOfLudXtXtc1U1rirmuhhfpe1V2fy59V5dEP0sqXoVPy69mo+ptwe7tCluVDjnxfgqba+q5s9vEa/ucHsfuz6WXz7uQGrjbbK23uvcRugY66XdBMum3r+9y37s8Wecy8ZX++T/fWnTDi90W58dpFftetV1/vyajsunfCy//Fx7Nea5YXCczw+2GVNVbT+G46vrxOtrPECvOvWqyzZZm+WbPmdSaGX+augclrdpe1D7/bx0x/78YHzZtM97sVxTq8Jm0atqx+7Vz111p347o1eY1rE/Pxhfhr36jmzTfVv8lhiPr5rGZ/FYjV6V26Y/Zfs6xMuXLdPUKcZXmNqxjyOc4hjDbZ3q5xgLrV6V7esQL1+2TFWf4nEXvcJUao1LpuxAW/w6fFleg/fXuMRele3rEC9ftgzzV/Rqai10wgr+d/GNrPz8N8+Kz828V133KUi5P0PbXtX9LPQK6dUK/7sY+xyDTc+f+t+36MBNbtx9EJq81Q1rlZdeIb1aEfbqlHiT//tA/vVce+Vtux0WmnL/9iGNCqVXSK9WxL26QzyygF4VTtEr7dfz2NIrXenVinh78AHxwZlvDzbpG3OneFfuUbezV+H94TLr1iovvdKVXq2Ie/VM7lJ7VXTmIfHh3GNuZ6/C+8Nl1q1VXnqlK71aUbV/2Jz3v6qzaM0T4pPiU+IJt7NXxf1P555w69kqL73SlV6Vo7FvmFavnhNfEA+IL7qdvQrvfyFYZt1a5aVXutIrO2j1yh9r5nlXv//Vq8HX4bHYtV+/U0uvdKVXdtDqVdm+WXX7X4X7Umm/fqfW9+qyXHo1vfTKDlq9GrI/g/brd2oZX+lKr+wwt15pv3Y1pFe60is70Cv70itd6ZUdtPYX7dMr7detlvRKV3plB3plX3qlK72yg0avvF17pf2a1ZRe6Uqv7KDVK2/bXmm/XrWlV7pq9sriMUY10exVaNwr7fWxJL3SVfP47d6bz1ipffx2beiVfemVrql65Y9dUHbckbpjdfr3xK5s5fsalo+fI3x8epVO3yi/z3uxH7v2+liSXumasldlxx1J3av42Cf0ahz35h4xsC6WpFe6puxV2XFHmnr1WmCbXsXHPqFX6d0bqb0+lqRXuqbsVXHckZNuddyRXzq3cVWF/hgAYa/anI8lPvYJvUovvaqWXumaslfeV93OcdMY+rHY845ejeGZkdrrY0l6pWvqXpVt543Vq6mOUzwV9Go8z5XXyHk9PD/b/jgcT0bXMXrV9lx3/hhLYYO6nO/uVkevxjLuVVd3GfgZYvfLa+Q9Pby8pFdDxle/1VLt35dVU/XqHPm3213inoTz7XXPQa/SucReXSevketbelvw9QF6ZcpUvZJuHHrJuY3i39Lrr8vtG6l6Vfcc9CqdS+xV3JUqLyi5LXycpl5lA6RXzabsVdiRwtS9qnoOepXOde5VmeHj0Ctd6ZUdrPTqwR7SK3o1hWwP2sFKrxhfVc9H0StdU/VqT+Y2d5e4J2Gv6p6DXqVzib3yDm2Vl/l2XcfYn6GtfT6PUyW9SudSe+WlV/OWXtmBXk3jkLmse53bCO3aKxwmvbKD1V5pr88YjtEr7Z9pHaRXdqBX9o23B7XXZ93U7NUv5fueyVb+b8/HoVdppVfV0itdtY+HfHcgx0PWfz146VW19EpXzff5EpszBKu98nKc0S3pla7r3ghLaPVqVw+1X7da0itd6ZUd6JV96ZWu9MoOKXuVGVL7NZ5SeqUrvbIDvbIvvdKVXtmBXtmXXulKr+wwVq8eEx/PPe7o1RDpla70yg5j9eoZt3WOtVPisy59j5p6qP0aTym90pVe2WGsXvlj/N7Tw7a9auqh9ms8pfRKV3plh7F61adVXYx7SK9wLOmVHazMtw/tF73CsaRXdrDWK+bbd0qvdKVXdrDeq8MdpVeYWnplhzn0qu1j0CscQ3plhzF6VXZObLlto81cVVWD2oyr6BWOIb2ywxi98u+vyyJ3J+hV07hqyb0qfo/0anrplR00e3WheFHgPtd9fEWvcGy1jy+ayiWg2av3ilcEXumqe9VmXLXkXrE9qGeqXr2mKL3aadde3SDe6Lb2U/eXB1378RW9wqmkV3awMn/l91d/u2N8VSa90lWjV3+duc3Pi/eIn8v9mPhR8Vrx3SK9GubQ+faqXrX9uyC9wjHU6NXvS49+VfyJc5s/EL8pfliuf0g8Q8zo1WCLVpyTuUPSp83Qc/zvOL//bRWW9aqL9ArHkF7Zwcr+onUNYv92eqUpvbKD9V71Vfs1nlJ6pSu9soOV8w9itfRKV3plB3plX3qlq2av3iX+rvg74l7xV+iV+usB66VXumr06j9kPPXv4r+J/yz+k/h98e/FvxP/1tErtCm90lWjV9IjJ11y0if3fVF65aRbTvrlpGO+Z50ej17hVNIrXTV6Jdt7Trb7nGz/OdkOdLI96GS70Mn2oZPtRL+9SK/QpPRKV81efUj8sPhNue0H4k8cvdJ+PWC99EpXemUHemVfeqUrvbIDvbIvvdKVXtmBXtmXXulKr+xAr+xLr3TV6NW75d/5WvGj4sfEz+XeI34+e/N4M/QKTUqvdOV4fXagV/alV7pq9+pktpJe6b8esF56pav2+SaOZys534T+6wHrpVe6ar7Xl9qdvgzpNeK6CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2+MhAra3PWOsFAPr49/ZXs5V/2cGxelW3Pl+tccz1AgB9ij506ZR2rzTWCwD0CftQ14CvTdyrsrFU3Kt76RXAWuHf223HLVq9qmoX4yuA9SLslaX5q7p1amoXvQJYJkWvLM1flT1X3Tx73Cx6BbBMrPYqnptq2yp6BbBc6np1X+Y2rYyvusxh0SuAZWJtv8wh4z16BQBTwv7tAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAnHSgeAuWDtHIQAAFUUvfoX8Yfij6ImfY1eAYARil69Lr4h/ozxFQAYpejVmWc4d5Z49hndeqV5blVtAWBawvmrNwaeW3nqc9eXnaO+7lz1dcaPFT8uY0sAfebeq7Lu9O1V3e1xv+gVwPQM6VXdttKUvWoaD/m/GWxmbjO87btyvWxcVndJrwB0Gdqruse8L2/ElOOrKh8R/ybw0ax8O5JeAdhlrF5NMd9eN+cU94VeAcyfue4v2na9h/YqfBx6BaDL3HtVtz9ril5VjdfoFcD0zL1XbcdX3xX/MXAz6k+8fNP+EfQKYHqq3vdt5rKt9+q+/G+AdS2rGj+F14u/G4S30SuA6Znz+EpbAJiWul7dF+2zZKlXALB+MMYAAAAAAAAAAAAAAAAAWAb/DzYGmH1AfgUA
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3cSU7DMBSAYdf3QAyXQAw36Aox3IAVYrgO5+MieEdV1UlbJX6N+b5lntR69espiZISAAAAAAAAAJy21+gDAN3TGaBnhzROD4G5jPXlIbf5H4C56RCwJNc7djAdA1rSHCDaPh16m+i+FUCUljuX/Q6o0Qem9hN9ABgw1jxN7N92ozQLgP/GPgT05MyzQiDAFPvSvr9hNwMA+GM3Anqja0CPtA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE7L9yr6BAAAAAAAAAAAAHC8tffgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADonG/zAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADHWK+iTwBQp1EAAAAAAAAAAAAAAAAATO0yp3SVD58BtHZXenRfadLQDAAAAAAAAABgLs85pZeNdxY2vyW+PQOI9Fl69FVp0tAMAAAAAAAAWJ7znNJF5Rng0AygtZvSo9tKk4ZmABEeS5Oe8vg1gGjvpUsfefwaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAUvwCat5XLkB+BQA=
+   H4sIAAAAAAAAC+3d0U3bQBwHYNtBnQLawhBIFDaAiopCN+AFRNt1QDBFQWqHqFSpQ6RiivqNgLjYhvjOZ3/fY85KTk7y8//sO7soAAAAAAAAAGDYTlN3ABg9OQOM2XMZNy/bbwtdrVfdtv8Z+D2u2m2kz+F5sfJFjgGpySEgd3IM+jPrOF6eApkDpLB4PlIOAVMQM+vkKhAiH4Apaco8mQgAjJ16CADgdVZRL7V9D7UZAMADtREwNnINGCPZBqR0Zp04AAAATFronv4AMERdnxUCAABAe2+NuWjB2ByArrYdOwAeeSMXAQAAAAAG49raOgCARuYY5+3Q9wcAADzx27lxAGCErGUFAAAAAAAAAAAAAHLzz1ovAAAAAAAAiKZ0nyIAAAAAIvH8QAAYLsdpiG/mfwcAAAAAAIzYgftKAgA0Mn8EAOBl1tVRwED9cW4cAACC1oznAQAAAAAAAAAAAOjBkXmq2bi0Bg8AJumTeg0AAACAEZm75gUAAJO2b0wAAAAAAAAA0KsfrssCwItdOY4CCbgfJAAAAAAAALAKN+Y9AAAAANCjbXPfAQAge2tP6vpDdT4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQmXmZugcAAAAAAAAAAADTNKtS9yA/5wv7bMP+AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBGm1VRbFXd2wBi263zaC+QScvaAAAAAAAAAAD6clIVxZeFOQsfy3AbQErf6jz6HsikZW0AAAAAAABAft5VRfE+cA1wWRtAbDt1Hn0IZNKyNoAUPteZdFw1vwaQ2kWdS1+r5tcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF7rvkzdAwAAYvml9gMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyM5dmboHAAAA5Ow28rjyr3EsAAAAAAAAAAAAAAAAAAAAAAAAAC38ByM2QQ9AfgUA
   </data>
  </layer>
- <objectgroup name="doorLayer">
+ <objectgroup name="doorLayer" visible="0">
   <object id="46" x="4464" y="720" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="28"/>
@@ -5354,7 +5330,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="signLayer">
+ <objectgroup name="signLayer" visible="0">
   <object id="132" x="512" y="1824" width="16" height="16">
    <properties>
     <property name="signMessage" value="Nobody's home"/>
@@ -5481,14 +5457,14 @@
   </object>
   <object id="150" x="656" y="1328" width="848" height="752">
    <properties>
-    <property name="avgLvl" type="int" value="10"/>
+    <property name="avgLvl" type="int" value="7"/>
     <property name="pokemonList" value="RATTATA PIDGEY SANDSHREW"/>
     <property name="zoneID" type="int" value="2"/>
    </properties>
   </object>
   <object id="151" x="480" y="1760" width="128" height="112">
    <properties>
-    <property name="avgLvl" type="int" value="7"/>
+    <property name="avgLvl" type="int" value="6"/>
     <property name="pokemonList" value="PIKACHU"/>
     <property name="zoneID" type="int" value="1"/>
    </properties>
@@ -5502,21 +5478,21 @@
   </object>
   <object id="153" x="128" y="3968" width="432" height="752">
    <properties>
-    <property name="avgLvl" type="int" value="12"/>
+    <property name="avgLvl" type="int" value="10"/>
     <property name="pokemonList" value="ZUBAT "/>
     <property name="zoneID" type="int" value="3"/>
    </properties>
   </object>
   <object id="154" x="1040" y="656" width="256" height="80">
    <properties>
-    <property name="avgLvl" type="int" value="19"/>
+    <property name="avgLvl" type="int" value="18"/>
     <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL SANDSHREW"/>
     <property name="zoneID" type="int" value="5"/>
    </properties>
   </object>
   <object id="155" x="2208" y="736" width="176" height="320">
    <properties>
-    <property name="avgLvl" type="int" value="22"/>
+    <property name="avgLvl" type="int" value="27"/>
     <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL TENTACRUEL SANDSHREW SANDSLASH"/>
     <property name="zoneID" type="int" value="6"/>
    </properties>
@@ -5644,6 +5620,697 @@
    <properties>
     <property name="music" value="lab.mp3"/>
     <property name="zoneName" value="LAB"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="trainerLayer">
+  <object id="197" x="4016" y="1184" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
+    <property name="5_POKEMON=LVL" value=""/>
+    <property name="6_POKEMON=LVL" value=""/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Pianini"/>
+    <property name="trainerID" type="int" value="1"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="199" x="4016" y="640" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="GOLBAT=22"/>
+    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
+    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="This is your first real challenge, bring it on!"/>
+    <property name="lostMessage" value="Excellent."/>
+    <property name="money" type="int" value="2500"/>
+    <property name="name" value="Prof. Croatti"/>
+    <property name="trainerID" type="int" value="22"/>
+    <property name="winMessage" value="Try again."/>
+   </properties>
+  </object>
+  <object id="200" x="4016" y="1824" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=27"/>
+    <property name="3_POKEMON=LVL" value="SANSLASH=30"/>
+    <property name="4_POKEMON=LVL" value="CHARMELEON=32"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Casadei"/>
+    <property name="trainerID" type="int" value="4"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="201" x="3824" y="3056" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="202" x="3760" y="1888" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="203" x="3648" y="1727" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="204" x="3680" y="1263" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
+    <property name="5_POKEMON=LVL" value=""/>
+    <property name="6_POKEMON=LVL" value=""/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Pianini"/>
+    <property name="trainerID" type="int" value="1"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="205" x="224" y="4480" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="ZUBAT=12"/>
+    <property name="2_POKEMON=LVL" value="SANDSLASH=12"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="I don't even know how I got here"/>
+    <property name="lostMessage" value="I guess I'll search the exit now"/>
+    <property name="money" type="int" value="700"/>
+    <property name="name" value="Richie Rich Boy"/>
+    <property name="trainerID" type="int" value="8"/>
+    <property name="winMessage" value="Can you show me the exit?"/>
+   </properties>
+  </object>
+  <object id="206" x="624" y="2368" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="Heya"/>
+    <property name="lostMessage" value="Goodbye"/>
+    <property name="money" type="int" value="200"/>
+    <property name="name" value="Mike Preschooler"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value="See ya"/>
+   </properties>
+  </object>
+  <object id="207" x="880" y="2496" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RATTATA=5"/>
+    <property name="2_POKEMON=LVL" value="PIDGEY=5"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="Fight me"/>
+    <property name="lostMessage" value="Nice..."/>
+    <property name="money" type="int" value="500"/>
+    <property name="name" value="Giulio Rich Boy"/>
+    <property name="trainerID" type="int" value="1"/>
+    <property name="winMessage" value="..."/>
+   </properties>
+  </object>
+  <object id="208" x="1487" y="1936" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
+    <property name="2_POKEMON=LVL" value="RATTATA=5"/>
+    <property name="3_POKEMON=LVL" value="PIDGEY=7"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="Wassap"/>
+    <property name="lostMessage" value="bruh"/>
+    <property name="money" type="int" value="100"/>
+    <property name="name" value="David Stoner"/>
+    <property name="trainerID" type="int" value="3"/>
+    <property name="winMessage" value="bruuh"/>
+   </properties>
+  </object>
+  <object id="209" x="1536" y="1488" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIKACHU=8"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="Check my rare pokemon"/>
+    <property name="lostMessage" value="Now my rare pokemon is exhausted, thanks."/>
+    <property name="money" type="int" value="300"/>
+    <property name="name" value="Eugene Ace Trainer"/>
+    <property name="trainerID" type="int" value="4"/>
+    <property name="winMessage" value="Wow, never thought it was this strong"/>
+   </properties>
+  </object>
+  <object id="210" x="1216" y="1456" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RATTATA=8"/>
+    <property name="2_POKEMON=LVL" value="RATTATA=9"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="What?? Now I can't even piss in peace"/>
+    <property name="lostMessage" value="Okay you won, now let me piss alone"/>
+    <property name="money" type="int" value="200"/>
+    <property name="name" value="Jude Punk"/>
+    <property name="trainerID" type="int" value="6"/>
+    <property name="winMessage" value="Can I piss now that I pissed on you?"/>
+   </properties>
+  </object>
+  <object id="211" x="736" y="1312" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RATTATA=11"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="Yo dawg"/>
+    <property name="lostMessage" value="Damn dawg"/>
+    <property name="money" type="int" value="50"/>
+    <property name="name" value="Dawg Stoner"/>
+    <property name="trainerID" type="int" value="7"/>
+    <property name="winMessage" value="Yea dawg"/>
+   </properties>
+  </object>
+  <object id="212" x="1200" y="1696" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="SANDSHREW=9"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="Let me try this new Pokemon I just caught here"/>
+    <property name="lostMessage" value="Wow, it sucks"/>
+    <property name="money" type="int" value="400"/>
+    <property name="name" value="Brian Preschooler"/>
+    <property name="trainerID" type="int" value="5"/>
+    <property name="winMessage" value="Wow, it's strong"/>
+   </properties>
+  </object>
+  <object id="213" x="784" y="4032" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="214" x="960" y="4528" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="215" x="512" y="4528" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="SANDSLASH=18"/>
+    <property name="2_POKEMON=LVL" value="PIDGEOTTO=20"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="It's better if you go north: there's a gym"/>
+    <property name="lostMessage" value="Even if you beat me you will miss your first Gym if you don't go north"/>
+    <property name="money" type="int" value="300"/>
+    <property name="name" value="Pablo Artist"/>
+    <property name="trainerID" type="int" value="8"/>
+    <property name="winMessage" value="You can't even beat me, just train and go north before"/>
+   </properties>
+  </object>
+  <object id="216" x="160" y="4000" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="ZUBAT=14"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="Peace V/\"/>
+    <property name="lostMessage" value="...peace"/>
+    <property name="money" type="int" value="150"/>
+    <property name="name" value="Rastaman Stoner"/>
+    <property name="trainerID" type="int" value="9"/>
+    <property name="winMessage" value="Peace V/\"/>
+   </properties>
+  </object>
+  <object id="217" x="1552" y="1936" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="GOLBAT=25"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="Today is a good day to fight."/>
+    <property name="lostMessage" value="Nevermind."/>
+    <property name="money" type="int" value="900"/>
+    <property name="name" value="Thomas Hiker"/>
+    <property name="trainerID" type="int" value="27"/>
+    <property name="winMessage" value="I was right."/>
+   </properties>
+  </object>
+  <object id="218" x="576" y="1072" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="SANDSHREW=13"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=14"/>
+    <property name="3_POKEMON=LVL" value="ZUBAT=15"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="Nice weather"/>
+    <property name="lostMessage" value="Not anymore"/>
+    <property name="money" type="int" value="500"/>
+    <property name="name" value="Fred Hiker"/>
+    <property name="trainerID" type="int" value="10"/>
+    <property name="winMessage" value="Even better now"/>
+   </properties>
+  </object>
+  <object id="219" x="784" y="1008" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RATTATA=14"/>
+    <property name="2_POKEMON=LVL" value="PIDGEY=15"/>
+    <property name="3_POKEMON=LVL" value="PIKACHU=14"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="O_O"/>
+    <property name="lostMessage" value=":("/>
+    <property name="money" type="int" value="500"/>
+    <property name="name" value="Daniel Preschooler"/>
+    <property name="trainerID" type="int" value="11"/>
+    <property name="winMessage" value=":)"/>
+   </properties>
+  </object>
+  <object id="220" x="832" y="688" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="TENTACOOL=21"/>
+    <property name="2_POKEMON=LVL" value="RATICATE=20"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=20"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="I never go to sleep but I keep waking up."/>
+    <property name="lostMessage" value="There's nothing like the laughter of a baby. Unless it's 1a.m. and you live alone."/>
+    <property name="money" type="int" value="800"/>
+    <property name="name" value="Raven Hiker"/>
+    <property name="trainerID" type="int" value="23"/>
+    <property name="winMessage" value="I just saw my reflection blink"/>
+   </properties>
+  </object>
+  <object id="221" x="992" y="576" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RATTATA=10"/>
+    <property name="2_POKEMON=LVL" value="PIDGEY=11"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="Kim doesn’t understand what a blessing I am to her."/>
+    <property name="lostMessage" value="George Bush doesn't care about black people"/>
+    <property name="money" type="int" value="50"/>
+    <property name="name" value="Kanye Rapper"/>
+    <property name="trainerID" type="int" value="12"/>
+    <property name="winMessage" value="My greatest pain in life is that I will never be able to see myself perform live."/>
+   </properties>
+  </object>
+  <object id="222" x="1040" y="144" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIKACHU=14"/>
+    <property name="2_POKEMON=LVL" value="SANDSHREW=15"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="I like to beat the brush."/>
+    <property name="lostMessage" value="You need the dark in order to show the light."/>
+    <property name="money" type="int" value="1000"/>
+    <property name="name" value="Bob Artist"/>
+    <property name="trainerID" type="int" value="13"/>
+    <property name="winMessage" value="We don't make mistakes. We just have happy accidents."/>
+   </properties>
+  </object>
+  <object id="223" x="1584" y="192" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIKACHU=15"/>
+    <property name="2_POKEMON=LVL" value="PIDGEOTTO=16"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage">Ah... I love this
+prospectively wrong waterfall</property>
+    <property name="lostMessage" value="On second thought, it sucks"/>
+    <property name="money" type="int" value="1200"/>
+    <property name="name" value="Luke Rich Boy"/>
+    <property name="trainerID" type="int" value="14"/>
+    <property name="winMessage" value="Ah yes, back to admiring the prospectively wrong waterfall"/>
+   </properties>
+  </object>
+  <object id="224" x="1584" y="528" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RAICHU=23"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="Punk is not just the sound, the music. Punk is a lifestyle."/>
+    <property name="lostMessage" value="A punk concert isn't fun without a pit."/>
+    <property name="money" type="int" value="500"/>
+    <property name="name" value="Anthony Punk"/>
+    <property name="trainerID" type="int" value="24"/>
+    <property name="winMessage" value="Next time I'll be softer with you"/>
+   </properties>
+  </object>
+  <object id="225" x="576" y="560" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="SANDSLASH=15"/>
+    <property name="2_POKEMON=LVL" value="PIDGEOTTO=18"/>
+    <property name="direction" value="NORTH"/>
+    <property name="initMessage" value="You won't beat me"/>
+    <property name="lostMessage" value="I did lose on purpose"/>
+    <property name="money" type="int" value="800"/>
+    <property name="name" value="Lex Ace Trainer"/>
+    <property name="trainerID" type="int" value="16"/>
+    <property name="winMessage" value="Weak."/>
+   </properties>
+  </object>
+  <object id="226" x="624" y="144" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="ZUBAT=16"/>
+    <property name="2_POKEMON=LVL" value="ZUBAT=17"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="Get rich or die tryin’."/>
+    <property name="lostMessage" value="I love you like a fat kid loves cake."/>
+    <property name="money" type="int" value="50"/>
+    <property name="name" value="50c Rapper"/>
+    <property name="trainerID" type="int" value="15"/>
+    <property name="winMessage" value="Always have bail money."/>
+   </properties>
+  </object>
+  <object id="227" x="432" y="144" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="TENTACOOL=17"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="Did I just captured a sea Pokemon in the grass...?"/>
+    <property name="lostMessage" value="Yea I did and it's just awful"/>
+    <property name="money" type="int" value="500"/>
+    <property name="name" value="Rex Ace Trainer"/>
+    <property name="trainerID" type="int" value="17"/>
+    <property name="winMessage" value="Yea I did and it's awesome"/>
+   </properties>
+  </object>
+  <object id="228" x="128" y="464" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="TENTACOOL=15"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=16"/>
+    <property name="3_POKEMON=LVL" value="SANDSHREW=17"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="Hike hike hike!"/>
+    <property name="lostMessage" value="Lose lose lose..."/>
+    <property name="money" type="int" value="700"/>
+    <property name="name" value="James Hiker"/>
+    <property name="trainerID" type="int" value="18"/>
+    <property name="winMessage" value="Win win win!"/>
+   </properties>
+  </object>
+  <object id="229" x="1296" y="912" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RAICHU=19"/>
+    <property name="2_POKEMON=LVL" value="RATICATE=20"/>
+    <property name="3_POKEMON=LVL" value="PIDGEOTTO=20"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="I don't believe in art. I believe in artists."/>
+    <property name="lostMessage" value="Love the art in yourself not yourself in the art."/>
+    <property name="money" type="int" value="700"/>
+    <property name="name" value="Charles Artist"/>
+    <property name="trainerID" type="int" value="25"/>
+    <property name="winMessage" value="Every artist was first an amateur"/>
+   </properties>
+  </object>
+  <object id="230" x="1728" y="1552" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="TENTACOOL=21"/>
+    <property name="2_POKEMON=LVL" value="SANDSLASH=22"/>
+    <property name="direction" value="EAST"/>
+    <property name="initMessage" value="A dyslexic man walks into a bra."/>
+    <property name="lostMessage" value="Did you hear about the man who stole a calendar? He got 12 months."/>
+    <property name="money" type="int" value="800"/>
+    <property name="name" value="George Preschooler"/>
+    <property name="trainerID" type="int" value="26"/>
+    <property name="winMessage">ave you heard about that movie &quot;Constipation?&quot;
+It hasn't come out yet.</property>
+   </properties>
+  </object>
+  <object id="231" x="2368" y="1104" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Donald Rich Boy"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="232" x="2208" y="480" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="233" x="2480" y="208" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="234" x="2800" y="128" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="235" x="2830" y="400" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="236" x="3184" y="752" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="237" x="2112" y="2496" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=25"/>
+    <property name="2_POKEMON=LVL" value="IVYSAUR=25"/>
+    <property name="3_POKEMON=LVL" value="CHARMELEON=25"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="You're gonna have a bad time."/>
+    <property name="lostMessage" value="Take care of yourself, kid. 'cause someone really cares about you."/>
+    <property name="money" type="int" value="1000"/>
+    <property name="name" value="Sans"/>
+    <property name="trainerID" type="int" value="28"/>
+    <property name="winMessage" value="If we're friends you won't come back."/>
+   </properties>
+  </object>
+  <object id="238" x="3840" y="672" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="RATTATA=19"/>
+    <property name="2_POKEMON=LVL" value="RATICATE=20"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="I'm bald"/>
+    <property name="lostMessage" value="I wish I had hair"/>
+    <property name="money" type="int" value="800"/>
+    <property name="name" value="Kenneth Punk"/>
+    <property name="trainerID" type="int" value="19"/>
+    <property name="winMessage" value="I'm going to steal your hair"/>
+   </properties>
+  </object>
+  <object id="239" x="3792" y="528" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="ZUBAT=16"/>
+    <property name="2_POKEMON=LVL" value="PIDGEOTTO=18"/>
+    <property name="3_POKEMON=LVL" value="RATICATE=20"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value="I don't even know what to say."/>
+    <property name="lostMessage" value="I ran out of words"/>
+    <property name="money" type="int" value="1000"/>
+    <property name="name" value="Edward Ace Trainer"/>
+    <property name="trainerID" type="int" value="21"/>
+    <property name="winMessage" value="I ran out of ideas"/>
+   </properties>
+  </object>
+  <object id="240" x="3680" y="720" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="ZUBAT=17"/>
+    <property name="2_POKEMON=LVL" value="SANSLASH=18"/>
+    <property name="3_POKEMON=LVL" value="BULBASAUR=15"/>
+    <property name="direction" value="NORTH"/>
+    <property name="initMessage" value="En garde"/>
+    <property name="lostMessage" value="Our gym leader is a lot stronger than me."/>
+    <property name="money" type="int" value="1000"/>
+    <property name="name" value="Jeff Hiker"/>
+    <property name="trainerID" type="int" value="20"/>
+    <property name="winMessage" value="Our gym leader is a lot stronger than me."/>
+   </properties>
+  </object>
+  <object id="241" x="3840" y="1216" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
+    <property name="5_POKEMON=LVL" value=""/>
+    <property name="6_POKEMON=LVL" value=""/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Pianini"/>
+    <property name="trainerID" type="int" value="1"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="242" x="3744" y="1248" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
+    <property name="5_POKEMON=LVL" value=""/>
+    <property name="6_POKEMON=LVL" value=""/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Pianini"/>
+    <property name="trainerID" type="int" value="1"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="243" x="3616" y="1088" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
+    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
+    <property name="5_POKEMON=LVL" value=""/>
+    <property name="6_POKEMON=LVL" value=""/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Pianini"/>
+    <property name="trainerID" type="int" value="1"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="244" x="3856" y="1712" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Prof. Viroli"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
+   </properties>
+  </object>
+  <object id="245" x="2928" y="1456" width="16" height="16">
+   <properties>
+    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
+    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
+    <property name="direction" value="SOUTH"/>
+    <property name="initMessage" value=""/>
+    <property name="lostMessage" value=""/>
+    <property name="money" type="int" value="0"/>
+    <property name="name" value="Dr. Ghain"/>
+    <property name="trainerID" type="int" value="2"/>
+    <property name="winMessage" value=""/>
    </properties>
   </object>
  </objectgroup>
