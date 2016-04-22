@@ -18,7 +18,7 @@ import controller.MainController;
 import controller.load.LoadController;
 import model.map.PokeMapImpl;
 import model.map.Position;
-import model.resources.General;
+import model.player.PlayerImpl;
 import model.resources.Player;
 
 public class Play implements Screen {  
@@ -73,9 +73,10 @@ public class Play implements Screen {
 		if (newGame) {
 		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {
-		    if (LoadController.saveExists()) {
-		        General g = LoadController.load(pm);
-	                player.setBounds(g.getPosition().getX(), g.getPosition().getY(), 15.9f, 15.9f);
+		    if (LoadController.getController().saveExists()) {
+		        LoadController.getController().load(null);
+	                player.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
+	                System.out.println("Benvenuto " + PlayerImpl.getPlayer().getName());
 		    } else {
 		        System.out.println("SAVE DOES NOT EXIST");
 		        player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
@@ -132,7 +133,7 @@ public class Play implements Screen {
 	}
 	
 	public TiledMap getMap() {
-		map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
-        return this.map;
+	    map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
+            return this.map;
 	}
 }

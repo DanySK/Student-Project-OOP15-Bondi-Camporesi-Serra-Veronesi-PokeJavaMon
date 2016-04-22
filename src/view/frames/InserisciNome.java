@@ -50,7 +50,6 @@ public class InserisciNome {
     	        	JOptionPane.showMessageDialog(inizia, "You Naive Idiot");
     	           }
     	        else {
-    	        
     	        ViewController.getController().setName(nickname.getText());
                 ViewController.getController().map(true);
                 MainController.getController().updateStatus(State.WALKING);

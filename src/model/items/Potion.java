@@ -1,6 +1,6 @@
 package model.items;
 
-import model.box.PokemonNotFoundException;
+import exceptions.PokemonNotFoundException;
 import model.player.Player;
 import model.pokemon.PokemonInBattle;
 

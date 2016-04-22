@@ -2,11 +2,11 @@ package model.items;
 
 import java.util.Random;
 
+import exceptions.SquadFullException;
 import model.player.Player;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
-import model.squad.SquadFullException;
 import model.squad.SquadImpl;
 
 

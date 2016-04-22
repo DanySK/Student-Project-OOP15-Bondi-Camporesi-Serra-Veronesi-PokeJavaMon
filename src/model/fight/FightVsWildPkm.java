@@ -11,7 +11,7 @@ import exceptions.CannotEscapeFromTrainerException;
 import exceptions.CannotUseItemInBattleException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
-import model.box.PokemonNotFoundException;
+import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Item.ItemType;
 import model.items.Item.whenToUse;

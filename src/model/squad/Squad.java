@@ -2,6 +2,8 @@ package model.squad;
 
 import java.util.List;
 
+import exceptions.OnlyOnePokemonInSquadException;
+import exceptions.SquadFullException;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 

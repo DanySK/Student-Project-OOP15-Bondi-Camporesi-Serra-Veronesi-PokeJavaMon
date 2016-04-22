@@ -2,6 +2,8 @@ package model.player;
 
 import java.util.Set;
 
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;
@@ -36,4 +38,8 @@ public interface Player extends Character{
     public void setName(final String name);
     
     public String getName();
+
+    public void setMoney(int money);
+
+    public void setPosition(int x, int y);
 }

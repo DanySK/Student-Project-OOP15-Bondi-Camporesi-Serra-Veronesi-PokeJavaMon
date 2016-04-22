@@ -1,4 +1,4 @@
-package model.squad;
+package exceptions;
 
 public class OnlyOnePokemonInSquadException extends Exception {
 

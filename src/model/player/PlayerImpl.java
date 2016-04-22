@@ -1,11 +1,11 @@
 package model.player;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 import model.box.Box;
 import model.box.BoxImpl;
 import model.inventory.Inventory;
@@ -24,15 +24,14 @@ import model.trainer.Trainer;
 
 public class PlayerImpl extends AbstractCharacter implements Player{
     
-	private String name;
-    private final Squad squad;
-    private final Box box;
-    private final Inventory inv;
-    private final Set<Trainer> trainersBeaten;
-    private int money;
+    private String name;
+    private Squad squad;
+    private Box box;
+    private Inventory inv;
+    private Set<Trainer> trainersBeaten;
+    private int money = 500;
     
     private static Player SINGLETON;
-    //TODO Import starting position from map.
     private static int START_X = 278;
     private static int START_Y = 71;
     
@@ -42,7 +41,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
-        money = 500; //TODO Starting money to be reviewed
+        
     }
     
     public static Player getPlayer() {
@@ -91,6 +90,10 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     public int getMoney() {
         return this.money;
     }
+    
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     @Override
     public void buyItem(Item item) throws NotEnoughMoneyException {
@@ -121,7 +124,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         }
     }
     
-    private void setPosition(final int x, final int y) {
+    public void setPosition(final int x, final int y) {
     	this.tileX = x;
     	this.tileY = y;
     }
@@ -130,22 +133,20 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     public void move(final Direction d, final PokeMap pm) {
     	int newX = this.tileX;
     	int newY = this.tileY;
-    	this.direction = d;
     	switch (d) {
     	case EAST :
-    		newX += 1;
+    		newX += pm.getTileWidth();
     		break;
     	case WEST :
-    		newX -= 1;
+    		newX -= pm.getTileWidth();
     		break;
     	case NORTH :
-    		newY -= 1;
+    		newY -= pm.getTileHeight();
     		break;
     	case SOUTH :
-    		newY += 1;
+    		newY +=  pm.getTileHeight();
     		break;
     	}
-    	
     	if (pm.isWalkable(newX, newY)) {
     		if (pm.getTileType(newX, newY) == TileType.TELEPORT) {
     			final Teleport tmpTlprt = pm.getTeleport(newX, newY).get();

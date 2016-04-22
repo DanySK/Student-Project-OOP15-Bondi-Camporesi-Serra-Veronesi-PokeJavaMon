@@ -6,6 +6,8 @@ import controller.keyboard.KeyboardController;
 import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
+import controller.music.MainMusicController;
+import controller.parameters.Music;
 import controller.parameters.State;
 import model.pokemon.InitializeMoves;
 import model.resources.Player;
@@ -41,6 +43,14 @@ public class MainController {
                 keyboardController = WalkingKeyboardController.getController(); 
                 Player.resetPos();
                 Play.updateKeyListener();
+                if (MainMusicController.getController().playing() == null) {
+                    MainMusicController.getController().play(Music.TOWN);
+                } else {
+                    if (MainMusicController.getController().playing() != Music.TOWN) {
+                        MainMusicController.getController().stop();
+                        MainMusicController.getController().play(Music.TOWN);
+                    }
+                }
                 break;
             case MENU:
                 keyboardController = MenuKeyboardController.getController();
@@ -51,6 +61,14 @@ public class MainController {
                 keyboardController = FightingKeyboardController.getController();
                 Player.resetPos();
                 Play.updateKeyListener();
+                if (MainMusicController.getController().playing() == null) {
+                    MainMusicController.getController().play(Music.TRAINER);
+                } else {
+                    if (MainMusicController.getController().playing() != Music.TRAINER) {
+                        MainMusicController.getController().stop();
+                        MainMusicController.getController().play(Music.TRAINER);
+                    }
+                }
                 break;
         }
     }
@@ -68,6 +86,7 @@ public class MainController {
     }
     
     public static void main(String[] args) {
+        new Installer().install();
         MainController.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
         ViewController.getController().firstMenu();

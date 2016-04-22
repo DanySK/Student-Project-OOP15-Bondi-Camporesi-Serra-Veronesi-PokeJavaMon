@@ -6,36 +6,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.jdom2.Attribute;
 import org.jdom2.DataConversionException;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-
 import controller.parameters.XMLParameters;
-import model.box.Box;
+import exceptions.SquadFullException;
 import model.box.BoxImpl;
-import model.inventory.Inventory;
 import model.inventory.InventoryImpl;
 import model.map.PokeMap;
+import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
-import model.resources.*;
-import model.trainer.StaticTrainerFactory;
-import model.trainer.Trainer;
-import model.utilities.Pair;
 
 public class LoadController implements LoadControllerInterface {
-    private static final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
-    private static final int MIN_MOVES = 1;
-    private static SAXBuilder builder;
-    private static Document document;
-    private static Element root;
+    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Save" + File.separator + "save.xml";
+    private final int MIN_MOVES = 1;
+    private SAXBuilder builder;
+    private Document document;
+    private Element root;
+    private static LoadController SINGLETON;
     
-    private static void setup() {
+    private void setup() {
         builder = new SAXBuilder();
         try {
             document = builder.build(new File(FILE_NAME));
@@ -47,18 +41,21 @@ public class LoadController implements LoadControllerInterface {
         }
     }
     
-    private static int getMoney() {
-        return Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName()));
+    private void getMoney() {
+        PlayerImpl.getPlayer().setMoney(Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName())));
     }
     
-    private static Pair<Float, Float> getPosition() {
-        final float x = Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
-        final float y = Float.parseFloat(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
-        return new Pair<Float, Float> (x, y);
+    private void getName() {
+        PlayerImpl.getPlayer().setName(root.getAttributeValue(XMLParameters.NAME.getName()));
     }
     
-    private static List<Pokemon> getTeam() {
-        List<Pokemon> squadra = new ArrayList<Pokemon>();
+    private void getPosition() {
+        final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
+        final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
+        PlayerImpl.getPlayer().setPosition(x, y);
+    }
+    
+    private void getTeam() {
         for (Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
             int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
@@ -68,12 +65,16 @@ public class LoadController implements LoadControllerInterface {
             for (int a = MIN_MOVES; a <= cont; a++) {   
                 moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
             }
-            squadra.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
+            try {
+                PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
+            } catch (SquadFullException e1) {
+                e1.printStackTrace();
+            }
         }
-        return squadra;
+        
     }
     
-    private static void setTrainers(final PokeMap map) {
+    private void getTrainers(final PokeMap map) {
         Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
@@ -85,7 +86,7 @@ public class LoadController implements LoadControllerInterface {
         map.initTrainers(trainer_isDefeated);
     }
     
-    private static Inventory getInventory() {
+    private void getInventory() {
         Map<String, Integer> potions = new HashMap<String, Integer>();
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
             potions.put(a.getName(), Integer.parseInt(a.getValue()));
@@ -98,13 +99,11 @@ public class LoadController implements LoadControllerInterface {
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
             balls.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        Inventory inv = InventoryImpl.initializeInventory(potions, boosts, balls);
-        return inv;
+        InventoryImpl.initializeInventory(potions, boosts, balls);
     }
 
-    private static Box getBox() {
+    private void getBox() {
         List<Pokemon> box = new ArrayList<Pokemon>();
-        Box retBox = BoxImpl.getBox();
         for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
             int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
@@ -116,16 +115,31 @@ public class LoadController implements LoadControllerInterface {
             }
             box.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }
-        retBox.setPokemons(box);
-        return retBox;
+        BoxImpl.getBox().setPokemons(box);
     }
     
-    public static General load(final PokeMap map) {
+    public void load(final PokeMap map) {
         setup();
-        return new General(getTeam(),getBox(), new ArrayList<Trainer>(map.getTrainers()),getInventory(),getMoney(),getPosition());
+        getMoney();
+        getPosition();
+        getTeam();
+        getName();
+        getInventory();
+        getBox();
     }
     
-    public static boolean saveExists() {
+    public boolean saveExists() {
         return new File(FILE_NAME).exists();
+    }
+    
+    public static LoadController getController() {
+        if (SINGLETON == null) {
+            synchronized (LoadController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new LoadController();
+                }
+            }
+        }
+        return SINGLETON;
     }
 }
