@@ -5330,7 +5330,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="signLayer" visible="0">
+ <objectgroup name="signLayer">
   <object id="132" x="512" y="1824" width="16" height="16">
    <properties>
     <property name="signMessage" value="Nobody's home"/>
@@ -5433,7 +5433,7 @@
   </object>
   <object id="187" x="2080" y="1072" width="16" height="16">
    <properties>
-    <property name="signMessage" value="ROUTE 2"/>
+    <property name="signMessage" value="ROUTE 2, PS: You should probably beat the Gym Leader before"/>
    </properties>
   </object>
   <object id="188" x="1632" y="2464" width="16" height="16">
@@ -5688,18 +5688,14 @@
   </object>
   <object id="202" x="3760" y="1888" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="direction" value="SOUTH"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" type="int" value="0"/>
-    <property name="name" value="Prof. Viroli"/>
-    <property name="trainerID" type="int" value="2"/>
-    <property name="winMessage" value=""/>
+    <property name="1_POKEMON=LVL" value="CHARMELEON=27"/>
+    <property name="direction" value="NORTH"/>
+    <property name="initMessage" value="Fire baby!"/>
+    <property name="lostMessage" value="I got burnt."/>
+    <property name="money" type="int" value="1000"/>
+    <property name="name" value="Zed Ace Trainer"/>
+    <property name="trainerID" type="int" value="29"/>
+    <property name="winMessage" value="You're literally on fire baby!"/>
    </properties>
   </object>
   <object id="203" x="3648" y="1727" width="16" height="16">
@@ -5709,7 +5705,7 @@
     <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
     <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
     <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="direction" value="SOUTH"/>
+    <property name="direction" value="EAST"/>
     <property name="initMessage" value=""/>
     <property name="lostMessage" value=""/>
     <property name="money" type="int" value="0"/>
@@ -6081,18 +6077,15 @@ It hasn't come out yet.</property>
   </object>
   <object id="231" x="2368" y="1104" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
-    <property name="direction" value="SOUTH"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" type="int" value="0"/>
+    <property name="1_POKEMON=LVL" value="PIDGEOTTO=29"/>
+    <property name="2_POKEMON=LVL" value="RAICHU=30"/>
+    <property name="direction" value="WEST"/>
+    <property name="initMessage" value="I will build a great, great wall and I will make Mexico pay for it!"/>
+    <property name="lostMessage" value="The beauty of me is that I’m very rich."/>
+    <property name="money" type="int" value="1500"/>
     <property name="name" value="Donald Rich Boy"/>
-    <property name="trainerID" type="int" value="2"/>
-    <property name="winMessage" value=""/>
+    <property name="trainerID" type="int" value="33"/>
+    <property name="winMessage" value="The point is, you can never be too greedy."/>
    </properties>
   </object>
   <object id="232" x="2208" y="480" width="16" height="16">

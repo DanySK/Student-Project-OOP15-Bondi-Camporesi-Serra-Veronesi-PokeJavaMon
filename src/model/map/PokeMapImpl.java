@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import com.badlogic.gdx.maps.MapLayer;
@@ -21,6 +22,8 @@ import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
+import model.player.Player;
+import model.player.PlayerImpl;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 
@@ -42,7 +45,7 @@ public class PokeMapImpl implements PokeMap {
 	
 	//Testato EncounterZones, Trainers, 
 	public PokeMapImpl(final TiledMap map) {
-		//TODO: cambiare il modo in cui assegna i teleport perch� nella mappa di tiled su e giu sono invertiti
+		
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
 		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get("foreground"));
 		final MapLayer doorLayer = ((MapLayer) map.getLayers().get("doorLayer"));
@@ -155,7 +158,10 @@ public class PokeMapImpl implements PokeMap {
 		}
 	}
 	
-	
+	@Override
+	public boolean isOutOfBounds(final int x, final int y) {
+		return x > this.mapWidth ||  x < 0 || y > this.mapHeight || y < 0;
+	}
 	
 	@Override
 	public float getMapHeight() {
@@ -199,6 +205,10 @@ public class PokeMapImpl implements PokeMap {
 
 	@Override
 	public boolean isWalkable(int x, int y) {
+		if (this.isOutOfBounds(x, y)) {
+			return false;
+		}
+		
 		boolean isCollision = false;
 		for (final Position p : this.collisions) {
 			if (p.getX() == x && p.getY() == y) {
@@ -206,6 +216,15 @@ public class PokeMapImpl implements PokeMap {
 			}
 		}
 		return this.map[x][y].isWalkable() && !isCollision;
+	}
+	
+	@Override
+	public TileType getTileNextToPlayer(final Direction d) {
+		Player p = PlayerImpl.getPlayer();
+		final int tmpX = p.getTileX() + ((d == Direction.EAST || d == Direction.WEST) ? ((d == Direction.EAST) ? +1 : -1) : 0) ; 
+		final int tmpY = p.getTileY() + ((d == Direction.SOUTH || d == Direction.NORTH) ? ((d == Direction.SOUTH) ? +1 : -1) : 0) ;
+
+		return (this.isOutOfBounds(tmpX, tmpY)) ? TileType.WALL : this.map[tmpX][tmpY];
 	}
 	
 	
@@ -231,15 +250,15 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public Teleport getTeleport(int fromX, int fromY) {
-		if (this.map[fromX][fromY] == TileType.TELEPORT) {
+	public Optional<Teleport> getTeleport(int fromX, int fromY) {
+		if (!this.isOutOfBounds(fromX, fromY) && this.map[fromX][fromY] == TileType.TELEPORT) {
 			for (final Teleport t : teleports) {
 				if (t.getFromX() == fromX && t.getFromY() == fromY) {
-					return t;
+					return Optional.of(t);
 				}
 			}
 		}
-		return null;
+		return Optional.empty();
 	}
 	
 	private void setSigns(final MapLayer signLayer) {
@@ -262,20 +281,20 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public Sign getSign(int x, int y) {
-		if (this.map[x][y] == TileType.SIGN) {
+	public Optional<Sign> getSign(int x, int y) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.SIGN) {
 			for (final Sign s : this.signs) {
 				if (s.getTileX() == x & s.getTileY() == y) {
-					return s;
+					return Optional.of(s);
 				}
 			}
 		}
-		return null;
+		return Optional.empty();
 	}
 
 	@Override
 	public Tile.TileType getTileType(int x, int y) {
-		return this.map[x][y];
+		return this.isOutOfBounds(x, y) ? TileType.WALL : this.map[x][y];
 	}
 	//TODO: REWORKARE LE POSIZIONI PERCHE X = MAP_HEIGHT-X
 	private void setWalkableZones(final MapLayer zoneLayer) {
@@ -298,14 +317,14 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public WalkableZone getWalkableZone(int x, int y) {
+	public Optional<WalkableZone> getWalkableZone(int x, int y) {
 		for (final WalkableZone wz : this.walkableZones) {
 			if (wz.contains(x, y)) {
-				return wz;
+				return Optional.of(wz);
 			}
 		}
 		
-		throw new IllegalArgumentException();
+		return Optional.empty();
 	}
 	
 	@Override
@@ -313,16 +332,18 @@ public class PokeMapImpl implements PokeMap {
 		return Collections.unmodifiableSet(this.trainers);
 	}
 	@Override
-	public Trainer getTrainer(int x, int y) {
-		if (this.map[x][y] == TileType.TRAINER) {
+	public Optional<Trainer> getTrainer(int x, int y) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.TRAINER) {
 			for (final Trainer t : this.trainers) {
 				if (t.getTileX() == x && t.getTileY() == y) {
-					return t;
+					return Optional.of(t);
 				}
 			}
 		}
-		return null;
+		return Optional.empty();
 	}
+	
+	
 	
 	public void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated) {
 		for (final Entry<Integer, Boolean> e : trainerID_isDefeated.entrySet()) {
@@ -358,15 +379,15 @@ public class PokeMapImpl implements PokeMap {
 	}
 	
 	@Override
-	public PokemonEncounterZone getEncounterZone(final int x, final int y) {
+	public Optional<PokemonEncounterZone> getEncounterZone(final int x, final int y) {
 		if (this.map[x][y] == TileType.POKEMON_ENCOUNTER) {
 			for (final PokemonEncounterZone pez : this.pokemonEncounterZones) {
 				if (pez.contains(x, y)) {
-					return pez;
+					return Optional.of(pez);
 				}
 			}
 		}
-		return null;
+		return Optional.empty();
 	}
 	
 	

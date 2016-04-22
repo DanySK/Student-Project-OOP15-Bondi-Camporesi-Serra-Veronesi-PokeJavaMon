@@ -1,5 +1,7 @@
 package model.player;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,9 +29,10 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     private final Box box;
     private final Inventory inv;
     private final Set<Trainer> trainersBeaten;
-    private int money = 500;
+    private int money;
     
     private static Player SINGLETON;
+    //TODO Import starting position from map.
     private static int START_X = 278;
     private static int START_Y = 71;
     
@@ -39,7 +42,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
-        
+        money = 500; //TODO Starting money to be reviewed
     }
     
     public static Player getPlayer() {
@@ -127,23 +130,25 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     public void move(final Direction d, final PokeMap pm) {
     	int newX = this.tileX;
     	int newY = this.tileY;
+    	this.direction = d;
     	switch (d) {
     	case EAST :
-    		newX += pm.getTileWidth();
+    		newX += 1;
     		break;
     	case WEST :
-    		newX -= pm.getTileWidth();
+    		newX -= 1;
     		break;
     	case NORTH :
-    		newY -= pm.getTileHeight();
+    		newY -= 1;
     		break;
     	case SOUTH :
-    		newY +=  pm.getTileHeight();
+    		newY += 1;
     		break;
     	}
+    	
     	if (pm.isWalkable(newX, newY)) {
     		if (pm.getTileType(newX, newY) == TileType.TELEPORT) {
-    			final Teleport tmpTlprt = pm.getTeleport(newX, newY);
+    			final Teleport tmpTlprt = pm.getTeleport(newX, newY).get();
     			if (tmpTlprt == null) {
     				throw new IllegalStateException("Teleport not found even if it's in the map as a TileType");
     			}

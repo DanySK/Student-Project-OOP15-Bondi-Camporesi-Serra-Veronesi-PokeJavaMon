@@ -14,6 +14,7 @@ import model.squad.SquadFullException;
 public class BoxImpl implements Box {
 
     private List<Pokemon> pokemonInBox;
+    private boolean isSet;
     private static Box SINGLETON;
     
     private BoxImpl() {
@@ -99,7 +100,13 @@ public class BoxImpl implements Box {
     }
     
     public void setPokemons(List<Pokemon> pokemons) {
-        this.pokemonInBox = pokemons;
+        if (!this.isSet) {
+        	this.pokemonInBox = pokemons;
+        	this.isSet = true;
+        } else {
+        	throw new IllegalStateException("Cannot set box more than once");
+        }
+        
     }
     
     @Override
