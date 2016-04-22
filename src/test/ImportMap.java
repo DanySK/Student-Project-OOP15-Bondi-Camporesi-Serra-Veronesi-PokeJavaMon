@@ -3,14 +3,10 @@ package test;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.*;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-
-
 import model.map.PokeMap;
 import model.map.PokeMapImpl;
-import view.resources.Play;
 
 public class ImportMap implements Screen {
 

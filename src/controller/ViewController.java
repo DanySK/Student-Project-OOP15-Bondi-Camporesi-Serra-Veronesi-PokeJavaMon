@@ -1,43 +1,17 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-
-import controller.load.LoadController;
 import controller.parameters.State;
 import controller.save.SaveController;
-import model.box.Box;
-import model.box.BoxImpl;
-import model.inventory.Inventory;
-import model.inventory.InventoryImpl;
-import model.items.Boost;
-import model.items.Pokeball;
-import model.items.Potion;
-import model.items.Pokeball.PokeballType;
-import model.items.Potion.PotionType;
-import model.map.Drawable.Direction;
-import model.map.PokeMapImpl;
-import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
-import model.pokemon.Stat;
-import model.pokemon.StaticPokemonFactory;
-import model.resources.General;
+import model.player.PlayerImpl;
 import model.resources.Player;
-import model.trainer.StaticTrainerFactory;
-import model.trainer.Trainer;
-import model.utilities.Pair;
 import view.frames.*;
-import view.resources.Play;
 import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
 
 public final class ViewController {
-    
-    private String name;
+    private String name = null;
     private LwjglApplication app;
     private static ViewController SINGLETON;
     
@@ -80,32 +54,12 @@ public final class ViewController {
     }
     
     public void save() {
-        General g;
-        if (LoadController.saveExists()) {
-            g = LoadController.load(new PokeMapImpl(new Play(false).getMap()));
-        } else {
-            List<Pokemon> team = new ArrayList<>();
-            team.add(StaticPokemonFactory.createPokemon(PokemonDB.BLASTOISE,30));
-            Box bx = BoxImpl.getBox();
-            bx.putCapturedPokemon(StaticPokemonFactory.createPokemon(PokemonDB.CHARIZARD,30));
-            bx.putCapturedPokemon(StaticPokemonFactory.createPokemon(PokemonDB.VENUSAUR,30));
-            List<Trainer> tr = new ArrayList<>();
-            tr.add(StaticTrainerFactory.createTrainer("DR. GHAIN", Direction.SOUTH, false, 0, 0, new ArrayList<>(), "1", "2", "3", 500, 0));
-            Map<Pokeball, Integer> balls = new HashMap<>();
-            Map<Boost, Integer> boosts = new HashMap<>();
-            Map<Potion, Integer> potions = new HashMap<>();
-            balls.put(new Pokeball(PokeballType.Ultraball),10);
-            boosts.put(new Boost(Stat.ATK), 5);
-            potions.put(new Potion(PotionType.SUPERPOTION), 15);
-            Inventory i = InventoryImpl.getInventory();
-            i.setBoosts(boosts);
-            i.setPokeballs(balls);
-            i.setPotions(potions);
-            g = new General(team,bx,tr,i,500,new Pair<Float, Float>(672f, 2272f));
+        Player.resetPos();
+        PlayerImpl.getPlayer().setPosition(Player.getPosition().getX().intValue(), Player.getPosition().getY().intValue());
+        if (name != null) {
+            PlayerImpl.getPlayer().setName(name);
         }
-        System.out.println(name);
-        g.setPosition(new Pair<Float, Float>(Player.getPosition().getX(),Player.getPosition().getY()));
-        SaveController.save(g);
+        SaveController.getController().save();
     }
     
     public void box() {
@@ -125,7 +79,7 @@ public final class ViewController {
     }
 
     public void setName(String text) {
-        ViewController.getController().name = text;
+        this.name = text;
     }
     
     public void fightScreen() {

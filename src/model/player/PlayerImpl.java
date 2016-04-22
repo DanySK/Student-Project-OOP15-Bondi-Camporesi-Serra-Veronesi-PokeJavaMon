@@ -22,11 +22,11 @@ import model.trainer.Trainer;
 
 public class PlayerImpl extends AbstractCharacter implements Player{
     
-	private String name;
-    private final Squad squad;
-    private final Box box;
-    private final Inventory inv;
-    private final Set<Trainer> trainersBeaten;
+    private String name;
+    private Squad squad;
+    private Box box;
+    private Inventory inv;
+    private Set<Trainer> trainersBeaten;
     private int money = 500;
     
     private static Player SINGLETON;
@@ -88,6 +88,10 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     public int getMoney() {
         return this.money;
     }
+    
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     @Override
     public void buyItem(Item item) throws NotEnoughMoneyException {
@@ -118,7 +122,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         }
     }
     
-    private void setPosition(final int x, final int y) {
+    public void setPosition(final int x, final int y) {
     	this.tileX = x;
     	this.tileY = y;
     }

@@ -36,4 +36,8 @@ public interface Player extends Character{
     public void setName(final String name);
     
     public String getName();
+
+    public void setMoney(int money);
+
+    public void setPosition(int x, int y);
 }
