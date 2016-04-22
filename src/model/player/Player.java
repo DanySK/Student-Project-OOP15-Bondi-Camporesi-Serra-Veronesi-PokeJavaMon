@@ -2,6 +2,8 @@ package model.player;
 
 import java.util.Set;
 
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;

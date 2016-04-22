@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import controller.save.SaveController;
+import exceptions.SquadFullException;
 import model.items.Potion;
 import model.box.BoxImpl;
 import model.inventory.InventoryImpl;
@@ -15,7 +16,6 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.Stat;
 import model.pokemon.StaticPokemonFactory;
-import model.squad.SquadFullException;
 
 public class SaveTest {
 

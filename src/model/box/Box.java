@@ -2,10 +2,11 @@ package model.box;
 
 import java.util.List;
 
+import exceptions.OnlyOnePokemonInSquadException;
+import exceptions.PokemonNotFoundException;
+import exceptions.SquadFullException;
 import model.pokemon.Pokemon;
-import model.squad.OnlyOnePokemonInSquadException;
 import model.squad.Squad;
-import model.squad.SquadFullException;
 
 public interface Box {
     

@@ -1,4 +1,4 @@
-package model.box;
+package exceptions;
 
 public class PokemonNotFoundException extends Exception {
 

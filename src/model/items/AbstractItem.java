@@ -1,9 +1,9 @@
 package model.items;
 
-import model.box.PokemonNotFoundException;
+import exceptions.PokemonNotFoundException;
+import exceptions.SquadFullException;
 import model.player.Player;
 import model.pokemon.PokemonInBattle;
-import model.squad.SquadFullException;
 
 public abstract class AbstractItem implements Item {
 

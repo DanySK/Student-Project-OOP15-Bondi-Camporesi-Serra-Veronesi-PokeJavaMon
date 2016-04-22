@@ -1,4 +1,4 @@
-package model.map;
+package exceptions;
 
 public class OutOfBorderException extends Exception {
 

@@ -13,13 +13,13 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import controller.parameters.XMLParameters;
+import exceptions.SquadFullException;
 import model.box.BoxImpl;
 import model.inventory.InventoryImpl;
 import model.map.PokeMap;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
-import model.squad.SquadFullException;
 
 public class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";

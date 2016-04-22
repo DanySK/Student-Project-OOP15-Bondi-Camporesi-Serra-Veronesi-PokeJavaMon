@@ -1,4 +1,4 @@
-package model.player;
+package exceptions;
 
 public class NotEnoughMoneyException extends Exception {
 

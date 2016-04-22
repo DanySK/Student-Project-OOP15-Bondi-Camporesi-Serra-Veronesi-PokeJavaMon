@@ -3,13 +3,15 @@ package model.box;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import exceptions.OnlyOnePokemonInSquadException;
+import exceptions.PokemonNotFoundException;
+import exceptions.SquadFullException;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
-import model.squad.OnlyOnePokemonInSquadException;
 import model.squad.Squad;
-import model.squad.SquadFullException;
 
 public class BoxImpl implements Box {
 
