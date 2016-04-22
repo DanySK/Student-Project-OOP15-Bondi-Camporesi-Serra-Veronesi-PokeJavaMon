@@ -7,7 +7,7 @@ import controller.parameters.Music;
 public class MainMusicController implements MusicController {
     
     private Sound s;
-    private Music m;
+    private Music m = null;
     private static MainMusicController SINGLETON;
     
     public void play(Music song) {        
@@ -19,6 +19,7 @@ public class MainMusicController implements MusicController {
     public void stop() {
         s.stop();
         s.dispose();
+        m = null;
     }
     
     public Music playing() {
