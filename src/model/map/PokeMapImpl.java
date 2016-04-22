@@ -37,10 +37,12 @@ public class PokeMapImpl implements PokeMap {
 	
 	private final int mapHeight;
 	private final int mapWidth;
+	private final int tileHeight;
+	private final int tileWidth;
 	
 	//Testato EncounterZones, Trainers, 
 	public PokeMapImpl(final TiledMap map) {
-		//TODO: cambiare il modo in cui assegna i teleport perché nella mappa di tiled su e giu sono invertiti
+		//TODO: cambiare il modo in cui assegna i teleport perchï¿½ nella mappa di tiled su e giu sono invertiti
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
 		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get("foreground"));
 		final MapLayer doorLayer = ((MapLayer) map.getLayers().get("doorLayer"));
@@ -50,6 +52,8 @@ public class PokeMapImpl implements PokeMap {
 		
 		this.mapHeight = (int) background.getHeight();
 		this.mapWidth = (int) background.getWidth();
+		this.tileHeight = (int) background.getTileHeight();
+		this.tileWidth = (int) background.getTileWidth();
 		
 		this.collisions = new HashSet<>();
 		this.signs = new HashSet<>();
@@ -164,6 +168,17 @@ public class PokeMapImpl implements PokeMap {
 	}
 	
 	@Override
+	public int getTileWidth() {
+		return this.tileWidth;
+	}
+
+	@Override
+	public int getTileHeight() {
+		return this.tileHeight;
+	}
+
+	
+	@Override
 	public Set<Position> getCollisions() {
 		return Collections.unmodifiableSet(this.collisions);
 	}
@@ -200,8 +215,8 @@ public class PokeMapImpl implements PokeMap {
 		} 
 		for (final MapObject mobj : doorLayer.getObjects()) {
 			if (mobj.getProperties().containsKey("DOOR_X")) {
-				final int real_x = this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / TILE_WIDTH);
-				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / TILE_HEIGHT);
+				final int real_x = this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth);
+				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
 				final int to_x = Integer.parseInt((String)mobj.getProperties().get("DOOR_X"));
 				final int to_y = Integer.parseInt((String)mobj.getProperties().get("DOOR_Y"));
 				final Teleport tmp = new Teleport(real_x, real_y, to_x, to_y);
@@ -233,8 +248,8 @@ public class PokeMapImpl implements PokeMap {
 		} 
 		for (final MapObject mobj : signLayer.getObjects()) {
 			if (mobj.getProperties().containsKey("signMessage")) {
-				final int real_x = this.getTileUnitX(this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / TILE_WIDTH));
-				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / TILE_HEIGHT);
+				final int real_x = this.getTileUnitX(this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth));
+				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
 				final Sign tmp = new Sign(real_x, real_y, (String) mobj.getProperties().get("signMessage"));
 				this.signs.add(tmp);
 			}
@@ -266,10 +281,10 @@ public class PokeMapImpl implements PokeMap {
 	private void setWalkableZones(final MapLayer zoneLayer) {
 		for (final MapObject z : zoneLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
-			final int width = (int) (rect.getRectangle().width / TILE_WIDTH);
-			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT) - 1;
-			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / TILE_WIDTH));
-			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / TILE_HEIGHT)) - height;
+			final int width = (int) (rect.getRectangle().width / this.tileWidth);
+			final int height = (int) (rect.getRectangle().height / this.tileHeight) - 1;
+			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / this.tileWidth));
+			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / this.tileHeight)) - height;
 			final String musicPath = (String) z.getProperties().get("musicPath");
 			final String name = (String) z.getProperties().get("zoneType");
 			this.walkableZones.add(new WalkableZone(name, real_x, real_y, width, height, musicPath));
@@ -326,10 +341,10 @@ public class PokeMapImpl implements PokeMap {
 	private void setPokemonEncounterZones(final MapLayer encounterLayer) {
 		for (final MapObject z : encounterLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
-			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / TILE_WIDTH));
-			final int width = (int) (rect.getRectangle().width / TILE_WIDTH);
-			final int height = (int) (rect.getRectangle().height / TILE_HEIGHT) - 1;
-			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / TILE_HEIGHT)) - height;
+			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / this.tileWidth));
+			final int width = (int) (rect.getRectangle().width / this.tileWidth);
+			final int height = (int) (rect.getRectangle().height / this.tileHeight) - 1;
+			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / this.tileHeight)) - height;
 			final int id = Integer.parseInt(rect.getProperties().get("zoneID", String.class));
 			final int avgLvl = Integer.parseInt(rect.getProperties().get("avgLvl", String.class));
 			final String pkmnList = rect.getProperties().get("pokemonList", String.class);
@@ -369,5 +384,6 @@ public class PokeMapImpl implements PokeMap {
 	public Tile.TileType[][] getMap() {
 		return Arrays.copyOf(this.map, this.map.length);
 	}
+
 
 }

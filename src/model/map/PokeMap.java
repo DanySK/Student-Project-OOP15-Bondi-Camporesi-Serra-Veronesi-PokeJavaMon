@@ -10,20 +10,11 @@ import model.map.tile.Tile.TileType;
 import model.trainer.Trainer;
 
 public interface PokeMap {
-    public static float LIMIT_UP_X = 500;
-    public static float LIMIT_UP_Y = 500;
-    public static float LIMIT_DOWN_X = 0;
-    public static float LIMIT_DOWN_Y = 0;
-    
-    public static int TILE_HEIGHT = 16;
-    public static int TILE_WIDTH = 16;
-    
-    public static boolean isOutOfBorder(final float x, final float y) {
-        return x > LIMIT_DOWN_X && x < LIMIT_UP_X && y > LIMIT_DOWN_Y && y < LIMIT_UP_X; 
-    }
     
     public float getMapHeight();
     public float getMapWidth();
+    public int getTileWidth();
+    public int getTileHeight();
     
     public Set<Position> getCollisions();
     public void removeCollision(final Position p);

@@ -30,15 +30,6 @@ public abstract class AbstractTile implements Tile {
         return this.type;
     }
 
-    @Override
-    public int getTileWidth() {
-        return PokeMap.TILE_WIDTH;
-    }
-
-    @Override
-    public int getTileHeight() {
-        return PokeMap.TILE_HEIGHT;
-    }
 
     @Override
     public boolean canPokemonAppear() {

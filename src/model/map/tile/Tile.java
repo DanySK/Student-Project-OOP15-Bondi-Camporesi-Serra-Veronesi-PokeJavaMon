@@ -28,10 +28,6 @@ public interface Tile extends Drawable{
         }
     }
     
-    public int getTileWidth();
-    
-    public int getTileHeight();
-
     public TileType getType();
     
     public boolean canPokemonAppear();
