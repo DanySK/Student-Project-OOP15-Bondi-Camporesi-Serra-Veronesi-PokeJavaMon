@@ -22,7 +22,7 @@ import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 
 public class LoadController implements LoadControllerInterface {
-    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
+    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Save" + File.separator + "save.xml";
     private final int MIN_MOVES = 1;
     private SAXBuilder builder;
     private Document document;

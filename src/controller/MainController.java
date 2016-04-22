@@ -86,6 +86,7 @@ public class MainController {
     }
     
     public static void main(String[] args) {
+        new Installer().install();
         MainController.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
         ViewController.getController().firstMenu();

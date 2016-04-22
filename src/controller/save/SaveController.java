@@ -26,7 +26,7 @@ public class SaveController implements SaveControllerInterface {
     private Document document;
     private Element root;
     private XMLOutputter outputter;
-    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "save.xml";
+    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Save" + File.separator + "save.xml";
     private FileOutputStream fos;
     private static SaveController SINGLETON;
     
