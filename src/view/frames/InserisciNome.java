@@ -3,27 +3,24 @@ package view.frames;
 import java.awt.*;  
 import java.awt.event.*;  
 import javax.swing.*;
-
 import controller.MainController;
-import controller.keyboard.SecondMenuKeyboardController;
+import controller.ViewController;
 import controller.parameters.State;
-import view.resources.TitleWiew;
-import view.resources.ViewController;  
+import view.resources.TitleWiew;  
   
 public class InserisciNome {  
 	
     private JFrame f = new JFrame("PokeJavaMon");
-    private JTextField nickname = new JTextField();
-    private SecondMenuKeyboardController k;
+    private static JTextField nickname = new JTextField();
     private JButton inizia = new JButton("Inizia");
+    private static String s;
     
-    public InserisciNome(KeyListener k) {
-		this.k = (SecondMenuKeyboardController) k;
-		f.addKeyListener(k);
-		nickname.addKeyListener(k);
-		this.k.setFrame(f);
-		this.k.setText(nickname);
-		this.k.setButton(inizia);
+    public static String getPlayerName() {
+        s = nickname.getText();
+        return s;
+    }
+    
+    public InserisciNome() {
 		nickname.requestFocusInWindow();
 		f.setFocusable(true);
 		f.setResizable(false);
@@ -48,15 +45,15 @@ public class InserisciNome {
 		
     	inizia.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
-    			String s = nickname.getText();
+    			s = nickname.getText();
     	        if (s.length() < 4 || s.length() > 20) {
     	        	JOptionPane.showMessageDialog(inizia, "You Naive Idiot");
     	           }
     	        else {
     	        
-    	        ViewController.setName(nickname.getText());
-                ViewController.map(true);
-                MainController.updateStatus(State.WALKING);
+    	        ViewController.getController().setName(nickname.getText());
+                ViewController.getController().map(true);
+                MainController.getController().updateStatus(State.WALKING);
                 f.dispose();
     	        }
     		}});

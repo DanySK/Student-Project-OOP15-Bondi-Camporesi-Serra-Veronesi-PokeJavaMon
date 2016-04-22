@@ -44,7 +44,7 @@ public class FightScreen {
 		fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				frame.dispose();
-				MainController.updateStatus(State.WALKING);
+				MainController.getController().updateStatus(State.WALKING);
 			}
 		});
 				

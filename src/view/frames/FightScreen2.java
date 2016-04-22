@@ -1,14 +1,10 @@
 package view.frames;
 
 import java.awt.Graphics;
-import java.awt.Panel;
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
-import view.resources.ViewController;
+import controller.ViewController;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -75,7 +71,7 @@ public class FightScreen2 {
     panel.add(squadra);
 	squadra.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			ViewController.team();
+			ViewController.getController().team();
 		}
 	});
     
@@ -84,7 +80,7 @@ public class FightScreen2 {
 	panel.add(zaino);
 	zaino.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			ViewController.bag();
+			ViewController.getController().bag();
 		}
 	});
     

@@ -1,84 +1,75 @@
 package controller;
 
-import java.awt.event.KeyListener;
-
+import controller.keyboard.FightingKeyboardController;
 import controller.keyboard.FirstMenuKeyboardController;
 import controller.keyboard.KeyboardController;
+import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
-import controller.music.MusicController;
-import controller.music.MainMusicController;
-import controller.parameters.Music;
 import controller.parameters.State;
 import model.pokemon.InitializeMoves;
 import model.resources.Player;
 import view.resources.Play;
-import view.resources.ViewController;
 
-/**
- * 
- */
 public class MainController {
     
-    private static State state;
-    private static KeyboardController keyboardController;
-    private static MusicController musicController;
+    private State state;
+    private KeyboardController keyboardController;
+    private static MainController SINGLETON; 
+    
+    public static MainController getController() {
+        if (SINGLETON == null) {
+            synchronized (MainController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new MainController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
 
-    public static void updateStatus(State s) {
+    public void updateStatus(State s) {
         state = s;
         switch (s) {
             case FIRST_MENU:
-                keyboardController = new FirstMenuKeyboardController();
-                musicController = null;
+                keyboardController = FirstMenuKeyboardController.getController();
                 break;
             case SECOND_MENU:
-                keyboardController = new SecondMenuKeyboardController();
-                musicController = null;
+                keyboardController = SecondMenuKeyboardController.getController();
                 break;
             case WALKING:
-                keyboardController = new WalkingKeyboardController(); 
+                keyboardController = WalkingKeyboardController.getController(); 
+                Player.resetPos();
                 Play.updateKeyListener();
-                if (musicController != null) {
-                    if (musicController.playing() != Music.TOWN) {
-                        musicController.stop();
-                        musicController.play(Music.TOWN);
-                    }
-                } else {
-                    musicController = new MainMusicController();
-                    musicController.play(Music.TOWN);
-                }
                 break;
             case MENU:
-                keyboardController = null;
+                keyboardController = MenuKeyboardController.getController();
                 Player.resetPos();
+                Play.updateKeyListener();
                 break;
             case FIGHTING:
-                keyboardController = null;
+                keyboardController = FightingKeyboardController.getController();
                 Player.resetPos();
-                if (musicController != null) {
-                    if (musicController.playing() != Music.TRAINER) {
-                        musicController.stop();
-                        musicController.play(Music.TRAINER);
-                    }
-                } else {
-                    musicController = new MainMusicController();
-                    musicController.play(Music.TRAINER);
-                }
+                Play.updateKeyListener();
                 break;
         }
     }
     
-    public static boolean isKeyPressed() {
-        return keyboardController != null && keyboardController.isKeyPressed();
+    public State getState() {
+        return state;
+    }
+    
+    public boolean isKeyPressed() {
+        return keyboardController.isKeyPressed();
+    }
+
+    public KeyboardController getCurrentController() {
+        return keyboardController;
     }
     
     public static void main(String[] args) {
-        updateStatus(State.FIRST_MENU);
+        MainController.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
-        ViewController.firstMenu((KeyListener)keyboardController);
-    }
-    
-    public static KeyboardController getController() {
-        return keyboardController;
+        ViewController.getController().firstMenu();
     }
 }

@@ -8,7 +8,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import view.resources.ViewController;  
+import controller.ViewController;  
   
 public class Box {
 
@@ -47,7 +47,7 @@ public Box() {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.showMenu();
+				ViewController.getController().showMenu();
 				}
 		});
 		f.setVisible(true);

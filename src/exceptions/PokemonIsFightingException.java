@@ -1,4 +1,4 @@
-package model.fight;
+package exceptions;
 
 import java.lang.Exception;
 

@@ -1,15 +1,12 @@
-package view.resources;
+package controller;
 
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-import controller.MainController;
 import controller.load.LoadController;
 import controller.parameters.State;
 import controller.save.SaveController;
@@ -34,31 +31,44 @@ import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 import model.utilities.Pair;
 import view.frames.*;
+import view.resources.Play;
+import view.resources.TiledMapGame;
+import view.resources.TitleWiew;
 
 public final class ViewController {
     
-    private static String name;
-    static LwjglApplication app;
+    private String name;
+    private LwjglApplication app;
+    private static ViewController SINGLETON;
     
+    public static ViewController getController() {
+        if (SINGLETON == null) {
+            synchronized (ViewController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new ViewController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
     
-    
-    public static void showMenu() {
-        MainController.updateStatus(State.MENU);
+    public void showMenu() {
+        MainController.getController().updateStatus(State.MENU);
         new Menu();
     }
     
-    public static void firstMenu(KeyListener k) {
-        MainController.updateStatus(State.FIRST_MENU);
-        TitleWiew t = new TitleWiew(k);
+    public void firstMenu() {
+        MainController.getController().updateStatus(State.FIRST_MENU);
+        TitleWiew t = new TitleWiew();
         t.title();
     }
     
-    public static void secondMenu(KeyListener k) {
-        MainController.updateStatus(State.SECOND_MENU);
-        new view.frames.InserisciNome(k);
+    public void secondMenu() {
+        MainController.getController().updateStatus(State.SECOND_MENU);
+        new view.frames.InserisciNome();
     }
     
-    public static void map(boolean b) {
+    public void map(boolean b) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "PokeJavaMon";
         cfg.useGL20 = true;
@@ -69,7 +79,7 @@ public final class ViewController {
         tl.setApp(app);
     }
     
-    public static void save() {
+    public void save() {
         General g;
         if (LoadController.saveExists()) {
             g = LoadController.load(new PokeMapImpl(new Play(false).getMap()));
@@ -98,28 +108,28 @@ public final class ViewController {
         SaveController.save(g);
     }
     
-    public static void box() {
+    public void box() {
         new view.frames.Box();
     }
     
-    public static void team() {
+    public void team() {
         new Squadra();
     }
     
-    public static void bag() {
+    public void bag() {
         new Zaino();
     }
     
-    public static void stats() {
+    public void stats() {
         new Stats();
     }
 
-    public static void setName(String text) {
-        ViewController.name = text;
+    public void setName(String text) {
+        ViewController.getController().name = text;
     }
     
-    public static void fightScreen() {
-        MainController.updateStatus(State.FIGHTING);
+    public void fightScreen() {
+        MainController.getController().updateStatus(State.FIGHTING);
         new FightScreen();
     }
 }

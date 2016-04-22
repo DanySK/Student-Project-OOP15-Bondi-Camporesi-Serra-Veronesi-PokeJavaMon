@@ -1,4 +1,4 @@
-package model.fight;
+package exceptions;
 
 public class CannotUseItemInBattleException extends Exception {
 

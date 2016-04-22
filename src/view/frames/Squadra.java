@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;  
 import javax.swing.*;
 
-import view.resources.ViewController;  
+import controller.ViewController;  
   
 public class Squadra {
 
@@ -39,7 +39,7 @@ public Squadra() {
     	FirstStats.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent ae) {
     					f.dispose();
-    					ViewController.stats();
+    					ViewController.getController().stats();
     			}
     	});
     	
@@ -178,7 +178,7 @@ public Squadra() {
     	uscita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.showMenu();
+				ViewController.getController().showMenu();
 			}
 		});
     	f.setVisible(true);

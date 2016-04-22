@@ -1,14 +1,8 @@
 package controller.keyboard;
 
-import com.badlogic.gdx.Input.Keys;
+public class FightingKeyboardController implements KeyboardController {
 
-import controller.MainController;
-import controller.ViewController;
-import controller.parameters.State;
-
-public class FirstMenuKeyboardController implements KeyboardController {
-
-    private static FirstMenuKeyboardController SINGLETON;
+    private static FightingKeyboardController SINGLETON;
     
     @Override
     public boolean keyDown(int keycode) {
@@ -22,18 +16,6 @@ public class FirstMenuKeyboardController implements KeyboardController {
 
     @Override
     public boolean keyUp(int keycode) {
-        switch(keycode) {
-        case Keys.N:
-            // Chiudere il vecchio frame
-            ViewController.getController().secondMenu();
-            MainController.getController().updateStatus(State.SECOND_MENU);
-            break;
-        case Keys.C:
-            // Chiudere il vecchio frame
-            ViewController.getController().map(false);
-            MainController.getController().updateStatus(State.WALKING);
-            break;
-        }
         return false;
     }
 
@@ -66,12 +48,12 @@ public class FirstMenuKeyboardController implements KeyboardController {
     public boolean isKeyPressed() {
         return false;
     }
-    
-    public static FirstMenuKeyboardController getController() {
+
+    public static FightingKeyboardController getController() {
         if (SINGLETON == null) {
-            synchronized (FirstMenuKeyboardController.class) {
+            synchronized (FightingKeyboardController.class) {
                 if (SINGLETON == null) {
-                    SINGLETON = new FirstMenuKeyboardController();
+                    SINGLETON = new FightingKeyboardController();
                 }
             }
         }

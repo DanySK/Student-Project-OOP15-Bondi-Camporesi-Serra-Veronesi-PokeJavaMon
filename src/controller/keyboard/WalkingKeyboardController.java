@@ -1,13 +1,13 @@
 package controller.keyboard;
 
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
+import controller.ViewController;
 import controller.parameters.Direction;
 import model.resources.Player;
-import view.resources.ViewController;
 
-public class WalkingKeyboardController implements KeyboardController , InputProcessor {
-
+public class WalkingKeyboardController implements KeyboardController {
+    
+    private static WalkingKeyboardController SINGLETON;
     private int keys = 0;
     
     public boolean keyDown(int keycode) {
@@ -34,7 +34,7 @@ public class WalkingKeyboardController implements KeyboardController , InputProc
                 break; 
             case Keys.ENTER:
                 if (!Player.isMoving() && keys == 0) {
-                    ViewController.showMenu();
+                    ViewController.getController().showMenu();
                 }
                 break; 
         }
@@ -101,5 +101,16 @@ public class WalkingKeyboardController implements KeyboardController , InputProc
     
     public boolean isKeyPressed() {
         return (keys > 0);
+    }
+    
+    public static WalkingKeyboardController getController() {
+        if (SINGLETON == null) {
+            synchronized (WalkingKeyboardController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new WalkingKeyboardController();
+                }
+            }
+        }
+        return SINGLETON;
     }
 }

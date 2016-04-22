@@ -122,7 +122,7 @@ public class Player extends Sprite {
             if (pos == 8) {
                 decreasePos();
             }
-            if (!MainController.isKeyPressed()) {
+            if (!MainController.getController().isKeyPressed()) {
                 stop();
             }
 	}

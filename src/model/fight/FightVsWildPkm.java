@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import exceptions.CannotCaughtTrainerPkmException;
+import exceptions.CannotEscapeFromTrainerException;
+import exceptions.CannotUseItemInBattleException;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonIsFightingException;
 import model.box.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Item.ItemType;

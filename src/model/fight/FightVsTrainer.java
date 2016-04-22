@@ -3,7 +3,8 @@ package model.fight;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.fight.CannotEscapeFromTrainerException;
+import exceptions.CannotCaughtTrainerPkmException;
+import exceptions.CannotEscapeFromTrainerException;
 import model.items.Item;
 import model.player.Player;
 import model.pokemon.Move;

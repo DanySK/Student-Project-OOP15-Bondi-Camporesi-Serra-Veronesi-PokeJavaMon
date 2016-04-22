@@ -4,27 +4,20 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 import controller.MainController;
-import controller.keyboard.FirstMenuKeyboardController;
+import controller.ViewController;
 import controller.parameters.State;
 
 public class TitleWiew {
     
     private JFrame frame;
-    private FirstMenuKeyboardController k;
     
-    public TitleWiew(KeyListener k) {
+    public TitleWiew() {
         frame = new JFrame("PokeJavaMon");
-        this.k = (FirstMenuKeyboardController) k;
-        frame.addKeyListener(k);
-        this.k.setFrame(frame);
     }
     
     public void title() {
@@ -48,8 +41,8 @@ public class TitleWiew {
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                MainController.updateStatus(State.SECOND_MENU);
-                ViewController.secondMenu((KeyListener) MainController.getController());
+                MainController.getController().updateStatus(State.SECOND_MENU);
+                ViewController.getController().secondMenu();
             }
         });
         
@@ -57,8 +50,8 @@ public class TitleWiew {
         pane.add(continua);
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ViewController.map(false);
-                MainController.updateStatus(State.WALKING);
+                ViewController.getController().map(false);
+                MainController.getController().updateStatus(State.WALKING);
                 frame.dispose();
             }
         });

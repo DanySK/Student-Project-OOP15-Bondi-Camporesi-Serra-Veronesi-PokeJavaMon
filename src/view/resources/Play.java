@@ -15,7 +15,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import controller.MainController;
-import controller.keyboard.WalkingKeyboardController;
 import controller.load.LoadController;
 import model.map.PokeMapImpl;
 import model.map.Position;
@@ -129,7 +128,7 @@ public class Play implements Screen {
 	}
 	
 	public static void updateKeyListener() {
-	    Gdx.input.setInputProcessor((WalkingKeyboardController)MainController.getController());
+	    Gdx.input.setInputProcessor(MainController.getController().getCurrentController());
 	}
 	
 	public TiledMap getMap() {

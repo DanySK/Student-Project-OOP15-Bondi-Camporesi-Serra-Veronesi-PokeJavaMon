@@ -3,7 +3,7 @@ package view.frames;
 import java.awt.event.*;  
 import javax.swing.*;
 
-import view.resources.ViewController;
+import controller.ViewController;
 
 public class Zaino {
 
@@ -22,7 +22,7 @@ public Zaino() {
     	uscita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.showMenu();
+				ViewController.getController().showMenu();
 			}
 		});
 				
@@ -31,7 +31,7 @@ public Zaino() {
     	fight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.fightScreen();
+				ViewController.getController().fightScreen();
 			}
 		});
     	f.setVisible(true);

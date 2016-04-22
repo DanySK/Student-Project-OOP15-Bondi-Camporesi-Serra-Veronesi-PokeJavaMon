@@ -1,45 +1,70 @@
 package controller.keyboard;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
+import com.badlogic.gdx.Input.Keys;
 
 import controller.MainController;
+import controller.ViewController;
 import controller.parameters.State;
-import view.resources.ViewController;
+import view.frames.InserisciNome;
 
-public class SecondMenuKeyboardController implements KeyboardController, KeyListener {
+public class SecondMenuKeyboardController implements KeyboardController {
 
-    private JFrame frame;
-    private JTextField nickname;
-    private JButton inizia;
+    private static SecondMenuKeyboardController SINGLETON;
+    
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public boolean keyTyped(char character) {
+        return false;
+    }
 
     @Override
-    public void keyPressed(KeyEvent e) {}
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-            String s = nickname.getText();
-            if (s.length() < 4 || s.length() > 20) {
-                    JOptionPane.showMessageDialog(inizia, "You Naive Idiot");
-               }
-            else {
-            
-            ViewController.setName(nickname.getText());
-            ViewController.map(true);
-            MainController.updateStatus(State.WALKING);
-            frame.dispose();
+    public boolean keyUp(int keycode) {
+        switch (keycode) {
+        case Keys.ENTER:
+            String name = InserisciNome.getPlayerName();
+            if (name.length() < 4 || name.length() > 20) {
+                JOptionPane.showMessageDialog(null,"You Naive Idiot");
             }
+            else {
+                // Chiudere il vecchio frame
+                ViewController.getController().setName(name);
+                ViewController.getController().map(true);
+                MainController.getController().updateStatus(State.WALKING);
+            }
+            break;
         }
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
     }
 
     @Override
@@ -47,15 +72,14 @@ public class SecondMenuKeyboardController implements KeyboardController, KeyList
         return false;
     }
     
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-
-    public void setText(JTextField nickname) {
-        this.nickname = nickname;
-    }
-
-    public void setButton(JButton inizia) {
-        this.inizia = inizia;
+    public static SecondMenuKeyboardController getController() {
+        if (SINGLETON == null) {
+            synchronized (SecondMenuKeyboardController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new SecondMenuKeyboardController();
+                }
+            }
+        }
+        return SINGLETON;
     }
 }

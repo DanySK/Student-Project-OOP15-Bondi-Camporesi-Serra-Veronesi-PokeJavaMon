@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import controller.MainController;
+import controller.ViewController;
 import controller.parameters.State;
-import view.resources.ViewController;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -28,7 +28,7 @@ public class Menu  {
 		squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.team();
+				ViewController.getController().team();
 			}});
 		
 		JButton salva = new JButton("Salva");
@@ -37,7 +37,7 @@ public class Menu  {
 		salva.addMouseListener(new MouseAdapter() {
 			@Override
         	public void mouseClicked(MouseEvent e) {
-			ViewController.save();
+			ViewController.getController().save();
         		JOptionPane.showMessageDialog(salva, "Salvataggio riuscito!");
         	}
         });
@@ -48,7 +48,7 @@ public class Menu  {
 		box.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.box();
+				ViewController.getController().box();
 			}});
 		
 		JButton zaino = new JButton("Zaino");
@@ -57,7 +57,7 @@ public class Menu  {
 		zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.bag();
+				ViewController.getController().bag();
 			}});
 		
 		JButton esci = new JButton("Riprendi");
@@ -66,7 +66,7 @@ public class Menu  {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				MainController.updateStatus(State.WALKING);
+				MainController.getController().updateStatus(State.WALKING);
 			}});
 		
 		f.setVisible(true);
