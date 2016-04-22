@@ -129,16 +129,16 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     	int newY = this.tileY;
     	switch (d) {
     	case EAST :
-    		newX += PokeMap.TILE_WIDTH;
+    		newX += pm.getTileWidth();
     		break;
     	case WEST :
-    		newX -= PokeMap.TILE_WIDTH;
+    		newX -= pm.getTileWidth();
     		break;
     	case NORTH :
-    		newY -= PokeMap.TILE_HEIGHT;
+    		newY -= pm.getTileHeight();
     		break;
     	case SOUTH :
-    		newY +=  PokeMap.TILE_HEIGHT;
+    		newY +=  pm.getTileHeight();
     		break;
     	}
     	if (pm.isWalkable(newX, newY)) {
