@@ -33,8 +33,7 @@ public final class ViewController {
     
     public void firstMenu() {
         MainController.getController().updateStatus(State.FIRST_MENU);
-        TitleWiew t = new TitleWiew();
-        t.title();
+        new TitleWiew().title();
     }
     
     public void secondMenu() {

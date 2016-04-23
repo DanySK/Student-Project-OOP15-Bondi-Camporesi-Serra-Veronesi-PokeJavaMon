@@ -68,7 +68,7 @@ public class Player extends Sprite {
                         final float y = (300 - Float.parseFloat((String)o.getProperties().get("DOOR_Y"))-1) * 16;
                         super.setX(x);
                         super.setY(y);
-                        decreasePos();
+                        resetPos();
                         return;
                     }
                 }
@@ -121,7 +121,7 @@ public class Player extends Sprite {
 	private void increasePos() {
 	    pos ++;
             if (pos == 8) {
-                decreasePos();
+                resetPos();
             }
             if (!MainController.getController().isKeyPressed()) {
                 stop();
@@ -129,7 +129,9 @@ public class Player extends Sprite {
 	}
 	
 	private void decreasePos() {
-	    pos = 0;
+	    if (!stopMove) {
+	        pos = 0;
+	    }
 	}
 	
 	public static void resetPos() {
