@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 import controller.MainController;
 import controller.parameters.Direction;
+import controller.parameters.FilePath;
 import model.utilities.Pair;
 
 public class Player extends Sprite {
@@ -111,8 +112,8 @@ public class Player extends Sprite {
                 } else if (velocity.y > 0) {
                     setRegion(up_s.getKeyFrame(animationTime));
                 }
-                velocity.y = 0;
                 decreasePos();
+                velocity.y = 0;
             }       
             animationTime += deltaTime;
 	}
@@ -195,7 +196,12 @@ public class Player extends Sprite {
 	}
 	
 	private void setupAnimation() {
-	    playerAtlas = new TextureAtlas(this.getClass().getResource("/player.pack").getPath());
+	    try {
+	        playerAtlas = new TextureAtlas(FilePath.PACK.getAbsolutePath());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        playerAtlas = new TextureAtlas(this.getClass().getResource(FilePath.PACK.getResourcePath()).getPath());
+	    }
             Player.left = new Animation(1 / 6f, playerAtlas.findRegions("left"));
             Player.right = new Animation(1 / 6f, playerAtlas.findRegions("right"));
             Player.up = new Animation(1 / 6f, playerAtlas.findRegions("up"));

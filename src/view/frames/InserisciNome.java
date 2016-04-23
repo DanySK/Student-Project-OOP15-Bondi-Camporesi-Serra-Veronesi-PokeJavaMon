@@ -5,8 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import controller.MainController;
 import controller.ViewController;
-import controller.parameters.State;
-import view.resources.TitleWiew;  
+import controller.parameters.FilePath;
+import controller.parameters.State;  
   
 public class InserisciNome {  
 	
@@ -24,7 +24,12 @@ public class InserisciNome {
 		nickname.requestFocusInWindow();
 		f.setFocusable(true);
 		f.setResizable(false);
-		f.setIconImage(Toolkit.getDefaultToolkit().getImage(TitleWiew.class.getResource("/POKEPALLA.png").getPath()));
+		try {
+		    f.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    f.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
+		}
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setBounds(100, 100, 400, 300);
 		f.getContentPane().setLayout(null);

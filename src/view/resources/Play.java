@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import controller.MainController;
 import controller.load.LoadController;
+import controller.parameters.FilePath;
 import model.map.PokeMapImpl;
 import model.map.Position;
 import model.player.PlayerImpl;
@@ -56,13 +57,24 @@ public class Play implements Screen {
 	}
 	
 	public void show() {			
-	        map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
+	        try {
+	            map = new TmxMapLoader().load(FilePath.MAP.getAbsolutePath());
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            map = new TmxMapLoader().load(this.getClass().getResource(FilePath.MAP.getResourcePath()).getPath());
+	        }
 	        renderer = new OrthogonalTiledMapRenderer(map);                    
 		sr = new ShapeRenderer();
 		sr.setColor(Color.CYAN);
 		Gdx.gl.glLineWidth(3);
 		camera = new OrthographicCamera();	
-		Texture tx = new Texture(this.getClass().getResource("/player.png").getPath());
+		Texture tx;
+		try {
+		    tx = new Texture(FilePath.PLAYER.getAbsolutePath());
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    tx = new Texture(this.getClass().getResource(FilePath.PLAYER.getResourcePath()).getPath());
+		}
 		TextureRegion gain = new TextureRegion(tx);
 		TiledMapTileLayer fg = (TiledMapTileLayer) map.getLayers().get("foreground");
 		TiledMapTileLayer bg = (TiledMapTileLayer) map.getLayers().get("background");
@@ -133,7 +145,12 @@ public class Play implements Screen {
 	}
 	
 	public TiledMap getMap() {
-	    map = new TmxMapLoader().load(this.getClass().getResource("/map.tmx").getPath());
+	    try {
+                map = new TmxMapLoader().load(FilePath.MAP.getAbsolutePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+                map = new TmxMapLoader().load(this.getClass().getResource(FilePath.MAP.getResourcePath()).getPath());
+            }
             return this.map;
 	}
 }

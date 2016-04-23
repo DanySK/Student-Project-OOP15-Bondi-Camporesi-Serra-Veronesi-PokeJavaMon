@@ -2,6 +2,7 @@ package controller.music;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import controller.parameters.FilePath;
 import controller.parameters.Music;
 
 public class MainMusicController implements MusicController {
@@ -11,7 +12,11 @@ public class MainMusicController implements MusicController {
     private static MainMusicController SINGLETON;
     
     public void play(Music song) {        
-        s = Gdx.audio.newSound(Gdx.files.classpath(song.getPath()));
+        try {
+            s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getPath()));
+        } catch (Exception e) {
+            s = Gdx.audio.newSound(Gdx.files.classpath(song.getPath()));
+        }
         s.loop();
         m = song;
     }

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import controller.MainController;
 import controller.ViewController;
+import controller.parameters.FilePath;
 import controller.parameters.State;
 
 public class TitleWiew {
@@ -24,7 +25,12 @@ public class TitleWiew {
         
         frame.setResizable(false);
         frame.setLocation(100, 100);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(TitleWiew.class.getResource("/POKEPALLA.png").getPath()));
+        try {
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
+        }
         JPanel pane = new JPanel();
         JTextArea text = new JTextArea("Benvenuto in PokeJavaMon!!!");
         pane.add(text);
