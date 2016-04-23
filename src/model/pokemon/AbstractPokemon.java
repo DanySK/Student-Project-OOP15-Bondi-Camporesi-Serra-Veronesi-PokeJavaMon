@@ -144,7 +144,7 @@ public abstract class AbstractPokemon implements Pokemon {
     }
     
     @Override
-    public abstract boolean levelUp();
+    public abstract void levelUp();
     
     @Override
     public abstract void evolveUp();

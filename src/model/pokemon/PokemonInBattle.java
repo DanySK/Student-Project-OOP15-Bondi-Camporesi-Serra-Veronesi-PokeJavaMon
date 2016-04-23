@@ -1,15 +1,9 @@
 package model.pokemon;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import model.items.Boost;
-
 public class PokemonInBattle extends AbstractPokemon{
 
 	private boolean canEvolve;
 	private PokemonDB evolvesTo;
-	private final Map<Stat, Double> boosts;
 	public static int MAX_LEVEL = 50;
 
 	protected PokemonInBattle(PokemonDB pokemon, int lvl) {   
@@ -21,34 +15,14 @@ public class PokemonInBattle extends AbstractPokemon{
 			canEvolve = true;
 			evolvesTo = pokemon.getEvolvesToPokemon();
 		}
-		boosts = new HashMap<>();
-		boosts.put(Stat.ATK, 1.0);
-		boosts.put(Stat.DEF, 1.0);
-		boosts.put(Stat.SPD, 1.0);
-	}
-
-        
-	public void applyBoost(final Boost b) {
-	    boosts.replace(b.getStat(), b.getCoeff() * boosts.get(b.getStat()));
 	}
 	
-	public double getBoost(final Stat s) {
-	    return this.boosts.get(s);
-	}
-	
-	public void clearBoosts() {
-	    boosts.replace(Stat.ATK, 1.0);
-            boosts.replace(Stat.DEF, 1.0);
-            boosts.replace(Stat.SPD, 1.0);
-	}
-	
-	public boolean levelUp() {
+	public void levelUp() {
 	    if (this.getStat(Stat.LVL) == MAX_LEVEL) {
-	        return false;
+	        return;
 	    }
 	    changeStat(Stat.LVL, this.mapStat.get(Stat.LVL) + 1);
 	    updateStats();
-	    return true;
     }
 	
 	public void evolveUp(){
@@ -98,7 +72,7 @@ public class PokemonInBattle extends AbstractPokemon{
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((boosts == null) ? 0 : boosts.hashCode() * pokemon.hashCode() * this.getStat(Stat.LVL));
+        result = prime * result + ((mapStat == null) ? 0 : mapStat.hashCode() * pokemon.hashCode() * this.getStat(Stat.LVL));
         return result;
     }
 
@@ -113,7 +87,6 @@ public class PokemonInBattle extends AbstractPokemon{
             return false;
         PokemonInBattle other = (PokemonInBattle) obj;
         if (other.pokemon == this.pokemon 
-                && other.boosts.equals(this.boosts) 
                 && other.getStat(Stat.LVL) == this.getStat(Stat.LVL)
                 && other.currentHP == this.currentHP 
                 && other.getNecessaryExp() == this.getNecessaryExp()

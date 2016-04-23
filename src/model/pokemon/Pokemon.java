@@ -12,7 +12,7 @@ public interface Pokemon {
     public Map<Stat, Integer> getAllStats();
     public List<Move> getCurrentMoves();
     
-    public boolean levelUp();
+    public void levelUp();
     public void evolveUp();
     public void learnMove(Move oldMove, Move newMove);
     public void heal(int value);

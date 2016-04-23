@@ -14,12 +14,12 @@ import model.trainer.Trainer;
 
 
 public class FightVsTrainer extends FightVsWildPkm{
-	final static int FIRST_ELEM = 0;
-	final static int STANDARD_EFFECTIVENESS_VALUE = 1;
+	private final static int FIRST_ELEM = 0;
+	private final static int STANDARD_EFFECTIVENESS_VALUE = 1;
 	private Trainer trainer;
 	private Map<PokemonInBattle, Map<Stat, Double>> enemyPkmsBoosts = new HashMap<>();
 	
-	FightVsTrainer(Player player, Trainer trainer) {
+	public FightVsTrainer(Player player, Trainer trainer) {
 		super(player, trainer.getSquad().getPokemonList().get(FIRST_ELEM));
 		this.trainer = trainer;
 		for(PokemonInBattle pkm : trainer.getSquad().getPokemonList()){
@@ -108,9 +108,10 @@ public class FightVsTrainer extends FightVsWildPkm{
 	public int getTrainerMoney(){
 		return this.trainer.getMoney();
 	}
-	/*
+	
 	public void playerTakeMoney(){
-		player.beatenTrainer(this.trainer.getTrainerDB());
-	}*/
+		//TODO
+		//player.beatenTrainer(this.trainer.getTrainerDB());
+	}
 	
 }

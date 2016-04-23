@@ -12,6 +12,7 @@ import exceptions.CannotUseItemInBattleException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
+import model.items.Boost;
 import model.items.Item;
 import model.items.Item.ItemType;
 import model.items.Item.whenToUse;
@@ -28,11 +29,11 @@ import model.squad.Squad;
 
 
 public class FightVsWildPkm implements Fight {
-	final static private int SUCCESS_PROBABILTY = 255;
-	final protected int ATTACKS_TO_DO = 2;
-	final protected double STAB_ACTIVE = 1.5;
-	final protected double MIN_BOOST_VALUE = 0.25;
-	final protected double MAX_BOOST_VALUE = 2.0;
+	final private static int SUCCESS_PROBABILTY = 255;
+	protected final int ATTACKS_TO_DO = 2;
+	protected final double STAB_ACTIVE = 1.5;
+	protected final double MIN_BOOST_VALUE = 0.25;
+	protected final double MAX_BOOST_VALUE = 2.0;
 	protected double stab;
 	protected double effectiveValue = 1;
 	
@@ -43,7 +44,7 @@ public class FightVsWildPkm implements Fight {
 	protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
 	private Map<Stat, Double> enemyPkmBoosts;
 	
-	final protected WeaknessTable table = WeaknessTable.getWeaknessTable();
+	protected final WeaknessTable table = WeaknessTable.getWeaknessTable();
 	
 	protected final Map<Stat, Double> createBoostsMap(){
 		final Map<Stat, Double> boosts = new HashMap<>();
@@ -79,10 +80,7 @@ public class FightVsWildPkm implements Fight {
 		final Random escapeRoll = new Random();
 		final int escapeChance = (32 * allyPkm.getStat(Stat.SPD)) / 
 				(enemyPkm.getStat(Stat.SPD) / 4) + 30;
-		if(escapeChance > escapeRoll.nextInt(SUCCESS_PROBABILTY)){
-			return true;
-		}
-		return false;
+		return (escapeChance > escapeRoll.nextInt(SUCCESS_PROBABILTY));
 	}
 	
 	@Override
@@ -106,19 +104,18 @@ public class FightVsWildPkm implements Fight {
 	}
 	
 	@Override
-	//da implementare
 	public void useBoost(Item itemToUse) throws PokemonNotFoundException{
+		final Boost boost = (Boost) itemToUse;
+		allyPkmsBoosts.get(allyPkm).put(boost.getStat(), 
+				(allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff()));
+		player.getInventory().consumeItem(itemToUse);
 	}
 	
 	@Override
 	public boolean usePokeball(Item itemToUse) throws CannotCaughtTrainerPkmException{
 		final Pokeball ball = (Pokeball) itemToUse;
-		final boolean iscaught = ball.isCaptured(enemyPkm);
 		player.getInventory().consumeItem(itemToUse);
-		if(iscaught){
-			player.getBox().putCapturedPokemon(enemyPkm);
-		}
-		return iscaught;
+		return ball.isCaptured(enemyPkm);
 	}
 	
 	@Override
@@ -133,11 +130,8 @@ public class FightVsWildPkm implements Fight {
 	
 	@Override
 	public boolean isAllyFastest(){
-		if((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD))
-				> (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD))){
-					return true;
-		}
-		return false;
+		return ((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
+				> (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD)));
 	}
 	
 	@Override
@@ -147,10 +141,7 @@ public class FightVsWildPkm implements Fight {
 	
 	@Override
 	public boolean isExhausted(PokemonInBattle pkm){
-		if(pkm.getCurrentHP() == 0){
-			return true;
-		}
-		return false;
+		return (pkm.getCurrentHP() == 0);
 	}
 	
 	@Override
@@ -175,10 +166,7 @@ public class FightVsWildPkm implements Fight {
 	
 	@Override
 	public boolean isAllyPkm(final PokemonInBattle pkm){
-		if(pkm.equals(allyPkm)){
-			return true;
-		}
-		return false;
+		return (pkm.equals(allyPkm));
 	}
 	
 	@Override
@@ -286,19 +274,22 @@ public class FightVsWildPkm implements Fight {
 	}
 	
 	protected double expBaseCalculation(){
-		double baseExp;//da quantificare per bene
+		//TODO testare se è bilanciata la quantità di baseExp
+		double baseExp;
 		switch(enemyPkm.getPokemon().getRarity()){
+			case COMMON:
+				baseExp = 60;
 			case UNCOMMON:
-				baseExp = 1.5;
+				baseExp = 90;
 				break;
 			case RARE:
-				baseExp = 2;
+				baseExp = 120;
 				break;
 			case STARTER:
-				baseExp = 2.5;
+				baseExp = 150;
 				break;
 			case LEGENDARY:
-				baseExp = 4;
+				baseExp = 300;
 				break;
 			default:
 				baseExp = 1;
@@ -311,7 +302,8 @@ public class FightVsWildPkm implements Fight {
 	public boolean giveExpAndCheckLvlUp(final int exp){
 		if(allyPkm.getNecessaryExp() <= exp){
 			allyPkm.getAllStats().replace(Stat.EXP, (exp - allyPkm.getNecessaryExp()));
-			return allyPkm.levelUp();
+			allyPkm.levelUp();
+			return true;
 		}
 		allyPkm.getAllStats().replace(Stat.EXP, (allyPkm.getStat(Stat.EXP) + exp));
 		return false;

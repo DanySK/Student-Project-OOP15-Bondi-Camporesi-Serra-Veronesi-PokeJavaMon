@@ -21,13 +21,11 @@ public class Boost extends AbstractItem {
         this.name = stat.toString() + "X";
     }
 
-    @Override
+    @Override  
     public void effect(final Player p, PokemonInBattle pkmn) throws PokemonNotFoundException {
         if (!p.getSquad().getPokemonList().contains(pkmn)) {
             throw new PokemonNotFoundException();
         }
-        
-        pkmn.applyBoost(this);
     }
 
     @Override
