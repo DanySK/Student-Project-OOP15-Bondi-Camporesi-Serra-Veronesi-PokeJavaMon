@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 
 import controller.MainController;
 import controller.ViewController;
+import controller.parameters.Directions;
 import controller.parameters.State;
 import view.frames.InserisciNome;
 
@@ -81,5 +82,15 @@ public class SecondMenuKeyboardController implements KeyboardController {
             }
         }
         return SINGLETON;
+    }
+
+    @Override
+    public void updateSpeed() {
+        return;
+    }
+
+    @Override
+    public Directions getDirection() {
+        return Directions.STILL;
     }
 }

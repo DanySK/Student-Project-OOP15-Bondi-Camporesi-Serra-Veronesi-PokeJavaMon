@@ -1,5 +1,7 @@
 package controller.keyboard;
 
+import controller.parameters.Directions;
+
 public class MenuKeyboardController implements KeyboardController {
 
     private static MenuKeyboardController SINGLETON;
@@ -58,5 +60,15 @@ public class MenuKeyboardController implements KeyboardController {
             }
         }
         return SINGLETON;
+    }
+
+    @Override
+    public void updateSpeed() {
+        return;
+    }
+
+    @Override
+    public Directions getDirection() {
+        return Directions.STILL;
     }
 }

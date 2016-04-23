@@ -6,21 +6,19 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
-import controller.parameters.Directions;
+import controller.MainController;
 import controller.parameters.FilePath;
 import model.utilities.Pair;
 import view.resources.Play;
 
 public class PlayerSprite extends Sprite {
     
-    private static Vector2 velocity = new Vector2(), newVelocity = new Vector2();
-    private boolean newPlayer = true;
+    private Vector2 velocity = new Vector2();
     private Animation left, right, up, down, left_s, right_s, up_s, down_s;
     private TextureAtlas playerAtlas;
-    private float animationTime = 0, deltaTime;
-    private static Directions direction;
+    private float animationTime = 0;
     private int pos = 0;
-    private static Pair<Float, Float> position;
+    private Pair<Float, Float> position;
     private static PlayerSprite SINGLETON;
     
     public static PlayerSprite getSprite() {
@@ -36,19 +34,27 @@ public class PlayerSprite extends Sprite {
 
     public PlayerSprite(Sprite st) {
         super(st);
-        direction = Directions.STILL;
-        setSize(16, 16);
+        super.setSize(16, 16);
         this.setupAnimation();
     }
     
     public void update(SpriteBatch spriteBatch) {
-        move(Gdx.graphics.getDeltaTime(), direction);
+        if (pos == 0) {
+            MainController.getController().updateSpeed();
+            if (velocity.x == 0 && velocity.y == 0) {
+                // Gira il personaggio e basta
+            } else {
+                move();
+            }
+        } else {
+            move();
+        }
         updatePosition();
-        super.draw(spriteBatch);
+        super.draw(spriteBatch); 
     }
     
-    private void updatePosition() {
-        PlayerSprite.position = new Pair<>(super.getX(),super.getY());
+    public void updatePosition() {
+        this.position = new Pair<>(super.getX(),super.getY());
     }
 
     private void setupAnimation() {
@@ -77,137 +83,7 @@ public class PlayerSprite extends Sprite {
         setRegion(down_s.getKeyFrame(animationTime));
     }
     
-    public void setOrientation(Directions d) {
-        switch (d) {
-        case UP:
-            direction = d;
-            setRegion(up_s.getKeyFrame(animationTime));
-            break;
-        case DOWN:
-            direction = d;
-            setRegion(down_s.getKeyFrame(animationTime));
-            break;
-        case LEFT:
-            direction = d;
-            setRegion(left_s.getKeyFrame(animationTime));
-            break;
-        case RIGHT:
-            direction = d;
-            setRegion(right_s.getKeyFrame(animationTime));
-            break;
-        case STILL:
-            break;
-        }
-    }
-    
-    public void move(float delta, Directions direction) {
-        deltaTime = delta;
-        switch (direction) {
-        case UP:
-            if (velocity.y > 0) {
-                setRegion(up.getKeyFrame(animationTime));
-                super.setY(super.getY() + velocity.y);
-                animationTime += deltaTime;
-                pos ++;
-                if (pos == 8) {
-                    velocity.y = newVelocity.y;
-                    pos = 0;
-                }
-            }
-            break;
-        case DOWN:
-            if (velocity.y < 0) {
-                setRegion(down.getKeyFrame(animationTime));
-                super.setY(super.getY() + velocity.y);
-                animationTime += deltaTime;
-                pos ++;
-                if (pos == 8) {
-                    velocity.y = newVelocity.y;
-                    pos = 0;
-                }
-            }
-            break;
-        case LEFT:
-            if (velocity.x < 0) {
-                setRegion(left.getKeyFrame(animationTime));
-                super.setX(super.getX() + velocity.x);
-                animationTime += deltaTime;
-                pos ++;
-                if (pos == 8) {
-                    velocity.x = newVelocity.x;
-                    pos = 0;
-                }
-            }
-            break;
-        case RIGHT:
-            if (velocity.x > 0) {
-                setRegion(right.getKeyFrame(animationTime));
-                super.setX(super.getX() + velocity.x);            
-                animationTime += deltaTime;
-                pos ++;
-                if (pos == 8) {
-                    velocity.x = newVelocity.x;
-                    pos = 0;
-                }
-            }
-            break;
-        case STILL:
-            if (newPlayer) {
-                setOrientation(Directions.DOWN);
-                newPlayer = false;
-            }
-            break;
-        }
-    }
-    
-    public void setDirection(Directions d) {
-        switch(d) {
-        case UP:
-            if (velocity.x == velocity.y && velocity.x == 0) {
-                velocity.y = 2;
-                velocity.x = 0;
-            } else {
-                newVelocity.y = 2;
-                newVelocity.x = 0;
-            }
-            direction = d;
-            break;
-        case DOWN:
-            if (velocity.x == velocity.y && velocity.x == 0) {
-                velocity.y = -2;
-                velocity.x = 0;
-            } else {
-                newVelocity.y = -2;
-                newVelocity.x = 0;
-            }
-            direction = d;
-            break;
-        case LEFT:
-            if (velocity.x == velocity.y && velocity.x == 0) {
-                velocity.y = 0;
-                velocity.x = -2;
-            } else {
-                newVelocity.y = 0;
-                newVelocity.x = -2;
-            }
-            direction = d;
-            break;
-        case RIGHT:
-            if (velocity.x == velocity.y && velocity.x == 0) {
-                velocity.y = 0;
-                velocity.x = 2;
-            } else {
-                newVelocity.y = 0;
-                newVelocity.x = 2;
-            }
-            direction = d;
-            break;
-        case STILL:
-            break;
-        }
-    }
-    
-    public static Pair<Float, Float> getPosition() {
+    public Pair<Float, Float> getPosition() {
         return position;
     }
 
@@ -216,8 +92,29 @@ public class PlayerSprite extends Sprite {
         super.setY(y);
     }
     
-    public void stop() {
-        newVelocity.x = 0;
-        newVelocity.y = 0;
+    private void move() {
+        if (velocity.x > 0) {
+            super.setX(super.getX() + velocity.x);
+            setRegion(right.getKeyFrame(animationTime));
+        } else if (velocity.x < 0) {
+            super.setX(super.getX() + velocity.x);
+            setRegion(left.getKeyFrame(animationTime));
+        } else if (velocity.y > 0) {
+            super.setY(super.getY() + velocity.y);
+            setRegion(up.getKeyFrame(animationTime));
+        } else if (velocity.y < 0) {
+            super.setY(super.getY() + velocity.y);
+            setRegion(down.getKeyFrame(animationTime));
+        }
+        animationTime += Gdx.graphics.getDeltaTime();
+        pos ++;
+        if (pos == 8) {
+            pos = 0;
+        }
+    }
+    
+    public void setVelocity(float x, float y) {
+        this.velocity.x = x;
+        this.velocity.y = y;
     }
 } 

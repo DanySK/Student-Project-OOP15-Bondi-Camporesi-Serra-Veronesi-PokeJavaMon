@@ -7,6 +7,7 @@ import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.music.MainMusicController;
+import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
 import model.pokemon.InitializeMoves;
@@ -83,6 +84,14 @@ public class MainController {
 
     public KeyboardController getCurrentController() {
         return keyboardController;
+    }
+    
+    public void updateSpeed() {
+        keyboardController.updateSpeed();
+    }
+    
+    public Directions getDirection() {
+        return keyboardController.getDirection();
     }
     
     public static void main(String[] args) {

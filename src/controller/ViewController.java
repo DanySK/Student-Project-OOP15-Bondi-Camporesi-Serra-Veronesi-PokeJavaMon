@@ -53,7 +53,7 @@ public final class ViewController {
     }
     
     public void save() {
-        PlayerImpl.getPlayer().setPosition(PlayerSprite.getPosition().getX().intValue(), PlayerSprite.getPosition().getY().intValue());
+        PlayerImpl.getPlayer().setPosition(PlayerSprite.getSprite().getPosition().getX().intValue(), PlayerSprite.getSprite().getPosition().getY().intValue());
         if (name != null) {
             PlayerImpl.getPlayer().setName(name);
         }

@@ -81,18 +81,21 @@ public class Play implements Screen {
 		map.getLayers().get("background");
 		map.getLayers().get("doorLayer");
 		sp = new Sprite(gain);		
-		pls = new PlayerSprite(sp);
+		pls = PlayerSprite.getSprite();
 		pm = new PokeMapImpl(map);
 		if (newGame) {
 		    pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+		    pls.setPosition(28*16, (299 - 177) * 16);
 		} else {
 		    if (LoadController.getController().saveExists()) {
 		        LoadController.getController().load(null);
 	                pls.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
+	                pls.setPosition(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
 	                System.out.println("Benvenuto " + PlayerImpl.getPlayer().getName());
 		    } else {
 		        System.out.println("SAVE DOES NOT EXIST");
 		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+		        pls.setPosition(28*16, (299 - 177) * 16);
 		    }
 		}
 		

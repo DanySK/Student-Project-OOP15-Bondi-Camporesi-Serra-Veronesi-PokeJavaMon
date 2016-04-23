@@ -19,106 +19,57 @@ public class WalkingKeyboardController implements KeyboardController {
     
     private static WalkingKeyboardController SINGLETON;
     private int keys = 0;
-    private Directions d = Directions.DOWN;
+    private Directions direction = Directions.DOWN;
     private PokeMapImpl pm;
     private TileType t;
+    private boolean left, right, up, down;
     
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Keys.W:
             case Keys.UP:
                 addKey();
-                pm = Play.getMapImpl();
-                t = null;
-                t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) - 1);
-                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
-                    PlayerSprite.getSprite().setDirection(Directions.UP);
-                } else {
-                    PlayerSprite.getSprite().stop();
-                }
-                d = Directions.UP;
+                up = true;
+                direction = Directions.UP;
                 break;
             case Keys.A:
             case Keys.LEFT:
                 addKey();
-                pm = Play.getMapImpl();
-                t = null;
-                t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
-                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
-                    PlayerSprite.getSprite().setDirection(Directions.LEFT);
-                } else {
-                    PlayerSprite.getSprite().stop();
-                }
-                d = Directions.LEFT;
+                left = true;
+                direction = Directions.LEFT;
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 addKey();
-                pm = Play.getMapImpl();
-                t = null;
-                t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
-                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
-                    PlayerSprite.getSprite().setDirection(Directions.RIGHT);
-                } else {
-                    PlayerSprite.getSprite().stop();
-                }
-                d = Directions.RIGHT;
+                right = true;
+                direction = Directions.RIGHT;
                 break;
             case Keys.S:
             case Keys.DOWN:
                 addKey();
-                pm = Play.getMapImpl();
-                t = null;
-                t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) + 1);
-                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
-                    PlayerSprite.getSprite().setDirection(Directions.DOWN);
-                } else {
-                    PlayerSprite.getSprite().stop();
-                }
-                d = Directions.DOWN;
+                down = true;
+                direction = Directions.DOWN;
                 break; 
             case Keys.ESCAPE:
                 if (keys == 0) {
                     ViewController.getController().showMenu();
                 }
                 break;
-        }
-        return false;
-    }
-
-    public boolean keyUp(int keycode) {
-        switch(keycode) {
-            case Keys.W:
-            case Keys.UP:
-                removeKey();
-                break;
-            case Keys.A:
-            case Keys.LEFT:
-                removeKey();
-                break;
-            case Keys.D:
-            case Keys.RIGHT:
-                removeKey();
-                break;
-            case Keys.S:
-            case Keys.DOWN:
-                removeKey();
-                break;
             case Keys.ENTER:
                 PokeMapImpl pm = Play.getMapImpl();
                 TileType t = null;
-                switch (d) {
+                switch (direction) {
                 case UP:
-                    t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) - 1);
+                    t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) - 1);
                     break;
                 case DOWN:
-                    t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) + 1);
+                    t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) + 1);
                     break;
                 case LEFT:
-                    t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
+                    t = pm.getTileType((PlayerSprite.getSprite().getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
                     break;
                 case RIGHT:
-                    t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
+                    t = pm.getTileType((PlayerSprite.getSprite().getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
                     break;
                 case STILL:
                     break;
@@ -148,6 +99,32 @@ public class WalkingKeyboardController implements KeyboardController {
                     MainController.getController().updateStatus(State.FIGHTING);
                     ViewController.getController().fightScreen();
                 }
+        }
+        return false;
+    }
+
+    public boolean keyUp(int keycode) {
+        switch(keycode) {
+            case Keys.W:
+            case Keys.UP:
+                removeKey();
+                up = false;
+                break;
+            case Keys.A:
+            case Keys.LEFT:
+                removeKey();
+                left = false;
+                break;
+            case Keys.D:
+            case Keys.RIGHT:
+                removeKey();
+                right = false;
+                break;
+            case Keys.S:
+            case Keys.DOWN:
+                removeKey();
+                down = false;
+                break;
         }
         return true;
     }
@@ -197,5 +174,60 @@ public class WalkingKeyboardController implements KeyboardController {
             }
         }
         return SINGLETON;
+    }
+
+    @Override
+    public void updateSpeed() {
+        pm = Play.getMapImpl();
+        PlayerSprite.getSprite().updatePosition();
+        t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
+        if (t == TileType.TELEPORT) {
+            System.out.println("TELEPORT");
+            // Bisognera settare la nuova posizione in base a quella del tile
+        }
+        if (up == true) {
+            direction = Directions.UP;
+            pm = Play.getMapImpl();
+            t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) - 1);
+            if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
+                PlayerSprite.getSprite().setVelocity(0, 2);
+            } else {
+                PlayerSprite.getSprite().setVelocity(0, 0);
+            }
+        } else if (down == true) {
+            direction = Directions.DOWN;
+            pm = Play.getMapImpl();
+            t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) + 1);
+            if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
+                PlayerSprite.getSprite().setVelocity(0, -2);
+            } else {
+                PlayerSprite.getSprite().setVelocity(0, 0);
+            }
+        } else if (left == true) {
+            direction = Directions.LEFT;
+            pm = Play.getMapImpl();
+            t = pm.getTileType((PlayerSprite.getSprite().getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
+            if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
+                PlayerSprite.getSprite().setVelocity(-2, 0);
+            } else {
+                PlayerSprite.getSprite().setVelocity(0, 0);
+            }
+        } else if (right == true) {
+            direction = Directions.RIGHT;
+            pm = Play.getMapImpl();
+            t = pm.getTileType((PlayerSprite.getSprite().getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
+            if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
+                PlayerSprite.getSprite().setVelocity(2, 0);
+            } else {
+                PlayerSprite.getSprite().setVelocity(0, 0);
+            }
+        } else {
+            PlayerSprite.getSprite().setVelocity(0, 0);
+        }
+    }
+
+    @Override
+    public Directions getDirection() {
+        return direction;
     }
 }
