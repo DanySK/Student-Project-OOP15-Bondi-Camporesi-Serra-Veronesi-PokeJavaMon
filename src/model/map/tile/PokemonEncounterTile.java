@@ -23,7 +23,7 @@
 //    private boolean encountered = false;
 //    
 //    public PokemonEncounterTile(final PokemonEncounterZone zone, int x, int y) {
-//        super(TileType.POKEMON_ENCOUNTER, Direction.SOUTH, x, y);
+//        super(TileType.POKEMON_ENCOUNTER, Directions.SOUTH, x, y);
 //        this.zone = zone;
 //    }
 //    

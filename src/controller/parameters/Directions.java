@@ -1,6 +1,6 @@
 package controller.parameters;
 
-public enum Direction {
+public enum Directions {
     
     UP, DOWN, LEFT, RIGHT;
 }

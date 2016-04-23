@@ -12,7 +12,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector2;
 import controller.MainController;
-import controller.parameters.Direction;
+import controller.parameters.Directions;
 import controller.parameters.FilePath;
 import model.utilities.Pair;
 
@@ -245,7 +245,7 @@ public class Player extends Sprite {
 	    this.background = collisionLayer;
 	}
 
-	public static void move(Direction d) {
+	public static void move(Directions d) {
 	    float x = 0, y = 0;
 	    switch (d) {
 	    case UP:

@@ -31,6 +31,7 @@ public class Play implements Screen {
 	private int[] background = new int[] {0}, foreground = new int[] {1};
 	private ShapeRenderer sr;
 	private boolean newGame;
+	private static PokeMapImpl pm;
 	
 	public Play(boolean b) {
         newGame = b;
@@ -50,6 +51,10 @@ public class Play implements Screen {
 	                renderer.render(foreground);        
 	        }
 	} 
+	
+	public static PokeMapImpl getMapImpl() {
+	    return pm;
+	}
 		
 	public void resize(int width, int height) {		
 	        camera.viewportWidth = width / 2.5f;
@@ -81,7 +86,7 @@ public class Play implements Screen {
 		MapLayer obj = map.getLayers().get("doorLayer");
 		Sprite sp = new Sprite(gain);		
 		player = new Player(sp, bg, fg, obj, map.getTileSets().getTile(322));
-		final PokeMapImpl pm = new PokeMapImpl(map);
+		pm = new PokeMapImpl(map);
 		if (newGame) {
 		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {

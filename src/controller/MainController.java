@@ -70,6 +70,11 @@ public class MainController {
                     }
                 }
                 break;
+            case READING:
+                keyboardController = MenuKeyboardController.getController();
+                Player.resetPos();
+                Play.updateKeyListener();
+                break;
         }
     }
     

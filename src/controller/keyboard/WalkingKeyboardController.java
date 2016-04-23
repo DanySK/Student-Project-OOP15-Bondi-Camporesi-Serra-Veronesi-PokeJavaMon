@@ -1,38 +1,54 @@
 package controller.keyboard;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import com.badlogic.gdx.Input.Keys;
+import controller.MainController;
 import controller.ViewController;
-import controller.parameters.Direction;
+import controller.parameters.*;
+import model.map.PokeMapImpl;
+import model.map.tile.Tile.TileType;
 import model.resources.Player;
+import view.resources.Play;
 
 public class WalkingKeyboardController implements KeyboardController {
     
     private static WalkingKeyboardController SINGLETON;
     private int keys = 0;
+    private Directions d = Directions.DOWN;
     
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Keys.W:
             case Keys.UP:
                 addKey();
-                Player.move(Direction.UP);
+                Player.move(Directions.UP);
+                d = Directions.UP;
                 break;
             case Keys.A:
             case Keys.LEFT:
                 addKey();
-                Player.move(Direction.LEFT);
+                Player.move(Directions.LEFT);
+                d = Directions.LEFT;
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 addKey();
-                Player.move(Direction.RIGHT);
+                Player.move(Directions.RIGHT);
+                d = Directions.RIGHT;
                 break;
             case Keys.S:
             case Keys.DOWN:
                 addKey();
-                Player.move(Direction.DOWN);
+                Player.move(Directions.DOWN);
+                d = Directions.DOWN;
                 break; 
-            case Keys.ENTER:
+            case Keys.ESCAPE:
                 if (!Player.isMoving() && keys == 0) {
                     ViewController.getController().showMenu();
                 }
@@ -63,6 +79,48 @@ public class WalkingKeyboardController implements KeyboardController {
                 removeKey();
                 Player.stop();
                 break;
+            case Keys.ENTER:
+                PokeMapImpl pm = Play.getMapImpl();
+                TileType t = null;
+                switch (d) {
+                case UP:
+                    t = pm.getTileType(Player.getPosition().getX().intValue() / 16, (299 - (Player.getPosition().getY().intValue() / 16)) - 1);
+                    break;
+                case DOWN:
+                    t = pm.getTileType(Player.getPosition().getX().intValue() / 16, (299 - (Player.getPosition().getY().intValue() / 16)) + 1);
+                    break;
+                case LEFT:
+                    t = pm.getTileType((Player.getPosition().getX().intValue() / 16) - 1, (299 - (Player.getPosition().getY().intValue() / 16)));
+                    break;
+                case RIGHT:
+                    t = pm.getTileType((Player.getPosition().getX().intValue() / 16) + 1, (299 - (Player.getPosition().getY().intValue() / 16)));
+                    break;
+                }
+                if (t == TileType.SIGN) {
+                    MainController.getController().updateStatus(State.READING);
+                    JFrame fr = new JFrame();
+                    JPanel pa = new JPanel();
+                    JTextArea tx = new JTextArea("SIGN_MESSAGE");
+                    JButton button = new JButton("OK");
+                    button.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            MainController.getController().updateStatus(State.WALKING);
+                            fr.dispose();
+                        }
+                    });
+                    tx.setEditable(false);
+                    pa.add(tx);
+                    pa.add(button);
+                    fr.add(pa);
+                    fr.setAlwaysOnTop(true);
+                    fr.setBounds(100, 100, 450, 300);
+                    fr.setUndecorated(true);
+                    fr.setVisible(true);
+                } else if (t == TileType.TRAINER) {
+                    MainController.getController().updateStatus(State.FIGHTING);
+                    ViewController.getController().fightScreen();
+                }
         }
         return true;
     }
