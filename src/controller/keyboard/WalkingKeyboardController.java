@@ -2,7 +2,6 @@ package controller.keyboard;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,7 +12,7 @@ import controller.ViewController;
 import controller.parameters.*;
 import model.map.PokeMapImpl;
 import model.map.tile.Tile.TileType;
-import model.resources.Player;
+import view.PlayerSprite;
 import view.resources.Play;
 
 public class WalkingKeyboardController implements KeyboardController {
@@ -21,38 +20,68 @@ public class WalkingKeyboardController implements KeyboardController {
     private static WalkingKeyboardController SINGLETON;
     private int keys = 0;
     private Directions d = Directions.DOWN;
+    private PokeMapImpl pm;
+    private TileType t;
     
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Keys.W:
             case Keys.UP:
                 addKey();
-                Player.move(Directions.UP);
+                pm = Play.getMapImpl();
+                t = null;
+                t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) - 1);
+                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
+                    PlayerSprite.getSprite().setDirection(Directions.UP);
+                } else {
+                    PlayerSprite.getSprite().stop();
+                }
                 d = Directions.UP;
                 break;
             case Keys.A:
             case Keys.LEFT:
                 addKey();
-                Player.move(Directions.LEFT);
+                pm = Play.getMapImpl();
+                t = null;
+                t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
+                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
+                    PlayerSprite.getSprite().setDirection(Directions.LEFT);
+                } else {
+                    PlayerSprite.getSprite().stop();
+                }
                 d = Directions.LEFT;
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 addKey();
-                Player.move(Directions.RIGHT);
+                pm = Play.getMapImpl();
+                t = null;
+                t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
+                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
+                    PlayerSprite.getSprite().setDirection(Directions.RIGHT);
+                } else {
+                    PlayerSprite.getSprite().stop();
+                }
                 d = Directions.RIGHT;
                 break;
             case Keys.S:
             case Keys.DOWN:
                 addKey();
-                Player.move(Directions.DOWN);
+                pm = Play.getMapImpl();
+                t = null;
+                t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) + 1);
+                if (t == TileType.TERRAIN || t == TileType.POKEMON_ENCOUNTER) {
+                    PlayerSprite.getSprite().setDirection(Directions.DOWN);
+                } else {
+                    PlayerSprite.getSprite().stop();
+                }
                 d = Directions.DOWN;
                 break; 
             case Keys.ESCAPE:
-                if (!Player.isMoving() && keys == 0) {
+                if (keys == 0) {
                     ViewController.getController().showMenu();
                 }
-                break; 
+                break;
         }
         return false;
     }
@@ -62,38 +91,36 @@ public class WalkingKeyboardController implements KeyboardController {
             case Keys.W:
             case Keys.UP:
                 removeKey();
-                Player.stop();
                 break;
             case Keys.A:
             case Keys.LEFT:
                 removeKey();
-                Player.stop();
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 removeKey();
-                Player.stop();
                 break;
             case Keys.S:
             case Keys.DOWN:
                 removeKey();
-                Player.stop();
                 break;
             case Keys.ENTER:
                 PokeMapImpl pm = Play.getMapImpl();
                 TileType t = null;
                 switch (d) {
                 case UP:
-                    t = pm.getTileType(Player.getPosition().getX().intValue() / 16, (299 - (Player.getPosition().getY().intValue() / 16)) - 1);
+                    t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) - 1);
                     break;
                 case DOWN:
-                    t = pm.getTileType(Player.getPosition().getX().intValue() / 16, (299 - (Player.getPosition().getY().intValue() / 16)) + 1);
+                    t = pm.getTileType(PlayerSprite.getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)) + 1);
                     break;
                 case LEFT:
-                    t = pm.getTileType((Player.getPosition().getX().intValue() / 16) - 1, (299 - (Player.getPosition().getY().intValue() / 16)));
+                    t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
                     break;
                 case RIGHT:
-                    t = pm.getTileType((Player.getPosition().getX().intValue() / 16) + 1, (299 - (Player.getPosition().getY().intValue() / 16)));
+                    t = pm.getTileType((PlayerSprite.getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getPosition().getY().intValue() / 16)));
+                    break;
+                case STILL:
                     break;
                 }
                 if (t == TileType.SIGN) {

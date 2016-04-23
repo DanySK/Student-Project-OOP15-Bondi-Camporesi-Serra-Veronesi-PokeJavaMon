@@ -9,9 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import controller.MainController;
@@ -20,36 +18,34 @@ import controller.parameters.FilePath;
 import model.map.PokeMapImpl;
 import model.map.Position;
 import model.player.PlayerImpl;
-import model.resources.Player;
+import view.PlayerSprite;
 
 public class Play implements Screen {  
-        private boolean pause = false;
         private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-	private Player player;
 	private int[] background = new int[] {0}, foreground = new int[] {1};
 	private ShapeRenderer sr;
 	private boolean newGame;
 	private static PokeMapImpl pm;
+	private PlayerSprite pls;
+	private static Sprite sp;
 	
 	public Play(boolean b) {
         newGame = b;
 	}
 	
 	public void render(float delta) {		
-	        if (!pause) {	            
-	                Gdx.gl.glClearColor(0, 0, 0, 1);
-	                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);                	                
-	                camera.position.set(player.getX() + player.getWidth() / 2, player.getY() + player.getHeight() / 2, 0);
-	                camera.update();
-	                renderer.setView(camera);
-	                renderer.render(background);
-	                renderer.getSpriteBatch().begin();	                
-	                player.update(renderer.getSpriteBatch());	                
-	                renderer.getSpriteBatch().end();
-	                renderer.render(foreground);        
-	        }
+	    Gdx.gl.glClearColor(0, 0, 0, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);                                       
+            camera.position.set(pls.getX() + pls.getWidth() / 2, pls.getY() + pls.getHeight() / 2, 0);
+            camera.update();
+            renderer.setView(camera);
+            renderer.render(background);
+            renderer.getSpriteBatch().begin();                      
+            pls.update(renderer.getSpriteBatch());
+            renderer.getSpriteBatch().end();
+            renderer.render(foreground); 
 	} 
 	
 	public static PokeMapImpl getMapImpl() {
@@ -81,22 +77,22 @@ public class Play implements Screen {
 		    tx = new Texture(this.getClass().getResource(FilePath.PLAYER.getResourcePath()).getPath());
 		}
 		TextureRegion gain = new TextureRegion(tx);
-		TiledMapTileLayer fg = (TiledMapTileLayer) map.getLayers().get("foreground");
-		TiledMapTileLayer bg = (TiledMapTileLayer) map.getLayers().get("background");
-		MapLayer obj = map.getLayers().get("doorLayer");
-		Sprite sp = new Sprite(gain);		
-		player = new Player(sp, bg, fg, obj, map.getTileSets().getTile(322));
+		map.getLayers().get("foreground");
+		map.getLayers().get("background");
+		map.getLayers().get("doorLayer");
+		sp = new Sprite(gain);		
+		pls = new PlayerSprite(sp);
 		pm = new PokeMapImpl(map);
 		if (newGame) {
-		    player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+		    pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		} else {
 		    if (LoadController.getController().saveExists()) {
 		        LoadController.getController().load(null);
-	                player.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
+	                pls.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
 	                System.out.println("Benvenuto " + PlayerImpl.getPlayer().getName());
 		    } else {
 		        System.out.println("SAVE DOES NOT EXIST");
-		        player.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		    }
 		}
 		
@@ -119,24 +115,16 @@ public class Play implements Screen {
 	    dispose();
 	}
 
-	public void pause() {	    
-	    pause = true;
-	}
-
-	public void resume() {	    
-	    pause = false;
-	}
-	
 	public float getXPosition() {    
-	    return player.getX();
+	    return pls.getX();
 	}
 	
 	public float getYPosition() {	    
-	    return player.getY();
+	    return pls.getY();
 	}
 	
 	public void setPosition(float x, float y) {	    
-	    player.setPlayerPosition(x, y);
+	    pls.setPlayerPosition(x, y);
 	}
 	
 	public void dispose() {        
@@ -158,4 +146,16 @@ public class Play implements Screen {
             }
             return this.map;
 	}
+	
+	public static Sprite getSprite() {
+	    return sp;
+	}
+
+    @Override
+    public void pause() {
+    }
+
+    @Override
+    public void resume() {
+    }
 }

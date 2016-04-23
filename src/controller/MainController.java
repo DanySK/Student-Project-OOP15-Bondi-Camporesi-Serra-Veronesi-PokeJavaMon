@@ -10,7 +10,6 @@ import controller.music.MainMusicController;
 import controller.parameters.Music;
 import controller.parameters.State;
 import model.pokemon.InitializeMoves;
-import model.resources.Player;
 import view.resources.Play;
 
 public class MainController {
@@ -41,7 +40,6 @@ public class MainController {
                 break;
             case WALKING:
                 keyboardController = WalkingKeyboardController.getController(); 
-                Player.resetPos();
                 Play.updateKeyListener();
                 if (MainMusicController.getController().playing() == null) {
                     MainMusicController.getController().play(Music.TOWN);
@@ -54,12 +52,10 @@ public class MainController {
                 break;
             case MENU:
                 keyboardController = MenuKeyboardController.getController();
-                Player.resetPos();
                 Play.updateKeyListener();
                 break;
             case FIGHTING:
                 keyboardController = FightingKeyboardController.getController();
-                Player.resetPos();
                 Play.updateKeyListener();
                 if (MainMusicController.getController().playing() == null) {
                     MainMusicController.getController().play(Music.TRAINER);
@@ -72,7 +68,6 @@ public class MainController {
                 break;
             case READING:
                 keyboardController = MenuKeyboardController.getController();
-                Player.resetPos();
                 Play.updateKeyListener();
                 break;
         }

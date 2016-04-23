@@ -5,7 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import controller.parameters.State;
 import controller.save.SaveController;
 import model.player.PlayerImpl;
-import model.resources.Player;
+import view.PlayerSprite;
 import view.frames.*;
 import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
@@ -53,8 +53,7 @@ public final class ViewController {
     }
     
     public void save() {
-        Player.resetPos();
-        PlayerImpl.getPlayer().setPosition(Player.getPosition().getX().intValue(), Player.getPosition().getY().intValue());
+        PlayerImpl.getPlayer().setPosition(PlayerSprite.getPosition().getX().intValue(), PlayerSprite.getPosition().getY().intValue());
         if (name != null) {
             PlayerImpl.getPlayer().setName(name);
         }
