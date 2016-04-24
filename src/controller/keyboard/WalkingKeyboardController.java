@@ -58,18 +58,27 @@ public class WalkingKeyboardController implements KeyboardController {
             case Keys.ENTER:
                 PokeMapImpl pm = Play.getMapImpl();
                 TileType t = null;
+                int x = 0, y = 0;
                 switch (direction) {
                 case UP:
-                    t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) - 1);
+                    x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) - 1;
+                    t = pm.getTileType(x, y);
                     break;
                 case DOWN:
-                    t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) + 1);
+                    x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) + 1;
+                    t = pm.getTileType(x, y);
                     break;
                 case LEFT:
-                    t = pm.getTileType((PlayerSprite.getSprite().getPosition().getX().intValue() / 16) - 1, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
+                    x = (PlayerSprite.getSprite().getPosition().getX().intValue() / 16) - 1;
+                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+                    t = pm.getTileType(x, y);
                     break;
                 case RIGHT:
-                    t = pm.getTileType((PlayerSprite.getSprite().getPosition().getX().intValue() / 16) + 1, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
+                    x = (PlayerSprite.getSprite().getPosition().getX().intValue() / 16) + 1;
+                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+                    t = pm.getTileType(x, y);
                     break;
                 case STILL:
                     break;
@@ -78,7 +87,12 @@ public class WalkingKeyboardController implements KeyboardController {
                     MainController.getController().updateStatus(State.READING);
                     JFrame fr = new JFrame();
                     JPanel pa = new JPanel();
-                    JTextArea tx = new JTextArea("SIGN_MESSAGE");
+                    JTextArea tx;
+                    if (pm.getSign(x, y).isPresent()) {
+                        tx = new JTextArea(pm.getSign(x, y).get().getMessage());
+                    } else {
+                        tx = new JTextArea("SIGN_MESSAGE");
+                    }
                     JButton button = new JButton("OK");
                     button.addActionListener(new ActionListener() {
                         @Override
@@ -182,8 +196,14 @@ public class WalkingKeyboardController implements KeyboardController {
         PlayerSprite.getSprite().updatePosition();
         t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
         if (t == TileType.TELEPORT) {
-            System.out.println("TELEPORT");
-            // Bisognera settare la nuova posizione in base a quella del tile
+            int x, y;
+            x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+            y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+            if (pm.getTeleport(x, y).isPresent()) {
+                PlayerSprite.getSprite().setPlayerPosition(pm.getTeleport(x, y).get().getDestinationX(), pm.getTeleport(x, y).get().getDestinationY());
+            } else {
+                System.out.println("TELEPORT NOT ACTIVE");
+            }
         }
         if (up == true) {
             direction = Directions.UP;

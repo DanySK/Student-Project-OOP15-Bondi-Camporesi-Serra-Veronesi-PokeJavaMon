@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import controller.MainController;
+import controller.parameters.Directions;
 import controller.parameters.FilePath;
 import model.utilities.Pair;
 import view.resources.Play;
@@ -42,7 +43,7 @@ public class PlayerSprite extends Sprite {
         if (pos == 0) {
             MainController.getController().updateSpeed();
             if (velocity.x == 0 && velocity.y == 0) {
-                // Gira il personaggio e basta
+                setOrientation(MainController.getController().getDirection());
             } else {
                 move();
             }
@@ -88,8 +89,27 @@ public class PlayerSprite extends Sprite {
     }
 
     public void setPlayerPosition(float x, float y) {
-        super.setX(x);
-        super.setY(y);
+        super.setX(x * 16);
+        super.setY((299 - y) * 16);
+    }
+    
+    private void setOrientation(Directions d) {
+        switch (d) {
+        case UP:
+            setRegion(up_s.getKeyFrame(animationTime));
+            break;
+        case DOWN:
+            setRegion(down_s.getKeyFrame(animationTime));
+            break;
+        case LEFT:
+            setRegion(left_s.getKeyFrame(animationTime));
+            break;
+        case RIGHT:
+            setRegion(right_s.getKeyFrame(animationTime));
+            break;
+        case STILL:
+            break;
+        }
     }
     
     private void move() {
