@@ -213,7 +213,15 @@ public class WalkingKeyboardController implements KeyboardController {
             y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
             if (pm.getEncounterZone(x, y).isPresent()) {
                 if (pm.getEncounterZone(x, y).get().isInsideZone(x, y)) {
-                    System.out.println("POKEMON ENCOUNTER ZONE");
+                    if (pm.getEncounterZone(x, y).get().isEncounterNow()) {
+                        System.out.println(pm.getEncounterZone(x, y).get().getPokemonEncounter().getPokemon().name());
+                        // Commentare la riga sotto per non aprire il FightScreen quando si incontra un pokemon
+                        //ViewController.getController().fightScreen();
+                        up = false;
+                        down = false;
+                        left = false;
+                        right = false;
+                    }
                 }
             }
         }

@@ -51,7 +51,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 		this.avgLvl = averageLevel;
 	}
 
-    protected boolean isEncounterNow() {
+    public boolean isEncounterNow() {
         final Random r = new Random();
         final double chance = r.nextDouble();
         
@@ -63,7 +63,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
     }
     
     //TODO: Need testing
-    protected PokemonInBattle getPokemonEncounter() {
+    public PokemonInBattle getPokemonEncounter() {
         if (!encountered) {
             throw new IllegalStateException("Cannot encounter Pokemon if the value is false");
         }
