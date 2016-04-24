@@ -57,6 +57,10 @@ public class PlayerSprite extends Sprite {
     public void updatePosition() {
         this.position = new Pair<>(super.getX(),super.getY());
     }
+    
+    public boolean isMoving() {
+        return (velocity.x != 0 || velocity.y != 0);
+    }
 
     private void setupAnimation() {
         try {

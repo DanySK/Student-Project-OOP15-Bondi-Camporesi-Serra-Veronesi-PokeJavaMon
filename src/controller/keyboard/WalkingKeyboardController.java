@@ -51,67 +51,69 @@ public class WalkingKeyboardController implements KeyboardController {
                 direction = Directions.DOWN;
                 break; 
             case Keys.ESCAPE:
-                if (keys == 0) {
+                if (!PlayerSprite.getSprite().isMoving()) {
                     ViewController.getController().showMenu();
                 }
                 break;
             case Keys.ENTER:
-                PokeMapImpl pm = Play.getMapImpl();
-                TileType t = null;
-                int x = 0, y = 0;
-                switch (direction) {
-                case UP:
-                    x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
-                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) - 1;
-                    t = pm.getTileType(x, y);
-                    break;
-                case DOWN:
-                    x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
-                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) + 1;
-                    t = pm.getTileType(x, y);
-                    break;
-                case LEFT:
-                    x = (PlayerSprite.getSprite().getPosition().getX().intValue() / 16) - 1;
-                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
-                    t = pm.getTileType(x, y);
-                    break;
-                case RIGHT:
-                    x = (PlayerSprite.getSprite().getPosition().getX().intValue() / 16) + 1;
-                    y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
-                    t = pm.getTileType(x, y);
-                    break;
-                case STILL:
-                    break;
-                }
-                if (t == TileType.SIGN) {
-                    MainController.getController().updateStatus(State.READING);
-                    JFrame fr = new JFrame();
-                    JPanel pa = new JPanel();
-                    JTextArea tx;
-                    if (pm.getSign(x, y).isPresent()) {
-                        tx = new JTextArea(pm.getSign(x, y).get().getMessage());
-                    } else {
-                        tx = new JTextArea("SIGN_MESSAGE");
+                if (!PlayerSprite.getSprite().isMoving()) {
+                    PokeMapImpl pm = Play.getMapImpl();
+                    TileType t = null;
+                    int x = 0, y = 0;
+                    switch (direction) {
+                    case UP:
+                        x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+                        y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) - 1;
+                        t = pm.getTileType(x, y);
+                        break;
+                    case DOWN:
+                        x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+                        y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)) + 1;
+                        t = pm.getTileType(x, y);
+                        break;
+                    case LEFT:
+                        x = (PlayerSprite.getSprite().getPosition().getX().intValue() / 16) - 1;
+                        y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+                        t = pm.getTileType(x, y);
+                        break;
+                    case RIGHT:
+                        x = (PlayerSprite.getSprite().getPosition().getX().intValue() / 16) + 1;
+                        y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+                        t = pm.getTileType(x, y);
+                        break;
+                    case STILL:
+                        break;
                     }
-                    JButton button = new JButton("OK");
-                    button.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            MainController.getController().updateStatus(State.WALKING);
-                            fr.dispose();
+                    if (t == TileType.SIGN) {
+                        MainController.getController().updateStatus(State.READING);
+                        JFrame fr = new JFrame();
+                        JPanel pa = new JPanel();
+                        JTextArea tx;
+                        if (pm.getSign(x, y).isPresent()) {
+                            tx = new JTextArea(pm.getSign(x, y).get().getMessage());
+                        } else {
+                            tx = new JTextArea("SIGN_MESSAGE");
                         }
-                    });
-                    tx.setEditable(false);
-                    pa.add(tx);
-                    pa.add(button);
-                    fr.add(pa);
-                    fr.setAlwaysOnTop(true);
-                    fr.setBounds(100, 100, 450, 300);
-                    fr.setUndecorated(true);
-                    fr.setVisible(true);
-                } else if (t == TileType.TRAINER) {
-                    MainController.getController().updateStatus(State.FIGHTING);
-                    ViewController.getController().fightScreen();
+                        JButton button = new JButton("OK");
+                        button.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                MainController.getController().updateStatus(State.WALKING);
+                                fr.dispose();
+                            }
+                        });
+                        tx.setEditable(false);
+                        pa.add(tx);
+                        pa.add(button);
+                        fr.add(pa);
+                        fr.setAlwaysOnTop(true);
+                        fr.setBounds(100, 100, 450, 300);
+                        fr.setUndecorated(true);
+                        fr.setVisible(true);
+                    } else if (t == TileType.TRAINER) {
+                        MainController.getController().updateStatus(State.FIGHTING);
+                        ViewController.getController().fightScreen();
+                    }
                 }
         }
         return false;
