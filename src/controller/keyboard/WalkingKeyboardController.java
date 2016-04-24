@@ -205,6 +205,16 @@ public class WalkingKeyboardController implements KeyboardController {
                 System.out.println("TELEPORT NOT ACTIVE");
             }
         }
+        if (t == TileType.POKEMON_ENCOUNTER && (up == true || down == true || left == true || right == true)) {
+            int x, y;
+            x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+            y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+            if (pm.getEncounterZone(x, y).isPresent()) {
+                if (pm.getEncounterZone(x, y).get().isInsideZone(x, y)) {
+                    System.out.println("POKEMON ENCOUNTER ZONE");
+                }
+            }
+        }
         if (up == true) {
             direction = Directions.UP;
             pm = Play.getMapImpl();
