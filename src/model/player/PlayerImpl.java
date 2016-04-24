@@ -32,6 +32,8 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     private int money = 500;
     
     private static Player SINGLETON;
+    
+    //TODO: IMPORT FROM MAP
     private static int START_X = 278;
     private static int START_Y = 71;
     

@@ -11,7 +11,7 @@ import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
 
 public final class ViewController {
-    private String name = null;
+    private String name = "Player";
     private LwjglApplication app;
     private static ViewController SINGLETON;
     
