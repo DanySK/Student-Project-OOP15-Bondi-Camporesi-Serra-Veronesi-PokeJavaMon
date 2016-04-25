@@ -12,61 +12,61 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Menu  {
-
-	public Menu() {
+	
+public Menu() {
 		final JFrame f = new JFrame();
 		
 		f.setResizable(false);
 		f.setAlwaysOnTop(true);	
 		f.setUndecorated(true);
-		f.setBounds(100, 100, 179, 310);
+		f.setBounds(100, 100, 180, 310);
 		f.getContentPane().setLayout(null);
 	
 		JButton squadra = new JButton  ("Squadra");
-		squadra.setBounds(30, 75, 100, 25);
+		squadra.setBounds(30, 84, 120, 30);
 		f.getContentPane().add(squadra);
 		squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				/*f.dispose();*/
-				ViewController.getController().team();
+ 				ViewController.getController().team();
 			}});
 		
 		JButton salva = new JButton("Salva");
-		salva.setBounds(30, 165, 100, 25);
+		salva.setBounds(30, 196, 120, 30);
 		f.getContentPane().add(salva);
 		salva.addMouseListener(new MouseAdapter() {
 			@Override
         	public void mouseClicked(MouseEvent e) {
-			ViewController.getController().save();
+ 			ViewController.getController().save();
         		JOptionPane.showMessageDialog(salva, "Salvataggio riuscito!");
         	}
         });
 		
 		JButton box = new JButton("Box");
-		box.setBounds(30, 30, 103, 25);
+		box.setBounds(30, 28, 120, 30);
 		f.getContentPane().add(box);
 		box.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				/*f.dispose();*/
-				ViewController.getController().box();
+ 				ViewController.getController().box();
 			}});
 		
 		JButton zaino = new JButton("Zaino");
-		zaino.setBounds(30, 120, 100, 25);
+		zaino.setBounds(30, 140, 120, 30);
 		f.getContentPane().add(zaino);	
 		zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				/*f.dispose();*/
-				ViewController.getController().bag();
+ 				ViewController.getController().bag();
 			}});
 		
 		JButton esci = new JButton("Riprendi");
-		esci.setBounds(30, 210, 100, 25);
+		esci.setBounds(30, 252, 120, 30);
 		f.getContentPane().add(esci);
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				MainController.getController().updateStatus(State.WALKING);
+ 				MainController.getController().updateStatus(State.WALKING);
 			}});
 		
 		f.setVisible(true);

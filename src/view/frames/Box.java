@@ -47,7 +47,7 @@ public Box() {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.getController().showMenu();
+				/*ViewController.getController().showMenu();*/
 				}
 		});
 		f.setVisible(true);
