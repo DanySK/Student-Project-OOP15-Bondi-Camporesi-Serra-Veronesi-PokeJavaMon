@@ -2,11 +2,9 @@ package model.fight;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import model.items.Item;
-import model.player.Player;
 import model.pokemon.Move;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -19,8 +17,8 @@ public class FightVsTrainer extends FightVsWildPkm{
 	private Trainer trainer;
 	private Map<PokemonInBattle, Map<Stat, Double>> enemyPkmsBoosts = new HashMap<>();
 	
-	public FightVsTrainer(Player player, Trainer trainer) {
-		super(player, trainer.getSquad().getPokemonList().get(FIRST_ELEM));
+	public FightVsTrainer(Trainer trainer) {
+		super(trainer.getSquad().getPokemonList().get(FIRST_ELEM));
 		this.trainer = trainer;
 		for(PokemonInBattle pkm : trainer.getSquad().getPokemonList()){
 			this.enemyPkmsBoosts.put(pkm, createBoostsMap());

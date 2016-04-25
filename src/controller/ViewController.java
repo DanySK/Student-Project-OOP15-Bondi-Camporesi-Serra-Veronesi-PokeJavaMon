@@ -4,7 +4,10 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import controller.parameters.State;
 import controller.save.SaveController;
+import model.items.Item;
 import model.player.PlayerImpl;
+import model.pokemon.Move;
+import model.pokemon.Pokemon;
 import view.PlayerSprite;
 import view.frames.*;
 import view.resources.TiledMapGame;
@@ -78,6 +81,22 @@ public final class ViewController {
 
     public void setName(String text) {
         this.name = text;
+    }
+    
+    public void attack(Move move) {
+        FightController.getController().attack(move);
+    }
+    
+    public void changePokemon(Pokemon poke) {
+        FightController.getController().changePokemon(poke);
+    }
+    
+    public void useItem(Item it) {
+        FightController.getController().useItem(it);
+    }
+    
+    public void run() {
+        FightController.getController().run();
     }
     
     public void fightScreen() {

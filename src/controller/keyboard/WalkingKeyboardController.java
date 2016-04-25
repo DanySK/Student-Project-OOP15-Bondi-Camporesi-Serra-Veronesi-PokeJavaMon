@@ -7,11 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import com.badlogic.gdx.Input.Keys;
+import controller.FightController;
 import controller.MainController;
 import controller.ViewController;
 import controller.parameters.*;
 import model.map.PokeMapImpl;
 import model.map.tile.Tile.TileType;
+import model.pokemon.Pokemon;
 import view.PlayerSprite;
 import view.resources.Play;
 
@@ -112,6 +114,8 @@ public class WalkingKeyboardController implements KeyboardController {
                         fr.setVisible(true);
                     } else if (t == TileType.TRAINER) {
                         MainController.getController().updateStatus(State.FIGHTING);
+                        // TODO Decommentare la riga sotto quando saranno salvati gli allenatori
+                        // FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
                         ViewController.getController().fightScreen();
                     }
                 }
@@ -214,7 +218,8 @@ public class WalkingKeyboardController implements KeyboardController {
             if (pm.getEncounterZone(x, y).isPresent()) {
                 if (pm.getEncounterZone(x, y).get().isInsideZone(x, y)) {
                     if (pm.getEncounterZone(x, y).get().isEncounterNow()) {
-                        System.out.println(pm.getEncounterZone(x, y).get().getPokemonEncounter().getPokemon().name());
+                        Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
+                        FightController.getController().newFightWithPokemon(poke);
                         // Commentare la riga sotto per non aprire il FightScreen quando si incontra un pokemon
                         // ViewController.getController().fightScreen();
                         up = false;

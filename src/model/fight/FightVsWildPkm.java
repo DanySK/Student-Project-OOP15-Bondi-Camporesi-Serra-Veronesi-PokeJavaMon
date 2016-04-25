@@ -19,6 +19,7 @@ import model.items.Item.whenToUse;
 import model.items.Pokeball;
 import model.items.Potion;
 import model.player.Player;
+import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
@@ -54,8 +55,8 @@ public class FightVsWildPkm implements Fight {
 		return boosts;
 	}
 	
-	protected FightVsWildPkm(final Player player, final Pokemon wildPokemon){
-		this.player = player;
+	public FightVsWildPkm(final Pokemon wildPokemon){
+		this.player = PlayerImpl.getPlayer();
 		this.allyPkm = checkPkmSquad(player.getSquad());
 		this.enemyPkm = (PokemonInBattle) wildPokemon;
 		for(PokemonInBattle pkm : player.getSquad().getPokemonList()){

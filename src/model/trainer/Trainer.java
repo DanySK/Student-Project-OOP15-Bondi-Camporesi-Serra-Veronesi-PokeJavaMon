@@ -7,8 +7,7 @@ import model.squad.Squad;
 
 public class Trainer extends AbstractCharacter {
     
-	public final static String TYPE_TRAINER_NAME = "TRAINER";
-
+    public final static String TYPE_TRAINER_NAME = "TRAINER";
     private final Squad squad;
     private final String name;
     protected boolean isDefeated;
