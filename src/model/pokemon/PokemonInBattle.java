@@ -4,13 +4,9 @@ public class PokemonInBattle extends AbstractPokemon{
 
 	private boolean canEvolve;
 	private PokemonDB evolvesTo;
-	public static int MAX_LEVEL = 50;
 
 	protected PokemonInBattle(PokemonDB pokemon, int lvl) {   
 		super(pokemon, lvl);
-		if (lvl > MAX_LEVEL) {
-		    throw new IllegalArgumentException("Level too high");
-		}
 		if (pokemon.getEvolvesToPokemon() != PokemonDB.MISSINGNO) {
 			canEvolve = true;
 			evolvesTo = pokemon.getEvolvesToPokemon();
