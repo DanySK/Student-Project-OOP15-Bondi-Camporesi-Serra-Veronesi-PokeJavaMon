@@ -143,19 +143,41 @@ public class PokeMapImpl implements PokeMap {
 				} else if (mp.get("RIGHT_ID").equals("-1")) {
 					d = Direction.EAST;
 				}
-				final ArrayList<String>	pkmns_lvl = new ArrayList<>();
-				for (int i = 1; i <= 6; i++) {
-					if (mp.containsKey(i + "_POKEMON=LVL") && !mp.get(i + "_POKEMON=LVL", String.class).isEmpty()) {
-						pkmns_lvl.add(mp.get(i + "_POKEMON=LVL", String.class));
-					}
-				}
+
 				this.map[tileX][tileY] = TileType.TRAINER;
-				this.trainers.add(StaticTrainerFactory.createTrainer(mp.get("name", String.class), d, false, tileX, tileY, pkmns_lvl , mp.get("initMessage", String.class), mp.get("lostMessage", String.class), mp.get("wonMessage", String.class), Integer.parseInt(mp.get("money", String.class)), Integer.parseInt(mp.get("trainerID", String.class))));
+				this.trainers.add(importTrainer(tileX, tileY, d));
 
 			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
 			}
 		}
+	}
+	
+	private Trainer importTrainer(final int tileX, final int tileY, final Direction d) {
+		final MapLayer trainerLayer = tiledMap.getLayers().get("trainerLayer");
+		Trainer retTrainer = null;
+		for (final MapObject mobj : trainerLayer.getObjects()) {
+			final int trainerInMapX = getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth);
+			final int trainerInMapY = getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
+			if (trainerInMapX == tileX && trainerInMapY == tileY ) {
+				final ArrayList<String>	pkmns_lvl = new ArrayList<>();
+				for (int i = 1; i <= 6; i++) {
+					if (mobj.getProperties().containsKey(i + "_POKEMON=LVL") && !mobj.getProperties().get(i + "_POKEMON=LVL", String.class).isEmpty()) {
+						pkmns_lvl.add(mobj.getProperties().get(i + "_POKEMON=LVL", String.class));
+					}
+				}
+				MapProperties mp = mobj.getProperties();
+				final String trainerName = mp.get("name",String.class);
+				final String initMessage = mp.get("initMessage", String.class);
+				final String winMessage = mp.get("winMessage", String.class);
+				final String lostMessage = mp.get("lostMessage", String.class);
+				final int money = mp.get("money", Integer.class);
+				final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
+				retTrainer = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, initMessage, lostMessage, winMessage, money, trainerID);
+			}
+		}
+		
+		return retTrainer;
 	}
 	
 	@Override
