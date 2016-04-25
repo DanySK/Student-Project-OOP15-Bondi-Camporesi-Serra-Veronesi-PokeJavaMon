@@ -37,7 +37,7 @@ public class PokeMapImpl implements PokeMap {
 	private Set<Trainer> trainers;
 	private Set<PokemonEncounterZone> pokemonEncounterZones;
 	private Set<WalkableZone> walkableZones;
-	
+	private TiledMap tiledMap;
 	private final int mapHeight;
 	private final int mapWidth;
 	private final int tileHeight;
@@ -45,7 +45,7 @@ public class PokeMapImpl implements PokeMap {
 	
 	//Testato EncounterZones, Trainers, 
 	public PokeMapImpl(final TiledMap map) {
-		
+		this.tiledMap = map;
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
 		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get("foreground"));
 		final MapLayer doorLayer = ((MapLayer) map.getLayers().get("doorLayer"));
@@ -406,5 +406,7 @@ public class PokeMapImpl implements PokeMap {
 		return Arrays.copyOf(this.map, this.map.length);
 	}
 
-
+	public TiledMap getTiledMap() {
+	    return this.tiledMap;
+	}
 }

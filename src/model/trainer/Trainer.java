@@ -1,9 +1,14 @@
 package model.trainer;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
+import model.map.PokeMapImpl;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
+import view.resources.Play;
 
 public class Trainer extends AbstractCharacter {
     
@@ -80,6 +85,28 @@ public class Trainer extends AbstractCharacter {
 	}
 	
 	public void turn(final Direction d) {
-		this.direction = d;
+	    PokeMapImpl pm = Play.getMapImpl();
+	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("background");
+	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
+	    int val;
+	    switch (d) {
+	    case WEST:
+	        val = Integer.parseInt(tr.getTile().getProperties().get("LEFT_ID", String.class));
+	        tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+	        break;
+	    case NORTH:
+	        val = Integer.parseInt(tr.getTile().getProperties().get("REAR_ID", String.class));
+                tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+                break;
+	    case EAST:
+	        val = Integer.parseInt(tr.getTile().getProperties().get("RIGHT_ID", String.class));
+                tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+                break;
+	    case SOUTH:
+                val = Integer.parseInt(tr.getTile().getProperties().get("FRONT_ID", String.class));
+                tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+                break;
+	    }
+	    this.direction = d;
 	}
 }

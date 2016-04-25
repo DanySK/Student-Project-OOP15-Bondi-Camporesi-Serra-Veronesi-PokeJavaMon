@@ -11,6 +11,7 @@ import controller.FightController;
 import controller.MainController;
 import controller.ViewController;
 import controller.parameters.*;
+import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
 import model.map.tile.Tile.TileType;
 import model.pokemon.Pokemon;
@@ -113,6 +114,22 @@ public class WalkingKeyboardController implements KeyboardController {
                         fr.setUndecorated(true);
                         fr.setVisible(true);
                     } else if (t == TileType.TRAINER) {
+                        switch(direction) {
+                        case LEFT:
+                            pm.getTrainer(x, y).get().turn(Direction.EAST);
+                            break;
+                        case RIGHT:
+                            pm.getTrainer(x, y).get().turn(Direction.WEST);
+                            break;
+                        case UP:
+                            pm.getTrainer(x, y).get().turn(Direction.SOUTH);
+                            break;
+                        case DOWN:
+                            pm.getTrainer(x, y).get().turn(Direction.NORTH);
+                            break;
+                        case STILL:
+                            break;
+                        }
                         MainController.getController().updateStatus(State.FIGHTING);
                         // TODO Decommentare la riga sotto quando saranno salvati gli allenatori
                         // FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
