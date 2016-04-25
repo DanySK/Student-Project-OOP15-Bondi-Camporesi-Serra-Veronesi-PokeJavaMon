@@ -171,7 +171,7 @@ public class PokeMapImpl implements PokeMap {
 				final String initMessage = mp.get("initMessage", String.class);
 				final String winMessage = mp.get("winMessage", String.class);
 				final String lostMessage = mp.get("lostMessage", String.class);
-				final int money = mp.get("money", Integer.class);
+				final int money = Integer.parseInt(mp.get("money", String.class));
 				final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
 				retTrainer = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, initMessage, lostMessage, winMessage, money, trainerID);
 			}
