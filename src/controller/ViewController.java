@@ -67,11 +67,11 @@ public final class ViewController {
         new view.frames.Box();
     }
     
-    public void team() {
+    public static void team() {
         new Squadra();
     }
     
-    public void bag() {
+    public static void bag() {
         new Zaino();
     }
     

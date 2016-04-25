@@ -27,7 +27,7 @@ public class Menu  {
 		f.getContentPane().add(squadra);
 		squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				f.dispose();
+				/*f.dispose();*/
 				ViewController.getController().team();
 			}});
 		
@@ -47,7 +47,7 @@ public class Menu  {
 		f.getContentPane().add(box);
 		box.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				f.dispose();
+				/*f.dispose();*/
 				ViewController.getController().box();
 			}});
 		
@@ -56,7 +56,7 @@ public class Menu  {
 		f.getContentPane().add(zaino);	
 		zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				f.dispose();
+				/*f.dispose();*/
 				ViewController.getController().bag();
 			}});
 		
