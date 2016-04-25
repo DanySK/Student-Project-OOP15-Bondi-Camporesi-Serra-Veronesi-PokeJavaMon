@@ -23,10 +23,16 @@ public abstract class AbstractPokemon implements Pokemon {
     protected int currentHP;
     protected Move[] currentMoves = new Move[MAX_MOVES];
     protected double randID;
+    public static int MAX_LEVEL = 50;
 
-    public AbstractPokemon(final PokemonDB pokemon, final int lvl) {
-        this.pokemon = pokemon;
+    public AbstractPokemon(final PokemonDB pokemon,int lvl) {
+        if (lvl > MAX_LEVEL) {
+        	lvl = MAX_LEVEL;
+        }
+        
+    	this.pokemon = pokemon;
         mapStat = new HashMap<>();
+
         for (final Stat s : Stat.values()) {
             mapStat.put(s, s == Stat.LVL ? lvl : 0);
         }
