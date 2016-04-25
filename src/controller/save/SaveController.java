@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
@@ -20,6 +20,7 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
+import view.resources.Play;
 
 public class SaveController implements SaveControllerInterface {
     private final int MIN_MOVES = 1;
@@ -75,9 +76,11 @@ public class SaveController implements SaveControllerInterface {
     
     private void setTrainers() {
         Element allenatori = new Element(XMLParameters.TRAINERS.getName());
-        List<Trainer> l = new ArrayList<>();
+        Set<Trainer> l = Play.getMapImpl().getTrainers();
         for (final Trainer t : l) {
-            allenatori.setAttribute("" + t.getID(),Boolean.toString(t.isDefeated()));
+            if (t != null) {
+                allenatori.setAttribute("N" + t.getID(),Boolean.toString(t.isDefeated()));
+            }
         }
         root.addContent(allenatori);
     }

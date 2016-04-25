@@ -20,6 +20,7 @@ import model.map.PokeMap;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
+import view.resources.Play;
 
 public class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Save" + File.separator + "save.xml";
@@ -74,11 +75,12 @@ public class LoadController implements LoadControllerInterface {
         
     }
     
-    private void getTrainers(final PokeMap map) {
+    private void getTrainers() {
+        PokeMap map = Play.getMapImpl();
         Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
-            	trainer_isDefeated.put(Integer.parseInt(a.getName()), a.getBooleanValue());
+            	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(1, 2)), a.getBooleanValue());
             } catch (DataConversionException e) {
                 e.printStackTrace();
             }
@@ -123,6 +125,7 @@ public class LoadController implements LoadControllerInterface {
         getMoney();
         getPosition();
         getTeam();
+        getTrainers();
         getName();
         getInventory();
         getBox();
