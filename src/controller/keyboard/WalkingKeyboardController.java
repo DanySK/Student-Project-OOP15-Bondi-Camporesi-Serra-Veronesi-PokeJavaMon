@@ -131,8 +131,7 @@ public class WalkingKeyboardController implements KeyboardController {
                             break;
                         }
                         MainController.getController().updateStatus(State.FIGHTING);
-                        // TODO Decommentare la riga sotto quando saranno salvati gli allenatori
-                        // FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
+                        FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
                         ViewController.getController().fightScreen();
                     }
                 }
