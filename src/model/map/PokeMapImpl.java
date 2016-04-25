@@ -145,7 +145,10 @@ public class PokeMapImpl implements PokeMap {
 				}
 
 				this.map[tileX][tileY] = TileType.TRAINER;
-				this.trainers.add(importTrainer(tileX, tileY, d));
+				Trainer t = importTrainer(tileX, tileY, d);
+				if (t != null) {
+					this.trainers.add(t);
+				}
 
 			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
@@ -159,6 +162,8 @@ public class PokeMapImpl implements PokeMap {
 		for (final MapObject mobj : trainerLayer.getObjects()) {
 			final int trainerInMapX = getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth);
 			final int trainerInMapY = getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
+			
+//			System.out.println("Position in map di mobj: " + new Position(trainerInMapX, trainerInMapY) + ", actualPosition: " + new Position(tileX, tileY));
 			if (trainerInMapX == tileX && trainerInMapY == tileY ) {
 				final ArrayList<String>	pkmns_lvl = new ArrayList<>();
 				for (int i = 1; i <= 6; i++) {
@@ -174,9 +179,12 @@ public class PokeMapImpl implements PokeMap {
 				final int money = Integer.parseInt(mp.get("money", String.class));
 				final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
 				retTrainer = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, initMessage, lostMessage, winMessage, money, trainerID);
+				System.out.println("Posizione del nuovo trainer: " + new Position(retTrainer.tileX, retTrainer.tileY) );
 			}
 		}
-		
+		if (retTrainer == null) {
+			System.out.println("if trainerNULL postion: " + new Position(tileX, tileY));
+		}
 		return retTrainer;
 	}
 	
@@ -357,6 +365,7 @@ public class PokeMapImpl implements PokeMap {
 	public Optional<Trainer> getTrainer(int x, int y) {
 		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.TRAINER) {
 			for (final Trainer t : this.trainers) {
+				System.out.println("Call: " + new Position(x,y) + "of trainer t: " + new Position(t.tileX, t.tileY));
 				if (t.getTileX() == x && t.getTileY() == y) {
 					return Optional.of(t);
 				}

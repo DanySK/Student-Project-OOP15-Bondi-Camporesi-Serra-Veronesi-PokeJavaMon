@@ -13,6 +13,7 @@ import controller.ViewController;
 import controller.parameters.*;
 import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
+import model.map.Position;
 import model.map.tile.Tile.TileType;
 import model.pokemon.Pokemon;
 import view.PlayerSprite;
@@ -114,6 +115,7 @@ public class WalkingKeyboardController implements KeyboardController {
                         fr.setUndecorated(true);
                         fr.setVisible(true);
                     } else if (t == TileType.TRAINER) {
+                    	System.out.println("Trainer at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
                         switch(direction) {
                         case LEFT:
                             pm.getTrainer(x, y).get().turn(Direction.EAST);

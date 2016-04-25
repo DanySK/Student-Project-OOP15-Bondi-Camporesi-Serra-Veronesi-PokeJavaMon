@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="265">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
@@ -2027,93 +2027,51 @@
   </tile>
   <tile id="330">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="initMessage" value="That's your final challenge."/>
-    <property name="lostMessage" value="Sorry, you may not pass."/>
-    <property name="money" value="2000"/>
-    <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="331">
    <properties>
-    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
-    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="332">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="initMessage" value="The moment has come, show me your final project!"/>
-    <property name="lostMessage" value="Try again next year."/>
-    <property name="money" value="5000"/>
-    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="333">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
-    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
-    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="334">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
-    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2245,93 +2203,51 @@
   </tile>
   <tile id="356">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="330"/>
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="initMessage" value="That's your final challenge."/>
-    <property name="lostMessage" value="Sorry, you may not pass."/>
-    <property name="money" value="2000"/>
-    <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="357">
    <properties>
-    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
-    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="331"/>
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="358">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="332"/>
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="initMessage" value="The moment has come, show me your final project!"/>
-    <property name="lostMessage" value="Try again next year."/>
-    <property name="money" value="5000"/>
-    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="359">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
-    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
-    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="333"/>
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="360">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
-    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
-    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="334"/>
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2463,103 +2379,52 @@
   </tile>
   <tile id="382">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="330"/>
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value="That's your final challenge."/>
-    <property name="lostMessage" value="Sorry, you may not pass."/>
-    <property name="money" value="2000"/>
-    <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="383">
    <properties>
-    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
-    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="331"/>
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="384">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="332"/>
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value="The moment has come, show me your final project!"/>
-    <property name="lostMessage" value="Try again next year."/>
-    <property name="money" value="5000"/>
-    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="385">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
-    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
-    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="333"/>
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="386">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
-    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
-    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="334"/>
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="387">
@@ -2690,103 +2555,52 @@
   </tile>
   <tile id="408">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARIZARD=45"/>
-    <property name="2_POKEMON=LVL" value="BLASTOISE=45"/>
-    <property name="3_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="FRONT_ID" value="330"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="initMessage" value="That's your final challenge."/>
-    <property name="lostMessage" value="Sorry, you may not pass."/>
-    <property name="money" value="2000"/>
-    <property name="name" value="DR. GHAIN"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="You may pass."/>
    </properties>
   </tile>
   <tile id="409">
    <properties>
-    <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
-    <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="FRONT_ID" value="331"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Pianini"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="1"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="410">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="5_POKEMON=LVL" value="CHARIZARD=36"/>
     <property name="FRONT_ID" value="332"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="initMessage" value="The moment has come, show me your final project!"/>
-    <property name="lostMessage" value="Try again next year."/>
-    <property name="money" value="5000"/>
-    <property name="name" value="Prof. Viroli"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="2"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value="Well, very well."/>
    </properties>
   </tile>
   <tile id="411">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=20"/>
-    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
-    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
     <property name="FRONT_ID" value="333"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Croatti"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="3"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="412">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
-    <property name="2_POKEMON=LVL" value="PIKACHU=27"/>
-    <property name="3_POKEMON=LVL" value="CHARMELEON=30"/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="334"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Prof. Casadei"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="4"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="413">
@@ -2919,156 +2733,72 @@
   </tile>
   <tile id="434">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="435">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="436">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="437">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="438">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Heisenberg"/>
-    <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
+    <property name="tileType" value="SELLER"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="439">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="440">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="441">
@@ -3189,156 +2919,72 @@
   </tile>
   <tile id="460">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="434"/>
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="461">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="435"/>
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="462">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="436"/>
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="463">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="437"/>
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="464">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="438"/>
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="465">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="439"/>
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="466">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="440"/>
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="467">
@@ -3459,156 +3105,72 @@
   </tile>
   <tile id="486">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="434"/>
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="487">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="435"/>
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="488">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="436"/>
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="489">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="437"/>
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="490">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="438"/>
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="491">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="439"/>
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="492">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="440"/>
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="493">
@@ -3735,156 +3297,72 @@
   </tile>
   <tile id="512">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="434"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="5"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="513">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="435"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="6"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="514">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="436"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="7"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="515">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="437"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="8"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="516">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="438"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Heisenberg"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="0"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="517">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="439"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="9"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="518">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="440"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="10"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="519">
@@ -4013,90 +3491,42 @@
   </tile>
   <tile id="538">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="539">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="540">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="541">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="-1"/>
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="542">
@@ -4253,90 +3683,42 @@
   </tile>
   <tile id="564">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="538"/>
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="565">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="539"/>
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="566">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="540"/>
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="567">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="541"/>
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="568">
@@ -4509,90 +3891,42 @@
   </tile>
   <tile id="590">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="538"/>
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="591">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="539"/>
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="592">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="540"/>
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="593">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="541"/>
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="594">
@@ -4763,90 +4097,42 @@
   </tile>
   <tile id="616">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="538"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="11"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="617">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="539"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="12"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="618">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="540"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value="Sans"/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="13"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="619">
    <properties>
-    <property name="1_POKEMON=LVL" value=""/>
-    <property name="2_POKEMON=LVL" value=""/>
-    <property name="3_POKEMON=LVL" value=""/>
-    <property name="4_POKEMON=LVL" value=""/>
-    <property name="5_POKEMON=LVL" value=""/>
-    <property name="6_POKEMON=LVL" value=""/>
     <property name="FRONT_ID" value="541"/>
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="initMessage" value=""/>
-    <property name="lostMessage" value=""/>
-    <property name="money" value="0"/>
-    <property name="name" value=""/>
     <property name="tileType" value="TRAINER"/>
-    <property name="trainerID" value="14"/>
     <property name="walkable" type="bool" value="false"/>
-    <property name="winMessage" value=""/>
    </properties>
   </tile>
   <tile id="620">
@@ -4881,7 +4167,7 @@
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3d0U3bQBwHYNtBnQLawhBIFDaAiopCN+AFRNt1QDBFQWqHqFSpQ6RiivqNgLjYhvjOZ3/fY85KTk7y8//sO7soAAAAAAAAAGDYTlN3ABg9OQOM2XMZNy/bbwtdrVfdtv8Z+D2u2m2kz+F5sfJFjgGpySEgd3IM+jPrOF6eApkDpLB4PlIOAVMQM+vkKhAiH4Apaco8mQgAjJ16CADgdVZRL7V9D7UZAMADtREwNnINGCPZBqR0Zp04AAAATFronv4AMERdnxUCAABAe2+NuWjB2ByArrYdOwAeeSMXAQAAAAAG49raOgCARuYY5+3Q9wcAADzx27lxAGCErGUFAAAAAAAAAAAAAHLzz1ovAAAAAAAAiKZ0nyIAAAAAIvH8QAAYLsdpiG/mfwcAAAAAAIzYgftKAgA0Mn8EAOBl1tVRwED9cW4cAACC1oznAQAAAAAAAAAAAOjBkXmqWbm0Dg8AJueTeg0AAACAEZm73gUAAJO2b0wAAAAAAAAA0KsfrssCwItdOY4CCbgfJAAAAAAAALAKN+Y9AAAAANCjbXPfAQAge2tP6vpDdT4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQmXmZugcAAAAAAAAAAADTNKtS9yA/5wv7bMP+AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBGm1VRbFXd2wBi263zaC+QScvaAAAAAAAAAAD6clIVxZeFOQsfy3AbQErf6jz6HsikZW0AAAAAAABAft5VRfE+cA1wWRtAbDt1Hn0IZNKyNoAUPteZdFw1vwaQ2kWdS1+r5tcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF7rvkzdAwAAYvml9gMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyM5dmboHAAAA5Ow28rjyr3EsAAAAAAAAAAAAAAAAAAAAAAAAAC38ByYzdhBAfgUA
+   H4sIAAAAAAAAC+3dW07cMBgG0CSDWAWClkUgcdkBIFAv7KAvRbRsBwSrACRYRCWkLmKqrqJ5gyI8SWBix8k5j3E0Y83ly+/ETooCAAAAAAAAAIbtW+oOAKMnZ4Axey3j5mX7faGrtarb/veB3+Oy3UZ6H14XK1/kGJCaHAJyJ8egP7OO4+UpkDlACs/PR8ohYApiZp1cBULkAzAlTZknEwGAsVMPAQC8zzLqpbavoTYDAHiiNgLGRq4BYyTbgJS+WycOAAAAkxa6pz8ADFHXZ4UAAADQ3roxFy0YmwPQ1ZZjB8B/VuUiAAAAAMBgXFlbBwDQyBzjvB35/gAAgBd+OTcOAIyQtawAAAAAAAAAAAAAQG7+WOsFAAAAAAAA0ZTuUwQAAABAJJ4fCADD5TgN8c387wAAAAAAgBE7cF9JAIBG5o8AALzNmjoKGKhH58YBACBoxXgeAAAAAAAAAAAAgB58Mk81KxfW4QHA5Byr1wAAAAAYkbnrXQAAMGn7xgQAAAAAAAAAvbpxXRYA3uzScRRIwP0gAQAAAAAAgGW4Nu8BAAAAgB5tmfsOAADZW3lR1x+p8wEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDMzMvUPQAAAAAAAAAAAJimWZW6B/k59ZkBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQCcfq6LYrLq3AcS2W+fRXiCTFrUBAAAAAAAAAPTla1UUJ8/mLByW4TaAlH7WeXQeyKRFbQAAAAAAAEB+Nqqi+BC4BrioDSC27TqPdgKZtKgNIIXPdSZ9qZq3AaR2VufSj6p5GwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAe/0tU/cAAIBYHtR+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADZuStT9wAAAICc3UYeV/42jgUAAAAAAAAAAAAAAAAAAAAAAACghX/exrC8QH4FAA==
   </data>
  </layer>
  <objectgroup name="doorLayer" visible="0">
@@ -5856,7 +5142,7 @@
     <property name="winMessage" value="..."/>
    </properties>
   </object>
-  <object id="208" x="1487" y="1936" width="16" height="16">
+  <object id="208" x="1488" y="1936" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
     <property name="2_POKEMON=LVL" value="RATTATA=5"/>

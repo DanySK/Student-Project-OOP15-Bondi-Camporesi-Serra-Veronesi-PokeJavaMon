@@ -75,7 +75,6 @@ public class Trainer extends AbstractCharacter {
     }
     
     public String toString() {
-    	System.out.println(this.squad);
         return "Name= " + this.name + " Defeated= " + this.isDefeated + ", Squad: " + this.squad + ", D: " + this.direction.name();
     }
 
@@ -86,8 +85,9 @@ public class Trainer extends AbstractCharacter {
 	
 	public void turn(final Direction d) {
 	    PokeMapImpl pm = Play.getMapImpl();
-	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("background");
+	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
 	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
+	    System.out.println(tr.getTile().getProperties().get("tileType"));
 	    int val;
 	    switch (d) {
 	    case WEST:

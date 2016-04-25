@@ -8,7 +8,7 @@ public abstract class AbstractCharacter implements Drawable {
     
     
     public AbstractCharacter(final int x, final int y, final Direction d) {
-        this.tileX = y;
+        this.tileX = x;
         this.tileY = y;
         this.direction = d;
     }
