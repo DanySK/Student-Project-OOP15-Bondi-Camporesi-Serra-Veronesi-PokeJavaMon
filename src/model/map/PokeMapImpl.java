@@ -179,7 +179,7 @@ public class PokeMapImpl implements PokeMap {
 				final int money = Integer.parseInt(mp.get("money", String.class));
 				final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
 				retTrainer = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, initMessage, lostMessage, winMessage, money, trainerID);
-				System.out.println("Posizione del nuovo trainer: " + new Position(retTrainer.tileX, retTrainer.tileY) );
+				
 			}
 		}
 		if (retTrainer == null) {

@@ -87,26 +87,40 @@ public class Trainer extends AbstractCharacter {
 	    PokeMapImpl pm = Play.getMapImpl();
 	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
 	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
-	    System.out.println(tr.getTile().getProperties().get("tileType"));
-	    int val;
+	    System.out.println(tr.getTile().getId());
+	    int val = -1;
 	    switch (d) {
 	    case WEST:
 	        val = Integer.parseInt(tr.getTile().getProperties().get("LEFT_ID", String.class));
-	        tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+	        val++;
+	        if (val > 0) {
+	        	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+	        }
 	        break;
 	    case NORTH:
 	        val = Integer.parseInt(tr.getTile().getProperties().get("REAR_ID", String.class));
-                tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-                break;
+            val++;
+	        if (val > 0) {
+            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+            }
+            break;
 	    case EAST:
 	        val = Integer.parseInt(tr.getTile().getProperties().get("RIGHT_ID", String.class));
-                tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-                break;
+            val++;
+	        if (val > 0) {
+            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+            }
+            break;
 	    case SOUTH:
-                val = Integer.parseInt(tr.getTile().getProperties().get("FRONT_ID", String.class));
-                tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-                break;
+            val = Integer.parseInt(tr.getTile().getProperties().get("FRONT_ID", String.class));
+            val++;
+            if(val > 0) {
+            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+            }
+            break;
 	    }
+	    
+        System.out.println("Valore TileID: " + val);
 	    this.direction = d;
 	}
 }
