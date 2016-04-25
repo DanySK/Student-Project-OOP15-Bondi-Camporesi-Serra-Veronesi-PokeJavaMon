@@ -5643,7 +5643,7 @@ It hasn't come out yet.</property>
     <property name="lostMessage" value="Behind me lies the strongest Pokemon of all, try to catch him if you can."/>
     <property name="money" value="5000"/>
     <property name="name" value="Dr. Ghain"/>
-    <property name="trainerID" value="99"/>
+    <property name="trainerID" value="47"/>
     <property name="winMessage" value="You're still not worth."/>
    </properties>
   </object>
