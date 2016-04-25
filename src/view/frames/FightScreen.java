@@ -23,7 +23,7 @@ public class FightScreen extends JPanel{
 
 	public FightScreen() {
 		final JFrame frame = new JFrame("Fight");
-		
+		frame.setUndecorated(true);
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 450, 300);

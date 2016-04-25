@@ -80,7 +80,8 @@ public class LoadController implements LoadControllerInterface {
         Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
         for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
-            	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(1, 2)), a.getBooleanValue());
+            	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(1, a.getName().length())), a.getBooleanValue());
+            	System.out.println(Integer.parseInt(a.getName().substring(1, a.getName().length())) + " " + a.getBooleanValue());
             } catch (DataConversionException e) {
                 e.printStackTrace();
             }
