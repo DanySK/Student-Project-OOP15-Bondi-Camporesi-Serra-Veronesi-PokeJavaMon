@@ -17,6 +17,8 @@ public class FightController {
     private Fight fight;
     private MethodsToImplement view;
     
+    private FightController() {}
+    
     public static FightController getController() {    
         if (SINGLETON == null) {
             synchronized (FightController.class) {

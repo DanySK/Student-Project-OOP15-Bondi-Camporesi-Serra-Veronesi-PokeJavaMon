@@ -11,6 +11,8 @@ public class FirstMenuKeyboardController implements KeyboardController {
 
     private static FirstMenuKeyboardController SINGLETON;
     
+    private FirstMenuKeyboardController() {}
+    
     @Override
     public boolean keyDown(int keycode) {
         return false;

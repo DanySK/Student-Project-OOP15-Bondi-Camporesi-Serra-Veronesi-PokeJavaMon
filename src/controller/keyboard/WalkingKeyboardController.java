@@ -28,6 +28,8 @@ public class WalkingKeyboardController implements KeyboardController {
     private TileType t;
     private boolean left, right, up, down;
     
+    private WalkingKeyboardController() {}
+    
     public boolean keyDown(int keycode) {
         switch(keycode) {
             case Keys.W:
@@ -88,7 +90,11 @@ public class WalkingKeyboardController implements KeyboardController {
                     case STILL:
                         break;
                     }
-                    if (t == TileType.SIGN) {
+                    if (t == TileType.CENTER) {
+                        System.out.println("POKEMON'S HEALTH FULLY RESTORED");
+                    } else if (t == TileType.MARKET) {
+                        System.out.println("WELCOME TO PKMN MARKET");
+                    } else if (t == TileType.SIGN) {
                         MainController.getController().updateStatus(State.READING);
                         JFrame fr = new JFrame();
                         JPanel pa = new JPanel();

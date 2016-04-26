@@ -6,6 +6,8 @@ public class MenuKeyboardController implements KeyboardController {
 
     private static MenuKeyboardController SINGLETON;
     
+    private MenuKeyboardController() {}
+    
     @Override
     public boolean keyDown(int keycode) {
         return false;

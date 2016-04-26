@@ -11,6 +11,8 @@ public class MainMusicController implements MusicController {
     private Music m = null;
     private static MainMusicController SINGLETON;
     
+    private MainMusicController() {}
+    
     public void play(Music song) {        
         try {
             s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getPath()));

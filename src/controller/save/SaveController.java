@@ -31,6 +31,8 @@ public class SaveController implements SaveControllerInterface {
     private FileOutputStream fos;
     private static SaveController SINGLETON;
     
+    private SaveController() {}
+    
     private void setup() {
         root = new Element(XMLParameters.TITLE.getName());
         document = new Document(root);

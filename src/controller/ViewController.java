@@ -18,6 +18,8 @@ public final class ViewController {
     private LwjglApplication app;
     private static ViewController SINGLETON;
     
+    private ViewController() {}
+    
     public static ViewController getController() {
         if (SINGLETON == null) {
             synchronized (ViewController.class) {

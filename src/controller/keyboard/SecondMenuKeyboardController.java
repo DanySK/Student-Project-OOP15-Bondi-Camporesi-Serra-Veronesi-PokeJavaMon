@@ -14,6 +14,8 @@ public class SecondMenuKeyboardController implements KeyboardController {
 
     private static SecondMenuKeyboardController SINGLETON;
     
+    private SecondMenuKeyboardController() {}
+    
     @Override
     public boolean keyDown(int keycode) {
         return false;

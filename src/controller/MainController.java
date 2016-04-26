@@ -19,6 +19,8 @@ public class MainController {
     private KeyboardController keyboardController;
     private static MainController SINGLETON; 
     
+    private MainController() {}
+    
     public static MainController getController() {
         if (SINGLETON == null) {
             synchronized (MainController.class) {

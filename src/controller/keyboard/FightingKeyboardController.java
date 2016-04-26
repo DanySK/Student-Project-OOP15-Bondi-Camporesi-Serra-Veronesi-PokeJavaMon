@@ -6,6 +6,8 @@ public class FightingKeyboardController implements KeyboardController {
 
     private static FightingKeyboardController SINGLETON;
     
+    private FightingKeyboardController() {}
+    
     @Override
     public boolean keyDown(int keycode) {
         return false;

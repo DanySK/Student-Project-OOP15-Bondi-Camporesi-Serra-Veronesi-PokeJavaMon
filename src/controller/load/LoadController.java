@@ -30,6 +30,8 @@ public class LoadController implements LoadControllerInterface {
     private Element root;
     private static LoadController SINGLETON;
     
+    private LoadController() {}
+    
     private void setup() {
         builder = new SAXBuilder();
         try {
