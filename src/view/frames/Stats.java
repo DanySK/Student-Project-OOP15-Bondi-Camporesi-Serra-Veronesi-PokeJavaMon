@@ -2,9 +2,7 @@ package view.frames;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-
 import controller.ViewController;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -138,7 +136,8 @@ public class Stats {
 		Indietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				frame.dispose();
-				ViewController.getController().team();
+				ViewController.getController();
+                ViewController.team();
 			}	
 		});
 		frame.setVisible(true);

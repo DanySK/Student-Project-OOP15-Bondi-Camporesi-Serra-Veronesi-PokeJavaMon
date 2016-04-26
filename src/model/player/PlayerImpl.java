@@ -44,7 +44,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
-        this.badges = 0;
+        this.badges = -1;
         
     }
     

@@ -6,9 +6,7 @@ import javax.swing.JButton;
 import java.awt.*;  
 import java.awt.event.*;  
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-
-import controller.ViewController;  
+import javax.swing.border.LineBorder;  
   
 public class Box {
 

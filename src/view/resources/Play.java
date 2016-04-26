@@ -16,7 +16,6 @@ import controller.MainController;
 import controller.load.LoadController;
 import controller.parameters.FilePath;
 import model.map.PokeMapImpl;
-import model.map.Position;
 import model.player.PlayerImpl;
 import view.PlayerSprite;
 

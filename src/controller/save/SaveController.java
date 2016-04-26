@@ -54,6 +54,10 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(position);
     }
     
+    private void setBadges() {
+        root.setAttribute(XMLParameters.BADGES.getName(),Integer.toString(PlayerImpl.getPlayer().getLastBadge()));
+    }
+    
     private void setTeam() {
         Element squadra = new Element(XMLParameters.TEAM.getName());
         List<PokemonInBattle> team = PlayerImpl.getPlayer().getSquad().getPokemonList();
@@ -142,6 +146,7 @@ public class SaveController implements SaveControllerInterface {
         setBag();
         setMoney();
         setName();
+        setBadges();
         setBox();
         try {
             outputter = new XMLOutputter(); 

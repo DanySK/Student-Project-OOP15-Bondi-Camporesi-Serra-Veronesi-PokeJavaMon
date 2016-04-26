@@ -50,6 +50,15 @@ public class LoadController implements LoadControllerInterface {
         PlayerImpl.getPlayer().setName(root.getAttributeValue(XMLParameters.NAME.getName()));
     }
     
+    private void getBadges() {
+        int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
+        for (int x = 0; x < 5; x ++) {
+            if (x <= badges) {
+                PlayerImpl.getPlayer().addBadge();
+            }
+        }
+    }
+    
     private void getPosition() {
         final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
         final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
@@ -128,6 +137,7 @@ public class LoadController implements LoadControllerInterface {
         getTeam();
         getTrainers();
         getName();
+        getBadges();
         getInventory();
         getBox();
     }

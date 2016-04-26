@@ -1,6 +1,5 @@
 package model.map.tile;
 
-import model.map.PokeMap;
 import model.map.Position;
 
 public abstract class AbstractTile implements Tile {

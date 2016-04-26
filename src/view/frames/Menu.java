@@ -27,8 +27,9 @@ public Menu() {
 		f.getContentPane().add(squadra);
 		squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				/*f.dispose();*/
- 				ViewController.getController().team();
+				ViewController.getController();
+                /*f.dispose();*/
+ 				ViewController.team();
 			}});
 		
 		JButton salva = new JButton("Salva");
@@ -56,8 +57,9 @@ public Menu() {
 		f.getContentPane().add(zaino);	
 		zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				/*f.dispose();*/
- 				ViewController.getController().bag();
+				ViewController.getController();
+                /*f.dispose();*/
+ 				ViewController.bag();
 			}});
 		
 		JButton esci = new JButton("Riprendi");

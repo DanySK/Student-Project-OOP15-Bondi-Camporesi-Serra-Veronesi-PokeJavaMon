@@ -6,7 +6,7 @@ public enum XMLParameters {
     X("X"), Y("Y"), TEAM("TEAM"), LV("LV"), HP("HP"), EXP("EXP"), NMOVES("NMOVES"),
     MOVES_ID("M"), TRAINERS("TRAINERS"), BAG("BAG"), POTIONS("POTIONS"),
     BOOSTS("BOOSTS"), BALLS("BALLS"), BOX("BOX"), RETURNPOSITION("RETURNPOSITION"),
-    RETX("RETX"), RETY("RETY"), TITLE("SAVE"), NAME("NAME");
+    RETX("RETX"), RETY("RETY"), TITLE("SAVE"), NAME("NAME"), BADGES("BADGES");
     
     private XMLParameters(String s) {
         this.value = s;
