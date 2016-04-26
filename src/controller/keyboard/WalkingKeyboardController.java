@@ -292,11 +292,11 @@ public class WalkingKeyboardController implements KeyboardController {
             y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
             if (pm.getTeleport(x, y).isPresent()) {
                 PlayerSprite.getSprite().setPlayerPosition(pm.getTeleport(x, y).get().getDestinationX(), pm.getTeleport(x, y).get().getDestinationY());
+                PlayerSprite.getSprite().setVelocity(0, 0);
+                return;
             } else {
                 System.out.println("TELEPORT NOT ACTIVE");
             }
-            PlayerSprite.getSprite().setVelocity(0, 0);
-            return;
         }
         if (t == TileType.POKEMON_ENCOUNTER && (up == true || down == true || left == true || right == true)) {
             int x, y;
