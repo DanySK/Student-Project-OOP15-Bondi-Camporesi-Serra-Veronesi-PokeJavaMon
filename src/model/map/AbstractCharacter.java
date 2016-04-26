@@ -1,6 +1,10 @@
 package model.map;
 
-public abstract class AbstractCharacter implements Drawable {
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import view.resources.Play;
+
+public abstract class AbstractCharacter implements Character {
     
     protected int tileX;
     protected int tileY;
@@ -29,4 +33,49 @@ public abstract class AbstractCharacter implements Drawable {
         return this.tileY;
     }
     
+	@Override
+	public void turn(final Direction d) {
+		if (this.direction == d) {
+			return;
+		}
+	    PokeMapImpl pm = Play.getMapImpl();
+	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
+	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
+	    System.out.println(tr.getTile().getId());
+	    int val = -1;
+	    switch (d) {
+	    case WEST:
+	        val = Integer.parseInt(tr.getTile().getProperties().get("LEFT_ID", String.class));
+	        val++;
+	        if (val > 0) {
+	        	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+	        }
+	        break;
+	    case NORTH:
+	        val = Integer.parseInt(tr.getTile().getProperties().get("REAR_ID", String.class));
+            val++;
+	        if (val > 0) {
+            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+            }
+            break;
+	    case EAST:
+	        val = Integer.parseInt(tr.getTile().getProperties().get("RIGHT_ID", String.class));
+            val++;
+	        if (val > 0) {
+            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+            }
+            break;
+	    case SOUTH:
+            val = Integer.parseInt(tr.getTile().getProperties().get("FRONT_ID", String.class));
+            val++;
+            if(val > 0) {
+            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
+            }
+            break;
+	    }
+	    
+        System.out.println("Valore TileID: " + val);
+	    this.direction = d;
+	}
+	
 }

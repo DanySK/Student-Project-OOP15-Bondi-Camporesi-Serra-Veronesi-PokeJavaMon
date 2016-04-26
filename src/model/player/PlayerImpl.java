@@ -30,6 +30,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     private Inventory inv;
     private Set<Trainer> trainersBeaten;
     private int money = 500;
+    private int badges;
     
     private static Player SINGLETON;
     
@@ -43,6 +44,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
+        this.badges = 0;
         
     }
     
@@ -161,5 +163,19 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     		}
     	}
     }
+    
+    public void turn(Direction d) {
+    	this.direction = d;
+    }
+
+	@Override
+	public int getLastBadge() {
+		return this.badges;
+	}
+
+	@Override
+	public void addBadge() {
+		this.badges++;
+	}
 
 }

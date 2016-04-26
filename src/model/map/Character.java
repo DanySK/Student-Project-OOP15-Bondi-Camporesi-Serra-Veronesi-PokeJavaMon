@@ -6,4 +6,5 @@ public interface Character extends Drawable {
     
     public Direction getDirection();
     
+    public void turn(final Direction d);
 }

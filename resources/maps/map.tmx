@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="265">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="268">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
   <tile id="0">
@@ -1238,8 +1238,8 @@
   </tile>
   <tile id="202">
    <properties>
-    <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" type="bool" value="true"/>
+    <property name="tileType" value="CENTER"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="203">
@@ -2031,7 +2031,7 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2041,7 +2041,7 @@
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2051,7 +2051,7 @@
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2061,7 +2061,7 @@
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2071,7 +2071,7 @@
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2207,7 +2207,7 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2217,7 +2217,7 @@
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2227,7 +2227,7 @@
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2237,7 +2237,7 @@
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2247,7 +2247,7 @@
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2383,7 +2383,7 @@
     <property name="LEFT_ID" value="408"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2393,7 +2393,7 @@
     <property name="LEFT_ID" value="409"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2403,7 +2403,7 @@
     <property name="LEFT_ID" value="410"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2413,7 +2413,7 @@
     <property name="LEFT_ID" value="411"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2423,7 +2423,7 @@
     <property name="LEFT_ID" value="412"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2559,7 +2559,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2569,7 +2569,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2579,7 +2579,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2589,7 +2589,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2599,7 +2599,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2737,7 +2737,7 @@
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2747,7 +2747,7 @@
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2757,7 +2757,7 @@
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2767,7 +2767,7 @@
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2777,7 +2777,7 @@
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="tileType" value="SELLER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2787,7 +2787,7 @@
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2797,7 +2797,7 @@
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2923,7 +2923,7 @@
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2933,7 +2933,7 @@
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2943,7 +2943,7 @@
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2953,7 +2953,7 @@
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2963,7 +2963,7 @@
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2973,7 +2973,7 @@
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -2983,7 +2983,7 @@
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3109,7 +3109,7 @@
     <property name="LEFT_ID" value="512"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3119,7 +3119,7 @@
     <property name="LEFT_ID" value="513"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3129,7 +3129,7 @@
     <property name="LEFT_ID" value="514"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3139,7 +3139,7 @@
     <property name="LEFT_ID" value="515"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3149,7 +3149,7 @@
     <property name="LEFT_ID" value="516"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3159,7 +3159,7 @@
     <property name="LEFT_ID" value="517"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3169,7 +3169,7 @@
     <property name="LEFT_ID" value="518"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3301,7 +3301,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3311,7 +3311,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3321,7 +3321,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3331,7 +3331,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3341,7 +3341,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3351,7 +3351,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3361,7 +3361,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3495,7 +3495,7 @@
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3505,7 +3505,7 @@
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3515,7 +3515,7 @@
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3525,7 +3525,7 @@
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3593,7 +3593,7 @@
   </tile>
   <tile id="551">
    <properties>
-    <property name="tileType" value="WALL"/>
+    <property name="tileType" value="MARKET"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3687,7 +3687,7 @@
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3697,7 +3697,7 @@
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3707,7 +3707,7 @@
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3717,7 +3717,7 @@
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3895,7 +3895,7 @@
     <property name="LEFT_ID" value="616"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3905,7 +3905,7 @@
     <property name="LEFT_ID" value="617"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3915,7 +3915,7 @@
     <property name="LEFT_ID" value="618"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -3925,7 +3925,7 @@
     <property name="LEFT_ID" value="619"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="-1"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4101,7 +4101,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4111,7 +4111,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4121,7 +4121,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4131,7 +4131,7 @@
     <property name="LEFT_ID" value="-1"/>
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
-    <property name="tileType" value="TRAINER"/>
+    <property name="tileType" value="NPC"/>
     <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
@@ -4162,12 +4162,12 @@
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2dS6wk1XmAT5EoDw9YSsTMZhJhZGAAR8EbFI+JxMNYsr2JbZhIMDwmm4jYMn4MMIaR8kDGAdvEvGYb3djY4OExiyTOwo9cZgDDwonZxR5w2CVxJOQYFNlxFOU/3Cr3uefWu07V/1f190mf+nZ33e66d7q/OXVuddUtzrlbcLYCrBP+Nf/uzJaXiWe55bg/27Lq5/1d8T9dte8s+f146RWsG/SKXsF8sDouzx93I6VVz6PdJ3rVv1e4Xtvi/nnvz4Y5Vq+Grle0jhtVz6PdJ3rVr1djrOv/YCs1e3Vd9N6Or8+hV36dnxf/L7rtYC69olf0ajm9CvHX/1X8Y7d1+Rf55Z/nl3+WX/5pfjlWr7qsg1/nV/P1LvS33Z5Lr+iVdq9eM+ZPxTvFu0o8Gt131Nnr1T/kl0Wv2jpmr9p6h/hXkUfEJ3PpFb1aWq/uzIa1yvuw+EiJx6L7jjk7vSre6xeesXqfz61Xj1cYrONG1fNUvY8+Ll7bwo91XL7pcdatV1Xtiju1lF4N6UyqcVXhE+JT4tPBpfdEft+T+e0nnJ1e1b3P59KrFuu4UfU8deOcD7tm9wfL73X9rXqc+D11Tsv3/hx9i3KvxmzWVGOpNssWvXpO/I74gnggv/S+mN9X3P6is9OrBC0wuV5L7JVvVduxyhxdx15NNd6KnyccZ70aXS98PviaXo27Xil7db54QeQ+N32vumxbzdF17FXqDvXdNqzzNUevxl6vlL26XLwi8kpHr5bYq7GaNcUYqk/H2rTKUq8s7uuaYJ02Yquep65Xh92W14m3ibeLJ8XrxYP5fRZ6NXSuf2yLvyXQq+nGTinGWeEyFnq17jT1qqwZbTszZa8uM9ysj1Wss+VejdEsjQ6llF7p07ZXfTpTeM7W+3bTe27NYw7tldX9ILpsw65Lr6bYzkv9XPRKnyl6tb/lY9IrW71K3SxrLWJ8NT/o1TS9uiZrt+34/siyZQ4suFdTjL/6NpFe6TOHXoXuytyGd069atuqtr0qmkWvGF+tG/TKlvHncbTXJ2Wzph4P0avlQa9sabFXqZql3Zsq2+x7Ra9sMIdeFX9f9H9bnOP8Fb3a3qsU46W2j1G3XNt92y3t377uzKFX4e30av69smCXVln6/OC609SrS12z+xuWj3vV9XHWrVeX5K57r8aatyr6U/aZ2DL3OXplBXplS3o1fteKXpV9JrbMKx29sgK9siXbg+Pq21b0KvxM7PVu9bnYss/J0isb0Ctb0qvxrZuj8p/ffznwsGP+yhL0ypb0SrdZ9Mo29MqWS+5VVbtSP/YQfZ/uCTxcsRy90oH9GWy55Pl2S736sfhfuT8JbqdXtknRq+LzcQfoVZJeWRxfvTyiGr3yx8E4P3ObXmnWBr2aByl61Xb8Ra/olbFevWmXXhW/D3qlg6VeVY3T6NXKXQ2O3Sv/tUZfUivbgH5c9aY/admr8PeRulepjsuufRz3sbHUqzbjLou9ampIF+NepXzsIa0Le7WUZpVZ1quy38cYvdpb8VyxZe+ReJmHpMMP1ij3H6JXer16Ww/PTdQ3jV59X/xB4ufu0qtY7c4sqVdV74O4V/HX4X4Zd7jqZvlWyf2b9EqvV328LFGz+rThbHne3SV+IHOH2vTqdfEN8a1Zum4N6dUcm1X2M1juVXh/PN4q65X3c+LnA78gfnrrvkX2KsX4I+5V3+8fo1cpfsah46gqm3p1VrblGz3XIXWv5tCwpvW11quqMVXbXn1C/GTgpxy9olf0qo9WGjXHXpWNu7R7NcUcf12vrLnUXr0vc5u7S9zjj6Va8f375PsvFC8SL67pmuVe9W1Zn8f7A+cOtVGzV3GbynpVt50Y9uoBp9Or+7PtfjG6Tq+27HOu1FTnmRnaqz5/B7xSvucq8T3i1QvsVWqLFtVpuVd11i03da+uz7b7NfFZ8TnxCXq17b6qZt3a0Kw59iqr8E7xrsCj0W1Hax5zHXoVfg4n/DyOlV417adQ1asyi3MdaPYqNkWvtM/X3mU81LT/VZ+/X7b5THedVe2oM/6/vWuXqnxYfCTwWHTbsZrnWode+f3af0UufzX319zW/u1We1W3X0MbtcZXp8SXxRvzr1P2qkzt11eVS+nVvfIeCe3zGGU+IT4pPp17Irjtqfz6uvdqv1y+W7xM/H1nr1dnlXwdtiy+bmm+PezVHeKRxL2qel7t1xe96udz4gtu69iY/vLF4LYD+XV6Na9exX8XnEOvvA+ID2Zptwernlf79UWv+vtqyW3PB1+ve6+ukctr3Va//9CtelWo3au4Q3X7MTT16lHxK4FfddP16plcejX/XsXzV0dc89xV8RmcoT1b516Fn3Pelb3Zqs0fi2GjltIrv0/DgyU+5KbZ/+ru3LE/Yz3nXmms01h/H4xbVXwGZ2iz+vTqzA5qv0bqelU1jrLSqzKr5ti/Jc35pvgNMb6vqlVhs8bcv33K40DQq25O0at4f/a4QY+Jj+ceL7lOr3bOTVnrVVfvdtVjmCn2NbcCvZqmV+Fxj5t6Fe/PHvfqGbc1x35KfLbkepteVX0Gu417snn0qo9T9KorS21PH+jVNL3qMr6K92cfY3swbGhX3zmDXvXVYq9gBb2y16uUrmOvUkuv7ECvlturttuo9IpezQV6ZaNXKZvVdU6NXtGruUCv7PQqRbO6rBO9oldzg17Z6tWQZnVdJ3pFr+YGvZpPr5ruo1f0aunQK3pFr+jVXNDq1Tnymn9bS+nV9iYNbRW9oldzRaNX51SMm7oce5Re0St6tX5o9GroeSToFb2iV+sJvaJX9IpezQV6Ra/oFb2aCxZ6Vcy9n0uv6JVB6ZUdLPQqPKczvaJX1qRXdrDQq2uyrfMGHqBX9Mqg9MoOFnrF/BW9siy92k5+zMCNJsd6bnq1fr06O3OHdmdus497MrdxWh7jtMLvf8696nsc49Sm+DnulxfeD7Oty8KDwdf0il6l6tWRBL8HetUd/zgviedL89vox7JN93fxpUQ/i3+MT8vjvZJtP3/X7fnlcXpFr2ruP62odkvm1ivpzMaFcnlxg+9oWDa//1DXZqXq1UPyWDdFvQqlV/SKXi2jV1fJ5UXijblXl1x/b8Wy0f2/6FXb8VqqXlV1il7Rq6Ze9Vkn7QbMyTF6VfSm4fovvg7HSOHyeasax2zFeGyMXt0mPkav6JWjVxbU7tV73Ko5Vb26Kr/v/dmb57L+he/Px1XF8oyvuruOvQr3BWha3s+H1zWJXk2rZq9ucDu3Aat6JW3auMu5Q2+Vrwv9dbn9EL3q75x71cd4fNXme+rmidZxDklTxV756zu+x0CvGve9olf0qs19mF7FXhVz5aZ6pQm9Gt8+vfJW9WhdexUfk/bciV4DGr0q5qwKb3LbexXfHy5Hr9JKr9pJr3a+buLXwRTPO3Wvijmr2JvzZaruL+a56FX619269Sqcb2/7ffRqu/5z8ddmW5+N95f+8/GHXTqrnnfKXnXdn4rtwfFdx14xvhqub0oWGF8fopVeddz/nfmrCaRX7aRX212XXpXt0163fzu9GlffqmJs39WP59sB9IpeLaVXfj7qZlfZLxe5Y/sx2l/U7Qr011PvL6qJRq/atOrWmvuKZmm/f9pKr9K40F7F81Kl81nxXFXcq7o5+HCunl6l1+/fvaT9selVGpfUq6r9EeJ9F+JeXZjf77+/+HzOJdEYLBxfhben+ryzJtZ6demIav1M9CqNS+lV01goHA/FvfLfezLb0i9TdsyYsFdjHE9GE3o1vvQqjUvoVX68vlaWtcjffjy3apnjgWMcr08TejW+9CqNS+iVBecMvRpf9hdN49x7BcOhV+Mb9uoD4u6W3uu2DG/bk+3s1Zj7dluSXoG1XqXQcq+6WPTqkmh7sqxXTcctPl+8IHJf8P3a/2ZtpFdAr8a377mzil69T75/aK8uF6+IvNItp1efEz9f4xccvVoC9MquRWvi+fo+vbpOvE28XTwpXi8edPPvVeEnxE86t1Hlp4LvOzOQXs0LerXdvZGaP0fYq3C+vq5Xr7TQn4fpcPT92v9mbazb/ot7tRldp1fLgF5tN1Wj4u71aWCf8VWbXr3iltErxlfrB73a2Zmhz1/VpSl71bR9GH+/9r9ZG+vmrx4Vv1LjV1312IxezQd6tbMpQ567qUn0qr/8fVCffJ/TVuebGOM8FPSqf0+qvp9ejSO90sf/Lr4ov7D7A/35Ug9WGC73w2z4eb7oVf+eVH0/vRpHeqWP/118TX5hp3JPi6+It1d4Olj2FXpV6pj7yA/dp55e0as5438X/nyoN4g35h2qO2/qqWDZFOdRpVfT9Yr5dno1d4pe3SEeadmrYll6Zb9Xe13//bno1c5ejSm9aqbo1QPigw2tKgyXpVe2ezXk56BXNqRXK4pe9ZVepbXPOKiQXi1TerWCXtmSXmEsvVrhezOwV0OfX/31YMml9OpO9+a553Z4NLrvqKNXTdKrFQnGV4OfX/v1YMml9Oph8ZESj0X3HXP0qkl6tcL/Lk5XtOhkYNn9p+lVcpfSqyfEp8Sng0vvify+J/PbTzh61WSKXmkfsz3VsdvrHvvuwLHWgV5tt+++B15LvXpO/I74gnggv/S+mN9X3P6io1dNpnqfH5J/uz8SX5avf1bhy8FllcXjVD1G1eOOOU4co41Vz6P9erBkvL9UFy31qvDVktu8z7vVvDy9qjdVr+6Sf7ujWXWT2vaqeJxrMnfFtS2U5TZ/lujn0IZebXdpvWqSXjU71viqqVdNY6b9LZrlW3VZPhajVxhqqVe7GqRX7R1rfFW1Hdg0viqW8b3y+nOJ/He2U38+Ed8qetXetzu32bQPuCzT+fNe2q/hMunVMk09voovy8ZTXXolbTp0U/53ufBSbt+gV+31XfG9Co8/W2afXllsFr1apqnHV/FlVZ+a5uTDXsWtOkmvOlk0JezVY+Ljucfdzl6F58jb5/o1TLN3lnrF/JW9XjVtB1bNZzG+WjFGr8ImhL16xm2dS+qU+Kzb2avwHHlXuvF7lbpb9GqZpu5V2fx62bZg07w746txe3Weq98e9OfI8+fF80076KbrVapmafaqjeH30Csbvaqay2oz775LelTI+Cp9r5rmry4UL07oO5xur44MfLwuvYq3tePr9Mpmr+rmsrr0ivFVul79ulwW+jYFfxfcLG7zy14lXiTemMCrxfe64b2ay/Gv4m3t+Dq90u9V2fZe1Xx62/2vmL9K16uy+fPwb4G+V2EzfK+6NKbOro81914VDTpccZ1e6feqaR+FLvPtXuav0vaqbP6cXqXvVdc5dubb7fSqbp+rqnFVMdfF+Cptr8rmz6336rzoZ0nVq/hx6dV8TL092KVNcaPCOS/GV2l7VTV/fpP4ng6397HrY/nl4w6kNt4ma+u9zm2EjrFe2k2wbOr927vsxx5/xrlsfLVP/t+XNu3wfLf12UF61a5XXefPr+64fMrH8svPtVdjnhsGx/n8YJsxVdX2Yzi+uka8tsYD9KpTr7psk7VZvulzJoVW5q+GzmF5m7YHtd/PS3fszw/Gl037vBfLNbUqbBa9qnbsXv3UVXfqNzN6hWkd+/OD8WXYq2/JNt03xW+I8fiqaXwWj9XoVblt+lO2r0O8fNkyTZ1ifIWpHfs4wimOMdzWqX6OsdDqVdm+DvHyZctU9Sked9ErTKXWuGTKDrTFr8MX5TV4f41L7FXZvg7x8mXLMH9Fr6bWQies4H8XX8vKz3/zrPjczHvVdZ+ClPsztO1V3c9Cr5BerfC/i7HPMdj0/Kn/fYsO3ODG3QehyZvdsFZ56RXSqxVhr06JN/i/D+Rfz7VX3rbbYaEp928f0qhQeoX0akXcqzvEIwvoVeEUvdJ+PY8tvdKVXq2ItwcfEB+c+fZgk74xd4p35R51O3sV3h8us26t8tIrXenVirhXz+QutVdFZx4WH8k95nb2Krw/XGbdWuWlV7rSqxVV+4fNef+rOovWPCE+KT4lnnA7e1Xc/3TuCbeerfLSK13pVTka+4Zp9eo58QXxgPii29mr8P4XgmXWrVVeeqUrvbKDVq/8sWaed/X7X70afB0ei1379Tu19EpXemUHrV6V7ZtVt/9VuC+V9ut3an2vLsmlV9NLr+yg1ash+zNov36nlvGVrvTKDnPrlfZrV0N6pSu9sgO9si+90pVe2UFrf9E+vdJ+3WpJr3SlV3agV/alV7rSKzto9MrbtVfar1lN6ZWu9MoOWr3ytu2V9utVW3qlq2avLB5jVBPNXoXGvdJeH0vSK101j9/uvfGMldrHb9eGXtmXXumaqlf+2AVlxx2pO1anf0/syla+t2H5+DnCx6dX6fSN8vu8F/uxa6+PJemVril7VXbckdS9io99Qq/GcW/uEQPrYkl6pWvKXpUdd6SpV68FtulVfOwTepXevZHa62NJeqVryl4Vxx056VbHHfm5cxtXVeiPARD2qs35WOJjn9Cr9NKraumVril75X3V7Rw3jaEfiz3v6NUYnhmpvT6WpFe6pu5V2XbeWL2a6jjFU0GvxvMceY28rYfnZtsfh+PJ6DpGr9qe684fYylsUJfz3d3s6NVYxr3q6i4DP0PsfnmNvLuHl5X0asj46jdaqv37smqqXp0t/3a7S9yTcL697jnoVTqX2Ktr5DVybUtvDb4+QK9MmapX0o1DLzm3Ufxbev11uX0jVa/qnoNepXOJvYq7UuV5JbeFj9PUq2yA9KrZlL0KO1KYuldVz0Gv0rnOvSozfBx6pSu9soOVXj3YQ3pFr6aQ7UE7WOkV46vq+Sh6pWuqXu3J3ObuEvck7FXdc9CrdC6xV96hrfIy367rGPsztLXP53GqpFfpXGqvvPRq3tIrO9CraRwyl3WvcxuhXXuFw6RXdrDaK+31GcMxeqX9M62D9MoO9Mq+8fag9vqsm5q9+rl83zPZyv/t+Tj0Kq30qlp6pav28ZDvDuR4yPqvBy+9qpZe6ar5Pl9ic4ZgtVdejjO6Jb3Sdd0bYQmtXu3qofbrVkt6pSu9sgO9si+90pVe2SFlrzJDar/GU0qvdKVXdqBX9qVXutIrO9Ar+9IrXemVHcbq1WPi47nHHb0aIr3SlV7ZYaxePeO2zrF2SnzWpe9RUw+1X+MppVe60is7jNUrf4zfe3rYtldNPdR+jaeUXulKr+wwVq/6tKqLcQ/pFY4lvbKDlfn2of2iVziW9MoO1nrFfPtO6ZWu9MoO1nt1uKP0ClNLr+wwh161fQx6hWNIr+wwRq/Kzoktt220mauqalCbcRW9wjGkV3YYo1f+/XVJ5O4EvWoaVy25V8XvkV5NL72yg2avzhcvCNznuo+v6BWOrfbxRVO5BDR7dbl4ReCVrrpXbcZVS+4V24N6purVa4rSq5127dV14vVuaz91f3nQtR9f0SucSnplByvzV35/9bc7xldl0itdNXr115nb/Kx4j/iZ3I+KHxE/LL5LpFfDHDrfXtWrtn8XpFc4hhq9+j3p0S+LP3Ju83vi18UPyfUPimeIGb0abNGKszN3SPq0GXq2/x3n97+lwrJedZFe4RjSKztY2V+0rkHs306vNKVXdrDeq75qv8ZTSq90pVd2sHL+QayWXulKr+xAr+xLr3TV7NWl4m+LvyXuFX+JXqm/HrBeeqWrRq/+Q8ZT/y7+m/jP4j+J3xX/Xvw78W8dvUKb0itdNXolPXLSJSd9ct8VpVdOuuWkX0465nvW6fHoFU4lvdJVo1eyvedku8/J9p+T7UAn24NOtgudbB862U7024v0Ck1Kr3TV7NUHxQ+JX5fbvif+yNEr7dcD1kuvdKVXdqBX9qVXutIrO9Ar+9IrXemVHeiVfemVrvTKDvTKvvRKV41evUv+nT8sfkT8qPiZ3HvEz2ZvHm+GXqFJ6ZWuHK/PDvTKvvRKV+1encxW0iv91wPWS6901T7fxPFsJeeb0H89YL30SlfN9/pSu9OXIb1GXBcBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwB63DNTa+oy1XgCgj39vfylb+ZcdHKtXdevzpRrHXC8A0KfoQ5dOafdKY70AQJ+wD3UN+PLEvSobS8W9updeAawV/r3ddtyi1auqdjG+Algvwl5Zmr+qW6emdtErgGVS9MrS/FXZc9XNs8fNolcAy8Rqr+K5qbatolcAy6WuV/dlbtPK+KrLHBa9Algm1vbLHDLeo1cAMCXs3w4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACacKx0AJgL1s5BCABQRdGrfxG/L/4gatKX6RUAGKHo1U/E18U3GF8BgFGKXp15hnNniW89o1uvNM+tqi0ATEs4f/X6wHMrT33u+rJz1Nedq77O+LHix2VsCaBPn17tdd1aMGavyrrTt1d1t8f9olcA09O1V3/i3KbvlVweqttWmrJXTeMh/zeDzcxthrd9W66XjcvqLukVgC5deuU75f2d/LLqPVs85n15I6YcX1X5qPg3gV/Nyrcj6RWAXXqMrzby8VVtr6aYb6+bc4r7Qq8A5k+f/UWL+SvN92zb9R7aq/Bx6BWALnPdv71Y77r9WVP0qmq8Rq8ApmfuvWo7vvq2+I+Bm1F/4uWb9o+gVwDTU/W+bzOXbb1X9+V/A6xrWdX4Kbxe/N0gvI1eAUzPnMdX2gLAtNT16r5onyVLvQKA9YMxBgAAAAAAAAAAAAAAAMAy+H9nIPRRQH4FAA==
+   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
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="doorLayer" visible="0">
@@ -4616,7 +4616,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="signLayer">
+ <objectgroup name="signLayer" visible="0">
   <object id="132" x="512" y="1824" width="16" height="16">
    <properties>
     <property name="signMessage" value="Nobody's home"/>
@@ -4647,12 +4647,12 @@
     <property name="signMessage" value="Neighbour home"/>
    </properties>
   </object>
-  <object id="139" x="2000" y="1712" width="16" height="16">
+  <object id="139" x="2096" y="1712" width="16" height="16">
    <properties>
     <property name="signMessage" value="PokeCenter"/>
    </properties>
   </object>
-  <object id="140" x="2096" y="1712" width="16" height="16">
+  <object id="140" x="2000" y="1712" width="16" height="16">
    <properties>
     <property name="signMessage" value="PokeMarket"/>
    </properties>
@@ -4684,7 +4684,7 @@
   </object>
   <object id="146" x="3616" y="2384" width="16" height="16">
    <properties>
-    <property name="signMessage" value="PokeCenter"/>
+    <property name="signMessage" value="PokeMarket"/>
    </properties>
   </object>
   <object id="147" x="4048" y="2384" width="16" height="16">
@@ -4828,7 +4828,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="pokemonEncounterLayer">
+ <objectgroup name="pokemonEncounterLayer" visible="0">
   <object id="148" x="128" y="368" width="528" height="96">
    <properties>
     <property name="avgLvl" value="15"/>
@@ -5005,12 +5005,13 @@
   </object>
  </objectgroup>
  <objectgroup name="trainerLayer">
-  <object id="197" x="4016" y="1184" width="16" height="16">
+  <object id="197" type="GYM_LEADER" x="4016" y="1184" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=31"/>
     <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
     <property name="3_POKEMON=LVL" value="TENTACRUEL=34"/>
     <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="badgeID" type="int" value="2"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I am your last test before your final &quot;commit&quot;, are you ready?"/>
     <property name="lostMessage" value="Very well."/>
@@ -5020,11 +5021,12 @@
     <property name="winMessage" value="Try again."/>
    </properties>
   </object>
-  <object id="199" x="4016" y="640" width="16" height="16">
+  <object id="199" type="GYM_LEADER" x="4016" y="640" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="GOLBAT=22"/>
     <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
     <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
+    <property name="badgeID" type="int" value="0"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="This is your first real challenge, bring it on!"/>
     <property name="lostMessage" value="Excellent."/>
@@ -5034,12 +5036,13 @@
     <property name="winMessage" value="Try again."/>
    </properties>
   </object>
-  <object id="200" x="4016" y="1824" width="16" height="16">
+  <object id="200" type="GYM_LEADER" x="4016" y="1824" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
     <property name="2_POKEMON=LVL" value="RAICHU=27"/>
     <property name="3_POKEMON=LVL" value="SANSLASH=30"/>
     <property name="4_POKEMON=LVL" value="CHARMELEON=32"/>
+    <property name="badgeID" type="int" value="1"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="This is your second test, are you ready?"/>
     <property name="lostMessage" value="Very well."/>
@@ -5049,13 +5052,14 @@
     <property name="winMessage" value="Try again later."/>
    </properties>
   </object>
-  <object id="201" x="3824" y="3056" width="16" height="16">
+  <object id="201" type="GYM_LEADER" x="3824" y="3056" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
     <property name="2_POKEMON=LVL" value="RAICHU=34"/>
     <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
     <property name="4_POKEMON=LVL" value="BLASTOISE=38"/>
     <property name="5_POKEMON=LVL" value="CHARIZARD=38"/>
+    <property name="badgeID" type="int" value="3"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Show me your knowledge!"/>
     <property name="lostMessage" value="Congratulation, you passed the exam of Object Oriented Programmation"/>
@@ -5065,7 +5069,7 @@
     <property name="winMessage" value="You may want to try next year, maybe?"/>
    </properties>
   </object>
-  <object id="202" x="3760" y="1888" width="16" height="16">
+  <object id="202" type="TRAINER" x="3760" y="1888" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="CHARMELEON=27"/>
     <property name="direction" value="NORTH"/>
@@ -5077,7 +5081,7 @@
     <property name="winMessage" value="You're literally on fire baby!"/>
    </properties>
   </object>
-  <object id="203" x="3648" y="1727" width="16" height="16">
+  <object id="203" type="TRAINER" x="3648" y="1727" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATICATE=26"/>
     <property name="2_POKEMON=LVL" value="SANDSLASH=27"/>
@@ -5090,7 +5094,7 @@
     <property name="winMessage" value="That serves you as a lesson."/>
    </properties>
   </object>
-  <object id="204" x="3680" y="1264" width="16" height="16">
+  <object id="204" type="TRAINER" x="3680" y="1264" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
     <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
@@ -5104,7 +5108,7 @@
     <property name="winMessage" value="It must be the water."/>
    </properties>
   </object>
-  <object id="205" x="224" y="4480" width="16" height="16">
+  <object id="205" type="TRAINER" x="224" y="4480" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="ZUBAT=12"/>
     <property name="2_POKEMON=LVL" value="SANDSLASH=12"/>
@@ -5117,7 +5121,7 @@
     <property name="winMessage" value="Can you show me the exit?"/>
    </properties>
   </object>
-  <object id="206" x="624" y="2368" width="16" height="16">
+  <object id="206" type="TRAINER" x="624" y="2368" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
     <property name="direction" value="EAST"/>
@@ -5129,7 +5133,7 @@
     <property name="winMessage" value="See ya"/>
    </properties>
   </object>
-  <object id="207" x="880" y="2496" width="16" height="16">
+  <object id="207" type="TRAINER" x="880" y="2496" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=5"/>
     <property name="2_POKEMON=LVL" value="PIDGEY=5"/>
@@ -5142,7 +5146,7 @@
     <property name="winMessage" value="..."/>
    </properties>
   </object>
-  <object id="208" x="1488" y="1936" width="16" height="16">
+  <object id="208" type="TRAINER" x="1488" y="1936" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
     <property name="2_POKEMON=LVL" value="RATTATA=5"/>
@@ -5156,7 +5160,7 @@
     <property name="winMessage" value="bruuh"/>
    </properties>
   </object>
-  <object id="209" x="1536" y="1488" width="16" height="16">
+  <object id="209" type="TRAINER" x="1536" y="1488" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIKACHU=8"/>
     <property name="direction" value="EAST"/>
@@ -5168,7 +5172,7 @@
     <property name="winMessage" value="Wow, never thought it was this strong"/>
    </properties>
   </object>
-  <object id="210" x="1216" y="1456" width="16" height="16">
+  <object id="210" type="TRAINER" x="1216" y="1456" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=8"/>
     <property name="2_POKEMON=LVL" value="RATTATA=9"/>
@@ -5181,7 +5185,7 @@
     <property name="winMessage" value="Can I piss now that I pissed on you?"/>
    </properties>
   </object>
-  <object id="211" x="736" y="1312" width="16" height="16">
+  <object id="211" type="TRAINER" x="736" y="1312" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=11"/>
     <property name="direction" value="WEST"/>
@@ -5193,7 +5197,7 @@
     <property name="winMessage" value="Yea dawg"/>
    </properties>
   </object>
-  <object id="212" x="1200" y="1696" width="16" height="16">
+  <object id="212" type="TRAINER" x="1200" y="1696" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="SANDSHREW=9"/>
     <property name="direction" value="SOUTH"/>
@@ -5205,7 +5209,7 @@
     <property name="winMessage" value="Wow, it's strong"/>
    </properties>
   </object>
-  <object id="213" x="784" y="4032" width="16" height="16">
+  <object id="213" type="TRAINER" x="784" y="4032" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="GOLBAT=38"/>
     <property name="direction" value="SOUTH"/>
@@ -5217,7 +5221,7 @@
     <property name="winMessage" value="As a man I’m flesh and blood. I can be ignored. I can be destroyed, but as a symbol, I can be incorruptible. I can be everlasting."/>
    </properties>
   </object>
-  <object id="214" x="960" y="4528" width="16" height="16">
+  <object id="214" type="TRAINER" x="960" y="4528" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="GOLBAT=35"/>
     <property name="2_POKEMON=LVL" value="ZUBAT=36"/>
@@ -5231,7 +5235,7 @@
     <property name="winMessage" value="Get lost."/>
    </properties>
   </object>
-  <object id="215" x="512" y="4528" width="16" height="16">
+  <object id="215" type="TRAINER" x="512" y="4528" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="SANDSLASH=18"/>
     <property name="2_POKEMON=LVL" value="PIDGEOTTO=20"/>
@@ -5244,7 +5248,7 @@
     <property name="winMessage" value="You can't even beat me, just train and go north before"/>
    </properties>
   </object>
-  <object id="216" x="160" y="4000" width="16" height="16">
+  <object id="216" type="TRAINER" x="160" y="4000" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="ZUBAT=14"/>
     <property name="direction" value="EAST"/>
@@ -5256,7 +5260,7 @@
     <property name="winMessage" value="Peace V/\"/>
    </properties>
   </object>
-  <object id="217" x="1552" y="1936" width="16" height="16">
+  <object id="217" type="TRAINER" x="1552" y="1936" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="GOLBAT=25"/>
     <property name="direction" value="EAST"/>
@@ -5268,7 +5272,7 @@
     <property name="winMessage" value="I was right."/>
    </properties>
   </object>
-  <object id="218" x="576" y="1072" width="16" height="16">
+  <object id="218" type="TRAINER" x="576" y="1072" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="SANDSHREW=13"/>
     <property name="2_POKEMON=LVL" value="PIKACHU=14"/>
@@ -5282,7 +5286,7 @@
     <property name="winMessage" value="Even better now"/>
    </properties>
   </object>
-  <object id="219" x="784" y="1008" width="16" height="16">
+  <object id="219" type="TRAINER" x="784" y="1008" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=14"/>
     <property name="2_POKEMON=LVL" value="PIDGEY=15"/>
@@ -5296,7 +5300,7 @@
     <property name="winMessage" value=":)"/>
    </properties>
   </object>
-  <object id="220" x="832" y="688" width="16" height="16">
+  <object id="220" type="TRAINER" x="832" y="688" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=21"/>
     <property name="2_POKEMON=LVL" value="RATICATE=20"/>
@@ -5310,7 +5314,7 @@
     <property name="winMessage" value="I just saw my reflection blink"/>
    </properties>
   </object>
-  <object id="221" x="992" y="576" width="16" height="16">
+  <object id="221" type="TRAINER" x="992" y="576" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=10"/>
     <property name="2_POKEMON=LVL" value="PIDGEY=11"/>
@@ -5323,7 +5327,7 @@
     <property name="winMessage" value="My greatest pain in life is that I will never be able to see myself perform live."/>
    </properties>
   </object>
-  <object id="222" x="1040" y="144" width="16" height="16">
+  <object id="222" type="TRAINER" x="1040" y="144" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIKACHU=14"/>
     <property name="2_POKEMON=LVL" value="SANDSHREW=15"/>
@@ -5336,7 +5340,7 @@
     <property name="winMessage" value="We don't make mistakes. We just have happy accidents."/>
    </properties>
   </object>
-  <object id="223" x="1584" y="192" width="16" height="16">
+  <object id="223" type="TRAINER" x="1584" y="192" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIKACHU=15"/>
     <property name="2_POKEMON=LVL" value="PIDGEOTTO=16"/>
@@ -5350,7 +5354,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Ah yes, back to admiring the prospectively wrong waterfall"/>
    </properties>
   </object>
-  <object id="224" x="1584" y="528" width="16" height="16">
+  <object id="224" type="TRAINER" x="1584" y="528" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RAICHU=23"/>
     <property name="direction" value="SOUTH"/>
@@ -5362,7 +5366,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Next time I'll be softer with you"/>
    </properties>
   </object>
-  <object id="225" x="576" y="560" width="16" height="16">
+  <object id="225" type="TRAINER" x="576" y="560" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="SANDSLASH=15"/>
     <property name="2_POKEMON=LVL" value="PIDGEOTTO=18"/>
@@ -5375,7 +5379,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Weak."/>
    </properties>
   </object>
-  <object id="226" x="624" y="144" width="16" height="16">
+  <object id="226" type="TRAINER" x="624" y="144" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="ZUBAT=16"/>
     <property name="2_POKEMON=LVL" value="ZUBAT=17"/>
@@ -5388,7 +5392,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Always have bail money."/>
    </properties>
   </object>
-  <object id="227" x="432" y="144" width="16" height="16">
+  <object id="227" type="TRAINER" x="432" y="144" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=17"/>
     <property name="direction" value="SOUTH"/>
@@ -5400,7 +5404,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Yea I did and it's awesome"/>
    </properties>
   </object>
-  <object id="228" x="128" y="464" width="16" height="16">
+  <object id="228" type="TRAINER" x="128" y="464" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=15"/>
     <property name="2_POKEMON=LVL" value="PIKACHU=16"/>
@@ -5414,7 +5418,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Win win win!"/>
    </properties>
   </object>
-  <object id="229" x="1296" y="912" width="16" height="16">
+  <object id="229" type="TRAINER" x="1296" y="912" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RAICHU=19"/>
     <property name="2_POKEMON=LVL" value="RATICATE=20"/>
@@ -5428,7 +5432,7 @@ prospectively wrong waterfall</property>
     <property name="winMessage" value="Every artist was first an amateur"/>
    </properties>
   </object>
-  <object id="230" x="1728" y="1552" width="16" height="16">
+  <object id="230" type="TRAINER" x="1728" y="1552" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=21"/>
     <property name="2_POKEMON=LVL" value="SANDSLASH=22"/>
@@ -5442,7 +5446,7 @@ prospectively wrong waterfall</property>
 It hasn't come out yet.</property>
    </properties>
   </object>
-  <object id="231" x="2368" y="1104" width="16" height="16">
+  <object id="231" type="TRAINER" x="2368" y="1104" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEOTTO=29"/>
     <property name="2_POKEMON=LVL" value="RAICHU=30"/>
@@ -5455,7 +5459,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="The point is, you can never be too greedy."/>
    </properties>
   </object>
-  <object id="232" x="2208" y="480" width="16" height="16">
+  <object id="232" type="TRAINER" x="2208" y="480" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=28"/>
     <property name="2_POKEMON=LVL" value="RATICATE=27"/>
@@ -5469,7 +5473,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="Fear is for the winter, my little lord."/>
    </properties>
   </object>
-  <object id="233" x="2480" y="208" width="16" height="16">
+  <object id="233" type="TRAINER" x="2480" y="208" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
     <property name="2_POKEMON=LVL" value="PIDGEOTTO=30"/>
@@ -5482,7 +5486,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="Bring me a warm cup of coffee when you come back!"/>
    </properties>
   </object>
-  <object id="234" x="2800" y="128" width="16" height="16">
+  <object id="234" type="TRAINER" x="2800" y="128" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATICATE=28"/>
     <property name="2_POKEMON=LVL" value="PIDGEOTTO=28"/>
@@ -5496,7 +5500,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="Pfff, you're bad"/>
    </properties>
   </object>
-  <object id="235" x="2832" y="400" width="16" height="16">
+  <object id="235" type="TRAINER" x="2832" y="400" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
     <property name="2_POKEMON=LVL" value="SANDSLASH=30"/>
@@ -5509,7 +5513,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="..."/>
    </properties>
   </object>
-  <object id="236" x="3184" y="752" width="16" height="16">
+  <object id="236" type="TRAINER" x="3184" y="752" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="PIDGEOTTO=30"/>
     <property name="2_POKEMON=LVL" value="RATICATE=32"/>
@@ -5523,7 +5527,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="Come back when you think you can pass"/>
    </properties>
   </object>
-  <object id="237" x="2112" y="2496" width="16" height="16">
+  <object id="237" type="TRAINER" x="2112" y="2496" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=25"/>
     <property name="2_POKEMON=LVL" value="IVYSAUR=25"/>
@@ -5537,7 +5541,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="If we're friends you won't come back."/>
    </properties>
   </object>
-  <object id="238" x="3840" y="672" width="16" height="16">
+  <object id="238" type="TRAINER" x="3840" y="672" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=19"/>
     <property name="2_POKEMON=LVL" value="RATICATE=20"/>
@@ -5550,7 +5554,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="I'm going to steal your hair"/>
    </properties>
   </object>
-  <object id="239" x="3792" y="528" width="16" height="16">
+  <object id="239" type="TRAINER" x="3792" y="528" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="ZUBAT=16"/>
     <property name="2_POKEMON=LVL" value="PIDGEOTTO=18"/>
@@ -5564,7 +5568,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="I ran out of ideas"/>
    </properties>
   </object>
-  <object id="240" x="3680" y="720" width="16" height="16">
+  <object id="240" type="TRAINER" x="3680" y="720" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="ZUBAT=17"/>
     <property name="2_POKEMON=LVL" value="SANSLASH=18"/>
@@ -5578,7 +5582,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="Our gym leader is a lot stronger than me."/>
    </properties>
   </object>
-  <object id="241" x="3840" y="1216" width="16" height="16">
+  <object id="241" type="TRAINER" x="3840" y="1216" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="SQUIRTLE=30"/>
     <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
@@ -5605,7 +5609,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="..."/>
    </properties>
   </object>
-  <object id="243" x="3616" y="1088" width="16" height="16">
+  <object id="243" type="TRAINER" x="3616" y="1088" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
     <property name="2_POKEMON=LVL" value="TENTACOOL=30"/>
@@ -5619,7 +5623,7 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="..."/>
    </properties>
   </object>
-  <object id="244" x="3856" y="1712" width="16" height="16">
+  <object id="244" type="TRAINER" x="3856" y="1712" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="GOLBAT=26"/>
     <property name="2_POKEMON=LVL" value="RAICHU=28"/>
@@ -5633,11 +5637,12 @@ It hasn't come out yet.</property>
     <property name="winMessage" value="Au revoir."/>
    </properties>
   </object>
-  <object id="245" x="2944" y="1456" width="16" height="16">
+  <object id="245" type="GYM_LEADER" x="2944" y="1456" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="BLASTOISE=45"/>
     <property name="2_POKEMON=LVL" value="VENUSAUR=45"/>
     <property name="3_POKEMON=LVL" value="CHARIZARD=45"/>
+    <property name="badgeID" type="int" value="4"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="I am the final challenge."/>
     <property name="lostMessage" value="Behind me lies the strongest Pokemon of all, try to catch him if you can."/>
@@ -5645,6 +5650,12 @@ It hasn't come out yet.</property>
     <property name="name" value="Dr. Ghain"/>
     <property name="trainerID" value="47"/>
     <property name="winMessage" value="You're still not worth."/>
+   </properties>
+  </object>
+  <object id="265" x="4502.5" y="1599.5" width="1.5"/>
+  <object id="266" type="NPC" x="4496" y="1584" width="16" height="16">
+   <properties>
+    <property name="Message" value="Welcome to this new adventure, I am Dr. Ghain."/>
    </properties>
   </object>
  </objectgroup>

@@ -114,7 +114,7 @@ public class WalkingKeyboardController implements KeyboardController {
                         fr.setBounds(100, 100, 450, 300);
                         fr.setUndecorated(true);
                         fr.setVisible(true);
-                    } else if (t == TileType.TRAINER) {
+                    } else if (t == TileType.NPC) {
                     	System.out.println("Trainer at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
                         switch(direction) {
                         case LEFT:

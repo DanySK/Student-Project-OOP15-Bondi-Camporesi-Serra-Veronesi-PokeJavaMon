@@ -1,18 +1,13 @@
 package model.trainer;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
-
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
-import model.map.PokeMapImpl;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
-import view.resources.Play;
 
 public class Trainer extends AbstractCharacter {
     
-    public final static String TYPE_TRAINER_NAME = "TRAINER";
+	public final static String TYPE_TRAINER_NAME = "TRAINER";
     private final Squad squad;
     private final String name;
     protected boolean isDefeated;
@@ -81,46 +76,5 @@ public class Trainer extends AbstractCharacter {
 	@Override
 	public void move(final Direction d, final PokeMap pm) {
 	
-	}
-	
-	public void turn(final Direction d) {
-	    PokeMapImpl pm = Play.getMapImpl();
-	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
-	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
-	    System.out.println(tr.getTile().getId());
-	    int val = -1;
-	    switch (d) {
-	    case WEST:
-	        val = Integer.parseInt(tr.getTile().getProperties().get("LEFT_ID", String.class));
-	        val++;
-	        if (val > 0) {
-	        	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-	        }
-	        break;
-	    case NORTH:
-	        val = Integer.parseInt(tr.getTile().getProperties().get("REAR_ID", String.class));
-            val++;
-	        if (val > 0) {
-            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-            }
-            break;
-	    case EAST:
-	        val = Integer.parseInt(tr.getTile().getProperties().get("RIGHT_ID", String.class));
-            val++;
-	        if (val > 0) {
-            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-            }
-            break;
-	    case SOUTH:
-            val = Integer.parseInt(tr.getTile().getProperties().get("FRONT_ID", String.class));
-            val++;
-            if(val > 0) {
-            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-            }
-            break;
-	    }
-	    
-        System.out.println("Valore TileID: " + val);
-	    this.direction = d;
 	}
 }

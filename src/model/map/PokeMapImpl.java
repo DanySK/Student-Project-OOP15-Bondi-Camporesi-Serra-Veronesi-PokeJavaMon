@@ -24,6 +24,7 @@ import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
 import model.player.Player;
 import model.player.PlayerImpl;
+import model.trainer.GymLeader;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
 
@@ -37,13 +38,16 @@ public class PokeMapImpl implements PokeMap {
 	private Set<Trainer> trainers;
 	private Set<PokemonEncounterZone> pokemonEncounterZones;
 	private Set<WalkableZone> walkableZones;
+	private Set<NPC> npcs;
+	private Set<GymLeader> gymLeaders;
+	private PokeMarket market;
 	private TiledMap tiledMap;
 	private final int mapHeight;
 	private final int mapWidth;
 	private final int tileHeight;
 	private final int tileWidth;
 	
-	//Testato EncounterZones, Trainers, 
+	//TODO: Refactoring getTrainer/ect methods?
 	public PokeMapImpl(final TiledMap map) {
 		this.tiledMap = map;
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
@@ -62,6 +66,7 @@ public class PokeMapImpl implements PokeMap {
 		this.signs = new HashSet<>();
 		this.teleports = new HashSet<>();
 		this.trainers = new HashSet<>();
+		this.npcs = new HashSet<>();
 		this.pokemonEncounterZones = new HashSet<>();
 		this.walkableZones = new HashSet<>();
 				
@@ -133,8 +138,8 @@ public class PokeMapImpl implements PokeMap {
 				this.collisions.add(p);
 				this.map[tileX][tileY] = TileType.SIGN;
 				
-			} else if (cellProperty.equals(TileType.TRAINER.toString())) {
-				this.map[tileX][tileY] = TileType.TRAINER;
+			} else if (cellProperty.equals(TileType.NPC.toString())) {
+				this.map[tileX][tileY] = TileType.NPC;
 				Direction d = Direction.NORTH;
 				if (mp.get("FRONT_ID").equals("-1")) {
 					d = Direction.SOUTH;
@@ -143,49 +148,74 @@ public class PokeMapImpl implements PokeMap {
 				} else if (mp.get("RIGHT_ID").equals("-1")) {
 					d = Direction.EAST;
 				}
-
-				this.map[tileX][tileY] = TileType.TRAINER;
-				Trainer t = importTrainer(tileX, tileY, d);
-				if (t != null) {
-					this.trainers.add(t);
+				final AbstractCharacter ac = importNPC(tileX, tileY, d);
+				if (ac != null) {
+					if (ac instanceof Trainer) {
+						this.trainers.add((Trainer)ac);
+					} else if (ac instanceof NPC) {
+						this.npcs.add((NPC) ac);
+					} else if (ac instanceof GymLeader) {
+						this.gymLeaders.add((GymLeader) ac);
+					}
 				}
+				this.collisions.add(p);
 
 			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
+			
+			} else if (cellProperty.equals(TileType.MARKET.toString())) {
+				this.map[tileX][tileY] = TileType.MARKET;
+				this.market = new PokeMarket(tileX, tileY);
+				this.collisions.add(p);
+				
+			} else if (cellProperty.equals(TileType.CENTER.toString())) {
+				this.map[tileX][tileY] = TileType.CENTER;
+				this.collisions.add(p);
 			}
 		}
 	}
 	
-	private Trainer importTrainer(final int tileX, final int tileY, final Direction d) {
+	private AbstractCharacter importNPC(final int tileX, final int tileY, final Direction d) {
 		final MapLayer trainerLayer = tiledMap.getLayers().get("trainerLayer");
-		Trainer retTrainer = null;
+		AbstractCharacter retCharacter = null;
 		for (final MapObject mobj : trainerLayer.getObjects()) {
 			final int trainerInMapX = getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth);
 			final int trainerInMapY = getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
-			
-//			System.out.println("Position in map di mobj: " + new Position(trainerInMapX, trainerInMapY) + ", actualPosition: " + new Position(tileX, tileY));
+
 			if (trainerInMapX == tileX && trainerInMapY == tileY ) {
-				final ArrayList<String>	pkmns_lvl = new ArrayList<>();
-				for (int i = 1; i <= 6; i++) {
-					if (mobj.getProperties().containsKey(i + "_POKEMON=LVL") && !mobj.getProperties().get(i + "_POKEMON=LVL", String.class).isEmpty()) {
-						pkmns_lvl.add(mobj.getProperties().get(i + "_POKEMON=LVL", String.class));
-					}
-				}
-				MapProperties mp = mobj.getProperties();
-				final String trainerName = mp.get("name",String.class);
-				final String initMessage = mp.get("initMessage", String.class);
-				final String winMessage = mp.get("winMessage", String.class);
-				final String lostMessage = mp.get("lostMessage", String.class);
-				final int money = Integer.parseInt(mp.get("money", String.class));
-				final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
-				retTrainer = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, initMessage, lostMessage, winMessage, money, trainerID);
+				final String npcType = mobj.getProperties().get("type", String.class);
+				if (npcType.equals(Trainer.TYPE_TRAINER_NAME) || npcType.equals(GymLeader.TYPE_GYM_LEADER)) {
+					final ArrayList<String>	pkmns_lvl = new ArrayList<>();
 				
+					for (int i = 1; i <= 6; i++) {
+						if (mobj.getProperties().containsKey(i + "_POKEMON=LVL") && !mobj.getProperties().get(i + "_POKEMON=LVL", String.class).isEmpty()) {
+							pkmns_lvl.add(mobj.getProperties().get(i + "_POKEMON=LVL", String.class));
+						}
+					}
+					MapProperties mp = mobj.getProperties();
+					final String trainerName = mp.get("name",String.class);
+					final String initMessage = mp.get("initMessage", String.class);
+					final String winMessage = mp.get("winMessage", String.class);
+					final String lostMessage = mp.get("lostMessage", String.class);
+					final int money = Integer.parseInt(mp.get("money", String.class));
+					final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
+					if (npcType.equals(Trainer.TYPE_TRAINER_NAME)) {
+						retCharacter = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, 
+								initMessage, lostMessage, winMessage, money, trainerID);
+					} else {
+						final int badge = mp.get("badgeID", Integer.class);
+						retCharacter = StaticTrainerFactory.createGymLeader(trainerName, d, false, tileX, tileY, pkmns_lvl, 
+								initMessage, lostMessage, winMessage, money,trainerID, badge);
+					}
+				} else if (npcType.equals("GYM_LEADER")) {
+					retCharacter = new NPC(mobj.getProperties().get("name", String.class), tileX, tileY, d, mobj.getProperties().get("message", String.class));
+				}
 			}
 		}
-		if (retTrainer == null) {
-			System.out.println("if trainerNULL postion: " + new Position(tileX, tileY));
+		if (retCharacter == null) {
+			System.out.println("if charNULL postion: " + new Position(tileX, tileY));
 		}
-		return retTrainer;
+		return retCharacter;
 	}
 	
 	@Override
@@ -326,7 +356,7 @@ public class PokeMapImpl implements PokeMap {
 	public Tile.TileType getTileType(int x, int y) {
 		return this.isOutOfBounds(x, y) ? TileType.WALL : this.map[x][y];
 	}
-	//TODO: REWORKARE LE POSIZIONI PERCHE X = MAP_HEIGHT-X
+
 	private void setWalkableZones(final MapLayer zoneLayer) {
 		for (final MapObject z : zoneLayer.getObjects()) {
 			RectangleMapObject rect = (RectangleMapObject) z;
@@ -363,9 +393,8 @@ public class PokeMapImpl implements PokeMap {
 	}
 	@Override
 	public Optional<Trainer> getTrainer(int x, int y) {
-		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.TRAINER) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.NPC) {
 			for (final Trainer t : this.trainers) {
-				System.out.println("Call: " + new Position(x,y) + "of trainer t: " + new Position(t.tileX, t.tileY));
 				if (t.getTileX() == x && t.getTileY() == y) {
 					return Optional.of(t);
 				}
@@ -389,6 +418,59 @@ public class PokeMapImpl implements PokeMap {
 		}
 	}
     
+	@Override
+	public Set<GymLeader> getGymLeaders() {
+		return Collections.unmodifiableSet(this.gymLeaders);
+	}
+
+	@Override
+	public Optional<GymLeader> getGymLeader(int x, int y) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.NPC) {
+			for (final GymLeader gl : this.gymLeaders) {
+				if (gl.getTileX() == x && gl.getTileY() == y) {
+					return Optional.of(gl);
+				}
+			}
+		}
+		return Optional.empty();
+	}
+
+	@Override
+	public void initGymLeaders(Map<Integer, Boolean> gymLeaderID_isDefeated) {
+		for (final Entry<Integer, Boolean> e : gymLeaderID_isDefeated.entrySet()) {
+			if (!e.getValue()) {
+				continue;
+			}
+			for (final GymLeader gl : this.gymLeaders) {
+				if (e.getKey() == gl.getID()) {
+					gl.defeat();
+				}
+			}
+		}
+		
+	}
+
+	@Override
+	public Set<NPC> getNPCs() {
+		return Collections.unmodifiableSet(this.npcs);
+	}
+
+	@Override
+	public Optional<NPC> getNPC(int x, int y) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.NPC) {
+			for (final NPC npcs : this.npcs) {
+				if (npcs.getTileX() == x && npcs.getTileY() == y) {
+					return Optional.of(npcs);
+				}
+			}
+		}
+		return Optional.empty();
+	}
+	
+	@Override
+	public PokeMarket getPokeMarket() {
+		return this.market;
+	}
 	
 	private void setPokemonEncounterZones(final MapLayer encounterLayer) {
 		for (final MapObject z : encounterLayer.getObjects()) {

@@ -7,6 +7,7 @@ import model.map.Drawable.Direction;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.StaticPokemonFactory;
+import model.squad.Squad;
 import model.squad.SquadImpl;
 
 
@@ -14,8 +15,7 @@ public final class StaticTrainerFactory {
 	
 	private StaticTrainerFactory() {}
 	
-	public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
-										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage, final int money, final int id) {
+	private static Squad extractSquad(final Map<String, Integer> pkmnList) {
 		final ArrayList<PokemonInBattle> tmpList = new ArrayList<>();
 		for (final String pkmn : pkmnList.keySet()) {
 			for (final PokemonDB p : PokemonDB.values()) {
@@ -24,15 +24,10 @@ public final class StaticTrainerFactory {
 				}
 			}
 		}
-		return new Trainer(trainerName, x, y, d, isDefeated, new SquadImpl((PokemonInBattle[]) tmpList.toArray()), 
-						   initMessage, trainerWonMessage, trainerDefeatedMessage, money, id);
-		
-
+		return new SquadImpl((PokemonInBattle[]) tmpList.toArray());
 	}
-
 	
-	public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
-										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage, final int money, final int id) {
+	private static Squad extractSquad (final ArrayList<String> pkmns_lvl) {
 		final ArrayList<PokemonInBattle> tmpList = new ArrayList<>();
 		
 		for (final String pkmn_lvl : pkmns_lvl) {
@@ -44,9 +39,41 @@ public final class StaticTrainerFactory {
 				}
 			}
 		}
+		return new SquadImpl((PokemonInBattle[]) tmpList.toArray());
 		
-		return new Trainer(trainerName, x, y, d, isDefeated, new SquadImpl(tmpList.toArray(new PokemonInBattle[tmpList.size()])), 
+	}
+	
+	public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
+										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage, final int money, final int id) {
+
+		return new Trainer(trainerName, x, y, d, isDefeated, extractSquad(pkmnList), 
+						   initMessage, trainerWonMessage, trainerDefeatedMessage, money, id);
+		
+
+	}
+
+	
+	public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
+										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage, final int money, final int id) {
+		return new Trainer(trainerName, x, y, d, isDefeated, extractSquad(pkmns_lvl), 
 				   initMessage, trainerWonMessage, trainerDefeatedMessage, money, id);
+
+	}
+	
+	public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
+			final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage, final int money, final int id, final int badge) {
+
+		return new GymLeader(trainerName, x, y, d, isDefeated, extractSquad(pkmns_lvl), 
+				   initMessage, trainerWonMessage, trainerDefeatedMessage, money, id, badge);
+
+
+	}
+	
+	public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
+										final String initMessage, final String trainerDefeatedMessage, final String trainerWonMessage, final int money, final int id, final int badge) {
+
+		return new GymLeader(trainerName, x, y, d, isDefeated, extractSquad(pkmnList), 
+				   initMessage, trainerWonMessage, trainerDefeatedMessage, money, id, badge);
 
 	}
 }

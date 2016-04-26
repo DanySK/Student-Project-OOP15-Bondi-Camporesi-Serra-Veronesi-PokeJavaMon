@@ -9,6 +9,7 @@ import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
+import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
 public interface PokeMap {
@@ -34,6 +35,15 @@ public interface PokeMap {
     public Set<Trainer> getTrainers();
     public Optional<Trainer> getTrainer(final int x, final int y);
     public void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated);
+    
+    public Set<GymLeader> getGymLeaders();
+    public Optional<GymLeader> getGymLeader(final int x, final int y);
+    public void initGymLeaders(final Map<Integer, Boolean> gymLeaderID_isDefeated);
+   
+    public Set<NPC> getNPCs();
+    public Optional<NPC> getNPC(final int x, final int y);
+   
+    public PokeMarket getPokeMarket();
     
     public Set<PokemonEncounterZone> getEncounterZones();
     public Optional<PokemonEncounterZone> getEncounterZone(final int x, final int y);
