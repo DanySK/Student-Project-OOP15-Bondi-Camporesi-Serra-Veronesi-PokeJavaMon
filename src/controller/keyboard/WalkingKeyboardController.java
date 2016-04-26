@@ -294,8 +294,6 @@ public class WalkingKeyboardController implements KeyboardController {
                 PlayerSprite.getSprite().setPlayerPosition(pm.getTeleport(x, y).get().getDestinationX(), pm.getTeleport(x, y).get().getDestinationY());
                 PlayerSprite.getSprite().setVelocity(0, 0);
                 return;
-            } else {
-                System.out.println("TELEPORT NOT ACTIVE");
             }
         }
         if (t == TileType.POKEMON_ENCOUNTER && (up == true || down == true || left == true || right == true)) {
