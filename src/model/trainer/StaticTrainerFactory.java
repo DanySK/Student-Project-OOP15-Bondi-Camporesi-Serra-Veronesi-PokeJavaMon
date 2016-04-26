@@ -24,7 +24,8 @@ public final class StaticTrainerFactory {
 				}
 			}
 		}
-		return new SquadImpl((PokemonInBattle[]) tmpList.toArray());
+		final PokemonInBattle[] retList = new PokemonInBattle[tmpList.size()];
+		return new SquadImpl(tmpList.toArray(retList));
 	}
 	
 	private static Squad extractSquad (final ArrayList<String> pkmns_lvl) {
@@ -39,7 +40,8 @@ public final class StaticTrainerFactory {
 				}
 			}
 		}
-		return new SquadImpl((PokemonInBattle[]) tmpList.toArray());
+		final PokemonInBattle[] retList = new PokemonInBattle[tmpList.size()];
+		return new SquadImpl(tmpList.toArray(retList));
 		
 	}
 	

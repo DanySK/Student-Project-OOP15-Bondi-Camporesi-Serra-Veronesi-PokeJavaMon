@@ -115,26 +115,87 @@ public class WalkingKeyboardController implements KeyboardController {
                         fr.setUndecorated(true);
                         fr.setVisible(true);
                     } else if (t == TileType.NPC) {
-                    	System.out.println("Trainer at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
-                        switch(direction) {
-                        case LEFT:
-                            pm.getTrainer(x, y).get().turn(Direction.EAST);
-                            break;
-                        case RIGHT:
-                            pm.getTrainer(x, y).get().turn(Direction.WEST);
-                            break;
-                        case UP:
-                            pm.getTrainer(x, y).get().turn(Direction.SOUTH);
-                            break;
-                        case DOWN:
-                            pm.getTrainer(x, y).get().turn(Direction.NORTH);
-                            break;
-                        case STILL:
-                            break;
-                        }
-                        MainController.getController().updateStatus(State.FIGHTING);
-                        FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
-                        ViewController.getController().fightScreen();
+                    	if (pm.getTrainer(x, y).isPresent()) {
+                    		System.out.println("Trainer at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
+                            switch(direction) {
+                            case LEFT:
+                                pm.getTrainer(x, y).get().turn(Direction.EAST);
+                                break;
+                            case RIGHT:
+                                pm.getTrainer(x, y).get().turn(Direction.WEST);
+                                break;
+                            case UP:
+                                pm.getTrainer(x, y).get().turn(Direction.SOUTH);
+                                break;
+                            case DOWN:
+                                pm.getTrainer(x, y).get().turn(Direction.NORTH);
+                                break;
+                            case STILL:
+                                break;
+                            }
+                            MainController.getController().updateStatus(State.FIGHTING);
+                            FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
+                            ViewController.getController().fightScreen();
+                    	} else if (pm.getNPC(x, y).isPresent()) {
+                    		switch(direction) {
+                            case LEFT:
+                        		pm.getNPC(x, y).get().turn(Direction.EAST);
+                                break;
+                            case RIGHT:
+                            	pm.getNPC(x, y).get().turn(Direction.WEST);
+                                break;
+                            case UP:
+                            	pm.getNPC(x, y).get().turn(Direction.SOUTH);
+                                break;
+                            case DOWN:
+                            	pm.getNPC(x, y).get().turn(Direction.NORTH);
+                                break;
+                            case STILL:
+                                break;
+                            }
+                            MainController.getController().updateStatus(State.READING);
+                            JFrame fr = new JFrame();
+                            JPanel pa = new JPanel();
+                            JTextArea tx;
+                            tx = new JTextArea(pm.getNPC(x, y).get().getMessage());
+                            JButton button = new JButton("OK");
+                            button.addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    MainController.getController().updateStatus(State.WALKING);
+                                    fr.dispose();
+                                }
+                            });
+                            tx.setEditable(false);
+                            pa.add(tx);
+                            pa.add(button);
+                            fr.add(pa);
+                            fr.setAlwaysOnTop(true);
+                            fr.setBounds(100, 100, 450, 300);
+                            fr.setUndecorated(true);
+                            fr.setVisible(true);
+                    	} else if (pm.getGymLeader(x, y).isPresent()) {
+                    		System.out.println("GymLeader at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
+                            switch(direction) {
+                            case LEFT:
+                                pm.getGymLeader(x, y).get().turn(Direction.EAST);
+                                break;
+                            case RIGHT:
+                                pm.getGymLeader(x, y).get().turn(Direction.WEST);
+                                break;
+                            case UP:
+                                pm.getGymLeader(x, y).get().turn(Direction.SOUTH);
+                                break;
+                            case DOWN:
+                                pm.getGymLeader(x, y).get().turn(Direction.NORTH);
+                                break;
+                            case STILL:
+                                break;
+                            }
+                            MainController.getController().updateStatus(State.FIGHTING);
+                            FightController.getController().newFightWithTrainer(pm.getGymLeader(x, y).get());
+                            ViewController.getController().fightScreen();
+                    	}
                     }
                 }
         }

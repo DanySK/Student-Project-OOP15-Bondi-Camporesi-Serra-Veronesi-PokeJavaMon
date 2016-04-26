@@ -66,6 +66,7 @@ public class PokeMapImpl implements PokeMap {
 		this.signs = new HashSet<>();
 		this.teleports = new HashSet<>();
 		this.trainers = new HashSet<>();
+		this.gymLeaders = new HashSet<>();
 		this.npcs = new HashSet<>();
 		this.pokemonEncounterZones = new HashSet<>();
 		this.walkableZones = new HashSet<>();
@@ -184,31 +185,33 @@ public class PokeMapImpl implements PokeMap {
 
 			if (trainerInMapX == tileX && trainerInMapY == tileY ) {
 				final String npcType = mobj.getProperties().get("type", String.class);
-				if (npcType.equals(Trainer.TYPE_TRAINER_NAME) || npcType.equals(GymLeader.TYPE_GYM_LEADER)) {
-					final ArrayList<String>	pkmns_lvl = new ArrayList<>();
-				
-					for (int i = 1; i <= 6; i++) {
-						if (mobj.getProperties().containsKey(i + "_POKEMON=LVL") && !mobj.getProperties().get(i + "_POKEMON=LVL", String.class).isEmpty()) {
-							pkmns_lvl.add(mobj.getProperties().get(i + "_POKEMON=LVL", String.class));
+				if (npcType != null) {
+					if ((npcType.equals(Trainer.TYPE_TRAINER_NAME) || npcType.equals(GymLeader.TYPE_GYM_LEADER))) {
+						final ArrayList<String>	pkmns_lvl = new ArrayList<>();
+					
+						for (int i = 1; i <= 6; i++) {
+							if (mobj.getProperties().containsKey(i + "_POKEMON=LVL") && !mobj.getProperties().get(i + "_POKEMON=LVL", String.class).isEmpty()) {
+								pkmns_lvl.add(mobj.getProperties().get(i + "_POKEMON=LVL", String.class));
+							}
 						}
-					}
-					MapProperties mp = mobj.getProperties();
-					final String trainerName = mp.get("name",String.class);
-					final String initMessage = mp.get("initMessage", String.class);
-					final String winMessage = mp.get("winMessage", String.class);
-					final String lostMessage = mp.get("lostMessage", String.class);
-					final int money = Integer.parseInt(mp.get("money", String.class));
-					final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
-					if (npcType.equals(Trainer.TYPE_TRAINER_NAME)) {
-						retCharacter = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, 
-								initMessage, lostMessage, winMessage, money, trainerID);
-					} else {
-						final int badge = mp.get("badgeID", Integer.class);
-						retCharacter = StaticTrainerFactory.createGymLeader(trainerName, d, false, tileX, tileY, pkmns_lvl, 
-								initMessage, lostMessage, winMessage, money,trainerID, badge);
-					}
-				} else if (npcType.equals("GYM_LEADER")) {
-					retCharacter = new NPC(mobj.getProperties().get("name", String.class), tileX, tileY, d, mobj.getProperties().get("message", String.class));
+						MapProperties mp = mobj.getProperties();
+						final String trainerName = mp.get("name",String.class);
+						final String initMessage = mp.get("initMessage", String.class);
+						final String winMessage = mp.get("winMessage", String.class);
+						final String lostMessage = mp.get("lostMessage", String.class);
+						final int money = Integer.parseInt(mp.get("money", String.class));
+						final int trainerID = Integer.parseInt(mp.get("trainerID", String.class));
+						if (npcType.equals(Trainer.TYPE_TRAINER_NAME)) {
+							retCharacter = StaticTrainerFactory.createTrainer(trainerName, d, false, tileX, tileY, pkmns_lvl, 
+									initMessage, lostMessage, winMessage, money, trainerID);
+						} else {
+							final int badge = Integer.parseInt(mp.get("badgeID", String.class));
+							retCharacter = StaticTrainerFactory.createGymLeader(trainerName, d, false, tileX, tileY, pkmns_lvl, 
+									initMessage, lostMessage, winMessage, money,trainerID, badge);
+						}
+					} else if (npcType.equals(TileType.NPC.toString())) {
+						retCharacter = new NPC(mobj.getProperties().get("name", String.class), tileX, tileY, d, mobj.getProperties().get("message", String.class));
+					} 
 				}
 			}
 		}
