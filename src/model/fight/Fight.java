@@ -3,7 +3,6 @@ package model.fight;
 import model.pokemon.Move;
 import model.pokemon.PokemonInBattle;
 import model.items.Item;
-import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.CannotUseItemInBattleException;
 import exceptions.PokemonIsExhaustedException;
@@ -13,8 +12,8 @@ import exceptions.PokemonNotFoundException;
 
 
 public interface Fight {
-	
-	public void run() throws CannotEscapeFromTrainerException;
+    
+        public void run() throws CannotEscapeFromTrainerException;
 	
 	public void change(final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonIsFightingException;
 	

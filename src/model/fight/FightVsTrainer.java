@@ -30,12 +30,10 @@ public class FightVsTrainer extends FightVsWildPkm{
 		throw new CannotEscapeFromTrainerException();
 	}
 	
-	@Override
 	public boolean usePokeball(final Item itemToUse) throws CannotCaughtTrainerPkmException{
 		throw new CannotCaughtTrainerPkmException();
 	}
 	
-	@Override
 	public boolean isAllyFastest(){
 		if((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD))
 				> (enemyPkm.getStat(Stat.SPD) * enemyPkmsBoosts.get(enemyPkm).get(Stat.SPD))){
@@ -54,7 +52,6 @@ public class FightVsTrainer extends FightVsWildPkm{
 		enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
 	}
 	
-	@Override
 	protected Move calculateEnemyMove(){
 		Move move = enemyPkm.getCurrentMoves().get(FIRST_ELEM);
 		boolean superEffective = false;

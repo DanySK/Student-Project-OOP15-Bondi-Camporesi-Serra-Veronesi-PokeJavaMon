@@ -1,12 +1,15 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.fight.Effectiveness;
 import model.fight.Fight;
 import model.fight.FightVsTrainer;
 import model.fight.FightVsWildPkm;
 import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.Stat;
 import model.trainer.Trainer;
 import view.MethodsToImplement;
 
@@ -39,10 +42,14 @@ public class FightController {
         System.out.println("Fight with: " + pm.getPokemon().name());
     }
     
+    public void evolve(List<Pokemon> list) {
+        view.evolve(list);
+    }
+    
     // Metodi che chiama il MODEL
     
-    public void resolveAttack(Move myMove, String myMoveMessage, Move enemyMove, String enemyMoveMessage, boolean myMoveFirst, boolean lastPokemonKills, Pokemon nextEnemyPokemon, String optionalMessage) {
-        view.resolveMove(myMove, myMoveMessage, enemyMove, enemyMoveMessage, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage);
+    public void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove, Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills, Pokemon nextEnemyPokemon, String optionalMessage) {
+        view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage);
     }
     
     public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead) {
@@ -73,5 +80,9 @@ public class FightController {
     
     public void useItem(Item it) {
         // TODO chiamare il metodo del model passandogli l'oggetto
+    }
+    
+    public void resolveEvolution() {
+        // TODO chiamare il metodo del model che ritorna la lista di pokemon da evolvere
     }
 }
