@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import controller.MainController;
+import controller.ViewController;
 import controller.parameters.BackSpriteImage;
 import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
@@ -70,7 +71,7 @@ public class FightScreen extends JPanel{
 		Squadra.setBounds(113, 0, 113, 30);
 		Squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Squadra();
+				ViewController.team();
 			}
 		});
 		panel_1.add(Squadra);
@@ -80,7 +81,7 @@ public class FightScreen extends JPanel{
 		panel_1.add(Zaino);
 		Zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Zaino();
+				ViewController.bag();
 			}
 		});
 		
