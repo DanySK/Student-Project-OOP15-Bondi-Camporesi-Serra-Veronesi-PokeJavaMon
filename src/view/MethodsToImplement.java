@@ -6,17 +6,15 @@ import model.pokemon.Pokemon;
 
 public interface MethodsToImplement {
     
-    // DANI QUANDO VEDI QUESTO MESSAGGIO SCRIVIMI CHE TI SPIEGO COSA DEVONO FARE QUESTI METODI
+    public void resolveMove(Move myMove, String myMoveMessage, Move enemyMove,
+                            String enemyMoveMessage, boolean myMoveFirst,
+                            boolean lastPokemonKills, Pokemon nextEnemyPokemon,
+                            String optionalMessage);
     
-    public void movePlayerThenOpponent(Move first, Move second);
+    public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove,
+                                     boolean isMyPokemonDead);
     
-    public void moveOpponentThenPlayer(Move first, Move second);
+    public void resolveUseItem(Item item, Move enemyMove, boolean isMyPokemonDead);
     
-    public void run();
-    
-    public void showMessageThenOpponentMove(String msg, Move mv);
-    
-    public void useItemThenOpponentMove(Item it, Move mv);
-    
-    public void changePokemonThenOpponentMove(Pokemon pk, Move mv);
+    public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead);
 }

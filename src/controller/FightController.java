@@ -1,6 +1,5 @@
 package controller;
 
-import exceptions.CannotEscapeFromTrainerException;
 import model.fight.Fight;
 import model.fight.FightVsTrainer;
 import model.fight.FightVsWildPkm;
@@ -40,46 +39,42 @@ public class FightController {
         System.out.println("Fight with: " + pm.getPokemon().name() + " LVL: " + pm.getStat(Stat.LVL));
     }
     
-    public void attack(Move move) {
-        Move enemy = fight.enemyMove();
-        if (fight.isAllyFastest()) {
-            view.movePlayerThenOpponent(move, enemy);
-        } else {
-            view.moveOpponentThenPlayer(enemy, move);
-        }
+    // Metodi che chiama il MODEL
+    
+    public void resolveAttack(Move myMove, String myMoveMessage, Move enemyMove, String enemyMoveMessage, boolean myMoveFirst, boolean lastPokemonKills, Pokemon nextEnemyPokemon, String optionalMessage) {
+        view.resolveMove(myMove, myMoveMessage, enemyMove, enemyMoveMessage, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage);
+    }
+    
+    public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead) {
+        view.resolveRun(success, enemyMove, isMyPokemonDead);
+    }
+    
+    public void resolveItem(Item item, Move enemyMove, boolean isMyPokemonDead) {
+        view.resolveUseItem(item, enemyMove, isMyPokemonDead);
+    }
+    
+    public void resolvePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead) {
+        view.resolveChangePokemon(myPokemon, enemyMove, isMyPokemonDead);
+    }
+    
+    // Metodi che chiama la VIEW
+    
+    public void attack(Move mv) {
+        // TODO chiamare il metodo del model passandogli la mossa
     }
     
     public void run() {
-        try {
-            if (fight.run()) {
-                view.run();
-            } else {
-                Move enemy = fight.enemyMove();
-                view.showMessageThenOpponentMove("Cannot escape now!", enemy);
-            }
-        } catch (CannotEscapeFromTrainerException e) {
-            Move enemy = fight.enemyMove();
-            view.showMessageThenOpponentMove("Cannot escape from trainer!", enemy);
-        }
-    }
-    
-    @SuppressWarnings("unused")
-    public void useItem(Item it) {
-        // TODO chiedere al model se si puo usare l oggetto
-        if (true) {
-            Move enemy = fight.enemyMove();
-            view.useItemThenOpponentMove(it, enemy);
-        } else {
-            Move enemy = fight.enemyMove();
-            view.showMessageThenOpponentMove("Cannot use this item now!", enemy);
-        }
+        // TODO chiamare il metodo del model per la fuga
     }
     
     public void changePokemon(Pokemon pk) {
-        Move enemy = fight.enemyMove();
-        view.changePokemonThenOpponentMove(pk, enemy);
+        // TODO chiamare il metodo del model passandogli il pokemon
     }
     
+    public void useItem(Item it) {
+        // TODO chiamare il metodo del model passandogli l'oggetto
+    }
+
 //    public boolean applyMove(PokemonInBattle stricker, PokemonInBattle stricked){
 //		if(fight.getMoveUsed().getStat() == Stat.HP){
 //			fight.applyDamage(stricker, stricked);
