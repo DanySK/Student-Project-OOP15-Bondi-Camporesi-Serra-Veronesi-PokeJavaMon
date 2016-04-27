@@ -26,7 +26,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 	}
 	
 	@Override
-	public boolean run() throws CannotEscapeFromTrainerException{
+	protected boolean applyRun() throws CannotEscapeFromTrainerException{
 		throw new CannotEscapeFromTrainerException();
 	}
 	
@@ -55,7 +55,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 	}
 	
 	@Override
-	public Move enemyMove(){
+	protected Move calculateEnemyMove(){
 		Move move = enemyPkm.getCurrentMoves().get(FIRST_ELEM);
 		boolean superEffective = false;
 		//cerca di ritornare prima una mossa superefficace, 

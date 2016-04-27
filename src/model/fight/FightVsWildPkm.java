@@ -14,7 +14,6 @@ import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
 import model.items.Boost;
 import model.items.Item;
-import model.items.Item.ItemType;
 import model.items.Item.whenToUse;
 import model.items.Pokeball;
 import model.items.Potion;
@@ -41,11 +40,25 @@ public class FightVsWildPkm implements Fight {
 	protected Player player;
 	protected PokemonInBattle allyPkm;
 	protected PokemonInBattle enemyPkm;
-	protected Move moveUsed;
+	protected Move allyMove;
+	protected Move enemyMove;
 	protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
 	private Map<Stat, Double> enemyPkmBoosts;
-	
 	protected final WeaknessTable table = WeaknessTable.getWeaknessTable();
+	//per comunicare cosa è successo alla view
+	protected boolean boostChangeApplied = true;
+	protected boolean boostChangeOnAlly;
+	protected Effectiveness effective = Effectiveness.NORMAL;
+	protected boolean isAllyExhausted = false;
+	protected boolean isEnemyExhausted = false;
+	protected BattleStat state = BattleStat.FIGHTING;
+	protected PlayerOptions option;
+	protected Item itemToUse;
+	protected PokemonInBattle pkmToChange;
+	protected boolean isAllyFastest;
+	protected boolean isLevelUpped = false;
+	protected int expGained;
+	protected  List<PokemonInBattle> pkmsThatMustEvolve;
 	
 	protected final Map<Stat, Double> createBoostsMap(){
 		final Map<Stat, Double> boosts = new HashMap<>();
@@ -65,8 +78,8 @@ public class FightVsWildPkm implements Fight {
 		this.enemyPkmBoosts = new HashMap<>(createBoostsMap());
 	}
 	
-	@Override
-	public PokemonInBattle checkPkmSquad(Squad pkmSquad){
+	//usato nel costruttore e nel checkLose
+	protected PokemonInBattle checkPkmSquad(final Squad pkmSquad){
 		final List<PokemonInBattle> pkmSquadList = pkmSquad.getPokemonList();
 		for(PokemonInBattle pkm : pkmSquadList){
 			if(pkm.getCurrentHP() > 0){
@@ -76,109 +89,33 @@ public class FightVsWildPkm implements Fight {
 		return null;
 	}
 	
-	@Override
-	public boolean run() throws CannotEscapeFromTrainerException{
-		final Random escapeRoll = new Random();
-		final int escapeChance = (32 * allyPkm.getStat(Stat.SPD)) / 
-				(enemyPkm.getStat(Stat.SPD) / 4) + 30;
-		return (escapeChance > escapeRoll.nextInt(SUCCESS_PROBABILTY));
-	}
-	
-	@Override
-	public void change(final int pkmPos) throws PokemonIsExhaustedException, PokemonIsFightingException {
-		if(player.getSquad().getPokemonList().get(pkmPos).getCurrentHP() == 0){
-			throw new PokemonIsExhaustedException();
+	public void enemyTurn(){
+		this.enemyMove = calculationEnemyMove();
+		if(enemyMove.getStat() == Stat.HP){
+			applyDamage(enemyPkm, allyPkm, enemyMove);
+			if(isExhausted(allyPkm)){
+				if(checkLose()){
+					//sconfitta
+				}
+				else{
+					//esausto
+				}
+			}
 		}
-		else if(player.getSquad().getPokemonList().get(pkmPos) == allyPkm){
-			throw new PokemonIsFightingException();
+		else{
+			applyMoveOnBoost(enemyPkm, allyPkm, enemyMove);
 		}
-		allyPkm = player.getSquad().getPokemonList().get(pkmPos);
-		player.getSquad().switchPokemon(0, pkmPos);
 	}
 	
-	@Override
-	public ItemType identifyItem(final Item itemToUse) throws CannotUseItemInBattleException{
-		if(itemToUse.whenToUse() == whenToUse.OUT_OF_BATTLE){
-			throw new CannotUseItemInBattleException();
-		}
-			return itemToUse.getType();
+	protected Move calculationEnemyMove(){
+		Random numberMove = new Random();
+		final int movesNumber = enemyPkm.getCurrentMoves().size();
+		return enemyPkm.getCurrentMoves().get(numberMove.nextInt(movesNumber));
 	}
 	
-	@Override
-	public void useBoost(Item itemToUse) throws PokemonNotFoundException{
-		final Boost boost = (Boost) itemToUse;
-		allyPkmsBoosts.get(allyPkm).put(boost.getStat(), 
-				(allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff()));
-		player.getInventory().consumeItem(itemToUse);
-	}
-	
-	@Override
-	public boolean usePokeball(Item itemToUse) throws CannotCaughtTrainerPkmException{
-		final Pokeball ball = (Pokeball) itemToUse;
-		player.getInventory().consumeItem(itemToUse);
-		return ball.isCaptured(enemyPkm);
-	}
-	
-	@Override
-	public void usePotion(Item itemToUse, PokemonInBattle pkmTarget) throws PokemonIsExhaustedException, PokemonNotFoundException{
-		if(pkmTarget.getCurrentHP() == 0){
-			throw new PokemonIsExhaustedException();
-		}
-		final Potion potion = (Potion) itemToUse;
-		potion.effect(player, pkmTarget);
-		player.getInventory().consumeItem(itemToUse);
-	}
-	
-	@Override
-	public boolean isAllyFastest(){
-		return ((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
-				> (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD)));
-	}
-	
-	@Override
-	public int getAttacksToDo(){
-		return ATTACKS_TO_DO;
-	}
-	
-	@Override
-	public boolean isExhausted(PokemonInBattle pkm){
-		return (pkm.getCurrentHP() == 0);
-	}
-	
-	@Override
-	public void setMoveUsed(final Move moveUsed){
-		this.moveUsed = moveUsed;
-	}
-	
-	@Override
-	public Move getMoveUsed(){
-		return moveUsed;
-	}
-	
-	@Override
-	public PokemonInBattle getAllyPkm(){
-		return allyPkm;
-	}
-	
-	@Override
-	public PokemonInBattle getEnemyPkm(){
-		return enemyPkm;
-	}
-	
-	@Override
-	public boolean isAllyPkm(final PokemonInBattle pkm){
-		return (pkm.equals(allyPkm));
-	}
-	
-	@Override
-	public double isEffective(final PokemonInBattle stricker, final PokemonInBattle stricked){
-		return effectiveValue = table.getMultiplierAttack(moveUsed.getType(), stricked.getPokemon().getFirstType(),
-				stricked.getPokemon().getSecondType());
-	}
-	
-	@Override
-	public void applyDamage(PokemonInBattle stricker, PokemonInBattle stricked){
-		stab = stabCalculation(stricker);
+	protected void applyDamage(final PokemonInBattle stricker, PokemonInBattle stricked, final Move move){
+		isEffective(stricker, stricked, move);
+		stab = stabCalculation(stricker, move);
 		final double atkBoost;
 		final double defBoost;
 		if(stricker.equals(allyPkm)){
@@ -189,88 +126,246 @@ public class FightVsWildPkm implements Fight {
 			atkBoost = getEnemyBoost(Stat.ATK);
 			defBoost = allyPkmsBoosts.get(stricked).get(Stat.ATK);
 		}
-		final int damageDone = damageCalculation(stricker, stricked, atkBoost, defBoost);
+		final int damageDone = damageCalculation(stricker, stricked, atkBoost, defBoost, move);
 		stricked.damage(damageDone);
 	}
 	
-	protected double stabCalculation(PokemonInBattle stricker){
-		if(stricker.getPokemon().getFirstType() == moveUsed.getType() ||
-				stricker.getPokemon().getSecondType() == moveUsed.getType()){
+	protected void isEffective(final PokemonInBattle stricker, 
+			final PokemonInBattle stricked, final Move move){
+		effectiveValue = table.getMultiplierAttack(move.getType(), stricked.getPokemon().getFirstType(),
+				stricked.getPokemon().getSecondType());
+		if(effectiveValue == 1){
+			effective = Effectiveness.NORMAL;
+		}
+		else if(effectiveValue >= 2){
+			effective = Effectiveness.SUPEREFFECTIVE;
+		}
+		else{
+			effective = Effectiveness.LESSEFFECTIVE;
+		}
+	}
+	
+	protected double stabCalculation(final PokemonInBattle stricker, final Move move){
+		if(stricker.getPokemon().getFirstType() == move.getType() ||
+			stricker.getPokemon().getSecondType() == move.getType()){
 			return STAB_ACTIVE;
 		}
-			return 1;
+		return 1;
 	}
-	
-	protected int damageCalculation(PokemonInBattle stricker, PokemonInBattle stricked, 
-			double atkBoost, double defBoost){
+		
+	protected int damageCalculation(final PokemonInBattle stricker, final PokemonInBattle stricked, 
+			final double atkBoost, final double defBoost, final Move move){
 		return (int)((((2 * stricker.getStat(Stat.LVL) + 10) 
-				* (stricker.getStat(Stat.ATK) * atkBoost * moveUsed.getValue())) / 
-				((stricked.getStat(Stat.DEF) * defBoost) * 250 + 2)) 
-				* stab * effectiveValue);
+			* (stricker.getStat(Stat.ATK) * atkBoost * move.getValue())) / 
+			((stricked.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
+	}
+		
+	protected boolean isExhausted(final PokemonInBattle pkm){
+		if(pkm.equals(allyPkm)){
+			return isAllyExhausted = (pkm.getCurrentHP() == 0);
+		}
+			return isEnemyExhausted = (pkm.getCurrentHP() == 0);
 	}
 	
-	@Override
-	public boolean applyMoveOnBoost(PokemonInBattle stricker, PokemonInBattle stricked){
+	protected boolean checkLose(){
+		if(checkPkmSquad(player.getSquad()) == null){
+			this.state = BattleStat.LOSE;
+			return true;
+		}
+		return false;
+	}
+	
+	protected boolean applyMoveOnBoost(final PokemonInBattle stricker, PokemonInBattle stricked, final Move move){
 		Double newBoostValue;
-		boolean changeApplied = true;
-		if(isAllyPkm(stricker)){
-			if(moveUsed.isOnEnemy()){
-				newBoostValue = getEnemyBoost(moveUsed.getStat()) - moveUsed.getValue();
+		if(allyPkm.equals(stricker)){
+			if(move.isOnEnemy()){
+				boostChangeOnAlly = false;
+				newBoostValue = getEnemyBoost(move.getStat()) - move.getValue();
 				if(newBoostValue < MIN_BOOST_VALUE){
 					newBoostValue = MIN_BOOST_VALUE;
-					changeApplied = false;
+					boostChangeApplied = false;
 				}
-				setEnemyBoost(moveUsed.getStat(), newBoostValue);
+				setEnemyBoost(move.getStat(), newBoostValue);
 			}
 			else{
-				newBoostValue = allyPkmsBoosts.get(stricker).get(moveUsed.getStat()) 
-					+ moveUsed.getValue();
+				boostChangeOnAlly = true;
+				newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) 
+					+ move.getValue();
 				if(newBoostValue > MAX_BOOST_VALUE){
 					newBoostValue = MAX_BOOST_VALUE;
-					changeApplied = false;
+					boostChangeApplied = false;
 				}
-				allyPkmsBoosts.get(stricked).replace(moveUsed.getStat(), newBoostValue);
+			allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
 			}
 		}
 		else{
-			if(moveUsed.isOnEnemy()){
-				newBoostValue = allyPkmsBoosts.get(stricked).get(moveUsed.getStat()) 
-						- moveUsed.getValue();
+			if(move.isOnEnemy()){
+				boostChangeOnAlly = true;
+				newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) 
+					- move.getValue();
 				if(newBoostValue < MIN_BOOST_VALUE){
 					newBoostValue = MIN_BOOST_VALUE;
-					changeApplied = false;
+					boostChangeApplied = false;
 				}
-				allyPkmsBoosts.get(stricked).replace(moveUsed.getStat(), newBoostValue);
+				allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
 			}
 			else{
-				newBoostValue = getEnemyBoost(moveUsed.getStat()) + moveUsed.getValue();
+				boostChangeOnAlly = false;
+				newBoostValue = getEnemyBoost(move.getStat()) + move.getValue();
 				if(newBoostValue > MAX_BOOST_VALUE){
 					newBoostValue = MAX_BOOST_VALUE;
-					changeApplied = false;
+					boostChangeApplied = false;
 				}
-				setEnemyBoost(moveUsed.getStat(), newBoostValue);
+				setEnemyBoost(move.getStat(), newBoostValue);
 			}
 		}
-		return changeApplied;
+		return boostChangeApplied;
 	}
 	
-	protected double getEnemyBoost(Stat stat){
+	protected double getEnemyBoost(final Stat stat){
 		return enemyPkmBoosts.get(stat);
 	}
 	
-	protected void setEnemyBoost(Stat stat, Double d){
+	protected void setEnemyBoost(final Stat stat, final Double d){
 		enemyPkmBoosts.replace(stat, d);
 	}
 	
-	@Override
-	public Move enemyMove(){
-		Random numberMove = new Random();
-		final int movesNumber = enemyPkm.getCurrentMoves().size();
-		return enemyPkm.getCurrentMoves().get(numberMove.nextInt(movesNumber));
+	protected boolean applyRun() throws CannotEscapeFromTrainerException{
+		final Random escapeRoll = new Random();
+		final int escapeChance = (32 * allyPkm.getStat(Stat.SPD)) / 
+				(enemyPkm.getStat(Stat.SPD) / 4) + 30;
+		option = PlayerOptions.RUN;
+		return (escapeChance > escapeRoll.nextInt(SUCCESS_PROBABILTY));
 	}
 	
 	@Override
-	public int getExp(){
+	//per controller
+	public void run() throws CannotEscapeFromTrainerException{
+		if(applyRun()){
+			//FightController.getController().fugaRiuscita();
+		}
+		else{
+			enemyTurn();
+		}
+	}
+	
+	protected void applyChange(final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonIsFightingException {
+		pkmToChange = pkm;
+		if(pkm.getCurrentHP() == 0){
+			throw new PokemonIsExhaustedException();
+		}
+		else if(pkm.equals(allyPkm)){
+			throw new PokemonIsFightingException();
+		}
+		allyPkm = pkm;
+		int pkmPos = 0;
+		for(final PokemonInBattle p : player.getSquad().getPokemonList()){
+			if(pkm.equals(p)){
+				break;
+			}
+			pkmPos += 1;
+		}
+		player.getSquad().switchPokemon(0, pkmPos);
+	}
+	
+	@Override
+	//per controller
+	public void change(final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonIsFightingException{
+			applyChange(pkm);
+			//animazione cambio
+			enemyTurn();
+	}
+	
+	@Override
+	//zaino->scelgo oggetto->chiamo questo metodo, memorizzo l'item e poi lo metto dentro al metodo useItem
+	public void identifyItem(final Item itemToUse) throws CannotUseItemInBattleException{
+		if(itemToUse.whenToUse() == whenToUse.OUT_OF_BATTLE){
+			throw new CannotUseItemInBattleException();
+		}
+		this.itemToUse = itemToUse;
+	}
+	
+	public void useItem(final Item itemToUSe, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException{
+		switch(itemToUse.getType()){
+		case BOOST:
+			final Boost boost = (Boost) itemToUse;
+			//mettere a posto il valore del coefficente, dentro alla classe Boost
+			allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
+					allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
+		case POKEBALL:
+			final Pokeball ball = (Pokeball) itemToUse;
+			ball.isCaptured(enemyPkm);
+		case POTION:
+			final Potion potion = (Potion) itemToUse;
+			potion.effect(player, pkm);
+		}
+		player.getInventory().consumeItem(itemToUSe);
+		//chiamo metodo che fa cose, inserendo l'oggetto itemToUse e basta
+		//poi da esso ricavo il type di conseguenza stabilisco l'animazione
+		//poi è uguale agli altri due, basta fare il turno nemico
+	}
+	
+	public void useMove(final Move move){
+		int attacksDone = 0;
+		boolean isEnd = false;
+		allyMove = move;
+		boolean turnOrder = setIsAllyFastest();
+		while(attacksDone < ATTACKS_TO_DO && !isEnd){
+			if(turnOrder){
+				allyTurn();
+				if(isExhausted(enemyPkm)){
+					this.expGained = getExp();
+					if(giveExpAndCheckLvlUp(expGained)){
+						this.isLevelUpped = true;
+					}
+					state = BattleStat.WIN;
+					isEnd = true;
+					pkmsThatMustEvolve = getPkmsThatMustEvolve();
+				}
+			}
+			else{
+				enemyTurn();
+			}
+			turnOrder = !turnOrder;
+			attacksDone += 1;
+		}
+	}
+	
+	protected void allyTurn(){
+		if(allyMove.getStat() == Stat.HP){
+			applyDamage(allyPkm, enemyPkm, allyMove);
+			if(isExhausted(enemyPkm)){
+				//vittoria
+			}
+		}
+		else{
+			if(applyMoveOnBoost(allyPkm, enemyPkm, allyMove)){
+				//ho applicato l'aumento o decremento
+			}
+		}
+	}
+	
+	protected boolean setIsAllyFastest(){
+		return isAllyFastest = ((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
+				> (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD)));
+	}
+	
+	/*public boolean checkWin(){
+		if(checkPkmSquad(fight.getTrainer().getSquad()) == null){
+			return true;
+		}
+		FightVsTrainer tFight = (FightVsTrainer) fight;
+		tFight.trainerChange();
+		//view.trainerChangePkm(fight.getTrainer(), fight.getEnemyPkm());
+		return false;
+	}*/
+	
+	
+	
+	
+	
+	
+	protected int getExp(){
 		return (int) (expBaseCalculation() / 7);
 	}
 	
@@ -299,8 +394,7 @@ public class FightVsWildPkm implements Fight {
 		return baseExp;
 	}
 	
-	@Override
-	public boolean giveExpAndCheckLvlUp(final int exp){
+	protected boolean giveExpAndCheckLvlUp(final int exp){
 		if(allyPkm.getNecessaryExp() <= exp){
 			allyPkm.getAllStats().replace(Stat.EXP, (exp - allyPkm.getNecessaryExp()));
 			allyPkm.levelUp();
@@ -310,8 +404,7 @@ public class FightVsWildPkm implements Fight {
 		return false;
 	}
 	
-	@Override
-	public List<PokemonInBattle> getPkmsThatMustEvolve(){
+	protected List<PokemonInBattle> getPkmsThatMustEvolve(){
 		List<PokemonInBattle> pmksThatMustEvolve = new ArrayList<>();
 		for(PokemonInBattle pkm : player.getSquad().getPokemonList()){
 			if(pkm.checkIfEvolves()){
