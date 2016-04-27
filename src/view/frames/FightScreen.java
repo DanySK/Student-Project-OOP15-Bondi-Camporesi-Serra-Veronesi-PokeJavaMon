@@ -18,7 +18,9 @@ import java.awt.event.KeyEvent;
 
 public class FightScreen extends JPanel{
 
-	public FightScreen() {
+    private static final long serialVersionUID = 1L;
+
+    public FightScreen() {
 		final JFrame frame = new JFrame("Fight");
 		
 		frame.setResizable(false);
@@ -153,7 +155,8 @@ public class FightScreen extends JPanel{
 
 	class MyPanel extends JPanel {
 
-		private BufferedImage image;
+	private static final long serialVersionUID = 1L;
+        private BufferedImage image;
 		private BufferedImage image2;
 		
     	public MyPanel() {

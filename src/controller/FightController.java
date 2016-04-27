@@ -1,8 +1,10 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import exceptions.CannotEscapeFromTrainerException;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonIsFightingException;
+import exceptions.PokemonNotFoundException;
 import model.fight.Effectiveness;
 import model.fight.Fight;
 import model.fight.FightVsTrainer;
@@ -10,6 +12,8 @@ import model.fight.FightVsWildPkm;
 import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
+import model.pokemon.PokemonDB;
+import model.pokemon.PokemonInBattle;
 import model.trainer.Trainer;
 import view.MethodsToImplement;
 
@@ -42,10 +46,6 @@ public class FightController {
         System.out.println("Fight with: " + pm.getPokemon().name());
     }
     
-    public void evolve(List<Pokemon> list) {
-        view.evolve(list);
-    }
-    
     // Metodi che chiama il MODEL
     
     public void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove, Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills, Pokemon nextEnemyPokemon, String optionalMessage) {
@@ -56,8 +56,8 @@ public class FightController {
         view.resolveRun(success, enemyMove, isMyPokemonDead);
     }
     
-    public void resolveItem(Item item, Move enemyMove, boolean isMyPokemonDead) {
-        view.resolveUseItem(item, enemyMove, isMyPokemonDead);
+    public void resolveItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead) {
+        view.resolveUseItem(item, pk, enemyMove, isMyPokemonDead);
     }
     
     public void resolvePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead) {
@@ -67,22 +67,26 @@ public class FightController {
     // Metodi che chiama la VIEW
     
     public void attack(Move mv) {
-        // TODO chiamare il metodo del model passandogli la mossa
+        fight.moveTurn(mv);
     }
     
-    public void run() {
-        // TODO chiamare il metodo del model per la fuga
+    public void run() throws CannotEscapeFromTrainerException {
+        fight.runTurn();
     }
     
-    public void changePokemon(Pokemon pk) {
-        // TODO chiamare il metodo del model passandogli il pokemon
+    public void changePokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        fight.changeTurn((PokemonInBattle) pk);
     }
     
-    public void useItem(Item it) {
-        // TODO chiamare il metodo del model passandogli l'oggetto
+    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException {
+        fight.itemTurn(it, (PokemonInBattle) pk);
     }
     
-    public void resolveEvolution() {
-        // TODO chiamare il metodo del model che ritorna la lista di pokemon da evolvere
+    public List<PokemonDB> resolveEvolution() {
+        return fight.getPkmsThatMustEvolve();
+    }
+    
+    public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        fight.applyChange((PokemonInBattle) pk);
     }
 }

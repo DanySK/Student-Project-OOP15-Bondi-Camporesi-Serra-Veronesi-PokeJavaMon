@@ -1,7 +1,5 @@
 package view;
 
-import java.util.List;
-
 import model.fight.Effectiveness;
 import model.items.Item;
 import model.pokemon.Move;
@@ -17,9 +15,7 @@ public interface MethodsToImplement {
     public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove,
                                      boolean isMyPokemonDead);
     
-    public void resolveUseItem(Item item, Move enemyMove, boolean isMyPokemonDead);
+    public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead);
     
     public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead);
-    
-    public void evolve(List<Pokemon> list);
 }

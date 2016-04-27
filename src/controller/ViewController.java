@@ -1,13 +1,20 @@
 package controller;
 
+import java.util.List;
+
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import controller.parameters.State;
 import controller.save.SaveController;
+import exceptions.CannotEscapeFromTrainerException;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonIsFightingException;
+import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
+import model.pokemon.PokemonDB;
 import view.PlayerSprite;
 import view.frames.*;
 import view.resources.TiledMapGame;
@@ -89,16 +96,24 @@ public final class ViewController {
         FightController.getController().attack(move);
     }
     
-    public void changePokemon(Pokemon poke) {
+    public void changePokemon(Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException {
         FightController.getController().changePokemon(poke);
     }
     
-    public void useItem(Item it) {
-        FightController.getController().useItem(it);
+    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException {
+        FightController.getController().useItem(it, pk);
     }
     
-    public void run() {
+    public void run() throws CannotEscapeFromTrainerException {
         FightController.getController().run();
+    }
+    
+    public List<PokemonDB> getEvolutions() {
+        return FightController.getController().resolveEvolution();
+    }
+    
+    public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        FightController.getController().selectPokemon(pk);
     }
     
     public void fightScreen() {

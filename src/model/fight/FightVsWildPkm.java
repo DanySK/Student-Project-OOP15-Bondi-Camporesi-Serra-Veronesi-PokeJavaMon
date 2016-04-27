@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -26,8 +24,6 @@ import model.pokemon.WeaknessTable;
 import model.squad.Squad;
 import controller.FightController;
 
-
-
 public class FightVsWildPkm implements Fight {
 	final private static int SUCCESS_PROBABILTY = 255;
 	protected final int FIRST_ELEM = 0;
@@ -37,7 +33,6 @@ public class FightVsWildPkm implements Fight {
 	protected final double MAX_BOOST_VALUE = 2.0;
 	protected double stab;
 	protected double effectiveValue = 1;
-	
 	protected Player player;
 	protected PokemonInBattle allyPkm;
 	protected PokemonInBattle enemyPkm;
@@ -46,7 +41,6 @@ public class FightVsWildPkm implements Fight {
 	protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
 	private Map<Stat, Double> enemyPkmBoosts;
 	protected final WeaknessTable table = WeaknessTable.getWeaknessTable();
-	
 	//per comunicare cosa è successo alla view
 	protected Effectiveness allyEff = Effectiveness.NORMAL;
 	protected Effectiveness enemyEff = Effectiveness.NORMAL;
@@ -282,7 +276,7 @@ public class FightVsWildPkm implements Fight {
 	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException{
 		applyItem(itemToUse, pkm);
 		player.getInventory().consumeItem(itemToUse);
-		FightController.getController().resolveItem(itemToUse, enemyMove, isAllyExhausted);
+		FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
 		//TODO resetto
 	}
 	
@@ -307,7 +301,6 @@ public class FightVsWildPkm implements Fight {
 			turnOrder = !turnOrder;
 			attacksDone += 1;
 		}
-		
 	}
 	
 	protected void allyTurn(){
