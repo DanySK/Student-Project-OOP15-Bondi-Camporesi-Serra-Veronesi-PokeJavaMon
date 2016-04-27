@@ -1,5 +1,11 @@
 package view.frames;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -7,30 +13,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
-
-import controller.MainController;
-import controller.ViewController;
-import controller.parameters.State;
-
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class FightScreen extends JPanel{
 
-	private static final long serialVersionUID = 1L;
-
 	public FightScreen() {
 		final JFrame frame = new JFrame("Fight");
-		frame.setUndecorated(true);
+		
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 275);
 		frame.getContentPane().setLayout(null);
+		frame.setUndecorated(true);
 		
 		MyPanel panel = new MyPanel();
-		panel.setBounds(0, 0, 444, 212);
+		panel.setBounds(0, 0, 450, 212);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -66,7 +64,7 @@ public class FightScreen extends JPanel{
 		Squadra.setBounds(113, 0, 113, 30);
 		Squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewController.team();
+				new Squadra();
 			}
 		});
 		panel_1.add(Squadra);
@@ -76,7 +74,7 @@ public class FightScreen extends JPanel{
 		panel_1.add(Zaino);
 		Zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewController.bag();
+				new Zaino();
 			}
 		});
 		
@@ -84,9 +82,8 @@ public class FightScreen extends JPanel{
 		Fuga.setBounds(113, 30, 113, 30);
 		panel_1.add(Fuga);
 		Fuga.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
+			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				MainController.getController().updateStatus(State.WALKING);
 			}
 		});
 
@@ -154,27 +151,50 @@ public class FightScreen extends JPanel{
 	}
 	}
 
-class MyPanel extends JPanel {		
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	class MyPanel extends JPanel {
 
-	public void paint(Graphics g) {
-		int width = 150;
-		double maxHP = 200; /*get maxHealth*/
-		double HP = 50; /*get currentHealth*/
-		double Scale = HP / maxHP;
-	    g.drawRect (10, 10, width, 10); 
-	    g.fillRect(10, 10, (int) (width * Scale), 10);
-	    g.drawRect (10, 10, width, 10);
-	    
-	    
-	    double maxHP2 = 200; /*get maxHealth*/
-		double HP2 = 75; /*get currentHealth*/
-		double Scale2 = HP2 / maxHP2;
-	    g.drawRect (282, 110, width, 10); 
-	    g.fillRect(282, 110, (int) (width * Scale2), 10);
-	    g.drawRect (282, 110, width, 10);
-	  }
-}
+		private BufferedImage image;
+		private BufferedImage image2;
+		
+    	public MyPanel() {
+           try {                
+              image = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F384.png"));
+           } catch (IOException ex) {
+        	   ex.printStackTrace();
+           }
+        
+           try {                
+        	   image2 = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F006.png"));
+           } catch (IOException ex) {
+      	   ex.printStackTrace();
+           }
+    	}
+	
+        @Override
+        public void paint(Graphics g) {
+            super.paintComponent(g);
+            if (image != null) {
+
+            	int width = 150;
+            	double maxHP = 200; /*get maxHealth*/
+        		double HP = 200; /*get currentHealth*/
+        		double Scale = HP / maxHP;
+        	    
+        		double maxHP2 = 200; /*get maxHealth*/
+        		double HP2 = 75; /*get currentHealth*/
+        		double Scale2 = HP2 / maxHP2;
+        		
+            	g.drawRect(20, 20, width, 7);
+                g.drawRect(272, 130, width, 7);
+                
+               /* g.drawRect (10, 10, width, 5); */
+                g.fillRect(20, 20, (int) (width * Scale), 7);
+                g.fillRect(272, 130, (int) (width * Scale2), 7);
+                
+                g.drawImage(image, 300, 20, this);
+                g.drawImage(image2, 50, 130, this);
+            }
+
+            g.dispose();
+        }
+    }
