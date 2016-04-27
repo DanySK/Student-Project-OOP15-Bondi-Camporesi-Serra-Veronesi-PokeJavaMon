@@ -109,4 +109,14 @@ public class FightVsTrainer extends FightVsWildPkm{
 		//player.beatenTrainer(this.trainer.getTrainerDB());
 	}
 	
+	/*public boolean checkWin(){
+	if(checkPkmSquad(fight.getTrainer().getSquad()) == null){
+		return true;
+	}
+	FightVsTrainer tFight = (FightVsTrainer) fight;
+	tFight.trainerChange();
+	//view.trainerChangePkm(fight.getTrainer(), fight.getEnemyPkm());
+	return false;
+	}*/
+	
 }
