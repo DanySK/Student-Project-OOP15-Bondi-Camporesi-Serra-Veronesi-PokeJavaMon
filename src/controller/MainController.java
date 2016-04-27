@@ -42,8 +42,6 @@ public class MainController {
                 keyboardController = SecondMenuKeyboardController.getController();
                 break;
             case WALKING:
-                keyboardController = WalkingKeyboardController.getController(); 
-                Play.updateKeyListener();
                 if (MainMusicController.getController().playing() == null) {
                     MainMusicController.getController().play(Music.TOWN);
                 } else {
@@ -52,14 +50,14 @@ public class MainController {
                         MainMusicController.getController().play(Music.TOWN);
                     }
                 }
+                keyboardController = WalkingKeyboardController.getController(); 
+                Play.updateKeyListener();
                 break;
             case MENU:
                 keyboardController = MenuKeyboardController.getController();
                 Play.updateKeyListener();
                 break;
             case FIGHTING:
-                keyboardController = FightingKeyboardController.getController();
-                Play.updateKeyListener();
                 if (MainMusicController.getController().playing() == null) {
                     MainMusicController.getController().play(Music.TRAINER);
                 } else {
@@ -68,6 +66,8 @@ public class MainController {
                         MainMusicController.getController().play(Music.TRAINER);
                     }
                 }
+                keyboardController = FightingKeyboardController.getController();
+                Play.updateKeyListener();
                 break;
             case READING:
                 keyboardController = MenuKeyboardController.getController();
