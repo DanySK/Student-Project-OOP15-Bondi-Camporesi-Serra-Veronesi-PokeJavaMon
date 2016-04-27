@@ -13,23 +13,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
+import controller.MainController;
+import controller.parameters.BackSpriteImage;
+import controller.parameters.FrontSpriteImage;
+import controller.parameters.State;
+import model.pokemon.PokemonDB;
+import model.trainer.Trainer;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class FightScreen extends JPanel{
 
     private static final long serialVersionUID = 1L;
-
-    public FightScreen() {
+    public FightScreen(Trainer tr) {
 		final JFrame frame = new JFrame("Fight");
-		
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 450, 275);
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
 		
-		MyPanel panel = new MyPanel();
+		MyPanel panel = new MyPanel(tr);
 		panel.setBounds(0, 0, 450, 212);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -85,6 +89,7 @@ public class FightScreen extends JPanel{
 		panel_1.add(Fuga);
 		Fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			        MainController.getController().updateStatus(State.WALKING);
 				frame.dispose();
 			}
 		});
@@ -156,18 +161,28 @@ public class FightScreen extends JPanel{
 	class MyPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-        private BufferedImage image;
+	private BufferedImage image;
 		private BufferedImage image2;
 		
-    	public MyPanel() {
-           try {                
-              image = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F384.png"));
+    	public MyPanel(Trainer tr) {
+    	   try {                
+               // QUESTO E' UN OBROBRIO, IL MIO CERVELLO E' MORTO
+               //image = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F384.png"));
+               //image = ImageIO.read(new File(FrontSpriteImage.RAYQUAZA.getAbsolutePath()));
+               if (tr.getSquad().getPokemonList().get(0).getPokemon().equals(PokemonDB.PIDGEY)) {
+                   image = ImageIO.read(new File(FrontSpriteImage.PIDGEY.getAbsolutePath()));
+               } else if (tr.getSquad().getPokemonList().get(0).getPokemon().equals(PokemonDB.RATTATA)) {
+                   image = ImageIO.read(new File(FrontSpriteImage.RATTATA.getAbsolutePath()));
+               } else {
+                   image = ImageIO.read(new File(FrontSpriteImage.RAYQUAZA.getAbsolutePath()));
+               }
            } catch (IOException ex) {
         	   ex.printStackTrace();
            }
         
            try {                
-        	   image2 = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F006.png"));
+        	   //image2 = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F006.png"));
+               image2 = ImageIO.read(new File(BackSpriteImage.BLASTOISE.getAbsolutePath()));
            } catch (IOException ex) {
       	   ex.printStackTrace();
            }

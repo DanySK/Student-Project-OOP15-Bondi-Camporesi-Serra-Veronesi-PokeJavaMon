@@ -31,7 +31,7 @@ public Zaino() {
     	fight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
-				ViewController.getController().fightScreen();
+				ViewController.getController().fightScreen(null);
 			}
 		});
     	f.setVisible(true);
