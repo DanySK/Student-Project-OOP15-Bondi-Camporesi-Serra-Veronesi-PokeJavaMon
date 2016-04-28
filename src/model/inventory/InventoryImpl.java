@@ -130,22 +130,26 @@ public class InventoryImpl implements Inventory {
     }
 
     private void changeQty(Item item, int qty) {
+        System.out.println(item);
         switch (item.getType()) {
         case BOOST :
             if (this.boosts.get(item) + qty < 0) {
                 throw new IllegalStateException();
             }
             this.boosts.replace((Boost) item, this.boosts.get(item) + qty);
+            break;
         case POTION :
             if (this.potions.get(item) + qty < 0) {
                 throw new IllegalStateException();
             }
             this.potions.replace((Potion) item, this.potions.get(item) + qty);
+            break;
         case POKEBALL :
             if (this.pokeballs.get(item) + qty < 0) {
                 throw new IllegalStateException();
             }
             this.pokeballs.replace((Pokeball) item, this.pokeballs.get(item) + qty);
+            break;
         }
     }
     

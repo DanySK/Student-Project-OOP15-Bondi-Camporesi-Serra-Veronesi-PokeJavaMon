@@ -10,6 +10,7 @@ import model.fight.Fight;
 import model.fight.FightVsTrainer;
 import model.fight.FightVsWildPkm;
 import model.items.Item;
+import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
@@ -45,6 +46,7 @@ public class FightController {
     public void newFightWithPokemon(Pokemon pm) {
         fight = new FightVsWildPkm(pm);
         System.out.println("Fight with: " + pm.getPokemon().name());
+        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
     }
     
     // Metodi che chiama il MODEL

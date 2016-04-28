@@ -13,11 +13,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
-import controller.MainController;
 import controller.ViewController;
 import controller.parameters.BackSpriteImage;
 import controller.parameters.FrontSpriteImage;
-import controller.parameters.State;
+import exceptions.CannotEscapeFromTrainerException;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonIsFightingException;
+import exceptions.PokemonNotFoundException;
+import model.items.Potion;
+import model.items.Potion.PotionType;
+import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import java.awt.event.KeyAdapter;
@@ -72,7 +77,14 @@ public class FightScreen extends JPanel{
 		Squadra.setBounds(113, 0, 113, 30);
 		Squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewController.team();
+//				ViewController.team();
+			        try {
+                        ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                    } catch (PokemonIsExhaustedException e1) {
+                        System.out.println("POKEMON IS EXAUSTED");
+                    } catch (PokemonIsFightingException e1) {
+                        System.out.println("POKEMON IS FIGHTING");
+                    }
 			}
 		});
 		panel_1.add(Squadra);
@@ -82,7 +94,14 @@ public class FightScreen extends JPanel{
 		panel_1.add(Zaino);
 		Zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewController.bag();
+//				ViewController.bag();
+			        try {
+                        ViewController.getController().useItem(new Potion(PotionType.POTION), PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                    } catch (PokemonIsExhaustedException e1) {
+                        System.out.println("POKEMON IS EXAUSTED");
+                    } catch (PokemonNotFoundException e1) {
+                        System.out.println("POKEMON NOT FOUND");
+                    }
 			}
 		});
 		
@@ -91,8 +110,11 @@ public class FightScreen extends JPanel{
 		panel_1.add(Fuga);
 		Fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			        MainController.getController().updateStatus(State.WALKING);
-				frame.dispose();
+			        try {
+                        ViewController.getController().run();
+                    } catch (CannotEscapeFromTrainerException e1) {
+                        System.out.println("CANNOT ESCAPE FROM TRAINER");
+                    }
 			}
 		});
 
@@ -101,7 +123,8 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
-                panel_3.setVisible(false);
+                                panel_3.setVisible(false);
+			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
 			}
 		});
 		Mossa1.setBounds(0, 0, 113, 30);
@@ -112,7 +135,8 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
-                panel_3.setVisible(false);
+                                panel_3.setVisible(false);
+			    ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
 			}
 		});
 		Mossa2.setBounds(113, 0, 113, 30);
@@ -123,7 +147,8 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
-                panel_3.setVisible(false);
+                                panel_3.setVisible(false);
+			    ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
 			}
 		});
 		Mossa3.setBounds(0, 30, 113, 30);
@@ -134,7 +159,8 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
-                panel_3.setVisible(false);
+                                panel_3.setVisible(false);
+			    ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
 			}
 		});
 		Mossa4.setBounds(113, 30, 113, 30);
