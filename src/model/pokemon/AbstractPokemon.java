@@ -130,7 +130,7 @@ public abstract class AbstractPokemon implements Pokemon {
     
     @Override
     public void setExp(final int exp) {
-    	this.changeStat(Stat.EXP, mapStat.get(Stat.EXP) + exp);
+    	this.changeStat(Stat.EXP, exp);
     }
     
     @Override

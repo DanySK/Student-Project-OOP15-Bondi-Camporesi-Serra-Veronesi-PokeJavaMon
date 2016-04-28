@@ -67,7 +67,7 @@ public class SaveController implements SaveControllerInterface {
             Element e = new Element(x.getPokemon().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
             e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
-            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
+            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getStat(Stat.EXP)));
             int contatore = MIN_MOVES;
             for (final Move m : x.getCurrentMoves()) {
                 if (m != null) {
@@ -129,7 +129,7 @@ public class SaveController implements SaveControllerInterface {
             Element e = new Element(x.getPokemon().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
             e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
-            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
+            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getStat(Stat.EXP)));
             int contatore = MIN_MOVES;
             for (final Move s : x.getCurrentMoves()) {
                 if (s != null) {
