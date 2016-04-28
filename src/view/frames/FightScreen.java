@@ -14,8 +14,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import controller.ViewController;
-import controller.parameters.BackSpriteImage;
-import controller.parameters.FrontSpriteImage;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -24,7 +22,6 @@ import model.items.Potion;
 import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -197,20 +194,14 @@ public class FightScreen extends JPanel{
 		private BufferedImage image2;
 		
     	public MyPanel(Pokemon pk) {
-    	   try {                
-               if (pk.getPokemon().equals(PokemonDB.PIDGEY)) {
-                   image = ImageIO.read(new File(FrontSpriteImage.PIDGEY.getAbsolutePath()));
-               } else if (pk.getPokemon().equals(PokemonDB.RATTATA)) {
-                   image = ImageIO.read(new File(FrontSpriteImage.RATTATA.getAbsolutePath()));
-               } else {
-                   image = ImageIO.read(new File(FrontSpriteImage.RAYQUAZA.getAbsolutePath()));
-               }
-           } catch (IOException ex) {
-        	   ex.printStackTrace();
-           }
-        
+    	
+    	    try {
+                image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getAbsolutePath()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
            try {                
-        	image2 = ImageIO.read(new File(BackSpriteImage.SQUIRTLE.getAbsolutePath()));
+        	image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
            } catch (IOException ex) {
       	   ex.printStackTrace();
            }

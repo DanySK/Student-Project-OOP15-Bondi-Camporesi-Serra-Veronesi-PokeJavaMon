@@ -67,11 +67,13 @@ public class SaveController implements SaveControllerInterface {
             Element e = new Element(x.getPokemon().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
             e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
-            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
+            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getStat(Stat.EXP)));
             int contatore = MIN_MOVES;
             for (final Move m : x.getCurrentMoves()) {
-                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,m.name());
-                contatore ++;
+                if (m != null) {
+                    e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,m.name());
+                    contatore ++;
+                }
             }
             contatore --;
             e.setAttribute(XMLParameters.NMOVES.getName(),Integer.toString(contatore));
@@ -127,11 +129,13 @@ public class SaveController implements SaveControllerInterface {
             Element e = new Element(x.getPokemon().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
             e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
-            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
+            e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getStat(Stat.EXP)));
             int contatore = MIN_MOVES;
             for (final Move s : x.getCurrentMoves()) {
-                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s.name());
-                contatore ++;
+                if (s != null) {
+                    e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s.name());
+                    contatore ++;
+                }
             }
             contatore --;
             e.setAttribute(XMLParameters.NMOVES.getName(),Integer.toString(contatore));

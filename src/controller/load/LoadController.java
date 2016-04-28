@@ -49,7 +49,7 @@ public class LoadController implements LoadControllerInterface {
     }
     
     private void getName() {
-        PlayerImpl.getPlayer().setName(root.getAttributeValue(XMLParameters.NAME.getName()));
+        PlayerImpl.getPlayer().setName(root.getAttribute(XMLParameters.NAME.getName()).getValue());
     }
     
     private void getBadges() {

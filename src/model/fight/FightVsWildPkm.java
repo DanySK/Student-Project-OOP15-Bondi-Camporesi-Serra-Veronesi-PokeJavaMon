@@ -399,10 +399,11 @@ public class FightVsWildPkm implements Fight {
 	
 	protected void giveExpAndCheckLvlUp(final int exp){
 		if(allyPkm.getNecessaryExp() <= exp){
-			allyPkm.setExp(exp - allyPkm.getNecessaryExp());
+		        allyPkm.setExp(exp - allyPkm.getNecessaryExp());
 			allyPkm.levelUp();
+		} else {
+		    allyPkm.setExp(allyPkm.getStat(Stat.EXP) + exp);   
 		}
-		allyPkm.setExp(exp);
 	}
 	
 	public List<PokemonDB> getPkmsThatMustEvolve(){

@@ -15,6 +15,7 @@ import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
 import model.map.Position;
 import model.map.tile.Tile.TileType;
+import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import view.PlayerSprite;
 import view.resources.Play;
@@ -92,6 +93,7 @@ public class WalkingKeyboardController implements KeyboardController {
                     }
                     if (t == TileType.CENTER) {
                         System.out.println("POKEMON'S HEALTH FULLY RESTORED");
+                        PlayerImpl.getPlayer().pokemonCenter();
                     } else if (t == TileType.MARKET) {
                         System.out.println("WELCOME TO PKMN MARKET");
                     } else if (t == TileType.SIGN) {

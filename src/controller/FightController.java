@@ -17,6 +17,7 @@ import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
+import model.pokemon.Stat;
 import model.trainer.Trainer;
 import view.MethodsImplemented;
 import view.MethodsToImplement;
@@ -47,7 +48,7 @@ public class FightController {
     
     public void newFightWithPokemon(Pokemon pm) {
         fight = new FightVsWildPkm(pm);
-        System.out.println("Fight with: " + pm.getPokemon().name());
+        System.out.println("Fight with: " + pm.getPokemon().name() + " LVL: " + pm.getStat(Stat.LVL));
         System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
     }
     
