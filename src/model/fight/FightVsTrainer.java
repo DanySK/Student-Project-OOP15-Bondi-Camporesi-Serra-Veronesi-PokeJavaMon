@@ -97,7 +97,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 			}
 		}
 		//altrimenti manda il primo pkm che trova nella squadra
-		enemyPkm = checkPkmSquad(this.trainer.getSquad());
+	//	enemyPkm = checkPkmSquad(this.trainer.getSquad());
 	}
 	
 	public int getTrainerMoney(){

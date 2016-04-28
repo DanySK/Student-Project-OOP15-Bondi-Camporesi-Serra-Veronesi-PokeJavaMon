@@ -12,6 +12,7 @@ public interface Pokemon {
     public Map<Stat, Integer> getAllStats();
     public List<Move> getCurrentMoves();
     
+    public void setExp(final int exp);
     public void levelUp();
     public void evolveUp();
     public void learnMove(Move oldMove, Move newMove);
