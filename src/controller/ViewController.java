@@ -6,6 +6,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import controller.parameters.State;
 import controller.save.SaveController;
+import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -101,7 +102,12 @@ public final class ViewController {
     }
     
     public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException {
-        FightController.getController().useItem(it, pk);
+        try {
+			FightController.getController().useItem(it, pk);
+		} catch (CannotCaughtTrainerPkmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public void run() throws CannotEscapeFromTrainerException {
