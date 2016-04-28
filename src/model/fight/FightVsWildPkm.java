@@ -39,7 +39,7 @@ public class FightVsWildPkm implements Fight {
 	protected PokemonInBattle enemyPkm;
 	protected Move enemyMove;
 	protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
-	private Map<Stat, Double> enemyPkmBoosts;
+	private Map<Stat, Double> enemyPkmBoosts = new HashMap<>();
 	protected final WeaknessTable table = WeaknessTable.getWeaknessTable();
 	
 	protected Effectiveness allyEff = Effectiveness.NORMAL;
@@ -49,7 +49,7 @@ public class FightVsWildPkm implements Fight {
 	protected boolean runValue;
 	protected boolean isAllyFastest;
 	protected boolean isLevelUpped = false;
-	protected  List<PokemonDB> pkmsThatMustEvolve;
+	protected  List<PokemonDB> pkmsThatMustEvolve = new ArrayList<>();
 	
 	protected final Map<Stat, Double> createBoostsMap(){
 		final Map<Stat, Double> boosts = new HashMap<>();
@@ -189,7 +189,7 @@ public class FightVsWildPkm implements Fight {
 					newBoostValue = MAX_BOOST_VALUE;
 					allyEff = Effectiveness.CANNOTINCREASE;
 				}
-			allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
+			allyPkmsBoosts.get(stricker).replace(move.getStat(), newBoostValue);
 			}
 		}
 		else{
