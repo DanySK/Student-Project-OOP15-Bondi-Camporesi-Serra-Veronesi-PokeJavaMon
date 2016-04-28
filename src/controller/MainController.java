@@ -106,7 +106,7 @@ public class MainController {
         InitializeMoves.initAllPokemonsTypes();
         ViewController.getController().firstMenu();
         try {
-            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.SQUIRTLE, 5));
+            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.BLASTOISE, 40));
         } catch (SquadFullException e) {
             e.printStackTrace();
         }

@@ -26,8 +26,9 @@ import java.awt.event.KeyEvent;
 public class FightScreen extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    static JFrame frame;
     public FightScreen(Pokemon pk) {
-		final JFrame frame = new JFrame("Fight");
+		frame = new JFrame("Fight");
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 450, 275);
@@ -157,7 +158,11 @@ public class FightScreen extends JPanel{
 		
 		frame.setVisible(true);
 	}
-	}
+    
+        public static void dispose() {
+            frame.dispose();
+        }
+}
 
 	class MyPanel extends JPanel {
 

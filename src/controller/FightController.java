@@ -15,13 +15,14 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
 import model.trainer.Trainer;
+import view.MethodsImplemented;
 import view.MethodsToImplement;
 
 public class FightController {
 
     private static FightController SINGLETON;
     private Fight fight;
-    private MethodsToImplement view;
+    private MethodsToImplement view = new MethodsImplemented();
     
     private FightController() {}
     
