@@ -1,7 +1,6 @@
 package model.squad;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import exceptions.OnlyOnePokemonInSquadException;
@@ -35,7 +34,7 @@ public class SquadImpl implements Squad {
 
     @Override
     public List<PokemonInBattle> getPokemonList() {
-        return Collections.unmodifiableList(pokemonInSquad);
+        return this.pokemonInSquad;
     }
 
     @Override
