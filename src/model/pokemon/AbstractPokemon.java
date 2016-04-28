@@ -129,6 +129,11 @@ public abstract class AbstractPokemon implements Pokemon {
     }
     
     @Override
+    public void setExp(final int exp) {
+    	this.changeStat(Stat.EXP, mapStat.get(Stat.EXP) + exp);
+    }
+    
+    @Override
     public Map<Stat, Integer> getAllStats() {
         return Collections.unmodifiableMap(this.mapStat);
     }
