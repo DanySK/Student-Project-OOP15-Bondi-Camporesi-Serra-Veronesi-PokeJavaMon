@@ -15,7 +15,6 @@ import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
-import model.trainer.Trainer;
 import view.PlayerSprite;
 import view.frames.*;
 import view.resources.TiledMapGame;
@@ -117,8 +116,8 @@ public final class ViewController {
         FightController.getController().selectPokemon(pk);
     }
     
-    public void fightScreen(Trainer tr) {
+    public void fightScreen(Pokemon pk) {
         MainController.getController().updateStatus(State.FIGHTING);
-        new FightScreen(tr);
+        new FightScreen(pk);
     }
 }

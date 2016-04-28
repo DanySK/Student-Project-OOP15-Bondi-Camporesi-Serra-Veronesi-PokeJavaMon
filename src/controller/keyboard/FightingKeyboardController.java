@@ -1,6 +1,9 @@
 package controller.keyboard;
 
+import com.badlogic.gdx.Input.Keys;
+import controller.ViewController;
 import controller.parameters.Directions;
+import model.player.PlayerImpl;
 
 public class FightingKeyboardController implements KeyboardController {
 
@@ -20,6 +23,14 @@ public class FightingKeyboardController implements KeyboardController {
 
     @Override
     public boolean keyUp(int keycode) {
+        switch (keycode) {
+        case Keys.NUM_1:
+            ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+            break;
+        case Keys.NUM_2:
+            ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+            break;
+        }
         return false;
     }
 

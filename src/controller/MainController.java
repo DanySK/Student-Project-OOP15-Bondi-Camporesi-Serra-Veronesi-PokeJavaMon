@@ -10,7 +10,11 @@ import controller.music.MainMusicController;
 import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
+import exceptions.SquadFullException;
+import model.player.PlayerImpl;
 import model.pokemon.InitializeMoves;
+import model.pokemon.PokemonDB;
+import model.pokemon.StaticPokemonFactory;
 import view.resources.Play;
 
 public class MainController {
@@ -101,5 +105,10 @@ public class MainController {
         MainController.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
         ViewController.getController().firstMenu();
+        try {
+            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.SQUIRTLE, 5));
+        } catch (SquadFullException e) {
+            e.printStackTrace();
+        }
     }
 }

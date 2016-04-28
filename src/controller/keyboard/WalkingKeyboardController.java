@@ -140,8 +140,8 @@ public class WalkingKeyboardController implements KeyboardController {
                                 break;
                             }
                             MainController.getController().updateStatus(State.FIGHTING);
-                            //FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
-                            ViewController.getController().fightScreen(pm.getTrainer(x, y).get());
+                            FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
+                            ViewController.getController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
                     	} else if (pm.getNPC(x, y).isPresent()) {
                     		switch(direction) {
                             case LEFT:
@@ -200,7 +200,7 @@ public class WalkingKeyboardController implements KeyboardController {
                             }
                             MainController.getController().updateStatus(State.FIGHTING);
                             FightController.getController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-                            ViewController.getController().fightScreen(pm.getGymLeader(x, y).get());
+                            ViewController.getController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
                     	}
                     }
                 }
@@ -304,9 +304,9 @@ public class WalkingKeyboardController implements KeyboardController {
                 if (pm.getEncounterZone(x, y).get().isInsideZone(x, y)) {
                     if (pm.getEncounterZone(x, y).get().isEncounterNow()) {
                         Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
-                        //FightController.getController().newFightWithPokemon(poke);
+                        FightController.getController().newFightWithPokemon(poke);
                         // Commentare la riga sotto per non aprire il FightScreen quando si incontra un pokemon
-                        // ViewController.getController().fightScreen();
+                        ViewController.getController().fightScreen(poke);
                         up = false;
                         down = false;
                         left = false;

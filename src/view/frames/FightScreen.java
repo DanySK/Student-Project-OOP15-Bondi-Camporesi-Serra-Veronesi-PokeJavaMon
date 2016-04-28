@@ -18,15 +18,15 @@ import controller.ViewController;
 import controller.parameters.BackSpriteImage;
 import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
+import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
-import model.trainer.Trainer;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class FightScreen extends JPanel{
 
     private static final long serialVersionUID = 1L;
-    public FightScreen(Trainer tr) {
+    public FightScreen(Pokemon pk) {
 		final JFrame frame = new JFrame("Fight");
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
@@ -34,7 +34,7 @@ public class FightScreen extends JPanel{
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
 		
-		MyPanel panel = new MyPanel(tr);
+		MyPanel panel = new MyPanel(pk);
 		panel.setBounds(0, 0, 450, 212);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -165,14 +165,11 @@ public class FightScreen extends JPanel{
 	private BufferedImage image;
 		private BufferedImage image2;
 		
-    	public MyPanel(Trainer tr) {
+    	public MyPanel(Pokemon pk) {
     	   try {                
-               // QUESTO E' UN OBROBRIO, IL MIO CERVELLO E' MORTO
-               //image = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F384.png"));
-               //image = ImageIO.read(new File(FrontSpriteImage.RAYQUAZA.getAbsolutePath()));
-               if (tr.getSquad().getPokemonList().get(0).getPokemon().equals(PokemonDB.PIDGEY)) {
+               if (pk.getPokemon().equals(PokemonDB.PIDGEY)) {
                    image = ImageIO.read(new File(FrontSpriteImage.PIDGEY.getAbsolutePath()));
-               } else if (tr.getSquad().getPokemonList().get(0).getPokemon().equals(PokemonDB.RATTATA)) {
+               } else if (pk.getPokemon().equals(PokemonDB.RATTATA)) {
                    image = ImageIO.read(new File(FrontSpriteImage.RATTATA.getAbsolutePath()));
                } else {
                    image = ImageIO.read(new File(FrontSpriteImage.RAYQUAZA.getAbsolutePath()));
@@ -182,8 +179,7 @@ public class FightScreen extends JPanel{
            }
         
            try {                
-        	   //image2 = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F006.png"));
-               image2 = ImageIO.read(new File(BackSpriteImage.BLASTOISE.getAbsolutePath()));
+        	image2 = ImageIO.read(new File(BackSpriteImage.SQUIRTLE.getAbsolutePath()));
            } catch (IOException ex) {
       	   ex.printStackTrace();
            }
