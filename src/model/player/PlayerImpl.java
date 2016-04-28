@@ -120,9 +120,15 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     }
     
     @Override
-    public void pokemonCenter() {
-        //TODO Controllare se si trova nel rettangolo del pokemon center
-        
+    public void pokemonCenter(final PokeMap pm) {
+    	pm.getWalkableZones().forEach(z -> {
+    		if (z.getZoneName().equals("POKEMON_CENTER")) {
+    			if (!z.contains(this.tileX, this.tileY)) {
+    				return;
+    			}
+    		}
+    	});
+    	
         for (final Pokemon p : this.squad.getPokemonList()) {
             p.heal(p.getStat(Stat.HP));
         }

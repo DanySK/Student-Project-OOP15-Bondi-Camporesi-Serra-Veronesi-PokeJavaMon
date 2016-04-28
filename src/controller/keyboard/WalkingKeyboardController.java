@@ -93,7 +93,7 @@ public class WalkingKeyboardController implements KeyboardController {
                     }
                     if (t == TileType.CENTER) {
                         System.out.println("POKEMON'S HEALTH FULLY RESTORED");
-                        PlayerImpl.getPlayer().pokemonCenter();
+                        PlayerImpl.getPlayer().pokemonCenter(pm);
                     } else if (t == TileType.MARKET) {
                         System.out.println("WELCOME TO PKMN MARKET");
                     } else if (t == TileType.SIGN) {
