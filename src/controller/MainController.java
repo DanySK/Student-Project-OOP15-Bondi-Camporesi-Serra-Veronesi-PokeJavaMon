@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import controller.keyboard.FightingKeyboardController;
 import controller.keyboard.FirstMenuKeyboardController;
 import controller.keyboard.KeyboardController;
@@ -13,15 +10,7 @@ import controller.music.MainMusicController;
 import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
-import exceptions.SquadFullException;
-import model.inventory.InventoryImpl;
-import model.items.Pokeball.PokeballType;
-import model.items.Potion.PotionType;
-import model.player.PlayerImpl;
 import model.pokemon.InitializeMoves;
-import model.pokemon.PokemonDB;
-import model.pokemon.Stat;
-import model.pokemon.StaticPokemonFactory;
 import view.resources.Play;
 
 public class MainController {
@@ -112,18 +101,5 @@ public class MainController {
         MainController.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
         ViewController.getController().firstMenu();
-        try {
-            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.SQUIRTLE, 5));
-            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.CHARMANDER, 5));
-        } catch (SquadFullException e) {
-            e.printStackTrace();
-        }
-        Map<String, Integer> potionList = new HashMap<>();
-        Map<String, Integer> boostList = new HashMap<>();
-        Map<String, Integer> ballList = new HashMap<>();
-        potionList.put(PotionType.POTION.name(), 5);
-        boostList.put(Stat.ATK.name() + "X", 5);
-        ballList.put(PokeballType.Pokeball.name(), 5);
-        InventoryImpl.initializeInventory(potionList, boostList, ballList);
     }
 }

@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +15,14 @@ import controller.MainController;
 import controller.ViewController;
 import controller.parameters.FilePath;
 import controller.parameters.State;
+import exceptions.SquadFullException;
+import model.inventory.InventoryImpl;
+import model.items.Pokeball.PokeballType;
+import model.items.Potion.PotionType;
+import model.player.PlayerImpl;
+import model.pokemon.PokemonDB;
+import model.pokemon.Stat;
+import model.pokemon.StaticPokemonFactory;
 
 public class TitleWiew {
     
@@ -47,6 +58,20 @@ public class TitleWiew {
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                // Inizializza un po di roba
+                try {
+                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.SQUIRTLE, 5));
+                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.CHARMANDER, 5));
+                } catch (SquadFullException ex) {
+                    ex.printStackTrace();
+                }
+                Map<String, Integer> potionList = new HashMap<>();
+                Map<String, Integer> boostList = new HashMap<>();
+                Map<String, Integer> ballList = new HashMap<>();
+                potionList.put(PotionType.POTION.name(), 5);
+                boostList.put(Stat.ATK.name() + "X", 5);
+                ballList.put(PokeballType.Pokeball.name(), 5);
+                InventoryImpl.initializeInventory(potionList, boostList, ballList);
                 MainController.getController().updateStatus(State.SECOND_MENU);
                 ViewController.getController().secondMenu();
             }

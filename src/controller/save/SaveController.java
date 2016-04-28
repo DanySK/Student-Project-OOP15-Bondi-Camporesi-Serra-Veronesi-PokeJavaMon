@@ -70,8 +70,10 @@ public class SaveController implements SaveControllerInterface {
             e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
             int contatore = MIN_MOVES;
             for (final Move m : x.getCurrentMoves()) {
-                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,m.name());
-                contatore ++;
+                if (m != null) {
+                    e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,m.name());
+                    contatore ++;
+                }
             }
             contatore --;
             e.setAttribute(XMLParameters.NMOVES.getName(),Integer.toString(contatore));
@@ -130,8 +132,10 @@ public class SaveController implements SaveControllerInterface {
             e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getNecessaryExp()));
             int contatore = MIN_MOVES;
             for (final Move s : x.getCurrentMoves()) {
-                e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s.name());
-                contatore ++;
+                if (s != null) {
+                    e.setAttribute(XMLParameters.MOVES_ID.getName()+contatore,s.name());
+                    contatore ++;
+                }
             }
             contatore --;
             e.setAttribute(XMLParameters.NMOVES.getName(),Integer.toString(contatore));
