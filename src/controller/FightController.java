@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.List;
+
+import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -81,7 +83,7 @@ public class FightController {
         fight.changeTurn((PokemonInBattle) pk);
     }
     
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException {
+    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         fight.itemTurn(it, (PokemonInBattle) pk);
     }
     

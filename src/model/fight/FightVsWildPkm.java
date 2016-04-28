@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -26,7 +28,7 @@ import controller.FightController;
 
 public class FightVsWildPkm implements Fight {
 	final private static int SUCCESS_PROBABILTY = 255;
-	protected final int FIRST_ELEM = 0;
+	protected final static int FIRST_ELEM = 0;
 	protected final int ATTACKS_TO_DO = 2;
 	protected final double STAB_ACTIVE = 1.5;
 	protected final double MIN_BOOST_VALUE = 0.25;
@@ -48,7 +50,6 @@ public class FightVsWildPkm implements Fight {
 	protected boolean isEnemyExhausted = false;
 	protected boolean runValue;
 	protected boolean isAllyFastest;
-	protected boolean isLevelUpped = false;
 	protected  List<PokemonDB> pkmsThatMustEvolve = new ArrayList<>();
 	
 	protected final Map<Stat, Double> createBoostsMap(){
@@ -266,7 +267,7 @@ public class FightVsWildPkm implements Fight {
 		reset();
 	}
 	
-	protected void applyItem(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException{
+	protected void applyItem(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
 		switch(itemToUse.getType()){
 		case BOOST:
 			final Boost boost = (Boost) itemToUse;
@@ -274,15 +275,19 @@ public class FightVsWildPkm implements Fight {
 			allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
 					allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
 		case POKEBALL:
-			final Pokeball ball = (Pokeball) itemToUse;
-			ball.isCaptured(enemyPkm);
+			useBall(itemToUse);
 		case POTION:
 			final Potion potion = (Potion) itemToUse;
 			potion.effect(player, pkm);
 		}
 	}
 	
-	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException{
+	protected void useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException{
+		final Pokeball ball = (Pokeball) itemToUse;
+		ball.isCaptured(enemyPkm);
+	}
+	
+	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
 		applyItem(itemToUse, pkm);
 		player.getInventory().consumeItem(itemToUse);
 		enemyTurn();
