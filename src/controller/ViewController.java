@@ -101,7 +101,7 @@ public final class ViewController {
         FightController.getController().changePokemon(poke);
     }
     
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException {
+    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         try {
 			FightController.getController().useItem(it, pk);
 		} catch (CannotCaughtTrainerPkmException e) {
