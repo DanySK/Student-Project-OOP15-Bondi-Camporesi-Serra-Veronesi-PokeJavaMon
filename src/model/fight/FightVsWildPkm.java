@@ -81,10 +81,10 @@ public class FightVsWildPkm implements Fight {
 		final List<PokemonInBattle> pkmSquadList = pkmSquad.getPokemonList();
 		for(PokemonInBattle pkm : pkmSquadList){
 			if(pkm.getCurrentHP() > 0){
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	protected void enemyTurn(){
