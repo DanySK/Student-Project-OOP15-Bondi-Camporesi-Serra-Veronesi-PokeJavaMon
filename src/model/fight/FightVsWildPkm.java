@@ -304,15 +304,20 @@ public class FightVsWildPkm implements Fight {
 	}
 	
 	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
-		if(applyItem(itemToUse, pkm)){
-			player.getInventory().consumeItem(itemToUse);
+	        player.getInventory().consumeItem(itemToUse);
+	        if(applyItem(itemToUse, pkm)){
 			if(itemToUse.getType() == ItemType.POKEBALL){
 				FightController.getController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
 				return;
+			} else {
+			        enemyTurn();
+	                        FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+	                        reset();
 			}
-			enemyTurn();
-			FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
-			reset();
+		} else {
+                    enemyTurn();
+                    FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+                    reset();
 		}
 	}
 	

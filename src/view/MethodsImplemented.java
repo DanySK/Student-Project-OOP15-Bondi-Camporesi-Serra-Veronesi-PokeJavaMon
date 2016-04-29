@@ -129,7 +129,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 }
             }
         } else {
-            System.out.println("ENEMY CATCHED!!!");
+            System.out.println("ENEMY CAUGHT!!!");
             MainController.getController().updateStatus(State.WALKING);
             FightScreen.dispose();
         }

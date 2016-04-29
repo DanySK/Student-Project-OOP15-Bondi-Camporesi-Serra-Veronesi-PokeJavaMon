@@ -13,17 +13,17 @@ import model.squad.SquadImpl;
 public class Pokeball extends AbstractItem {
 
     public static enum PokeballType {
-        Pokeball(255, 50), Greatball(200, 100), Ultraball(150, 200);
+        Pokeball(1, 50), Greatball(1.5, 100), Ultraball(2, 200);
         
-        private PokeballType(final int captureValue, final int cost) {
+        private PokeballType(final double captureValue, final int cost) {
             this.captureValue = captureValue;
             this.cost = cost;
         }
         
-        private final int captureValue;
+        private final double captureValue;
         private final int cost;
         
-        public int getPokeballValue() {
+        public double getPokeballValue() {
             return this.captureValue;
         }
         
@@ -41,15 +41,27 @@ public class Pokeball extends AbstractItem {
     }
     
     public boolean isCaptured(final Pokemon pkmn) {
-        return new Random().nextDouble() <= (double) this.calculateProbabilityCatch(pkmn) / 100;
+        double x = new Random().nextDouble();
+        double y = (double) this.calculateProbabilityCatch(pkmn, pkmn.getCurrentHP() == pkmn.getStat(Stat.HP));
+        return x <= y;
     }
     
-    private double calculateProbabilityCatch(Pokemon pkmn) {
-        return (double) (3 * pkmn.getStat(Stat.HP) - 2 * pkmn.getCurrentHP()) * pkmn.getPokemon().getRarity().getCoeff() * this.quality.getPokeballValue() / (3 * pkmn.getStat(Stat.HP)) / 255;
+    private double calculateProbabilityCatch(final Pokemon pkmn, final boolean isFullHP) {
+        final int maxHP = pkmn.getStat(Stat.HP);
+        final int currentHP = pkmn.getCurrentHP();
+        final int rarity = pkmn.getPokemon().getRarity().getCoeff();
+        final double pokeballRate = this.quality.getPokeballValue();
+        final double prob;
+        if (isFullHP) {
+            prob = ((1 / maxHP * 3) + ((rarity * pokeballRate ) / 3)) / 256;
+        } else {
+            prob = (( 1 + ( maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) / ( maxHP * 3 )) / 256;
+        }
+        return prob;
     }
 
     @Override
-    public void effect(final Player p, PokemonInBattle pkmn) throws SquadFullException {
+    public void effect(final Player p, final PokemonInBattle pkmn) throws SquadFullException {
         if (this.isCaptured(pkmn)) {
            if (p.getSquad().getSquadSize() >= SquadImpl.MAX_SIZE) {
                p.getBox().putCapturedPokemon(pkmn);
