@@ -1,7 +1,10 @@
 package view;
 
 import controller.MainController;
+import controller.ViewController;
 import controller.parameters.State;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonIsFightingException;
 import model.fight.Effectiveness;
 import model.items.Item;
 import model.player.PlayerImpl;
@@ -33,8 +36,18 @@ public class MethodsImplemented implements MethodsToImplement {
                 System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
                 if (lastPokemonKills) {
                     System.out.println("ALLY DEAD");
-                    MainController.getController().updateStatus(State.WALKING);
-                    FightScreen.dispose();
+                    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
+                        try {
+                            ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                            System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                        } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+                            System.out.println("CANNOT CHANGE TO THAT PKMN");
+                        }
+                    } else {
+                        System.out.println("ALLY DEFEATED");
+                        MainController.getController().updateStatus(State.WALKING);
+                        FightScreen.dispose();
+                    }
                 }
             }
         } else {
@@ -42,8 +55,18 @@ public class MethodsImplemented implements MethodsToImplement {
             System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
             if (myMove == null) {
                 System.out.println("ALLY DEAD");
-                MainController.getController().updateStatus(State.WALKING);
-                FightScreen.dispose();
+                if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
+                    try {
+                        ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                    } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+                        System.out.println("CANNOT CHANGE TO THAT PKMN");
+                    }
+                } else {
+                    System.out.println("ALLY DEFEATED");
+                    MainController.getController().updateStatus(State.WALKING);
+                    FightScreen.dispose();
+                }
             } else {
                 System.out.println("My: " + myMove);
                 if (lastPokemonKills) {
@@ -68,8 +91,18 @@ public class MethodsImplemented implements MethodsToImplement {
         System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
         if (isMyPokemonDead) {
             System.out.println("ALLY DEAD");
-            MainController.getController().updateStatus(State.WALKING);
-            FightScreen.dispose();
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
+                try {
+                    ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                    System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+                    System.out.println("CANNOT CHANGE TO THAT PKMN");
+                }
+            } else {
+                System.out.println("ALLY DEFEATED");
+                MainController.getController().updateStatus(State.WALKING);
+                FightScreen.dispose();
+            }
         }
     }
 
@@ -81,8 +114,18 @@ public class MethodsImplemented implements MethodsToImplement {
         System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
         if (isMyPokemonDead) {
             System.out.println("ALLY DEAD");
-            MainController.getController().updateStatus(State.WALKING);
-            FightScreen.dispose();
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
+                try {
+                    ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                    System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+                    System.out.println("CANNOT CHANGE TO THAT PKMN");
+                }
+            } else {
+                System.out.println("ALLY DEFEATED");
+                MainController.getController().updateStatus(State.WALKING);
+                FightScreen.dispose();
+            }
         }
     }
 
@@ -99,8 +142,18 @@ public class MethodsImplemented implements MethodsToImplement {
             System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
             if (isMyPokemonDead) {
                 System.out.println("ALLY DEAD");
-                MainController.getController().updateStatus(State.WALKING);
-                FightScreen.dispose();
+                if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
+                    try {
+                        ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                    } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+                        System.out.println("CANNOT CHANGE TO THAT PKMN");
+                    }
+                } else {
+                    System.out.println("ALLY DEFEATED");
+                    MainController.getController().updateStatus(State.WALKING);
+                    FightScreen.dispose();
+                }
             }
         }
     }
