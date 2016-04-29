@@ -102,12 +102,7 @@ public final class ViewController {
     }
     
     public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
-        try {
-			FightController.getController().useItem(it, pk);
-		} catch (CannotCaughtTrainerPkmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	FightController.getController().useItem(it, pk);	
     }
     
     public void run() throws CannotEscapeFromTrainerException {
