@@ -22,7 +22,7 @@ import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
 
 public final class ViewController {
-    private String name = "Player";
+    private String name;
     private LwjglApplication app;
     private static ViewController SINGLETON;
     
@@ -67,7 +67,7 @@ public final class ViewController {
     
     public void save() {
         PlayerImpl.getPlayer().setPosition(PlayerSprite.getSprite().getPosition().getX().intValue(), PlayerSprite.getSprite().getPosition().getY().intValue());
-        if (PlayerImpl.getPlayer().getName() == null) {
+        if (name != null) {
             PlayerImpl.getPlayer().setName(name);
         }
         SaveController.getController().save();
