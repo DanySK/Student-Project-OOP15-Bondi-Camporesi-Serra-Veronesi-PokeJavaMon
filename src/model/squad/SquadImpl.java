@@ -1,10 +1,14 @@
 package model.squad;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.SquadFullException;
+import model.map.PokeMap;
+import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -34,7 +38,7 @@ public class SquadImpl implements Squad {
 
     @Override
     public List<PokemonInBattle> getPokemonList() {
-        return this.pokemonInSquad;
+        return Collections.unmodifiableList(this.pokemonInSquad);
     }
 
     @Override
@@ -96,5 +100,32 @@ public class SquadImpl implements Squad {
         this.pokemonInSquad.set(index2, tmpPokemon);
         
     }
+
+	@Override
+	public void healAllPokemon(PokeMap pm) {
+    	pm.getWalkableZones().forEach(z -> {
+    		if (z.getZoneName() != null && z.getZoneName().equals("POKEMON_CENTER")) {
+    			final int tileX = PlayerImpl.getPlayer().getTileX();
+    			final int tileY = PlayerImpl.getPlayer().getTileY();
+    			if (!z.contains(tileX, tileY)) {
+    				return;
+    			}
+    		}
+    	});
+    	
+        for (final Pokemon p : this.pokemonInSquad) {
+            p.heal(p.getStat(Stat.HP));
+        }	
+	}
+
+	@Override
+	public Optional<PokemonInBattle> getNextAlivePokemon() {
+		for (final PokemonInBattle p : this.pokemonInSquad) {
+			if (p.getCurrentHP() > 0) {
+				return Optional.of(p);
+			}
+		}
+		return Optional.empty();
+	}
 
 }

@@ -31,8 +31,6 @@ public interface Player extends Character{
     
     public void useItem(final Item item, final PokemonInBattle pkmn) throws ItemNotFoundException;
 
-    public void pokemonCenter(final PokeMap pm);
-    
     public void move(final Direction d, final PokeMap pm);
     
     public void setName(final String name);

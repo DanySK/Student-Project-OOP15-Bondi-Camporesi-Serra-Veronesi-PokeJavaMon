@@ -15,9 +15,7 @@ import model.map.AbstractCharacter;
 import model.map.PokeMap;
 import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
-import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
-import model.pokemon.Stat;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
@@ -117,21 +115,6 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     public void beatTrainer(final Trainer trainer) {
         this.money += trainer.getMoney();
         this.trainersBeaten.add(trainer);
-    }
-    
-    @Override
-    public void pokemonCenter(final PokeMap pm) {
-    	pm.getWalkableZones().forEach(z -> {
-    		if (z.getZoneName() != null && z.getZoneName().equals("POKEMON_CENTER")) {
-    			if (!z.contains(this.tileX, this.tileY)) {
-    				return;
-    			}
-    		}
-    	});
-    	
-        for (final Pokemon p : this.squad.getPokemonList()) {
-            p.heal(p.getStat(Stat.HP));
-        }
     }
     
     public void setPosition(final int x, final int y) {
