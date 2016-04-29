@@ -167,10 +167,11 @@ public class FightVsTrainer extends FightVsWildPkm{
 		//manda il primo pkm che trova e che ha un tipo superefficace contro l'allyPkm
 		for(PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()){
 			if(STANDARD_EFFECTIVENESS_VALUE < table.getMultiplierAttack(pkm.getPokemon().getFirstType(), 
-				enemyPkm.getPokemon().getFirstType(), enemyPkm.getPokemon().getSecondType())
+				allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())
 					|| STANDARD_EFFECTIVENESS_VALUE < table.getMultiplierAttack(pkm.getPokemon().getSecondType(), 
-							enemyPkm.getPokemon().getFirstType(), enemyPkm.getPokemon().getSecondType())){
+							allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())){
 				enemyPkm = pkm;
+				break;
 			}
 		}
 		//se non ne trova nessuno manda il primo pokemon che trova

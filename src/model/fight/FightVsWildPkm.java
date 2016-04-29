@@ -11,6 +11,7 @@ import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
+import exceptions.SquadFullException;
 import model.items.Boost;
 import model.items.Item;
 import model.items.Item.ItemType;
@@ -31,6 +32,7 @@ public class FightVsWildPkm implements Fight {
 	final private static int SUCCESS_PROBABILTY = 255;
 	protected final static int FIRST_ELEM = 0;
 	protected final int ATTACKS_TO_DO = 2;
+	protected final int MIN_DAMAGE = 1;
 	protected final double STAB_ACTIVE = 1.5;
 	protected final double MIN_BOOST_VALUE = 0.25;
 	protected final double MAX_BOOST_VALUE = 2.0;
@@ -61,10 +63,10 @@ public class FightVsWildPkm implements Fight {
 		return boosts;
 	}
 	
-	public FightVsWildPkm(final Pokemon wildPokemon){
+	public FightVsWildPkm(final Pokemon pikachu){
 		this.player = PlayerImpl.getPlayer();
 		this.allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
-		this.enemyPkm = (PokemonInBattle) wildPokemon;
+		this.enemyPkm = (PokemonInBattle) pikachu;
 		for(PokemonInBattle pkm : player.getSquad().getPokemonList()){
 			this.allyPkmsBoosts.put(pkm, createBoostsMap());
 		}
@@ -159,9 +161,13 @@ public class FightVsWildPkm implements Fight {
 		
 	protected int damageCalculation(final PokemonInBattle stricker, final PokemonInBattle stricked, 
 			final double atkBoost, final double defBoost, final Move move){
-		return (int)((((2 * stricker.getStat(Stat.LVL) + 10) 
+		int damage = (int)((((2 * stricker.getStat(Stat.LVL) + 10) 
 			* (stricker.getStat(Stat.ATK) * atkBoost * move.getValue())) / 
 			((stricked.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
+		if(damage <= 0){
+			return MIN_DAMAGE;
+		}	
+		return damage;
 	}
 		
 	protected void checkAndSetIsExhausted(final PokemonInBattle pkm){
@@ -276,7 +282,15 @@ public class FightVsWildPkm implements Fight {
 			allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
 					allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
 		case POKEBALL:
-			return useBall(itemToUse);
+			if(useBall(itemToUse)){
+				try {
+					player.getSquad().add(enemyPkm);
+				} catch (SquadFullException e) {
+					player.getBox().putCapturedPokemon(enemyPkm);
+				}
+				return true;
+			}
+			return false;
 		case POTION:
 			final Potion potion = (Potion) itemToUse;
 			potion.effect(player, pkm);
