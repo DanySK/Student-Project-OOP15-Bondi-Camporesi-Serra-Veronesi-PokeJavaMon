@@ -19,12 +19,15 @@ import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
+import model.items.Boost;
 import model.items.Pokeball;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion;
 import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
+import model.pokemon.Stat;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -96,6 +99,7 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 //				ViewController.bag();
 			        try {
+			//ViewController.getController().useItem(new Boost(Stat.ATK), PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
                         //ViewController.getController().useItem(new Potion(PotionType.POTION), PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
 			ViewController.getController().useItem(new Pokeball(PokeballType.Pokeball), pk);
                     } catch (PokemonIsExhaustedException e1) {

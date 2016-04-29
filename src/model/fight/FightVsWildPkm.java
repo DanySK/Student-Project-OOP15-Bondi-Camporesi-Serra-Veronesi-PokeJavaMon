@@ -280,7 +280,8 @@ public class FightVsWildPkm implements Fight {
 			final Boost boost = (Boost) itemToUse;
 			//mettere a posto il valore del coefficente, dentro alla classe Boost
 			allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
-					allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
+			allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
+			break;
 		case POKEBALL:
 			if(useBall(itemToUse)){
 				try {
