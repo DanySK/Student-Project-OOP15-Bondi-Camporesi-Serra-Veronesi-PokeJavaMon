@@ -136,8 +136,6 @@ public class FightVsTrainer extends FightVsWildPkm{
 						trainerChange();
 						FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, null/*exp*/);
 					}
-					
-					
 				}
 				else{
 					//nemico attacca, alleato attacca, pokemon nemico sopravvive
@@ -166,7 +164,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 	}
 	
 	protected void trainerChange(){
-		//manda un pkm che ha un tipo superefficace contro l'allyPkm
+		//manda il primo pkm che trova e che ha un tipo superefficace contro l'allyPkm
 		for(PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()){
 			if(STANDARD_EFFECTIVENESS_VALUE < table.getMultiplierAttack(pkm.getPokemon().getFirstType(), 
 				enemyPkm.getPokemon().getFirstType(), enemyPkm.getPokemon().getSecondType())
