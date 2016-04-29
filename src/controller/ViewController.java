@@ -67,7 +67,7 @@ public final class ViewController {
     
     public void save() {
         PlayerImpl.getPlayer().setPosition(PlayerSprite.getSprite().getPosition().getX().intValue(), PlayerSprite.getSprite().getPosition().getY().intValue());
-        if (name != null) {
+        if (PlayerImpl.getPlayer().getName() == null) {
             PlayerImpl.getPlayer().setName(name);
         }
         SaveController.getController().save();
