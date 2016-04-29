@@ -40,8 +40,8 @@ public class FightVsTrainer extends FightVsWildPkm{
 	
 	@Override
 	protected boolean setIsAllyFastest(){
-		return isAllyFastest = (allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD))
-				> (enemyPkm.getStat(Stat.SPD) * enemyPkmsBoosts.get(enemyPkm).get(Stat.SPD));
+		return isAllyFastest = ((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD))
+				>= (enemyPkm.getStat(Stat.SPD) * this.enemyPkmsBoosts.get(enemyPkm).get(Stat.SPD)));
 	}
 	
 	@Override
@@ -100,9 +100,12 @@ public class FightVsTrainer extends FightVsWildPkm{
 			if(turnOrder){
 				allyTurn(move);
 				if(isEnemyExhausted){
+					final PokemonInBattle allyPkmNotUpdated = allyPkm;
+					final Map<Stat, Double> allyPkmBoost = allyPkmsBoosts.remove(allyPkmNotUpdated);
 					exp = getExp();
 					giveExpAndCheckLvlUp(exp);
 					isEnd = true;
+					allyPkmsBoosts.put(allyPkm, allyPkmBoost);
 				}
 			}
 			else{
