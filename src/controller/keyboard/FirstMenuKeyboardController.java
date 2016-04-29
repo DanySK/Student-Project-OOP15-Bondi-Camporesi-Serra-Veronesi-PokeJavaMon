@@ -90,4 +90,9 @@ public class FirstMenuKeyboardController implements KeyboardController {
     public Directions getDirection() {
         return Directions.STILL;
     }
+
+    @Override
+    public void checkEncounter() {
+        return;
+    }
 }

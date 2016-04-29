@@ -95,4 +95,9 @@ public class SecondMenuKeyboardController implements KeyboardController {
     public Directions getDirection() {
         return Directions.STILL;
     }
+
+    @Override
+    public void checkEncounter() {
+        return;
+    }
 }

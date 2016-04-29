@@ -298,25 +298,6 @@ public class WalkingKeyboardController implements KeyboardController {
                 return;
             }
         }
-        if (t == TileType.POKEMON_ENCOUNTER && (up == true || down == true || left == true || right == true)) {
-            int x, y;
-            x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
-            y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
-            if (pm.getEncounterZone(x, y).isPresent()) {
-                if (pm.getEncounterZone(x, y).get().isInsideZone(x, y)) {
-                    if (pm.getEncounterZone(x, y).get().isEncounterNow()) {
-                        Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
-                        FightController.getController().newFightWithPokemon(poke);
-                        ViewController.getController().fightScreen(poke);
-                        up = false;
-                        down = false;
-                        left = false;
-                        right = false;
-                        PlayerSprite.getSprite().setVelocity(0, 0);
-                    }
-                }
-            }
-        }
         if (up == true) {
             direction = Directions.UP;
             pm = Play.getMapImpl();
@@ -361,5 +342,30 @@ public class WalkingKeyboardController implements KeyboardController {
     @Override
     public Directions getDirection() {
         return direction;
+    }
+    
+    public void checkEncounter() {
+        pm = Play.getMapImpl();
+        PlayerSprite.getSprite().updatePosition();
+        t = pm.getTileType(PlayerSprite.getSprite().getPosition().getX().intValue() / 16, (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16)));
+        if (t == TileType.POKEMON_ENCOUNTER && (up == true || down == true || left == true || right == true)) {
+            int x, y;
+            x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+            y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+            if (pm.getEncounterZone(x, y).isPresent()) {
+                if (pm.getEncounterZone(x, y).get().isInsideZone(x, y)) {
+                    if (pm.getEncounterZone(x, y).get().isEncounterNow()) {
+                        Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
+                        FightController.getController().newFightWithPokemon(poke);
+                        ViewController.getController().fightScreen(poke);
+                        up = false;
+                        down = false;
+                        left = false;
+                        right = false;
+                        PlayerSprite.getSprite().setVelocity(0, 0);
+                    }
+                }
+            }
+        }
     }
 }

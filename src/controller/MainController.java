@@ -105,6 +105,10 @@ public class MainController {
         return keyboardController.getDirection();
     }
     
+    public void checkEncounter() {
+        keyboardController.checkEncounter();
+    }
+    
     public static void main(String[] args) {
         new Installer().install();
         MainController.getController().updateStatus(State.FIRST_MENU);

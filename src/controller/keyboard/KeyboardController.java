@@ -11,4 +11,6 @@ public interface KeyboardController extends InputProcessor {
     public void updateSpeed();
     
     public Directions getDirection();
+
+    public void checkEncounter();
 }

@@ -134,6 +134,7 @@ public class PlayerSprite extends Sprite {
         pos ++;
         if (pos == 8) {
             pos = 0;
+            MainController.getController().checkEncounter();
         }
     }
     
