@@ -14,7 +14,6 @@ import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.items.Boost;
 import model.items.Item;
-import model.items.Item.ItemType;
 import model.items.Pokeball;
 import model.items.Potion;
 import model.player.Player;
@@ -274,28 +273,21 @@ public class FightVsWildPkm implements Fight {
 		reset();
 	}
 	
-	protected boolean applyItem(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
+	protected Item applyItem(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException {
 		switch(itemToUse.getType()){
 		case BOOST:
 			final Boost boost = (Boost) itemToUse;
 			//mettere a posto il valore del coefficente, dentro alla classe Boost
 			allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
-					allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
+			allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
+			break;
 		case POKEBALL:
-			if(useBall(itemToUse)){
-				try {
-					player.getSquad().add(enemyPkm);
-				} catch (SquadFullException e) {
-					player.getBox().putCapturedPokemon(enemyPkm);
-				}
-				return true;
-			}
-			return false;
+			return itemToUse;
 		case POTION:
 			final Potion potion = (Potion) itemToUse;
 			potion.effect(player, pkm);
 		}
-		return true;
+		return null;
 	}
 	
 	protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException{
@@ -304,21 +296,22 @@ public class FightVsWildPkm implements Fight {
 	}
 	
 	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
-	        player.getInventory().consumeItem(itemToUse);
-	        if(applyItem(itemToUse, pkm)){
-			if(itemToUse.getType() == ItemType.POKEBALL){
-				FightController.getController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
-				return;
-			} else {
-			        enemyTurn();
-	                        FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
-	                        reset();
-			}
-		} else {
-                    enemyTurn();
-                    FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
-                    reset();
-		}
+		player.getInventory().consumeItem(itemToUse);
+	    if(applyItem(itemToUse, pkm) != null){
+	    	if(useBall(itemToUse)){
+	    		try {
+	    			player.getSquad().add(enemyPkm);
+	    		} catch (SquadFullException e) {
+	    			player.getBox().putCapturedPokemon(enemyPkm);
+	    		}
+	    		FightController.getController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
+	    		reset();
+	    		return;
+	    	}
+	    }
+	    enemyTurn();
+        FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+        reset();
 	}
 	
 	public void moveTurn(final Move move){
