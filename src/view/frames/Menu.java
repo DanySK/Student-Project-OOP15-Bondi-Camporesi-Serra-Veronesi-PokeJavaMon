@@ -21,6 +21,7 @@ public Menu() {
 		f.setUndecorated(true);
 		f.setBounds(100, 100, 180, 310);
 		f.getContentPane().setLayout(null);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	
 		JButton squadra = new JButton  ("Squadra");
 		squadra.setBounds(30, 84, 120, 30);

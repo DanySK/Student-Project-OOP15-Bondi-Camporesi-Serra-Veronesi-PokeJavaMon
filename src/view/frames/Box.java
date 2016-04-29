@@ -18,6 +18,7 @@ public Box() {
 		f.setBounds(100, 100, 450, 300);
 		f.setUndecorated(true);
 		f.getContentPane().setLayout(null);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		JButton deposita = new JButton("Deposita");
 		deposita.setBounds(170, 88, 89, 23);

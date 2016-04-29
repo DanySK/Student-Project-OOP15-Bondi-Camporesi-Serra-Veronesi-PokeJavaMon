@@ -16,7 +16,7 @@ public class Stats {
 		final JFrame frame = new JFrame("Statistiche");		
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
-		
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setUndecorated(true);
 		frame.getContentPane().setLayout(null);

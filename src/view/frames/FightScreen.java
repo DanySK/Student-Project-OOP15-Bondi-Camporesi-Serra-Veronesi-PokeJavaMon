@@ -42,6 +42,7 @@ public class FightScreen extends JPanel{
 		frame.setBounds(100, 100, 450, 275);
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		MyPanel panel = new MyPanel(pk);
 		panel.setBounds(0, 0, 450, 212);

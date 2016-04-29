@@ -15,6 +15,7 @@ public Squadra() {
 		f.setUndecorated(true);
 		f.setBounds(100, 100, 650, 500);
 		f.getContentPane().setLayout(null);
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
    	
     	JTextArea FirstName = new JTextArea("Feraligatr");
     	FirstName.setFont(new Font("DokChampa", Font.BOLD, 16));

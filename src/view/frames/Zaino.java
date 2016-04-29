@@ -10,7 +10,7 @@ public class Zaino {
 public Zaino() {
 		
 		final JFrame f = new JFrame("Zaino");
-	
+		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		f.setResizable(false);
 		f.setAlwaysOnTop(true);         
 		f.setUndecorated(true);
