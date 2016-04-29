@@ -82,7 +82,11 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 //				ViewController.team();
 			        try {
-                        ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                        if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+                            ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
+                        } else {
+                            System.out.println("NO POKEMON ALIVE");
+                        }
                     } catch (PokemonIsExhaustedException e1) {
                         System.out.println("POKEMON IS EXAUSTED");
                     } catch (PokemonIsFightingException e1) {
@@ -108,6 +112,8 @@ public class FightScreen extends JPanel{
                         System.out.println("POKEMON NOT FOUND");
                     } catch (CannotCaughtTrainerPkmException e1) {
                         System.out.println("CANNOT CATCH TRAINER POKEMON");
+                    } catch (IllegalStateException e1) {
+                        System.out.println("YOU HAVE NO MORE THIS ITEM");
                     }
 			}
 		});
@@ -131,7 +137,11 @@ public class FightScreen extends JPanel{
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
-			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+			        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+			            ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+			        } else {
+			            System.out.println("MOVE NOT FOUND");
+			        }
 			}
 		});
 		Mossa1.setBounds(0, 0, 113, 30);
@@ -143,7 +153,11 @@ public class FightScreen extends JPanel{
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
-			    ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+			    } else {
+                                System.out.println("MOVE NOT FOUND");
+                            }
 			}
 		});
 		Mossa2.setBounds(113, 0, 113, 30);
@@ -155,7 +169,11 @@ public class FightScreen extends JPanel{
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
-			    ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+			    } else {
+                                System.out.println("MOVE NOT FOUND");
+                            }
 			}
 		});
 		Mossa3.setBounds(0, 30, 113, 30);
@@ -167,7 +185,11 @@ public class FightScreen extends JPanel{
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
-			    ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+			    } else {
+                                System.out.println("MOVE NOT FOUND");
+                            }
 			}
 		});
 		Mossa4.setBounds(113, 30, 113, 30);

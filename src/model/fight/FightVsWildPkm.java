@@ -304,7 +304,7 @@ public class FightVsWildPkm implements Fight {
 		return ball.isCaptured(enemyPkm);
 	}
 	
-	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
+	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException{
 	        player.getInventory().consumeItem(itemToUse);
 	        if(applyItem(itemToUse, pkm)){
 			if(itemToUse.getType() == ItemType.POKEBALL){

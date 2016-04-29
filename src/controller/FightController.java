@@ -88,7 +88,7 @@ public class FightController {
         fight.changeTurn((PokemonInBattle) pk);
     }
     
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
+    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
         fight.itemTurn(it, (PokemonInBattle) pk);
     }
     
