@@ -34,7 +34,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 	}
 	
 	@Override
-	protected void useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException{
+	protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException{
 		throw new CannotCaughtTrainerPkmException();
 	}
 	
