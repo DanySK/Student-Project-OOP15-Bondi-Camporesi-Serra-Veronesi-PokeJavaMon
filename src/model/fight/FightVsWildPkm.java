@@ -391,7 +391,7 @@ public class FightVsWildPkm implements Fight {
 	
 	protected boolean setIsAllyFastest(){
 		return isAllyFastest = ((allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
-				> (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD)));
+				>= (enemyPkm.getStat(Stat.SPD) * this.enemyPkmBoosts.get(Stat.SPD)));
 	}
 	
 	protected int getExp(){
