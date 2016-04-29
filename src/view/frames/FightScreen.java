@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import controller.ViewController;
+import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -98,6 +99,8 @@ public class FightScreen extends JPanel{
                         System.out.println("POKEMON IS EXAUSTED");
                     } catch (PokemonNotFoundException e1) {
                         System.out.println("POKEMON NOT FOUND");
+                    } catch (CannotCaughtTrainerPkmException e1) {
+                        System.out.println("CANNOT CATCH TRAINER POKEMON");
                     }
 			}
 		});

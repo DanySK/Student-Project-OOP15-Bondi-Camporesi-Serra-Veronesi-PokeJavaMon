@@ -21,8 +21,13 @@ public class MethodsImplemented implements MethodsToImplement {
             System.out.println("My: " + myMove);
             if (enemyMove == null) {
                 System.out.println("ENEMY DEAD");
-                MainController.getController().updateStatus(State.WALKING);
-                FightScreen.dispose();
+                if (nextEnemyPokemon != null) {
+                    System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
+                } else {
+                    System.out.println("ENEMY DEFEATED");
+                    MainController.getController().updateStatus(State.WALKING);
+                    FightScreen.dispose();
+                }
             } else {
                 System.out.println("Enemy: " + enemyMove);
                 System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
@@ -43,8 +48,13 @@ public class MethodsImplemented implements MethodsToImplement {
                 System.out.println("My: " + myMove);
                 if (lastPokemonKills) {
                     System.out.println("ENEMY DEAD");
-                    MainController.getController().updateStatus(State.WALKING);
-                    FightScreen.dispose();
+                    if (nextEnemyPokemon != null) {
+                        System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
+                    } else {
+                        System.out.println("ENEMY DEFEATED");
+                        MainController.getController().updateStatus(State.WALKING);
+                        FightScreen.dispose();
+                    }
                 }
             }
         }
