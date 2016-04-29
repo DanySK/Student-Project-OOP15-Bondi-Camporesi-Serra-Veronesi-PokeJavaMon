@@ -13,6 +13,7 @@ import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
 import model.items.Boost;
 import model.items.Item;
+import model.items.Item.ItemType;
 import model.items.Pokeball;
 import model.items.Potion;
 import model.player.Player;
@@ -267,7 +268,7 @@ public class FightVsWildPkm implements Fight {
 		reset();
 	}
 	
-	protected void applyItem(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
+	protected boolean applyItem(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
 		switch(itemToUse.getType()){
 		case BOOST:
 			final Boost boost = (Boost) itemToUse;
@@ -275,24 +276,30 @@ public class FightVsWildPkm implements Fight {
 			allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
 					allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
 		case POKEBALL:
-			useBall(itemToUse);
+			return useBall(itemToUse);
 		case POTION:
 			final Potion potion = (Potion) itemToUse;
 			potion.effect(player, pkm);
 		}
+		return true;
 	}
 	
-	protected void useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException{
+	protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException{
 		final Pokeball ball = (Pokeball) itemToUse;
-		ball.isCaptured(enemyPkm);
+		return ball.isCaptured(enemyPkm);
 	}
 	
 	public void itemTurn(final Item itemToUse, PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException{
-		applyItem(itemToUse, pkm);
-		player.getInventory().consumeItem(itemToUse);
-		enemyTurn();
-		FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
-		reset();
+		if(applyItem(itemToUse, pkm)){
+			player.getInventory().consumeItem(itemToUse);
+			if(itemToUse.getType() == ItemType.POKEBALL){
+				FightController.getController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
+				return;
+			}
+			enemyTurn();
+			FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+			reset();
+		}
 	}
 	
 	public void moveTurn(final Move move){
