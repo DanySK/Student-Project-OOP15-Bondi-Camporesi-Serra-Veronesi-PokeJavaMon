@@ -110,22 +110,28 @@ public class MethodsImplemented implements MethodsToImplement {
     public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead) {
         System.out.println("RESOLVING ITEM");
         System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-        System.out.println("Enemy: " + enemyMove);
-        System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
-        if (isMyPokemonDead) {
-            System.out.println("ALLY DEAD");
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
-                try {
-                    ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
-                    System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
-                } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
-                    System.out.println("CANNOT CHANGE TO THAT PKMN");
+        if (enemyMove != null) {
+            System.out.println("Enemy: " + enemyMove);
+            System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+            if (isMyPokemonDead) {
+                System.out.println("ALLY DEAD");
+                if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
+                    try {
+                        ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
+                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                    } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+                        System.out.println("CANNOT CHANGE TO THAT PKMN");
+                    }
+                } else {
+                    System.out.println("ALLY DEFEATED");
+                    MainController.getController().updateStatus(State.WALKING);
+                    FightScreen.dispose();
                 }
-            } else {
-                System.out.println("ALLY DEFEATED");
-                MainController.getController().updateStatus(State.WALKING);
-                FightScreen.dispose();
             }
+        } else {
+            System.out.println("ENEMY CATCHED!!!");
+            MainController.getController().updateStatus(State.WALKING);
+            FightScreen.dispose();
         }
     }
 
