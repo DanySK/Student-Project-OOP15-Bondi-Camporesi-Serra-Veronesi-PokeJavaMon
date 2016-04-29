@@ -52,6 +52,10 @@ public class FightController {
         System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
     }
     
+    public Fight getFight() {
+        return this.fight;
+    }
+    
     // Metodi che chiama il MODEL
     
     public void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove, Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills, Pokemon nextEnemyPokemon, String optionalMessage) {

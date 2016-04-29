@@ -307,7 +307,6 @@ public class WalkingKeyboardController implements KeyboardController {
                     if (pm.getEncounterZone(x, y).get().isEncounterNow()) {
                         Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
                         FightController.getController().newFightWithPokemon(poke);
-                        // Commentare la riga sotto per non aprire il FightScreen quando si incontra un pokemon
                         ViewController.getController().fightScreen(poke);
                         up = false;
                         down = false;

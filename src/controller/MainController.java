@@ -10,6 +10,7 @@ import controller.music.MainMusicController;
 import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
+import model.fight.FightVsTrainer;
 import model.pokemon.InitializeMoves;
 import view.resources.Play;
 
@@ -59,11 +60,19 @@ public class MainController {
                 break;
             case FIGHTING:
                 if (MainMusicController.getController().playing() == null) {
-                    MainMusicController.getController().play(Music.TRAINER);
-                } else {
-                    if (MainMusicController.getController().playing() != Music.TRAINER) {
-                        MainMusicController.getController().stop();
+                    if (FightController.getController().getFight() instanceof FightVsTrainer) {
                         MainMusicController.getController().play(Music.TRAINER);
+                    } else {
+                        MainMusicController.getController().play(Music.WILD);
+                    }
+                } else {
+                    if (MainMusicController.getController().playing() != Music.TRAINER || MainMusicController.getController().playing() != Music.WILD) {
+                        MainMusicController.getController().stop();
+                        if (FightController.getController().getFight() instanceof FightVsTrainer) {
+                            MainMusicController.getController().play(Music.TRAINER);
+                        } else {
+                            MainMusicController.getController().play(Music.WILD);
+                        }
                     }
                 }
                 keyboardController = FightingKeyboardController.getController();
