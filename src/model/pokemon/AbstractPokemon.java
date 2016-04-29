@@ -24,10 +24,14 @@ public abstract class AbstractPokemon implements Pokemon {
     protected Move[] currentMoves = new Move[MAX_MOVES];
     protected double randID;
     public static int MAX_LEVEL = 50;
+    public static int MIN_LEVEL = 3;
 
     public AbstractPokemon(final PokemonDB pokemon,int lvl) {
         if (lvl > MAX_LEVEL) {
         	lvl = MAX_LEVEL;
+        }
+        if (lvl < MIN_LEVEL) {
+        	lvl = MIN_LEVEL;
         }
         
     	this.pokemon = pokemon;

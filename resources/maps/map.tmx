@@ -4162,7 +4162,7 @@
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
@@ -4828,38 +4828,38 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="pokemonEncounterLayer" visible="0">
+ <objectgroup name="pokemonEncounterLayer">
   <object id="148" x="128" y="368" width="528" height="96">
    <properties>
-    <property name="avgLvl" value="15"/>
+    <property name="avgLvl" value="14"/>
     <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL SANDSHREW"/>
     <property name="zoneID" value="4"/>
    </properties>
   </object>
   <object id="150" x="656" y="1328" width="848" height="752">
    <properties>
-    <property name="avgLvl" value="7"/>
+    <property name="avgLvl" value="3"/>
     <property name="pokemonList" value="RATTATA PIDGEY SANDSHREW"/>
     <property name="zoneID" value="2"/>
    </properties>
   </object>
   <object id="151" x="480" y="1760" width="128" height="112">
    <properties>
-    <property name="avgLvl" value="6"/>
+    <property name="avgLvl" value="2"/>
     <property name="pokemonList" value="PIKACHU"/>
     <property name="zoneID" value="1"/>
    </properties>
   </object>
   <object id="152" x="624" y="2400" width="272" height="256">
    <properties>
-    <property name="avgLvl" value="5"/>
+    <property name="avgLvl" value="2"/>
     <property name="pokemonList" value="PIDGEY RATTATA"/>
     <property name="zoneID" value="0"/>
    </properties>
   </object>
   <object id="153" x="128" y="3968" width="432" height="752">
    <properties>
-    <property name="avgLvl" value="10"/>
+    <property name="avgLvl" value="7"/>
     <property name="pokemonList" value="ZUBAT "/>
     <property name="zoneID" value="3"/>
    </properties>
@@ -5000,7 +5000,7 @@
   <object id="181" x="4368" y="1504" width="272" height="192">
    <properties>
     <property name="music" value="lab.mp3"/>
-    <property name="zoneName" value="LAB"/>
+    <property name="zoneName" value="POKEMON_CENTER"/>
    </properties>
   </object>
  </objectgroup>
@@ -5110,8 +5110,8 @@
   </object>
   <object id="205" type="TRAINER" x="224" y="4480" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=12"/>
-    <property name="2_POKEMON=LVL" value="SANDSLASH=12"/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=10"/>
+    <property name="2_POKEMON=LVL" value="SANDSLASH=10"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I don't even know how I got here"/>
     <property name="lostMessage" value="I guess I'll search the exit now"/>
@@ -5123,7 +5123,7 @@
   </object>
   <object id="206" type="TRAINER" x="624" y="2368" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
+    <property name="1_POKEMON=LVL" value="PIDGEY=4"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Heya"/>
     <property name="lostMessage" value="Goodbye"/>
@@ -5135,8 +5135,8 @@
   </object>
   <object id="207" type="TRAINER" x="880" y="2496" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=5"/>
-    <property name="2_POKEMON=LVL" value="PIDGEY=5"/>
+    <property name="1_POKEMON=LVL" value="RATTATA=3"/>
+    <property name="2_POKEMON=LVL" value="PIDGEY=3"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Fight me"/>
     <property name="lostMessage" value="Nice..."/>
@@ -5148,9 +5148,9 @@
   </object>
   <object id="208" type="TRAINER" x="1488" y="1936" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEY=6"/>
-    <property name="2_POKEMON=LVL" value="RATTATA=5"/>
-    <property name="3_POKEMON=LVL" value="PIDGEY=7"/>
+    <property name="1_POKEMON=LVL" value="PIDGEY=3"/>
+    <property name="2_POKEMON=LVL" value="RATTATA=4"/>
+    <property name="3_POKEMON=LVL" value="PIDGEY=5"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Wassap"/>
     <property name="lostMessage" value="bruh"/>
@@ -5162,7 +5162,7 @@
   </object>
   <object id="209" type="TRAINER" x="1536" y="1488" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIKACHU=8"/>
+    <property name="1_POKEMON=LVL" value="PIKACHU=6"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Check my rare pokemon"/>
     <property name="lostMessage" value="Now my rare pokemon is exhausted, thanks."/>
@@ -5174,8 +5174,8 @@
   </object>
   <object id="210" type="TRAINER" x="1216" y="1456" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=8"/>
-    <property name="2_POKEMON=LVL" value="RATTATA=9"/>
+    <property name="1_POKEMON=LVL" value="RATTATA=6"/>
+    <property name="2_POKEMON=LVL" value="RATTATA=7"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="What?? Now I can't even piss in peace"/>
     <property name="lostMessage" value="Okay you won, now let me piss alone"/>
@@ -5187,7 +5187,7 @@
   </object>
   <object id="211" type="TRAINER" x="736" y="1312" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=11"/>
+    <property name="1_POKEMON=LVL" value="RATTATA=7"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Yo dawg"/>
     <property name="lostMessage" value="Damn dawg"/>
@@ -5199,7 +5199,7 @@
   </object>
   <object id="212" type="TRAINER" x="1200" y="1696" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="SANDSHREW=9"/>
+    <property name="1_POKEMON=LVL" value="SANDSHREW=6"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Let me try this new Pokemon I just caught here"/>
     <property name="lostMessage" value="Wow, it sucks"/>
@@ -5250,7 +5250,7 @@
   </object>
   <object id="216" type="TRAINER" x="160" y="4000" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=14"/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=10"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Peace V/\"/>
     <property name="lostMessage" value="...peace"/>
@@ -5274,9 +5274,9 @@
   </object>
   <object id="218" type="TRAINER" x="576" y="1072" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="SANDSHREW=13"/>
-    <property name="2_POKEMON=LVL" value="PIKACHU=14"/>
-    <property name="3_POKEMON=LVL" value="ZUBAT=15"/>
+    <property name="1_POKEMON=LVL" value="SANDSHREW=10"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=9"/>
+    <property name="3_POKEMON=LVL" value="ZUBAT=10"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Nice weather"/>
     <property name="lostMessage" value="Not anymore"/>
@@ -5288,9 +5288,9 @@
   </object>
   <object id="219" type="TRAINER" x="784" y="1008" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=14"/>
-    <property name="2_POKEMON=LVL" value="PIDGEY=15"/>
-    <property name="3_POKEMON=LVL" value="PIKACHU=14"/>
+    <property name="1_POKEMON=LVL" value="RATTATA=10"/>
+    <property name="2_POKEMON=LVL" value="PIDGEY=11"/>
+    <property name="3_POKEMON=LVL" value="PIKACHU=12"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="O_O"/>
     <property name="lostMessage" value=":("/>
@@ -5329,8 +5329,8 @@
   </object>
   <object id="222" type="TRAINER" x="1040" y="144" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIKACHU=14"/>
-    <property name="2_POKEMON=LVL" value="SANDSHREW=15"/>
+    <property name="1_POKEMON=LVL" value="PIKACHU=12"/>
+    <property name="2_POKEMON=LVL" value="SANDSHREW=12"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I like to beat the brush."/>
     <property name="lostMessage" value="You need the dark in order to show the light."/>
@@ -5342,8 +5342,8 @@
   </object>
   <object id="223" type="TRAINER" x="1584" y="192" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIKACHU=15"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=16"/>
+    <property name="1_POKEMON=LVL" value="PIKACHU=13"/>
+    <property name="2_POKEMON=LVL" value="PIDGEOTTO=13"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage">Ah... I love this
 prospectively wrong waterfall</property>
@@ -5369,7 +5369,7 @@ prospectively wrong waterfall</property>
   <object id="225" type="TRAINER" x="576" y="560" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="SANDSLASH=15"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=18"/>
+    <property name="2_POKEMON=LVL" value="PIDGEOTTO=15"/>
     <property name="direction" value="NORTH"/>
     <property name="initMessage" value="You won't beat me"/>
     <property name="lostMessage" value="I did lose on purpose"/>
@@ -5381,8 +5381,8 @@ prospectively wrong waterfall</property>
   </object>
   <object id="226" type="TRAINER" x="624" y="144" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=16"/>
-    <property name="2_POKEMON=LVL" value="ZUBAT=17"/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=14"/>
+    <property name="2_POKEMON=LVL" value="ZUBAT=15"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Get rich or die tryin’."/>
     <property name="lostMessage" value="I love you like a fat kid loves cake."/>

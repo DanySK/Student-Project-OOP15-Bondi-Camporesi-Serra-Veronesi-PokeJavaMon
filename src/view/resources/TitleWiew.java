@@ -60,7 +60,7 @@ public class TitleWiew {
                 frame.dispose();
                 // Inizializza un po di roba
                 try {
-                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.RAYQUAZA, 50));
+//                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.RAICHU, 50));
                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.CHARMANDER, 5));
                 } catch (SquadFullException ex) {
                     ex.printStackTrace();
@@ -70,7 +70,7 @@ public class TitleWiew {
                 Map<String, Integer> ballList = new HashMap<>();
                 potionList.put(PotionType.POTION.name(), 30);
                 boostList.put(Stat.ATK.name() + "X", 5);
-                ballList.put(PokeballType.Pokeball.name(), 5);
+                ballList.put(PokeballType.Ultraball.name(), 100);
                 InventoryImpl.initializeInventory(potionList, boostList, ballList);
                 MainController.getController().updateStatus(State.SECOND_MENU);
                 ViewController.getController().secondMenu();

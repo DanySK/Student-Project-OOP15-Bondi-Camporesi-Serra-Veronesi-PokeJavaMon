@@ -122,7 +122,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     @Override
     public void pokemonCenter(final PokeMap pm) {
     	pm.getWalkableZones().forEach(z -> {
-    		if (z.getZoneName().equals("POKEMON_CENTER")) {
+    		if (z.getZoneName() != null && z.getZoneName().equals("POKEMON_CENTER")) {
     			if (!z.contains(this.tileX, this.tileY)) {
     				return;
     			}
