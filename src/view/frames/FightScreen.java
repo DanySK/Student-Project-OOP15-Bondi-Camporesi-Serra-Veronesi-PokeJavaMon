@@ -101,7 +101,7 @@ public class FightScreen extends JPanel{
 			        try {
 			//ViewController.getController().useItem(new Boost(Stat.ATK), PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
                         //ViewController.getController().useItem(new Potion(PotionType.POTION), PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
-			ViewController.getController().useItem(new Pokeball(PokeballType.Pokeball), pk);
+			ViewController.getController().useItem(new Pokeball(PokeballType.Ultraball), pk);
                     } catch (PokemonIsExhaustedException e1) {
                         System.out.println("POKEMON IS EXAUSTED");
                     } catch (PokemonNotFoundException e1) {

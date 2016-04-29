@@ -26,7 +26,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 	private final int id;
 	private final List<PokemonDB> pokemonList;
 	private final int avgLvl;
-    private final static double ENCOUNTER_CHANCE = 15 / 187.5;
+    private final static double ENCOUNTER_CHANCE = 20 / 187.5;
     private final static int LEVEL_VARIATION = 2;
     private boolean encountered = false;
 	
