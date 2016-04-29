@@ -60,7 +60,7 @@ public class TitleWiew {
                 frame.dispose();
                 // Inizializza un po di roba
                 try {
-                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.SQUIRTLE, 5));
+                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.RAYQUAZA, 50));
                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.CHARMANDER, 5));
                 } catch (SquadFullException ex) {
                     ex.printStackTrace();

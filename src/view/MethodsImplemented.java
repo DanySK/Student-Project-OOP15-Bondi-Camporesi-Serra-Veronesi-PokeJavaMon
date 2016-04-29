@@ -39,7 +39,7 @@ public class MethodsImplemented implements MethodsToImplement {
                     if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
                         try {
                             ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
-                            System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                            System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
                         } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
                             System.out.println("CANNOT CHANGE TO THAT PKMN");
                         }
@@ -58,7 +58,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
                     try {
                         ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
-                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
                     } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
                         System.out.println("CANNOT CHANGE TO THAT PKMN");
                     }
@@ -94,7 +94,7 @@ public class MethodsImplemented implements MethodsToImplement {
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
                 try {
                     ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
-                    System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                    System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
                 } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
                     System.out.println("CANNOT CHANGE TO THAT PKMN");
                 }
@@ -118,7 +118,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
                     try {
                         ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
-                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
                     } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
                         System.out.println("CANNOT CHANGE TO THAT PKMN");
                     }
@@ -151,7 +151,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(1).getCurrentHP() > 0) {
                     try {
                         ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(1));
-                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0));
+                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
                     } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
                         System.out.println("CANNOT CHANGE TO THAT PKMN");
                     }
@@ -163,5 +163,4 @@ public class MethodsImplemented implements MethodsToImplement {
             }
         }
     }
-
 }
