@@ -69,7 +69,11 @@ public class TitleWiew {
                 Map<String, Integer> boostList = new HashMap<>();
                 Map<String, Integer> ballList = new HashMap<>();
                 potionList.put(PotionType.POTION.name(), 30);
+                potionList.put(PotionType.SUPERPOTION.name(), 11);
+                potionList.put(PotionType.HYPERPOTION.name(), 14);
                 boostList.put(Stat.ATK.name() + "X", 5);
+                ballList.put(PokeballType.Pokeball.name(), 12);
+                ballList.put(PokeballType.Greatball.name(), 16);
                 ballList.put(PokeballType.Ultraball.name(), 10);
                 InventoryImpl.initializeInventory(potionList, boostList, ballList);
                 MainController.getController().updateStatus(State.SECOND_MENU);

@@ -37,8 +37,8 @@ public class Squadra {
         for (Pokemon p : PlayerImpl.getPlayer().getSquad().getPokemonList()) {
         	names.add(p.getPokemon().name()); // Nome Pkmn
         	lvl.add("" + p.getStat(Stat.LVL)); // Livello
-        	cHP.add("" + p.getCurrentHP());
-        	mHP.add("" + p.getStat(Stat.HP));
+        	cHP.add("" + p.getStat(Stat.HP));
+        	mHP.add("" + p.getCurrentHP());
         }
         
         contain.add(new Panel2(names, lvl, cHP, mHP, 1));
