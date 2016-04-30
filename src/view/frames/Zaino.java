@@ -157,7 +157,7 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                 if (i.getType() != ItemType.POKEBALL) {
                     Zaino.selectItem(i);
                     ViewController.getController();
-                    ViewController.team();
+                    ViewController.team(false, true);
                 } else {
                     Zaino.selectItem(i);
                     if (MainController.getController().getState() == State.FIGHTING) {
@@ -169,14 +169,15 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                 }
             }
         });
+        if (itm.getType() != ItemType.POTION && MainController.getController().getState() != State.FIGHTING) {
+            usa.setEnabled(false);
+        }
         add(usa);
         JButton esci = new JButton("Exit");
         esci.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 if (MainController.getController().getState() == State.MENU) {
-                     Zaino.dispose();
-                 }
+                 Zaino.dispose();
             }
         });
         add(esci);

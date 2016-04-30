@@ -77,8 +77,8 @@ public final class ViewController {
         new view.frames.Box();
     }
     
-    public static void team() {
-        new Squadra();
+    public static void team(final boolean bl, final boolean bl2) {
+        new Squadra(bl, bl2);
     }
     
     public static void bag() {

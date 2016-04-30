@@ -30,7 +30,7 @@ public Menu() {
 			public void actionPerformed(ActionEvent ae) {
 				ViewController.getController();
                 /*f.dispose();*/
- 				ViewController.team();
+ 				ViewController.team(true, false);
 			}});
 		
 		JButton salva = new JButton("Salva");

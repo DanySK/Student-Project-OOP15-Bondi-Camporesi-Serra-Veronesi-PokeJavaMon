@@ -17,7 +17,7 @@ public class Squadra {
 
         private static JFrame frame;
 	
-        public Squadra() {
+        public Squadra(boolean bl, boolean bl2) {
 		
         frame = new JFrame("Squadra");
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -42,7 +42,7 @@ public class Squadra {
         	pk.add(p);
         }
         
-        contain.add(new Panel2(names, lvl, cHP, mHP, pk, 1));
+        contain.add(new Panel2(names, lvl, cHP, mHP, pk, bl, bl2, 1));
         frame.setSize(800,100 * names.size());
         frame.setVisible(true);
     }
@@ -62,7 +62,7 @@ class Panel2 extends JPanel
     ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
     int cols;
 
-    public Panel2(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> current, ArrayList<String> max, ArrayList<Pokemon> pkm, int c) 
+    public Panel2(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> current, ArrayList<String> max, ArrayList<Pokemon> pkm, boolean bl, boolean bl2, int c) 
     {
         this.names = nam;
         this.lvl =lv;
@@ -124,6 +124,9 @@ class Panel2 extends JPanel
                     }
                 }
             });
+            if (bl2) {
+                but2.setEnabled(false);
+            }
             add(but2);
             JButton but3 = new JButton("SELECT");
             but3.addActionListener(new ActionListener() {
@@ -133,16 +136,20 @@ class Panel2 extends JPanel
                     Zaino.useItem(p);
                 }
             });
+            if (!bl2) {
+                but3.setEnabled(false);
+            }
             add(but3);
             JButton but4 = new JButton("EXIT");
             but4.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (MainController.getController().getState() == State.MENU) {
-                        Squadra.dispose();
-                    }
+                    Squadra.dispose();
                 }
             });
+            if (bl) {
+                but4.setEnabled(true);
+            }
             add(but4);
            }
 

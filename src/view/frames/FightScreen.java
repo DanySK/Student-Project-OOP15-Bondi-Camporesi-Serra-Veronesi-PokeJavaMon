@@ -73,7 +73,7 @@ public class FightScreen extends JPanel{
 //				ViewController.team();
                         if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                             ViewController.getController();
-                            ViewController.team();
+                            ViewController.team(true, false);
                         } else {
                             System.out.println("NO POKEMON ALIVE");
                         }
