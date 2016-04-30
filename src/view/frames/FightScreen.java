@@ -82,17 +82,12 @@ public class FightScreen extends JPanel{
 		Squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				ViewController.team();
-			        try {
                         if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
-                            ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
+                            ViewController.getController();
+                            ViewController.team();
                         } else {
                             System.out.println("NO POKEMON ALIVE");
                         }
-                    } catch (PokemonIsExhaustedException e1) {
-                        System.out.println("POKEMON IS EXAUSTED");
-                    } catch (PokemonIsFightingException e1) {
-                        System.out.println("POKEMON IS FIGHTING");
-                    }
 			}
 		});
 		panel_1.add(Squadra);

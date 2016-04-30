@@ -85,8 +85,8 @@ public final class ViewController {
         new Zaino();
     }
     
-    public void stats() {
-        new Stats();
+    public void stats(final int id) {
+        new Stats(id);
     }
 
     public void setName(String text) {

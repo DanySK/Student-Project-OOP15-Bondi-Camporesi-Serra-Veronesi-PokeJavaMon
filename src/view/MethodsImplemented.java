@@ -3,8 +3,6 @@ package view;
 import controller.MainController;
 import controller.ViewController;
 import controller.parameters.State;
-import exceptions.PokemonIsExhaustedException;
-import exceptions.PokemonIsFightingException;
 import model.fight.Effectiveness;
 import model.items.Item;
 import model.player.PlayerImpl;
@@ -37,12 +35,8 @@ public class MethodsImplemented implements MethodsToImplement {
                 if (lastPokemonKills) {
                     System.out.println("ALLY DEAD");
                     if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
-                        try {
-                            ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
-                            System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-                        } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
-                            System.out.println("CANNOT CHANGE TO THAT PKMN");
-                        }
+                        ViewController.getController();
+                        ViewController.team();
                     } else {
                         System.out.println("ALLY DEFEATED");
                         MainController.getController().updateStatus(State.WALKING);
@@ -56,12 +50,8 @@ public class MethodsImplemented implements MethodsToImplement {
             if (myMove == null) {
                 System.out.println("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
-                    try {
-                        ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
-                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-                    } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
-                        System.out.println("CANNOT CHANGE TO THAT PKMN");
-                    }
+                    ViewController.getController();
+                    ViewController.team();
                 } else {
                     System.out.println("ALLY DEFEATED");
                     MainController.getController().updateStatus(State.WALKING);
@@ -92,12 +82,8 @@ public class MethodsImplemented implements MethodsToImplement {
         if (isMyPokemonDead) {
             System.out.println("ALLY DEAD");
             if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
-                try {
-                    ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
-                    System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-                } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
-                    System.out.println("CANNOT CHANGE TO THAT PKMN");
-                }
+                ViewController.getController();
+                ViewController.team();
             } else {
                 System.out.println("ALLY DEFEATED");
                 MainController.getController().updateStatus(State.WALKING);
@@ -116,12 +102,8 @@ public class MethodsImplemented implements MethodsToImplement {
             if (isMyPokemonDead) {
                 System.out.println("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
-                    try {
-                        ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
-                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-                    } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
-                        System.out.println("CANNOT CHANGE TO THAT PKMN");
-                    }
+                    ViewController.getController();
+                    ViewController.team();
                 } else {
                     System.out.println("ALLY DEFEATED");
                     MainController.getController().updateStatus(State.WALKING);
@@ -149,12 +131,8 @@ public class MethodsImplemented implements MethodsToImplement {
             if (isMyPokemonDead) {
                 System.out.println("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
-                    try {
-                        ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().get());
-                        System.out.println("My New: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-                    } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
-                        System.out.println("CANNOT CHANGE TO THAT PKMN");
-                    }
+                    ViewController.getController();
+                    ViewController.team();
                 } else {
                     System.out.println("ALLY DEFEATED");
                     MainController.getController().updateStatus(State.WALKING);
