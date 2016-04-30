@@ -442,5 +442,10 @@ public class FightVsWildPkm implements Fight {
 		}
 		return pmksThatMustEvolve;
 	}
+
+    @Override
+    public Pokemon getCurrentEnemyPokemon() {
+        return enemyPkm;
+    }
 	
 }

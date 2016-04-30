@@ -1,7 +1,7 @@
 package view.frames;
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JLabel;
 import model.player.PlayerImpl;
 import model.pokemon.Stat;
 import java.awt.Font;
@@ -20,131 +20,127 @@ public class Stats {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setUndecorated(true);
 		frame.getContentPane().setLayout(null);
-		JTextArea Ruotadifuo;
+		JLabel Ruotadifuo;
 		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(0) != null) {
-		    Ruotadifuo = new JTextArea(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(0).name());
+		    Ruotadifuo = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(0).name());
 		} else {
-		    Ruotadifuo = new JTextArea("NONE");
+		    Ruotadifuo = new JLabel("NONE");
 		}
 		Ruotadifuo.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Ruotadifuo.setBounds(121, 130, 98, 22);
 		frame.getContentPane().add(Ruotadifuo);
 		
-		JTextArea Destinnob;
+		JLabel Destinnob;
 		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(1) != null) {
-		    Destinnob = new JTextArea(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(1).name());
+		    Destinnob = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(1).name());
                 } else {
-                    Destinnob = new JTextArea("NONE");
+                    Destinnob = new JLabel("NONE");
                 }
 		Destinnob.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Destinnob.setBounds(121, 163, 98, 22);
 		frame.getContentPane().add(Destinnob);
 		
-		JTextArea Spichico;
+		JLabel Spichico;
 		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(2) != null) {
-		    Spichico = new JTextArea(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(2).name());
+		    Spichico = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(2).name());
                 } else {
-                    Spichico = new JTextArea("NONE");
+                    Spichico = new JLabel("NONE");
                 }
 		Spichico.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Spichico.setBounds(121, 229, 98, 22);
 		frame.getContentPane().add(Spichico);
 		
-		JTextArea Splash;
+		JLabel Splash;
 		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(3) != null) {
-		    Splash = new JTextArea(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(3).name());
+		    Splash = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(3).name());
                 } else {
-                    Splash = new JTextArea("NONE");
+                    Splash = new JLabel("NONE");
                 }
 		Splash.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Splash.setBounds(121, 196, 98, 22);
 		frame.getContentPane().add(Splash);
 		
-		JTextArea Hp = new JTextArea("HP:");
+		JLabel Hp = new JLabel("HP:");
 		Hp.setOpaque(false);
 		Hp.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Hp.setBounds(292, 130, 37, 22);
 		frame.getContentPane().add(Hp);
 		
-		JTextArea Atk = new JTextArea("Atk:");
+		JLabel Atk = new JLabel("Atk:");
 		Atk.setOpaque(false);
 		Atk.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Atk.setBounds(292, 163, 37, 22);
 		frame.getContentPane().add(Atk);
 		
-		JTextArea Def = new JTextArea("DEf:");
+		JLabel Def = new JLabel("DEf:");
 		Def.setOpaque(false);
 		Def.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Def.setBounds(292, 196, 37, 22);
 		frame.getContentPane().add(Def);
 		
-		JTextArea Spd = new JTextArea("Spd:");
+		JLabel Spd = new JLabel("Spd:");
 		Spd.setOpaque(false);
 		Spd.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Spd.setBounds(292, 229, 37, 22);
 		frame.getContentPane().add(Spd);
 		
-		JTextArea getHP = new JTextArea("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentHP() + "/" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.HP));
+		JLabel getHP = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentHP() + "/" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.HP));
 		getHP.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getHP.setBounds(393, 130, 31, 22);
 		frame.getContentPane().add(getHP);
 		
-		JTextArea getAtk = new JTextArea("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.ATK));
+		JLabel getAtk = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.ATK));
 		getAtk.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getAtk.setBounds(393, 163, 31, 22);
 		frame.getContentPane().add(getAtk);
 		
-		JTextArea getDef = new JTextArea("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.DEF));
+		JLabel getDef = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.DEF));
 		getDef.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getDef.setBounds(393, 196, 31, 22);
 		frame.getContentPane().add(getDef);
 		
-		JTextArea getSpd = new JTextArea("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.SPD));
+		JLabel getSpd = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.SPD));
 		getSpd.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getSpd.setBounds(393, 229, 31, 22);
 		frame.getContentPane().add(getSpd);
 		
-		JTextArea Mossa1 = new JTextArea("Mossa 1");
+		JLabel Mossa1 = new JLabel("Mossa 1");
 		Mossa1.setOpaque(false);
 		Mossa1.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Mossa1.setBounds(21, 131, 70, 22);
 		frame.getContentPane().add(Mossa1);
 		
-		JTextArea Mossa2 = new JTextArea("Mossa 2");
+		JLabel Mossa2 = new JLabel("Mossa 2");
 		Mossa2.setOpaque(false);
 		Mossa2.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Mossa2.setBounds(21, 164, 70, 22);
 		frame.getContentPane().add(Mossa2);
 		
-		JTextArea Mossa3 = new JTextArea("Mossa 3");
+		JLabel Mossa3 = new JLabel("Mossa 3");
 		Mossa3.setOpaque(false);
 		Mossa3.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Mossa3.setBounds(21, 197, 70, 22);
 		frame.getContentPane().add(Mossa3);
 		
-		JTextArea Mossa4 = new JTextArea("Mossa 4");
+		JLabel Mossa4 = new JLabel("Mossa 4");
 		Mossa4.setOpaque(false);
 		Mossa4.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Mossa4.setBounds(21, 230, 70, 22);
 		frame.getContentPane().add(Mossa4);
 		
-		JTextArea NomePokemon = new JTextArea(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getPokemon().name());
-		NomePokemon.setHighlighter(null);
-		NomePokemon.setEditable(false);
+		JLabel NomePokemon = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getPokemon().name());
 		NomePokemon.setOpaque(false);
 		NomePokemon.setFont(new Font("Arial Black", Font.BOLD, 18));
 		NomePokemon.setBounds(78, 27, 275, 30);
 		frame.getContentPane().add(NomePokemon);
 		
-		JTextArea Lvl = new JTextArea("Lvl:");
+		JLabel Lvl = new JLabel("Lvl:");
 		Lvl.setOpaque(false);
-		Lvl.setHighlighter(null);
-		Lvl.setEditable(false);
 		Lvl.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Lvl.setBounds(163, 82, 37, 22);
 		frame.getContentPane().add(Lvl);
 		
-		JTextArea cento = new JTextArea("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.LVL));
+		JLabel cento = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.LVL));
 		cento.setFont(new Font("Arial Black", Font.BOLD, 13));
 		cento.setBounds(232, 82, 37, 22);
 		frame.getContentPane().add(cento);

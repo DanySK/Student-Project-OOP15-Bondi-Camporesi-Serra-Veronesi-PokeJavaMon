@@ -1,31 +1,37 @@
 package view.frames;
 
 import java.awt.GridLayout;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
 
+import controller.FightController;
+import controller.MainController;
 import controller.ViewController;
+import controller.parameters.State;
+import exceptions.CannotCaughtTrainerPkmException;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Item.ItemType;
 import model.items.Potion;
-import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import model.pokemon.Stat;
+import model.pokemon.PokemonInBattle;
 
 public class Zaino {
 
 	private static JFrame frame;
+	private static Item itemToUse;
 	
 public Zaino() {
 		
 	
-    frame = new JFrame("Squadra");
+    frame = new JFrame("Zaino");
     frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     frame.setAlwaysOnTop(true);
-    frame.setSize(500,600);
+    frame.setSize(600,600);
     frame.setUndecorated(true);
     
     JPanel contiene = new JPanel();
@@ -36,36 +42,81 @@ public Zaino() {
     final ArrayList<String>Name2 = new ArrayList<String>();
     final ArrayList<String>Prz = new ArrayList<String>();
     final ArrayList<String>Qnt = new ArrayList<String>();
+    final ArrayList<Item> it = new ArrayList<Item>();
     
     for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).keySet()) { 
     	Name1.add(i.getType().name()); 
-    	Name2.add(i.getType().name()); 
+    	Name2.add(i.toString()); 
     	Prz.add("" + i.getPrice());
     	Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
+    	it.add(i);
     	    }
 
     
     for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).keySet()) { 
     	Name1.add(i.getType().name());
-    	Name2.add(i.getType().name()); 
+    	Name2.add(i.toString()); 
     	Prz.add("" + i.getPrice());
     	Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
+    	it.add(i);
     }
     
     for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).keySet()) { 
     	Name1.add(i.getType().name()); 
-    	Name2.add(i.getType().name()); 
+    	Name2.add(i.toString()); 
     	Prz.add("" + i.getPrice());
     	Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i));
+    	it.add(i);
     }
    
-    contiene.add(new Panel2(Name1, Name2, Prz, Qnt, 1));
+    contiene.add(new Panel(Name1, Name2, Prz, Qnt, it, 1));
     
     frame.setVisible(true);
 }
     
 public static void dispose() {
     frame.dispose();
+}
+
+public static void selectItem(Item it) {
+    itemToUse = it;
+}
+
+public static void useItem(Pokemon p) {
+    if (itemToUse != null) {
+        if (MainController.getController().getState() == State.FIGHTING) {
+            try {
+                ViewController.getController().useItem(itemToUse, p);
+                Zaino.selectItem(null);
+                Zaino.dispose();
+            } catch (PokemonIsExhaustedException e1) {
+                System.out.println("POKEMON IS EXAUSTED");
+                Zaino.selectItem(null);
+                Zaino.dispose();
+            } catch (PokemonNotFoundException e1) {
+                System.out.println("POKEMON NOT FOUND");
+                Zaino.selectItem(null);
+                Zaino.dispose();
+            } catch (CannotCaughtTrainerPkmException e1) {
+                System.out.println("CANNOT CATCH TRAINER POKEMON");
+                Zaino.selectItem(null);
+                Zaino.dispose();
+            } catch (IllegalStateException e1) {
+                System.out.println("YOU HAVE NO MORE THIS ITEM");
+                Zaino.selectItem(null);
+                Zaino.dispose();
+            }
+        } else {
+            if (itemToUse instanceof Potion) {
+                try {
+                    ((Potion) itemToUse).effect(PlayerImpl.getPlayer(), (PokemonInBattle) p);
+                    PlayerImpl.getPlayer().getInventory().consumeItem(itemToUse);
+                } catch (PokemonNotFoundException e) {
+                    System.out.println("POKEMON NOT FOUND");
+                }
+            }
+        }
+    }
 }
 }
 
@@ -77,26 +128,58 @@ class Panel extends JPanel
     ArrayList<String> Name2 = new ArrayList<String>();
     ArrayList<String> Prz = new ArrayList<String>();
     ArrayList<String> Qnt = new ArrayList<String>();
+    ArrayList<Item> it = new ArrayList<Item>();
     int col;
 
-public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,ArrayList<String> e, int c) 
+public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,ArrayList<String> e, ArrayList<Item> f, int c) 
 {
     this.Name1 = a;
     this.Name2 = b;
     this.Prz = d;
     this.Qnt = e;
     this.col = c;
+    this.it = f;
 
     setLayout(new GridLayout(Name1.size(),col));
 
     for(int j = 0; j<Name1.size();j++)
     {
+        final Item itm = it.get(j);
         add(new JLabel(Name1.get(j)));
-        add(new JTextField(Name2.get(j)));
-        add(new JTextField(Prz.get(j)));
-        add(new JTextField(Qnt.get(j)));
-        JButton usa = new JButton("Usa");
+        add(new JLabel(Name2.get(j)));
+        add(new JLabel(Prz.get(j)));
+        add(new JLabel(Qnt.get(j)));
+        JButton usa = new JButton("Use");
+        usa.addActionListener(new ActionListener() {     
+            Item i = itm;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (i.getType() != ItemType.POKEBALL) {
+                    Zaino.selectItem(i);
+                    ViewController.getController();
+                    ViewController.team();
+                } else {
+                    Zaino.selectItem(i);
+                    if (MainController.getController().getState() == State.FIGHTING) {
+                        Zaino.useItem(FightController.getController().getEnemyPokemon());
+                    } else {
+                        Zaino.useItem(null);
+                    }
+                    Zaino.dispose();
+                }
+            }
+        });
         add(usa);
+        JButton esci = new JButton("Exit");
+        esci.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 if (MainController.getController().getState() == State.MENU) {
+                     Zaino.dispose();
+                 }
+            }
+        });
+        add(esci);
        }
 	}
 }

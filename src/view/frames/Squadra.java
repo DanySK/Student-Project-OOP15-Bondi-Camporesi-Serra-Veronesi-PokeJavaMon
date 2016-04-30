@@ -22,7 +22,6 @@ public class Squadra {
         frame = new JFrame("Squadra");
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.setAlwaysOnTop(true);
-        frame.setSize(500,600);
         frame.setUndecorated(true);
         
         JPanel contain = new JPanel();
@@ -33,16 +32,18 @@ public class Squadra {
         final ArrayList<String>lvl = new ArrayList<String>();
         final ArrayList<String>cHP = new ArrayList<String>();
         final ArrayList<String>mHP = new ArrayList<String>();
+        final ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
         
         for (Pokemon p : PlayerImpl.getPlayer().getSquad().getPokemonList()) {
         	names.add(p.getPokemon().name()); // Nome Pkmn
         	lvl.add("" + p.getStat(Stat.LVL)); // Livello
-        	cHP.add("" + p.getStat(Stat.HP));
-        	mHP.add("" + p.getCurrentHP());
+        	mHP.add("" + p.getStat(Stat.HP));
+        	cHP.add("" + p.getCurrentHP());
+        	pk.add(p);
         }
         
-        contain.add(new Panel2(names, lvl, cHP, mHP, 1));
-        
+        contain.add(new Panel2(names, lvl, cHP, mHP, pk, 1));
+        frame.setSize(800,100 * names.size());
         frame.setVisible(true);
     }
         
@@ -58,25 +59,28 @@ class Panel2 extends JPanel
     ArrayList<String> lvl = new ArrayList<String>();
     ArrayList<String> cHP = new ArrayList<String>();
     ArrayList<String> mHP = new ArrayList<String>();
+    ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
     int cols;
 
-    public Panel2(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> current, ArrayList<String> max, int c) 
+    public Panel2(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> current, ArrayList<String> max, ArrayList<Pokemon> pkm, int c) 
     {
         this.names = nam;
         this.lvl =lv;
         this.cHP = current;
         this.mHP = max;
         this.cols = c;
+        this.pk = pkm;
 
         setLayout(new GridLayout(names.size(),cols));
 
         for(int i = 0; i<names.size();i++)
         {
             final int index = i;
+            final Pokemon pkmn = pkm.get(i);
             add(new JLabel(names.get(i)));
-            add(new JTextField(lvl.get(i)));
-            add(new JTextField(cHP.get(i)));
-            add(new JTextField(mHP.get(i)));
+            add(new JLabel(lvl.get(i)));
+            add(new JLabel(cHP.get(i)));
+            add(new JLabel(mHP.get(i)));
             JButton but = new JButton("INFO");
             but.addActionListener(new ActionListener() {
                 private final int ID = index;
@@ -121,8 +125,17 @@ class Panel2 extends JPanel
                 }
             });
             add(but2);
-            JButton but3 = new JButton("EXIT");
+            JButton but3 = new JButton("SELECT");
             but3.addActionListener(new ActionListener() {
+                final Pokemon p = pkmn;
+                public void actionPerformed(ActionEvent e) {
+                    Squadra.dispose();
+                    Zaino.useItem(p);
+                }
+            });
+            add(but3);
+            JButton but4 = new JButton("EXIT");
+            but4.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (MainController.getController().getState() == State.MENU) {
@@ -130,7 +143,7 @@ class Panel2 extends JPanel
                     }
                 }
             });
-            add(but3);
+            add(but4);
            }
 
     }}

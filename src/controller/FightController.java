@@ -99,4 +99,8 @@ public class FightController {
     public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
         fight.applyChange((PokemonInBattle) pk);
     }
+
+    public Pokemon getEnemyPokemon() {
+        return fight.getCurrentEnemyPokemon();
+    }
 }

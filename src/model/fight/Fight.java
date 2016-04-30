@@ -1,12 +1,12 @@
 package model.fight;
 
 import model.pokemon.Move;
+import model.pokemon.Pokemon;
 import model.pokemon.PokemonDB;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 import model.items.Item;
 import java.util.List;
-
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
@@ -32,4 +32,5 @@ public interface Fight {
 	//da chiamare nella view a fine combattimento
 	public List<PokemonDB> getPkmsThatMustEvolve();
 	
+	public Pokemon getCurrentEnemyPokemon();
 }
