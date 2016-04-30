@@ -230,13 +230,21 @@ public class FightScreen extends JPanel{
     	
     	    try {
                 image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getAbsolutePath()));
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                try {
+                    image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getResourcePath()));
+                } catch (IOException e1) {
+                    System.out.println("CANNOT LOAD FRONT SPRITE");
+                }
             }
            try {                
         	image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
-           } catch (IOException ex) {
-      	   ex.printStackTrace();
+           } catch (Exception ex) {
+               try {
+                image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getResourcePath()));
+            } catch (IOException e) {
+                System.out.println("CANNOT LOAD BACK SPRITE");
+            }
            }
     	}
 	
