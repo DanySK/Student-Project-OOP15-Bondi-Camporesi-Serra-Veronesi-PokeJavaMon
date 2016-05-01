@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import com.badlogic.gdx.Input.Keys;
 import controller.FightController;
 import controller.MainController;
@@ -92,19 +92,38 @@ public class WalkingKeyboardController implements KeyboardController {
                         break;
                     }
                     if (t == TileType.CENTER) {
-                        System.out.println("POKEMON'S HEALTH FULLY RESTORED");
+                        MainController.getController().updateStatus(State.READING);
+                        JFrame fr = new JFrame();
+                        JPanel pa = new JPanel();
+                        JLabel tx;
+                        tx = new JLabel("POKEMON'S HEALTH FULLY RESTORED");
+                        JButton button = new JButton("OK");
+                        button.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                MainController.getController().updateStatus(State.WALKING);
+                                fr.dispose();
+                            }
+                        });
+                        pa.add(tx);
+                        pa.add(button);
+                        fr.add(pa);
+                        fr.setAlwaysOnTop(true);
+                        fr.setBounds(100, 100, 450, 100);
+                        fr.setUndecorated(true);
+                        fr.setVisible(true);
                         PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
                     } else if (t == TileType.MARKET) {
-                        System.out.println("WELCOME TO PKMN MARKET");
+                        ViewController.getController().market();
                     } else if (t == TileType.SIGN) {
                         MainController.getController().updateStatus(State.READING);
                         JFrame fr = new JFrame();
                         JPanel pa = new JPanel();
-                        JTextArea tx;
+                        JLabel tx;
                         if (pm.getSign(x, y).isPresent()) {
-                            tx = new JTextArea(pm.getSign(x, y).get().getMessage());
+                            tx = new JLabel(pm.getSign(x, y).get().getMessage());
                         } else {
-                            tx = new JTextArea("SIGN_MESSAGE");
+                            tx = new JLabel("SIGN_MESSAGE");
                         }
                         JButton button = new JButton("OK");
                         button.addActionListener(new ActionListener() {
@@ -114,12 +133,11 @@ public class WalkingKeyboardController implements KeyboardController {
                                 fr.dispose();
                             }
                         });
-                        tx.setEditable(false);
                         pa.add(tx);
                         pa.add(button);
                         fr.add(pa);
                         fr.setAlwaysOnTop(true);
-                        fr.setBounds(100, 100, 450, 300);
+                        fr.setBounds(100, 100, 450, 100);
                         fr.setUndecorated(true);
                         fr.setVisible(true);
                     } else if (t == TileType.NPC) {
@@ -164,8 +182,8 @@ public class WalkingKeyboardController implements KeyboardController {
                             MainController.getController().updateStatus(State.READING);
                             JFrame fr = new JFrame();
                             JPanel pa = new JPanel();
-                            JTextArea tx;
-                            tx = new JTextArea(pm.getNPC(x, y).get().getMessage());
+                            JLabel tx;
+                            tx = new JLabel(pm.getNPC(x, y).get().getMessage());
                             JButton button = new JButton("OK");
                             button.addActionListener(new ActionListener() {
                                 @Override
@@ -174,17 +192,15 @@ public class WalkingKeyboardController implements KeyboardController {
                                     fr.dispose();
                                 }
                             });
-                            tx.setEditable(false);
                             pa.add(tx);
                             pa.add(button);
                             fr.add(pa);
                             fr.setAlwaysOnTop(true);
-                            fr.setBounds(100, 100, 450, 300);
+                            fr.setBounds(100, 100, 450, 100);
                             fr.setUndecorated(true);
                             fr.setVisible(true);
                     	} else if (pm.getGymLeader(x, y).isPresent()) {
-                    		System.out.println("GymLeader at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
-                            switch(direction) {
+                    	    switch(direction) {
                             case LEFT:
                                 pm.getGymLeader(x, y).get().turn(Direction.EAST);
                                 break;

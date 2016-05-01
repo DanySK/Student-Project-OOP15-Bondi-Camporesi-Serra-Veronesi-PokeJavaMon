@@ -39,6 +39,10 @@ public final class ViewController {
         return SINGLETON;
     }
     
+    public void market() {
+        new view.frames.Market();
+    }
+    
     public void showMenu() {
         MainController.getController().updateStatus(State.MENU);
         new Menu();

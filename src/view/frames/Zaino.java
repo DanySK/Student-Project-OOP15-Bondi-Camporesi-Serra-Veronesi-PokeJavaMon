@@ -157,7 +157,7 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                 if (i.getType() != ItemType.POKEBALL) {
                     Zaino.selectItem(i);
                     ViewController.getController();
-                    ViewController.team(false, true);
+                    ViewController.team(true, true);
                 } else {
                     Zaino.selectItem(i);
                     if (MainController.getController().getState() == State.FIGHTING) {

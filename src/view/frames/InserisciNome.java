@@ -34,9 +34,7 @@ public class InserisciNome {
 		f.setBounds(100, 100, 400, 300);
 		f.getContentPane().setLayout(null);
 
-		JTextArea inserisciNome = new JTextArea();
-		inserisciNome.setHighlighter(null);
-		inserisciNome.setEditable(false);
+		JLabel inserisciNome = new JLabel();
     	inserisciNome.setBackground(SystemColor.control);
     	inserisciNome.setFont(new Font("Elephant", Font.PLAIN, 16));
     	inserisciNome.setText("Nome (4 - 20 [blazeit])");

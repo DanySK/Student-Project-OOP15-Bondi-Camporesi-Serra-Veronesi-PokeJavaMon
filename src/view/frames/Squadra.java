@@ -98,6 +98,7 @@ class Panel2 extends JPanel
                     if (MainController.getController().getState() == State.MENU) {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
                             PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
+                            Squadra.dispose();
                         } else {
                             System.out.println("CANNOT SELECT THAT POKEMON");
                         }
@@ -147,8 +148,8 @@ class Panel2 extends JPanel
                     Squadra.dispose();
                 }
             });
-            if (bl) {
-                but4.setEnabled(true);
+            if (!bl) {
+                but4.setEnabled(false);
             }
             add(but4);
            }
