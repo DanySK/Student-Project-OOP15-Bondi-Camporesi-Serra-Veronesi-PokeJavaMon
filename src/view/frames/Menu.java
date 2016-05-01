@@ -7,6 +7,7 @@ import javax.swing.*;
 import controller.MainController;
 import controller.ViewController;
 import controller.parameters.State;
+import model.player.PlayerImpl;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -50,7 +51,11 @@ public Menu() {
 		box.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				/*f.dispose();*/
- 				ViewController.getController().box();
+ 				if (PlayerImpl.getPlayer().getBox().getBoxSize() < 1) {
+ 				    System.out.println("NO PKMN IN BOX");
+ 				} else {
+ 				   ViewController.getController().box();
+ 				}
 			}});
 		
 		JButton zaino = new JButton("Zaino");
