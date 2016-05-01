@@ -178,3 +178,12 @@ class Panel2 extends JPanel
            }
     }}
 
+/*add(new JLabel());
+add(new JLabel("Livello"));
+add(new JLabel("HpCorrenti"));
+add(new JLabel("HpMax"));   
+add(new JLabel(""));
+add(new JLabel(""));
+add(new JLabel(""));
+add(new JLabel(""));
+add(new JLabel(""));*/

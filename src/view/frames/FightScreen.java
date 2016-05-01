@@ -16,8 +16,10 @@ import javax.swing.border.LineBorder;
 
 import controller.view.ViewController;
 import exceptions.CannotEscapeFromTrainerException;
+import model.fight.FightVsWildPkm;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
+import model.pokemon.Stat;
 import view.resources.MessageFrame;
 
 import java.awt.event.KeyAdapter;
@@ -136,6 +138,7 @@ public class FightScreen extends JPanel{
 			}
 		});
 		Mossa2.setBounds(113, 0, 113, 30);
+		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Mossa2.setEnabled(false);
 		panel_3.add(Mossa2);
 		
 		JButton Mossa3 = new JButton("Mossa3");
@@ -143,7 +146,7 @@ public class FightScreen extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
 				panel_2.setVisible(true);
-                                panel_3.setVisible(false);
+                panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
 			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
 			    } else {
@@ -152,6 +155,7 @@ public class FightScreen extends JPanel{
 			}
 		});
 		Mossa3.setBounds(0, 30, 113, 30);
+		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Mossa3.setEnabled(false);
 		panel_3.add(Mossa3);
 		
 		JButton Mossa4 = new JButton("Mossa4");
@@ -168,9 +172,11 @@ public class FightScreen extends JPanel{
 			}
 		});
 		Mossa4.setBounds(113, 30, 113, 30);
+		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Mossa4.setEnabled(false);
 		panel_3.add(Mossa4);
 
 		JTextArea JTextArea = new JTextArea("Premio invio per continuare il fight!");
+		JTextArea.setEditable(false);
 		JTextArea.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -231,7 +237,7 @@ public class FightScreen extends JPanel{
             	double maxHP = 200; /*get maxHealth*/
         		double HP = 200; /*get currentHealth*/
         		double Scale = HP / maxHP;
-        	    
+        			
         		double maxHP2 = 200; /*get maxHealth*/
         		double HP2 = 75; /*get currentHealth*/
         		double Scale2 = HP2 / maxHP2;
@@ -242,6 +248,8 @@ public class FightScreen extends JPanel{
                /* g.drawRect (10, 10, width, 5); */
                 g.fillRect(20, 20, (int) (width * Scale), 7);
                 g.fillRect(272, 130, (int) (width * Scale2), 7);
+                repaint();
+                repaint();
                 
                 g.drawImage(image, 300, 20, this);
                 g.drawImage(image2, 50, 130, this);
