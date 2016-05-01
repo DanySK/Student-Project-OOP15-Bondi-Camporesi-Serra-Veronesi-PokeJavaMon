@@ -33,6 +33,17 @@ public class SaveController implements SaveControllerInterface {
     
     private SaveController() {}
     
+    public static SaveController getController() {
+        if (SINGLETON == null) {
+            synchronized (SaveController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new SaveController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
+    
     private void setup() {
         root = new Element(XMLParameters.TITLE.getName());
         document = new Document(root);
@@ -144,6 +155,7 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(box);
     }
     
+    @Override
     public void save() {
         setup();
         setPosition();
@@ -161,16 +173,5 @@ public class SaveController implements SaveControllerInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    
-    public static SaveController getController() {
-        if (SINGLETON == null) {
-            synchronized (SaveController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new SaveController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 }

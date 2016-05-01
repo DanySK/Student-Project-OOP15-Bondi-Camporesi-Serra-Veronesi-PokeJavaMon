@@ -13,6 +13,18 @@ public class MainMusicController implements MusicController {
     
     private MainMusicController() {}
     
+    public static MainMusicController getController() {
+        if (SINGLETON == null) {
+            synchronized (MainMusicController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new MainMusicController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
+    
+    @Override
     public void play(Music song) {        
         try {
             s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getPath()));
@@ -23,24 +35,15 @@ public class MainMusicController implements MusicController {
         m = song;
     }
     
+    @Override
     public void stop() {
         s.stop();
         s.dispose();
         m = null;
     }
     
+    @Override
     public Music playing() {
         return m;
-    }
-    
-    public static MainMusicController getController() {
-        if (SINGLETON == null) {
-            synchronized (MainMusicController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MainMusicController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 } 

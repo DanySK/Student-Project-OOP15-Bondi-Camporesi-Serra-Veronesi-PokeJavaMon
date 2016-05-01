@@ -5,7 +5,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import controller.ViewController;
+
+import controller.view.ViewController;
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.player.PlayerImpl;

@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-import controller.FightController;
-import controller.MainController;
-import controller.ViewController;
+import controller.fight.FightController;
+import controller.main.MainController;
 import controller.parameters.State;
+import controller.view.ViewController;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonNotFoundException;
@@ -163,7 +163,7 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                 if (i.getType() != ItemType.POKEBALL) {
                     Zaino.selectItem(i);
                     ViewController.getController();
-                    ViewController.team(true, true);
+                    ViewController.getController().team(true, true);
                 } else {
                     Zaino.selectItem(i);
                     if (MainController.getController().getState() == State.FIGHTING) {

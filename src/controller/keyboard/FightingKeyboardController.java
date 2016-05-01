@@ -8,6 +8,17 @@ public class FightingKeyboardController implements KeyboardController {
     
     private FightingKeyboardController() {}
     
+    public static FightingKeyboardController getController() {
+        if (SINGLETON == null) {
+            synchronized (FightingKeyboardController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new FightingKeyboardController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
+    
     @Override
     public boolean keyDown(int keycode) {
         return false;
@@ -51,17 +62,6 @@ public class FightingKeyboardController implements KeyboardController {
     @Override
     public boolean isKeyPressed() {
         return false;
-    }
-
-    public static FightingKeyboardController getController() {
-        if (SINGLETON == null) {
-            synchronized (FightingKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new FightingKeyboardController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 
     @Override

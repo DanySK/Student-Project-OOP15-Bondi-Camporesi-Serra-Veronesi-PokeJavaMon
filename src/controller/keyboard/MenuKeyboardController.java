@@ -8,6 +8,17 @@ public class MenuKeyboardController implements KeyboardController {
     
     private MenuKeyboardController() {}
     
+    public static MenuKeyboardController getController() {
+        if (SINGLETON == null) {
+            synchronized (MenuKeyboardController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new MenuKeyboardController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
+    
     @Override
     public boolean keyDown(int keycode) {
         return false;
@@ -51,17 +62,6 @@ public class MenuKeyboardController implements KeyboardController {
     @Override
     public boolean isKeyPressed() {
         return false;
-    }
-    
-    public static MenuKeyboardController getController() {
-        if (SINGLETON == null) {
-            synchronized (MenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MenuKeyboardController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 
     @Override

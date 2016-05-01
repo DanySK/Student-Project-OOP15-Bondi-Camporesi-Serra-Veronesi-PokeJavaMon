@@ -1,5 +1,6 @@
-package controller;
+package controller.main;
 
+import controller.fight.FightController;
 import controller.keyboard.FightingKeyboardController;
 import controller.keyboard.FirstMenuKeyboardController;
 import controller.keyboard.KeyboardController;
@@ -11,18 +12,17 @@ import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
-import model.pokemon.InitializeMoves;
 import view.resources.Play;
 
-public class MainController {
+public class MainController implements MainControllerInterface {
     
     private State state;
     private KeyboardController keyboardController;
-    private static MainController SINGLETON; 
+    private static MainControllerInterface SINGLETON; 
     
     private MainController() {}
     
-    public static MainController getController() {
+    public static MainControllerInterface getController() {
         if (SINGLETON == null) {
             synchronized (MainController.class) {
                 if (SINGLETON == null) {
@@ -33,6 +33,7 @@ public class MainController {
         return SINGLETON;
     }
 
+    @Override
     public void updateStatus(State s) {
         state = s;
         switch (s) {
@@ -85,34 +86,33 @@ public class MainController {
         }
     }
     
+    @Override
     public State getState() {
         return state;
     }
     
+    @Override
     public boolean isKeyPressed() {
         return keyboardController.isKeyPressed();
     }
 
+    @Override
     public KeyboardController getCurrentController() {
         return keyboardController;
     }
     
+    @Override
     public void updateSpeed() {
         keyboardController.updateSpeed();
     }
     
+    @Override
     public Directions getDirection() {
         return keyboardController.getDirection();
     }
     
+    @Override
     public void checkEncounter() {
         keyboardController.checkEncounter();
-    }
-    
-    public static void main(String[] args) {
-        new Installer().install();
-        MainController.getController().updateStatus(State.FIRST_MENU);
-        InitializeMoves.initAllPokemonsTypes();
-        ViewController.getController().firstMenu();
     }
 }

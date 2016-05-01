@@ -32,6 +32,17 @@ public class LoadController implements LoadControllerInterface {
     
     private LoadController() {}
     
+    public static LoadController getController() {
+        if (SINGLETON == null) {
+            synchronized (LoadController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new LoadController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
+    
     private void setup() {
         builder = new SAXBuilder();
         try {
@@ -82,8 +93,7 @@ public class LoadController implements LoadControllerInterface {
             } catch (SquadFullException e1) {
                 e1.printStackTrace();
             }
-        }
-        
+        }     
     }
     
     private void getTrainers() {
@@ -131,6 +141,7 @@ public class LoadController implements LoadControllerInterface {
         BoxImpl.getBox().setPokemons(box);
     }
     
+    @Override
     public void load(final PokeMap map) {
         setup();
         getMoney();
@@ -143,18 +154,8 @@ public class LoadController implements LoadControllerInterface {
         getBox();
     }
     
+    @Override
     public boolean saveExists() {
         return new File(FILE_NAME).exists();
-    }
-    
-    public static LoadController getController() {
-        if (SINGLETON == null) {
-            synchronized (LoadController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new LoadController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 }

@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
-import controller.MainController;
-import controller.ViewController;
+
+import controller.main.MainController;
 import controller.parameters.State;
+import controller.view.ViewController;
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;

@@ -3,7 +3,6 @@ package controller.parameters;
 import java.io.File;
 
 public enum BackSpriteImage {
-
     MISSINGNO("/B000.png", System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Sprites" + File.separator + "Back" + File.separator + "B000.png"),
     BULBASAUR("/B001.png", System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Sprites" + File.separator + "Back" + File.separator + "B001.png"),
     IVYSAUR("/B002.png", System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Sprites" + File.separator + "Back" + File.separator + "B002.png"),

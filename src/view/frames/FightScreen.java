@@ -13,7 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
-import controller.ViewController;
+
+import controller.view.ViewController;
 import exceptions.CannotEscapeFromTrainerException;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
@@ -75,7 +76,7 @@ public class FightScreen extends JPanel{
 //				ViewController.team();
                         if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                             ViewController.getController();
-                            ViewController.team(true, false);
+                            ViewController.getController().team(true, false);
                         } else {
                             new MessageFrame("NO POKEMON ALIVE", null);
                         }
@@ -88,7 +89,7 @@ public class FightScreen extends JPanel{
 		panel_1.add(Zaino);
 		Zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    ViewController.bag();	        
+			    ViewController.getController().bag();	        
 			}
 		});
 		

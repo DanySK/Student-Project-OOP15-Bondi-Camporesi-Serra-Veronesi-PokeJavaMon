@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import controller.MainController;
-import controller.ViewController;
+import controller.main.MainController;
 import controller.parameters.State;
+import controller.view.ViewController;
 import model.player.PlayerImpl;
 import view.resources.MessageFrame;
 
@@ -32,7 +32,7 @@ public Menu() {
 			public void actionPerformed(ActionEvent ae) {
 				ViewController.getController();
                 /*f.dispose();*/
- 				ViewController.team(true, false);
+ 				ViewController.getController().team(true, false);
 			}});
 		
 		JButton salva = new JButton("Salva");
@@ -66,7 +66,7 @@ public Menu() {
 			public void actionPerformed(ActionEvent ae) {
 				ViewController.getController();
                 /*f.dispose();*/
- 				ViewController.bag();
+ 				ViewController.getController().bag();
 			}});
 		
 		JButton esci = new JButton("Riprendi");

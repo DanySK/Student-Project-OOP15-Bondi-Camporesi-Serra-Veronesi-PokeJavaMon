@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import controller.fight.FightController;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
@@ -26,7 +27,6 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.pokemon.WeaknessTable;
 import model.squad.Squad;
-import controller.FightController;
 
 public class FightVsWildPkm implements Fight {
 	final private static int SUCCESS_PROBABILTY = 255;

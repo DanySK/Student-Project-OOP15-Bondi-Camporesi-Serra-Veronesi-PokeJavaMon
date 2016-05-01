@@ -6,10 +6,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import controller.MainController;
-import controller.ViewController;
+
+import controller.main.MainController;
 import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
+import controller.view.ViewController;
 import exceptions.SquadFullException;
 import model.inventory.InventoryImpl;
 import model.items.Pokeball.PokeballType;

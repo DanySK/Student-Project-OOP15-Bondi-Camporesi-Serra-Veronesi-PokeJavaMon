@@ -1,4 +1,4 @@
-package view;
+package view.sprite;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -6,7 +6,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
-import controller.MainController;
+
+import controller.main.MainController;
 import controller.parameters.Directions;
 import controller.parameters.FilePath;
 import model.utilities.Pair;

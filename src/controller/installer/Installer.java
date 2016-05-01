@@ -1,4 +1,4 @@
-package controller;
+package controller.installer;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,10 +14,11 @@ import controller.parameters.FilePath;
 import controller.parameters.Music;
 import controller.parameters.FrontSpriteImage;
 
-public class Installer {
+public class Installer implements InstallerInterface {
 
     private boolean success;
 
+    @Override
     public void install() {
         if (!Files.exists(Paths.get(FilePath.MAINFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = (new File(FilePath.MAINFOLDER.getAbsolutePath())).mkdirs();

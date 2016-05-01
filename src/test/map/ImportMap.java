@@ -1,4 +1,4 @@
-package test;
+package test.map;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;

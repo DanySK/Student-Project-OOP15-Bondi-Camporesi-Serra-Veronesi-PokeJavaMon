@@ -2,16 +2,27 @@ package controller.keyboard;
 
 import com.badlogic.gdx.Input.Keys;
 
-import controller.MainController;
-import controller.ViewController;
+import controller.main.MainController;
 import controller.parameters.Directions;
 import controller.parameters.State;
+import controller.view.ViewController;
 
 public class FirstMenuKeyboardController implements KeyboardController {
 
     private static FirstMenuKeyboardController SINGLETON;
     
     private FirstMenuKeyboardController() {}
+    
+    public static FirstMenuKeyboardController getController() {
+        if (SINGLETON == null) {
+            synchronized (FirstMenuKeyboardController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new FirstMenuKeyboardController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
     
     @Override
     public boolean keyDown(int keycode) {
@@ -27,12 +38,10 @@ public class FirstMenuKeyboardController implements KeyboardController {
     public boolean keyUp(int keycode) {
         switch(keycode) {
         case Keys.N:
-            // Chiudere il vecchio frame
             ViewController.getController().secondMenu();
             MainController.getController().updateStatus(State.SECOND_MENU);
             break;
         case Keys.C:
-            // Chiudere il vecchio frame
             ViewController.getController().map(false);
             MainController.getController().updateStatus(State.WALKING);
             break;
@@ -68,17 +77,6 @@ public class FirstMenuKeyboardController implements KeyboardController {
     @Override
     public boolean isKeyPressed() {
         return false;
-    }
-    
-    public static FirstMenuKeyboardController getController() {
-        if (SINGLETON == null) {
-            synchronized (FirstMenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new FirstMenuKeyboardController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 
     @Override

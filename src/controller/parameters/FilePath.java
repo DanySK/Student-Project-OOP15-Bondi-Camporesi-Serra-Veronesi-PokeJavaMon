@@ -3,7 +3,6 @@ package controller.parameters;
 import java.io.File;
 
 public enum FilePath {
-
     MAINFOLDER ("NONE", System.getProperty("user.home") + File.separator + "PokeJava"),
     SAVE ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Save"),
     MAPS ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Maps"),

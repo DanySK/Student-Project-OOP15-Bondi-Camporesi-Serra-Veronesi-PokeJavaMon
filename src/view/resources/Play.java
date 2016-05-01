@@ -12,12 +12,13 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import controller.MainController;
+
 import controller.load.LoadController;
+import controller.main.MainController;
 import controller.parameters.FilePath;
 import model.map.PokeMapImpl;
 import model.player.PlayerImpl;
-import view.PlayerSprite;
+import view.sprite.PlayerSprite;
 
 public class Play implements Screen {  
         private TiledMap map;

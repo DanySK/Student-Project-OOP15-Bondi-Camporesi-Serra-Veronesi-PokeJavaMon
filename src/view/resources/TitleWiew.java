@@ -9,10 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import controller.MainController;
-import controller.ViewController;
+
+import controller.main.MainController;
 import controller.parameters.FilePath;
 import controller.parameters.State;
+import controller.view.ViewController;
 
 public class TitleWiew {
     

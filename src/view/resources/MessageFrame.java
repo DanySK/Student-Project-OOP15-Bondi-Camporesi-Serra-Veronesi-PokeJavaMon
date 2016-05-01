@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.MainController;
+import controller.main.MainController;
 import controller.parameters.State;
 
 public class MessageFrame {

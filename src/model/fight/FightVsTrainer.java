@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import controller.FightController;
+import controller.fight.FightController;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import model.items.Item;

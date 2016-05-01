@@ -4,10 +4,10 @@ import javax.swing.JOptionPane;
 
 import com.badlogic.gdx.Input.Keys;
 
-import controller.MainController;
-import controller.ViewController;
+import controller.main.MainController;
 import controller.parameters.Directions;
 import controller.parameters.State;
+import controller.view.ViewController;
 import view.frames.InserisciNome;
 
 public class SecondMenuKeyboardController implements KeyboardController {
@@ -15,6 +15,17 @@ public class SecondMenuKeyboardController implements KeyboardController {
     private static SecondMenuKeyboardController SINGLETON;
     
     private SecondMenuKeyboardController() {}
+    
+    public static SecondMenuKeyboardController getController() {
+        if (SINGLETON == null) {
+            synchronized (SecondMenuKeyboardController.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = new SecondMenuKeyboardController();
+                }
+            }
+        }
+        return SINGLETON;
+    }
     
     @Override
     public boolean keyDown(int keycode) {
@@ -35,7 +46,6 @@ public class SecondMenuKeyboardController implements KeyboardController {
                 JOptionPane.showMessageDialog(null,"You Naive Idiot");
             }
             else {
-                // Chiudere il vecchio frame
                 ViewController.getController().setName(name);
                 ViewController.getController().map(true);
                 MainController.getController().updateStatus(State.WALKING);
@@ -73,17 +83,6 @@ public class SecondMenuKeyboardController implements KeyboardController {
     @Override
     public boolean isKeyPressed() {
         return false;
-    }
-    
-    public static SecondMenuKeyboardController getController() {
-        if (SINGLETON == null) {
-            synchronized (SecondMenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new SecondMenuKeyboardController();
-                }
-            }
-        }
-        return SINGLETON;
     }
 
     @Override
