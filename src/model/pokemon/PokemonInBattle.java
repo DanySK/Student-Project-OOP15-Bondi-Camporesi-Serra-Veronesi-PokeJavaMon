@@ -1,18 +1,28 @@
 package model.pokemon;
 
+/**
+ * A class that extends the abstract class {@link AbstractPokemon} implementing 
+ * {@link model.pokemon.AbstractPokemon#levelUp()}, {@link model.pokemon.AbstractPokemon#damage(int)} and {@link model.pokemon.AbstractPokemon#evolve()}.
+ * It also contains overrides {@link Object#equals(Object)} and {@link Object#hashCode()} to improve comparison.
+ * You can create instances of this class through {@link StaticPokemonFactory}
+ * @see Pokemon
+ * @see AbstractPokemon
+ * @see StaticPokemonFactory
+ */
 public class PokemonInBattle extends AbstractPokemon{
 
 	private boolean canEvolve;
-	private PokemonDB evolvesTo;
+	private Pokedex evolvesTo;
 
-	protected PokemonInBattle(PokemonDB pokemon, int lvl) {   
+	protected PokemonInBattle(Pokedex pokemon, int lvl) {   
 		super(pokemon, lvl);
-		if (pokemon.getEvolvesToPokemon() != PokemonDB.MISSINGNO) {
+		if (pokemon.getEvolvesToPokemon() != Pokedex.MISSINGNO) {
 			canEvolve = true;
 			evolvesTo = pokemon.getEvolvesToPokemon();
 		}
 	}
 	
+	@Override
 	public void levelUp() {
 	    if (this.getStat(Stat.LVL) == MAX_LEVEL) {
 	        return;
@@ -21,13 +31,10 @@ public class PokemonInBattle extends AbstractPokemon{
 	    updateStats();
     }
 	
-	public void evolveUp(){
-		if (checkIfEvolves() && canEvolve) {
-            evolve();
-            updateStats();
-        }
-	}
-        
+	/**
+	 * A method that tells if this Pokemon is ready to evolve, judgying by its level.
+	 * @return	true if it's ready to evolve, false if it isn't
+	 */
 	public boolean checkIfEvolves() {
 	    if (this.getStat(Stat.LVL) >= this.pokemon.getEvolveLevel()) {
 	        return true;
@@ -35,7 +42,8 @@ public class PokemonInBattle extends AbstractPokemon{
 	    return false;
 	}
 	
-	public void evolve() {
+	@Override
+	public void evolve() throws IllegalStateException {
 	    if (!canEvolve || !this.checkIfEvolves()) {
 	        throw new IllegalStateException();
 	    }
@@ -45,18 +53,28 @@ public class PokemonInBattle extends AbstractPokemon{
 	        this.evolvesTo = this.evolvesTo.getEvolvesToPokemon();
 	    } else {
 	        this.canEvolve = false;
-	        this.evolvesTo = PokemonDB.MISSINGNO;
+	        this.evolvesTo = Pokedex.MISSINGNO;
 	    }
 	}
 	
+	/**
+	 * A method that tells if a Pokemon will be able to evolve or if it has reached its final form
+	 * @return true if it still can evolve, false if not
+	 */
 	public boolean canEvolve() {
 	    return this.canEvolve;
 	}
 	
-	public PokemonDB evolvesTo() {
+	/**
+	 * A method that returns the {@link Pokedex} value of the Pokemon which it will evolve to
+	 * @return		The {@link Pokedex} value of its next evolved form
+	 * @see	Pokedex
+	 */
+	public Pokedex evolvesTo() {
 	    return this.evolvesTo;
 	}
 	
+	@Override
 	public void damage(final int dmg) {
 	    this.currentHP -= dmg;
 	    if (this.currentHP < 0) {
@@ -64,7 +82,11 @@ public class PokemonInBattle extends AbstractPokemon{
 	    }
 	}
 
-    @Override
+    
+    /**
+     * Overriding {@link Object#hashCode()} to make Pokemon comparison faster
+     */
+	@Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -72,7 +94,11 @@ public class PokemonInBattle extends AbstractPokemon{
         return result;
     }
 
-
+    /**
+     * Overriding {@link Object#equals(Object)} to make Pokemon comparison faster
+     * @param obj	the other {@link Pokemon} to make a comparison with	
+     * @return true if the this Pokemon and obj are the same
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

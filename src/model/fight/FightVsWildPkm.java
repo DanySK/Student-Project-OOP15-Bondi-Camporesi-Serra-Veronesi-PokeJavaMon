@@ -21,7 +21,7 @@ import model.player.Player;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.pokemon.WeaknessTable;
@@ -53,7 +53,7 @@ public class FightVsWildPkm implements Fight {
 	protected boolean isEnemyExhausted = false;
 	protected boolean runValue;
 	protected boolean isAllyFastest;
-	protected  List<PokemonDB> pkmsThatMustEvolve = new ArrayList<>();
+	protected  List<Pokedex> pkmsThatMustEvolve = new ArrayList<>();
 	
 	protected final Map<Stat, Double> createBoostsMap(){
 		final Map<Stat, Double> boosts = new HashMap<>();
@@ -433,8 +433,8 @@ public class FightVsWildPkm implements Fight {
 		}
 	}
 	
-	public List<PokemonDB> getPkmsThatMustEvolve(){
-		List<PokemonDB> pmksThatMustEvolve = new ArrayList<>();
+	public List<Pokedex> getPkmsThatMustEvolve(){
+		List<Pokedex> pmksThatMustEvolve = new ArrayList<>();
 		for(PokemonInBattle pkm : player.getSquad().getPokemonList()){
 			if(pkm.checkIfEvolves()){
 				pmksThatMustEvolve.add(pkm.getPokemon());

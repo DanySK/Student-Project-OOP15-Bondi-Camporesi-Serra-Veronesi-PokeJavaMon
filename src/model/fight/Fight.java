@@ -2,7 +2,7 @@ package model.fight;
 
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 import model.items.Item;
@@ -30,7 +30,7 @@ public interface Fight {
 	public void moveTurn(final Move move);
 	
 	//da chiamare nella view a fine combattimento
-	public List<PokemonDB> getPkmsThatMustEvolve();
+	public List<Pokedex> getPkmsThatMustEvolve();
 	
 	public Pokemon getCurrentEnemyPokemon();
 }

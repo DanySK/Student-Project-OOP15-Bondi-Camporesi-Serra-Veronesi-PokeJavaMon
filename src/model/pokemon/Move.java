@@ -1,5 +1,13 @@
 package model.pokemon;
 
+/**
+ * A "database" in form of Enumeration that contains all the possible Moves
+ * Each entry has a {@link PokemonType}, a {@link Stat} modifies (excluding LVL and EXP), 
+ * a boolean value which indicates whether or not the Move affects the enemy or the {@link Pokemon} itself,
+ * and as well as the actual value of the Move.
+ * @see Pokemon
+ * @see WeaknessTable
+ */
 public enum Move {
 
     NULLMOVE(PokemonType.NONE, Stat.HP, false, 0),

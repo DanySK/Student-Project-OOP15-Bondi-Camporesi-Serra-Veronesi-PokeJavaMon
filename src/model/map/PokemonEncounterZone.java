@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 import com.google.common.collect.Range;
 
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.PokemonRarity;
 import model.pokemon.StaticPokemonFactory;
@@ -24,7 +24,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 	private static final long serialVersionUID = 4501693972739348662L;
 	
 	private final int id;
-	private final List<PokemonDB> pokemonList;
+	private final List<Pokedex> pokemonList;
 	private final int avgLvl;
     private final static double ENCOUNTER_CHANCE = 20 / 187.5;
     private final static int LEVEL_VARIATION = 2;
@@ -37,7 +37,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 		this.pokemonList = new ArrayList<>();
 		
 		for (final String pkmn : pokemonList.split(" ")) {
-			for (final PokemonDB pkmnID : PokemonDB.values()) {
+			for (final Pokedex pkmnID : Pokedex.values()) {
 				if (pkmn.equals(pkmnID.toString())) {
 					this.pokemonList.add(pkmnID);
 				}
@@ -68,16 +68,16 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
             throw new IllegalStateException("Cannot encounter Pokemon if the value is false");
         }
         
-        final Map<PokemonDB, Range<java.lang.Double>> chanceMap = new HashMap<>();
+        final Map<Pokedex, Range<java.lang.Double>> chanceMap = new HashMap<>();
         double probabilitySum = 0;
         final Random r = new Random();
         
-        for (final PokemonDB pkmn : this.pokemonList) {
+        for (final Pokedex pkmn : this.pokemonList) {
             probabilitySum += getPokemonChance(pkmn);
         }
         
         double tmpSum = 0;
-        for (final PokemonDB pkmn : this.pokemonList) {
+        for (final Pokedex pkmn : this.pokemonList) {
             double pkmnProbability = getPokemonChance(pkmn) / probabilitySum;
             final Range<java.lang.Double> range = Range.closedOpen(tmpSum, pkmnProbability + tmpSum);
             chanceMap.put(pkmn, range);
@@ -86,7 +86,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
         
         double chance = r.nextDouble();
         
-        for (final Entry<PokemonDB, Range<java.lang.Double>> e : chanceMap.entrySet()) {
+        for (final Entry<Pokedex, Range<java.lang.Double>> e : chanceMap.entrySet()) {
             if (e.getValue().contains(chance)) {
                 final int levelVariation = r.nextInt(LEVEL_VARIATION * 2);
                 final int level = this.avgLvl + levelVariation - LEVEL_VARIATION;
@@ -102,7 +102,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
         
     }
 	
-    private double getPokemonChance(final PokemonDB pkmn) {
+    private double getPokemonChance(final Pokedex pkmn) {
         switch (pkmn.getRarity()) {
         case COMMON :
             return (double) PokemonRarity.COMMON.getCoeff() / 25.5;
@@ -124,7 +124,7 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 		return this.contains(x, y);
 	}
 
-	public List<PokemonDB> getAvailablePokemon() {
+	public List<Pokedex> getAvailablePokemon() {
 		return Collections.unmodifiableList(this.pokemonList);
 	}
 

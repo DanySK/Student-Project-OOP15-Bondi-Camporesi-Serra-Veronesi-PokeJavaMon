@@ -5,10 +5,10 @@ public final class StaticPokemonFactory {
 	private StaticPokemonFactory() {}
 	
 	public static PokemonInBattle createPokemon(final String pkmnID, final int lvl, final int hp, final int exp, final String[] moves) {
-		PokemonDB pokemonID = null;
+		Pokedex pokemonID = null;
 		Move[] moveset = new Move[PokemonInBattle.MAX_MOVES];
 		
-		for (final PokemonDB p : PokemonDB.values()) {
+		for (final Pokedex p : Pokedex.values()) {
 			if (pkmnID.toUpperCase().equals(p.name())) {
 				pokemonID = p;
 			}
@@ -35,11 +35,11 @@ public final class StaticPokemonFactory {
 		return retPkmn;
 	}
 
-	public static PokemonInBattle createPokemon(final PokemonDB pkmnID, final int lvl) {
+	public static PokemonInBattle createPokemon(final Pokedex pkmnID, final int lvl) {
 		return new PokemonInBattle(pkmnID, lvl);
 	}
 
-	public static PokemonInBattle createPokemon(final PokemonDB pkmnID, final int lvl, final int hp) {
+	public static PokemonInBattle createPokemon(final Pokedex pkmnID, final int lvl, final int hp) {
 		final PokemonInBattle retPkmn = new PokemonInBattle(pkmnID, lvl);
 		retPkmn.changeStat(Stat.HP, hp);
 		return retPkmn;

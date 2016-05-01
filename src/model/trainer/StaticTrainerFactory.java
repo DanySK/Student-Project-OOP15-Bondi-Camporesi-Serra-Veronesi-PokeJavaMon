@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import model.map.Drawable.Direction;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
@@ -18,7 +18,7 @@ public final class StaticTrainerFactory {
 	private static Squad extractSquad(final Map<String, Integer> pkmnList) {
 		final ArrayList<PokemonInBattle> tmpList = new ArrayList<>();
 		for (final String pkmn : pkmnList.keySet()) {
-			for (final PokemonDB p : PokemonDB.values()) {
+			for (final Pokedex p : Pokedex.values()) {
 				if (p.toString().equals(pkmn)) {
 					tmpList.add(StaticPokemonFactory.createPokemon(p, pkmnList.get(pkmn)));
 				}
@@ -34,7 +34,7 @@ public final class StaticTrainerFactory {
 		for (final String pkmn_lvl : pkmns_lvl) {
 			final String pkmn = pkmn_lvl.split("=")[0].toUpperCase();
 			final int lvl = Integer.parseInt(pkmn_lvl.split("=")[1]);
-			for (final PokemonDB p : PokemonDB.values()) {
+			for (final Pokedex p : Pokedex.values()) {
 				if (p.toString().equals(pkmn)) {
 					tmpList.add(StaticPokemonFactory.createPokemon(p, lvl));
 				}

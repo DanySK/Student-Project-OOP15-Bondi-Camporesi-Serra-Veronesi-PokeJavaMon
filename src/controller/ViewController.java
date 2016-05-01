@@ -15,7 +15,7 @@ import model.items.Item;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import view.PlayerSprite;
 import view.frames.*;
 import view.resources.TiledMapGame;
@@ -113,7 +113,7 @@ public final class ViewController {
         FightController.getController().run();
     }
     
-    public List<PokemonDB> getEvolutions() {
+    public List<Pokedex> getEvolutions() {
         return FightController.getController().resolveEvolution();
     }
     

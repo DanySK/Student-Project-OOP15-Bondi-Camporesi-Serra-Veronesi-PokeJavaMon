@@ -18,7 +18,7 @@ import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.Stat;
 import model.pokemon.StaticPokemonFactory;  
 import java.util.HashMap;
@@ -95,7 +95,7 @@ public class InserisciNome {
 	    	           }
 	    	        else {
 	    	        	try {
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.BULBASAUR, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BULBASAUR, 5));
 		                 } catch (SquadFullException ex) {
 		                     ex.printStackTrace();
 		                 }
@@ -114,7 +114,7 @@ public class InserisciNome {
 	    	           }
 	    	        else {
 	    	        	try {
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.CHARMANDER, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5));
 		                 } catch (SquadFullException ex) {
 		                     ex.printStackTrace();
 		                 }
@@ -133,7 +133,7 @@ public class InserisciNome {
 	    	           }
 	    	        else {
 	    	        	try {
-		                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.SQUIRTLE, 5));
+		                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 5));
 		                } catch (SquadFullException ex) {
 		                    ex.printStackTrace();
 		                }

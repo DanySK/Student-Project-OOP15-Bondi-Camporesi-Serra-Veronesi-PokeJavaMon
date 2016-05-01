@@ -13,7 +13,7 @@ import model.items.Pokeball;
 import model.player.PlayerImpl;
 import model.pokemon.InitializeMoves;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.Stat;
 import model.pokemon.StaticPokemonFactory;
 
@@ -25,7 +25,7 @@ public class SaveTest {
         PlayerImpl.getPlayer().setPosition(28*16, (299 - 177) * 16);
         PlayerImpl.getPlayer().setName("DEFAULT_NAME");
         try {
-            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(PokemonDB.BLASTOISE, 30));
+            PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BLASTOISE, 30));
         } catch (SquadFullException e) {
             e.printStackTrace();
         }
@@ -37,8 +37,8 @@ public class SaveTest {
         balls.put(Pokeball.PokeballType.Ultraball.name(), 35);
         InventoryImpl.initializeInventory(potions, boosts, balls);
         List<Pokemon> box = new ArrayList<Pokemon>();
-        box.add(StaticPokemonFactory.createPokemon(PokemonDB.CHARIZARD, 30));
-        box.add(StaticPokemonFactory.createPokemon(PokemonDB.VENUSAUR, 30));
+        box.add(StaticPokemonFactory.createPokemon(Pokedex.CHARIZARD, 30));
+        box.add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 30));
         BoxImpl.getBox().setPokemons(box);
         SaveController.getController().save();
     }

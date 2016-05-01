@@ -9,16 +9,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
+
+/**
+ * Abstract class that implements {@link Pokemon} interface
+ * leaving {@link levelUp()}, {@link damage(final int dmg)} and {@link evolve()} as abstract methods
+ * It is extended by {@link PokemonInBattle}
+ * @see Pokemon
+ * @see PokemonInBattle
+ */
 public abstract class AbstractPokemon implements Pokemon {
     
 
-/*
- * -PokemonInSquadra(Mappa Statistiche?, PS Totali, Ps Attuali, Attacco,
- *  Difesa, Velocità, ExpNecessari, Exp Attuali, Set Mosse) //WIP
- */
     public static final int MAX_MOVES = 4;
     
-    protected PokemonDB pokemon;
+    protected Pokedex pokemon;
     protected Map<Stat, Integer> mapStat;
     protected int currentHP;
     protected Move[] currentMoves = new Move[MAX_MOVES];
@@ -26,7 +30,7 @@ public abstract class AbstractPokemon implements Pokemon {
     public static int MAX_LEVEL = 50;
     public static int MIN_LEVEL = 3;
 
-    public AbstractPokemon(final PokemonDB pokemon,int lvl) {
+    public AbstractPokemon(final Pokedex pokemon,int lvl) {
         if (lvl > MAX_LEVEL) {
         	lvl = MAX_LEVEL;
         }
@@ -54,6 +58,14 @@ public abstract class AbstractPokemon implements Pokemon {
         
     }
     
+    /**
+     * Method that finds the last 4 {@link Move}s (or less if there are not enough moves) the Pokemon can learn
+     * starting from a given level.
+     * The Moves are taken from the {@link Pokedex} value of the Pokemon.
+     * @param 	lvl		the level
+     * @return 	A 		{@link List} of the last <= 4 {@link Move}s the {@link Pokemon} can learn
+     * @see 		Pokedex
+     */
     protected List<Move> getLast4Moves(final int lvl) {
         final List<Move> retList = new ArrayList<>();
         final Map<Integer, Move> totalMoveset = this.pokemon.getMoveset();
@@ -80,8 +92,11 @@ public abstract class AbstractPokemon implements Pokemon {
         
     }
 
-    /*
-     * Da Migliorare
+    /**
+     * Method that calculates how much a {@link Stat} will be with a certain level
+     * @param s		the {@link Stat}
+     * @param lvl	the level
+     * @return		the value of the {@link Stat} at the selected value
      */
     protected int getStatFormula(final Stat s, final int lvl) {
         switch (s) {
@@ -102,18 +117,27 @@ public abstract class AbstractPokemon implements Pokemon {
         }
     }
     
-
+    /**
+     * Method that calculates the necessary exp to jump from this current level
+     * to the next one, starting with 0 exp.
+     * @return 		the necessary exp to level up
+     */
     protected int getLevelExp() {
         return (int) Math.pow(mapStat.get(Stat.LVL) , 3) * 4 / 5;
     }
     
+    /**
+     * Method that changes a {@link Stat}
+     * @param s			indicates which {@link Stat}
+     * @param newValue	the new value that will substitute the current one
+     */
     protected void changeStat(final Stat s, final int newValue) {
         this.mapStat.replace(s, newValue);
         
     }
     
     @Override
-    public PokemonDB getPokemon() {
+    public Pokedex getPokemon() {
         return this.pokemon;
     }
 
@@ -147,6 +171,9 @@ public abstract class AbstractPokemon implements Pokemon {
         return Arrays.asList(this.currentMoves);
     }
     
+    /**
+     * Method that updates {@link Stat}s accordingly to the level
+     */
     protected void updateStats() {
         for (final Entry<Stat, Integer> e : mapStat.entrySet()) {
             if (e.getKey() == Stat.LVL || e.getKey() == Stat.EXP) {
@@ -161,13 +188,11 @@ public abstract class AbstractPokemon implements Pokemon {
     @Override
     public abstract void levelUp();
     
-    @Override
-    public abstract void evolveUp();
 
     @Override
-    public void learnMove(Move oldMove, Move newMove) {
+    public void learnMove(Move oldMove, Move newMove) throws IllegalArgumentException {
             if (!containsThisMove(Arrays.asList(this.currentMoves), oldMove)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("oldMove cannot be found in the current moveset");
             }
         
             for (int i = 0; i < MAX_MOVES; i++) {
@@ -188,7 +213,10 @@ public abstract class AbstractPokemon implements Pokemon {
     }
 
     @Override
-    public void heal(int value) {
+    public void heal(int value) throws IllegalArgumentException {
+    	if (value < 0) {
+    		throw new IllegalArgumentException("Heal value cannot be negative");
+    	}
         this.currentHP += value;
         if (this.currentHP > this.mapStat.get(Stat.HP)) {
             this.currentHP = this.mapStat.get(Stat.HP);
@@ -197,6 +225,9 @@ public abstract class AbstractPokemon implements Pokemon {
 
     @Override
     public abstract void evolve();
+    
+    @Override
+    public abstract void damage(final int dmg);
     
     @Override
     public String toString() {

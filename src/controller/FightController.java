@@ -15,7 +15,7 @@ import model.items.Item;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
@@ -92,7 +92,7 @@ public class FightController {
         fight.itemTurn(it, (PokemonInBattle) pk);
     }
     
-    public List<PokemonDB> resolveEvolution() {
+    public List<Pokedex> resolveEvolution() {
         return fight.getPkmsThatMustEvolve();
     }
     

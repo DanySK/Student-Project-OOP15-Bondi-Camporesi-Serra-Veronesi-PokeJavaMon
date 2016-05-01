@@ -25,9 +25,9 @@ public final class InitializeMoves {
                 .put(50, Move.OUTRAGE)
                 .build();
     
-        PokemonDB.CHARMANDER.init(initMap);
-        PokemonDB.CHARMELEON.init(initMap);
-        PokemonDB.CHARIZARD.init(initMap);
+        Pokedex.CHARMANDER.initializeMoveset(initMap);
+        Pokedex.CHARMELEON.initializeMoveset(initMap);
+        Pokedex.CHARIZARD.initializeMoveset(initMap);
         
         /*Initialization of waterStarters using Guava immutableMap*/
         initMap = ImmutableMap.<Integer, Move>builder()
@@ -41,9 +41,9 @@ public final class InitializeMoves {
                 .put(45, Move.HYPERBEAM)
                 .put(50, Move.HYDROCANNON)
                 .build();
-        PokemonDB.SQUIRTLE.init(initMap);
-        PokemonDB.WARTORTLE.init(initMap);
-        PokemonDB.BLASTOISE.init(initMap);
+        Pokedex.SQUIRTLE.initializeMoveset(initMap);
+        Pokedex.WARTORTLE.initializeMoveset(initMap);
+        Pokedex.BLASTOISE.initializeMoveset(initMap);
         
         /*Initialization of grassStarters with Guava ImmutableMap*/
         initMap = ImmutableMap.<Integer, Move>builder()
@@ -58,9 +58,9 @@ public final class InitializeMoves {
                 .put(42, Move.BELCH)
                 .put(50, Move.FRENZY_PLANT)
                 .build();
-        PokemonDB.BULBASAUR.init(initMap);
-        PokemonDB.IVYSAUR.init(initMap);
-        PokemonDB.VENUSAUR.init(initMap);
+        Pokedex.BULBASAUR.initializeMoveset(initMap);
+        Pokedex.IVYSAUR.initializeMoveset(initMap);
+        Pokedex.VENUSAUR.initializeMoveset(initMap);
         
         /*Initialization of Pidgey Evo */
         initMap = ImmutableMap.<Integer, Move>builder()
@@ -74,9 +74,9 @@ public final class InitializeMoves {
                 .put(42, Move.SCREECH)
                 .put(50, Move.HYPERBEAM)
                 .build();
-        PokemonDB.PIDGEY.init(initMap);
-        PokemonDB.PIDGEOTTO.init(initMap);
-        PokemonDB.PIDGEOT.init(initMap);
+        Pokedex.PIDGEY.initializeMoveset(initMap);
+        Pokedex.PIDGEOTTO.initializeMoveset(initMap);
+        Pokedex.PIDGEOT.initializeMoveset(initMap);
         
         /*Initialization of Rattata Evo */
         initMap = ImmutableMap.<Integer, Move>builder()
@@ -89,8 +89,8 @@ public final class InitializeMoves {
                 .put(42, Move.SCREECH)
                 .put(50, Move.HYPERBEAM)
                 .build();
-        PokemonDB.RATTATA.init(initMap);
-        PokemonDB.RATICATE.init(initMap);
+        Pokedex.RATTATA.initializeMoveset(initMap);
+        Pokedex.RATICATE.initializeMoveset(initMap);
         
         /*Initialization of Pikachu Evo*/
         initMap = ImmutableMap.<Integer, Move>builder()
@@ -104,8 +104,8 @@ public final class InitializeMoves {
                 .put(42, Move.SWORD_DANCE)
                 .put(50, Move.OUTRAGE)
                 .build();
-        PokemonDB.PIKACHU.init(initMap);
-        PokemonDB.RAICHU.init(initMap);
+        Pokedex.PIKACHU.initializeMoveset(initMap);
+        Pokedex.RAICHU.initializeMoveset(initMap);
         
         initMap = ImmutableMap.<Integer, Move>builder()
                 .put(3, Move.POUND)
@@ -118,8 +118,8 @@ public final class InitializeMoves {
                 .put(42, Move.SWORD_DANCE)
                 .put(50, Move.HYPERBEAM)
                 .build();
-        PokemonDB.SANDSHREW.init(initMap);
-        PokemonDB.SANDSLASH.init(initMap);
+        Pokedex.SANDSHREW.initializeMoveset(initMap);
+        Pokedex.SANDSLASH.initializeMoveset(initMap);
         
         initMap = ImmutableMap.<Integer, Move>builder()
                 .put(3, Move.POUND)
@@ -132,8 +132,8 @@ public final class InitializeMoves {
                 .put(42, Move.HYDROPUMP)
                 .put(50, Move.BELCH)
                 .build();
-        PokemonDB.TENTACOOL.init(initMap);
-        PokemonDB.TENTACRUEL.init(initMap);
+        Pokedex.TENTACOOL.initializeMoveset(initMap);
+        Pokedex.TENTACRUEL.initializeMoveset(initMap);
         
         initMap = ImmutableMap.<Integer, Move>builder()
                 .put(3, Move.PECK)
@@ -147,20 +147,20 @@ public final class InitializeMoves {
                 .put(42, Move.BELCH)
                 .put(50, Move.HYPERBEAM)
                 .build();
-        PokemonDB.ZUBAT.init(initMap);
-        PokemonDB.GOLBAT.init(initMap);
+        Pokedex.ZUBAT.initializeMoveset(initMap);
+        Pokedex.GOLBAT.initializeMoveset(initMap);
         initMap = ImmutableMap.<Integer, Move>builder()
                 .put(35, Move.DRACO_METEOR)
                 .put(36, Move.OUTRAGE)
                 .put(37, Move.HYPERBEAM)
                 .put(39, Move.FLY)
                 .build();
-        PokemonDB.RAYQUAZA.init(initMap);
+        Pokedex.RAYQUAZA.initializeMoveset(initMap);
         
         initMap = ImmutableMap.<Integer, Move>builder()
                 .put(1, Move.NULLMOVE)
                 .build();
-        PokemonDB.MISSINGNO.init(initMap);
+        Pokedex.MISSINGNO.initializeMoveset(initMap);
         
 
     }

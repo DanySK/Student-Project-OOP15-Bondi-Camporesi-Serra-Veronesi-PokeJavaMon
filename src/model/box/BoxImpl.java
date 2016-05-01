@@ -8,7 +8,7 @@ import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonDB;
+import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.squad.Squad;
@@ -64,7 +64,7 @@ public class BoxImpl implements Box {
             throw new PokemonNotFoundException();
         }
         
-        if (pkmn.getPokemon() == PokemonDB.MISSINGNO) {
+        if (pkmn.getPokemon() == Pokedex.MISSINGNO) {
             throw new IllegalArgumentException();
         }
         
@@ -74,7 +74,7 @@ public class BoxImpl implements Box {
 
     public void putCapturedPokemon(final Pokemon pkmn) {
         
-        if (pkmn.getPokemon() == PokemonDB.MISSINGNO) {
+        if (pkmn.getPokemon() == Pokedex.MISSINGNO) {
             throw new IllegalArgumentException();
         }
         
