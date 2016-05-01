@@ -4,20 +4,17 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import controller.MainController;
 import controller.ViewController;
-import controller.parameters.FilePath;
+import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
 import exceptions.SquadFullException;
 import model.inventory.InventoryImpl;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
-import model.pokemon.Pokemon;
 import model.pokemon.Pokedex;
 import model.pokemon.Stat;
 import model.pokemon.StaticPokemonFactory;  
@@ -48,13 +45,13 @@ public class InserisciNome {
             Map<String, Integer> boostList = new HashMap<>();
             Map<String, Integer> ballList = new HashMap<>();
             potionList.put(PotionType.POTION.name(), 10);
-            potionList.put(PotionType.SUPERPOTION.name(), 20);
-            potionList.put(PotionType.HYPERPOTION.name(), 30);
-            boostList.put(Stat.SPD.name() + "X", 35);
-            boostList.put(Stat.DEF.name() + "X", 25);
-            boostList.put(Stat.ATK.name() + "X", 15);
-            ballList.put(PokeballType.Greatball.name(), 20);
-            ballList.put(PokeballType.Ultraball.name(), 30);
+            potionList.put(PotionType.SUPERPOTION.name(), 0);
+            potionList.put(PotionType.HYPERPOTION.name(), 0);
+            boostList.put(Stat.SPD.name() + "X", 0);
+            boostList.put(Stat.DEF.name() + "X", 0);
+            boostList.put(Stat.ATK.name() + "X", 0);
+            ballList.put(PokeballType.Greatball.name(), 0);
+            ballList.put(PokeballType.Ultraball.name(), 0);
             ballList.put(PokeballType.Pokeball.name(), 10);
             InventoryImpl.initializeInventory(potionList, boostList, ballList);
             
@@ -156,21 +153,33 @@ class StarterPanel extends JPanel {
     	public StarterPanel() {
     	
     		try {                
-    	          	image = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F001.png"));
-    	       	} catch (IOException ex) {
-    	       		ex.printStackTrace();
+    	          	image = ImageIO.read(new File(FrontSpriteImage.BULBASAUR.getAbsolutePath()));
+    	       	} catch (Exception ex) {
+    	       	try {
+                    image = ImageIO.read(new File(FrontSpriteImage.BULBASAUR.getResourcePath()));
+                } catch (Exception e) {
+                    System.out.println("CANNOT LOAD SPRITE");
+                }
     	       }
     	    
     		try {                
-    				image2 = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F004.png"));
-    			} catch (IOException ex) {
-    				ex.printStackTrace();
+    				image2 = ImageIO.read(new File(FrontSpriteImage.CHARMANDER.getAbsolutePath()));
+    			} catch (Exception ex) {
+    			try {
+                    image2 = ImageIO.read(new File(FrontSpriteImage.CHARMANDER.getResourcePath()));
+                } catch (Exception e) {
+                    System.out.println("CANNOT LOAD SPRITE");
+                }
          	}
       
     		try {                
-    				image3 = ImageIO.read(new File("F:/Users/User/workspace/PokeJavaMonTrial/resources/sprites/front/F007.png"));
-    			} catch (IOException ex) {
-    				ex.printStackTrace();
+    				image3 = ImageIO.read(new File(FrontSpriteImage.SQUIRTLE.getAbsolutePath()));
+    			} catch (Exception ex) {
+    			try {
+                    image3 = ImageIO.read(new File(FrontSpriteImage.SQUIRTLE.getResourcePath()));
+                } catch (Exception e) {
+                    System.out.println("CANNOT LOAD SPRITE");
+                }
     		}
     	}
 	

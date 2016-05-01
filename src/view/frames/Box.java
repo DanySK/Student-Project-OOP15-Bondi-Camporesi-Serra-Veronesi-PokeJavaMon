@@ -10,7 +10,8 @@ import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import model.pokemon.Stat;  
+import model.pokemon.Stat;
+import view.resources.MessageFrame;  
   
 public class Box {
 
@@ -101,9 +102,9 @@ public BoxPanel(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> cur
                     PlayerImpl.getPlayer().getBox().withdrawPokemon(selected, PlayerImpl.getPlayer().getSquad());
                     Box.dispose();
                 } catch (PokemonNotFoundException e1) {
-                    System.out.println("POKEMON NOT FOUND");
+                    new MessageFrame("POKEMON NOT FOUND", null);
                 } catch (SquadFullException e1) {
-                    System.out.println("SQUAD IS FULL");
+                    new MessageFrame("SQUAD IS FULL", null);
                 }
             }
         });

@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import controller.MainController;
 import controller.ViewController;
 import controller.parameters.FilePath;
@@ -29,22 +29,16 @@ public class TitleWiew {
         try {
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
         } catch (Exception e) {
-            e.printStackTrace();
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
         }
         JPanel pane = new JPanel();
-        JTextArea text = new JTextArea("Benvenuto in PokeJavaMon!!!");
+        JLabel text = new JLabel("Benvenuto in PokeJavaMon!!!");
         pane.add(text);
         pane.setPreferredSize(new Dimension(400,200));
         text.setOpaque(false);
-        text.setEditable(false);
-        text.setHighlighter(null);	
-	frame.add(pane);
-        frame.setVisible(true);
         frame.setMinimumSize(new Dimension(500,300));
         frame.setFocusable(true);
         JButton nuova = new JButton("NUOVA PARTITA");
-        pane.add(nuova);
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -52,9 +46,8 @@ public class TitleWiew {
                 ViewController.getController().secondMenu();
             }
         });
-        
+        pane.add(nuova);
         JButton continua = new JButton("CONTINUA");
-        pane.add(continua);
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ViewController.getController().map(false);
@@ -62,5 +55,8 @@ public class TitleWiew {
                 frame.dispose();
             }
         });
+        pane.add(continua);
+        frame.add(pane);
+        frame.setVisible(true);
     }
 }

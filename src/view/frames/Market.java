@@ -13,6 +13,7 @@ import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.items.Item.ItemType;
 import model.player.PlayerImpl;
+import view.resources.MessageFrame;
 import view.resources.Play;
 
 public class Market {
@@ -98,7 +99,7 @@ public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d
                 try {
                     PlayerImpl.getPlayer().buyItem(i);
                 } catch (NotEnoughMoneyException e1) {
-                    System.out.println("NOT ENOUGH MONEY");
+                    new MessageFrame("NOT ENOUGH MONEY", null);
                 }
             }
         });

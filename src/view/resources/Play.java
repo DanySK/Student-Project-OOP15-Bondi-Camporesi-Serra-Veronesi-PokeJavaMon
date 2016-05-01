@@ -60,7 +60,6 @@ public class Play implements Screen {
 	        try {
 	            map = new TmxMapLoader().load(FilePath.MAP.getAbsolutePath());
 	        } catch (Exception e) {
-	            e.printStackTrace();
 	            map = new TmxMapLoader().load(this.getClass().getResource(FilePath.MAP.getResourcePath()).getPath());
 	        }
 	        renderer = new OrthogonalTiledMapRenderer(map);                    
@@ -72,7 +71,6 @@ public class Play implements Screen {
 		try {
 		    tx = new Texture(FilePath.PLAYER.getAbsolutePath());
 		} catch (Exception e) {
-		    e.printStackTrace();
 		    tx = new Texture(this.getClass().getResource(FilePath.PLAYER.getResourcePath()).getPath());
 		}
 		TextureRegion gain = new TextureRegion(tx);
@@ -90,9 +88,7 @@ public class Play implements Screen {
 		        LoadController.getController().load(null);
 	                pls.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
 	                pls.setPosition(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
-	                System.out.println("Benvenuto " + PlayerImpl.getPlayer().getName());
-		    } else {
-		        System.out.println("SAVE DOES NOT EXIST");
+	            } else {
 		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		        pls.setPosition(28*16, (299 - 177) * 16);
 		    }

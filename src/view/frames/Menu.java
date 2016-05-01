@@ -8,6 +8,7 @@ import controller.MainController;
 import controller.ViewController;
 import controller.parameters.State;
 import model.player.PlayerImpl;
+import view.resources.MessageFrame;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -52,7 +53,7 @@ public Menu() {
 			public void actionPerformed(ActionEvent ae) {
 				/*f.dispose();*/
  				if (PlayerImpl.getPlayer().getBox().getBoxSize() < 1) {
- 				    System.out.println("NO PKMN IN BOX");
+ 				    new MessageFrame("NO PKMN IN BOX", null);
  				} else {
  				   ViewController.getController().box();
  				}

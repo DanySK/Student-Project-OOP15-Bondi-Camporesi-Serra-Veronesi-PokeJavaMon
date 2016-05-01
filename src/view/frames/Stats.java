@@ -72,7 +72,7 @@ public class Stats {
 		Atk.setBounds(292, 163, 37, 22);
 		frame.getContentPane().add(Atk);
 		
-		JLabel Def = new JLabel("DEf:");
+		JLabel Def = new JLabel("Def:");
 		Def.setOpaque(false);
 		Def.setFont(new Font("Arial Black", Font.BOLD, 13));
 		Def.setBounds(292, 196, 37, 22);

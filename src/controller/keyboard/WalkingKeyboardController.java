@@ -1,11 +1,5 @@
 package controller.keyboard;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import com.badlogic.gdx.Input.Keys;
 import controller.FightController;
 import controller.MainController;
@@ -13,11 +7,11 @@ import controller.ViewController;
 import controller.parameters.*;
 import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
-import model.map.Position;
 import model.map.tile.Tile.TileType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import view.PlayerSprite;
+import view.resources.MessageFrame;
 import view.resources.Play;
 
 public class WalkingKeyboardController implements KeyboardController {
@@ -93,56 +87,19 @@ public class WalkingKeyboardController implements KeyboardController {
                     }
                     if (t == TileType.CENTER) {
                         MainController.getController().updateStatus(State.READING);
-                        JFrame fr = new JFrame();
-                        JPanel pa = new JPanel();
-                        JLabel tx;
-                        tx = new JLabel("POKEMON'S HEALTH FULLY RESTORED");
-                        JButton button = new JButton("OK");
-                        button.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                MainController.getController().updateStatus(State.WALKING);
-                                fr.dispose();
-                            }
-                        });
-                        pa.add(tx);
-                        pa.add(button);
-                        fr.add(pa);
-                        fr.setAlwaysOnTop(true);
-                        fr.setBounds(100, 100, 450, 100);
-                        fr.setUndecorated(true);
-                        fr.setVisible(true);
+                        new MessageFrame("POKEMON'S HEALTH FULLY RESTORED", State.WALKING);
                         PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
                     } else if (t == TileType.MARKET) {
                         ViewController.getController().market();
                     } else if (t == TileType.SIGN) {
                         MainController.getController().updateStatus(State.READING);
-                        JFrame fr = new JFrame();
-                        JPanel pa = new JPanel();
-                        JLabel tx;
                         if (pm.getSign(x, y).isPresent()) {
-                            tx = new JLabel(pm.getSign(x, y).get().getMessage());
+                            new MessageFrame(pm.getSign(x, y).get().getMessage(), State.WALKING);
                         } else {
-                            tx = new JLabel("SIGN_MESSAGE");
+                            new MessageFrame("SIGN_MESSAGE", State.WALKING);
                         }
-                        JButton button = new JButton("OK");
-                        button.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                MainController.getController().updateStatus(State.WALKING);
-                                fr.dispose();
-                            }
-                        });
-                        pa.add(tx);
-                        pa.add(button);
-                        fr.add(pa);
-                        fr.setAlwaysOnTop(true);
-                        fr.setBounds(100, 100, 450, 100);
-                        fr.setUndecorated(true);
-                        fr.setVisible(true);
                     } else if (t == TileType.NPC) {
                     	if (pm.getTrainer(x, y).isPresent()) {
-                    		System.out.println("Trainer at " + new Position(x,y) + "is ? " + pm.getTrainer(x, y));
                             switch(direction) {
                             case LEFT:
                                 pm.getTrainer(x, y).get().turn(Direction.EAST);
@@ -180,25 +137,7 @@ public class WalkingKeyboardController implements KeyboardController {
                                 break;
                             }
                             MainController.getController().updateStatus(State.READING);
-                            JFrame fr = new JFrame();
-                            JPanel pa = new JPanel();
-                            JLabel tx;
-                            tx = new JLabel(pm.getNPC(x, y).get().getMessage());
-                            JButton button = new JButton("OK");
-                            button.addActionListener(new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    MainController.getController().updateStatus(State.WALKING);
-                                    fr.dispose();
-                                }
-                            });
-                            pa.add(tx);
-                            pa.add(button);
-                            fr.add(pa);
-                            fr.setAlwaysOnTop(true);
-                            fr.setBounds(100, 100, 450, 100);
-                            fr.setUndecorated(true);
-                            fr.setVisible(true);
+                            new MessageFrame(pm.getNPC(x, y).get().getMessage(), State.WALKING);
                     	} else if (pm.getGymLeader(x, y).isPresent()) {
                     	    switch(direction) {
                             case LEFT:

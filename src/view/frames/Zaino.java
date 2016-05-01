@@ -19,6 +19,7 @@ import model.items.Potion;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import view.resources.MessageFrame;
 
 public class Zaino {
 
@@ -90,19 +91,19 @@ public static void useItem(Pokemon p) {
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (PokemonIsExhaustedException e1) {
-                System.out.println("POKEMON IS EXAUSTED");
+                new MessageFrame("POKEMON IS EXAUSTED", null);
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (PokemonNotFoundException e1) {
-                System.out.println("POKEMON NOT FOUND");
+                new MessageFrame("POKEMON NOT FOUND", null);
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (CannotCaughtTrainerPkmException e1) {
-                System.out.println("CANNOT CATCH TRAINER POKEMON");
+                new MessageFrame("CANNOT CATCH TRAINER POKEMON", null);
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (IllegalStateException e1) {
-                System.out.println("YOU HAVE NO MORE THIS ITEM");
+                new MessageFrame("YOU HAVE NO MORE THIS ITEM", null);
                 Zaino.selectItem(null);
                 Zaino.dispose();
             }
@@ -111,8 +112,13 @@ public static void useItem(Pokemon p) {
                 try {
                     ((Potion) itemToUse).effect(PlayerImpl.getPlayer(), (PokemonInBattle) p);
                     PlayerImpl.getPlayer().getInventory().consumeItem(itemToUse);
+                    Zaino.dispose();
                 } catch (PokemonNotFoundException e) {
-                    System.out.println("POKEMON NOT FOUND");
+                    new MessageFrame("POKEMON NOT FOUND", null);
+                } catch (IllegalStateException ex) {
+                    new MessageFrame("YOU HAVE NO MORE THIS ITEM", null);
+                    Zaino.selectItem(null);
+                    Zaino.dispose();
                 }
             }
         }
@@ -165,8 +171,8 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                     } else {
                         Zaino.useItem(null);
                     }
-                    Zaino.dispose();
                 }
+                Zaino.dispose();
             }
         });
         if (itm.getType() != ItemType.POTION && MainController.getController().getState() != State.FIGHTING) {
