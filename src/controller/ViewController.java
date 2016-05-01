@@ -89,8 +89,8 @@ public final class ViewController {
         new Zaino();
     }
     
-    public void stats(final int id) {
-        new Stats(id);
+    public void stats(final Pokemon iD) {
+        new Stats(iD);
     }
 
     public void setName(String text) {

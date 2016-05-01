@@ -2,7 +2,7 @@ package view.frames;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import model.player.PlayerImpl;
+import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ import javax.swing.JButton;
 
 public class Stats {
 	
-	public Stats(int id) { {
+	public Stats(Pokemon iD) { {
 		
 		final JFrame frame = new JFrame("Statistiche");		
 		frame.setResizable(false);
@@ -21,8 +21,8 @@ public class Stats {
 		frame.setUndecorated(true);
 		frame.getContentPane().setLayout(null);
 		JLabel Ruotadifuo;
-		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(0) != null) {
-		    Ruotadifuo = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(0).name());
+		if (iD.getCurrentMoves().get(0) != null) {
+		    Ruotadifuo = new JLabel(iD.getCurrentMoves().get(0).name());
 		} else {
 		    Ruotadifuo = new JLabel("NONE");
 		}
@@ -31,8 +31,8 @@ public class Stats {
 		frame.getContentPane().add(Ruotadifuo);
 		
 		JLabel Destinnob;
-		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(1) != null) {
-		    Destinnob = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(1).name());
+		if (iD.getCurrentMoves().get(1) != null) {
+		    Destinnob = new JLabel(iD.getCurrentMoves().get(1).name());
                 } else {
                     Destinnob = new JLabel("NONE");
                 }
@@ -41,8 +41,8 @@ public class Stats {
 		frame.getContentPane().add(Destinnob);
 		
 		JLabel Spichico;
-		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(2) != null) {
-		    Spichico = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(2).name());
+		if (iD.getCurrentMoves().get(2) != null) {
+		    Spichico = new JLabel(iD.getCurrentMoves().get(2).name());
                 } else {
                     Spichico = new JLabel("NONE");
                 }
@@ -51,8 +51,8 @@ public class Stats {
 		frame.getContentPane().add(Spichico);
 		
 		JLabel Splash;
-		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(3) != null) {
-		    Splash = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentMoves().get(3).name());
+		if (iD.getCurrentMoves().get(3) != null) {
+		    Splash = new JLabel(iD.getCurrentMoves().get(3).name());
                 } else {
                     Splash = new JLabel("NONE");
                 }
@@ -84,22 +84,22 @@ public class Stats {
 		Spd.setBounds(292, 229, 37, 22);
 		frame.getContentPane().add(Spd);
 		
-		JLabel getHP = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getCurrentHP() + "/" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.HP));
+		JLabel getHP = new JLabel("" + iD.getCurrentHP() + "/" + iD.getStat(Stat.HP));
 		getHP.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getHP.setBounds(393, 130, 31, 22);
 		frame.getContentPane().add(getHP);
 		
-		JLabel getAtk = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.ATK));
+		JLabel getAtk = new JLabel("" + iD.getStat(Stat.ATK));
 		getAtk.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getAtk.setBounds(393, 163, 31, 22);
 		frame.getContentPane().add(getAtk);
 		
-		JLabel getDef = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.DEF));
+		JLabel getDef = new JLabel("" + iD.getStat(Stat.DEF));
 		getDef.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getDef.setBounds(393, 196, 31, 22);
 		frame.getContentPane().add(getDef);
 		
-		JLabel getSpd = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.SPD));
+		JLabel getSpd = new JLabel("" + iD.getStat(Stat.SPD));
 		getSpd.setFont(new Font("Arial Black", Font.BOLD, 13));
 		getSpd.setBounds(393, 229, 31, 22);
 		frame.getContentPane().add(getSpd);
@@ -128,7 +128,7 @@ public class Stats {
 		Mossa4.setBounds(21, 230, 70, 22);
 		frame.getContentPane().add(Mossa4);
 		
-		JLabel NomePokemon = new JLabel(PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getPokemon().name());
+		JLabel NomePokemon = new JLabel(iD.getPokemon().name());
 		NomePokemon.setOpaque(false);
 		NomePokemon.setFont(new Font("Arial Black", Font.BOLD, 18));
 		NomePokemon.setBounds(78, 27, 275, 30);
@@ -140,7 +140,7 @@ public class Stats {
 		Lvl.setBounds(163, 82, 37, 22);
 		frame.getContentPane().add(Lvl);
 		
-		JLabel cento = new JLabel("" + PlayerImpl.getPlayer().getSquad().getPokemonList().get(id).getStat(Stat.LVL));
+		JLabel cento = new JLabel("" + iD.getStat(Stat.LVL));
 		cento.setFont(new Font("Arial Black", Font.BOLD, 13));
 		cento.setBounds(232, 82, 37, 22);
 		frame.getContentPane().add(cento);

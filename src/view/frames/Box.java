@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import controller.ViewController;
+import exceptions.PokemonNotFoundException;
+import exceptions.SquadFullException;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;  
@@ -76,20 +78,36 @@ public BoxPanel(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> cur
 
     for(int i = 0; i<names.size();i++)
     {
-        final int index = i;
+        final Pokemon pokmn = pk.get(i);
         add(new JLabel(names.get(i)));
         add(new JLabel(lvl.get(i)));
         add(new JLabel(cHP.get(i)));
         add(new JLabel(mHP.get(i)));
         JButton but = new JButton("INFO");
         but.addActionListener(new ActionListener() {
-            private final int ID = index;
+            private final Pokemon ID = pokmn;
             @Override
             public void actionPerformed(ActionEvent e) {
                 ViewController.getController().stats(ID);
             }
         });
         add(but);
+        JButton but3 = new JButton("WITHDRAW");
+        but3.addActionListener(new ActionListener() {
+            final Pokemon selected = pokmn;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    PlayerImpl.getPlayer().getBox().withdrawPokemon(selected, PlayerImpl.getPlayer().getSquad());
+                    Box.dispose();
+                } catch (PokemonNotFoundException e1) {
+                    System.out.println("POKEMON NOT FOUND");
+                } catch (SquadFullException e1) {
+                    System.out.println("SQUAD IS FULL");
+                }
+            }
+        });
+        add(but3);
         JButton but4 = new JButton("EXIT");
         but4.addActionListener(new ActionListener() {
             @Override

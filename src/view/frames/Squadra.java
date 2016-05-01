@@ -7,8 +7,10 @@ import javax.swing.*;
 import controller.MainController;
 import controller.ViewController;
 import controller.parameters.State;
+import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
+import exceptions.PokemonNotFoundException;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
@@ -43,7 +45,7 @@ public class Squadra {
         }
         
         contain.add(new Panel2(names, lvl, cHP, mHP, pk, bl, bl2, 1));
-        frame.setSize(800,100 * names.size());
+        frame.setSize(900,100 * names.size());
         frame.setVisible(true);
     }
         
@@ -83,7 +85,7 @@ class Panel2 extends JPanel
             add(new JLabel(mHP.get(i)));
             JButton but = new JButton("INFO");
             but.addActionListener(new ActionListener() {
-                private final int ID = index;
+                private final Pokemon ID = pkmn;
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     ViewController.getController().stats(ID);
@@ -129,8 +131,26 @@ class Panel2 extends JPanel
                 but2.setEnabled(false);
             }
             add(but2);
-            JButton but3 = new JButton("SELECT");
+            JButton but3 = new JButton("DEPOSIT");
             but3.addActionListener(new ActionListener() {
+                final Pokemon p = pkmn;
+                public void actionPerformed(ActionEvent e) {
+                    Squadra.dispose();
+                    try {
+                        PlayerImpl.getPlayer().getBox().depositPokemon(p, PlayerImpl.getPlayer().getSquad());
+                    } catch (PokemonNotFoundException e1) {
+                        System.out.println("POKEMON NOT FOUND");
+                    } catch (OnlyOnePokemonInSquadException e1) {
+                        System.out.println("CANNOT DEPOSIT LAST POKEMON");
+                    }
+                }
+            });
+            if (MainController.getController().getState() != State.MENU || bl2) {
+                but3.setEnabled(false);
+            }
+            add(but3);
+            JButton but4 = new JButton("SELECT");
+            but4.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
                     Squadra.dispose();
@@ -138,21 +158,20 @@ class Panel2 extends JPanel
                 }
             });
             if (!bl2) {
-                but3.setEnabled(false);
+                but4.setEnabled(false);
             }
-            add(but3);
-            JButton but4 = new JButton("EXIT");
-            but4.addActionListener(new ActionListener() {
+            add(but4);
+            JButton but5 = new JButton("EXIT");
+            but5.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Squadra.dispose();
                 }
             });
             if (!bl) {
-                but4.setEnabled(false);
+                but5.setEnabled(false);
             }
-            add(but4);
+            add(but5);
            }
-
     }}
 
