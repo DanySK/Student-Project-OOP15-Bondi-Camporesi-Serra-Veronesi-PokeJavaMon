@@ -11,7 +11,6 @@ import controller.parameters.*;
 import controller.view.ViewController;
 import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
-import model.map.Position;
 import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
 import model.player.PlayerImpl;
@@ -322,7 +321,6 @@ public class WalkingKeyboardController implements KeyboardController {
             PlayerSprite.getSprite().setVelocity(0, 0);
         }
         
-        System.out.println("Player Position:" + new Position(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()));
     }
     
     /**
