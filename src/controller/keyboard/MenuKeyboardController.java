@@ -4,11 +4,11 @@ import controller.parameters.Directions;
 
 /**
  * The {@link KeyboardController} active for the menu.
- * This class implements the SINGLETON programmation pattern
+ * This class implements the singleton programmation pattern
  */
-public class MenuKeyboardController implements KeyboardController {
+public final class MenuKeyboardController implements KeyboardController {
 
-    private static MenuKeyboardController SINGLETON;
+    private static MenuKeyboardController singleton;
     
     /**
      * Private constructor, used by the method getController
@@ -20,53 +20,53 @@ public class MenuKeyboardController implements KeyboardController {
      * if this is the first time this method is invoked
      */
     public static MenuKeyboardController getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (MenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MenuKeyboardController();
+                if (singleton == null) {
+                    singleton = new MenuKeyboardController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
     
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean keyTyped(char character) {
+    public boolean keyTyped(final char character) {
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode) {
+    public boolean keyUp(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public boolean mouseMoved(final int screenX, final int screenY) {
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount) {
+    public boolean scrolled(final int amount) {
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
+    public boolean touchDragged(final int screenX, final int screenY, final int pointer) {
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
@@ -77,7 +77,7 @@ public class MenuKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        return;
+        // EMPTY METHOD
     }
 
     @Override
@@ -87,6 +87,6 @@ public class MenuKeyboardController implements KeyboardController {
 
     @Override
     public void checkEncounter() {
-        return;
+        // EMPTY METHOD
     }
 }

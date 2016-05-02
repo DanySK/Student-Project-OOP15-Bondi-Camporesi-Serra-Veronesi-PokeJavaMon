@@ -9,5 +9,5 @@ public interface InstallerInterface {
     /**
      * Install in the user home all the necessaries file
      */
-    public void install();
+    void install();
 }

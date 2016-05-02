@@ -9,11 +9,11 @@ import controller.view.ViewController;
 
 /**
  * The {@link KeyboardController} active for the first menu.
- * This class implements the SINGLETON programmation pattern
+ * This class implements the singleton programmation pattern
  */
-public class FirstMenuKeyboardController implements KeyboardController {
+public final class FirstMenuKeyboardController implements KeyboardController {
 
-    private static FirstMenuKeyboardController SINGLETON;
+    private static FirstMenuKeyboardController singleton;
     
     /**
      * Private constructor, used by the method getController
@@ -25,28 +25,28 @@ public class FirstMenuKeyboardController implements KeyboardController {
      * if this is the first time this method is invoked
      */
     public static FirstMenuKeyboardController getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (FirstMenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new FirstMenuKeyboardController();
+                if (singleton == null) {
+                    singleton = new FirstMenuKeyboardController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
     
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean keyTyped(char character) {
+    public boolean keyTyped(final char character) {
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode) {
+    public boolean keyUp(final int keycode) {
         switch(keycode) {
         case Keys.N:
             ViewController.getController().secondMenu();
@@ -56,32 +56,34 @@ public class FirstMenuKeyboardController implements KeyboardController {
             ViewController.getController().map(false);
             MainController.getController().updateStatus(State.WALKING);
             break;
+        default:
+            break;
         }
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public boolean mouseMoved(final int screenX, final int screenY) {
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount) {
+    public boolean scrolled(final int amount) {
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
+    public boolean touchDragged(final int screenX, final int screenY, final int pointer) {
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
@@ -92,7 +94,7 @@ public class FirstMenuKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        return;
+        // EMPTY METHOD
     }
 
     @Override
@@ -102,6 +104,6 @@ public class FirstMenuKeyboardController implements KeyboardController {
 
     @Override
     public void checkEncounter() {
-        return;
+        // EMPTY METHOD
     }
 }

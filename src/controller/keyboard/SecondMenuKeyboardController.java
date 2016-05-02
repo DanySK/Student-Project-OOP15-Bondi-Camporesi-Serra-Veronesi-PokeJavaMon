@@ -12,11 +12,11 @@ import view.frames.InserisciNome;
 
 /**
  * The {@link KeyboardController} active for the second menu.
- * This class implements the SINGLETON programmation pattern
+ * This class implements the singleton programmation pattern
  */
-public class SecondMenuKeyboardController implements KeyboardController {
+public final class SecondMenuKeyboardController implements KeyboardController {
 
-    private static SecondMenuKeyboardController SINGLETON;
+    private static SecondMenuKeyboardController singleton;
     
     /**
      * Private constructor, used by the method getController
@@ -28,31 +28,30 @@ public class SecondMenuKeyboardController implements KeyboardController {
      * if this is the first time this method is invoked
      */
     public static SecondMenuKeyboardController getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (SecondMenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new SecondMenuKeyboardController();
+                if (singleton == null) {
+                    singleton = new SecondMenuKeyboardController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
     
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean keyTyped(char character) {
+    public boolean keyTyped(final char character) {
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode) {
-        switch (keycode) {
-        case Keys.ENTER:
-            String name = InserisciNome.getPlayerName();
+    public boolean keyUp(final int keycode) {
+        if (keycode == Keys.ENTER) {
+            final String name = InserisciNome.getPlayerName();
             if (name.length() < 4 || name.length() > 20) {
                 JOptionPane.showMessageDialog(null,"You Naive Idiot");
             }
@@ -61,33 +60,32 @@ public class SecondMenuKeyboardController implements KeyboardController {
                 ViewController.getController().map(true);
                 MainController.getController().updateStatus(State.WALKING);
             }
-            break;
         }
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public boolean mouseMoved(final int screenX, final int screenY) {
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount) {
+    public boolean scrolled(final int amount) {
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
+    public boolean touchDragged(final int screenX, final int screenY, final int pointer) {
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
@@ -98,7 +96,7 @@ public class SecondMenuKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        return;
+        // EMPTY METHOD
     }
 
     @Override
@@ -108,6 +106,6 @@ public class SecondMenuKeyboardController implements KeyboardController {
 
     @Override
     public void checkEncounter() {
-        return;
+        // EMPTY METHOD
     }
 }

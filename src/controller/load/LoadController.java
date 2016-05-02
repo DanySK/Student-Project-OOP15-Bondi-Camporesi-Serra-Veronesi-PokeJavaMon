@@ -26,15 +26,13 @@ import view.resources.Play;
 
 /**
  * This class loads all the requested informations. 
- * This class implements the SINGLETON programmation pattern
+ * This class implements the singleton programmation pattern
  */
-public class LoadController implements LoadControllerInterface {
+public final class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
-    private final int MIN_MOVES = 1;
-    private SAXBuilder builder;
-    private Document document;
+    private static final int MIN_MOVES = 1;
     private Element root;
-    private static LoadController SINGLETON;
+    private static LoadController singleton;
     
     /**
      * Private constructor, used by the method getController
@@ -46,28 +44,28 @@ public class LoadController implements LoadControllerInterface {
      * if this is the first time this method is invoked
      */
     public static LoadController getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (LoadController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new LoadController();
+                if (singleton == null) {
+                    singleton = new LoadController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
     
     /**
      * Loads the save file
      */
     private void setup() {
-        builder = new SAXBuilder();
+        final SAXBuilder builder = new SAXBuilder();
         try {
-            document = builder.build(new File(FILE_NAME));
+            final Document document = builder.build(new File(FILE_NAME));
             root = document.getRootElement(); 
         } catch (JDOMException e) {
-            e.printStackTrace();
+            System.out.println("FAILED LOADING SAVE");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("FAILED LOADING SAVE");
         }
     }
     
@@ -89,7 +87,7 @@ public class LoadController implements LoadControllerInterface {
      * Loads the badges value from the save file
      */
     private void getBadges() {
-        int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
+        final int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
         for (int x = 0; x < 5; x ++) {
             if (x <= badges) {
                 PlayerImpl.getPlayer().addBadge();
@@ -110,11 +108,11 @@ public class LoadController implements LoadControllerInterface {
      * Loads the pokemon's team from the save file
      */
     private void getTeam() {
-        for (Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
-            int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
-            int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
-            int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
-            int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
+        for (final Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
+            final int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
+            final int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
+            final int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
+            final int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
             String[] moves = new String[cont];
             for (int a = MIN_MOVES; a <= cont; a++) {   
                 moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
@@ -122,7 +120,7 @@ public class LoadController implements LoadControllerInterface {
             try {
                 PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
             } catch (SquadFullException e1) {
-                e1.printStackTrace();
+                System.out.println("TEAM IS FULL");
             }
         }     
     }
@@ -131,13 +129,13 @@ public class LoadController implements LoadControllerInterface {
      * Loads the trainers from the save file
      */
     private void getTrainers() {
-        PokeMap map = Play.getMapImpl();
-        Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
-        for (Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
+        final PokeMap map = Play.getMapImpl();
+        final Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
+        for (final Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
             	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(1, a.getName().length())), a.getBooleanValue());
             } catch (DataConversionException e) {
-                e.printStackTrace();
+                System.out.println("DATA CONVERSION FAILED");
             }
         }
         map.initTrainers(trainer_isDefeated);
@@ -147,16 +145,16 @@ public class LoadController implements LoadControllerInterface {
      * Loads the inventory from the save file
      */
     private void getInventory() {
-        Map<String, Integer> potions = new HashMap<String, Integer>();
-        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
+        final Map<String, Integer> potions = new HashMap<String, Integer>();
+        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
             potions.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        Map<String, Integer> boosts = new HashMap<String, Integer>();
-        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
+        final Map<String, Integer> boosts = new HashMap<String, Integer>();
+        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
             boosts.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        Map<String, Integer> balls = new HashMap<String, Integer>();
-        for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
+        final Map<String, Integer> balls = new HashMap<String, Integer>();
+        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
             balls.put(a.getName(), Integer.parseInt(a.getValue()));
         }
         InventoryImpl.initializeInventory(potions, boosts, balls);
@@ -166,12 +164,12 @@ public class LoadController implements LoadControllerInterface {
      * Loads the box from the save file
      */
     private void getBox() {
-        List<Pokemon> box = new ArrayList<Pokemon>();
-        for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
-            int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
-            int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
-            int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
-            int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
+        final List<Pokemon> box = new ArrayList<Pokemon>();
+        for (final Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
+            final int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
+            final int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
+            final int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
+            final int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
             String[] moves = new String[cont];
             for (int a = MIN_MOVES; a <= cont; a++) {   
                 moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);

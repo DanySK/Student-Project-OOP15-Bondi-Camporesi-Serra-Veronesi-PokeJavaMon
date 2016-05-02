@@ -3,20 +3,47 @@ package controller.main;
 import controller.keyboard.KeyboardController;
 import controller.parameters.Directions;
 import controller.parameters.State;
+import model.pokemon.Pokemon;
+import view.sprite.PlayerSprite;
 
+/**
+ * This interface shows the methods that can be called on {@link MainController}
+ */
 public interface MainControllerInterface {
 
-    public void updateStatus(State s);
+    /**
+     * Updates the {@link State} of the game
+     * @param s the new {@link State}
+     */
+    void updateStatus(State s);
 
-    public State getState();
+    /**
+     * @return the current {@link State}
+     */
+    State getState();
 
-    public boolean isKeyPressed();
+    /**
+     * @return true if at least one key is pressed in the current controller, false otherwise
+     */
+    boolean isKeyPressed();
 
-    public KeyboardController getCurrentController();
+    /**
+     * @return the current {@link KeyboardController}
+     */
+    KeyboardController getCurrentController();
 
-    public void updateSpeed();
+    /**
+     * Updates the speed of {@link PlayerSprite}
+     */
+    void updateSpeed();
 
-    public Directions getDirection();
+    /**
+     * @return the current {@link Directions} of the player
+     */
+    Directions getDirection();
 
-    public void checkEncounter();
+    /**
+     * Controls if the player has encountered a wild {@link Pokemon}
+     */
+    void checkEncounter();
 }

@@ -11,7 +11,7 @@ import model.pokemon.InitializeMoves;
  */
 public class GameStarter {
 
-    public static void main(String[] args) {
+    public static void main(String... varargs) {
         new Installer().install();
         MainController.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();

@@ -15,13 +15,13 @@ public enum Music {
     TOWN("/music/town.mp3", "/town.mp3"),
     ROUTE("/music/route.mp3", "/route.mp3");
 
-    private Music(String rp, String absp) {
+    final String resPath;
+    final String absPath;
+    
+    private Music(final String rp, final String absp) {
         this.resPath = rp;
         this.absPath = absp;
     }
-    
-    final String resPath;
-    final String absPath;
     
     /**
      * @return the resource path of the selected song

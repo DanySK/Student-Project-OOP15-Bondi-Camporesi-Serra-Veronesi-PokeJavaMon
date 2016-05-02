@@ -2,34 +2,44 @@ package controller.music;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+
 import controller.parameters.FilePath;
 import controller.parameters.Music;
 
-public class MainMusicController implements MusicController {
+/**
+ * This is the main music controller of the game
+ */
+public final class MainMusicController implements MusicController {
     
     private Sound s;
-    private Music m = null;
-    private static MainMusicController SINGLETON;
+    private Music m;
+    private static MainMusicController singleton;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private MainMusicController() {}
     
+    /** 
+     * @return the curent {@link MainMusicController}, or a new {@link MainMusicController}
+     * if this is the first time this method is invoked
+     */
     public static MainMusicController getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (MainMusicController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MainMusicController();
+                if (singleton == null) {
+                    singleton = new MainMusicController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
     
     @Override
-    public void play(Music song) {        
+    public void play(final Music song) {        
         try {
             s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getAbsolutePath()));
         } catch (Exception e) {
-        	e.printStackTrace();
             s = Gdx.audio.newSound(Gdx.files.classpath(song.getResourcePath()));
         }
         s.loop();

@@ -15,20 +15,20 @@ public interface KeyboardController extends InputProcessor {
     /**
      * @return true if at least one key is pressed, false otherwise 
      */
-    public boolean isKeyPressed();
+    boolean isKeyPressed();
     
     /**
      * Updates the speed of the {@link PlayerSprite}
      */
-    public void updateSpeed();
+    void updateSpeed();
     
     /**
      * @return the {@link Directions} selected by the last key pressed
      */
-    public Directions getDirection();
+    Directions getDirection();
 
     /**
      * Checks if player has encountered a wild {@link Pokemon}
      */
-    public void checkEncounter();
+    void checkEncounter();
 }

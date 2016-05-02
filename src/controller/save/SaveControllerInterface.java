@@ -8,5 +8,5 @@ public interface SaveControllerInterface {
     /**
      * Saves all the necessaries information on a file on disk
      */
-    public void save();
+    void save();
 }

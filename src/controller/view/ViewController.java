@@ -29,8 +29,7 @@ import view.sprite.PlayerSprite;
  */
 public final class ViewController implements ViewControllerInterface {
     private String name;
-    private LwjglApplication app;
-    private static ViewControllerInterface SINGLETON;
+    private static ViewControllerInterface singleton;
     
     /**
      * Private constructor, used by the method getController
@@ -42,19 +41,19 @@ public final class ViewController implements ViewControllerInterface {
      * if this is the first time this method is invoked
      */
     public static ViewControllerInterface getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (ViewController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new ViewController();
+                if (singleton == null) {
+                    singleton = new ViewController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
     
     @Override
     public void market() {
-        new view.frames.Market();
+        new Market();
     }
     
     @Override
@@ -72,18 +71,18 @@ public final class ViewController implements ViewControllerInterface {
     @Override
     public void secondMenu() {
         MainController.getController().updateStatus(State.SECOND_MENU);
-        new view.frames.InserisciNome();
+        new InserisciNome();
     }
     
     @Override
-    public void map(boolean b) {
-        LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+    public void map(final boolean b) {
+        final LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "PokeJavaMon";
         cfg.useGL20 = true;
         cfg.width = 1280;
         cfg.height = 720;
-        TiledMapGame tl = new TiledMapGame(b);   
-        app = new LwjglApplication(tl, cfg);      
+        final TiledMapGame tl = new TiledMapGame(b); 
+        final LwjglApplication app = new LwjglApplication(tl, cfg);    
         tl.setApp(app);
     }
     
@@ -98,7 +97,7 @@ public final class ViewController implements ViewControllerInterface {
     
     @Override
     public void box() {
-        new view.frames.Box();
+        new Box();
     }
     
     @Override
@@ -117,22 +116,22 @@ public final class ViewController implements ViewControllerInterface {
     }
 
     @Override
-    public void setName(String text) {
+    public void setName(final String text) {
         this.name = text;
     }
     
     @Override
-    public void attack(Move move) {
+    public void attack(final Move move) {
         FightController.getController().attack(move);
     }
     
     @Override
-    public void changePokemon(Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException {
+    public void changePokemon(final Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException {
         FightController.getController().changePokemon(poke);
     }
     
     @Override
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
+    public void useItem(final Item it, final Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
 	FightController.getController().useItem(it, pk);	
     }
     
@@ -147,12 +146,12 @@ public final class ViewController implements ViewControllerInterface {
     }
     
     @Override
-    public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
+    public void selectPokemon(final Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
         FightController.getController().selectPokemon(pk);
     }
     
     @Override
-    public void fightScreen(Pokemon pk) {
+    public void fightScreen(final Pokemon pk) {
         MainController.getController().updateStatus(State.FIGHTING);
         new FightScreen(pk);
     }

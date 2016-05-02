@@ -23,108 +23,105 @@ public class Installer implements InstallerInterface {
 
     @Override
     public void install() {
-        if (!Files.exists(Paths.get(FilePath.MAINFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = (new File(FilePath.MAINFOLDER.getAbsolutePath())).mkdirs();
+        if (Files.exists(Paths.get(FilePath.MAINFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            System.out.println("GAME ALREADY INSTALLED");
+        } else {
+            success = new File(FilePath.MAINFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING MAIN FOLDER");
                 return;
             }
-            success = (new File(FilePath.SAVE.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.SAVE.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING SAVE FOLDER");
                 return;
             }
-            success = (new File(FilePath.MUSIC.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.MUSIC.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING MUSIC FOLDER");
                 return;
             }
-            success = (new File(FilePath.MAPS.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.MAPS.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING MAPS FOLDER");
                 return;
             }
-            success = (new File(FilePath.IMG.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.IMG.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING IMG FOLDER");
                 return;
             }
-            success = (new File(FilePath.SPRITES.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.SPRITES.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING SPRITES FOLDER");
                 return;
             }
-            success = (new File(FilePath.FRONT.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.FRONT.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING FRONT FOLDER");
                 return;
             }
-            success = (new File(FilePath.BACK.getAbsolutePath())).mkdirs();
+            success = new File(FilePath.BACK.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING BACK FOLDER");
                 return;
-            }       
-            
-            for (Music m : Music.values()) {
+            }                  
+            for (final Music m : Music.values()) {
                 try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath())) {
-                	byte[] buf = new byte[2048];
+                    final byte[] buf = new byte[2048];
                     int r = musicStream.read(buf);
                     while(r != -1) {
                         fos.write(buf, 0, r);
                         r = musicStream.read(buf);
                     }
-               	} catch (IOException e) {
-               	    System.out.println("FAILED INSTALLING MUSIC");
-               	    e.printStackTrace();
-               	    return;
-		}     	
+                } catch (IOException e) {
+                    System.out.println("FAILED INSTALLING MUSIC");
+                    return;
+                }       
             }
-            for (FrontSpriteImage s : FrontSpriteImage.values()) {
-               	try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
-               		FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
-               	    byte[] buf = new byte[2048];
-               	    int r = is.read(buf);
-               	    while(r != -1) {
-               	        fos.write(buf, 0, r);
-               	        r = is.read(buf);
-               	    }
-               	} catch (IOException e) {
-               	    System.out.println("FAILED INSTALLING FRONT SPRITE");
-               	    e.printStackTrace();
-               	    return;
-		}   
+            for (final FrontSpriteImage s : FrontSpriteImage.values()) {
+                try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
+                        FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
+                    final byte[] buf = new byte[2048];
+                    int r = is.read(buf);
+                    while(r != -1) {
+                        fos.write(buf, 0, r);
+                        r = is.read(buf);
+                    }
+                } catch (IOException e) {
+                    System.out.println("FAILED INSTALLING FRONT SPRITE");
+                    return;
+                }   
             }
-            for (BackSpriteImage s : BackSpriteImage.values()) {
-               	try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
-               	        FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
-               	    byte[] buf = new byte[2048];
-               	    int r = is.read(buf);
-               	    while(r != -1) {
-                   	fos.write(buf, 0, r);
-                   	r = is.read(buf);
-               	    }
-               	} catch (IOException e) {
-               	    System.out.println("FAILED INSTALLING BACK SPRITE");
-               	    return;
-               	}
+            for (final BackSpriteImage s : BackSpriteImage.values()) {
+                try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
+                        FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
+                    final byte[] buf = new byte[2048];
+                    int r = is.read(buf);
+                    while(r != -1) {
+                        fos.write(buf, 0, r);
+                        r = is.read(buf);
+                    }
+                } catch (IOException e) {
+                    System.out.println("FAILED INSTALLING BACK SPRITE");
+                    return;
+                }
             }         
             for (final FilePath fp : Arrays.asList(FilePath.SHEET, FilePath.PACK, FilePath.PLAYER, FilePath.PALLA, FilePath.MAP, FilePath.TILESET, FilePath.PSD)) {
-               	try(InputStream is = this.getClass().getResourceAsStream(fp.getResourcePath());
-               	        FileOutputStream fos = new FileOutputStream(fp.getAbsolutePath())) {
-               	    byte[] buf = new byte[2048];
-               	    int r = is.read(buf);
-               	    while(r != -1) {
-               	        fos.write(buf, 0, r);
-                   	r = is.read(buf);
-               	    }
-               	} catch (IOException e) {
-               	    System.out.println("FAILED INSTALLING RESOURCE");
-               	    return;
-               	}
+                try(InputStream is = this.getClass().getResourceAsStream(fp.getResourcePath());
+                        FileOutputStream fos = new FileOutputStream(fp.getAbsolutePath())) {
+                    final byte[] buf = new byte[2048];
+                    int r = is.read(buf);
+                    while(r != -1) {
+                        fos.write(buf, 0, r);
+                        r = is.read(buf);
+                    }
+                } catch (IOException e) {
+                    System.out.println("FAILED INSTALLING RESOURCE");
+                    return;
+                }
             } 
-        } else {
-            System.out.println("GAME ALREADY INSTALLED");
         }
     }
 }

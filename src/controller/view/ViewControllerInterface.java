@@ -21,69 +21,69 @@ public interface ViewControllerInterface {
     /**
      * Shows the pokemon market menu
      */
-    public void market();
+    void market();
 
     /**
      * Shows the main menu
      */
-    public void showMenu();
+    void showMenu();
 
     /**
      * Shows the first menu
      */
-    public void firstMenu();
+    void firstMenu();
 
     /**
      * Shows the second menu
      */
-    public void secondMenu();
+    void secondMenu();
 
     /**
      * Shows the game map
      * @param b if it is a new game or not
      */
-    public void map(boolean b);
+    void map(boolean b);
 
     /**
      * Save the game
      */
-    public void save();
+    void save();
 
     /**
      * Shows the box menu
      */
-    public void box();
+    void box();
     
     /**
      * Shows the team menu
      * @param bl if player can close the menu or not
-     * @param bl2 if player can change pokemon to that pokemon or select that pokemon 
-     * to use an item on
+     * @param bl2 true if player can change pokemon to that pokemon or 
+     * false if can select that pokemon to use an item on
      */
-    public void team(final boolean bl, final boolean bl2);
+    void team(final boolean bl, final boolean bl2);
     
     /**
      * Shows the bag menu
      */
-    public void bag();
+    void bag();
 
     /**
      * Shows the stat menu
      * @param iD the {@link Pokemon} to show stats of
      */
-    public void stats(Pokemon iD);
+    void stats(Pokemon iD);
 
     /**
      * Set player's name
      * @param text the selected name
      */
-    public void setName(String text);
+    void setName(String text);
 
     /**
      * Use the {@link Move} of a player's {@link Pokemon} during a fight
      * @param move the selected {@link Move}
      */
-    public void attack(Move move);
+    void attack(Move move);
 
     /**
      * Change player's {@link Pokemon} during a fight
@@ -91,7 +91,7 @@ public interface ViewControllerInterface {
      * @throws PokemonIsExhaustedException if the selected {@link Pokemon} is exausted
      * @throws PokemonIsFightingException if the selected {@link Pokemon} is fighting
      */
-    public void changePokemon(Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException;
+    void changePokemon(Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException;
 
     /**
      * Use an {@link Item} during a fight
@@ -102,20 +102,20 @@ public interface ViewControllerInterface {
      * @throws CannotCaughtTrainerPkmException if player is trying to catch a {@link Trainer}'s {@link Pokemon}
      * @throws IllegalStateException if player doesn't have the {@link Item} he is trying to use
      */
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException,
+    void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException,
                 CannotCaughtTrainerPkmException, IllegalStateException;
 
     /**
      * Try to run away from a fight
      * @throws CannotEscapeFromTrainerException if player is trying to run from a {@link Trainer}
      */
-    public void run() throws CannotEscapeFromTrainerException;
+    void run() throws CannotEscapeFromTrainerException;
 
     /**
      * Search for {@link Pokemon}s that have to evolve
      * @return the {@link List}<{@link Pokedex}> that have to evolve 
      */
-    public List<Pokedex> getEvolutions();
+    List<Pokedex> getEvolutions();
 
     /**
      * Select the next {@link Pokemon} to use in the {@link Fight}
@@ -123,11 +123,11 @@ public interface ViewControllerInterface {
      * @throws PokemonIsExhaustedException if selected {@link Pokemon} is exausted
      * @throws PokemonIsFightingException if selected {@link Pokemon} is fighting 
      */
-    public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException;
+    void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException;
 
     /**
      * Shows the fight menu
      * @param pk the enemy {@link Pokemon}
      */
-    public void fightScreen(Pokemon pk);
+    void fightScreen(Pokemon pk);
 }

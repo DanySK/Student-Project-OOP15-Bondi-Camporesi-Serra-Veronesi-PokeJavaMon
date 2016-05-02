@@ -14,27 +14,37 @@ import controller.parameters.State;
 import model.fight.FightVsTrainer;
 import view.resources.Play;
 
-public class MainController implements MainControllerInterface {
+/**
+ * This is the main controller of the game
+ */
+public final class MainController implements MainControllerInterface {
     
     private State state;
     private KeyboardController keyboardController;
-    private static MainControllerInterface SINGLETON; 
+    private static MainControllerInterface singleton; 
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private MainController() {}
     
+    /** 
+     * @return the curent {@link MainController}, or a new {@link MainController}
+     * if this is the first time this method is invoked
+     */
     public static MainControllerInterface getController() {
-        if (SINGLETON == null) {
+        if (singleton == null) {
             synchronized (MainController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MainController();
+                if (singleton == null) {
+                    singleton = new MainController();
                 }
             }
         }
-        return SINGLETON;
+        return singleton;
     }
 
     @Override
-    public void updateStatus(State s) {
+    public void updateStatus(final State s) {
         state = s;
         switch (s) {
             case FIRST_MENU:
@@ -82,6 +92,8 @@ public class MainController implements MainControllerInterface {
             case READING:
                 keyboardController = MenuKeyboardController.getController();
                 Play.updateKeyListener();
+                break;
+            default:
                 break;
         }
     }

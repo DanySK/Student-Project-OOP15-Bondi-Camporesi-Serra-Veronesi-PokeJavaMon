@@ -10,11 +10,11 @@ public enum XMLParameters {
     BOOSTS("BOOSTS"), BALLS("BALLS"), BOX("BOX"), RETURNPOSITION("RETURNPOSITION"),
     RETX("RETX"), RETY("RETY"), TITLE("SAVE"), NAME("NAME"), BADGES("BADGES");
     
-    private XMLParameters(String s) {
+    private String value;
+    
+    private XMLParameters(final String s) {
         this.value = s;
     }
-    
-    private String value;
     
     /**
      * @return the name of the selected parameter
