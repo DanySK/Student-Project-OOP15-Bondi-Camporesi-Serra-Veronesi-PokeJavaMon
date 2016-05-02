@@ -1,5 +1,8 @@
 package controller.parameters;
 
+/**
+ * This enum contains all the songs
+ */
 public enum Music {
     HOME("/music/home.mp3", "/home.mp3"), 
     OPENING("/music/opening.mp3", "/opening.mp3"),
@@ -20,10 +23,16 @@ public enum Music {
     final String resPath;
     final String absPath;
     
+    /**
+     * @return the resource path of the selected song
+     */
     public String getResourcePath() {
         return this.resPath;
     }
     
+    /**
+     * @return the absolute path of the selected song
+     */
     public String getAbsolutePath() {
     	return this.absPath;
     }
