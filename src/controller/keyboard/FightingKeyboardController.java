@@ -2,12 +2,23 @@ package controller.keyboard;
 
 import controller.parameters.Directions;
 
+/**
+ * The {@link KeyboardController} active during a fight.
+ * This class implements the SINGLETON programmation pattern
+ */
 public class FightingKeyboardController implements KeyboardController {
 
     private static FightingKeyboardController SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private FightingKeyboardController() {}
     
+    /** 
+     * @return the curent {@link FightingKeyboardController}, or a new {@link FightingKeyboardController}
+     * if this is the first time this method is invoked
+     */
     public static FightingKeyboardController getController() {
         if (SINGLETON == null) {
             synchronized (FightingKeyboardController.class) {

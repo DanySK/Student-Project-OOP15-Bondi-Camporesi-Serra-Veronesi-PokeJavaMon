@@ -16,10 +16,8 @@ import javax.swing.border.LineBorder;
 
 import controller.view.ViewController;
 import exceptions.CannotEscapeFromTrainerException;
-import model.fight.FightVsWildPkm;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import model.pokemon.Stat;
 import view.resources.MessageFrame;
 
 import java.awt.event.KeyAdapter;

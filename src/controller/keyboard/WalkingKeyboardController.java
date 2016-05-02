@@ -1,6 +1,7 @@
 package controller.keyboard;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 
 import controller.fight.FightController;
 import controller.main.MainController;
@@ -15,6 +16,10 @@ import view.resources.MessageFrame;
 import view.resources.Play;
 import view.sprite.PlayerSprite;
 
+/**
+ * The {@link KeyboardController} active when the {@link State} is WALKING.
+ * This class implements the SINGLETON programmation pattern
+ */
 public class WalkingKeyboardController implements KeyboardController {
     
     private static WalkingKeyboardController SINGLETON;
@@ -24,8 +29,15 @@ public class WalkingKeyboardController implements KeyboardController {
     private TileType t;
     private boolean left, right, up, down;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private WalkingKeyboardController() {}
     
+    /** 
+     * @return the curent {@link WalkingKeyboardController}, or a new {@link WalkingKeyboardController}
+     * if this is the first time this method is invoked
+     */
     public static WalkingKeyboardController getController() {
         if (SINGLETON == null) {
             synchronized (WalkingKeyboardController.class) {
@@ -87,6 +99,10 @@ public class WalkingKeyboardController implements KeyboardController {
         return false;
     }
     
+    /**
+     * @return the {@link TileType} of the {@link TiledMapTile} next to the player 
+     * depending on the current {@link Directions}
+     */
     private TileType getTileType() {
         switch (direction) {
         case UP:
@@ -111,12 +127,20 @@ public class WalkingKeyboardController implements KeyboardController {
         return null;
     }
     
+    /**
+     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+     * a pokemon center
+     */
     private void resolvePokemonCenter() {
         MainController.getController().updateStatus(State.READING);
         new MessageFrame("POKEMON'S HEALTH FULLY RESTORED", State.WALKING);
         PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
     }
     
+    /**
+     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+     * a sign
+     */
     private void resolveSign() {
         MainController.getController().updateStatus(State.READING);
         if (pm.getSign(x, y).isPresent()) {
@@ -126,6 +150,10 @@ public class WalkingKeyboardController implements KeyboardController {
         }
     }
     
+    /**
+     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+     * an npc
+     */
     private void resolveNPC() {
         if (pm.getTrainer(x, y).isPresent()) {
             switch(direction) {
@@ -246,10 +274,16 @@ public class WalkingKeyboardController implements KeyboardController {
         return false;
     }
     
+    /**
+     * Add 1 to the keys that are currently pressed
+     */
     private void addKey() {
         this.keys ++;
     }
     
+    /**
+     * Remove 1 to the keys that are currently pressed
+     */
     private void removeKey() {
         this.keys --;
     }
@@ -281,6 +315,10 @@ public class WalkingKeyboardController implements KeyboardController {
         }
     }
     
+    /**
+     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+     * a teleport
+     */
     private void resolveTeleport() {
         int x, y;
         x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
@@ -291,6 +329,9 @@ public class WalkingKeyboardController implements KeyboardController {
         }
     }
     
+    /**
+     * Resolve the case player selects to move up
+     */
     private void resolveUP() {
         direction = Directions.UP;
         pm = Play.getMapImpl();
@@ -302,6 +343,9 @@ public class WalkingKeyboardController implements KeyboardController {
         }
     }
     
+    /**
+     * Resolve the case player selects to move down
+     */
     private void resolveDOWN() {
         direction = Directions.DOWN;
         pm = Play.getMapImpl();
@@ -313,6 +357,9 @@ public class WalkingKeyboardController implements KeyboardController {
         }
     }
     
+    /**
+     * Resolve the case player selects to move left
+     */
     private void resolveLEFT() {
         direction = Directions.LEFT;
         pm = Play.getMapImpl();
@@ -324,6 +371,9 @@ public class WalkingKeyboardController implements KeyboardController {
         }
     }
     
+    /**
+     * Resolve the case player selects to move right
+     */
     private void resolveRIGHT() {
         direction = Directions.RIGHT;
         pm = Play.getMapImpl();
