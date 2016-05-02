@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import exceptions.ItemNotFoundException;
 import exceptions.NotEnoughMoneyException;
 import model.box.Box;
 import model.box.BoxImpl;
@@ -15,7 +14,6 @@ import model.map.AbstractCharacter;
 import model.map.PokeMap;
 import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
-import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
@@ -32,12 +30,14 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     
     private static Player SINGLETON;
     
-    //TODO: IMPORT FROM MAP
-    private static int START_X = 278;
-    private static int START_Y = 71;
+    //TODO: Player position IMPORT FROM MAP
+    public static int START_X = -1;
+    public static int START_Y = -1;
+    public static final int DEFAULT_START_X = 278;
+    public static final int DEFAULT_START_Y = 71;
     
     private PlayerImpl() {
-        super(START_X, START_Y, Direction.SOUTH);
+        super(START_X != -1 ? START_X : DEFAULT_START_X, START_Y != -1 ? START_Y : DEFAULT_START_Y, Direction.SOUTH);
         this.squad = new SquadImpl();
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
@@ -107,11 +107,6 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     }
 
     @Override
-    public void useItem(Item item, PokemonInBattle pkmn) throws ItemNotFoundException {
-        //TODO CONTROLLARE STATO (BATTAGLIA) e se l'oggetto può essere usato... Exceptions..
-    }
-    
-    @Override
     public void beatTrainer(final Trainer trainer) {
         this.money += trainer.getMoney();
         this.trainersBeaten.add(trainer);
@@ -165,6 +160,12 @@ public class PlayerImpl extends AbstractCharacter implements Player{
 	@Override
 	public void addBadge() {
 		this.badges++;
+	}
+	
+	//TODO Da rivedere
+	public static void setStartingPoint(int tileX, int tileY) {
+		PlayerImpl.START_X = tileX;
+		PlayerImpl.START_Y = tileY;
 	}
 
 }

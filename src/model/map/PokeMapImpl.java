@@ -172,6 +172,11 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.CENTER.toString())) {
 				this.map[tileX][tileY] = TileType.CENTER;
 				this.collisions.add(p);
+			} else if (cellProperty.equals(TileType.START.toString())) {
+				PlayerImpl.START_X = tileX;
+				PlayerImpl.START_Y = tileY;
+				this.map[tileX][tileY] = TileType.START;
+				PlayerImpl.setStartingPoint(tileX, tileY);
 			}
 		}
 	}
