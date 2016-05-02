@@ -24,6 +24,10 @@ import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 import view.resources.Play;
 
+/**
+ * This class loads all the requested informations. 
+ * This class implements the SINGLETON programmation pattern
+ */
 public class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private final int MIN_MOVES = 1;
@@ -32,8 +36,15 @@ public class LoadController implements LoadControllerInterface {
     private Element root;
     private static LoadController SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private LoadController() {}
     
+    /** 
+     * @return the curent {@link LoadController}, or a new {@link LoadController}
+     * if this is the first time this method is invoked
+     */
     public static LoadController getController() {
         if (SINGLETON == null) {
             synchronized (LoadController.class) {
@@ -45,6 +56,9 @@ public class LoadController implements LoadControllerInterface {
         return SINGLETON;
     }
     
+    /**
+     * Loads the save file
+     */
     private void setup() {
         builder = new SAXBuilder();
         try {
@@ -57,14 +71,23 @@ public class LoadController implements LoadControllerInterface {
         }
     }
     
+    /**
+     * Loads the money value from the save file
+     */
     private void getMoney() {
         PlayerImpl.getPlayer().setMoney(Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName())));
     }
     
+    /**
+     * Loads player's name value from the save file
+     */
     private void getName() {
         PlayerImpl.getPlayer().setName(root.getAttribute(XMLParameters.NAME.getName()).getValue());
     }
     
+    /**
+     * Loads the badges value from the save file
+     */
     private void getBadges() {
         int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
         for (int x = 0; x < 5; x ++) {
@@ -74,12 +97,18 @@ public class LoadController implements LoadControllerInterface {
         }
     }
     
+    /**
+     * Loads player's position value from the save file
+     */
     private void getPosition() {
         final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
         final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
         PlayerImpl.getPlayer().setPosition(x, y);
     }
     
+    /**
+     * Loads the pokemon's team from the save file
+     */
     private void getTeam() {
         for (Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
             int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
@@ -98,6 +127,9 @@ public class LoadController implements LoadControllerInterface {
         }     
     }
     
+    /**
+     * Loads the trainers from the save file
+     */
     private void getTrainers() {
         PokeMap map = Play.getMapImpl();
         Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
@@ -111,6 +143,9 @@ public class LoadController implements LoadControllerInterface {
         map.initTrainers(trainer_isDefeated);
     }
     
+    /**
+     * Loads the inventory from the save file
+     */
     private void getInventory() {
         Map<String, Integer> potions = new HashMap<String, Integer>();
         for (Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
@@ -127,6 +162,9 @@ public class LoadController implements LoadControllerInterface {
         InventoryImpl.initializeInventory(potions, boosts, balls);
     }
 
+    /**
+     * Loads the box from the save file
+     */
     private void getBox() {
         List<Pokemon> box = new ArrayList<Pokemon>();
         for (Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {

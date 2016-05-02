@@ -2,6 +2,9 @@ package controller.parameters;
 
 import java.io.File;
 
+/**
+ * This enum contains the paths to the back pokemon's sprites
+ */
 public enum BackSpriteImage {
     MISSINGNO("/sprites/back/B000.png", System.getProperty("user.home") + File.separator + ".pokejava" + File.separator + "sprites" + File.separator + "back" + File.separator + "B000.png"),
     BULBASAUR("/sprites/back/B001.png", System.getProperty("user.home") + File.separator + ".pokejava" + File.separator + "sprites" + File.separator + "back" + File.separator + "B001.png"),
@@ -36,10 +39,16 @@ public enum BackSpriteImage {
         this.absolutePath = abs;
     }
     
+    /**
+     * @return the resource path of the selected sprite
+     */
     public String getResourcePath() {
         return this.resourcePath;
     }
     
+    /**
+     * @return the absolute path of the selected sprite
+     */
     public String getAbsolutePath() {
         return this.absolutePath;
     }

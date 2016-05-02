@@ -2,6 +2,9 @@ package controller.parameters;
 
 import java.io.File;
 
+/**
+ * This enum contains various paths
+ */
 public enum FilePath {
     MAINFOLDER ("NONE", System.getProperty("user.home") + File.separator + ".pokejava"),
     SAVE ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "save"),
@@ -28,10 +31,16 @@ public enum FilePath {
     private String jar;
     private String abs;
     
+    /**
+     * @return the resource path of the selected file
+     */
     public String getResourcePath() {
         return jar;
     }
     
+    /**
+     * @return the absolute path of the selected file
+     */
     public String getAbsolutePath() {
         return abs;
     }

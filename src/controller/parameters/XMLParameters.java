@@ -1,5 +1,8 @@
 package controller.parameters;
 
+/**
+ * This enum contains all the parameters that are saved on the xml save file
+ */
 public enum XMLParameters {
     MONEY("MONEY"), TIME("TIME"), PLACE("PLACE"), POSITION("POSITION"),
     X("X"), Y("Y"), TEAM("TEAM"), LV("LV"), HP("HP"), EXP("EXP"), NMOVES("NMOVES"),
@@ -13,6 +16,9 @@ public enum XMLParameters {
     
     private String value;
     
+    /**
+     * @return the name of the selected parameter
+     */
     public String getName() {
         return this.value;
     }

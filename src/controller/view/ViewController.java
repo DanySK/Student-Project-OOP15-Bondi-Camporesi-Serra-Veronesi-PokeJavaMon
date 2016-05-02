@@ -24,13 +24,23 @@ import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
 import view.sprite.PlayerSprite;
 
+/**
+ * This class controls the menus from the view
+ */
 public final class ViewController implements ViewControllerInterface {
     private String name;
     private LwjglApplication app;
     private static ViewControllerInterface SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private ViewController() {}
     
+    /** 
+     * @return the curent {@link ViewController}, or a new {@link ViewController}
+     * if this is the first time this method is invoked
+     */
     public static ViewControllerInterface getController() {
         if (SINGLETON == null) {
             synchronized (ViewController.class) {

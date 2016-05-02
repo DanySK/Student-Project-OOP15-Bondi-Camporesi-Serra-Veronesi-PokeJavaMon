@@ -2,12 +2,23 @@ package controller.keyboard;
 
 import controller.parameters.Directions;
 
+/**
+ * The {@link KeyboardController} active for the menu.
+ * This class implements the SINGLETON programmation pattern
+ */
 public class MenuKeyboardController implements KeyboardController {
 
     private static MenuKeyboardController SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private MenuKeyboardController() {}
     
+    /** 
+     * @return the curent {@link MenuKeyboardController}, or a new {@link MenuKeyboardController}
+     * if this is the first time this method is invoked
+     */
     public static MenuKeyboardController getController() {
         if (SINGLETON == null) {
             synchronized (MenuKeyboardController.class) {

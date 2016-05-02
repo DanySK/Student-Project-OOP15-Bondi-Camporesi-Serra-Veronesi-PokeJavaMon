@@ -14,6 +14,9 @@ import controller.parameters.FilePath;
 import controller.parameters.Music;
 import controller.parameters.FrontSpriteImage;
 
+/**
+ * This class installs all the requested files into the disk
+ */
 public class Installer implements InstallerInterface {
 
     private boolean success;
