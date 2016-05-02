@@ -41,5 +41,7 @@ public interface Player extends Character{
     
     public void addBadge();
     
+    public void setBadges(final int badges);
+    
     public void setStartingPoint(final int tileX, final int tileY);
 }
