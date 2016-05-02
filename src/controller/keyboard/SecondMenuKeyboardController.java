@@ -10,12 +10,23 @@ import controller.parameters.State;
 import controller.view.ViewController;
 import view.frames.InserisciNome;
 
+/**
+ * The {@link KeyboardController} active for the second menu.
+ * This class implements the SINGLETON programmation pattern
+ */
 public class SecondMenuKeyboardController implements KeyboardController {
 
     private static SecondMenuKeyboardController SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private SecondMenuKeyboardController() {}
     
+    /** 
+     * @return the curent {@link SecondMenuKeyboardController}, or a new {@link SecondMenuKeyboardController}
+     * if this is the first time this method is invoked
+     */
     public static SecondMenuKeyboardController getController() {
         if (SINGLETON == null) {
             synchronized (SecondMenuKeyboardController.class) {

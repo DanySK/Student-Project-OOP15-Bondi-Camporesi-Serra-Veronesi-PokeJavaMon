@@ -22,6 +22,10 @@ import model.trainer.Trainer;
 import view.methods.MethodsImplemented;
 import view.methods.MethodsToImplement;
 
+/**
+ * The Controller that controls the fight.
+ * This class implements the SINGLETON programmation pattern 
+ */
 public class FightController implements FightControllerInterface {
 
     private static FightControllerInterface SINGLETON;
@@ -29,19 +33,13 @@ public class FightController implements FightControllerInterface {
     private MethodsToImplement view = new MethodsImplemented();
     
     /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Private constructor, used by getController method.
+     * Private constructor, used by the method getController
      */
     private FightController() {}
     
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Returns the FightController, using SINGLETON programmation pattern.
-     * @return the current FightController, or a new FightController if this is
-     * the first time this method has been called.
-     * @see FightControllerInterface
+    /** 
+     * @return the curent {@link FightController}, or a new {@link FightController}
+     * if this is the first time this method is invoked
      */
     public static FightControllerInterface getController() {    
         if (SINGLETON == null) {
@@ -54,28 +52,12 @@ public class FightController implements FightControllerInterface {
         return SINGLETON;
     }
     
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Initializes a new Fight against a trainer. 
-     * @param the Trainer player is fighting with.
-     * @see Fight
-     * @see Trainer
-     */
     @Override
     public void newFightWithTrainer(Trainer tr) {
         fight = new FightVsTrainer(tr);
         System.out.println("Fight with: " + tr.getID());
     }
     
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Initializes a new Fight against a wild pokemon. 
-     * @param the wild Pokemon player is fighting with.
-     * @see Fight
-     * @see Pokemon
-     */
     @Override
     public void newFightWithPokemon(Pokemon pm) {
         fight = new FightVsWildPkm(pm);

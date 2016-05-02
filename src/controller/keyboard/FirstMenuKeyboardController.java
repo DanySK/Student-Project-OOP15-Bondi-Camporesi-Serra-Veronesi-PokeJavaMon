@@ -7,12 +7,23 @@ import controller.parameters.Directions;
 import controller.parameters.State;
 import controller.view.ViewController;
 
+/**
+ * The {@link KeyboardController} active for the first menu.
+ * This class implements the SINGLETON programmation pattern
+ */
 public class FirstMenuKeyboardController implements KeyboardController {
 
     private static FirstMenuKeyboardController SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private FirstMenuKeyboardController() {}
     
+    /** 
+     * @return the curent {@link FirstMenuKeyboardController}, or a new {@link FirstMenuKeyboardController}
+     * if this is the first time this method is invoked
+     */
     public static FirstMenuKeyboardController getController() {
         if (SINGLETON == null) {
             synchronized (FirstMenuKeyboardController.class) {
