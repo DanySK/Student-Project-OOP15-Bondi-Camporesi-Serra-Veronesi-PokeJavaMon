@@ -29,7 +29,7 @@ public enum FilePath {
     private static class Constants {
         public static final String NONE = "NONE";
         public static final String MAPS = "maps";
-        public static final String IMG = "Img";
+        public static final String IMG = "img";
     }
     
     private FilePath(final String jar, final String abs) {
