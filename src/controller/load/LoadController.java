@@ -12,6 +12,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+
+import controller.parameters.FilePath;
 import controller.parameters.XMLParameters;
 import exceptions.SquadFullException;
 import model.box.BoxImpl;
@@ -23,7 +25,7 @@ import model.pokemon.StaticPokemonFactory;
 import view.resources.Play;
 
 public class LoadController implements LoadControllerInterface {
-    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Save" + File.separator + "save.xml";
+    private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private final int MIN_MOVES = 1;
     private SAXBuilder builder;
     private Document document;

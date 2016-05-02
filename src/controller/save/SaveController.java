@@ -10,6 +10,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+
+import controller.parameters.FilePath;
 import controller.parameters.XMLParameters;
 import model.box.Box;
 import model.inventory.Inventory;
@@ -27,7 +29,7 @@ public class SaveController implements SaveControllerInterface {
     private Document document;
     private Element root;
     private XMLOutputter outputter;
-    private final String FILE_NAME = System.getProperty("user.home") + File.separator + "PokeJava" + File.separator + "Save" + File.separator + "save.xml";
+    private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private FileOutputStream fos;
     private static SaveController SINGLETON;
     
@@ -47,6 +49,7 @@ public class SaveController implements SaveControllerInterface {
     private void setup() {
         root = new Element(XMLParameters.TITLE.getName());
         document = new Document(root);
+        System.out.println(FILE_NAME);
         try {
             fos = new FileOutputStream(new File(FILE_NAME));
         } catch (FileNotFoundException e) {

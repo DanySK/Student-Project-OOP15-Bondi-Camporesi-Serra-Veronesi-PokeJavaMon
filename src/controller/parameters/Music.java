@@ -1,24 +1,30 @@
 package controller.parameters;
 
 public enum Music {
-    HOME("home.mp3"), 
-    OPENING("opening.mp3"),
-    LAB("lab.mp3"),
-    WILD("wild.mp3"),
-    TRAINER("trainer.mp3"),
-    CENTER("center.mp3"),
-    MART("mart.mp3"),
-    CAVE("cave.mp3"),
-    TOWN("town.mp3"),
-    ROUTE("route.mp3");
-    
-    private Music(String s) {
-        this.path = s;
+    HOME("/music/home.mp3", "/home.mp3"), 
+    OPENING("/music/opening.mp3", "/opening.mp3"),
+    LAB("/music/lab.mp3", "/lab.mp3"),
+    WILD("/music/wild.mp3", "/wild.mp3"),
+    TRAINER("/music/trainer.mp3", "/trainer.mp3"),
+    CENTER("/music/center.mp3", "/center.mp3"),
+    MART("/music/mart.mp3", "/mart.mp3"),
+    CAVE("/music/cave.mp3", "/cave.mp3"),
+    TOWN("/music/town.mp3", "/town.mp3"),
+    ROUTE("/music/route.mp3", "/route.mp3");
+
+    private Music(String rp, String absp) {
+        this.resPath = rp;
+        this.absPath = absp;
     }
     
-    String path;
+    final String resPath;
+    final String absPath;
     
-    public String getPath() {
-        return this.path;
+    public String getResourcePath() {
+        return this.resPath;
+    }
+    
+    public String getAbsolutePath() {
+    	return this.absPath;
     }
 }

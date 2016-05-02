@@ -61,10 +61,11 @@ public class Installer implements InstallerInterface {
                 System.out.println("FAILED CREATING BACK FOLDER");
                 return;
             }       
+            
             for (Music m : Music.values()) {
-                try(InputStream musicStream = this.getClass().getResourceAsStream("/" + m.getPath());
-                        FileOutputStream fos = new FileOutputStream(FilePath.MUSIC.getAbsolutePath() + "/" + m.getPath())) {
-                    byte[] buf = new byte[2048];
+                try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
+                        FileOutputStream fos = new FileOutputStream(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath())) {
+                	byte[] buf = new byte[2048];
                     int r = musicStream.read(buf);
                     while(r != -1) {
                         fos.write(buf, 0, r);
@@ -72,6 +73,7 @@ public class Installer implements InstallerInterface {
                     }
                	} catch (IOException e) {
                	    System.out.println("FAILED INSTALLING MUSIC");
+               	    e.printStackTrace();
                	    return;
 		}     	
             }
@@ -86,6 +88,7 @@ public class Installer implements InstallerInterface {
                	    }
                	} catch (IOException e) {
                	    System.out.println("FAILED INSTALLING FRONT SPRITE");
+               	    e.printStackTrace();
                	    return;
 		}   
             }

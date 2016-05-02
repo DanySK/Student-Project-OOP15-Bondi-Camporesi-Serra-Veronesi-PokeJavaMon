@@ -3,23 +3,23 @@ package controller.parameters;
 import java.io.File;
 
 public enum FilePath {
-    MAINFOLDER ("NONE", System.getProperty("user.home") + File.separator + "PokeJava"),
-    SAVE ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Save"),
-    MAPS ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Maps"),
-    IMG ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Img"),
-    MUSIC ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Music"),
-    SPRITES("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Sprites"),
-    FRONT("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Sprites" + File.separator + "Front"),
-    BACK("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Sprites" + File.separator + "Back"),
-    MAP ("/map.tmx", MAINFOLDER.getAbsolutePath() + File.separator + "Maps" + File.separator + "map.tmx"),
-    TILESET ("/tileset5.png", MAINFOLDER.getAbsolutePath() + File.separator + "Maps" + File.separator + "tileset5.png"),
-    PSD ("/tileset5.psd", MAINFOLDER.getAbsolutePath() + File.separator + "Maps" + File.separator + "tileset5.psd"),
-    SHEET ("/playersheet.png", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "playersheet.png"),
-    PACK ("/player.pack", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "player.pack"),
-    PLAYER ("/player.png", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "player.png"),
-    PALLA ("/POKEPALLA.png", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "POKEPALLA.png"),
-    SONG ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "Music" + File.separator);
-    
+    MAINFOLDER ("NONE", System.getProperty("user.home") + File.separator + ".pokejava"),
+    SAVE ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "save"),
+    MAPS ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "maps"),
+    IMG ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "img"),
+    MUSIC ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "music"),
+    SPRITES("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "sprites"),
+    FRONT("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "sprites" + File.separator + "front"),
+    BACK("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "sprites" + File.separator + "back"),
+    MAP ("/maps/map.tmx", MAINFOLDER.getAbsolutePath() + File.separator + "maps" + File.separator + "map.tmx"),
+    TILESET ("/maps/tileset5.png", MAINFOLDER.getAbsolutePath() + File.separator + "maps" + File.separator + "tileset5.png"),
+    PSD ("/maps/tileset5.psd", MAINFOLDER.getAbsolutePath() + File.separator + "maps" + File.separator + "tileset5.psd"),
+    SHEET ("/img/playersheet.png", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "playersheet.png"),
+    PACK ("/img/player.pack", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "player.pack"),
+    PLAYER ("/img/player.png", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "player.png"),
+    PALLA ("/img/POKEPALLA.png", MAINFOLDER.getAbsolutePath() + File.separator + "Img" + File.separator + "POKEPALLA.png"),
+    SONG ("NONE", MAINFOLDER.getAbsolutePath() + File.separator + "music" + File.separator);
+	
     private FilePath(String jar, String abs) {
         this.jar = jar;
         this.abs = abs;

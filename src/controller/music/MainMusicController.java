@@ -27,9 +27,10 @@ public class MainMusicController implements MusicController {
     @Override
     public void play(Music song) {        
         try {
-            s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getPath()));
+            s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getAbsolutePath()));
         } catch (Exception e) {
-            s = Gdx.audio.newSound(Gdx.files.classpath(song.getPath()));
+        	e.printStackTrace();
+            s = Gdx.audio.newSound(Gdx.files.classpath(song.getResourcePath()));
         }
         s.loop();
         m = song;
