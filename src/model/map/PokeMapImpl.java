@@ -18,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import model.map.Drawable.Direction;
+import model.map.tile.BadgeTeleport;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
@@ -161,7 +162,7 @@ public class PokeMapImpl implements PokeMap {
 				}
 				this.collisions.add(p);
 
-			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
+			} else if (cellProperty.equals(TileType.TELEPORT.toString()) || cellProperty.equals(TileType.BADGETELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
 			
 			} else if (cellProperty.equals(TileType.MARKET.toString())) {
@@ -175,8 +176,8 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.START.toString())) {
 				PlayerImpl.START_X = tileX;
 				PlayerImpl.START_Y = tileY;
-				this.map[tileX][tileY] = TileType.START;
-				PlayerImpl.setStartingPoint(tileX, tileY);
+				this.map[tileX][tileY] = TileType.TERRAIN;
+				PlayerImpl.getPlayer().setStartingPoint(tileX, tileY);
 			}
 		}
 	}
@@ -306,7 +307,13 @@ public class PokeMapImpl implements PokeMap {
 				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
 				final int to_x = Integer.parseInt((String)mobj.getProperties().get("DOOR_X"));
 				final int to_y = Integer.parseInt((String)mobj.getProperties().get("DOOR_Y"));
-				final Teleport tmp = new Teleport(real_x, real_y, to_x, to_y);
+				Teleport tmp;
+				if (mobj.getProperties().containsKey("badgesRequired")) {
+					tmp = new BadgeTeleport(real_x, real_y, to_x, to_y, Integer.parseInt(mobj.getProperties().get("badgesRequired", String.class)));
+					System.out.println("creating new BadgeTeleport at " + new Position(real_x, real_y));
+				} else {
+					tmp = new Teleport(real_x, real_y, to_x, to_y);
+				}		
 				this.teleports.add(tmp);
 			}
 		}

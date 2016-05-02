@@ -33,11 +33,13 @@ public interface Player extends Character{
     
     public String getName();
 
-    public void setMoney(int money);
+    public void setMoney(final int money);
 
-    public void setPosition(int x, int y);
+    public void setPosition(final int x, final int y);
     
     public int getLastBadge();
     
     public void addBadge();
+    
+    public void setStartingPoint(final int tileX, final int tileY);
 }

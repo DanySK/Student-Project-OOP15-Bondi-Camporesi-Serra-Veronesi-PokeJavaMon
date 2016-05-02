@@ -4168,7 +4168,7 @@
    H4sIAAAAAAAAC+3dT27TQBQHYNup2Hdf0ZZDVCpwA0CtoHADNiD+XKcVnIIiyhWQKlXiEEE9Rb0jVEwct/G8jP19y0wUPSXKz2/sGbuqAAAAAAAAgFL9ii4AMnkbXUCwH3V0BTB+U88ZYNz+l3HzRH8hD1mHnabf+y8y9bvn+upQufJFjgHR5BBQOjkGw5n1nC9PgcwBIiyej5RDwBTkzDq5CqTIB2BKujJPJgIAY6cfAgC4n3X0S6t+ht4MAOAvvREwNnINGCPZBkR6Z584AAAATFrqnv4AsIn6PisEAACA1T0052IF5uYA9HXg2AHwjwdyEQAAAABgY3yxtw4AoJM1xmU78vsBAAC3XDo3DgCMkL2sAAAAAAAAAAAAAEBp/tjrBQAAAAAAANnU7lMEAAAAQCaeHwgAm8txGvKb+d8BAAAAAAAj9tx9JQEAOlk/AgBwNzv6KGBDXTk3DgAASVvm8wAAAAAAAAAAAAAM4KV1qkU5tQ8PACbnWL8GAAAAwIjMXe8CAIBJe2ZOAAAAAAAAADCob67LAsCdnTmOAgHcDxIAAAAAAABYh6/WPQAAAAAwoANr3wEAoHhbt/r6I30+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUJh5HV0BAAAAAAAAAADANM2a6ArK837hO9uOKwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAirHfVNWjpv8YQG5P2jx6msikZWMAAAAAAAAAAEN53VTVm4U1Cy/q9BhApE9tHn1OZNKyMQAAAAAAAKA8u01V7SWuAS4bA8jtsM2jx4lMWjYGEOFVm0knTfdrANE+tLn0sel+DQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgvq7r6AoAAMjlp94PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKA43+voCgAAACjZeeZ55W/zWAAAAAAAAAAAAAAAAAAAAAAAAABWcAO4dPX3QH4FAA==
   </data>
  </layer>
- <objectgroup name="doorLayer" visible="0">
+ <objectgroup name="doorLayer">
   <object id="46" x="4464" y="720" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="28"/>
@@ -4197,6 +4197,7 @@
    <properties>
     <property name="DOOR_X" value="37"/>
     <property name="DOOR_Y" value="135"/>
+    <property name="badgesRequired" type="int" value="0"/>
    </properties>
   </object>
   <object id="54" x="720" y="2144" width="16" height="16">
@@ -4209,6 +4210,7 @@
    <properties>
     <property name="DOOR_X" value="45"/>
     <property name="DOOR_Y" value="135"/>
+    <property name="badgesRequired" type="int" value="0"/>
    </properties>
   </object>
   <object id="56" x="4512" y="1072" width="16" height="16">
@@ -4239,12 +4241,14 @@
    <properties>
     <property name="DOOR_X" value="118"/>
     <property name="DOOR_Y" value="44"/>
+    <property name="badgesRequired" type="int" value="1"/>
    </properties>
   </object>
   <object id="63" x="4448" y="80" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="123"/>
     <property name="DOOR_Y" value="44"/>
+    <property name="badgesRequired" type="int" value="1"/>
    </properties>
   </object>
   <object id="64" x="688" y="1296" width="16" height="16">
@@ -4299,6 +4303,7 @@
    <properties>
     <property name="DOOR_X" value="64"/>
     <property name="DOOR_Y" value="290"/>
+    <property name="badgesRequired" type="int" value="4"/>
    </properties>
   </object>
   <object id="76" x="2848" y="1232" width="16" height="16">
@@ -4359,6 +4364,7 @@
    <properties>
     <property name="DOOR_X" value="132"/>
     <property name="DOOR_Y" value="107"/>
+    <property name="badgesRequired" type="int" value="2"/>
    </properties>
   </object>
   <object id="91" x="2016" y="1696" width="16" height="16">
@@ -4371,12 +4377,14 @@
    <properties>
     <property name="DOOR_X" value="126"/>
     <property name="DOOR_Y" value="108"/>
+    <property name="badgesRequired" type="int" value="2"/>
    </properties>
   </object>
   <object id="93" x="3984" y="80" width="16" height="16">
    <properties>
     <property name="DOOR_X" value="195"/>
     <property name="DOOR_Y" value="10"/>
+    <property name="badgesRequired" type="int" value="3"/>
    </properties>
   </object>
   <object id="94" x="3216" y="144" width="16" height="16">
@@ -4395,6 +4403,7 @@
    <properties>
     <property name="DOOR_X" value="201"/>
     <property name="DOOR_Y" value="10"/>
+    <property name="badgesRequired" type="int" value="3"/>
    </properties>
   </object>
   <object id="97" x="3840" y="752" width="16" height="16">
@@ -4491,6 +4500,7 @@
    <properties>
     <property name="DOOR_X" value="227"/>
     <property name="DOOR_Y" value="149"/>
+    <property name="badgesRequired" type="int" value="4"/>
    </properties>
   </object>
   <object id="118" x="3632" y="2368" width="16" height="16">
@@ -4509,6 +4519,7 @@
    <properties>
     <property name="DOOR_X" value="252"/>
     <property name="DOOR_Y" value="149"/>
+    <property name="badgesRequired" type="int" value="4"/>
    </properties>
   </object>
   <object id="121" x="3056" y="704" width="16" height="16">
@@ -4826,7 +4837,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="pokemonEncounterLayer">
+ <objectgroup name="pokemonEncounterLayer" visible="0">
   <object id="148" x="128" y="368" width="528" height="96">
    <properties>
     <property name="avgLvl" value="14"/>
@@ -5002,7 +5013,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="trainerLayer">
+ <objectgroup name="trainerLayer" visible="0">
   <object id="197" type="GYM_LEADER" x="4016" y="1184" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=31"/>

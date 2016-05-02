@@ -1,5 +1,7 @@
 package controller.keyboard;
 
+import java.util.Optional;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 
@@ -9,6 +11,8 @@ import controller.parameters.*;
 import controller.view.ViewController;
 import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
+import model.map.Position;
+import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
@@ -304,15 +308,21 @@ public class WalkingKeyboardController implements KeyboardController {
         }
         if (up == true) {
             resolveUP();
+            PlayerImpl.getPlayer().move(Direction.NORTH, pm);
         } else if (down == true) {
             resolveDOWN();
+            PlayerImpl.getPlayer().move(Direction.SOUTH, pm);
         } else if (left == true) {
             resolveLEFT();
+            PlayerImpl.getPlayer().move(Direction.WEST, pm);
         } else if (right == true) {
             resolveRIGHT();
+            PlayerImpl.getPlayer().move(Direction.EAST, pm);
         } else {
             PlayerSprite.getSprite().setVelocity(0, 0);
         }
+        
+        System.out.println("Player Position:" + new Position(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()));
     }
     
     /**
@@ -320,15 +330,18 @@ public class WalkingKeyboardController implements KeyboardController {
      * a teleport
      */
     private void resolveTeleport() {
-        int x, y;
-        x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
-        y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
-        if (pm.getTeleport(x, y).isPresent()) {
-            PlayerSprite.getSprite().setPlayerPosition(pm.getTeleport(x, y).get().getDestinationX(), pm.getTeleport(x, y).get().getDestinationY());
+        final int x = PlayerSprite.getSprite().getPosition().getX().intValue() / 16;
+        final int y = (299 - (PlayerSprite.getSprite().getPosition().getY().intValue() / 16));
+        final Optional<Teleport> t = pm.getTeleport(x, y);
+        if (t.isPresent()) {
+            PlayerSprite.getSprite().setPlayerPosition(t.get().getDestinationX(), t.get().getDestinationY());
             PlayerSprite.getSprite().setVelocity(0, 0);
+            PlayerImpl.getPlayer().setPosition(t.get().getDestinationX(), t.get().getDestinationY());
         }
+        
     }
     
+    //TODO: Refattorizzare il codice, roba ripetuta 4 volte
     /**
      * Resolve the case player selects to move up
      */
