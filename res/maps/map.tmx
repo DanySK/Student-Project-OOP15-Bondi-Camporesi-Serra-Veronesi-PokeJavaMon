@@ -4462,6 +4462,7 @@
    <properties>
     <property name="DOOR_X" value="242"/>
     <property name="DOOR_Y" value="83"/>
+    <property name="badgesRequired" type="int" value="2"/>
    </properties>
   </object>
   <object id="112" x="3184" y="400" width="16" height="16">
@@ -4492,6 +4493,7 @@
    <properties>
     <property name="DOOR_X" value="238"/>
     <property name="DOOR_Y" value="122"/>
+    <property name="badgesRequired" type="int" value="1"/>
    </properties>
   </object>
   <object id="117" x="4016" y="80" width="16" height="16">
@@ -4524,6 +4526,7 @@
    <properties>
     <property name="DOOR_X" value="239"/>
     <property name="DOOR_Y" value="161"/>
+    <property name="badgesRequired" type="int" value="3"/>
    </properties>
   </object>
   <object id="122" x="3808" y="2608" width="16" height="16">
@@ -5011,14 +5014,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="trainerLayer" visible="0">
+ <objectgroup name="trainerLayer">
   <object id="197" type="GYM_LEADER" x="4016" y="1184" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=31"/>
     <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
     <property name="3_POKEMON=LVL" value="TENTACRUEL=34"/>
     <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
-    <property name="badgeID" type="int" value="2"/>
+    <property name="badgeID" type="int" value="3"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I am your last test before your final &quot;commit&quot;, are you ready?"/>
     <property name="lostMessage" value="Very well."/>
@@ -5033,7 +5036,7 @@
     <property name="1_POKEMON=LVL" value="GOLBAT=22"/>
     <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
     <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
-    <property name="badgeID" type="int" value="0"/>
+    <property name="badgeID" type="int" value="1"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="This is your first real challenge, bring it on!"/>
     <property name="lostMessage" value="Excellent."/>
@@ -5049,7 +5052,7 @@
     <property name="2_POKEMON=LVL" value="RAICHU=27"/>
     <property name="3_POKEMON=LVL" value="SANSLASH=30"/>
     <property name="4_POKEMON=LVL" value="CHARMELEON=32"/>
-    <property name="badgeID" type="int" value="1"/>
+    <property name="badgeID" type="int" value="2"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="This is your second test, are you ready?"/>
     <property name="lostMessage" value="Very well."/>
@@ -5066,7 +5069,7 @@
     <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
     <property name="4_POKEMON=LVL" value="BLASTOISE=38"/>
     <property name="5_POKEMON=LVL" value="CHARIZARD=38"/>
-    <property name="badgeID" type="int" value="3"/>
+    <property name="badgeID" type="int" value="4"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Show me your knowledge!"/>
     <property name="lostMessage" value="Congratulation, you passed the exam of Object Oriented Programmation"/>
