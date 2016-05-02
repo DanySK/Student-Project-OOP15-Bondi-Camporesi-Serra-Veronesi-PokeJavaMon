@@ -24,6 +24,10 @@ import model.pokemon.Stat;
 import model.trainer.Trainer;
 import view.resources.Play;
 
+/**
+ * This class saves all the requested informations. 
+ * This class implements the SINGLETON programmation pattern
+ */
 public class SaveController implements SaveControllerInterface {
     private final int MIN_MOVES = 1;
     private Document document;
@@ -33,8 +37,15 @@ public class SaveController implements SaveControllerInterface {
     private FileOutputStream fos;
     private static SaveController SINGLETON;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private SaveController() {}
     
+    /** 
+     * @return the curent {@link SaveController}, or a new {@link SaveController}
+     * if this is the first time this method is invoked
+     */
     public static SaveController getController() {
         if (SINGLETON == null) {
             synchronized (SaveController.class) {
@@ -46,6 +57,9 @@ public class SaveController implements SaveControllerInterface {
         return SINGLETON;
     }
     
+    /**
+     * Prepares the save file
+     */
     private void setup() {
         root = new Element(XMLParameters.TITLE.getName());
         document = new Document(root);
@@ -63,6 +77,9 @@ public class SaveController implements SaveControllerInterface {
         }
     }
     
+    /**
+     * Saves player's position
+     */
     private void setPosition() {
         Element position = new Element(XMLParameters.POSITION.getName());
         position.setAttribute(XMLParameters.X.getName(),Integer.toString(PlayerImpl.getPlayer().getTileX()));
@@ -70,10 +87,16 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(position);
     }
     
+    /**
+     * Saves player's badge value
+     */
     private void setBadges() {
         root.setAttribute(XMLParameters.BADGES.getName(),Integer.toString(PlayerImpl.getPlayer().getLastBadge()));
     }
     
+    /**
+     * Saves player's pokemon team
+     */
     private void setTeam() {
         Element squadra = new Element(XMLParameters.TEAM.getName());
         List<PokemonInBattle> team = PlayerImpl.getPlayer().getSquad().getPokemonList();
@@ -96,6 +119,9 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(squadra);
     }
     
+    /**
+     * Saves trainers
+     */
     private void setTrainers() {
         Element allenatori = new Element(XMLParameters.TRAINERS.getName());
         Set<Trainer> l = Play.getMapImpl().getTrainers();
@@ -107,6 +133,9 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(allenatori);
     }
     
+    /**
+     * Saves player's inventory
+     */
     private void setBag() {
         Element borsa = new Element(XMLParameters.BAG.getName());
         Element instruments = new Element(XMLParameters.POTIONS.getName());
@@ -128,14 +157,23 @@ public class SaveController implements SaveControllerInterface {
         root.addContent(borsa);
     }
     
+    /**
+     * Saves player's money
+     */
     private void setMoney() {
         root.setAttribute(XMLParameters.MONEY.getName(),Integer.toString(PlayerImpl.getPlayer().getMoney()));
     }
     
+    /**
+     * Saves player's name
+     */
     private void setName() {
         root.setAttribute(XMLParameters.NAME.getName(),PlayerImpl.getPlayer().getName());
     }
     
+    /**
+     * Saves player's box
+     */
     private void setBox() {
         Element box = new Element(XMLParameters.BOX.getName());
         Box b = PlayerImpl.getPlayer().getBox();
