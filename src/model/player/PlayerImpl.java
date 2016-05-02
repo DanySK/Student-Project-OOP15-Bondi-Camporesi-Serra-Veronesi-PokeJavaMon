@@ -42,7 +42,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
-        this.badges = -1;
+        this.badges = 3;
         
     }
     
@@ -93,12 +93,12 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         return this.money;
     }
     
-    public void setMoney(int money) {
+    public void setMoney(final int money) {
         this.money = money;
     }
 
     @Override
-    public void buyItem(Item item) throws NotEnoughMoneyException {
+    public void buyItem(final Item item) throws NotEnoughMoneyException {
         if (this.money - item.getPrice() < 0 ) {
             throw new NotEnoughMoneyException();
         }
@@ -123,16 +123,16 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     	int newY = this.tileY;
     	switch (d) {
     	case EAST :
-    		newX += pm.getTileWidth();
+    		newX += 1;
     		break;
     	case WEST :
-    		newX -= pm.getTileWidth();
+    		newX -= 1;
     		break;
     	case NORTH :
-    		newY -= pm.getTileHeight();
+    		newY -= 1;
     		break;
     	case SOUTH :
-    		newY +=  pm.getTileHeight();
+    		newY +=  1;
     		break;
     	}
     	if (pm.isWalkable(newX, newY)) {
@@ -148,7 +148,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     	}
     }
     
-    public void turn(Direction d) {
+    public void turn(final Direction d) {
     	this.direction = d;
     }
 
@@ -162,10 +162,11 @@ public class PlayerImpl extends AbstractCharacter implements Player{
 		this.badges++;
 	}
 	
-	//TODO Da rivedere
-	public static void setStartingPoint(int tileX, int tileY) {
+	@Override
+	public void setStartingPoint(final int tileX, final int tileY) {
 		PlayerImpl.START_X = tileX;
 		PlayerImpl.START_Y = tileY;
+		this.setPosition(tileX, tileY);
 	}
-
+	
 }

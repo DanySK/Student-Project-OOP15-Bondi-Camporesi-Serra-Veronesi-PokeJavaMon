@@ -30,6 +30,7 @@ public class TitleWiew {
         try {
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
         } catch (Exception e) {
+        	//TODO: Fare catch di una semplice Exception e' sbagliato
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
         }
         JPanel pane = new JPanel();

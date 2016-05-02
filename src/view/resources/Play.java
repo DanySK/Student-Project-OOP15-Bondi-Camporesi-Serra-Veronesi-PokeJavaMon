@@ -82,8 +82,13 @@ public class Play implements Screen {
 		pls = PlayerSprite.getSprite();
 		pm = new PokeMapImpl(map);
 		if (newGame) {
+			//TODO Magic numbers... c'è un metodo nella mappa
 		    pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		    pls.setPosition(28*16, (299 - 177) * 16);
+		    if (PlayerImpl.START_X < 0) {
+	        	System.out.println("Initial Position not found");
+	        }
+	        pls.setPosition(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16 : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16 : (299 - PlayerImpl.DEFAULT_START_Y) * 16);
+	    
 		} else {
 		    if (LoadController.getController().saveExists()) {
 		        LoadController.getController().load(null);
@@ -91,7 +96,10 @@ public class Play implements Screen {
 	                pls.setPosition(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
 	            } else {
 		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		        pls.setPosition(28*16, (299 - 177) * 16);
+		        if (PlayerImpl.START_X < 0) {
+		        	System.out.println("Initial Position not found");
+		        }
+		        pls.setPosition(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16 : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16 : (299 - PlayerImpl.DEFAULT_START_Y) * 16);
 		    }
 		}
 				
