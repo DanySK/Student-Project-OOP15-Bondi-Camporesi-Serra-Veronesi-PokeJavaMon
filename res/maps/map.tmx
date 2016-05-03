@@ -4910,7 +4910,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="zoneLayer" visible="0">
+ <objectgroup name="zoneLayer">
   <object id="161" x="4400" y="48" width="304" height="144">
    <properties>
     <property name="music" value="center.mp3"/>

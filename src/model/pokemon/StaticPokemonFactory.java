@@ -1,9 +1,22 @@
 package model.pokemon;
 
+/**
+ * A static class that implements the Static Factory Pattern for the creation of {@link Pokemon}. 
+ */
 public final class StaticPokemonFactory {
 
 	private StaticPokemonFactory() {}
 	
+	/**
+	 * Creates a Pokemon from the ID (the position in the {@link Pokedex}), level, current HP, current EXP, and the current moveset.
+	 * Basically it's method that allows the loading of the {@link Squad} from the save file
+	 * @param pkmnID	{@link Pokedex}.ordinal()
+	 * @param lvl		the level
+	 * @param hp		the current HP
+	 * @param exp		the current EXP
+	 * @param moves		the current moveset
+	 * @return			the newly created {@link Pokemon} 
+	 */
 	public static PokemonInBattle createPokemon(final String pkmnID, final int lvl, final int hp, final int exp, final String[] moves) {
 		Pokedex pokemonID = null;
 		Move[] moveset = new Move[PokemonInBattle.MAX_MOVES];
@@ -35,10 +48,23 @@ public final class StaticPokemonFactory {
 		return retPkmn;
 	}
 
+	/**
+	 * Creates a {@link Pokemon} from its index in the {@link Pokedex} with max HP, 0 EXP and the last 4 learnable moves.
+	 * @param pkmnID	{@link Pokedex} index
+	 * @param lvl		level
+	 * @return			a newly created {@link Pokemon}
+	 */
 	public static PokemonInBattle createPokemon(final Pokedex pkmnID, final int lvl) {
 		return new PokemonInBattle(pkmnID, lvl);
 	}
 
+	/**
+	 * Creates a {@link Pokemon} from its index int the {@link Pokedex} with fixed hp, 0 EXP and the last 4 learnable moves.
+	 * @param pkmnID	{@link Pokedex} index
+	 * @param lvl		level
+	 * @param hp		current HP
+	 * @return			a newly created {@link Pokemon}
+	 */
 	public static PokemonInBattle createPokemon(final Pokedex pkmnID, final int lvl, final int hp) {
 		final PokemonInBattle retPkmn = new PokemonInBattle(pkmnID, lvl);
 		retPkmn.changeStat(Stat.HP, hp);
