@@ -2,10 +2,10 @@ package controller.keyboard;
 
 import com.badlogic.gdx.Input.Keys;
 
-import controller.main.MainController;
-import controller.parameters.Directions;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
+import model.map.Drawable.Direction;
 
 /**
  * The {@link KeyboardController} active for the first menu.
@@ -50,11 +50,11 @@ public final class FirstMenuKeyboardController implements KeyboardController {
         switch(keycode) {
         case Keys.N:
             ViewController.getController().secondMenu();
-            MainController.getController().updateStatus(State.SECOND_MENU);
+            StatusController.getController().updateStatus(State.SECOND_MENU);
             break;
         case Keys.C:
             ViewController.getController().map(false);
-            MainController.getController().updateStatus(State.WALKING);
+            StatusController.getController().updateStatus(State.WALKING);
             break;
         default:
             break;
@@ -98,8 +98,8 @@ public final class FirstMenuKeyboardController implements KeyboardController {
     }
 
     @Override
-    public Directions getDirection() {
-        return Directions.STILL;
+    public Direction getDirection() {
+        return Direction.NONE;
     }
 
     @Override

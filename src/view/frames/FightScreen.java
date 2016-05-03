@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
+import controller.fight.FightController;
 import controller.view.ViewController;
 import exceptions.CannotEscapeFromTrainerException;
 import model.player.PlayerImpl;
@@ -99,7 +100,7 @@ public class FightScreen extends JPanel{
 		Fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			        try {
-                        ViewController.getController().run();
+                        FightController.getController().run();
                     } catch (CannotEscapeFromTrainerException e1) {
                         new MessageFrame("CANNOT ESCAPE FROM TRAINER", null);
                     }
@@ -113,7 +114,7 @@ public class FightScreen extends JPanel{
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
 			        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
-			            ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+			            FightController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
 			        } else {
 			            new MessageFrame("MOVE NOT FOUND", null);
 			        }
@@ -129,7 +130,7 @@ public class FightScreen extends JPanel{
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
-			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+			        FightController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
 			    } else {
 			        new MessageFrame("MOVE NOT FOUND", null);
                             }
@@ -146,7 +147,7 @@ public class FightScreen extends JPanel{
 				panel_2.setVisible(true);
                 panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
-			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+			        FightController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
 			    } else {
 			        new MessageFrame("MOVE NOT FOUND", null);
                             }
@@ -163,7 +164,7 @@ public class FightScreen extends JPanel{
 				panel_2.setVisible(true);
                                 panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
-			        ViewController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+			        FightController.getController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
 			    } else {
 			        new MessageFrame("MOVE NOT FOUND", null);
                             }

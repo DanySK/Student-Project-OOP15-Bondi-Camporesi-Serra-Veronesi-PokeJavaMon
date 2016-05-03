@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
-import controller.main.MainController;
-import controller.parameters.Directions;
 import controller.parameters.FilePath;
+import controller.status.StatusController;
+import model.map.Drawable.Direction;
 import model.utilities.Pair;
 import view.resources.Play;
 
@@ -42,9 +42,9 @@ public class PlayerSprite extends Sprite {
     
     public void update(SpriteBatch spriteBatch) {
         if (pos == 0) {
-            MainController.getController().updateSpeed();
+            StatusController.getController().updateSpeed();
             if (velocity.x == 0 && velocity.y == 0) {
-                setOrientation(MainController.getController().getDirection());
+                setOrientation(StatusController.getController().getDirection());
             } else {
                 move();
             }
@@ -98,21 +98,21 @@ public class PlayerSprite extends Sprite {
         super.setY((299 - y) * 16);
     }
     
-    private void setOrientation(Directions d) {
+    private void setOrientation(Direction d) {
         switch (d) {
-        case UP:
+        case NORTH:
             setRegion(up_s.getKeyFrame(animationTime));
             break;
-        case DOWN:
+        case SOUTH:
             setRegion(down_s.getKeyFrame(animationTime));
             break;
-        case LEFT:
+        case WEST:
             setRegion(left_s.getKeyFrame(animationTime));
             break;
-        case RIGHT:
+        case EAST:
             setRegion(right_s.getKeyFrame(animationTime));
             break;
-        case STILL:
+        case NONE:
             break;
         }
     }
@@ -135,7 +135,8 @@ public class PlayerSprite extends Sprite {
         pos ++;
         if (pos == 8) {
             pos = 0;
-            MainController.getController().checkEncounter();
+            StatusController.getController().checkEncounter();
+            StatusController.getController().updateMusic();
         }
     }
     

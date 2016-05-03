@@ -1,24 +1,13 @@
 package controller.view;
 
-import java.util.List;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-import controller.fight.FightController;
-import controller.main.MainController;
 import controller.parameters.State;
 import controller.save.SaveController;
-import exceptions.CannotCaughtTrainerPkmException;
-import exceptions.CannotEscapeFromTrainerException;
-import exceptions.PokemonIsExhaustedException;
-import exceptions.PokemonIsFightingException;
-import exceptions.PokemonNotFoundException;
-import model.items.Item;
+import controller.status.StatusController;
 import model.player.PlayerImpl;
-import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.Pokedex;
 import view.frames.*;
 import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
@@ -58,30 +47,30 @@ public final class ViewController implements ViewControllerInterface {
     
     @Override
     public void showMenu() {
-        MainController.getController().updateStatus(State.MENU);
+        StatusController.getController().updateStatus(State.MENU);
         new Menu();
     }
     
     @Override
     public void firstMenu() {
-        MainController.getController().updateStatus(State.FIRST_MENU);
+        StatusController.getController().updateStatus(State.FIRST_MENU);
         new TitleWiew().title();
     }
     
     @Override
     public void secondMenu() {
-        MainController.getController().updateStatus(State.SECOND_MENU);
+        StatusController.getController().updateStatus(State.SECOND_MENU);
         new InserisciNome();
     }
     
     @Override
-    public void map(final boolean b) {
+    public void map(final boolean newGame) {
         final LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "PokeJavaMon";
         cfg.useGL20 = true;
         cfg.width = 1280;
         cfg.height = 720;
-        final TiledMapGame tl = new TiledMapGame(b); 
+        final TiledMapGame tl = new TiledMapGame(newGame); 
         final LwjglApplication app = new LwjglApplication(tl, cfg);    
         tl.setApp(app);
     }
@@ -101,8 +90,8 @@ public final class ViewController implements ViewControllerInterface {
     }
     
     @Override
-    public void team(final boolean bl, final boolean bl2) {
-        new Squadra(bl, bl2);
+    public void team(final boolean canCloseMenu, final boolean canChangePokemon) {
+        new Squadra(canCloseMenu, canChangePokemon);
     }
     
     @Override
@@ -111,48 +100,18 @@ public final class ViewController implements ViewControllerInterface {
     }
     
     @Override
-    public void stats(final Pokemon iD) {
-        new Stats(iD);
+    public void stats(final Pokemon pokemon) {
+        new Stats(pokemon);
     }
 
     @Override
-    public void setName(final String text) {
-        this.name = text;
+    public void setName(final String name) {
+        this.name = name;
     }
     
     @Override
-    public void attack(final Move move) {
-        FightController.getController().attack(move);
-    }
-    
-    @Override
-    public void changePokemon(final Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        FightController.getController().changePokemon(poke);
-    }
-    
-    @Override
-    public void useItem(final Item it, final Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
-	FightController.getController().useItem(it, pk);	
-    }
-    
-    @Override
-    public void run() throws CannotEscapeFromTrainerException {
-        FightController.getController().run();
-    }
-    
-    @Override
-    public List<Pokedex> getEvolutions() {
-        return FightController.getController().resolveEvolution();
-    }
-    
-    @Override
-    public void selectPokemon(final Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        FightController.getController().selectPokemon(pk);
-    }
-    
-    @Override
-    public void fightScreen(final Pokemon pk) {
-        MainController.getController().updateStatus(State.FIGHTING);
-        new FightScreen(pk);
+    public void fightScreen(final Pokemon pokemon) {
+        StatusController.getController().updateStatus(State.FIGHTING);
+        new FightScreen(pokemon);
     }
 }

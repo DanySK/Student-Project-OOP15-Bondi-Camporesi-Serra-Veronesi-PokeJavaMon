@@ -1,8 +1,7 @@
 package controller.keyboard;
 
 import com.badlogic.gdx.InputProcessor;
-
-import controller.parameters.Directions;
+import model.map.Drawable.Direction;
 import model.pokemon.Pokemon;
 import view.sprite.PlayerSprite;
 
@@ -23,9 +22,9 @@ public interface KeyboardController extends InputProcessor {
     void updateSpeed();
     
     /**
-     * @return the {@link Directions} selected by the last key pressed
+     * @return the {@link Direction} selected by the last key pressed
      */
-    Directions getDirection();
+    Direction getDirection();
 
     /**
      * Checks if player has encountered a wild {@link Pokemon}

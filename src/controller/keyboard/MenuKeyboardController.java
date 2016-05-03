@@ -1,6 +1,6 @@
 package controller.keyboard;
 
-import controller.parameters.Directions;
+import model.map.Drawable.Direction;
 
 /**
  * The {@link KeyboardController} active for the menu.
@@ -81,8 +81,8 @@ public final class MenuKeyboardController implements KeyboardController {
     }
 
     @Override
-    public Directions getDirection() {
-        return Directions.STILL;
+    public Direction getDirection() {
+        return Direction.NONE;
     }
 
     @Override

@@ -4,10 +4,10 @@ import javax.swing.JOptionPane;
 
 import com.badlogic.gdx.Input.Keys;
 
-import controller.main.MainController;
-import controller.parameters.Directions;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
+import model.map.Drawable.Direction;
 import view.frames.InserisciNome;
 
 /**
@@ -58,7 +58,7 @@ public final class SecondMenuKeyboardController implements KeyboardController {
             else {
                 ViewController.getController().setName(name);
                 ViewController.getController().map(true);
-                MainController.getController().updateStatus(State.WALKING);
+                StatusController.getController().updateStatus(State.WALKING);
             }
         }
         return false;
@@ -100,8 +100,8 @@ public final class SecondMenuKeyboardController implements KeyboardController {
     }
 
     @Override
-    public Directions getDirection() {
-        return Directions.STILL;
+    public Direction getDirection() {
+        return Direction.NONE;
     }
 
     @Override

@@ -5,8 +5,9 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 
-import controller.main.MainController;
+import controller.fight.FightController;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
@@ -99,7 +100,7 @@ class Panel2 extends JPanel
                 private final int ID = index;
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (MainController.getController().getState() == State.MENU) {
+                    if (StatusController.getController().getState() == State.MENU) {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
                             PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
                             Squadra.dispose();
@@ -110,7 +111,7 @@ class Panel2 extends JPanel
                     } else {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                             try {
-                                ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                FightController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame("CANNOT SELECT THAT POKEMON", null);
@@ -119,7 +120,7 @@ class Panel2 extends JPanel
                             }
                         } else {
                             try {
-                                ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                FightController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame("CANNOT SELECT THAT POKEMON", null);
@@ -148,7 +149,7 @@ class Panel2 extends JPanel
                     }
                 }
             });
-            if (MainController.getController().getState() != State.MENU || bl2) {
+            if (StatusController.getController().getState() != State.MENU || bl2) {
                 but3.setEnabled(false);
             }
             add(but3);

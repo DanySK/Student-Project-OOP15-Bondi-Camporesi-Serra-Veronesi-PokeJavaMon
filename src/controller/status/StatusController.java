@@ -1,4 +1,6 @@
-package controller.main;
+package controller.status;
+
+import java.util.Optional;
 
 import controller.fight.FightController;
 import controller.keyboard.FightingKeyboardController;
@@ -8,35 +10,38 @@ import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.music.MainMusicController;
-import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
+import model.map.Drawable.Direction;
+import model.map.Position;
+import model.player.PlayerImpl;
+import model.map.WalkableZone;
 import view.resources.Play;
 
 /**
  * This is the main controller of the game
  */
-public final class MainController implements MainControllerInterface {
+public final class StatusController implements StatusControllerInterface {
     
     private State state;
     private KeyboardController keyboardController;
-    private static MainControllerInterface singleton; 
+    private static StatusControllerInterface singleton; 
     
     /**
      * Private constructor, used by the method getController
      */
-    private MainController() {}
+    private StatusController() {}
     
     /** 
-     * @return the curent {@link MainController}, or a new {@link MainController}
+     * @return the curent {@link StatusController}, or a new {@link StatusController}
      * if this is the first time this method is invoked
      */
-    public static MainControllerInterface getController() {
+    public static StatusControllerInterface getController() {
         if (singleton == null) {
-            synchronized (MainController.class) {
+            synchronized (StatusController.class) {
                 if (singleton == null) {
-                    singleton = new MainController();
+                    singleton = new StatusController();
                 }
             }
         }
@@ -55,12 +60,10 @@ public final class MainController implements MainControllerInterface {
                 break;
             case WALKING:
                 if (MainMusicController.getController().playing() == null) {
-                    MainMusicController.getController().play(Music.TOWN);
+                    updateMusic();
                 } else {
-                    if (MainMusicController.getController().playing() != Music.TOWN) {
-                        MainMusicController.getController().stop();
-                        MainMusicController.getController().play(Music.TOWN);
-                    }
+                    MainMusicController.getController().stop();
+                    updateMusic();
                 }
                 keyboardController = WalkingKeyboardController.getController(); 
                 Play.updateKeyListener();
@@ -119,12 +122,26 @@ public final class MainController implements MainControllerInterface {
     }
     
     @Override
-    public Directions getDirection() {
+    public Direction getDirection() {
         return keyboardController.getDirection();
     }
     
     @Override
     public void checkEncounter() {
         keyboardController.checkEncounter();
+    }
+
+    @Override
+    public void updateMusic() {
+        Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
+        if (zone.isPresent()) {
+            System.out.println(zone.get() + " " + new Position(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()));
+            System.out.println(zone.get().getMusicPath());
+            for (Music m : Music.values()) {
+                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m) {
+                    MainMusicController.getController().play(m);
+                }
+            }
+        }
     }
 }

@@ -10,9 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.main.MainController;
 import controller.parameters.FilePath;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
 
 public class TitleWiew {
@@ -44,7 +44,7 @@ public class TitleWiew {
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                MainController.getController().updateStatus(State.SECOND_MENU);
+                StatusController.getController().updateStatus(State.SECOND_MENU);
                 ViewController.getController().secondMenu();
             }
         });
@@ -53,7 +53,7 @@ public class TitleWiew {
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ViewController.getController().map(false);
-                MainController.getController().updateStatus(State.WALKING);
+                StatusController.getController().updateStatus(State.WALKING);
                 frame.dispose();
             }
         });
