@@ -16,6 +16,7 @@ import controller.parameters.XMLParameters;
 import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;
+import model.map.Position;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
@@ -83,6 +84,7 @@ public final class SaveController implements SaveControllerInterface {
         final Element position = new Element(XMLParameters.POSITION.getName());
         position.setAttribute(XMLParameters.X.getName(),Integer.toString(PlayerImpl.getPlayer().getTileX()));
         position.setAttribute(XMLParameters.Y.getName(),Integer.toString(PlayerImpl.getPlayer().getTileY()));
+        System.out.println("savePos : " + new Position(PlayerImpl.getPlayer().getTileX(),PlayerImpl.getPlayer().getTileY()));
         root.addContent(position);
     }
     

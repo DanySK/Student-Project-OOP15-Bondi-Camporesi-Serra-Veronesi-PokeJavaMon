@@ -400,7 +400,7 @@ public class FightVsWildPkm implements Fight {
 	}
 	
 	protected double expBaseCalculation(){
-		//TODO testare se è bilanciata la quantità di baseExp
+		//TODO testare se e' bilanciata la quantita'� di baseExp
 		double baseExp;
 		switch(enemyPkm.getPokemon().getRarity()){
 			case COMMON:

@@ -86,15 +86,11 @@ public class Play implements Screen {
 		    pls.setBounds(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16  : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16  : (299 -PlayerImpl.DEFAULT_START_Y) * 16, 15.9f, 15.9f);
 		    if (PlayerImpl.START_X < 0) {
 	        	System.out.println("Initial Position not found");
-	        }
-//	        pls.setPosition(PlayerImpl.START_X > 0 ? PlayerImpl.START_X : PlayerImpl.DEFAULT_START_X, PlayerImpl.START_Y > 0 ? PlayerImpl.START_Y  : PlayerImpl.DEFAULT_START_Y);
-	    
+	        } 
 		} else {
 		    if (LoadController.getController().saveExists()) {
 		        LoadController.getController().load(null);
-	                pls.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
-	                pls.setPosition(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
-	            } else {
+		    } else {
 		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		        if (PlayerImpl.START_X < 0) {
 		        	System.out.println("Initial Position not found");

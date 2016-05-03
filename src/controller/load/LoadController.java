@@ -19,10 +19,12 @@ import exceptions.SquadFullException;
 import model.box.BoxImpl;
 import model.inventory.InventoryImpl;
 import model.map.PokeMap;
+import model.map.Position;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 import view.resources.Play;
+import view.sprite.PlayerSprite;
 
 /**
  * This class loads all the requested informations. 
@@ -102,6 +104,9 @@ public final class LoadController implements LoadControllerInterface {
         final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
         final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
         PlayerImpl.getPlayer().setPosition(x, y);
+        PlayerSprite.getSprite().setBounds(x * 16, (299-y) * 16, 15.9f, 15.9f);
+        System.out.println("savePos : " + new Position(PlayerImpl.getPlayer().getTileX(),PlayerImpl.getPlayer().getTileY()));
+        
     }
     
     /**

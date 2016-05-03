@@ -10,7 +10,6 @@ public class Sign extends AbstractTile {
     public Sign(final int x, final int y, final String message) {
         super(Tile.TileType.SIGN, Direction.SOUTH, x, y);
 
-        //TODO : Controller should check this
         this.message = message;
     	if (this.message != null) {
     		if (this.message.indexOf("%%PLAYER%%") != -1) {
