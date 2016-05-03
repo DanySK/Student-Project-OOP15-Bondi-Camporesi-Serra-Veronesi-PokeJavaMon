@@ -136,6 +136,7 @@ public class PlayerSprite extends Sprite {
         if (pos == 8) {
             pos = 0;
             StatusController.getController().checkEncounter();
+            StatusController.getController().updateMusic();
         }
     }
     

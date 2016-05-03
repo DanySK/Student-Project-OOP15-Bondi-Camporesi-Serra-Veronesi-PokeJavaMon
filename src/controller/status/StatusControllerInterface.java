@@ -46,4 +46,9 @@ public interface StatusControllerInterface {
      * Controls if the player has encountered a wild {@link Pokemon}
      */
     void checkEncounter();
+    
+    /**
+     * Updates game's music
+     */
+    void updateMusic();
 }

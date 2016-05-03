@@ -1,5 +1,7 @@
 package controller.status;
 
+import java.util.Optional;
+
 import controller.fight.FightController;
 import controller.keyboard.FightingKeyboardController;
 import controller.keyboard.FirstMenuKeyboardController;
@@ -12,6 +14,8 @@ import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
 import model.map.Drawable.Direction;
+import model.player.PlayerImpl;
+import model.map.WalkableZone;
 import view.resources.Play;
 
 /**
@@ -126,5 +130,18 @@ public final class StatusController implements StatusControllerInterface {
     @Override
     public void checkEncounter() {
         keyboardController.checkEncounter();
+    }
+
+    @Override
+    public void updateMusic() {
+        Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
+        if (zone.isPresent()) {
+            System.out.println(zone.get().getMusicPath());
+            for (Music m : Music.values()) {
+                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m) {
+                    MainMusicController.getController().play(m);
+                }
+            }
+        }
     }
 }
