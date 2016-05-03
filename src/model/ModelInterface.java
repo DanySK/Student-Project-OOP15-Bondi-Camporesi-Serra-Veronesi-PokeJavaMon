@@ -33,4 +33,18 @@ public interface ModelInterface {
     
     public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, final List<Pokemon> squad,
     					 final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box) throws SquadFullException;
+    
+    
+//    public Save getModelSnapshot();
+//    
+//    public class Save {
+//    	final String name;
+//    	final String badges;
+//    	final int money;
+//    	final Position p;
+//    	final List<Pokemon> squad;
+//    	final Set<Trainer> trainers;
+//    	
+//    	
+//    }
 }
