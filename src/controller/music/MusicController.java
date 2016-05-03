@@ -11,12 +11,12 @@ public interface MusicController {
      * Play the selected {@link Music}
      * @param m the selected {@link Music}
      */
-    void play(Music m);
+    void playMusic(Music m);
     
     /**
      * Stop playing a song
      */
-    void stop();
+    void stopMusic();
     
     /**
      * @return the {@link Music} that the controller is playing

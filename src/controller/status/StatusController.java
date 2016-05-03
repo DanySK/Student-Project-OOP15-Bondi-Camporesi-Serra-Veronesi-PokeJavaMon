@@ -70,17 +70,17 @@ public final class StatusController implements StatusControllerInterface {
             case FIGHTING:
                 if (MainMusicController.getController().playing() == null) {
                     if (FightController.getController().getFight() instanceof FightVsTrainer) {
-                        MainMusicController.getController().play(Music.TRAINER);
+                        MainMusicController.getController().playMusic(Music.TRAINER);
                     } else {
-                        MainMusicController.getController().play(Music.WILD);
+                        MainMusicController.getController().playMusic(Music.WILD);
                     }
                 } else {
                     if (MainMusicController.getController().playing() != Music.TRAINER || MainMusicController.getController().playing() != Music.WILD) {
-                        MainMusicController.getController().stop();
+                        MainMusicController.getController().stopMusic();
                         if (FightController.getController().getFight() instanceof FightVsTrainer) {
-                            MainMusicController.getController().play(Music.TRAINER);
+                            MainMusicController.getController().playMusic(Music.TRAINER);
                         } else {
-                            MainMusicController.getController().play(Music.WILD);
+                            MainMusicController.getController().playMusic(Music.WILD);
                         }
                     }
                 }
@@ -133,9 +133,9 @@ public final class StatusController implements StatusControllerInterface {
             for (Music m : Music.values()) {
                 if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m && StatusController.getController().getState() != State.FIGHTING) {
                     if (MainMusicController.getController().playing() != null) {
-                        MainMusicController.getController().stop();
+                        MainMusicController.getController().stopMusic();
                     }
-                    MainMusicController.getController().play(m);
+                    MainMusicController.getController().playMusic(m);
                 }
             }
         }
