@@ -72,7 +72,10 @@ public abstract class AbstractCharacter implements Character {
             	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
             }
             break;
+        default :
+        	return;
 	    }
+	    
 	    
         System.out.println("Valore TileID: " + val);
 	    this.direction = d;

@@ -12,8 +12,6 @@ import model.inventory.InventoryImpl;
 import model.items.Item;
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
-import model.map.tile.Teleport;
-import model.map.tile.Tile.TileType;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
@@ -133,19 +131,13 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     		newY -= 1;
     		break;
     	case SOUTH :
-    		newY +=  1;
+    		newY += 1;
     		break;
+    	default :
+    		return;
     	}
     	if (pm.isWalkable(newX, newY)) {
-    		if (pm.getTileType(newX, newY) == TileType.TELEPORT) {
-    			final Teleport tmpTlprt = pm.getTeleport(newX, newY).get();
-    			if (tmpTlprt == null) {
-    				throw new IllegalStateException("Teleport not found even if it's in the map as a TileType");
-    			}
-    			this.setPosition(tmpTlprt.getDestinationX(), tmpTlprt.getDestinationY());
-    		} else {
-    			this.setPosition(newX, newY);
-    		}
+   			this.setPosition(newX, newY);
     	}
     }
     
