@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import controller.main.MainController;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
 import model.player.PlayerImpl;
 import view.resources.MessageFrame;
@@ -75,7 +75,7 @@ public Menu() {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
- 				MainController.getController().updateStatus(State.WALKING);
+ 				StatusController.getController().updateStatus(State.WALKING);
 			}});
 		
 		f.setVisible(true);

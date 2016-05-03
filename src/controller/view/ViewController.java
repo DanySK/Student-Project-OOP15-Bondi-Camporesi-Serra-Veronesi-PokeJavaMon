@@ -3,9 +3,9 @@ package controller.view;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-import controller.main.MainController;
 import controller.parameters.State;
 import controller.save.SaveController;
+import controller.status.StatusController;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import view.frames.*;
@@ -47,19 +47,19 @@ public final class ViewController implements ViewControllerInterface {
     
     @Override
     public void showMenu() {
-        MainController.getController().updateStatus(State.MENU);
+        StatusController.getController().updateStatus(State.MENU);
         new Menu();
     }
     
     @Override
     public void firstMenu() {
-        MainController.getController().updateStatus(State.FIRST_MENU);
+        StatusController.getController().updateStatus(State.FIRST_MENU);
         new TitleWiew().title();
     }
     
     @Override
     public void secondMenu() {
-        MainController.getController().updateStatus(State.SECOND_MENU);
+        StatusController.getController().updateStatus(State.SECOND_MENU);
         new InserisciNome();
     }
     
@@ -111,7 +111,7 @@ public final class ViewController implements ViewControllerInterface {
     
     @Override
     public void fightScreen(final Pokemon pokemon) {
-        MainController.getController().updateStatus(State.FIGHTING);
+        StatusController.getController().updateStatus(State.FIGHTING);
         new FightScreen(pokemon);
     }
 }

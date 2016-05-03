@@ -1,4 +1,4 @@
-package controller.main;
+package controller.status;
 
 import controller.keyboard.KeyboardController;
 import controller.parameters.State;
@@ -7,9 +7,9 @@ import model.pokemon.Pokemon;
 import view.sprite.PlayerSprite;
 
 /**
- * This interface shows the methods that can be called on {@link MainController}
+ * This interface shows the methods that can be called on {@link StatusController}
  */
-public interface MainControllerInterface {
+public interface StatusControllerInterface {
 
     /**
      * Updates the {@link State} of the game

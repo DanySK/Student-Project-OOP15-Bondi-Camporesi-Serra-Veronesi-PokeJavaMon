@@ -1,7 +1,7 @@
 package view.methods;
 
-import controller.main.MainController;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
 import model.fight.Effectiveness;
 import model.items.Item;
@@ -26,7 +26,7 @@ public class MethodsImplemented implements MethodsToImplement {
                     System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
                 } else {
                     System.out.println("ENEMY DEFEATED");
-                    MainController.getController().updateStatus(State.WALKING);
+                    StatusController.getController().updateStatus(State.WALKING);
                     FightScreen.dispose();
                 }
             } else {
@@ -39,7 +39,7 @@ public class MethodsImplemented implements MethodsToImplement {
                         ViewController.getController().team(false, false);
                     } else {
                         System.out.println("ALLY DEFEATED");
-                        MainController.getController().updateStatus(State.WALKING);
+                        StatusController.getController().updateStatus(State.WALKING);
                         FightScreen.dispose();
                     }
                 }
@@ -54,7 +54,7 @@ public class MethodsImplemented implements MethodsToImplement {
                     ViewController.getController().team(false, false);
                 } else {
                     System.out.println("ALLY DEFEATED");
-                    MainController.getController().updateStatus(State.WALKING);
+                    StatusController.getController().updateStatus(State.WALKING);
                     FightScreen.dispose();
                 }
             } else {
@@ -65,7 +65,7 @@ public class MethodsImplemented implements MethodsToImplement {
                         System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
                     } else {
                         System.out.println("ENEMY DEFEATED");
-                        MainController.getController().updateStatus(State.WALKING);
+                        StatusController.getController().updateStatus(State.WALKING);
                         FightScreen.dispose();
                     }
                 }
@@ -86,7 +86,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 ViewController.getController().team(false, false);
             } else {
                 System.out.println("ALLY DEFEATED");
-                MainController.getController().updateStatus(State.WALKING);
+                StatusController.getController().updateStatus(State.WALKING);
                 FightScreen.dispose();
             }
         }
@@ -106,13 +106,13 @@ public class MethodsImplemented implements MethodsToImplement {
                     ViewController.getController().team(false, false);
                 } else {
                     System.out.println("ALLY DEFEATED");
-                    MainController.getController().updateStatus(State.WALKING);
+                    StatusController.getController().updateStatus(State.WALKING);
                     FightScreen.dispose();
                 }
             }
         } else {
             System.out.println("ENEMY CAUGHT!!!");
-            MainController.getController().updateStatus(State.WALKING);
+            StatusController.getController().updateStatus(State.WALKING);
             FightScreen.dispose();
         }
     }
@@ -122,7 +122,7 @@ public class MethodsImplemented implements MethodsToImplement {
         System.out.println("RESOLVING RUN");
         System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
         if (success) {
-            MainController.getController().updateStatus(State.WALKING);
+            StatusController.getController().updateStatus(State.WALKING);
             FightScreen.dispose();
         } else {
             System.out.println("RUN FAILED!");
@@ -135,7 +135,7 @@ public class MethodsImplemented implements MethodsToImplement {
                     ViewController.getController().team(false, false);
                 } else {
                     System.out.println("ALLY DEFEATED");
-                    MainController.getController().updateStatus(State.WALKING);
+                    StatusController.getController().updateStatus(State.WALKING);
                     FightScreen.dispose();
                 }
             }

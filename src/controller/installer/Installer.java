@@ -23,50 +23,81 @@ public class Installer implements InstallerInterface {
 
     @Override
     public void install() {
-        if (Files.exists(Paths.get(FilePath.MAINFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            System.out.println("GAME ALREADY INSTALLED");
-        } else {
+        installFolders();
+        installMusic();
+        installFrontSprites();
+        installBackSprites();      
+        installResources();
+    }
+    
+    /**
+     * Install the required folders
+     */
+    private void installFolders() {
+        if (!Files.exists(Paths.get(FilePath.MAINFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.MAINFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING MAIN FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.SAVE.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.SAVE.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING SAVE FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.MUSIC.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.MUSIC.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING MUSIC FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.MAPS.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.MAPS.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING MAPS FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.IMG.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.IMG.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING IMG FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.SPRITES.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.SPRITES.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING SPRITES FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.FRONT.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.FRONT.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING FRONT FOLDER");
                 return;
             }
+        }
+        if (!Files.exists(Paths.get(FilePath.BACK.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
             success = new File(FilePath.BACK.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING BACK FOLDER");
                 return;
-            }                  
-            for (final Music m : Music.values()) {
+            }
+        }
+    }
+    
+    /**
+     * Install the required songs
+     */
+    private void installMusic() {
+        for (final Music m : Music.values()) {
+            if (!Files.exists(Paths.get(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath())) {
                     final byte[] buf = new byte[2048];
@@ -78,9 +109,17 @@ public class Installer implements InstallerInterface {
                 } catch (IOException e) {
                     System.out.println("FAILED INSTALLING MUSIC");
                     return;
-                }       
+                }
             }
-            for (final FrontSpriteImage s : FrontSpriteImage.values()) {
+        }
+    }
+    
+    /**
+     * Install the required front sprites
+     */
+    private void installFrontSprites() {
+        for (final FrontSpriteImage s : FrontSpriteImage.values()) {
+            if (!Files.exists(Paths.get(s.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
                     final byte[] buf = new byte[2048];
@@ -92,9 +131,17 @@ public class Installer implements InstallerInterface {
                 } catch (IOException e) {
                     System.out.println("FAILED INSTALLING FRONT SPRITE");
                     return;
-                }   
+                }
             }
-            for (final BackSpriteImage s : BackSpriteImage.values()) {
+        }
+    }
+    
+    /**
+     * Install the required back sprites
+     */
+    private void installBackSprites() {
+        for (final BackSpriteImage s : BackSpriteImage.values()) {
+            if (!Files.exists(Paths.get(s.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
                     final byte[] buf = new byte[2048];
@@ -107,8 +154,16 @@ public class Installer implements InstallerInterface {
                     System.out.println("FAILED INSTALLING BACK SPRITE");
                     return;
                 }
-            }         
-            for (final FilePath fp : Arrays.asList(FilePath.SHEET, FilePath.PACK, FilePath.PLAYER, FilePath.PALLA, FilePath.MAP, FilePath.TILESET, FilePath.PSD)) {
+            }
+        }
+    }
+    
+    /**
+     * Install the required resources
+     */
+    private void installResources() {
+        for (final FilePath fp : Arrays.asList(FilePath.SHEET, FilePath.PACK, FilePath.PLAYER, FilePath.PALLA, FilePath.MAP, FilePath.TILESET, FilePath.PSD)) {
+            if (!Files.exists(Paths.get(fp.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream is = this.getClass().getResourceAsStream(fp.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(fp.getAbsolutePath())) {
                     final byte[] buf = new byte[2048];
@@ -121,7 +176,7 @@ public class Installer implements InstallerInterface {
                     System.out.println("FAILED INSTALLING RESOURCE");
                     return;
                 }
-            } 
+            }
         }
     }
 }

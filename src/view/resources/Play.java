@@ -14,8 +14,8 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import controller.load.LoadController;
-import controller.main.MainController;
 import controller.parameters.FilePath;
+import controller.status.StatusController;
 import model.map.PokeMapImpl;
 import model.player.PlayerImpl;
 import view.sprite.PlayerSprite;
@@ -128,7 +128,7 @@ public class Play implements Screen {
 	}
 	
 	public static void updateKeyListener() {
-	    Gdx.input.setInputProcessor(MainController.getController().getCurrentController());
+	    Gdx.input.setInputProcessor(StatusController.getController().getCurrentController());
 	}
 	
 	public TiledMap getMap() {

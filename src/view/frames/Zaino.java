@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import controller.fight.FightController;
-import controller.main.MainController;
 import controller.parameters.State;
+import controller.status.StatusController;
 import controller.view.ViewController;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.PokemonIsExhaustedException;
@@ -85,7 +85,7 @@ public static void selectItem(Item it) {
 
 public static void useItem(Pokemon p) {
     if (itemToUse != null) {
-        if (MainController.getController().getState() == State.FIGHTING) {
+        if (StatusController.getController().getState() == State.FIGHTING) {
             try {
                 FightController.getController().useItem(itemToUse, p);
                 Zaino.selectItem(null);
@@ -166,7 +166,7 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                     ViewController.getController().team(true, true);
                 } else {
                     Zaino.selectItem(i);
-                    if (MainController.getController().getState() == State.FIGHTING) {
+                    if (StatusController.getController().getState() == State.FIGHTING) {
                         Zaino.useItem(FightController.getController().getEnemyPokemon());
                     } else {
                         Zaino.useItem(null);
@@ -175,7 +175,7 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                 Zaino.dispose();
             }
         });
-        if (itm.getType() != ItemType.POTION && MainController.getController().getState() != State.FIGHTING) {
+        if (itm.getType() != ItemType.POTION && StatusController.getController().getState() != State.FIGHTING) {
             usa.setEnabled(false);
         }
         add(usa);

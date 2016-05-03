@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.main.MainController;
 import controller.parameters.State;
+import controller.status.StatusController;
 
 public class MessageFrame {
 
@@ -23,7 +23,7 @@ public class MessageFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (st != null) {
-                    MainController.getController().updateStatus(st);
+                    StatusController.getController().updateStatus(st);
                 }
                 fr.dispose();
             }
