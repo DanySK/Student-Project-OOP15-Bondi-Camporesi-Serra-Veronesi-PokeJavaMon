@@ -21,6 +21,7 @@ public class PlayerSprite extends Sprite {
     private float animationTime = 0;
     private int pos = 0;
     private Pair<Float, Float> position;
+    private boolean update = true;
     private static PlayerSprite SINGLETON;
     
     public static PlayerSprite getSprite() {
@@ -53,6 +54,10 @@ public class PlayerSprite extends Sprite {
         }
         updatePosition();
         super.draw(spriteBatch); 
+        if (update) {
+            Controller.getController().getStatusController().updateMusic();
+            update = false;
+        }
     }
     
     public void updatePosition() {
