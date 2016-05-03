@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 
+import controller.fight.FightController;
 import controller.main.MainController;
 import controller.parameters.State;
 import controller.view.ViewController;
@@ -110,7 +111,7 @@ class Panel2 extends JPanel
                     } else {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                             try {
-                                ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                FightController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame("CANNOT SELECT THAT POKEMON", null);
@@ -119,7 +120,7 @@ class Panel2 extends JPanel
                             }
                         } else {
                             try {
-                                ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                FightController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame("CANNOT SELECT THAT POKEMON", null);

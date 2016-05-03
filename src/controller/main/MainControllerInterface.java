@@ -1,8 +1,8 @@
 package controller.main;
 
 import controller.keyboard.KeyboardController;
-import controller.parameters.Directions;
 import controller.parameters.State;
+import model.map.Drawable.Direction;
 import model.pokemon.Pokemon;
 import view.sprite.PlayerSprite;
 
@@ -40,7 +40,7 @@ public interface MainControllerInterface {
     /**
      * @return the current {@link Directions} of the player
      */
-    Directions getDirection();
+    Direction getDirection();
 
     /**
      * Controls if the player has encountered a wild {@link Pokemon}

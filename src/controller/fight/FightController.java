@@ -53,15 +53,15 @@ public final class FightController implements FightControllerInterface {
     }
     
     @Override
-    public void newFightWithTrainer(final Trainer tr) {
-        fight = new FightVsTrainer(tr);
-        System.out.println("Fight with: " + tr.getID());
+    public void newFightWithTrainer(final Trainer trainer) {
+        fight = new FightVsTrainer(trainer);
+        System.out.println("Fight with: " + trainer.getID());
     }
     
     @Override
-    public void newFightWithPokemon(final Pokemon pm) {
-        fight = new FightVsWildPkm(pm);
-        System.out.println("Fight with: " + pm.getPokemon().name() + " LVL: " + pm.getStat(Stat.LVL));
+    public void newFightWithPokemon(final Pokemon pokemon) {
+        fight = new FightVsWildPkm(pokemon);
+        System.out.println("Fight with: " + pokemon.getPokemon().name() + " LVL: " + pokemon.getStat(Stat.LVL));
         System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
     }
     
@@ -83,8 +83,8 @@ public final class FightController implements FightControllerInterface {
     }
     
     @Override
-    public void resolveItem(final Item item, final Pokemon pk, final Move enemyMove, final boolean isMyPokemonDead) {
-        view.resolveUseItem(item, pk, enemyMove, isMyPokemonDead);
+    public void resolveItem(final Item item, final Pokemon pokemon, final Move enemyMove, final boolean isMyPokemonDead) {
+        view.resolveUseItem(item, pokemon, enemyMove, isMyPokemonDead);
     }
     
     @Override
@@ -95,8 +95,8 @@ public final class FightController implements FightControllerInterface {
     // Metodi che chiama la VIEW
     
     @Override
-    public void attack(final Move mv) {
-        fight.moveTurn(mv);
+    public void attack(final Move move) {
+        fight.moveTurn(move);
     }
     
     @Override
@@ -105,13 +105,13 @@ public final class FightController implements FightControllerInterface {
     }
     
     @Override
-    public void changePokemon(final Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        fight.changeTurn((PokemonInBattle) pk);
+    public void changePokemon(final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        fight.changeTurn((PokemonInBattle) pokemon);
     }
     
     @Override
-    public void useItem(final Item it, final Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
-        fight.itemTurn(it, (PokemonInBattle) pk);
+    public void useItem(final Item item, final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
+        fight.itemTurn(item, (PokemonInBattle) pokemon);
     }
     
     @Override
@@ -120,8 +120,8 @@ public final class FightController implements FightControllerInterface {
     }
     
     @Override
-    public void selectPokemon(final Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        fight.applyChange((PokemonInBattle) pk);
+    public void selectPokemon(final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        fight.applyChange((PokemonInBattle) pokemon);
     }
 
     @Override

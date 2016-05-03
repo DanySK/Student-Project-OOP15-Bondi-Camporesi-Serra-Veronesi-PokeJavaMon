@@ -1,6 +1,6 @@
 package controller.keyboard;
 
-import controller.parameters.Directions;
+import model.map.Drawable.Direction;
 
 /**
  * The {@link KeyboardController} active during a fight.
@@ -81,7 +81,7 @@ public final class FightingKeyboardController implements KeyboardController {
     }
 
     @Override
-    public Directions getDirection() {
+    public Direction getDirection() {
         return Directions.STILL;
     }
 

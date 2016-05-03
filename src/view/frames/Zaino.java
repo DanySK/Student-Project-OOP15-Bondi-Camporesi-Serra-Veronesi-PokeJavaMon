@@ -87,7 +87,7 @@ public static void useItem(Pokemon p) {
     if (itemToUse != null) {
         if (MainController.getController().getState() == State.FIGHTING) {
             try {
-                ViewController.getController().useItem(itemToUse, p);
+                FightController.getController().useItem(itemToUse, p);
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (PokemonIsExhaustedException e1) {

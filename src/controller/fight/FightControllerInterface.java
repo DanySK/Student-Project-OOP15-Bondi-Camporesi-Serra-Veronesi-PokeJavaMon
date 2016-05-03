@@ -23,15 +23,15 @@ public interface FightControllerInterface {
 
     /**
      * Initializes a new {@link Fight} against a {@link Trainer}
-     * @param tr the {@link Trainer} player is fighting with
+     * @param trainer the {@link Trainer} player is fighting with
      */
-    void newFightWithTrainer(Trainer tr);
+    void newFightWithTrainer(Trainer trainer);
 
     /**
      * Initializes a new {@link Fight} against a wild {@link Pokemon}
-     * @param pm the wild {@link Pokemon} player is fighting with
+     * @param pokemon the wild {@link Pokemon} player is fighting with
      */
-    void newFightWithPokemon(Pokemon pm);
+    void newFightWithPokemon(Pokemon pokemon);
 
     /**
      * @return the current {@link Fight}
@@ -69,13 +69,13 @@ public interface FightControllerInterface {
     /**
      * Resolve the {@link Fight}'s turn in case player wants to use an item
      * @param item the {@link Item} player wants to use
-     * @param pk the {@link Pokemon} to use {@link Item} on
+     * @param pokemon the {@link Pokemon} to use {@link Item} on
      * @param enemyMove the {@link Move} enemy's {@link Pokemon} does after player has
      * used the {@link Item}
      * @param isMyPokemonDead true if player's {@link Pokemon} is exausted after enemy's
      * {@link Move}, false otherwise
      */
-    void resolveItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead);
+    void resolveItem(Item item, Pokemon pokemon, Move enemyMove, boolean isMyPokemonDead);
 
     /**
      * Resolve the {@link Fight}'s turn in case player wants to change {@link Pokemon}
@@ -89,9 +89,9 @@ public interface FightControllerInterface {
 
     /**
      * Starts the {@link Fight}'s turn in case player has chosen to attack
-     * @param mv player's {@link Pokemon} {@link Move}
+     * @param move player's {@link Pokemon} {@link Move}
      */
-    void attack(Move mv);
+    void attack(Move move);
 
     /**
      * Starts the {@link Fight}'s turn in case player has chosen to run away
@@ -102,16 +102,16 @@ public interface FightControllerInterface {
 
     /**
      * Starts the {@link Fight}'s turn in case player has chosen to change {@link Pokemon}
-     * @param pk the new {@link Pokemon}
+     * @param pokemon the new {@link Pokemon}
      * @throws PokemonIsExhaustedException in case player is trying to select an exausted {@link Pokemon}
      * @throws PokemonIsFightingException in case player is trying to select the fighting {@link Pokemon}
      */
-    void changePokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException;
+    void changePokemon(Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException;
 
     /**
      * Starts the {@link Fight}'s turn in case player has chosen to use an {@link Item}
-     * @param it the {@link Item} to use
-     * @param pk the {@link Pokemon} to use item on
+     * @param item the {@link Item} to use
+     * @param pokemon the {@link Pokemon} to use item on
      * @throws PokemonIsExhaustedException if player is trying to use an {@link Item}
      * on an exausted {@link Pokemon}
      * @throws PokemonNotFoundException if player is trying to use an {@link Item}
@@ -121,7 +121,7 @@ public interface FightControllerInterface {
      * @throws IllegalStateException if player is trying to use an {@link Item}
      * that he doesn't have
      */
-    void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException,
+    void useItem(Item item, Pokemon pokemon) throws PokemonIsExhaustedException, PokemonNotFoundException,
                 CannotCaughtTrainerPkmException, IllegalStateException;
 
     /**
@@ -132,11 +132,11 @@ public interface FightControllerInterface {
 
     /**
      * Select the next {@link Pokemon} to use in the {@link Fight}
-     * @param pk the {@link Pokemon} selected
+     * @param pokemon the {@link Pokemon} selected
      * @throws PokemonIsExhaustedException if selected {@link Pokemon} is exausted
      * @throws PokemonIsFightingException if selected {@link Pokemon} is fighting 
      */
-    void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException;
+    void selectPokemon(Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException;
 
     /**
      * @return the enemy's fighting {@link Pokemon}

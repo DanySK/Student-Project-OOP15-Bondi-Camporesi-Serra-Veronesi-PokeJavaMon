@@ -8,10 +8,10 @@ import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
 import controller.music.MainMusicController;
-import controller.parameters.Directions;
 import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
+import model.map.Drawable.Direction;
 import view.resources.Play;
 
 /**
@@ -119,7 +119,7 @@ public final class MainController implements MainControllerInterface {
     }
     
     @Override
-    public Directions getDirection() {
+    public Direction getDirection() {
         return keyboardController.getDirection();
     }
     
