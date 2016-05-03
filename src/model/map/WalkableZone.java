@@ -1,21 +1,13 @@
 package model.map;
 
-import java.awt.Rectangle;
+public class WalkableZone extends AbstractZone {
 
-public class WalkableZone extends Rectangle implements Zone{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5731057178007223542L;
+	private final String musicPath;
 	
-	final String name;
-	final String musicPath;
-	
-	public WalkableZone(final String name, final int x, final int y, final int widht, final int height, final String musicPath) {
-		this.setBounds(x, y, width, height);
-		this.name = name;
+	public WalkableZone(final String name, final int x, final int y, final int width, final int height, final String musicPath) {
+		super(name, x, y, width, height);
 		this.musicPath = musicPath;
+
 	}
 	
 	public String getMusicPath() {
@@ -23,43 +15,8 @@ public class WalkableZone extends Rectangle implements Zone{
 	}
 
 	@Override
-	public boolean isInsideZone(final int x, final int y) {
-		return this.contains(x,y);
-	}
-
-
-	public int getTileX() {
-		return this.x;
-	}
-
-	@Override
-	public int getTileY() {
-		return this.y;
-	}
-
-	@Override
-	public int getZoneWidth() {
-		return this.width;
-	}
-
-	@Override
-	public int getZoneHeight() {
-		return this.height;
-	}
-
-	@Override
-	public Rectangle getRectangle() {
-		return new Rectangle(this);
-	}
-
-	@Override
-	public String getZoneName() {
-		return this.name;
-	}
-	
-	@Override
 	public String toString() { 
-		return this.name + " " + this.musicPath + new Position(this.x,this.y) + ", width = " + this.width + ", height = " + this.height;
+		return this.name + " " + this.musicPath + new Position(super.rect.x, super.rect.y) + ", width = " + this.rect.width + ", height = " + this.rect.height;
 	}
 
 }

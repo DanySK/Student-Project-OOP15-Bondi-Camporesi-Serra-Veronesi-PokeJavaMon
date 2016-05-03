@@ -341,7 +341,7 @@ public class WalkingKeyboardController implements KeyboardController {
             int x, y;
             x = PlayerImpl.getPlayer().getTileX();
             y = PlayerImpl.getPlayer().getTileY();
-            if (pm.getEncounterZone(x, y).isPresent() && pm.getEncounterZone(x, y).get().isInsideZone(x, y) && pm.getEncounterZone(x, y).get().isEncounterNow()) {
+            if (pm.getEncounterZone(x, y).isPresent() && pm.getEncounterZone(x, y).get().contains(x, y) && pm.getEncounterZone(x, y).get().isEncounterNow()) {
                 Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
                 FightController.getController().newFightWithPokemon(poke);
                 ViewController.getController().fightScreen(poke);
