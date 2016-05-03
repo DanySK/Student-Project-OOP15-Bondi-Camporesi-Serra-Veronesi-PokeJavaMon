@@ -310,7 +310,6 @@ public class PokeMapImpl implements PokeMap {
 				Teleport tmp;
 				if (mobj.getProperties().containsKey("badgesRequired")) {
 					tmp = new BadgeTeleport(real_x, real_y, to_x, to_y, Integer.parseInt(mobj.getProperties().get("badgesRequired", String.class)));
-					System.out.println("creating new BadgeTeleport at " + new Position(real_x, real_y));
 				} else {
 					tmp = new Teleport(real_x, real_y, to_x, to_y);
 				}		

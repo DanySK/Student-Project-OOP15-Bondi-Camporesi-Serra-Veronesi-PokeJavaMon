@@ -11,6 +11,7 @@ import controller.status.StatusController;
 import controller.view.ViewController;
 import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
+import model.map.tile.BadgeTeleport;
 import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
 import model.player.PlayerImpl;
@@ -261,9 +262,19 @@ public class WalkingKeyboardController implements KeyboardController {
         pm = Play.getMapImpl();
         PlayerSprite.getSprite().updatePosition();
         t = pm.getTileType(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
-        if (t == TileType.TELEPORT) {
+        if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
+                && !(pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport)) {
             resolveTeleport();
+            StatusController.getController().updateMusic();
             return;
+        } else if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
+                && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport) {
+            if (((BadgeTeleport) pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get()).canTeleport()) {
+                System.out.println("BADGE TELEPORT ACTIVE");
+                resolveTeleport();
+                StatusController.getController().updateMusic();
+                return;
+            }
         }
         if (up == true) {
             resolveMove(Direction.NORTH);
@@ -279,7 +290,7 @@ public class WalkingKeyboardController implements KeyboardController {
             PlayerImpl.getPlayer().move(Direction.EAST, pm);
         } else {
             PlayerSprite.getSprite().setVelocity(0, 0);
-        }      
+        }
     }
     
     /**

@@ -89,7 +89,7 @@ public final class LoadController implements LoadControllerInterface {
     private void getBadges() {
         final int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
         for (int x = 0; x < 5; x ++) {
-            if (x <= badges) {
+            if (x < badges) {
                 PlayerImpl.getPlayer().addBadge();
             }
         }

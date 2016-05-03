@@ -58,8 +58,9 @@ public final class StatusController implements StatusControllerInterface {
                 keyboardController = SecondMenuKeyboardController.getController();
                 break;
             case WALKING:
-                System.out.println(PlayerImpl.getPlayer().getTileX() + " " + PlayerImpl.getPlayer().getTileY());
-                updateMusic();
+                if (MainMusicController.getController().playing() != null) {
+                    updateMusic();
+                } 
                 keyboardController = WalkingKeyboardController.getController(); 
                 Play.updateKeyListener();
                 break;
@@ -131,7 +132,8 @@ public final class StatusController implements StatusControllerInterface {
         Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (zone.isPresent()) {
             for (Music m : Music.values()) {
-                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m && StatusController.getController().getState() != State.FIGHTING) {
+                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m 
+                        && StatusController.getController().getState() != State.FIGHTING) {
                     if (MainMusicController.getController().playing() != null) {
                         MainMusicController.getController().stopMusic();
                     }

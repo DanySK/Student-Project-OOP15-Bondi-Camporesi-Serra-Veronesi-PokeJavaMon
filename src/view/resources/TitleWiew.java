@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.load.LoadController;
 import controller.parameters.FilePath;
 import controller.parameters.State;
 import controller.status.StatusController;
@@ -57,6 +58,9 @@ public class TitleWiew {
                 frame.dispose();
             }
         });
+        if (!LoadController.getController().saveExists()) {
+            continua.setEnabled(false);
+        }
         pane.add(continua);
         frame.add(pane);
         frame.setVisible(true);

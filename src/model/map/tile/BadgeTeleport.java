@@ -11,7 +11,7 @@ public class BadgeTeleport extends Teleport {
 		this.numOfBadgesRequired = numOfBadgesRequired;
 	}
 	
-	private boolean canTeleport() {
+	public boolean canTeleport() {
 		return PlayerImpl.getPlayer().getLastBadge() >= this.numOfBadgesRequired;
 	}
 

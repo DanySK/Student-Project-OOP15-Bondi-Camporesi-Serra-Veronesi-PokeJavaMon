@@ -11,7 +11,6 @@ import model.pokemon.Pokemon;
 import view.frames.*;
 import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
-import view.sprite.PlayerSprite;
 
 /**
  * This class controls the menus from the view
@@ -77,7 +76,6 @@ public final class ViewController implements ViewControllerInterface {
     
     @Override
     public void save() {
-        PlayerImpl.getPlayer().setPosition(PlayerSprite.getSprite().getPosition().getX().intValue(), PlayerSprite.getSprite().getPosition().getY().intValue());
         if (name != null) {
             PlayerImpl.getPlayer().setName(name);
         }

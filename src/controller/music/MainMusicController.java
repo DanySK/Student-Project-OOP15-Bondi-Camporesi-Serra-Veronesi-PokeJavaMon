@@ -46,15 +46,9 @@ public final class MainMusicController implements MusicController {
     }
     
     @Override
-    public void playMusic(final Music song) {        
-        /*try {
-            s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getAbsolutePath()));
-        } catch (Exception e) {
-            s = Gdx.audio.newSound(Gdx.files.classpath(song.getResourcePath()));
-        }
-        s.loop();*/
+    public void playMusic(final Music song) {   
 
-    	this.s = this.sounds.get(song);
+        this.s = this.sounds.get(song);
     	s.loop();
         m = song;
     }
@@ -62,7 +56,6 @@ public final class MainMusicController implements MusicController {
     @Override
     public void stopMusic() {
         s.stop();
-        s.dispose();
         m = null;
     }
     
