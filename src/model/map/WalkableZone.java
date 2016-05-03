@@ -12,7 +12,7 @@ public class WalkableZone extends Rectangle implements Zone{
 	final String name;
 	final String musicPath;
 	
-	public WalkableZone(final String name, final int x, final int y, final int height, final int width, final String musicPath) {
+	public WalkableZone(final String name, final int x, final int y, final int widht, final int height, final String musicPath) {
 		this.setBounds(x, y, width, height);
 		this.name = name;
 		this.musicPath = musicPath;

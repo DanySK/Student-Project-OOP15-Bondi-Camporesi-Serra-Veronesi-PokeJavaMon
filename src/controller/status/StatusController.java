@@ -142,6 +142,8 @@ public final class StatusController implements StatusControllerInterface {
                     MainMusicController.getController().play(m);
                 }
             }
+        } else {
+        	System.out.println("zone not present Player @ " + new Position(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()));
         }
     }
 }
