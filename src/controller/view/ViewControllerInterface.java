@@ -34,10 +34,10 @@ public interface ViewControllerInterface {
     void map(boolean newGame);
 
     /**
-     * Save the game
+     * Saves the game
      */
     void save();
-
+    
     /**
      * Shows the box menu
      */

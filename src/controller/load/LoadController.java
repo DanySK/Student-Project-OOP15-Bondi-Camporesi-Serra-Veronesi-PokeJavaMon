@@ -28,33 +28,11 @@ import view.sprite.PlayerSprite;
 
 /**
  * This class loads all the requested informations. 
- * This class implements the singleton programmation pattern
  */
 public final class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private Element root;
-    private static LoadController singleton;
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private LoadController() {}
-    
-    /** 
-     * @return the curent {@link LoadController}, or a new {@link LoadController}
-     * if this is the first time this method is invoked
-     */
-    public static LoadController getController() {
-        if (singleton == null) {
-            synchronized (LoadController.class) {
-                if (singleton == null) {
-                    singleton = new LoadController();
-                }
-            }
-        }
-        return singleton;
-    }
     
     /**
      * Loads the save file
@@ -185,7 +163,7 @@ public final class LoadController implements LoadControllerInterface {
     }
     
     @Override
-    public void load(final PokeMap map) {
+    public void load() {
         setup();
         getMoney();
         getPosition();

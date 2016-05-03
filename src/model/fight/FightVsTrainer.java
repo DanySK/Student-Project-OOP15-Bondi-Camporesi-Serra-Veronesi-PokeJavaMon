@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import controller.fight.FightController;
+import controller.Controller;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import model.items.Item;
@@ -121,11 +121,11 @@ public class FightVsTrainer extends FightVsWildPkm{
 			if(isAllyFastest){
 				if(isAllyExhausted){
 					//alleato attacca, nemico attacca, pokemon alleato esausto
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
 				}
 				else{
 					//alleato attacca, nemico attacca, pokemon alleato sopravvive
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
 				}
 			}
 			else{
@@ -133,16 +133,16 @@ public class FightVsTrainer extends FightVsWildPkm{
 					//nemico attacca, alleato attacca, pokemon nemico esausto
 					if(checkLose(trainer.getSquad())){
 						player.beatTrainer(trainer);
-						FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
+						Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
 					}
 					else{
 						trainerChange();
-						FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, null/*exp*/);
+						Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, null/*exp*/);
 					}
 				}
 				else{
 					//nemico attacca, alleato attacca, pokemon nemico sopravvive
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
 				}
 			}
 		}
@@ -151,16 +151,16 @@ public class FightVsTrainer extends FightVsWildPkm{
 				//alleato attacca per primo, pkm nemico esausto
 				if(checkLose(trainer.getSquad())){
 					player.beatTrainer(trainer);
-					FightController.getController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, null/*exp*/);
 				}
 				else{
 					trainerChange();
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, enemyPkm, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, enemyPkm, null/*exp*/);
 				}
 			}
 			else{
 				//nemico attaccata per primo, pkm alleato esausto
-				FightController.getController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+				Controller.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
 			}
 		}
 		reset();

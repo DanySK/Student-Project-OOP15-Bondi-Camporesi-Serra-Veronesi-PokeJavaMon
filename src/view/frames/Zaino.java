@@ -6,10 +6,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-import controller.fight.FightController;
+import controller.Controller;
 import controller.parameters.State;
-import controller.status.StatusController;
-import controller.view.ViewController;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonNotFoundException;
@@ -85,9 +83,9 @@ public static void selectItem(Item it) {
 
 public static void useItem(Pokemon p) {
     if (itemToUse != null) {
-        if (StatusController.getController().getState() == State.FIGHTING) {
+        if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
             try {
-                FightController.getController().useItem(itemToUse, p);
+                Controller.getController().getFightController().useItem(itemToUse, p);
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (PokemonIsExhaustedException e1) {
@@ -162,12 +160,11 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
             public void actionPerformed(ActionEvent e) {
                 if (i.getType() != ItemType.POKEBALL) {
                     Zaino.selectItem(i);
-                    ViewController.getController();
-                    ViewController.getController().team(true, true);
+                    Controller.getController().getViewController().team(true, true);
                 } else {
                     Zaino.selectItem(i);
-                    if (StatusController.getController().getState() == State.FIGHTING) {
-                        Zaino.useItem(FightController.getController().getEnemyPokemon());
+                    if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
+                        Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
                     } else {
                         Zaino.useItem(null);
                     }
@@ -175,7 +172,7 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
                 Zaino.dispose();
             }
         });
-        if (itm.getType() != ItemType.POTION && StatusController.getController().getState() != State.FIGHTING) {
+        if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
             usa.setEnabled(false);
         }
         add(usa);

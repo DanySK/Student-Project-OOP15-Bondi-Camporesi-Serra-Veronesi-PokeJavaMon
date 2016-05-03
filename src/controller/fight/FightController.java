@@ -24,33 +24,11 @@ import view.methods.MethodsToImplement;
 
 /**
  * The Controller that controls the fight.
- * This class implements the singleton programmation pattern 
  */
 public final class FightController implements FightControllerInterface {
 
-    private static FightControllerInterface singleton;
     private Fight fight;
     private final MethodsToImplement view = new MethodsImplemented();
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private FightController() {}
-    
-    /** 
-     * @return the curent {@link FightController}, or a new {@link FightController}
-     * if this is the first time this method is invoked
-     */
-    public static FightControllerInterface getController() {    
-        if (singleton == null) {
-            synchronized (FightController.class) {
-                if (singleton == null) {
-                    singleton = new FightController();
-                }
-            }
-        }
-        return singleton;
-    }
     
     @Override
     public void newFightWithTrainer(final Trainer trainer) {

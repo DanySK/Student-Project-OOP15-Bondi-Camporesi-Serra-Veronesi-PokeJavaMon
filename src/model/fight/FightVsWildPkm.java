@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import controller.fight.FightController;
+import controller.Controller;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
@@ -241,7 +241,7 @@ public class FightVsWildPkm implements Fight {
 		if(!applyRun()){
 			enemyTurn();
 		}
-		FightController.getController().resolveRun(runValue, enemyMove, isAllyExhausted);
+		Controller.getController().getFightController().resolveRun(runValue, enemyMove, isAllyExhausted);
 		reset();
 	}
 	
@@ -270,7 +270,7 @@ public class FightVsWildPkm implements Fight {
 	public void changeTurn(final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonIsFightingException{
 		applyChange(pkm);
 		enemyTurn();
-		FightController.getController().resolvePokemon(allyPkm, enemyMove, isAllyExhausted);
+		Controller.getController().getFightController().resolvePokemon(allyPkm, enemyMove, isAllyExhausted);
 		reset();
 	}
 	
@@ -308,16 +308,16 @@ public class FightVsWildPkm implements Fight {
 	        player.getInventory().consumeItem(itemToUse);
 	        if(applyItem(itemToUse, pkm)){
 			if(itemToUse.getType() == ItemType.POKEBALL){
-				FightController.getController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
+				Controller.getController().getFightController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
 				return;
 			} else {
 			        enemyTurn();
-	                        FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+	                        Controller.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
 	                        reset();
 			}
 		} else {
                     enemyTurn();
-                    FightController.getController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+                    Controller.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
                     reset();
 		}
 	}
@@ -349,32 +349,32 @@ public class FightVsWildPkm implements Fight {
 			if(isAllyFastest){
 				if(isAllyExhausted){
 					//alleato attacca, nemico attacca, pokemon alleato esausto
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
 				}
 				else{
 					//alleato attacca, nemico attacca, pokemon alleato sopravvive
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
 				}
 			}
 			else{
 				if(isEnemyExhausted){
 					//nemico attacca, alleato attacca, pokemon nemico esausto
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
 				}
 				else{
 					//nemico attacca, alleato attacca, pokemon nemico sopravvive
-					FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
 				}
 			}
 		}
 		else{
 			if(isAllyFastest){
 				//alleato attacca per primo, pkm nemico esausto
-				FightController.getController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, null/*exp*/);
+				Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, null/*exp*/);
 			}
 			else{
 				//nemico attaccata per primo, pkm alleato esausto
-				FightController.getController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+				Controller.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
 			}
 		}
 		reset();

@@ -11,7 +11,7 @@ public interface LoadControllerInterface {
      * Load all the requested informations from the save file
      * @param map the current {@link PokeMap} 
      */
-    void load(final PokeMap map);
+    void load();
     
     /**
      * @return true if the save file exists, false otherwise

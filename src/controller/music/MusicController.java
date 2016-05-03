@@ -22,4 +22,9 @@ public interface MusicController {
      * @return the {@link Music} that the controller is playing
      */
     Music playing();
+
+    /**
+     * Initializes the music controller
+     */
+    void initializeMusicController();
 }

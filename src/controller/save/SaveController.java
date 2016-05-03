@@ -27,7 +27,6 @@ import view.resources.Play;
 
 /**
  * This class saves all the requested informations. 
- * This class implements the singleton programmation pattern
  */
 public final class SaveController implements SaveControllerInterface {
     private static final int MIN_MOVES = 1;
@@ -35,27 +34,6 @@ public final class SaveController implements SaveControllerInterface {
     private Element root;
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private FileOutputStream fos;
-    private static SaveController singleton;
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private SaveController() {}
-    
-    /** 
-     * @return the curent {@link SaveController}, or a new {@link SaveController}
-     * if this is the first time this method is invoked
-     */
-    public static SaveController getController() {
-        if (singleton == null) {
-            synchronized (SaveController.class) {
-                if (singleton == null) {
-                    singleton = new SaveController();
-                }
-            }
-        }
-        return singleton;
-    }
     
     /**
      * Prepares the save file

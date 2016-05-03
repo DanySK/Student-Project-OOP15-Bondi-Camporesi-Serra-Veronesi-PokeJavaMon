@@ -2,9 +2,8 @@ package controller.keyboard;
 
 import com.badlogic.gdx.Input.Keys;
 
+import controller.Controller;
 import controller.parameters.State;
-import controller.status.StatusController;
-import controller.view.ViewController;
 import model.map.Drawable.Direction;
 
 /**
@@ -49,12 +48,12 @@ public final class FirstMenuKeyboardController implements KeyboardController {
     public boolean keyUp(final int keycode) {
         switch(keycode) {
         case Keys.N:
-            ViewController.getController().secondMenu();
-            StatusController.getController().updateStatus(State.SECOND_MENU);
+            Controller.getController().getViewController().secondMenu();
+            Controller.getController().updateStatus(State.SECOND_MENU);
             break;
         case Keys.C:
-            ViewController.getController().map(false);
-            StatusController.getController().updateStatus(State.WALKING);
+            Controller.getController().getViewController().map(false);
+            Controller.getController().updateStatus(State.WALKING);
             break;
         default:
             break;

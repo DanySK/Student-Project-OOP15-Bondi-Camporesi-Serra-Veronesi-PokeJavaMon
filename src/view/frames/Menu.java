@@ -4,9 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import controller.Controller;
 import controller.parameters.State;
-import controller.status.StatusController;
-import controller.view.ViewController;
 import model.player.PlayerImpl;
 import view.resources.MessageFrame;
 
@@ -30,9 +29,7 @@ public Menu() {
 		f.getContentPane().add(squadra);
 		squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				ViewController.getController();
-                /*f.dispose();*/
- 				ViewController.getController().team(true, false);
+ 				Controller.getController().getViewController().team(true, false);
 			}});
 		
 		JButton salva = new JButton("Salva");
@@ -41,7 +38,7 @@ public Menu() {
 		salva.addMouseListener(new MouseAdapter() {
 			@Override
         	public void mouseClicked(MouseEvent e) {
- 			ViewController.getController().save();
+ 			Controller.getController().getViewController().save();
         		JOptionPane.showMessageDialog(salva, "Salvataggio riuscito!");
         	}
         });
@@ -55,7 +52,7 @@ public Menu() {
  				if (PlayerImpl.getPlayer().getBox().getBoxSize() < 1) {
  				    new MessageFrame("NO PKMN IN BOX", null);
  				} else {
- 				   ViewController.getController().box();
+ 				   Controller.getController().getViewController().box();
  				}
 			}});
 		
@@ -64,9 +61,7 @@ public Menu() {
 		f.getContentPane().add(zaino);	
 		zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				ViewController.getController();
-                /*f.dispose();*/
- 				ViewController.getController().bag();
+ 				Controller.getController().getViewController().bag();
 			}});
 		
 		JButton esci = new JButton("Riprendi");
@@ -75,7 +70,7 @@ public Menu() {
 		esci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
- 				StatusController.getController().updateStatus(State.WALKING);
+ 				Controller.getController().updateStatus(State.WALKING);
 			}});
 		
 		f.setVisible(true);

@@ -5,10 +5,8 @@ import java.util.Optional;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 
-import controller.fight.FightController;
+import controller.Controller;
 import controller.parameters.*;
-import controller.status.StatusController;
-import controller.view.ViewController;
 import model.map.Drawable.Direction;
 import model.map.PokeMapImpl;
 import model.map.tile.BadgeTeleport;
@@ -87,7 +85,7 @@ public class WalkingKeyboardController implements KeyboardController {
                 break; 
             case Keys.ESCAPE:
                 if (!PlayerSprite.getSprite().isMoving()) {
-                    ViewController.getController().showMenu();
+                    Controller.getController().getViewController().showMenu();
                 }
                 break;
             case Keys.ENTER:
@@ -119,7 +117,7 @@ public class WalkingKeyboardController implements KeyboardController {
                     if (t == TileType.CENTER) {
                         resolvePokemonCenter();
                     } else if (t == TileType.MARKET) {
-                        ViewController.getController().market();
+                        Controller.getController().getViewController().market();
                     } else if (t == TileType.SIGN) {
                         resolveSign();
                     } else if (t == TileType.NPC) {
@@ -135,7 +133,7 @@ public class WalkingKeyboardController implements KeyboardController {
      * a pokemon center
      */
     private void resolvePokemonCenter() {
-        StatusController.getController().updateStatus(State.READING);
+        Controller.getController().updateStatus(State.READING);
         new MessageFrame("POKEMON'S HEALTH FULLY RESTORED", State.WALKING);
         PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
     }
@@ -145,7 +143,7 @@ public class WalkingKeyboardController implements KeyboardController {
      * a sign
      */
     private void resolveSign() {
-        StatusController.getController().updateStatus(State.READING);
+        Controller.getController().updateStatus(State.READING);
         if (pm.getSign(x, y).isPresent()) {
             new MessageFrame(pm.getSign(x, y).get().getMessage(), State.WALKING);
         } else {
@@ -162,22 +160,22 @@ public class WalkingKeyboardController implements KeyboardController {
             if (direction != Direction.NONE) {
                 pm.getTrainer(x, y).get().turn(oppositeDirection);
             }
-            StatusController.getController().updateStatus(State.FIGHTING);
-            FightController.getController().newFightWithTrainer(pm.getTrainer(x, y).get());
-            ViewController.getController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
+            Controller.getController().updateStatus(State.FIGHTING);
+            Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
+            Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
         } else if (pm.getNPC(x, y).isPresent()) {
             if (direction != Direction.NONE) {
                 pm.getNPC(x, y).get().turn(oppositeDirection);
             }
-            StatusController.getController().updateStatus(State.READING);
+            Controller.getController().updateStatus(State.READING);
             new MessageFrame(pm.getNPC(x, y).get().getMessage(), State.WALKING);
         } else if (pm.getGymLeader(x, y).isPresent()) {
             if (direction != Direction.NONE) {
                 pm.getGymLeader(x, y).get().turn(oppositeDirection);
             }
-            StatusController.getController().updateStatus(State.FIGHTING);
-            FightController.getController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-            ViewController.getController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
+            Controller.getController().updateStatus(State.FIGHTING);
+            Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
+            Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
         }
     }
 
@@ -265,14 +263,14 @@ public class WalkingKeyboardController implements KeyboardController {
         if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
                 && !(pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport)) {
             resolveTeleport();
-            StatusController.getController().updateMusic();
+            Controller.getController().getStatusController().updateMusic();
             return;
         } else if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
                 && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport) {
             if (((BadgeTeleport) pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get()).canTeleport()) {
                 System.out.println("BADGE TELEPORT ACTIVE");
                 resolveTeleport();
-                StatusController.getController().updateMusic();
+                Controller.getController().getStatusController().updateMusic();
                 return;
             }
         }
@@ -354,8 +352,8 @@ public class WalkingKeyboardController implements KeyboardController {
             y = PlayerImpl.getPlayer().getTileY();
             if (pm.getEncounterZone(x, y).isPresent() && pm.getEncounterZone(x, y).get().contains(x, y) && pm.getEncounterZone(x, y).get().isEncounterNow()) {
                 Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
-                FightController.getController().newFightWithPokemon(poke);
-                ViewController.getController().fightScreen(poke);
+                Controller.getController().getFightController().newFightWithPokemon(poke);
+                Controller.getController().getViewController().fightScreen(poke);
                 up = false;
                 down = false;
                 left = false;

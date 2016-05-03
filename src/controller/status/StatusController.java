@@ -2,14 +2,13 @@ package controller.status;
 
 import java.util.Optional;
 
-import controller.fight.FightController;
+import controller.Controller;
 import controller.keyboard.FightingKeyboardController;
 import controller.keyboard.FirstMenuKeyboardController;
 import controller.keyboard.KeyboardController;
 import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
-import controller.music.MainMusicController;
 import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
@@ -25,27 +24,6 @@ public final class StatusController implements StatusControllerInterface {
     
     private State state;
     private KeyboardController keyboardController;
-    private static StatusControllerInterface singleton; 
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private StatusController() {}
-    
-    /** 
-     * @return the curent {@link StatusController}, or a new {@link StatusController}
-     * if this is the first time this method is invoked
-     */
-    public static StatusControllerInterface getController() {
-        if (singleton == null) {
-            synchronized (StatusController.class) {
-                if (singleton == null) {
-                    singleton = new StatusController();
-                }
-            }
-        }
-        return singleton;
-    }
 
     @Override
     public void updateStatus(final State s) {
@@ -58,9 +36,9 @@ public final class StatusController implements StatusControllerInterface {
                 keyboardController = SecondMenuKeyboardController.getController();
                 break;
             case WALKING:
-                if (MainMusicController.getController().playing() != null) {
+                if (Controller.getController().playing() != null) {
                     updateMusic();
-                } 
+                }
                 keyboardController = WalkingKeyboardController.getController(); 
                 Play.updateKeyListener();
                 break;
@@ -69,19 +47,19 @@ public final class StatusController implements StatusControllerInterface {
                 Play.updateKeyListener();
                 break;
             case FIGHTING:
-                if (MainMusicController.getController().playing() == null) {
-                    if (FightController.getController().getFight() instanceof FightVsTrainer) {
-                        MainMusicController.getController().playMusic(Music.TRAINER);
+                if (Controller.getController().playing() == null) {
+                    if (Controller.getController().getFight() instanceof FightVsTrainer) {
+                        Controller.getController().playMusic(Music.TRAINER);
                     } else {
-                        MainMusicController.getController().playMusic(Music.WILD);
+                        Controller.getController().playMusic(Music.WILD);
                     }
                 } else {
-                    if (MainMusicController.getController().playing() != Music.TRAINER || MainMusicController.getController().playing() != Music.WILD) {
-                        MainMusicController.getController().stopMusic();
-                        if (FightController.getController().getFight() instanceof FightVsTrainer) {
-                            MainMusicController.getController().playMusic(Music.TRAINER);
+                    if (Controller.getController().playing() != Music.TRAINER || Controller.getController().playing() != Music.WILD) {
+                        Controller.getController().stopMusic();
+                        if (Controller.getController().getFight() instanceof FightVsTrainer) {
+                            Controller.getController().playMusic(Music.TRAINER);
                         } else {
-                            MainMusicController.getController().playMusic(Music.WILD);
+                            Controller.getController().playMusic(Music.WILD);
                         }
                     }
                 }
@@ -132,12 +110,12 @@ public final class StatusController implements StatusControllerInterface {
         Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (zone.isPresent()) {
             for (Music m : Music.values()) {
-                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m 
-                        && StatusController.getController().getState() != State.FIGHTING) {
-                    if (MainMusicController.getController().playing() != null) {
-                        MainMusicController.getController().stopMusic();
+                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && Controller.getController().playing() != m 
+                        && Controller.getController().getStatusController().getState() != State.FIGHTING) {
+                    if (Controller.getController().playing() != null) {
+                        Controller.getController().stopMusic();
                     }
-                    MainMusicController.getController().playMusic(m);
+                    Controller.getController().playMusic(m);
                 }
             }
         }

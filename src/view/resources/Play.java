@@ -13,9 +13,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import controller.load.LoadController;
+import controller.Controller;
 import controller.parameters.FilePath;
-import controller.status.StatusController;
 import model.map.PokeMapImpl;
 import model.player.PlayerImpl;
 import view.sprite.PlayerSprite;
@@ -63,6 +62,7 @@ public class Play implements Screen {
 	        } catch (Exception e) {
 	            map = new TmxMapLoader().load(this.getClass().getResource(FilePath.MAP.getResourcePath()).getPath());
 	        }
+	        Controller.getController().initializeMusicController();
 	        renderer = new OrthogonalTiledMapRenderer(map);                    
 		sr = new ShapeRenderer();
 		sr.setColor(Color.CYAN);
@@ -88,8 +88,8 @@ public class Play implements Screen {
 	        	System.out.println("Initial Position not found");
 	        } 
 		} else {
-		    if (LoadController.getController().saveExists()) {
-		        LoadController.getController().load(null);
+		    if (Controller.getController().saveExists()) {
+		        Controller.getController().load();
 		    } else {
 		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		        if (PlayerImpl.START_X < 0) {
@@ -97,8 +97,7 @@ public class Play implements Screen {
 		        }
 		        pls.setPosition(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16 : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16 : (299 - PlayerImpl.DEFAULT_START_Y) * 16);
 		    }
-		}
-				
+		}	        
 	}
 
 	public void hide() {		
@@ -124,7 +123,7 @@ public class Play implements Screen {
 	}
 	
 	public static void updateKeyListener() {
-	    Gdx.input.setInputProcessor(StatusController.getController().getCurrentController());
+	    Gdx.input.setInputProcessor(Controller.getController().getStatusController().getCurrentController());
 	}
 	
 	public TiledMap getMap() {

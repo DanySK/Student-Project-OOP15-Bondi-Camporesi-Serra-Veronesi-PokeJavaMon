@@ -10,11 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.load.LoadController;
+import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.State;
-import controller.status.StatusController;
-import controller.view.ViewController;
 
 public class TitleWiew {
     
@@ -45,20 +43,20 @@ public class TitleWiew {
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                StatusController.getController().updateStatus(State.SECOND_MENU);
-                ViewController.getController().secondMenu();
+                Controller.getController().updateStatus(State.SECOND_MENU);
+                Controller.getController().getViewController().secondMenu();
             }
         });
         pane.add(nuova);
         JButton continua = new JButton("CONTINUA");
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ViewController.getController().map(false);
-                StatusController.getController().updateStatus(State.WALKING);
+                Controller.getController().getViewController().map(false);
+                Controller.getController().updateStatus(State.WALKING);
                 frame.dispose();
             }
         });
-        if (!LoadController.getController().saveExists()) {
+        if (!Controller.getController().saveExists()) {
             continua.setEnabled(false);
         }
         pane.add(continua);

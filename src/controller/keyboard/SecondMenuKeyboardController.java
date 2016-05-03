@@ -4,9 +4,8 @@ import javax.swing.JOptionPane;
 
 import com.badlogic.gdx.Input.Keys;
 
+import controller.Controller;
 import controller.parameters.State;
-import controller.status.StatusController;
-import controller.view.ViewController;
 import model.map.Drawable.Direction;
 import view.frames.InserisciNome;
 
@@ -56,9 +55,9 @@ public final class SecondMenuKeyboardController implements KeyboardController {
                 JOptionPane.showMessageDialog(null,"You Naive Idiot");
             }
             else {
-                ViewController.getController().setName(name);
-                ViewController.getController().map(true);
-                StatusController.getController().updateStatus(State.WALKING);
+                Controller.getController().getViewController().setName(name);
+                Controller.getController().getViewController().map(true);
+                Controller.getController().updateStatus(State.WALKING);
             }
         }
         return false;

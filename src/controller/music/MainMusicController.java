@@ -17,32 +17,14 @@ public final class MainMusicController implements MusicController {
     private Sound s;
     private Map<Music, Sound> sounds;
     private Music m;
-    private static MainMusicController singleton;
     
-    /**
-     * Private constructor, used by the method getController
-     */
-    private MainMusicController() {
-    	this.sounds = new HashMap<>();
-    	for (final Music m : Music.values()) {
-    		final Sound s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + m.getAbsolutePath()));
-    		this.sounds.put(m, s);
-    	}
-    }
-    
-    /** 
-     * @return the curent {@link MainMusicController}, or a new {@link MainMusicController}
-     * if this is the first time this method is invoked
-     */
-    public static MainMusicController getController() {
-        if (singleton == null) {
-            synchronized (MainMusicController.class) {
-                if (singleton == null) {
-                    singleton = new MainMusicController();
-                }
-            }
+    @Override
+    public void initializeMusicController() {
+        this.sounds = new HashMap<>();
+        for (final Music m : Music.values()) {
+                final Sound s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + m.getAbsolutePath()));
+                this.sounds.put(m, s);
         }
-        return singleton;
     }
     
     @Override
