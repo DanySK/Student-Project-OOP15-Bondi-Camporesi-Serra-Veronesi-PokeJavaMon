@@ -379,7 +379,7 @@ public class PokeMapImpl implements PokeMap {
 			final int height = (int) (rect.getRectangle().height / this.tileHeight) - 1;
 			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / this.tileWidth));
 			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / this.tileHeight)) - height;
-			final String musicPath = (String) z.getProperties().get("musicPath");
+			final String musicPath = (String) z.getProperties().get("music");
 			final String name = (String) z.getProperties().get("zoneType");
 			this.walkableZones.add(new WalkableZone(name, real_x, real_y, width, height, "/" + musicPath));
 			
