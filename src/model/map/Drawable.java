@@ -3,7 +3,7 @@ package model.map;
 public interface Drawable {
     
   public static enum Direction {
-        NORTH, EAST, SOUTH, WEST;
+        NORTH, EAST, SOUTH, WEST, NONE;
     }
     
     public int getTileX();

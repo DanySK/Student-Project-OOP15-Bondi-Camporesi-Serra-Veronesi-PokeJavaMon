@@ -38,7 +38,7 @@ public interface PokeMap {
     
     public Set<GymLeader> getGymLeaders();
     public Optional<GymLeader> getGymLeader(final int x, final int y);
-    public void initGymLeaders(final Map<Integer, Boolean> gymLeaderID_isDefeated);
+    public void initGymLeaders(final int badges);
    
     public Set<NPC> getNPCs();
     public Optional<NPC> getNPC(final int x, final int y);

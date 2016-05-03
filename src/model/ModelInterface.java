@@ -6,13 +6,14 @@ import model.map.Position;
 import model.player.Player;
 import model.pokemon.Pokemon;
 import model.pokemon.WeaknessTable;
-import model.squad.Squad;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import exceptions.SquadFullException;
 
 public interface ModelInterface {
 
@@ -30,6 +31,20 @@ public interface ModelInterface {
     
     public Set<NPC> getNPCs();
     
-    public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, final Squad squad,
-    					 final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box);
+    public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, final List<Pokemon> squad,
+    					 final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box) throws SquadFullException;
+    
+    
+//    public Save getModelSnapshot();
+//    
+//    public class Save {
+//    	final String name;
+//    	final String badges;
+//    	final int money;
+//    	final Position p;
+//    	final List<Pokemon> squad;
+//    	final Set<Trainer> trainers;
+//    	
+//    	
+//    }
 }

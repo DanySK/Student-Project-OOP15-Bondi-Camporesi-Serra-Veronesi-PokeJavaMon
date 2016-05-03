@@ -93,6 +93,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         return this.money;
     }
     
+    @Override
     public void setMoney(final int money) {
         this.money = money;
     }
@@ -160,6 +161,11 @@ public class PlayerImpl extends AbstractCharacter implements Player{
 	@Override
 	public void addBadge() {
 		this.badges++;
+	}
+	
+	@Override
+	public void setBadges(final int badges) {
+		this.badges = badges;
 	}
 	
 	@Override

@@ -451,18 +451,12 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public void initGymLeaders(Map<Integer, Boolean> gymLeaderID_isDefeated) {
-		for (final Entry<Integer, Boolean> e : gymLeaderID_isDefeated.entrySet()) {
-			if (!e.getValue()) {
-				continue;
-			}
-			for (final GymLeader gl : this.gymLeaders) {
-				if (e.getKey() == gl.getID()) {
-					gl.defeat();
-				}
+	public void initGymLeaders(final int badges) {
+		for (final GymLeader gl : this.gymLeaders) {
+			if (gl.getBadge() <= badges) {
+				gl.defeat();
 			}
 		}
-		
 	}
 
 	@Override
