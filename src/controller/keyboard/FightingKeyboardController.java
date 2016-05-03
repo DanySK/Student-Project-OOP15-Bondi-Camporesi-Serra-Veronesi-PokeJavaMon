@@ -82,7 +82,7 @@ public final class FightingKeyboardController implements KeyboardController {
 
     @Override
     public Direction getDirection() {
-        return Directions.STILL;
+        return Direction.NONE;
     }
 
     @Override

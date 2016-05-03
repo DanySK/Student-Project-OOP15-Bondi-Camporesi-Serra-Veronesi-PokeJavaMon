@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
 import controller.main.MainController;
-import controller.parameters.Directions;
 import controller.parameters.FilePath;
+import model.map.Drawable.Direction;
 import model.utilities.Pair;
 import view.resources.Play;
 
@@ -98,21 +98,21 @@ public class PlayerSprite extends Sprite {
         super.setY((299 - y) * 16);
     }
     
-    private void setOrientation(Directions d) {
+    private void setOrientation(Direction d) {
         switch (d) {
-        case UP:
+        case NORTH:
             setRegion(up_s.getKeyFrame(animationTime));
             break;
-        case DOWN:
+        case SOUTH:
             setRegion(down_s.getKeyFrame(animationTime));
             break;
-        case LEFT:
+        case WEST:
             setRegion(left_s.getKeyFrame(animationTime));
             break;
-        case RIGHT:
+        case EAST:
             setRegion(right_s.getKeyFrame(animationTime));
             break;
-        case STILL:
+        case NONE:
             break;
         }
     }
