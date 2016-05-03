@@ -14,6 +14,7 @@ import model.map.Position;
 import model.player.Player;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
+import model.pokemon.PokemonInBattle;
 import model.pokemon.WeaknessTable;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
@@ -84,5 +85,47 @@ public class Model implements ModelInterface {
 		this.player.getBox().setPokemons(box);
 
 	}
+
+	@Override
+	public Save getModelSnapshot() {
+		return new Save() {
+
+			@Override
+	    	public int getPlayerMoney() {
+	    		return player.getMoney();
+	    	}
+
+			@Override
+	    	public String getPlayerName() {
+	    		return player.getName();
+	    	}
+	    	
+
+			@Override
+	    	public int getPlayerBadges() {
+	    		return player.getLastBadge();
+	    	}
+	    	
+
+			@Override
+	    	public Position getPlayerPosition() {
+	    		return new Position(player.getTileX(), player.getTileY());
+	    	}
+	    	
+
+			@Override
+	    	public List<PokemonInBattle> getPokemonSquad() {
+	    		return player.getSquad().getPokemonList();
+	    	}
+
+			@Override
+			public Set<Trainer> getTrainers() {
+				return map.getTrainers();
+			}
+
+			
+		};
+	}
+
 
 }
