@@ -60,9 +60,8 @@ public final class StatusController implements StatusControllerInterface {
                 break;
             case WALKING:
                 if (MainMusicController.getController().playing() == null) {
-                    updateMusic();
+                    MainMusicController.getController().play(Music.HOME);
                 } else {
-                    MainMusicController.getController().stop();
                     updateMusic();
                 }
                 keyboardController = WalkingKeyboardController.getController(); 
@@ -138,7 +137,8 @@ public final class StatusController implements StatusControllerInterface {
             System.out.println(zone.get() + " " + new Position(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()));
             System.out.println(zone.get().getMusicPath());
             for (Music m : Music.values()) {
-                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m) {
+                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m && StatusController.getController().getState() != State.FIGHTING) {
+                    MainMusicController.getController().stop();
                     MainMusicController.getController().play(m);
                 }
             }
