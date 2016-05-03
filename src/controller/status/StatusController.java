@@ -14,7 +14,6 @@ import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
 import model.map.Drawable.Direction;
-import model.map.Position;
 import model.player.PlayerImpl;
 import model.map.WalkableZone;
 import view.resources.Play;
@@ -59,11 +58,8 @@ public final class StatusController implements StatusControllerInterface {
                 keyboardController = SecondMenuKeyboardController.getController();
                 break;
             case WALKING:
-                if (MainMusicController.getController().playing() == null) {
-                    MainMusicController.getController().play(Music.HOME);
-                } else {
-                    updateMusic();
-                }
+                System.out.println(PlayerImpl.getPlayer().getTileX() + " " + PlayerImpl.getPlayer().getTileY());
+                updateMusic();
                 keyboardController = WalkingKeyboardController.getController(); 
                 Play.updateKeyListener();
                 break;
@@ -134,11 +130,11 @@ public final class StatusController implements StatusControllerInterface {
     public void updateMusic() {
         Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (zone.isPresent()) {
-            System.out.println(zone.get() + " " + new Position(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()));
-            System.out.println(zone.get().getMusicPath());
             for (Music m : Music.values()) {
                 if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainMusicController.getController().playing() != m && StatusController.getController().getState() != State.FIGHTING) {
-                    MainMusicController.getController().stop();
+                    if (MainMusicController.getController().playing() != null) {
+                        MainMusicController.getController().stop();
+                    }
                     MainMusicController.getController().play(m);
                 }
             }
