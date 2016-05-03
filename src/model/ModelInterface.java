@@ -5,6 +5,7 @@ import model.map.PokeMap;
 import model.map.Position;
 import model.player.Player;
 import model.pokemon.Pokemon;
+import model.pokemon.PokemonInBattle;
 import model.pokemon.WeaknessTable;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
@@ -35,16 +36,15 @@ public interface ModelInterface {
     					 final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box) throws SquadFullException;
     
     
-//    public Save getModelSnapshot();
-//    
-//    public class Save {
-//    	final String name;
-//    	final String badges;
-//    	final int money;
-//    	final Position p;
-//    	final List<Pokemon> squad;
-//    	final Set<Trainer> trainers;
-//    	
-//    	
-//    }
+    public Save getModelSnapshot();
+    
+    public interface Save {
+		public int getPlayerMoney();
+    	public String getPlayerName();    	
+    	public int getPlayerBadges();    	
+    	public Position getPlayerPosition();    	
+    	public List<PokemonInBattle> getPokemonSquad();
+    	public Set<Trainer> getTrainers();
+    }
+    
 }
