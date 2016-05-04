@@ -30,6 +30,7 @@ public class WalkingKeyboardController implements KeyboardController {
     private PokeMapImpl pm;
     private TileType t;
     private boolean left, right, up, down;
+    private final WalkingKeyboardControllerResolver resolver = new WalkingKeyboardControllerResolver();
     
     @Override
     public boolean keyDown(final int keycode) {
@@ -94,13 +95,13 @@ public class WalkingKeyboardController implements KeyboardController {
                         break;
                     }
                     if (t == TileType.CENTER) {
-                        resolvePokemonCenter();
+                        resolver.resolvePokemonCenter();
                     } else if (t == TileType.MARKET) {
                         Controller.getController().getViewController().market();
                     } else if (t == TileType.SIGN) {
-                        resolveSign();
+                        resolver.resolveSign();
                     } else if (t == TileType.NPC) {
-                    	resolveNPC();
+                    	resolver.resolveNPC();
                     }
                 }
                 break;
@@ -108,57 +109,6 @@ public class WalkingKeyboardController implements KeyboardController {
                 break;
         }
         return false;
-    }
-    
-    /**
-     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
-     * a pokemon center
-     */
-    private void resolvePokemonCenter() {
-        Controller.getController().updateStatus(State.READING);
-        new MessageFrame("POKEMON'S HEALTH FULLY RESTORED", State.WALKING);
-        PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
-    }
-    
-    /**
-     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
-     * a sign
-     */
-    private void resolveSign() {
-        Controller.getController().updateStatus(State.READING);
-        if (pm.getSign(x, y).isPresent()) {
-            new MessageFrame(pm.getSign(x, y).get().getMessage(), State.WALKING);
-        } else {
-            new MessageFrame("SIGN_MESSAGE", State.WALKING);
-        }
-    }
-    
-    /**
-     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
-     * an npc
-     */
-    private void resolveNPC() {
-        if (pm.getTrainer(x, y).isPresent()) {
-            if (direction != Direction.NONE) {
-                pm.getTrainer(x, y).get().turn(oppositeDirection);
-            }
-            Controller.getController().updateStatus(State.FIGHTING);
-            Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
-            Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
-        } else if (pm.getNPC(x, y).isPresent()) {
-            if (direction != Direction.NONE) {
-                pm.getNPC(x, y).get().turn(oppositeDirection);
-            }
-            Controller.getController().updateStatus(State.READING);
-            new MessageFrame(pm.getNPC(x, y).get().getMessage(), State.WALKING);
-        } else if (pm.getGymLeader(x, y).isPresent()) {
-            if (direction != Direction.NONE) {
-                pm.getGymLeader(x, y).get().turn(oppositeDirection);
-            }
-            Controller.getController().updateStatus(State.FIGHTING);
-            Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-            Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
-        }
     }
 
     @Override
@@ -246,74 +196,29 @@ public class WalkingKeyboardController implements KeyboardController {
         t = pm.getTileType(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
                 && !(pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport)) {
-            resolveTeleport();
+            resolver.resolveTeleport();
             Controller.getController().getStatusController().updateMusic();
             return;
         } else if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
                 && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport 
                 && ((BadgeTeleport) pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get()).canTeleport()) {
             System.out.println("BADGE TELEPORT ACTIVE");
-            resolveTeleport();
+            resolver.resolveTeleport();
             Controller.getController().getStatusController().updateMusic();
             return;
         }
         if (up) {
-            resolveMove(Direction.NORTH);
+            resolver.resolveMove(Direction.NORTH);
             PlayerImpl.getPlayer().move(Direction.NORTH, pm);
         } else if (down) {
-            resolveMove(Direction.SOUTH);
+            resolver.resolveMove(Direction.SOUTH);
             PlayerImpl.getPlayer().move(Direction.SOUTH, pm);
         } else if (left) {
-            resolveMove(Direction.WEST);
+            resolver.resolveMove(Direction.WEST);
             PlayerImpl.getPlayer().move(Direction.WEST, pm);
         } else if (right) {
-            resolveMove(Direction.EAST);
+            resolver.resolveMove(Direction.EAST);
             PlayerImpl.getPlayer().move(Direction.EAST, pm);
-        } else {
-            PlayerSprite.getSprite().setVelocity(0, 0);
-        }
-    }
-    
-    /**
-     * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
-     * a teleport
-     */
-    private void resolveTeleport() {
-        final int x = PlayerImpl.getPlayer().getTileX();
-        final int y = PlayerImpl.getPlayer().getTileY();
-        final Optional<Teleport> t = pm.getTeleport(x, y);
-        if (t.isPresent()) {
-            PlayerSprite.getSprite().setPlayerPosition(t.get().getDestinationX(), t.get().getDestinationY());
-            PlayerSprite.getSprite().setVelocity(0, 0);
-            PlayerImpl.getPlayer().setPosition(t.get().getDestinationX(), t.get().getDestinationY());
-        }    
-    }
-    
-    /**
-     * Resolve the case player selects to move
-     */
-    private void resolveMove(final Direction direction) {
-        pm = Play.getMapImpl();
-        t = pm.getTileNextToPlayer(direction);
-        if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
-            switch (direction) {
-            case EAST:
-                PlayerSprite.getSprite().setVelocity(2, 0);
-                break;
-            case NONE:
-                break;
-            case NORTH:
-                PlayerSprite.getSprite().setVelocity(0, 2);
-                break;
-            case SOUTH:
-                PlayerSprite.getSprite().setVelocity(0, -2);
-                break;
-            case WEST:
-                PlayerSprite.getSprite().setVelocity(-2, 0);
-                break;
-            default:
-                break;
-            }
         } else {
             PlayerSprite.getSprite().setVelocity(0, 0);
         }
@@ -342,6 +247,108 @@ public class WalkingKeyboardController implements KeyboardController {
                 down = false;
                 left = false;
                 right = false;
+                PlayerSprite.getSprite().setVelocity(0, 0);
+            }
+        }
+    }
+    
+    /**
+     * Private nested class that contains several methods needed by {@link WalkingKeyboardController}
+     */
+    private class WalkingKeyboardControllerResolver {
+        
+        /**
+         * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+         * a pokemon center
+         */
+        private void resolvePokemonCenter() {
+            Controller.getController().updateStatus(State.READING);
+            new MessageFrame("POKEMON'S HEALTH FULLY RESTORED", State.WALKING);
+            PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
+        }
+        
+        /**
+         * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+         * a sign
+         */
+        private void resolveSign() {
+            Controller.getController().updateStatus(State.READING);
+            if (pm.getSign(x, y).isPresent()) {
+                new MessageFrame(pm.getSign(x, y).get().getMessage(), State.WALKING);
+            } else {
+                new MessageFrame("SIGN_MESSAGE", State.WALKING);
+            }
+        }
+        
+        /**
+         * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+         * an npc
+         */
+        private void resolveNPC() {
+            if (pm.getTrainer(x, y).isPresent()) {
+                if (direction != Direction.NONE) {
+                    pm.getTrainer(x, y).get().turn(oppositeDirection);
+                }
+                Controller.getController().updateStatus(State.FIGHTING);
+                Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
+                Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
+            } else if (pm.getNPC(x, y).isPresent()) {
+                if (direction != Direction.NONE) {
+                    pm.getNPC(x, y).get().turn(oppositeDirection);
+                }
+                Controller.getController().updateStatus(State.READING);
+                new MessageFrame(pm.getNPC(x, y).get().getMessage(), State.WALKING);
+            } else if (pm.getGymLeader(x, y).isPresent()) {
+                if (direction != Direction.NONE) {
+                    pm.getGymLeader(x, y).get().turn(oppositeDirection);
+                }
+                Controller.getController().updateStatus(State.FIGHTING);
+                Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
+                Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
+            }
+        }
+        
+        /**
+         * Resolve the case {@link TileType} of the {@link TiledMapTile} next to the player is
+         * a teleport
+         */
+        private void resolveTeleport() {
+            final int x = PlayerImpl.getPlayer().getTileX();
+            final int y = PlayerImpl.getPlayer().getTileY();
+            final Optional<Teleport> t = pm.getTeleport(x, y);
+            if (t.isPresent()) {
+                PlayerSprite.getSprite().setPlayerPosition(t.get().getDestinationX(), t.get().getDestinationY());
+                PlayerSprite.getSprite().setVelocity(0, 0);
+                PlayerImpl.getPlayer().setPosition(t.get().getDestinationX(), t.get().getDestinationY());
+            }    
+        }
+        
+        /**
+         * Resolve the case player selects to move
+         */
+        private void resolveMove(final Direction direction) {
+            pm = Play.getMapImpl();
+            t = pm.getTileNextToPlayer(direction);
+            if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
+                switch (direction) {
+                case EAST:
+                    PlayerSprite.getSprite().setVelocity(2, 0);
+                    break;
+                case NONE:
+                    break;
+                case NORTH:
+                    PlayerSprite.getSprite().setVelocity(0, 2);
+                    break;
+                case SOUTH:
+                    PlayerSprite.getSprite().setVelocity(0, -2);
+                    break;
+                case WEST:
+                    PlayerSprite.getSprite().setVelocity(-2, 0);
+                    break;
+                default:
+                    break;
+                }
+            } else {
                 PlayerSprite.getSprite().setVelocity(0, 0);
             }
         }
