@@ -24,7 +24,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 if (nextEnemyPokemon != null) {
                     System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
                 } else {
-                    System.out.println("ENEMY DEFEATED" + "Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                    System.out.println("ENEMY DEFEATED" + " Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     Controller.getController().updateStatus(State.WALKING);
                     FightScreen.dispose();
                 }
@@ -61,7 +61,7 @@ public class MethodsImplemented implements MethodsToImplement {
                     if (nextEnemyPokemon != null) {
                         System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
                     } else {
-                        System.out.println("ENEMY DEFEATED" + "Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                        System.out.println("ENEMY DEFEATED" + " Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                         Controller.getController().updateStatus(State.WALKING);
                         FightScreen.dispose();
                     }

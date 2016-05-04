@@ -289,9 +289,14 @@ public class WalkingKeyboardController implements KeyboardController {
                 if (direction != Direction.NONE) {
                     pm.getTrainer(x, y).get().turn(oppositeDirection);
                 }
-                Controller.getController().updateStatus(State.FIGHTING);
-                Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
-                Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
+                if (pm.getTrainer(x, y).get().isDefeated()) {
+                    Controller.getController().updateStatus(State.READING);
+                    new MessageFrame("TRAINER ALREADY DEFEATED", State.WALKING);
+                } else {
+                    Controller.getController().updateStatus(State.FIGHTING);
+                    Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
+                    Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
+                }
             } else if (pm.getNPC(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getNPC(x, y).get().turn(oppositeDirection);
@@ -302,9 +307,14 @@ public class WalkingKeyboardController implements KeyboardController {
                 if (direction != Direction.NONE) {
                     pm.getGymLeader(x, y).get().turn(oppositeDirection);
                 }
-                Controller.getController().updateStatus(State.FIGHTING);
-                Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-                Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
+                if (pm.getGymLeader(x, y).get().isDefeated()) {
+                    Controller.getController().updateStatus(State.READING);
+                    new MessageFrame("GYM LEADER ALREADY DEFEATED", State.WALKING);
+                } else {
+                    Controller.getController().updateStatus(State.FIGHTING);
+                    Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
+                    Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
+                }        
             }
         }
         

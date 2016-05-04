@@ -132,7 +132,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 				if(isEnemyExhausted){
 					//nemico attacca, alleato attacca, pokemon nemico esausto
 					if(checkLose(trainer.getSquad())){
-						player.beatTrainer(trainer);
+						trainer.defeat();
 						Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null/*exp*/);
 					}
 					else{
@@ -150,7 +150,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 			if(isAllyFastest){
 				//alleato attacca per primo, pkm nemico esausto
 				if(checkLose(trainer.getSquad())){
-					player.beatTrainer(trainer);
+					trainer.defeat();
 					Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, null/*exp*/);
 				}
 				else{
