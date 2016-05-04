@@ -16,7 +16,6 @@ import controller.parameters.XMLParameters;
 import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;
-import model.map.Position;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
@@ -41,7 +40,6 @@ public class SaveController implements SaveControllerInterface {
     private void setup() {
         root = new Element(XMLParameters.TITLE.getName());
         document = new Document(root);
-        System.out.println(FILE_NAME);
         try {
             fos = new FileOutputStream(new File(FILE_NAME));
         } catch (FileNotFoundException e) {
@@ -62,7 +60,6 @@ public class SaveController implements SaveControllerInterface {
         final Element position = new Element(XMLParameters.POSITION.getName());
         position.setAttribute(XMLParameters.X.getName(),Integer.toString(PlayerImpl.getPlayer().getTileX()));
         position.setAttribute(XMLParameters.Y.getName(),Integer.toString(PlayerImpl.getPlayer().getTileY()));
-        System.out.println("savePos : " + new Position(PlayerImpl.getPlayer().getTileX(),PlayerImpl.getPlayer().getTileY()));
         root.addContent(position);
     }
     

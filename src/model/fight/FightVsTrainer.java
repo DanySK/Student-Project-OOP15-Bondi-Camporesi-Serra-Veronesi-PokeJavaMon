@@ -155,7 +155,7 @@ public class FightVsTrainer extends FightVsWildPkm{
 				}
 				else{
 					trainerChange();
-					Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, enemyPkm, null/*exp*/);
+					Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, enemyPkm, null/*exp*/);
 				}
 			}
 			else{
