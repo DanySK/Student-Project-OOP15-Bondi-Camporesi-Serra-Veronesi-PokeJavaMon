@@ -14,6 +14,9 @@ import view.frames.InserisciNome;
  */
 public class SecondMenuKeyboardController implements KeyboardController {
     
+    private static final int MIN = 4;
+    private static final int MAX = 20;
+    
     @Override
     public boolean keyDown(final int keycode) {
         return false;
@@ -28,7 +31,7 @@ public class SecondMenuKeyboardController implements KeyboardController {
     public boolean keyUp(final int keycode) {
         if (keycode == Keys.ENTER) {
             final String name = InserisciNome.getPlayerName();
-            if (name.length() < 4 || name.length() > 20) {
+            if (name.length() < MIN || name.length() > MAX) {
                 JOptionPane.showMessageDialog(null,"You Naive Idiot");
             }
             else {

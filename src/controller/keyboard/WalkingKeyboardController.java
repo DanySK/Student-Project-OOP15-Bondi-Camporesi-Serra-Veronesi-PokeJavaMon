@@ -24,6 +24,10 @@ import view.sprite.PlayerSprite;
  */
 public class WalkingKeyboardController implements KeyboardController {
     
+    private static final int INCREMENT = 1;
+    private static final int SPEED = 2;
+    private static final int FIRST = 0;
+    private static final int NULL_SPEED = 0;
     private int keys, x, y;
     private Direction direction = Direction.SOUTH;
     private Direction oppositeDirection = Direction.NORTH;
@@ -74,21 +78,21 @@ public class WalkingKeyboardController implements KeyboardController {
                     final TileType t = Play.getMapImpl().getTileNextToPlayer(direction);
                     switch (direction) {
                     case EAST:
-                        x = PlayerImpl.getPlayer().getTileX() + 1;
+                        x = PlayerImpl.getPlayer().getTileX() + INCREMENT;
                         y = PlayerImpl.getPlayer().getTileY();
                         break;
                     case NONE:
                         break;
                     case NORTH:
                         x = PlayerImpl.getPlayer().getTileX();
-                        y = PlayerImpl.getPlayer().getTileY() - 1;
+                        y = PlayerImpl.getPlayer().getTileY() - INCREMENT;
                         break;
                     case SOUTH:
                         x = PlayerImpl.getPlayer().getTileX();
-                        y = PlayerImpl.getPlayer().getTileY() + 1;
+                        y = PlayerImpl.getPlayer().getTileY() + INCREMENT;
                         break;
                     case WEST:
-                        x = PlayerImpl.getPlayer().getTileX() - 1;
+                        x = PlayerImpl.getPlayer().getTileX() - INCREMENT;
                         y = PlayerImpl.getPlayer().getTileY();
                         break;
                     default:
@@ -220,7 +224,7 @@ public class WalkingKeyboardController implements KeyboardController {
             resolver.resolveMove(Direction.EAST);
             PlayerImpl.getPlayer().move(Direction.EAST, pm);
         } else {
-            PlayerSprite.getSprite().setVelocity(0, 0);
+            PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
         }
     }
 
@@ -247,7 +251,7 @@ public class WalkingKeyboardController implements KeyboardController {
                 down = false;
                 left = false;
                 right = false;
-                PlayerSprite.getSprite().setVelocity(0, 0);
+                PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
             }
         }
     }
@@ -295,7 +299,7 @@ public class WalkingKeyboardController implements KeyboardController {
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
-                    Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(0));
+                    Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(FIRST));
                 }
             } else if (pm.getNPC(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
@@ -313,7 +317,7 @@ public class WalkingKeyboardController implements KeyboardController {
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-                    Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(0));
+                    Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(FIRST));
                 }        
             }
         }
@@ -328,7 +332,7 @@ public class WalkingKeyboardController implements KeyboardController {
             final Optional<Teleport> t = pm.getTeleport(x, y);
             if (t.isPresent()) {
                 PlayerSprite.getSprite().setPlayerPosition(t.get().getDestinationX(), t.get().getDestinationY());
-                PlayerSprite.getSprite().setVelocity(0, 0);
+                PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
                 PlayerImpl.getPlayer().setPosition(t.get().getDestinationX(), t.get().getDestinationY());
             }    
         }
@@ -342,24 +346,24 @@ public class WalkingKeyboardController implements KeyboardController {
             if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
                 switch (direction) {
                 case EAST:
-                    PlayerSprite.getSprite().setVelocity(2, 0);
+                    PlayerSprite.getSprite().setVelocity(SPEED, NULL_SPEED);
                     break;
                 case NONE:
                     break;
                 case NORTH:
-                    PlayerSprite.getSprite().setVelocity(0, 2);
+                    PlayerSprite.getSprite().setVelocity(NULL_SPEED, SPEED);
                     break;
                 case SOUTH:
-                    PlayerSprite.getSprite().setVelocity(0, -2);
+                    PlayerSprite.getSprite().setVelocity(NULL_SPEED, -SPEED);
                     break;
                 case WEST:
-                    PlayerSprite.getSprite().setVelocity(-2, 0);
+                    PlayerSprite.getSprite().setVelocity(-SPEED, NULL_SPEED);
                     break;
                 default:
                     break;
                 }
             } else {
-                PlayerSprite.getSprite().setVelocity(0, 0);
+                PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
             }
         }
     }
