@@ -1,5 +1,7 @@
 package controller.music;
 
+import java.util.Optional;
+
 import controller.parameters.Music;
 
 /**
@@ -21,7 +23,7 @@ public interface MusicController {
     /**
      * @return the {@link Music} that the controller is playing
      */
-    Music playing();
+    Optional<Music> playing();
 
     /**
      * Initializes the music controller

@@ -4,31 +4,8 @@ import model.map.Drawable.Direction;
 
 /**
  * The {@link KeyboardController} active during a fight.
- * This class implements the singleton programmation pattern
  */
-public final class FightingKeyboardController implements KeyboardController {
-
-    private static FightingKeyboardController singleton;
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private FightingKeyboardController() {}
-    
-    /** 
-     * @return the curent {@link FightingKeyboardController}, or a new {@link FightingKeyboardController}
-     * if this is the first time this method is invoked
-     */
-    public static FightingKeyboardController getController() {
-        if (singleton == null) {
-            synchronized (FightingKeyboardController.class) {
-                if (singleton == null) {
-                    singleton = new FightingKeyboardController();
-                }
-            }
-        }
-        return singleton;
-    }
+public class FightingKeyboardController implements KeyboardController {
     
     @Override
     public boolean keyDown(final int keycode) {

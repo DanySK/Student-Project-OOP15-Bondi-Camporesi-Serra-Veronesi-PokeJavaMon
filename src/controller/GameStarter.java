@@ -7,9 +7,11 @@ import model.pokemon.InitializeMoves;
 /**
  * This class starts the game
  */
-public class GameStarter {
+public final class GameStarter {
 
-    public static void main(String... varargs) {
+    private GameStarter() {}
+    
+    public static void main(final String... varargs) {
         new Installer().install();
         Controller.getController().initializeMainController();
         Controller.getController().updateStatus(State.FIRST_MENU);

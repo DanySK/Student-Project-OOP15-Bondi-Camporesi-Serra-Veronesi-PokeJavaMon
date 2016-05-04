@@ -25,7 +25,7 @@ import view.methods.MethodsToImplement;
 /**
  * The Controller that controls the fight.
  */
-public final class FightController implements FightControllerInterface {
+public class FightController implements FightControllerInterface {
 
     private Fight fight;
     private final MethodsToImplement view = new MethodsImplemented();

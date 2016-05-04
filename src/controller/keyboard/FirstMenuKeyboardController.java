@@ -8,31 +8,8 @@ import model.map.Drawable.Direction;
 
 /**
  * The {@link KeyboardController} active for the first menu.
- * This class implements the singleton programmation pattern
  */
-public final class FirstMenuKeyboardController implements KeyboardController {
-
-    private static FirstMenuKeyboardController singleton;
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private FirstMenuKeyboardController() {}
-    
-    /** 
-     * @return the curent {@link FirstMenuKeyboardController}, or a new {@link FirstMenuKeyboardController}
-     * if this is the first time this method is invoked
-     */
-    public static FirstMenuKeyboardController getController() {
-        if (singleton == null) {
-            synchronized (FirstMenuKeyboardController.class) {
-                if (singleton == null) {
-                    singleton = new FirstMenuKeyboardController();
-                }
-            }
-        }
-        return singleton;
-    }
+public class FirstMenuKeyboardController implements KeyboardController {
     
     @Override
     public boolean keyDown(final int keycode) {

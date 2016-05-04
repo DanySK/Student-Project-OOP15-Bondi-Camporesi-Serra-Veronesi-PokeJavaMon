@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Optional;
+
 import controller.fight.FightController;
 import controller.load.LoadController;
 import controller.music.MainMusicController;
@@ -12,7 +14,11 @@ import controller.view.ViewController;
 import model.fight.Fight;
 import model.pokemon.Pokemon;
 
-public class Controller implements ControllerInterface {
+/**
+ * This is the main controller of the game. It contains all the other controllers.
+ * It implements the singleton programmation pattern
+ */
+public final class Controller implements ControllerInterface {
 
     private FightController fightController;
     private LoadController loadController;
@@ -22,8 +28,14 @@ public class Controller implements ControllerInterface {
     private ViewController viewController;
     private static ControllerInterface singleton;
     
+    /**
+     * Private constructor, used by the method getController
+     */
     private Controller() {}
     
+    /**
+     * @return the current {@link Controller} ora a new {@link Controller} if this is the first time this method is invoked
+     */
     public static ControllerInterface getController() {
         if (singleton == null) {
             synchronized (Controller.class) {
@@ -71,7 +83,7 @@ public class Controller implements ControllerInterface {
     }
     
     @Override
-    public void playMusic(Music m) {
+    public void playMusic(final Music m) {
         musicController.playMusic(m);
     }
     
@@ -81,7 +93,7 @@ public class Controller implements ControllerInterface {
     }
     
     @Override
-    public Music playing() {
+    public Optional<Music> playing() {
         return musicController.playing();
     }
     
@@ -91,7 +103,7 @@ public class Controller implements ControllerInterface {
     }
     
     @Override
-    public void updateStatus(State s) {
+    public void updateStatus(final State s) {
         statusController.updateStatus(s);
     }
 

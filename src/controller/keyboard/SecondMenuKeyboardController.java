@@ -11,31 +11,8 @@ import view.frames.InserisciNome;
 
 /**
  * The {@link KeyboardController} active for the second menu.
- * This class implements the singleton programmation pattern
  */
-public final class SecondMenuKeyboardController implements KeyboardController {
-
-    private static SecondMenuKeyboardController singleton;
-    
-    /**
-     * Private constructor, used by the method getController
-     */
-    private SecondMenuKeyboardController() {}
-    
-    /** 
-     * @return the curent {@link SecondMenuKeyboardController}, or a new {@link SecondMenuKeyboardController}
-     * if this is the first time this method is invoked
-     */
-    public static SecondMenuKeyboardController getController() {
-        if (singleton == null) {
-            synchronized (SecondMenuKeyboardController.class) {
-                if (singleton == null) {
-                    singleton = new SecondMenuKeyboardController();
-                }
-            }
-        }
-        return singleton;
-    }
+public class SecondMenuKeyboardController implements KeyboardController {
     
     @Override
     public boolean keyDown(final int keycode) {

@@ -29,7 +29,7 @@ import view.sprite.PlayerSprite;
 /**
  * This class loads all the requested informations. 
  */
-public final class LoadController implements LoadControllerInterface {
+public class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private Element root;

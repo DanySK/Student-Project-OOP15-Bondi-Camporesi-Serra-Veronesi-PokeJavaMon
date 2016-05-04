@@ -14,7 +14,7 @@ import view.resources.TitleWiew;
 /**
  * This class controls the menus from the view
  */
-public final class ViewController implements ViewControllerInterface {
+public class ViewController implements ViewControllerInterface {
     private String name;
     
     @Override

@@ -18,9 +18,9 @@ import model.map.WalkableZone;
 import view.resources.Play;
 
 /**
- * This is the main controller of the game
+ * This is the status controller of the game
  */
-public final class StatusController implements StatusControllerInterface {
+public class StatusController implements StatusControllerInterface {
     
     private State state;
     private KeyboardController keyboardController;
@@ -30,31 +30,25 @@ public final class StatusController implements StatusControllerInterface {
         state = s;
         switch (s) {
             case FIRST_MENU:
-                keyboardController = FirstMenuKeyboardController.getController();
+                keyboardController = new FirstMenuKeyboardController();
                 break;
             case SECOND_MENU:
-                keyboardController = SecondMenuKeyboardController.getController();
+                keyboardController = new SecondMenuKeyboardController();
                 break;
             case WALKING:
-                if (Controller.getController().playing() != null) {
+                if (Controller.getController().playing().isPresent()) {
                     updateMusic();
                 }
-                keyboardController = WalkingKeyboardController.getController(); 
+                keyboardController = new WalkingKeyboardController(); 
                 Play.updateKeyListener();
                 break;
             case MENU:
-                keyboardController = MenuKeyboardController.getController();
+                keyboardController = new MenuKeyboardController();
                 Play.updateKeyListener();
                 break;
             case FIGHTING:
-                if (Controller.getController().playing() == null) {
-                    if (Controller.getController().getFight() instanceof FightVsTrainer) {
-                        Controller.getController().playMusic(Music.TRAINER);
-                    } else {
-                        Controller.getController().playMusic(Music.WILD);
-                    }
-                } else {
-                    if (Controller.getController().playing() != Music.TRAINER || Controller.getController().playing() != Music.WILD) {
+                if (Controller.getController().playing().isPresent()) {
+                    if (Controller.getController().playing().get() != Music.TRAINER || Controller.getController().playing().get() != Music.WILD) {
                         Controller.getController().stopMusic();
                         if (Controller.getController().getFight() instanceof FightVsTrainer) {
                             Controller.getController().playMusic(Music.TRAINER);
@@ -62,12 +56,18 @@ public final class StatusController implements StatusControllerInterface {
                             Controller.getController().playMusic(Music.WILD);
                         }
                     }
+                } else {
+                    if (Controller.getController().getFight() instanceof FightVsTrainer) {
+                        Controller.getController().playMusic(Music.TRAINER);
+                    } else {
+                        Controller.getController().playMusic(Music.WILD);
+                    }
                 }
-                keyboardController = FightingKeyboardController.getController();
+                keyboardController = new FightingKeyboardController();
                 Play.updateKeyListener();
                 break;
             case READING:
-                keyboardController = MenuKeyboardController.getController();
+                keyboardController = new MenuKeyboardController();
                 Play.updateKeyListener();
                 break;
             default:
@@ -107,15 +107,18 @@ public final class StatusController implements StatusControllerInterface {
 
     @Override
     public void updateMusic() {
-        Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
+        final Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (zone.isPresent()) {
-            for (Music m : Music.values()) {
-                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && Controller.getController().playing() != m 
-                        && Controller.getController().getStatusController().getState() != State.FIGHTING) {
-                    if (Controller.getController().playing() != null) {
-                        Controller.getController().stopMusic();
-                    }
-                    Controller.getController().playMusic(m);
+            for (final Music m : Music.values()) {
+                if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && Controller.getController().getStatusController().getState() != State.FIGHTING) {
+                    if (Controller.getController().playing().isPresent()) {
+                        if (Controller.getController().playing().get() != m) {
+                            Controller.getController().stopMusic();
+                            Controller.getController().playMusic(m);
+                        }
+                    } else {
+                        Controller.getController().playMusic(m);
+                    }               
                 }
             }
         }

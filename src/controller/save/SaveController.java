@@ -28,7 +28,7 @@ import view.resources.Play;
 /**
  * This class saves all the requested informations. 
  */
-public final class SaveController implements SaveControllerInterface {
+public class SaveController implements SaveControllerInterface {
     private static final int MIN_MOVES = 1;
     private Document document;
     private Element root;

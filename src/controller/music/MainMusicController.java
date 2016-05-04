@@ -2,6 +2,7 @@ package controller.music;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -12,11 +13,11 @@ import controller.parameters.Music;
 /**
  * This is the main music controller of the game
  */
-public final class MainMusicController implements MusicController {
+public class MainMusicController implements MusicController {
     
     private Sound s;
     private Map<Music, Sound> sounds;
-    private Music m;
+    private Optional<Music> m = Optional.empty();
     
     @Override
     public void initializeMusicController() {
@@ -32,17 +33,17 @@ public final class MainMusicController implements MusicController {
 
         this.s = this.sounds.get(song);
     	s.loop();
-        m = song;
+        m = Optional.of(song);
     }
     
     @Override
     public void stopMusic() {
         s.stop();
-        m = null;
+        m = Optional.empty();
     }
     
     @Override
-    public Music playing() {
+    public Optional<Music> playing() {
         return m;
     }
 } 
