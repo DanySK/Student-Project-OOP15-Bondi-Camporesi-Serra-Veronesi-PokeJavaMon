@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import controller.save.SaveController;
+
+import controller.Controller;
 import exceptions.SquadFullException;
 import model.items.Potion;
 import model.box.BoxImpl;
@@ -40,6 +41,6 @@ public class SaveTest {
         box.add(StaticPokemonFactory.createPokemon(Pokedex.CHARIZARD, 30));
         box.add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 30));
         BoxImpl.getBox().setPokemons(box);
-        SaveController.getController().save();
+        Controller.getController().save();
     }
 }

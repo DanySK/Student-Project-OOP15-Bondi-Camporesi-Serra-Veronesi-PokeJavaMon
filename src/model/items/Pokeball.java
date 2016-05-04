@@ -43,6 +43,7 @@ public class Pokeball extends AbstractItem {
     public boolean isCaptured(final Pokemon pkmn) {
         double x = new Random().nextDouble();
         double y = (double) this.calculateProbabilityCatch(pkmn, pkmn.getCurrentHP() == pkmn.getStat(Stat.HP));
+        System.out.println("Prob: " + y + ", value: " + x + ", enemy hp: " + pkmn.getCurrentHP() + ", rarity: " + pkmn.getPokemon().getRarity());
         return x <= y;
     }
     

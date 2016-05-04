@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
-import controller.main.MainController;
-import controller.parameters.Directions;
+import controller.Controller;
 import controller.parameters.FilePath;
+import model.map.Drawable.Direction;
 import model.utilities.Pair;
 import view.resources.Play;
 
@@ -21,6 +21,7 @@ public class PlayerSprite extends Sprite {
     private float animationTime = 0;
     private int pos = 0;
     private Pair<Float, Float> position;
+    private boolean update = true;
     private static PlayerSprite SINGLETON;
     
     public static PlayerSprite getSprite() {
@@ -42,9 +43,9 @@ public class PlayerSprite extends Sprite {
     
     public void update(SpriteBatch spriteBatch) {
         if (pos == 0) {
-            MainController.getController().updateSpeed();
+            Controller.getController().getStatusController().updateSpeed();
             if (velocity.x == 0 && velocity.y == 0) {
-                setOrientation(MainController.getController().getDirection());
+                setOrientation(Controller.getController().getStatusController().getDirection());
             } else {
                 move();
             }
@@ -53,6 +54,10 @@ public class PlayerSprite extends Sprite {
         }
         updatePosition();
         super.draw(spriteBatch); 
+        if (update) {
+            Controller.getController().getStatusController().updateMusic();
+            update = false;
+        }
     }
     
     public void updatePosition() {
@@ -98,21 +103,21 @@ public class PlayerSprite extends Sprite {
         super.setY((299 - y) * 16);
     }
     
-    private void setOrientation(Directions d) {
+    private void setOrientation(Direction d) {
         switch (d) {
-        case UP:
+        case NORTH:
             setRegion(up_s.getKeyFrame(animationTime));
             break;
-        case DOWN:
+        case SOUTH:
             setRegion(down_s.getKeyFrame(animationTime));
             break;
-        case LEFT:
+        case WEST:
             setRegion(left_s.getKeyFrame(animationTime));
             break;
-        case RIGHT:
+        case EAST:
             setRegion(right_s.getKeyFrame(animationTime));
             break;
-        case STILL:
+        case NONE:
             break;
         }
     }
@@ -135,7 +140,8 @@ public class PlayerSprite extends Sprite {
         pos ++;
         if (pos == 8) {
             pos = 0;
-            MainController.getController().checkEncounter();
+            Controller.getController().getStatusController().checkEncounter();
+            Controller.getController().getStatusController().updateMusic();
         }
     }
     

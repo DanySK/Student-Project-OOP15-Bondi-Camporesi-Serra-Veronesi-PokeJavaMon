@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import exceptions.ItemNotFoundException;
 import exceptions.NotEnoughMoneyException;
 import model.box.Box;
 import model.box.BoxImpl;
@@ -13,9 +12,6 @@ import model.inventory.InventoryImpl;
 import model.items.Item;
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
-import model.map.tile.Teleport;
-import model.map.tile.Tile.TileType;
-import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
@@ -32,17 +28,19 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     
     private static Player SINGLETON;
     
-    //TODO: IMPORT FROM MAP
-    private static int START_X = 278;
-    private static int START_Y = 71;
+    //TODO: Player position IMPORT FROM MAP
+    public static int START_X = -1;
+    public static int START_Y = -1;
+    public static final int DEFAULT_START_X = 278;
+    public static final int DEFAULT_START_Y = 71;
     
     private PlayerImpl() {
-        super(START_X, START_Y, Direction.SOUTH);
+        super(START_X != -1 ? START_X : DEFAULT_START_X, START_Y != -1 ? START_Y : DEFAULT_START_Y, Direction.SOUTH);
         this.squad = new SquadImpl();
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
-        this.badges = -1;
+        this.badges = 0;
         
     }
     
@@ -93,12 +91,13 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         return this.money;
     }
     
-    public void setMoney(int money) {
+    @Override
+    public void setMoney(final int money) {
         this.money = money;
     }
 
     @Override
-    public void buyItem(Item item) throws NotEnoughMoneyException {
+    public void buyItem(final Item item) throws NotEnoughMoneyException {
         if (this.money - item.getPrice() < 0 ) {
             throw new NotEnoughMoneyException();
         }
@@ -106,11 +105,6 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.money -= item.getPrice();
     }
 
-    @Override
-    public void useItem(Item item, PokemonInBattle pkmn) throws ItemNotFoundException {
-        //TODO CONTROLLARE STATO (BATTAGLIA) e se l'oggetto può essere usato... Exceptions..
-    }
-    
     @Override
     public void beatTrainer(final Trainer trainer) {
         this.money += trainer.getMoney();
@@ -128,32 +122,26 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     	int newY = this.tileY;
     	switch (d) {
     	case EAST :
-    		newX += pm.getTileWidth();
+    		newX += 1;
     		break;
     	case WEST :
-    		newX -= pm.getTileWidth();
+    		newX -= 1;
     		break;
     	case NORTH :
-    		newY -= pm.getTileHeight();
+    		newY -= 1;
     		break;
     	case SOUTH :
-    		newY +=  pm.getTileHeight();
+    		newY += 1;
     		break;
+    	default :
+    		return;
     	}
     	if (pm.isWalkable(newX, newY)) {
-    		if (pm.getTileType(newX, newY) == TileType.TELEPORT) {
-    			final Teleport tmpTlprt = pm.getTeleport(newX, newY).get();
-    			if (tmpTlprt == null) {
-    				throw new IllegalStateException("Teleport not found even if it's in the map as a TileType");
-    			}
-    			this.setPosition(tmpTlprt.getDestinationX(), tmpTlprt.getDestinationY());
-    		} else {
-    			this.setPosition(newX, newY);
-    		}
+   			this.setPosition(newX, newY);
     	}
     }
     
-    public void turn(Direction d) {
+    public void turn(final Direction d) {
     	this.direction = d;
     }
 
@@ -166,5 +154,17 @@ public class PlayerImpl extends AbstractCharacter implements Player{
 	public void addBadge() {
 		this.badges++;
 	}
-
+	
+	@Override
+	public void setBadges(final int badges) {
+		this.badges = badges;
+	}
+	
+	@Override
+	public void setStartingPoint(final int tileX, final int tileY) {
+		PlayerImpl.START_X = tileX;
+		PlayerImpl.START_Y = tileY;
+		this.setPosition(tileX, tileY);
+	}
+	
 }

@@ -22,65 +22,26 @@ import model.trainer.Trainer;
 import view.methods.MethodsImplemented;
 import view.methods.MethodsToImplement;
 
+/**
+ * The Controller that controls the fight.
+ */
 public class FightController implements FightControllerInterface {
 
-    private static FightControllerInterface SINGLETON;
+    private static final int FIRST_POKEMON_POSITION = 0;
     private Fight fight;
-    private MethodsToImplement view = new MethodsImplemented();
+    private final MethodsToImplement view = new MethodsImplemented();
     
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Private constructor, used by getController method.
-     */
-    private FightController() {}
-    
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Returns the FightController, using SINGLETON programmation pattern.
-     * @return the current FightController, or a new FightController if this is
-     * the first time this method has been called.
-     * @see FightControllerInterface
-     */
-    public static FightControllerInterface getController() {    
-        if (SINGLETON == null) {
-            synchronized (FightController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new FightController();
-                }
-            }
-        }
-        return SINGLETON;
+    @Override
+    public void newFightWithTrainer(final Trainer trainer) {
+        fight = new FightVsTrainer(trainer);
+        System.out.println("Fight with: " + trainer.getID());
     }
     
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Initializes a new Fight against a trainer. 
-     * @param the Trainer player is fighting with.
-     * @see Fight
-     * @see Trainer
-     */
     @Override
-    public void newFightWithTrainer(Trainer tr) {
-        fight = new FightVsTrainer(tr);
-        System.out.println("Fight with: " + tr.getID());
-    }
-    
-    /**
-     * @author MichaelCamporesi
-     * @version 2.0
-     * Initializes a new Fight against a wild pokemon. 
-     * @param the wild Pokemon player is fighting with.
-     * @see Fight
-     * @see Pokemon
-     */
-    @Override
-    public void newFightWithPokemon(Pokemon pm) {
-        fight = new FightVsWildPkm(pm);
-        System.out.println("Fight with: " + pm.getPokemon().name() + " LVL: " + pm.getStat(Stat.LVL));
-        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+    public void newFightWithPokemon(final Pokemon pokemon) {
+        fight = new FightVsWildPkm(pokemon);
+        System.out.println("Fight with: " + pokemon.getPokemon().name() + " LVL: " + pokemon.getStat(Stat.LVL));
+        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(FIRST_POKEMON_POSITION).getCurrentHP());
     }
     
     @Override
@@ -91,30 +52,30 @@ public class FightController implements FightControllerInterface {
     // Metodi che chiama il MODEL
     
     @Override
-    public void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove, Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills, Pokemon nextEnemyPokemon, String optionalMessage) {
+    public void resolveAttack(final Move myMove, final Effectiveness myMoveEffectiveness, final Move enemyMove, final Effectiveness enemyMoveEffectiveness, final boolean myMoveFirst, final boolean lastPokemonKills, final Pokemon nextEnemyPokemon, final String optionalMessage) {
         view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage);
     }
     
     @Override
-    public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead) {
+    public void resolveRun(final boolean success, final Move enemyMove, final boolean isMyPokemonDead) {
         view.resolveRun(success, enemyMove, isMyPokemonDead);
     }
     
     @Override
-    public void resolveItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead) {
-        view.resolveUseItem(item, pk, enemyMove, isMyPokemonDead);
+    public void resolveItem(final Item item, final Pokemon pokemon, final Move enemyMove, final boolean isMyPokemonDead) {
+        view.resolveUseItem(item, pokemon, enemyMove, isMyPokemonDead);
     }
     
     @Override
-    public void resolvePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead) {
+    public void resolvePokemon(final Pokemon myPokemon, final Move enemyMove, final boolean isMyPokemonDead) {
         view.resolveChangePokemon(myPokemon, enemyMove, isMyPokemonDead);
     }
     
     // Metodi che chiama la VIEW
     
     @Override
-    public void attack(Move mv) {
-        fight.moveTurn(mv);
+    public void attack(final Move move) {
+        fight.moveTurn(move);
     }
     
     @Override
@@ -123,23 +84,23 @@ public class FightController implements FightControllerInterface {
     }
     
     @Override
-    public void changePokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        fight.changeTurn((PokemonInBattle) pk);
+    public void changePokemon(final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        fight.changeTurn((PokemonInBattle) pokemon);
     }
     
     @Override
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
-        fight.itemTurn(it, (PokemonInBattle) pk);
+    public void useItem(final Item item, final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
+        fight.itemTurn(item, (PokemonInBattle) pokemon);
     }
     
     @Override
-    public List<Pokedex> resolveEvolution() {
+    public List<PokemonInBattle> resolveEvolution() {
         return fight.getPkmsThatMustEvolve();
     }
     
     @Override
-    public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        fight.applyChange((PokemonInBattle) pk);
+    public void selectPokemon(final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        fight.applyChange((PokemonInBattle) pokemon);
     }
 
     @Override

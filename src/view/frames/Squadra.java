@@ -5,9 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 
-import controller.main.MainController;
+import controller.Controller;
 import controller.parameters.State;
-import controller.view.ViewController;
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
@@ -90,7 +89,7 @@ class Panel2 extends JPanel
                 private final Pokemon ID = pkmn;
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    ViewController.getController().stats(ID);
+                    Controller.getController().getViewController().stats(ID);
                 }
             });
             add(but);
@@ -99,7 +98,7 @@ class Panel2 extends JPanel
                 private final int ID = index;
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (MainController.getController().getState() == State.MENU) {
+                    if (Controller.getController().getStatusController().getState() == State.MENU) {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
                             PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
                             Squadra.dispose();
@@ -110,7 +109,7 @@ class Panel2 extends JPanel
                     } else {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                             try {
-                                ViewController.getController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                Controller.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame("CANNOT SELECT THAT POKEMON", null);
@@ -119,7 +118,7 @@ class Panel2 extends JPanel
                             }
                         } else {
                             try {
-                                ViewController.getController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                Controller.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame("CANNOT SELECT THAT POKEMON", null);
@@ -148,7 +147,7 @@ class Panel2 extends JPanel
                     }
                 }
             });
-            if (MainController.getController().getState() != State.MENU || bl2) {
+            if (Controller.getController().getStatusController().getState() != State.MENU || bl2) {
                 but3.setEnabled(false);
             }
             add(but3);

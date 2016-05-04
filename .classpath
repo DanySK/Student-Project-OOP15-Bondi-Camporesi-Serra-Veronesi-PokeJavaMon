@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="resources/maps"/>
-	<classpathentry kind="src" path="resources/img"/>
-	<classpathentry kind="src" path="resources/music"/>
-	<classpathentry kind="src" path="resources/sprites/front"/>
-	<classpathentry kind="src" path="resources/sprites/back"/>
+	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl-natives.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl-sources.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-backend-lwjgl.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-natives.jar"/>
-	<classpathentry kind="lib" path="libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" path="libs/gdx.jar">
+	<classpathentry kind="lib" path="lib/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="lib/gdx.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="https://libgdx.badlogicgames.com/nightlies/docs/api/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/jdom-2.0.6-contrib.jar"/>
-	<classpathentry kind="lib" path="libs/jdom-2.0.6-javadoc.jar"/>
-	<classpathentry kind="lib" path="libs/jdom-2.0.6-junit.jar"/>
-	<classpathentry kind="lib" path="libs/jdom-2.0.6-sources.jar"/>
-	<classpathentry kind="lib" path="libs/jdom-2.0.6.jar"/>
-	<classpathentry kind="lib" path="libs/tween-engine-api-sources.jar"/>
-	<classpathentry kind="lib" path="libs/tween-engine-api.jar"/>
-	<classpathentry kind="lib" path="libs/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="lib/guava-19.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PokeJavaMonTrial/lib/jdom-2.0.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6-contrib.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6-junit.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-2.0.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://www.jdom.org/docs/apidocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="lib/tween-engine-api.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-backend-lwjgl-sources.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-backend-lwjgl.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-natives.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

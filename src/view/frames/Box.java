@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import controller.view.ViewController;
+import controller.Controller;
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.player.PlayerImpl;
@@ -90,7 +90,7 @@ public BoxPanel(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> cur
             private final Pokemon ID = pokmn;
             @Override
             public void actionPerformed(ActionEvent e) {
-                ViewController.getController().stats(ID);
+                Controller.getController().getViewController().stats(ID);
             }
         });
         add(but);

@@ -1,61 +1,49 @@
 package controller.keyboard;
 
-import controller.parameters.Directions;
+import model.map.Drawable.Direction;
 
+/**
+ * The {@link KeyboardController} active for the menu.
+ */
 public class MenuKeyboardController implements KeyboardController {
-
-    private static MenuKeyboardController SINGLETON;
-    
-    private MenuKeyboardController() {}
-    
-    public static MenuKeyboardController getController() {
-        if (SINGLETON == null) {
-            synchronized (MenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MenuKeyboardController();
-                }
-            }
-        }
-        return SINGLETON;
-    }
     
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean keyTyped(char character) {
+    public boolean keyTyped(final char character) {
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode) {
+    public boolean keyUp(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public boolean mouseMoved(final int screenX, final int screenY) {
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount) {
+    public boolean scrolled(final int amount) {
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
+    public boolean touchDragged(final int screenX, final int screenY, final int pointer) {
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
@@ -66,16 +54,16 @@ public class MenuKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        return;
+        // EMPTY METHOD
     }
 
     @Override
-    public Directions getDirection() {
-        return Directions.STILL;
+    public Direction getDirection() {
+        return Direction.NONE;
     }
 
     @Override
     public void checkEncounter() {
-        return;
+        // EMPTY METHOD
     }
 }

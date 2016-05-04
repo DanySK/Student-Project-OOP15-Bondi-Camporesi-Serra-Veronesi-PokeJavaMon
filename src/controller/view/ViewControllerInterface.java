@@ -1,53 +1,76 @@
 package controller.view;
 
-import java.util.List;
-
-import exceptions.CannotCaughtTrainerPkmException;
-import exceptions.CannotEscapeFromTrainerException;
-import exceptions.PokemonIsExhaustedException;
-import exceptions.PokemonIsFightingException;
-import exceptions.PokemonNotFoundException;
-import model.items.Item;
-import model.pokemon.Move;
-import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
 
+/**
+ * This interface shows the methods that can be called on {@link ViewController}
+ */
 public interface ViewControllerInterface {
 
-    public void market();
+    /**
+     * Shows the pokemon market menu
+     */
+    void market();
 
-    public void showMenu();
+    /**
+     * Shows the main menu
+     */
+    void showMenu();
 
-    public void firstMenu();
+    /**
+     * Shows the first menu
+     */
+    void firstMenu();
 
-    public void secondMenu();
+    /**
+     * Shows the second menu
+     */
+    void secondMenu();
 
-    public void map(boolean b);
+    /**
+     * Shows the game map
+     * @param newGame if it is a new game or not
+     */
+    void map(boolean newGame);
 
-    public void save();
-
-    public void box();
+    /**
+     * Saves the game
+     */
+    void save();
     
-    public void team(final boolean bl, final boolean bl2);
+    /**
+     * Shows the box menu
+     */
+    void box();
     
-    public void bag();
+    /**
+     * Shows the team menu
+     * @param canCloseMenu if player can close the menu or not
+     * @param canChangePokemon true if player can change pokemon to that pokemon or 
+     * false if can select that pokemon to use an item on
+     */
+    void team(final boolean canCloseMenu, final boolean canChangePokemon);
+    
+    /**
+     * Shows the bag menu
+     */
+    void bag();
 
-    public void stats(Pokemon iD);
+    /**
+     * Shows the stat menu
+     * @param pokemon the {@link Pokemon} to show stats of
+     */
+    void stats(Pokemon pokemon);
 
-    public void setName(String text);
+    /**
+     * Set player's name
+     * @param name the selected name
+     */
+    void setName(String name);
 
-    public void attack(Move move);
-
-    public void changePokemon(Pokemon poke) throws PokemonIsExhaustedException, PokemonIsFightingException;
-
-    public void useItem(Item it, Pokemon pk) throws PokemonIsExhaustedException, PokemonNotFoundException,
-                CannotCaughtTrainerPkmException, IllegalStateException;
-
-    public void run() throws CannotEscapeFromTrainerException;
-
-    public List<Pokedex> getEvolutions();
-
-    public void selectPokemon(Pokemon pk) throws PokemonIsExhaustedException, PokemonIsFightingException;
-
-    public void fightScreen(Pokemon pk);
+    /**
+     * Shows the fight menu
+     * @param pokemon the enemy {@link Pokemon}
+     */
+    void fightScreen(Pokemon pokemon);
 }

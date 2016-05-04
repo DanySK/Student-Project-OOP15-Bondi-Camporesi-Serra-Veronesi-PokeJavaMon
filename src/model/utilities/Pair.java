@@ -1,8 +1,8 @@
 package model.utilities;
 
 public class Pair<X, Y> {
-    private X x;
-    private Y y;
+    private final X x;
+    private final Y y;
     
     public Pair(final X x, final Y y) {
         this.x = x;

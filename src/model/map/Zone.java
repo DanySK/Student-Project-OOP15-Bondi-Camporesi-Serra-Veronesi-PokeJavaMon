@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 public interface Zone {
 
-	public boolean isInsideZone(final int x, final int y);
+	public boolean contains(final int x, final int y);
 	public int getTileX();
 	public int getTileY();
 	public int getZoneWidth();

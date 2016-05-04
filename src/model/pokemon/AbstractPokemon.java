@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  * Abstract class that implements {@link Pokemon} interface
- * leaving {@link levelUp()}, {@link damage(final int dmg)} and {@link evolve()} as abstract methods
+ * leaving {@link model.pokemon.Pokemon#levelUp()}, {@link model.pokemon.Pokemon#damage(int)} and {@link model.pokemon.Pokemon#evolve()} as abstract methods
  * It is extended by {@link PokemonInBattle}
  * @see Pokemon
  * @see PokemonInBattle

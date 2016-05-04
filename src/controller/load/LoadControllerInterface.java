@@ -2,9 +2,19 @@ package controller.load;
 
 import model.map.PokeMap;
 
+/**
+ * This interface shows the methods that can be called on {@link LoadController}
+ */
 public interface LoadControllerInterface {
     
-    public void load(final PokeMap map);
+    /**
+     * Load all the requested informations from the save file
+     * @param map the current {@link PokeMap} 
+     */
+    void load();
     
-    public boolean saveExists();
+    /**
+     * @return true if the save file exists, false otherwise
+     */
+    boolean saveExists();
 }

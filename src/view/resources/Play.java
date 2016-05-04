@@ -13,8 +13,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import controller.load.LoadController;
-import controller.main.MainController;
+import controller.Controller;
 import controller.parameters.FilePath;
 import model.map.PokeMapImpl;
 import model.player.PlayerImpl;
@@ -63,6 +62,7 @@ public class Play implements Screen {
 	        } catch (Exception e) {
 	            map = new TmxMapLoader().load(this.getClass().getResource(FilePath.MAP.getResourcePath()).getPath());
 	        }
+	        Controller.getController().initializeMusicController();
 	        renderer = new OrthogonalTiledMapRenderer(map);                    
 		sr = new ShapeRenderer();
 		sr.setColor(Color.CYAN);
@@ -82,19 +82,22 @@ public class Play implements Screen {
 		pls = PlayerSprite.getSprite();
 		pm = new PokeMapImpl(map);
 		if (newGame) {
-		    pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		    pls.setPosition(28*16, (299 - 177) * 16);
+			//TODO Magic numbers... c'è un metodo nella mappa
+		    pls.setBounds(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16  : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16  : (299 -PlayerImpl.DEFAULT_START_Y) * 16, 15.9f, 15.9f);
+		    if (PlayerImpl.START_X < 0) {
+	        	System.out.println("Initial Position not found");
+	        } 
 		} else {
-		    if (LoadController.getController().saveExists()) {
-		        LoadController.getController().load(null);
-	                pls.setBounds(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY(), 15.9f, 15.9f);
-	                pls.setPosition(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
-	            } else {
+		    if (Controller.getController().saveExists()) {
+		        Controller.getController().load();
+		    } else {
 		        pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		        pls.setPosition(28*16, (299 - 177) * 16);
+		        if (PlayerImpl.START_X < 0) {
+		        	System.out.println("Initial Position not found");
+		        }
+		        pls.setPosition(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16 : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16 : (299 - PlayerImpl.DEFAULT_START_Y) * 16);
 		    }
-		}
-				
+		}	        
 	}
 
 	public void hide() {		
@@ -120,7 +123,7 @@ public class Play implements Screen {
 	}
 	
 	public static void updateKeyListener() {
-	    Gdx.input.setInputProcessor(MainController.getController().getCurrentController());
+	    Gdx.input.setInputProcessor(Controller.getController().getStatusController().getCurrentController());
 	}
 	
 	public TiledMap getMap() {

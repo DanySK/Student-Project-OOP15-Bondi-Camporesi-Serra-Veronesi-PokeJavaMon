@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import controller.fight.FightController;
+import controller.Controller;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
-
 import model.items.Item;
 import model.items.Pokeball;
 import model.pokemon.Move;
@@ -66,7 +65,6 @@ public class FightVsWildPkm extends AbstractFight {
 
     @Override
     public void moveTurn(final Move move) {
-        int exp_message;
         int attacksDone = 0;
         boolean isEnd = false;
         boolean turnOrder = setIsAllyFastest();
@@ -74,8 +72,7 @@ public class FightVsWildPkm extends AbstractFight {
             if (turnOrder) {
                 allyTurn(move);
                 if (isEnemyExhausted) {
-                    exp_message = getExp();
-                    giveExpAndCheckLvlUp(exp_message);
+                    giveExpAndCheckLvlUp(getExp());
                     isEnd = true;
                 }
             } else {
@@ -91,27 +88,27 @@ public class FightVsWildPkm extends AbstractFight {
             if (isAllyFastest) {
                 if (isAllyExhausted) {
                     //alleato attacca, nemico attacca, pokemon alleato esausto
-                    FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null);
                 } else {
                     //alleato attacca, nemico attacca, pokemon alleato sopravvive
-                    FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
                 }
             } else {
                 if (isEnemyExhausted) {
                     //nemico attacca, alleato attacca, pokemon nemico esausto
-                    FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp());
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp());
                 } else {
                     //nemico attacca, alleato attacca, pokemon nemico sopravvive
-                    FightController.getController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
                 }
             }
         } else {
             if (isAllyFastest) {
                 //alleato attacca per primo, pkm nemico esausto
-                FightController.getController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp());
+                Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp());
             } else {
                 //nemico attaccata per primo, pkm alleato esausto
-                FightController.getController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null);
+                Controller.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null);
             }
         }
         reset();

@@ -18,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import model.map.Drawable.Direction;
+import model.map.tile.BadgeTeleport;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
@@ -161,7 +162,7 @@ public class PokeMapImpl implements PokeMap {
 				}
 				this.collisions.add(p);
 
-			} else if (cellProperty.equals(TileType.TELEPORT.toString())) {
+			} else if (cellProperty.equals(TileType.TELEPORT.toString()) || cellProperty.equals(TileType.BADGETELEPORT.toString())) {
 				this.map[tileX][tileY] = TileType.TELEPORT;
 			
 			} else if (cellProperty.equals(TileType.MARKET.toString())) {
@@ -172,6 +173,11 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.CENTER.toString())) {
 				this.map[tileX][tileY] = TileType.CENTER;
 				this.collisions.add(p);
+			} else if (cellProperty.equals(TileType.START.toString())) {
+				PlayerImpl.START_X = tileX;
+				PlayerImpl.START_Y = tileY;
+				this.map[tileX][tileY] = TileType.TERRAIN;
+				PlayerImpl.getPlayer().setStartingPoint(tileX, tileY);
 			}
 		}
 	}
@@ -301,7 +307,12 @@ public class PokeMapImpl implements PokeMap {
 				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
 				final int to_x = Integer.parseInt((String)mobj.getProperties().get("DOOR_X"));
 				final int to_y = Integer.parseInt((String)mobj.getProperties().get("DOOR_Y"));
-				final Teleport tmp = new Teleport(real_x, real_y, to_x, to_y);
+				Teleport tmp;
+				if (mobj.getProperties().containsKey("badgesRequired")) {
+					tmp = new BadgeTeleport(real_x, real_y, to_x, to_y, Integer.parseInt(mobj.getProperties().get("badgesRequired", String.class)));
+				} else {
+					tmp = new Teleport(real_x, real_y, to_x, to_y);
+				}		
 				this.teleports.add(tmp);
 			}
 		}
@@ -367,9 +378,9 @@ public class PokeMapImpl implements PokeMap {
 			final int height = (int) (rect.getRectangle().height / this.tileHeight) - 1;
 			final int real_x = this.getTileUnitX((int) (rect.getRectangle().x / this.tileWidth));
 			final int real_y = this.getTileUnitY((int) (rect.getRectangle().y / this.tileHeight)) - height;
-			final String musicPath = (String) z.getProperties().get("musicPath");
+			final String musicPath = (String) z.getProperties().get("music");
 			final String name = (String) z.getProperties().get("zoneType");
-			this.walkableZones.add(new WalkableZone(name, real_x, real_y, width, height, musicPath));
+			this.walkableZones.add(new WalkableZone(name, real_x, real_y, width, height, "/" + musicPath));
 			
 		}
 	}
@@ -439,18 +450,12 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public void initGymLeaders(Map<Integer, Boolean> gymLeaderID_isDefeated) {
-		for (final Entry<Integer, Boolean> e : gymLeaderID_isDefeated.entrySet()) {
-			if (!e.getValue()) {
-				continue;
-			}
-			for (final GymLeader gl : this.gymLeaders) {
-				if (e.getKey() == gl.getID()) {
-					gl.defeat();
-				}
+	public void initGymLeaders(final int badges) {
+		for (final GymLeader gl : this.gymLeaders) {
+			if (gl.getBadge() <= badges) {
+				gl.defeat();
 			}
 		}
-		
 	}
 
 	@Override

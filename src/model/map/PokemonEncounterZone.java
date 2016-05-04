@@ -14,14 +14,8 @@ import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.PokemonRarity;
 import model.pokemon.StaticPokemonFactory;
-import java.awt.Rectangle;
 
-public class PokemonEncounterZone extends Rectangle implements Zone {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4501693972739348662L;
+public class PokemonEncounterZone extends AbstractZone {
 	
 	private final int id;
 	private final List<Pokedex> pokemonList;
@@ -32,8 +26,8 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 	
 	
 	public PokemonEncounterZone(final int id, final String pokemonList, final int averageLevel, final int tileX, final int tileY, final int width, final int height) {
-		this.setBounds(tileX, tileY, width, height);
-		
+		super("EncounterZone_" + id, tileX, tileY, width, height);
+		this.id = id;
 		this.pokemonList = new ArrayList<>();
 		
 		for (final String pkmn : pokemonList.split(" ")) {
@@ -46,8 +40,6 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 		if (this.pokemonList.isEmpty()) {
 			throw new IllegalArgumentException("Pokemon Encounter Zone has no valid pokemon found in PokemonDB");
 		}
-		
-		this.id = id;
 		this.avgLvl = averageLevel;
 	}
 
@@ -117,12 +109,6 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
         	throw new IllegalArgumentException("PokemonRarity not listed or is Starter so cannot be found");
         }
     }
-    
-    
-	@Override
-	public boolean isInsideZone(final int x, final int y) {
-		return this.contains(x, y);
-	}
 
 	public List<Pokedex> getAvailablePokemon() {
 		return Collections.unmodifiableList(this.pokemonList);
@@ -131,39 +117,14 @@ public class PokemonEncounterZone extends Rectangle implements Zone {
 	public int getAverageLevel() {
 		return this.avgLvl;
 	}
-
-	@Override
-	public int getTileX() {
-		return this.x;
-	}
-
-	@Override
-	public int getTileY() {
-		return this.y;
-	}
-
-	@Override
-	public int getZoneWidth() {
-		return this.width;
-	}
-
-	@Override
-	public int getZoneHeight() {
-		return this.height;
-	}
-
-	@Override
-	public Rectangle getRectangle() {
-		return new Rectangle(this);
-	}
-
-	@Override
-	public String getZoneName() {
-		return "EncounterZone_" + this.id;
-	}
 	
+	public int getID() {
+		return this.id;
+	}
+
+
 	public String toString() {
-		return getZoneName() + new Position(this.x, this.y) + ", width = " + this.width + ", height = " + this.height;
+		return getZoneName() + new Position(super.rect.x, super.rect.y) + ", width = " + super.rect.width + ", height = " + super.rect.height;
 	}
 
 	

@@ -1,49 +1,49 @@
 package controller.music;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+
 import controller.parameters.FilePath;
 import controller.parameters.Music;
 
+/**
+ * This is the main music controller of the game
+ */
 public class MainMusicController implements MusicController {
     
     private Sound s;
-    private Music m = null;
-    private static MainMusicController SINGLETON;
+    private Map<Music, Sound> sounds;
+    private Optional<Music> m = Optional.empty();
     
-    private MainMusicController() {}
-    
-    public static MainMusicController getController() {
-        if (SINGLETON == null) {
-            synchronized (MainMusicController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new MainMusicController();
-                }
-            }
+    @Override
+    public void initializeMusicController() {
+        this.sounds = new HashMap<>();
+        for (final Music m : Music.values()) {
+                final Sound s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + m.getAbsolutePath()));
+                this.sounds.put(m, s);
         }
-        return SINGLETON;
     }
     
     @Override
-    public void play(Music song) {        
-        try {
-            s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + song.getPath()));
-        } catch (Exception e) {
-            s = Gdx.audio.newSound(Gdx.files.classpath(song.getPath()));
-        }
-        s.loop();
-        m = song;
+    public void playMusic(final Music song) {   
+
+        this.s = this.sounds.get(song);
+    	s.loop();
+        m = Optional.of(song);
     }
     
     @Override
-    public void stop() {
+    public void stopMusic() {
         s.stop();
-        s.dispose();
-        m = null;
+        m = Optional.empty();
     }
     
     @Override
-    public Music playing() {
+    public Optional<Music> playing() {
         return m;
     }
 } 

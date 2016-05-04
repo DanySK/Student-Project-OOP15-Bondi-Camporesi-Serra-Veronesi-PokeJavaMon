@@ -1,16 +1,33 @@
 package controller.keyboard;
 
 import com.badlogic.gdx.InputProcessor;
+import model.map.Drawable.Direction;
+import model.pokemon.Pokemon;
+import view.sprite.PlayerSprite;
 
-import controller.parameters.Directions;
-
+/**
+ * This interface explains the methods each {@link KeyboardController} has to implement
+ * to operate on user imput
+ */
 public interface KeyboardController extends InputProcessor {
     
-    public boolean isKeyPressed();
+    /**
+     * @return true if at least one key is pressed, false otherwise 
+     */
+    boolean isKeyPressed();
     
-    public void updateSpeed();
+    /**
+     * Updates the speed of the {@link PlayerSprite}
+     */
+    void updateSpeed();
     
-    public Directions getDirection();
+    /**
+     * @return the {@link Direction} selected by the last key pressed
+     */
+    Direction getDirection();
 
-    public void checkEncounter();
+    /**
+     * Checks if player has encountered a wild {@link Pokemon}
+     */
+    void checkEncounter();
 }

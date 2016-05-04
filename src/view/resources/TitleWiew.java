@@ -10,10 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.main.MainController;
+import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.State;
-import controller.view.ViewController;
 
 public class TitleWiew {
     
@@ -30,6 +29,7 @@ public class TitleWiew {
         try {
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
         } catch (Exception e) {
+        	//TODO: Fare catch di una semplice Exception e' sbagliato
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
         }
         JPanel pane = new JPanel();
@@ -43,19 +43,22 @@ public class TitleWiew {
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                MainController.getController().updateStatus(State.SECOND_MENU);
-                ViewController.getController().secondMenu();
+                Controller.getController().updateStatus(State.SECOND_MENU);
+                Controller.getController().getViewController().secondMenu();
             }
         });
         pane.add(nuova);
         JButton continua = new JButton("CONTINUA");
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ViewController.getController().map(false);
-                MainController.getController().updateStatus(State.WALKING);
+                Controller.getController().getViewController().map(false);
+                Controller.getController().updateStatus(State.WALKING);
                 frame.dispose();
             }
         });
+        if (!Controller.getController().saveExists()) {
+            continua.setEnabled(false);
+        }
         pane.add(continua);
         frame.add(pane);
         frame.setVisible(true);

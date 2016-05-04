@@ -2,75 +2,64 @@ package controller.keyboard;
 
 import com.badlogic.gdx.Input.Keys;
 
-import controller.main.MainController;
-import controller.parameters.Directions;
+import controller.Controller;
 import controller.parameters.State;
-import controller.view.ViewController;
+import model.map.Drawable.Direction;
 
+/**
+ * The {@link KeyboardController} active for the first menu.
+ */
 public class FirstMenuKeyboardController implements KeyboardController {
-
-    private static FirstMenuKeyboardController SINGLETON;
-    
-    private FirstMenuKeyboardController() {}
-    
-    public static FirstMenuKeyboardController getController() {
-        if (SINGLETON == null) {
-            synchronized (FirstMenuKeyboardController.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new FirstMenuKeyboardController();
-                }
-            }
-        }
-        return SINGLETON;
-    }
     
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(final int keycode) {
         return false;
     }
 
     @Override
-    public boolean keyTyped(char character) {
+    public boolean keyTyped(final char character) {
         return false;
     }
 
     @Override
-    public boolean keyUp(int keycode) {
+    public boolean keyUp(final int keycode) {
         switch(keycode) {
         case Keys.N:
-            ViewController.getController().secondMenu();
-            MainController.getController().updateStatus(State.SECOND_MENU);
+            Controller.getController().getViewController().secondMenu();
+            Controller.getController().updateStatus(State.SECOND_MENU);
             break;
         case Keys.C:
-            ViewController.getController().map(false);
-            MainController.getController().updateStatus(State.WALKING);
+            Controller.getController().getViewController().map(false);
+            Controller.getController().updateStatus(State.WALKING);
+            break;
+        default:
             break;
         }
         return false;
     }
 
     @Override
-    public boolean mouseMoved(int screenX, int screenY) {
+    public boolean mouseMoved(final int screenX, final int screenY) {
         return false;
     }
 
     @Override
-    public boolean scrolled(int amount) {
+    public boolean scrolled(final int amount) {
         return false;
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
+    public boolean touchDragged(final int screenX, final int screenY, final int pointer) {
         return false;
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button) {
         return false;
     }
 
@@ -81,16 +70,16 @@ public class FirstMenuKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        return;
+        // EMPTY METHOD
     }
 
     @Override
-    public Directions getDirection() {
-        return Directions.STILL;
+    public Direction getDirection() {
+        return Direction.NONE;
     }
 
     @Override
     public void checkEncounter() {
-        return;
+        // EMPTY METHOD
     }
 }

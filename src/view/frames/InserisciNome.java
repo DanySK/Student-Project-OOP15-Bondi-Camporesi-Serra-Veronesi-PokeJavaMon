@@ -7,10 +7,10 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import controller.main.MainController;
+import controller.Controller;
+import controller.parameters.FilePath;
 import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
-import controller.view.ViewController;
 import exceptions.SquadFullException;
 import model.inventory.InventoryImpl;
 import model.items.Pokeball.PokeballType;
@@ -37,7 +37,12 @@ public class InserisciNome {
 			nickname.requestFocusInWindow();
 			f.setFocusable(true);
 			f.setResizable(false);
-		
+			try {
+		            f.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
+		        } catch (Exception e) {
+		                //TODO: Fare catch di una semplice Exception e' sbagliato
+		            f.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
+		        }
 			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			f.setBounds(100, 100, 400, 300);
 			f.getContentPane().setLayout(null);
@@ -97,9 +102,9 @@ public class InserisciNome {
 		                 } catch (SquadFullException ex) {
 		                     ex.printStackTrace();
 		                 }
-	    	        ViewController.getController().setName(nickname.getText());
-	                ViewController.getController().map(true);
-	                MainController.getController().updateStatus(State.WALKING);
+	    	        Controller.getController().getViewController().setName(nickname.getText());
+	                Controller.getController().getViewController().map(true);
+	                Controller.getController().updateStatus(State.WALKING);
 	                f.dispose();
 	    	        }
 	    		}});
@@ -112,13 +117,13 @@ public class InserisciNome {
 	    	           }
 	    	        else {
 	    	        	try {
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 15));
 		                 } catch (SquadFullException ex) {
 		                     ex.printStackTrace();
 		                 }
-	    	        ViewController.getController().setName(nickname.getText());
-	                ViewController.getController().map(true);
-	                MainController.getController().updateStatus(State.WALKING);
+	    	        Controller.getController().getViewController().setName(nickname.getText());
+	                Controller.getController().getViewController().map(true);
+	                Controller.getController().updateStatus(State.WALKING);
 	                f.dispose();
 	    	        }
 	    		}});
@@ -135,9 +140,9 @@ public class InserisciNome {
 		                } catch (SquadFullException ex) {
 		                    ex.printStackTrace();
 		                }
-	    	        ViewController.getController().setName(nickname.getText());
-	                ViewController.getController().map(true);
-	                MainController.getController().updateStatus(State.WALKING);
+	    	        Controller.getController().getViewController().setName(nickname.getText());
+	                Controller.getController().getViewController().map(true);
+	                Controller.getController().updateStatus(State.WALKING);
 	                f.dispose();
 	    	        }
 	    		}});

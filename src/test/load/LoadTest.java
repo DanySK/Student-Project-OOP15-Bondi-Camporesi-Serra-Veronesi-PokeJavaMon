@@ -1,6 +1,6 @@
 package test.load;
 
-import controller.load.LoadController;
+import controller.Controller;
 import model.player.PlayerImpl;
 import model.pokemon.InitializeMoves;
 
@@ -8,7 +8,7 @@ public class LoadTest {
 
     public static void main(String[] args) {
         InitializeMoves.initAllPokemonsTypes();
-        LoadController.getController().load(null);
+        Controller.getController().load();
         System.out.println("LOADED SUCCESSFULLY");
         System.out.println(Integer.toString(PlayerImpl.getPlayer().getMoney()));
         System.out.println(Float.toString(PlayerImpl.getPlayer().getTileX()));
