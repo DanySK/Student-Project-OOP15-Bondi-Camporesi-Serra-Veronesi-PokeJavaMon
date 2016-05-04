@@ -19,7 +19,6 @@ import exceptions.SquadFullException;
 import model.box.BoxImpl;
 import model.inventory.InventoryImpl;
 import model.map.PokeMap;
-import model.map.Position;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
@@ -32,6 +31,13 @@ import view.sprite.PlayerSprite;
 public class LoadController implements LoadControllerInterface {
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
+    private static final int FACTOR = 1;
+    private static final int STRING_OFFSET = 1;
+    private static final int NOBADGE = 0;
+    private static final int MAXBADGE = 5;
+    private static final int TILEDIM = 16;
+    private static final int OFFSET = 299;
+    private static final float DIM = 15.9f;
     private Element root;
     
     /**
@@ -68,7 +74,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private void getBadges() {
         final int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
-        for (int x = 0; x < 5; x ++) {
+        for (int x = NOBADGE; x < MAXBADGE; x ++) {
             if (x < badges) {
                 PlayerImpl.getPlayer().addBadge();
             }
@@ -82,9 +88,7 @@ public class LoadController implements LoadControllerInterface {
         final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
         final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
         PlayerImpl.getPlayer().setPosition(x, y);
-        PlayerSprite.getSprite().setBounds(x * 16, (299-y) * 16, 15.9f, 15.9f);
-        System.out.println("savePos : " + new Position(PlayerImpl.getPlayer().getTileX(),PlayerImpl.getPlayer().getTileY()));
-        
+        PlayerSprite.getSprite().setBounds(x * TILEDIM, (OFFSET-y) * TILEDIM, DIM, DIM);
     }
     
     /**
@@ -98,7 +102,7 @@ public class LoadController implements LoadControllerInterface {
             final int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
             String[] moves = new String[cont];
             for (int a = MIN_MOVES; a <= cont; a++) {   
-                moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
+                moves[a-FACTOR] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
             }
             try {
                 PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
@@ -116,7 +120,7 @@ public class LoadController implements LoadControllerInterface {
         final Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
         for (final Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
-            	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(1, a.getName().length())), a.getBooleanValue());
+            	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(STRING_OFFSET, a.getName().length())), a.getBooleanValue());
             } catch (DataConversionException e) {
                 System.out.println("DATA CONVERSION FAILED");
             }
@@ -155,7 +159,7 @@ public class LoadController implements LoadControllerInterface {
             final int cont = Integer.parseInt(e.getAttributeValue(XMLParameters.NMOVES.getName()));
             String[] moves = new String[cont];
             for (int a = MIN_MOVES; a <= cont; a++) {   
-                moves[a-1] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
+                moves[a-FACTOR] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
             }
             box.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }

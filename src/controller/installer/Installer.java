@@ -19,6 +19,9 @@ import controller.parameters.FrontSpriteImage;
  */
 public class Installer implements InstallerInterface {
 
+    private static final int OFFSET = 0;
+    private static final int NODATA = -1;
+    private static final int SIZE = 2048;
     private boolean success;
 
     @Override
@@ -100,10 +103,10 @@ public class Installer implements InstallerInterface {
             if (!Files.exists(Paths.get(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath())) {
-                    final byte[] buf = new byte[2048];
+                    final byte[] buf = new byte[SIZE];
                     int r = musicStream.read(buf);
-                    while(r != -1) {
-                        fos.write(buf, 0, r);
+                    while(r != NODATA) {
+                        fos.write(buf, OFFSET, r);
                         r = musicStream.read(buf);
                     }
                 } catch (IOException e) {
@@ -122,10 +125,10 @@ public class Installer implements InstallerInterface {
             if (!Files.exists(Paths.get(s.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
-                    final byte[] buf = new byte[2048];
+                    final byte[] buf = new byte[SIZE];
                     int r = is.read(buf);
-                    while(r != -1) {
-                        fos.write(buf, 0, r);
+                    while(r != NODATA) {
+                        fos.write(buf, OFFSET, r);
                         r = is.read(buf);
                     }
                 } catch (IOException e) {
@@ -144,10 +147,10 @@ public class Installer implements InstallerInterface {
             if (!Files.exists(Paths.get(s.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
-                    final byte[] buf = new byte[2048];
+                    final byte[] buf = new byte[SIZE];
                     int r = is.read(buf);
-                    while(r != -1) {
-                        fos.write(buf, 0, r);
+                    while(r != NODATA) {
+                        fos.write(buf, OFFSET, r);
                         r = is.read(buf);
                     }
                 } catch (IOException e) {
@@ -166,10 +169,10 @@ public class Installer implements InstallerInterface {
             if (!Files.exists(Paths.get(fp.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream is = this.getClass().getResourceAsStream(fp.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(fp.getAbsolutePath())) {
-                    final byte[] buf = new byte[2048];
+                    final byte[] buf = new byte[SIZE];
                     int r = is.read(buf);
-                    while(r != -1) {
-                        fos.write(buf, 0, r);
+                    while(r != NODATA) {
+                        fos.write(buf, OFFSET, r);
                         r = is.read(buf);
                     }
                 } catch (IOException e) {

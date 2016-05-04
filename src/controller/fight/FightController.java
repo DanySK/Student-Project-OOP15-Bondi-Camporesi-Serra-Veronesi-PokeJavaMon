@@ -27,6 +27,7 @@ import view.methods.MethodsToImplement;
  */
 public class FightController implements FightControllerInterface {
 
+    private static final int FIRST_POKEMON_POSITION = 0;
     private Fight fight;
     private final MethodsToImplement view = new MethodsImplemented();
     
@@ -40,7 +41,7 @@ public class FightController implements FightControllerInterface {
     public void newFightWithPokemon(final Pokemon pokemon) {
         fight = new FightVsWildPkm(pokemon);
         System.out.println("Fight with: " + pokemon.getPokemon().name() + " LVL: " + pokemon.getStat(Stat.LVL));
-        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(FIRST_POKEMON_POSITION).getCurrentHP());
     }
     
     @Override

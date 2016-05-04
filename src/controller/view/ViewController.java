@@ -15,6 +15,9 @@ import view.resources.TitleWiew;
  * This class controls the menus from the view
  */
 public class ViewController implements ViewControllerInterface {
+    
+    private static final int WIDTH = 1280;
+    private static final int HEIGHT = 720;
     private String name;
     
     @Override
@@ -45,8 +48,8 @@ public class ViewController implements ViewControllerInterface {
         final LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "PokeJavaMon";
         cfg.useGL20 = true;
-        cfg.width = 1280;
-        cfg.height = 720;
+        cfg.width = WIDTH;
+        cfg.height = HEIGHT;
         final TiledMapGame tl = new TiledMapGame(newGame); 
         final LwjglApplication app = new LwjglApplication(tl, cfg);    
         tl.setApp(app);
