@@ -15,7 +15,6 @@ import model.items.Item;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
-import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
@@ -94,7 +93,7 @@ public class FightController implements FightControllerInterface {
     }
     
     @Override
-    public List<Pokedex> resolveEvolution() {
+    public List<PokemonInBattle> resolveEvolution() {
         return fight.getPkmsThatMustEvolve();
     }
     
