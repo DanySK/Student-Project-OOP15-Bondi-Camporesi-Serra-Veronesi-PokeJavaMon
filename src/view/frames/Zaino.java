@@ -27,10 +27,9 @@ public class Zaino {
 public Zaino() {
 		
 	
-    frame = new JFrame("Zaino");
+    frame = new JFrame("Bag");
     frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     frame.setAlwaysOnTop(true);
-    frame.setSize(600,600);
     frame.setUndecorated(true);
     
     JPanel contiene = new JPanel();
@@ -39,37 +38,45 @@ public Zaino() {
 
     final ArrayList<String>Name1 = new ArrayList<String>();
     final ArrayList<String>Name2 = new ArrayList<String>();
-    final ArrayList<String>Prz = new ArrayList<String>();
     final ArrayList<String>Qnt = new ArrayList<String>();
     final ArrayList<Item> it = new ArrayList<Item>();
+
+    Name1.add("TYPE");
+    Name2.add("NAME");
+    Qnt.add("QUANTITY");
+    it.add(null);
+    
     
     for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).keySet()) { 
+    	if (PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i) != 0) {
     	Name1.add(i.getType().name()); 
     	Name2.add(i.toString()); 
-    	Prz.add("" + i.getPrice());
     	Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
     	it.add(i);
+        System.out.println(""+ PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
+}
     	    }
-
     
     for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).keySet()) { 
+    	if (PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i) != 0) {
     	Name1.add(i.getType().name());
     	Name2.add(i.toString()); 
-    	Prz.add("" + i.getPrice());
     	Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
     	it.add(i);
+    	}
     }
     
     for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).keySet()) { 
+    	if (PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i) != 0) {
     	Name1.add(i.getType().name()); 
     	Name2.add(i.toString()); 
-    	Prz.add("" + i.getPrice());
     	Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i));
     	it.add(i);
+    	}
     }
    
-    contiene.add(new Panel(Name1, Name2, Prz, Qnt, it, 1));
-    
+    contiene.add(new Panel(Name1, Name2, Qnt, it, 1));
+    frame.setSize(600,60 * Name1.size());
     frame.setVisible(true);
 }
     
@@ -130,28 +137,38 @@ class Panel extends JPanel
 	private static final long serialVersionUID = 3332840867083025623L;
 	ArrayList<String> Name1 = new ArrayList<String>();
     ArrayList<String> Name2 = new ArrayList<String>();
-    ArrayList<String> Prz = new ArrayList<String>();
     ArrayList<String> Qnt = new ArrayList<String>();
     ArrayList<Item> it = new ArrayList<Item>();
     int col;
 
-public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,ArrayList<String> e, ArrayList<Item> f, int c) 
+public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,ArrayList<Item> f, int c) 
 {
     this.Name1 = a;
     this.Name2 = b;
-    this.Prz = d;
-    this.Qnt = e;
+    this.Qnt = d;
     this.col = c;
     this.it = f;
 
     setLayout(new GridLayout(Name1.size(),col));
 
     for(int j = 0; j<Name1.size();j++)
-    {
+    {	if (j==0) {
+    	add(new JLabel(Name1.get(j)));
+        add(new JLabel(Name2.get(j)));
+        add(new JLabel(Qnt.get(j)));
+        JButton esci2 = new JButton("Exit");
+        esci2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	Zaino.dispose();
+            }
+        });
+        add(esci2);
+    	j++;
+    }
         final Item itm = it.get(j);
         add(new JLabel(Name1.get(j)));
         add(new JLabel(Name2.get(j)));
-        add(new JLabel(Prz.get(j)));
         add(new JLabel(Qnt.get(j)));
         JButton usa = new JButton("Use");
         usa.addActionListener(new ActionListener() {     
@@ -159,31 +176,25 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (i.getType() != ItemType.POKEBALL) {
-                    Zaino.selectItem(i);
+                	Zaino.selectItem(i);
                     Controller.getController().getViewController().team(true, true);
                 } else {
-                    Zaino.selectItem(i);
+                	Zaino.selectItem(i);
                     if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
-                        Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
+                    	Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
                     } else {
-                        Zaino.useItem(null);
+                    	new MessageFrame("NON PUOI CATTURARE FUORI DALLA BATTAGLIA", null);
+                    	Zaino.useItem(null);
                     }
                 }
                 Zaino.dispose();
             }
         });
-        if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
+    /*    if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
             usa.setEnabled(false);
-        }
+        }*/ 
         add(usa);
-        JButton esci = new JButton("Exit");
-        esci.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 Zaino.dispose();
-            }
-        });
-        add(esci);
+        
        }
 	}
 }

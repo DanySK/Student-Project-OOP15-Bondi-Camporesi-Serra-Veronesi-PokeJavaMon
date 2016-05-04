@@ -1,5 +1,6 @@
 package view.frames;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.border.LineBorder;
+
 import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.items.Item.ItemType;
@@ -31,12 +34,19 @@ public Market() {
     JPanel contiene = new JPanel();
     frame.setContentPane(contiene);
     contiene.setLayout(new GridLayout(1,1));
-
+    contiene.setBorder(new LineBorder(Color.GRAY, 4));
+    
     final ArrayList<String>Name1 = new ArrayList<String>();
     final ArrayList<String>Name2 = new ArrayList<String>();
     final ArrayList<String>Prz = new ArrayList<String>();
     final ArrayList<String>Qnt = new ArrayList<String>();
     final ArrayList<Item> it = new ArrayList<Item>();
+    
+    Name1.add("TIPO");
+    Name2.add("NOME");
+    Prz.add("PREZZO");
+    Qnt.add("QUANTITÀ");
+    it.add(null);
     
     for (Item i : Play.getMapImpl().getPokeMarket().getAvailableItems()) { 
         Name1.add(i.getType().name()); 
@@ -85,7 +95,21 @@ public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d
     setLayout(new GridLayout(Name1.size(),col));
 
     for(int j = 0; j<Name1.size();j++)
-    {
+    {	if (j==0) {
+    	add(new JLabel("Money: "+ PlayerImpl.getPlayer().getMoney()));
+        add(new JLabel(Name2.get(j)));
+        add(new JLabel(Prz.get(j)));
+        add(new JLabel(Qnt.get(j)));
+        JButton esci2 = new JButton("Exit");
+        esci2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 Market.dispose();
+            }
+        });
+        add(esci2);
+    	j++;
+    }
         final Item itm = it.get(j);
         add(new JLabel(Name1.get(j)));
         add(new JLabel(Name2.get(j)));
@@ -104,14 +128,8 @@ public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d
             }
         });
         add(usa);
-        JButton esci = new JButton("Exit");
-        esci.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 Market.dispose();
-            }
-        });
-        add(esci);
+        
+        
        }
         }
 }

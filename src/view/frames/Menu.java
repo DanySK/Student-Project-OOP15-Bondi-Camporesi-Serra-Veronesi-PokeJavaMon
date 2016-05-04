@@ -3,7 +3,7 @@ package view.frames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
+import javax.swing.Box;
 import controller.Controller;
 import controller.parameters.State;
 import model.player.PlayerImpl;
@@ -11,6 +11,7 @@ import view.resources.MessageFrame;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Component;
 
 public class Menu  {
 	
@@ -21,30 +22,12 @@ public Menu() {
 		f.setAlwaysOnTop(true);	
 		f.setUndecorated(true);
 		f.setBounds(100, 100, 180, 310);
-		f.getContentPane().setLayout(null);
 		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	
-		JButton squadra = new JButton  ("Squadra");
-		squadra.setBounds(30, 84, 120, 30);
-		f.getContentPane().add(squadra);
-		squadra.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
- 				Controller.getController().getViewController().team(true, false);
-			}});
-		
-		JButton salva = new JButton("Salva");
-		salva.setBounds(30, 196, 120, 30);
-		f.getContentPane().add(salva);
-		salva.addMouseListener(new MouseAdapter() {
-			@Override
-        	public void mouseClicked(MouseEvent e) {
- 			Controller.getController().getViewController().save();
-        		JOptionPane.showMessageDialog(salva, "Salvataggio riuscito!");
-        	}
-        });
-		
+		f.getContentPane().setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
+		f.add(Box.createVerticalGlue());
+
 		JButton box = new JButton("Box");
-		box.setBounds(30, 28, 120, 30);
+		box.setAlignmentX(Component.CENTER_ALIGNMENT);
 		f.getContentPane().add(box);
 		box.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -56,23 +39,51 @@ public Menu() {
  				}
 			}});
 		
-		JButton zaino = new JButton("Zaino");
-		zaino.setBounds(30, 140, 120, 30);
-		f.getContentPane().add(zaino);	
-		zaino.addActionListener(new ActionListener() {
+		f.add(Box.createVerticalGlue());
+		
+		JButton team = new JButton  ("Team");
+		team.setAlignmentX(Component.CENTER_ALIGNMENT);
+		f.getContentPane().add(team);
+		team.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+ 				Controller.getController().getViewController().team(true, false);
+			}});
+		
+		f.add(Box.createVerticalGlue());
+			
+		JButton bag = new JButton("Bag");
+		bag.setAlignmentX(Component.CENTER_ALIGNMENT);
+		f.getContentPane().add(bag);	
+		bag.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
  				Controller.getController().getViewController().bag();
 			}});
 		
-		JButton esci = new JButton("Riprendi");
-		esci.setBounds(30, 252, 120, 30);
-		f.getContentPane().add(esci);
-		esci.addActionListener(new ActionListener() {
+		f.add(Box.createVerticalGlue());
+		
+		JButton save = new JButton("Save");
+		save.setAlignmentX(Component.CENTER_ALIGNMENT);
+		f.getContentPane().add(save);
+		save.addMouseListener(new MouseAdapter() {
+			@Override
+        	public void mouseClicked(MouseEvent e) {
+ 			Controller.getController().getViewController().save();
+        		JOptionPane.showMessageDialog(save, "Salvataggio riuscito!");
+        	}
+        });
+		
+		f.add(Box.createVerticalGlue());
+		
+		JButton resume = new JButton("Resume");
+		resume.setAlignmentX(Component.CENTER_ALIGNMENT);
+		f.getContentPane().add(resume);
+		resume.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				f.dispose();
  				Controller.getController().updateStatus(State.WALKING);
 			}});
 		
+		f.add(Box.createVerticalGlue());
 		f.setVisible(true);
 	}
 }
