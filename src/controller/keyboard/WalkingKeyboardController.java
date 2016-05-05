@@ -26,7 +26,6 @@ public class WalkingKeyboardController implements KeyboardController {
     
     private static final int INCREMENT = 1;
     private static final int SPEED = 2;
-    private static final int FIRST = 0;
     private static final int NULL_SPEED = 0;
     private int keys, x, y;
     private Direction direction = PlayerImpl.getPlayer().getDirection();
@@ -246,7 +245,7 @@ public class WalkingKeyboardController implements KeyboardController {
             if (pm.getEncounterZone(x, y).isPresent() && pm.getEncounterZone(x, y).get().contains(x, y) && pm.getEncounterZone(x, y).get().isEncounterNow()) {
                 final Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
                 Controller.getController().getFightController().newFightWithPokemon(poke);
-                Controller.getController().getViewController().fightScreen(poke);
+                Controller.getController().getViewController().fightScreen();
                 up = false;
                 down = false;
                 left = false;
@@ -299,7 +298,7 @@ public class WalkingKeyboardController implements KeyboardController {
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
-                    Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(FIRST));
+                    Controller.getController().getViewController().fightScreen();
                 }
             } else if (pm.getNPC(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
@@ -317,7 +316,7 @@ public class WalkingKeyboardController implements KeyboardController {
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-                    Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(FIRST));
+                    Controller.getController().getViewController().fightScreen();
                 }        
             }
         }

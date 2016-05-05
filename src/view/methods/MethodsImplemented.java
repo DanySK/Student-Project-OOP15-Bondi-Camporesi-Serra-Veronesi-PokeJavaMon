@@ -26,8 +26,6 @@ public class MethodsImplemented implements MethodsToImplement {
             if (enemyMove == null) {
                 message.add("ENEMY DEAD");
                 if (nextEnemyPokemon != null) {
-                    FightScreen.dispose();
-                    Controller.getController().getViewController().fightScreen(nextEnemyPokemon);
                     message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
                     String[] array = new String[message.size()];
                     message.toArray(array);
@@ -88,8 +86,6 @@ public class MethodsImplemented implements MethodsToImplement {
                 if (lastPokemonKills) {
                     message.add("ENEMY DEAD");
                     if (nextEnemyPokemon != null) {
-                        FightScreen.dispose();
-                        Controller.getController().getViewController().fightScreen(nextEnemyPokemon);
                         message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
                         String[] array = new String[message.size()];
                         message.toArray(array);
