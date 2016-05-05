@@ -65,6 +65,7 @@ public class FightVsWildPkm extends AbstractFight {
 
     @Override
     public void moveTurn(final Move move) {
+        reset();
         int attacksDone = 0;
         boolean isEnd = false;
         boolean turnOrder = setIsAllyFastest();
