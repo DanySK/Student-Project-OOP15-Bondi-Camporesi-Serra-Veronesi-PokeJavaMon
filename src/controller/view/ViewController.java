@@ -22,6 +22,7 @@ public class ViewController implements ViewControllerInterface {
     
     @Override
     public void market() {
+        Controller.getController().updateStatus(State.READING);
         new Market();
     }
     
@@ -89,8 +90,8 @@ public class ViewController implements ViewControllerInterface {
     }
     
     @Override
-    public void fightScreen(final Pokemon pokemon) {
+    public void fightScreen() {
         Controller.getController().updateStatus(State.FIGHTING);
-        new FightScreen(pokemon);
+        new FightScreen();
     }
 }

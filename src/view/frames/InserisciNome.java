@@ -51,13 +51,13 @@ public class InserisciNome {
             Map<String, Integer> boostList = new HashMap<>();
             Map<String, Integer> ballList = new HashMap<>();
             potionList.put(PotionType.POTION.name(), 10);
-            potionList.put(PotionType.SUPERPOTION.name(), 0);
-            potionList.put(PotionType.HYPERPOTION.name(), 0);
-            boostList.put(Stat.SPD.name() + "X", 0);
-            boostList.put(Stat.DEF.name() + "X", 0);
-            boostList.put(Stat.ATK.name() + "X", 0);
-            ballList.put(PokeballType.Greatball.name(), 0);
-            ballList.put(PokeballType.Ultraball.name(), 0);
+            potionList.put(PotionType.SUPERPOTION.name(), 1);
+            potionList.put(PotionType.HYPERPOTION.name(), 1);
+            boostList.put(Stat.SPD.name() + "X", 1);
+            boostList.put(Stat.DEF.name() + "X", 1);
+            boostList.put(Stat.ATK.name() + "X", 1);
+            ballList.put(PokeballType.Greatball.name(), 1);
+            ballList.put(PokeballType.Ultraball.name(), 1);
             ballList.put(PokeballType.Pokeball.name(), 10);
             InventoryImpl.initializeInventory(potionList, boostList, ballList);
             
@@ -66,23 +66,24 @@ public class InserisciNome {
 			inserisciNome.setEditable(false);
 	    	inserisciNome.setBackground(SystemColor.control);
 	    	inserisciNome.setFont(new Font("Elephant", Font.PLAIN, 16));
-	    	inserisciNome.setText("Nome (4 - 20 [blazeit])");
-	    	inserisciNome.setBounds(102, 41, 190, 35);
+	    	inserisciNome.setText("INSERT NAME");
+	    	inserisciNome.setBounds(130, 41, 190, 35);
 	    	f.getContentPane().add(inserisciNome);
-	    	nickname.setBounds(102, 111, 190, 22);
+	    	nickname.setBounds(102, 106, 190, 22);
+	    	f.setLocationRelativeTo(null);
 	    	f.getContentPane().add(nickname);
 	    	nickname.setColumns(40);    	
 	    	
-	    	JButton uno = new JButton("uno");
-	    	uno.setBounds(21, 160, 100, 25);
+	    	JButton uno = new JButton("Bulbasaur");
+	    	uno.setBounds(21, 160, 105, 25);
 	    	f.getContentPane().add(uno);
 	    	
-	    	JButton due = new JButton("due");
-	    	due.setBounds(146, 160, 100, 25);
+	    	JButton due = new JButton("Charmander");
+	    	due.setBounds(146, 160, 105, 25);
 	    	f.getContentPane().add(due);
 	    	
-	    	JButton tre = new JButton("tre");
-	    	tre.setBounds(272, 160, 100, 25);
+	    	JButton tre = new JButton("Squirtle");
+	    	tre.setBounds(272, 160, 105, 25);
 	    	f.getContentPane().add(tre);
 	    	
 	    	StarterPanel panel_1 = new StarterPanel();

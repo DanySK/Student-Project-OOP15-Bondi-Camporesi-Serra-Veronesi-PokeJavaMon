@@ -1,23 +1,35 @@
 package view.resources;
 
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import controller.parameters.State;
 
 public class MessageFrame {
 
-    public MessageFrame(String s, State st) {
+    public MessageFrame(State st, String... strs) {
         JFrame fr = new JFrame();
         JPanel pa = new JPanel();
-        JLabel tx;
-        tx = new JLabel(s);
+        pa.setBorder(new LineBorder(Color.GRAY, 4));
+        pa.setLayout(new GridLayout(0,1));
+        List<JLabel> labels = new ArrayList<>();
+        for (String s : strs) {
+            labels.add(new JLabel(s));
+        }
+        for (JLabel l : labels) {
+            pa.add(l);
+        }
         JButton button = new JButton("OK");
         button.addActionListener(new ActionListener() {
             @Override
@@ -28,12 +40,13 @@ public class MessageFrame {
                 fr.dispose();
             }
         });
-        pa.add(tx);
         pa.add(button);
-        fr.add(pa);
+        fr.getContentPane().add(pa);
         fr.setAlwaysOnTop(true);
-        fr.setBounds(100, 100, 450, 100);
+        fr.setBounds(100, 100, 450, 100 * strs.length);
+        fr.setLocationRelativeTo(null);
         fr.setUndecorated(true);
         fr.setVisible(true);
     }
 }
+

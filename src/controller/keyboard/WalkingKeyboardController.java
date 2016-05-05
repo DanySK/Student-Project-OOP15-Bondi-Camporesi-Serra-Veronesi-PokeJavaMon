@@ -26,11 +26,10 @@ public class WalkingKeyboardController implements KeyboardController {
     
     private static final int INCREMENT = 1;
     private static final int SPEED = 2;
-    private static final int FIRST = 0;
     private static final int NULL_SPEED = 0;
     private int keys, x, y;
-    private Direction direction = Direction.SOUTH;
-    private Direction oppositeDirection = Direction.NORTH;
+    private Direction direction = PlayerImpl.getPlayer().getDirection();
+    private Direction oppositeDirection;
     private PokeMapImpl pm;
     private TileType t;
     private boolean left, right, up, down;
@@ -246,7 +245,7 @@ public class WalkingKeyboardController implements KeyboardController {
             if (pm.getEncounterZone(x, y).isPresent() && pm.getEncounterZone(x, y).get().contains(x, y) && pm.getEncounterZone(x, y).get().isEncounterNow()) {
                 final Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
                 Controller.getController().getFightController().newFightWithPokemon(poke);
-                Controller.getController().getViewController().fightScreen(poke);
+                Controller.getController().getViewController().fightScreen();
                 up = false;
                 down = false;
                 left = false;
@@ -267,7 +266,7 @@ public class WalkingKeyboardController implements KeyboardController {
          */
         private void resolvePokemonCenter() {
             Controller.getController().updateStatus(State.READING);
-            new MessageFrame("POKEMON'S HEALTH FULLY RESTORED", State.WALKING);
+            new MessageFrame(State.WALKING, "POKEMON'S HEALTH FULLY RESTORED");
             PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
         }
         
@@ -278,9 +277,9 @@ public class WalkingKeyboardController implements KeyboardController {
         private void resolveSign() {
             Controller.getController().updateStatus(State.READING);
             if (pm.getSign(x, y).isPresent()) {
-                new MessageFrame(pm.getSign(x, y).get().getMessage(), State.WALKING);
+                new MessageFrame(State.WALKING, pm.getSign(x, y).get().getMessage());
             } else {
-                new MessageFrame("SIGN_MESSAGE", State.WALKING);
+                new MessageFrame(State.WALKING, "SIGN_MESSAGE");
             }
         }
         
@@ -295,29 +294,29 @@ public class WalkingKeyboardController implements KeyboardController {
                 }
                 if (pm.getTrainer(x, y).get().isDefeated()) {
                     Controller.getController().updateStatus(State.READING);
-                    new MessageFrame("TRAINER ALREADY DEFEATED", State.WALKING);
+                    new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED");
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
-                    Controller.getController().getViewController().fightScreen(pm.getTrainer(x, y).get().getSquad().getPokemonList().get(FIRST));
+                    Controller.getController().getViewController().fightScreen();
                 }
             } else if (pm.getNPC(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getNPC(x, y).get().turn(oppositeDirection);
                 }
                 Controller.getController().updateStatus(State.READING);
-                new MessageFrame(pm.getNPC(x, y).get().getMessage(), State.WALKING);
+                new MessageFrame(State.WALKING, pm.getNPC(x, y).get().getMessage());
             } else if (pm.getGymLeader(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getGymLeader(x, y).get().turn(oppositeDirection);
                 }
                 if (pm.getGymLeader(x, y).get().isDefeated()) {
                     Controller.getController().updateStatus(State.READING);
-                    new MessageFrame("GYM LEADER ALREADY DEFEATED", State.WALKING);
+                    new MessageFrame(State.WALKING, "GYM LEADER ALREADY DEFEATED");
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
-                    Controller.getController().getViewController().fightScreen(pm.getGymLeader(x, y).get().getSquad().getPokemonList().get(FIRST));
+                    Controller.getController().getViewController().fightScreen();
                 }        
             }
         }

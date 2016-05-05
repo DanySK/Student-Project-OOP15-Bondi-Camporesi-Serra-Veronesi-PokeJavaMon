@@ -25,7 +25,7 @@ public class TitleWiew {
     public void title() {
         
         frame.setResizable(false);
-        frame.setLocation(100, 100);
+        //frame.setLocation(100, 100);
         try {
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
         } catch (Exception e) {
@@ -61,6 +61,7 @@ public class TitleWiew {
         }
         pane.add(continua);
         frame.add(pane);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

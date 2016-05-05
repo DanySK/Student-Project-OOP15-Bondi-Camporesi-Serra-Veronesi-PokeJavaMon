@@ -2,7 +2,6 @@ package model.trainer;
 
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
-import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 
 public class Trainer extends AbstractCharacter {
@@ -49,11 +48,6 @@ public class Trainer extends AbstractCharacter {
     }
     
     public void defeat() {
-        for (final PokemonInBattle p : this.squad.getPokemonList()) {
-            if (p.getCurrentHP() > 0) {
-                throw new IllegalStateException("There's still at least 1 pokemon alive");
-            }
-        }
         this.isDefeated = true;
     }
     

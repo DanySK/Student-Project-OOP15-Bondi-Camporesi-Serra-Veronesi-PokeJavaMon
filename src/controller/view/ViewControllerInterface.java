@@ -70,7 +70,6 @@ public interface ViewControllerInterface {
 
     /**
      * Shows the fight menu
-     * @param pokemon the enemy {@link Pokemon}
      */
-    void fightScreen(Pokemon pokemon);
+    void fightScreen();
 }

@@ -17,7 +17,7 @@ public class Boost extends AbstractItem {
             throw new IllegalArgumentException();
         }
         this.stat = stat;
-        this.coeff = 1.05;
+        this.coeff = 0.30;
         this.name = stat.toString() + "X";
     }
 

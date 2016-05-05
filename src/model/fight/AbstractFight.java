@@ -29,9 +29,11 @@ public abstract class AbstractFight implements Fight {
     protected static final int FIRST_ELEM = 0;
     protected static final double STAB_ACTIVE = 1.5;
     protected static final int SUPER_EFFECTIVE = 2;
+    protected static final double LESS_EFFECTIVE = 0.5;
     protected static final int MIN_DAMAGE = 1;
     protected static final double MIN_BOOST_VALUE = 0.25;
     protected static final double MAX_BOOST_VALUE = 2.0;
+    protected static final int BALANCE_BOOST_VALUE = 100;
     protected static final int ATTACKS_TO_DO = 2;
     protected static final int EXP_COEFFICIENT = 7;
     protected static final String EXP_MESSAGE = "You defeated a pokemon, your pokemon get experience: ";
@@ -72,11 +74,11 @@ public abstract class AbstractFight implements Fight {
 
     @Override
     public void runTurn() throws CannotEscapeFromTrainerException {
+        reset();
         if (!applyRun()) {
             enemyTurn();
         }
         Controller.getController().getFightController().resolveRun(runValue, enemyMove, isAllyExhausted);
-        reset();
     }
 
     @Override
@@ -96,19 +98,19 @@ public abstract class AbstractFight implements Fight {
         }
         player.getSquad().switchPokemon(0, pkmPos);
         allyPkm = pkm;
-        reset();
     }
 
     @Override
     public void changeTurn(final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonIsFightingException {
+        reset();
         applyChange(pkm);
         enemyTurn();
         Controller.getController().getFightController().resolvePokemon(allyPkm, enemyMove, isAllyExhausted);
-        reset();
     }
 
     @Override
     public void itemTurn(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
+        reset();
         player.getInventory().consumeItem(itemToUse);
         if (applyItem(itemToUse, pkm)) { 
             if (itemToUse.getType() == ItemType.POKEBALL) {
@@ -117,12 +119,10 @@ public abstract class AbstractFight implements Fight {
             } else {
                 enemyTurn();
                 Controller.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
-                reset();
             }
         } else {
             enemyTurn();
             Controller.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
-            reset();
         }
     }
 
@@ -149,7 +149,7 @@ public abstract class AbstractFight implements Fight {
         return enemyPkm;
     }
 
-    protected final Map<Stat, Double> createBoostsMap() {
+    protected Map<Stat, Double> createBoostsMap() {
         final Map<Stat, Double> boosts = new HashMap<>();
         boosts.put(Stat.ATK, 1.0);
         boosts.put(Stat.DEF, 1.0);
@@ -162,6 +162,8 @@ public abstract class AbstractFight implements Fight {
     protected void reset() {
         isAllyExhausted = false;
         isEnemyExhausted = false;
+        allyEff = Effectiveness.NORMAL;
+        enemyEff = Effectiveness.NORMAL;
     }
 
     protected void enemyTurn() {
@@ -178,7 +180,6 @@ public abstract class AbstractFight implements Fight {
         switch(itemToUse.getType()) {
         case BOOST:
             final Boost boost = (Boost) itemToUse;
-            //mettere a posto il valore del coefficente, dentro la classe Boost
             allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
                     allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
             break;
@@ -231,7 +232,7 @@ public abstract class AbstractFight implements Fight {
             } else {
                 enemyEff = Effectiveness.SUPEREFFECTIVE;
             }
-        } else {
+        } else if (effectiveValue <= LESS_EFFECTIVE) {
             if (stricker.equals(allyPkm)) {
                 allyEff = Effectiveness.LESSEFFECTIVE;
             } else {
@@ -266,19 +267,19 @@ public abstract class AbstractFight implements Fight {
         }
     }
 
+    //al sesto ruggito/rafforzatore, dice che non si può più diminuire/incrementare
     protected void applyMoveOnBoost(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
-        Double newBoostValue;
+        double newBoostValue;
         if (allyPkm.equals(stricker)) {
             if (move.isOnEnemy()) {
-                newBoostValue = getEnemyBoost(move.getStat()) - move.getValue();
+                newBoostValue = getEnemyBoost(move.getStat()) - move.getValue() / BALANCE_BOOST_VALUE;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
                     allyEff = Effectiveness.CANNOTDECREASE;
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             } else {
-                newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) 
-                        + move.getValue();
+                newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) + move.getValue() / BALANCE_BOOST_VALUE;
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
                     allyEff = Effectiveness.CANNOTINCREASE;
@@ -287,15 +288,14 @@ public abstract class AbstractFight implements Fight {
             }
         } else {
             if (move.isOnEnemy()) {
-                newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) 
-                        - move.getValue();
+                newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) - move.getValue() / BALANCE_BOOST_VALUE;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
                     this.enemyEff = Effectiveness.CANNOTDECREASE;
                 }
                 allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
             } else {
-                newBoostValue = getEnemyBoost(move.getStat()) + move.getValue();
+                newBoostValue = getEnemyBoost(move.getStat()) + move.getValue() / BALANCE_BOOST_VALUE;
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
                     this.enemyEff = Effectiveness.CANNOTINCREASE;

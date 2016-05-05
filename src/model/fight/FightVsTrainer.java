@@ -12,6 +12,7 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
+import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
 
@@ -27,13 +28,14 @@ public class FightVsTrainer extends AbstractFight {
     public FightVsTrainer(final Trainer trainer) {
         super();
         this.trainer = trainer;
+        enemyPkm = this.trainer.getSquad().getPokemonList().get(FIRST_ELEM);
         for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
-            this.enemyPkmsBoosts.put(pkm, createBoostsMap());
+            enemyPkmsBoosts.put(pkm, createBoostsMap());
         }
     }
 
     @Override
-    protected boolean applyRun() throws CannotEscapeFromTrainerException{
+    public boolean applyRun() throws CannotEscapeFromTrainerException{
         throw new CannotEscapeFromTrainerException();
     }
 
@@ -83,6 +85,7 @@ public class FightVsTrainer extends AbstractFight {
 
     @Override
     public void moveTurn(final Move move) {
+        reset();
         int exp;
         int attacksDone = 0;
         boolean isEnd = false;
@@ -121,15 +124,21 @@ public class FightVsTrainer extends AbstractFight {
                     //nemico attacca, alleato attacca, pokemon nemico esausto
                     if (checkLose(trainer.getSquad())) {
                         player.beatTrainer(trainer);
-                        
-                        Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney());
+                        if (trainer instanceof GymLeader) {
+                            Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
+                                    EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney() + GYM_LEADER_DEFEAT_MESS);
+                        } else {
+                            Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
+                                    EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney());
+                        }
                     } else {
                         trainerChange();
-                        Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, EXP_MESSAGE + getExp());
+                        Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, 
+                                EXP_MESSAGE + getExp());
                     }
                 } else {
                     //nemico attacca, alleato attacca, pokemon nemico sopravvive
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null/*exp*/);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
                 }
             }
         } else {
@@ -137,8 +146,13 @@ public class FightVsTrainer extends AbstractFight {
                 //alleato attacca per primo, pkm nemico esausto
                 if (checkLose(trainer.getSquad())) {
                     player.beatTrainer(trainer);
-                    
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney());
+                    if (trainer instanceof GymLeader) {
+                        Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
+                                EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney() + GYM_LEADER_DEFEAT_MESS);
+                    } else {
+                        Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
+                                EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney());
+                    }
                 } else {
                     trainerChange();
                     Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, enemyPkm, EXP_MESSAGE + getExp());
@@ -153,7 +167,7 @@ public class FightVsTrainer extends AbstractFight {
 
     protected boolean setIsAllyFastest() {
         return isAllyFastest = (allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD))
-                >= (enemyPkm.getStat(Stat.SPD) * this.enemyPkmsBoosts.get(enemyPkm).get(Stat.SPD));
+                >= (enemyPkm.getStat(Stat.SPD) * enemyPkmsBoosts.get(enemyPkm).get(Stat.SPD));
     }
 
     public int getExp() {
