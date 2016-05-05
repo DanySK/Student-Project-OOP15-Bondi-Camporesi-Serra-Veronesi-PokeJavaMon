@@ -94,7 +94,9 @@ public class FightController implements FightControllerInterface {
     
     @Override
     public List<PokemonInBattle> resolveEvolution() {
-        return fight.getPkmsThatMustEvolve();
+        final List<PokemonInBattle> evolutions = fight.getPkmsThatMustEvolve();
+        fight.evolvePkms();
+        return evolutions;
     }
     
     @Override
