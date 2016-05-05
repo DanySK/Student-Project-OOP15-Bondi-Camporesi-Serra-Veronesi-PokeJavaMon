@@ -29,19 +29,22 @@ public Zaino() {
 	
 	//window = new JFrame("Bag");
 	//window.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+	//window.setUndecorated(true);
+	
 	window = new JWindow ();
 	window.setAlwaysOnTop(true);
-	//window.setUndecorated(true);
-    
+
     JPanel contiene = new JPanel();
     window.setContentPane(contiene);
+    
     contiene.setLayout(new GridLayout(1,1));
 
     final ArrayList<String>Name1 = new ArrayList<String>();
     final ArrayList<String>Name2 = new ArrayList<String>();
     final ArrayList<String>Qnt = new ArrayList<String>();
     final ArrayList<Item> it = new ArrayList<Item>();
-
+    int cols = 1;
+    
     Name1.add("TYPE");
     Name2.add("NAME");
     Qnt.add("QUANTITY");
@@ -76,7 +79,53 @@ public Zaino() {
     	}
     }
    
-    contiene.add(new Panel(Name1, Name2, Qnt, it, 1));
+    for(int j = 0; j<Name1.size();j++)
+    {	if (j==0) {
+    	contiene.add(new JLabel(Name1.get(j)));
+    	contiene.add(new JLabel(Name2.get(j)));
+    	contiene.add(new JLabel(Qnt.get(j)));
+        JButton esci2 = new JButton("Exit");
+        esci2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	Zaino.dispose();
+            }
+        });
+        contiene.add(esci2);
+    	j++;
+    }
+        final Item itm = it.get(j);
+        contiene.add(new JLabel(Name1.get(j)));
+        contiene.add(new JLabel(Name2.get(j)));
+        contiene.add(new JLabel(Qnt.get(j)));
+        JButton usa = new JButton("Use");
+        usa.addActionListener(new ActionListener() {     
+            Item i = itm;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (i.getType() != ItemType.POKEBALL) {
+                	Zaino.selectItem(i);
+                	Zaino.dispose();
+                        Controller.getController().getViewController().team(true, true);
+                } else {
+                	Zaino.selectItem(i);
+                    if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
+                    	Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
+                    } else {
+                    	new MessageFrame(null, "NON PUOI CATTURARE FUORI DALLA BATTAGLIA");
+                    	Zaino.useItem(null);
+                    }
+                }
+                Zaino.dispose();
+            }
+        });
+    /*    if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
+            usa.setEnabled(false);
+        }*/ 
+        contiene.add(usa);
+     }
+	
+    contiene.setLayout(new GridLayout(Name1.size(), cols));
     window.setSize(600,60 * Name1.size());
     window.setVisible(true);
 }
@@ -132,71 +181,4 @@ public static void useItem(Pokemon p) {
 }
 }
 
-class Panel extends JPanel
-{
-
-	private static final long serialVersionUID = 3332840867083025623L;
-	ArrayList<String> Name1 = new ArrayList<String>();
-    ArrayList<String> Name2 = new ArrayList<String>();
-    ArrayList<String> Qnt = new ArrayList<String>();
-    ArrayList<Item> it = new ArrayList<Item>();
-    int col;
-
-public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,ArrayList<Item> f, int c) 
-{
-    this.Name1 = a;
-    this.Name2 = b;
-    this.Qnt = d;
-    this.col = c;
-    this.it = f;
-
-    setLayout(new GridLayout(Name1.size(),col));
-
-    for(int j = 0; j<Name1.size();j++)
-    {	if (j==0) {
-    	add(new JLabel(Name1.get(j)));
-        add(new JLabel(Name2.get(j)));
-        add(new JLabel(Qnt.get(j)));
-        JButton esci2 = new JButton("Exit");
-        esci2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	Zaino.dispose();
-            }
-        });
-        add(esci2);
-    	j++;
-    }
-        final Item itm = it.get(j);
-        add(new JLabel(Name1.get(j)));
-        add(new JLabel(Name2.get(j)));
-        add(new JLabel(Qnt.get(j)));
-        JButton usa = new JButton("Use");
-        usa.addActionListener(new ActionListener() {     
-            Item i = itm;
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (i.getType() != ItemType.POKEBALL) {
-                	Zaino.selectItem(i);
-                	Zaino.dispose();
-                        Controller.getController().getViewController().team(true, true);
-                } else {
-                	Zaino.selectItem(i);
-                    if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
-                    	Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
-                    } else {
-                    	new MessageFrame(null, "NON PUOI CATTURARE FUORI DALLA BATTAGLIA");
-                    	Zaino.useItem(null);
-                    }
-                }
-                Zaino.dispose();
-            }
-        });
-    /*    if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
-            usa.setEnabled(false);
-        }*/ 
-        add(usa);
-        
-       }
-	}
-}
+    

@@ -67,7 +67,7 @@ public Menu() {
 			@Override
         	public void mouseClicked(MouseEvent e) {
  			Controller.getController().getViewController().save();
-        		JOptionPane.showMessageDialog(save, "Salvataggio riuscito!");
+ 				new MessageFrame(null, "Salvataggio riuscito!");
         	}
         });
 		
