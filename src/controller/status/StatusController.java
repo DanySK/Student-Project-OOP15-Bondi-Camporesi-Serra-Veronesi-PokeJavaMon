@@ -27,15 +27,17 @@ public class StatusController implements StatusControllerInterface {
 
     @Override
     public void updateStatus(final State s) {
-        state = s;
         switch (s) {
             case FIRST_MENU:
+                state = s;
                 keyboardController = new FirstMenuKeyboardController();
                 break;
             case SECOND_MENU:
+                state = s;
                 keyboardController = new SecondMenuKeyboardController();
                 break;
             case WALKING:
+                state = s;
                 if (Controller.getController().playing().isPresent()) {
                     updateMusic();
                 }
@@ -43,30 +45,35 @@ public class StatusController implements StatusControllerInterface {
                 Play.updateKeyListener();
                 break;
             case MENU:
+                state = s;
                 keyboardController = new MenuKeyboardController();
                 Play.updateKeyListener();
                 break;
             case FIGHTING:
-                if (Controller.getController().playing().isPresent()) {
-                    if (Controller.getController().playing().get() != Music.TRAINER || Controller.getController().playing().get() != Music.WILD) {
-                        Controller.getController().stopMusic();
+                if (state != State.FIGHTING) {
+                    state = s;
+                    if (Controller.getController().playing().isPresent()) {
+                        if (Controller.getController().playing().get() != Music.TRAINER || Controller.getController().playing().get() != Music.WILD) {
+                            Controller.getController().stopMusic();
+                            if (Controller.getController().getFight() instanceof FightVsTrainer) {
+                                Controller.getController().playMusic(Music.TRAINER);
+                            } else {
+                                Controller.getController().playMusic(Music.WILD);
+                            }
+                        }
+                    } else {
                         if (Controller.getController().getFight() instanceof FightVsTrainer) {
                             Controller.getController().playMusic(Music.TRAINER);
                         } else {
                             Controller.getController().playMusic(Music.WILD);
                         }
                     }
-                } else {
-                    if (Controller.getController().getFight() instanceof FightVsTrainer) {
-                        Controller.getController().playMusic(Music.TRAINER);
-                    } else {
-                        Controller.getController().playMusic(Music.WILD);
-                    }
+                    keyboardController = new FightingKeyboardController();
+                    Play.updateKeyListener();
                 }
-                keyboardController = new FightingKeyboardController();
-                Play.updateKeyListener();
                 break;
             case READING:
+                state = s;
                 keyboardController = new MenuKeyboardController();
                 Play.updateKeyListener();
                 break;

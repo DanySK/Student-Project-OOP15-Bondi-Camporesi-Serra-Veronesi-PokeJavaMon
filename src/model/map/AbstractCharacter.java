@@ -41,7 +41,6 @@ public abstract class AbstractCharacter implements Character {
 	    PokeMapImpl pm = Play.getMapImpl();
 	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
 	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
-	    System.out.println(tr.getTile().getId());
 	    int val = -1;
 	    switch (d) {
 	    case WEST:
@@ -75,9 +74,6 @@ public abstract class AbstractCharacter implements Character {
         default :
         	return;
 	    }
-	    
-	    
-        System.out.println("Valore TileID: " + val);
 	    this.direction = d;
 	}
 	

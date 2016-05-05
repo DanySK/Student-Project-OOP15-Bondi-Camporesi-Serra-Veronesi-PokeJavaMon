@@ -22,9 +22,12 @@ public class MethodsImplemented implements MethodsToImplement {
         List<String> message = new ArrayList<>();
         if (myMoveFirst) {
             message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
+            message.add(myMoveEffectiveness.name());
             if (enemyMove == null) {
                 message.add("ENEMY DEAD");
                 if (nextEnemyPokemon != null) {
+                    FightScreen.dispose();
+                    Controller.getController().getViewController().fightScreen(nextEnemyPokemon);
                     message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
                     String[] array = new String[message.size()];
                     message.toArray(array);
@@ -39,6 +42,7 @@ public class MethodsImplemented implements MethodsToImplement {
                 }
             } else {
                 message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
+                message.add(enemyMoveEffectiveness.name());
                 if (lastPokemonKills) {
                     message.add("ALLY DEAD");
                     if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
@@ -62,6 +66,7 @@ public class MethodsImplemented implements MethodsToImplement {
             }
         } else {
             message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
+            message.add(enemyMoveEffectiveness.name());
             if (myMove == null) {
                 message.add("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
@@ -78,10 +83,13 @@ public class MethodsImplemented implements MethodsToImplement {
                     new MessageFrame(State.WALKING, array);
                 }
             } else {
-                message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0) + ": " + myMove);
+                message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
+                message.add(myMoveEffectiveness.name());
                 if (lastPokemonKills) {
                     message.add("ENEMY DEAD");
                     if (nextEnemyPokemon != null) {
+                        FightScreen.dispose();
+                        Controller.getController().getViewController().fightScreen(nextEnemyPokemon);
                         message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
                         String[] array = new String[message.size()];
                         message.toArray(array);
