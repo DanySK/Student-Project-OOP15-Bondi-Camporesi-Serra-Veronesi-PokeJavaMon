@@ -21,7 +21,6 @@ import javax.swing.border.LineBorder;
 import controller.Controller;
 import exceptions.CannotEscapeFromTrainerException;
 import model.player.PlayerImpl;
-import model.pokemon.Pokemon;
 import view.resources.MessageFrame;
 
 import java.awt.event.KeyAdapter;
@@ -35,7 +34,12 @@ public class FightScreen extends JPanel{
     static JPanel panel_1;
     static JPanel panel_2;
     static JPanel panel_3;
-    public FightScreen(Pokemon pk) {
+    static MyPanel panel;
+    static JButton Mossa1;
+    static JButton Mossa2;
+    static JButton Mossa3;
+    static JButton Mossa4;
+    public FightScreen() {
 		frame = new JFrame("Fight");
 		panel_1 = new JPanel();
 		panel_2 = new JPanel();
@@ -46,8 +50,7 @@ public class FightScreen extends JPanel{
 		frame.getContentPane().setLayout(null);
 		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		
-		MyPanel panel = new MyPanel(pk);
+		panel = new MyPanel();
 		panel.setBounds(0, 0, 450, 212);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -112,8 +115,11 @@ public class FightScreen extends JPanel{
                     }
 			}
 		});
-
-		JButton Mossa1 = new JButton("Mossa1");
+		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+		    Mossa1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+		} else {
+		    Mossa1 = new JButton("NULL");
+		}
 		Mossa1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
@@ -126,10 +132,13 @@ public class FightScreen extends JPanel{
 			}
 		});
 		Mossa1.setBounds(0, 0, 113, 30);
-		panel_3.add(Mossa1);
-		
-		JButton Mossa2 = new JButton("Mossa2");
-		Mossa2.addActionListener(new ActionListener() {
+		panel_3.add(Mossa1);		
+                if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+                    Mossa2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+                } else {
+                    Mossa2 = new JButton("NULL");
+                }		
+                Mossa2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
                                 panel_3.setVisible(false);
@@ -143,8 +152,11 @@ public class FightScreen extends JPanel{
 		Mossa2.setBounds(113, 0, 113, 30);
 		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Mossa2.setEnabled(false);
 		panel_3.add(Mossa2);
-		
-		JButton Mossa3 = new JButton("Mossa3");
+                if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+                    Mossa3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+                } else {
+                    Mossa3 = new JButton("NULL");
+                }
 		Mossa3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
@@ -159,8 +171,11 @@ public class FightScreen extends JPanel{
 		Mossa3.setBounds(0, 30, 113, 30);
 		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Mossa3.setEnabled(false);
 		panel_3.add(Mossa3);
-		
-		JButton Mossa4 = new JButton("Mossa4");
+                if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+                    Mossa4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+                } else {
+                    Mossa4 = new JButton("NULL");
+                }
 		Mossa4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_1.setVisible(false);
@@ -183,6 +198,90 @@ public class FightScreen extends JPanel{
             frame.dispose();
         }
         
+        public static void repaintFrame() {
+            panel.repaint();
+            panel_3 = new JPanel();
+            panel_3.setVisible(false);
+            panel_3.setBounds(0, 213, 226, 60);
+            frame.getContentPane().add(panel_3);
+            panel_3.setLayout(null);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+                Mossa1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+            } else {
+                Mossa1 = new JButton("NULL");
+            }
+            Mossa1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                            panel_1.setVisible(false);
+                            panel_3.setVisible(false);
+                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+                                Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+                            } else {
+                                new MessageFrame(null, "MOVE NOT FOUND");
+                            }
+                    }
+            });
+            Mossa1.setBounds(0, 0, 113, 30);
+            panel_3.add(Mossa1);            
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+                Mossa2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            } else {
+                Mossa2 = new JButton("NULL");
+            }               
+            Mossa2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                            panel_1.setVisible(false);
+                            panel_3.setVisible(false);
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+                        } else {
+                            new MessageFrame(null, "MOVE NOT FOUND");
+                        }
+                    }
+            });
+            Mossa2.setBounds(113, 0, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Mossa2.setEnabled(false);
+            panel_3.add(Mossa2);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+                Mossa3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            } else {
+                Mossa3 = new JButton("NULL");
+            }
+            Mossa3.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                            panel_1.setVisible(false);
+                            panel_3.setVisible(false);
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+                        } else {
+                            new MessageFrame(null, "MOVE NOT FOUND");
+                        }
+                    }
+            });
+            Mossa3.setBounds(0, 30, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Mossa3.setEnabled(false);
+            panel_3.add(Mossa3);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+                Mossa4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            } else {
+                Mossa4 = new JButton("NULL");
+            }
+            Mossa4.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                            panel_1.setVisible(false);
+                            panel_3.setVisible(false);
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+                        } else {
+                            new MessageFrame(null, "MOVE NOT FOUND");
+                        }
+                    }
+            });
+            Mossa4.setBounds(113, 30, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Mossa4.setEnabled(false);
+            panel_3.add(Mossa4);
+        }
+        
         public static void showMessage(String... message) {
             panel_2 = new JPanel();
             panel_2.setVisible(false);
@@ -200,6 +299,7 @@ public class FightScreen extends JPanel{
                                     if (it.hasNext()) {
                                         JTextArea.setText(it.next());
                                     } else {
+                                        FightScreen.repaintFrame();
                                         panel_1.setVisible(true);
                                         panel_2.setVisible(false);
                                         panel_3.setVisible(false);
@@ -223,19 +323,20 @@ public class FightScreen extends JPanel{
 	private BufferedImage image;
 		private BufferedImage image2;
 		
-    	public MyPanel(Pokemon pk) {
-    	
-    	    try {
-                image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getAbsolutePath()));
+    	@Override
+        public void paint(Graphics g) {
+            super.paintComponent(g);
+            try {
+                image = ImageIO.read(new File(Controller.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getAbsolutePath()));
             } catch (Exception e) {
                 try {
-                    image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getResourcePath()));
+                    image = ImageIO.read(new File(Controller.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getResourcePath()));
                 } catch (IOException e1) {
                     System.out.println("CANNOT LOAD FRONT SPRITE");
                 }
             }
            try {                
-        	image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
+                image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
            } catch (Exception ex) {
                try {
                 image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getResourcePath()));
@@ -243,11 +344,6 @@ public class FightScreen extends JPanel{
                 System.out.println("CANNOT LOAD BACK SPRITE");
             }
            }
-    	}
-	
-        @Override
-        public void paint(Graphics g) {
-            super.paintComponent(g);
             if (image != null) {
 
             	int width = 150;
