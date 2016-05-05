@@ -32,11 +32,14 @@ public class FightScreen extends JPanel{
     private static final long serialVersionUID = 1L;
     static JFrame frame;
     static JTextArea JTextArea;
-    static JPanel panel_1 = new JPanel();
-    static JPanel panel_2 = new JPanel();
-    static JPanel panel_3 = new JPanel();
+    static JPanel panel_1;
+    static JPanel panel_2;
+    static JPanel panel_3;
     public FightScreen(Pokemon pk) {
 		frame = new JFrame("Fight");
+		panel_1 = new JPanel();
+		panel_2 = new JPanel();
+		panel_3 = new JPanel();
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		frame.setBounds(100, 100, 450, 275);
@@ -67,7 +70,6 @@ public class FightScreen extends JPanel{
 		Fight.setBounds(0, 0, 113, 30);
 		Fight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("FIGHT");
 				panel_1.setVisible(false);
 				panel_2.setVisible(false);
                 panel_3.setVisible(true);
@@ -79,7 +81,6 @@ public class FightScreen extends JPanel{
 		Squadra.setBounds(113, 0, 113, 30);
 		Squadra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("TEAM");
 //				ViewController.team();
                         if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                             Controller.getController().getViewController().team(true, false);
@@ -95,7 +96,6 @@ public class FightScreen extends JPanel{
 		panel_1.add(Zaino);
 		Zaino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("BAG");
 			    Controller.getController().getViewController().bag();	        
 			}
 		});
@@ -105,7 +105,6 @@ public class FightScreen extends JPanel{
 		panel_1.add(Fuga);
 		Fuga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("RUN");
 			        try {
                         Controller.getController().getFightController().run();
                     } catch (CannotEscapeFromTrainerException e1) {
@@ -117,7 +116,6 @@ public class FightScreen extends JPanel{
 		JButton Mossa1 = new JButton("Mossa1");
 		Mossa1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("1");
 				panel_1.setVisible(false);
                                 panel_3.setVisible(false);
 			        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
@@ -133,7 +131,6 @@ public class FightScreen extends JPanel{
 		JButton Mossa2 = new JButton("Mossa2");
 		Mossa2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("2");
 				panel_1.setVisible(false);
                                 panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
@@ -150,7 +147,6 @@ public class FightScreen extends JPanel{
 		JButton Mossa3 = new JButton("Mossa3");
 		Mossa3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("3");
 				panel_1.setVisible(false);
                                 panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
@@ -167,7 +163,6 @@ public class FightScreen extends JPanel{
 		JButton Mossa4 = new JButton("Mossa4");
 		Mossa4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    System.out.println("4");
 				panel_1.setVisible(false);
                                 panel_3.setVisible(false);
 			    if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
@@ -189,7 +184,6 @@ public class FightScreen extends JPanel{
         }
         
         public static void showMessage(String... message) {
-            System.out.println("KAPPA");
             panel_2 = new JPanel();
             panel_2.setVisible(false);
             panel_2.setBounds(0, 213, 450, 60);
