@@ -29,8 +29,8 @@ public class WalkingKeyboardController implements KeyboardController {
     private static final int FIRST = 0;
     private static final int NULL_SPEED = 0;
     private int keys, x, y;
-    private Direction direction = Direction.SOUTH;
-    private Direction oppositeDirection = Direction.NORTH;
+    private Direction direction = PlayerImpl.getPlayer().getDirection();
+    private Direction oppositeDirection;
     private PokeMapImpl pm;
     private TileType t;
     private boolean left, right, up, down;
