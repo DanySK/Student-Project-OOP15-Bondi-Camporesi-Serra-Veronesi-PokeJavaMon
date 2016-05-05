@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 
+import controller.Controller;
+import controller.parameters.State;
 import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.items.Item.ItemType;
@@ -68,6 +70,7 @@ public Market() {
 }
     
 public static void dispose() {
+    Controller.getController().updateStatus(State.WALKING);
     frame.dispose();
 }
 }
@@ -122,8 +125,10 @@ public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d
             public void actionPerformed(ActionEvent e) {
                 try {
                     PlayerImpl.getPlayer().buyItem(i);
+                    Market.dispose();
+                   Controller.getController().getViewController().market();
                 } catch (NotEnoughMoneyException e1) {
-                    new MessageFrame("NOT ENOUGH MONEY", null);
+                    new MessageFrame(null, "NOT ENOUGH MONEY");
                 }
             }
         });

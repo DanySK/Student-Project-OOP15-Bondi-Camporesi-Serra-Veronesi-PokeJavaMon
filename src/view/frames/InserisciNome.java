@@ -70,6 +70,7 @@ public class InserisciNome {
 	    	inserisciNome.setBounds(130, 41, 190, 35);
 	    	f.getContentPane().add(inserisciNome);
 	    	nickname.setBounds(102, 106, 190, 22);
+	    	f.setLocationRelativeTo(null);
 	    	f.getContentPane().add(nickname);
 	    	nickname.setColumns(40);    	
 	    	

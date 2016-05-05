@@ -1,5 +1,8 @@
 package view.methods;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controller.Controller;
 import controller.parameters.State;
 import model.fight.Effectiveness;
@@ -8,6 +11,7 @@ import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.frames.FightScreen;
+import view.resources.MessageFrame;
 
 public class MethodsImplemented implements MethodsToImplement {
 
@@ -15,56 +19,86 @@ public class MethodsImplemented implements MethodsToImplement {
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
             Pokemon nextEnemyPokemon, String optionalMessage) {
-        System.out.println("RESOLVING MOVE");
-        System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
+        List<String> message = new ArrayList<>();
         if (myMoveFirst) {
-            System.out.println("My: " + myMove);
+            message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
             if (enemyMove == null) {
-                System.out.println("ENEMY DEAD");
+                message.add("ENEMY DEAD");
                 if (nextEnemyPokemon != null) {
-                    System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
+                    message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    FightScreen.showMessage(array);
                 } else {
-                    System.out.println("ENEMY DEFEATED" + " Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
-                    Controller.getController().updateStatus(State.WALKING);
+                    message.add("ENEMY DEFEATED");
+                    message.add(" Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     FightScreen.dispose();
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    new MessageFrame(State.WALKING, array);
                 }
             } else {
-                System.out.println("Enemy: " + enemyMove);
-                System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+                message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
                 if (lastPokemonKills) {
-                    System.out.println("ALLY DEAD");
+                    message.add("ALLY DEAD");
                     if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                         Controller.getController().getViewController().team(false, false);
+                        String[] array = new String[message.size()];
+                        message.toArray(array);
+                        FightScreen.showMessage(array);
                     } else {
-                        System.out.println("ALLY DEFEATED");
-                        Controller.getController().updateStatus(State.WALKING);
+                        message.add("ALLY DEFEATED");
+                        message.add(" Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                         FightScreen.dispose();
+                        String[] array = new String[message.size()];
+                        message.toArray(array);
+                        new MessageFrame(State.WALKING, array);
                     }
+                } else {
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    FightScreen.showMessage(array);
                 }
             }
         } else {
-            System.out.println("Enemy: " + enemyMove);
-            System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+            message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (myMove == null) {
-                System.out.println("ALLY DEAD");
+                message.add("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     Controller.getController().getViewController().team(false, false);
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    FightScreen.showMessage(array);
                 } else {
-                    System.out.println("ALLY DEFEATED");
-                    Controller.getController().updateStatus(State.WALKING);
+                    message.add("ALLY DEFEATED");
+                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     FightScreen.dispose();
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    new MessageFrame(State.WALKING, array);
                 }
             } else {
-                System.out.println("My: " + myMove);
+                message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0) + ": " + myMove);
                 if (lastPokemonKills) {
-                    System.out.println("ENEMY DEAD");
+                    message.add("ENEMY DEAD");
                     if (nextEnemyPokemon != null) {
-                        System.out.println("Next: " + nextEnemyPokemon.getPokemon().name());
+                        message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
+                        String[] array = new String[message.size()];
+                        message.toArray(array);
+                        FightScreen.showMessage(array);
                     } else {
-                        System.out.println("ENEMY DEFEATED" + " Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                        message.add("ENEMY DEFEATED");             
+                        message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());                        
                         Controller.getController().updateStatus(State.WALKING);
                         FightScreen.dispose();
+                        String[] array = new String[message.size()];
+                        message.toArray(array);
+                        new MessageFrame(State.WALKING, array);
                     }
+                } else {
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    FightScreen.showMessage(array);
                 }
             }
         }
@@ -72,66 +106,93 @@ public class MethodsImplemented implements MethodsToImplement {
 
     @Override
     public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead) {
-        System.out.println("RESOLVING POKEMON");
-        System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
-        System.out.println("Enemy: " + enemyMove);
-        System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+        List<String> message = new ArrayList<>();
+        message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
         if (isMyPokemonDead) {
-            System.out.println("ALLY DEAD");
+            message.add("ALLY DEAD");
             if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                 Controller.getController().getViewController().team(false, false);
+                String[] array = new String[message.size()];
+                message.toArray(array);
+                FightScreen.showMessage(array);
             } else {
-                System.out.println("ALLY DEFEATED");
-                Controller.getController().updateStatus(State.WALKING);
+                message.add("ALLY DEFEATED");
+                message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                 FightScreen.dispose();
+                String[] array = new String[message.size()];
+                message.toArray(array);
+                new MessageFrame(State.WALKING, array);
             }
+        } else {
+            String[] array = new String[message.size()];
+            message.toArray(array);
+            FightScreen.showMessage(array); 
         }
     }
 
     @Override
     public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead) {
-        System.out.println("RESOLVING ITEM");
-        System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
+        List<String> message = new ArrayList<>();
         if (enemyMove != null) {
-            System.out.println("Enemy: " + enemyMove);
-            System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+            message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
-                System.out.println("ALLY DEAD");
+                message.add("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     Controller.getController().getViewController().team(false, false);
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    FightScreen.showMessage(array);
                 } else {
-                    System.out.println("ALLY DEFEATED");
-                    Controller.getController().updateStatus(State.WALKING);
+                    message.add("ALLY DEFEATED");
+                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     FightScreen.dispose();
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    new MessageFrame(State.WALKING, array);
                 }
+            } else {
+                String[] array = new String[message.size()];
+                message.toArray(array);
+                FightScreen.showMessage(array);
             }
         } else {
-            System.out.println("ENEMY CAUGHT!!!");
-            Controller.getController().updateStatus(State.WALKING);
+            message.add("ENEMY CAUGHT!");
+            message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
             FightScreen.dispose();
+            String[] array = new String[message.size()];
+            message.toArray(array);
+            new MessageFrame(State.WALKING, array);
         }
     }
 
     @Override
     public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead) {
-        System.out.println("RESOLVING RUN");
-        System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name());
+        List<String> message = new ArrayList<>();
         if (success) {
             Controller.getController().updateStatus(State.WALKING);
             FightScreen.dispose();
         } else {
-            System.out.println("RUN FAILED!");
-            System.out.println("Enemy: " + enemyMove);
-            System.out.println("HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP());
+            message.add("RUN FAILED!");
+            message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
-                System.out.println("ALLY DEAD");
+                message.add("ALLY DEAD");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     Controller.getController().getViewController().team(false, false);
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    FightScreen.showMessage(array);                
                 } else {
-                    System.out.println("ALLY DEFEATED");
-                    Controller.getController().updateStatus(State.WALKING);
+                    message.add("ALLY DEFEATED");
+                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     FightScreen.dispose();
+                    String[] array = new String[message.size()];
+                    message.toArray(array);
+                    new MessageFrame(State.WALKING, array);
                 }
+            } else {
+                String[] array = new String[message.size()];
+                message.toArray(array);
+                FightScreen.showMessage(array); 
             }
         }
     }

@@ -103,9 +103,9 @@ public BoxPanel(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> cur
                     PlayerImpl.getPlayer().getBox().withdrawPokemon(selected, PlayerImpl.getPlayer().getSquad());
                     Box.dispose();
                 } catch (PokemonNotFoundException e1) {
-                    new MessageFrame("POKEMON NOT FOUND", null);
+                    new MessageFrame(null, "POKEMON NOT FOUND");
                 } catch (SquadFullException e1) {
-                    new MessageFrame("SQUAD IS FULL", null);
+                    new MessageFrame(null, "SQUAD IS FULL");
                 }
             }
         });
