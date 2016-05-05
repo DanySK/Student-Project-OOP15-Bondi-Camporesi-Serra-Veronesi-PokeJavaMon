@@ -16,13 +16,12 @@ import java.awt.Component;
 public class Menu  {
 	
 public Menu() {
-		final JFrame f = new JFrame();
+		final JWindow f = new JWindow();
 		
-		f.setResizable(false);
 		f.setAlwaysOnTop(true);	
-		f.setUndecorated(true);
+
 		f.setBounds(100, 100, 180, 310);
-		f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
 		f.getContentPane().setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
 		f.add(Box.createVerticalGlue());
 

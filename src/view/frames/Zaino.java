@@ -21,19 +21,20 @@ import view.resources.MessageFrame;
 
 public class Zaino {
 
-	private static JFrame frame;
+	private static JWindow window;
 	private static Item itemToUse;
 	
 public Zaino() {
 		
 	
-    frame = new JFrame("Bag");
-    frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-    frame.setAlwaysOnTop(true);
-    frame.setUndecorated(true);
+	//window = new JFrame("Bag");
+	//window.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+	window = new JWindow ();
+	window.setAlwaysOnTop(true);
+	//window.setUndecorated(true);
     
     JPanel contiene = new JPanel();
-    frame.setContentPane(contiene);
+    window.setContentPane(contiene);
     contiene.setLayout(new GridLayout(1,1));
 
     final ArrayList<String>Name1 = new ArrayList<String>();
@@ -76,12 +77,12 @@ public Zaino() {
     }
    
     contiene.add(new Panel(Name1, Name2, Qnt, it, 1));
-    frame.setSize(600,60 * Name1.size());
-    frame.setVisible(true);
+    window.setSize(600,60 * Name1.size());
+    window.setVisible(true);
 }
     
 public static void dispose() {
-    frame.dispose();
+	window.dispose();
 }
 
 public static void selectItem(Item it) {

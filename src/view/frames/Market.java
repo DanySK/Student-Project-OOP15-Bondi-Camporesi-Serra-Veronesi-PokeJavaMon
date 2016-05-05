@@ -6,9 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JWindow;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 
@@ -23,31 +24,28 @@ import view.resources.Play;
 
 public class Market {
 
-        private static JFrame frame;
+        private static JWindow window;
         
 public Market() {
                 
-    frame = new JFrame("Market");
-    frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-    frame.setAlwaysOnTop(true);
-    frame.setSize(600,600);
-    frame.setUndecorated(true);
+	window = new JWindow();
+	window.setAlwaysOnTop(true);
+	window.setSize(600,600);
     
-    JPanel contiene = new JPanel();
-    frame.setContentPane(contiene);
-    contiene.setLayout(new GridLayout(1,1));
-    contiene.setBorder(new LineBorder(Color.GRAY, 4));
+    JPanel contain = new JPanel();
+    window.setContentPane(contain);
     
     final ArrayList<String>Name1 = new ArrayList<String>();
     final ArrayList<String>Name2 = new ArrayList<String>();
     final ArrayList<String>Prz = new ArrayList<String>();
     final ArrayList<String>Qnt = new ArrayList<String>();
     final ArrayList<Item> it = new ArrayList<Item>();
+    int cols = 1;
     
-    Name1.add("TIPO");
-    Name2.add("NOME");
-    Prz.add("PREZZO");
-    Qnt.add("QUANTITÀ");
+    Name1.add("TYPE");
+    Name2.add("NAME");
+    Prz.add("PRICE");
+    Qnt.add("QUANTITY");
     it.add(null);
     
     for (Item i : Play.getMapImpl().getPokeMarket().getAvailableItems()) { 
@@ -62,47 +60,14 @@ public Market() {
             Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i));
         }
         it.add(i);
-            }
+    }
    
-    contiene.add(new MarketPanel(Name1, Name2, Prz, Qnt, it, 1));
-    
-    frame.setVisible(true);
-}
-    
-public static void dispose() {
-    Controller.getController().updateStatus(State.WALKING);
-    frame.dispose();
-}
-}
-
-class MarketPanel extends JPanel
-{
-
-        private static final long serialVersionUID = 3332840867083025623L;
-        ArrayList<String> Name1 = new ArrayList<String>();
-    ArrayList<String> Name2 = new ArrayList<String>();
-    ArrayList<String> Prz = new ArrayList<String>();
-    ArrayList<String> Qnt = new ArrayList<String>();
-    ArrayList<Item> it = new ArrayList<Item>();
-    int col;
-
-public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,ArrayList<String> e, ArrayList<Item> f, int c) 
-{
-    this.Name1 = a;
-    this.Name2 = b;
-    this.Prz = d;
-    this.Qnt = e;
-    this.col = c;
-    this.it = f;
-
-    setLayout(new GridLayout(Name1.size(),col));
-
     for(int j = 0; j<Name1.size();j++)
     {	if (j==0) {
-    	add(new JLabel("Money: "+ PlayerImpl.getPlayer().getMoney()));
-        add(new JLabel(Name2.get(j)));
-        add(new JLabel(Prz.get(j)));
-        add(new JLabel(Qnt.get(j)));
+    	contain.add(new JLabel("Money: "+ PlayerImpl.getPlayer().getMoney()));
+    	contain.add(new JLabel(Name2.get(j)));
+    	contain.add(new JLabel(Prz.get(j)));
+    	contain.add(new JLabel(Qnt.get(j)));
         JButton esci2 = new JButton("Exit");
         esci2.addActionListener(new ActionListener() {
             @Override
@@ -110,14 +75,14 @@ public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d
                  Market.dispose();
             }
         });
-        add(esci2);
+        contain.add(esci2);
     	j++;
     }
         final Item itm = it.get(j);
-        add(new JLabel(Name1.get(j)));
-        add(new JLabel(Name2.get(j)));
-        add(new JLabel(Prz.get(j)));
-        add(new JLabel(Qnt.get(j)));
+        contain.add(new JLabel(Name1.get(j)));
+        contain.add(new JLabel(Name2.get(j)));
+        contain.add(new JLabel(Prz.get(j)));
+        contain.add(new JLabel(Qnt.get(j)));
         JButton usa = new JButton("Buy");
         usa.addActionListener(new ActionListener() {     
             Item i = itm;
@@ -126,15 +91,24 @@ public MarketPanel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d
                 try {
                     PlayerImpl.getPlayer().buyItem(i);
                     Market.dispose();
-                   Controller.getController().getViewController().market();
-                } catch (NotEnoughMoneyException e1) {
-                    new MessageFrame(null, "NOT ENOUGH MONEY");
-                }
-            }
-        });
-        add(usa);
-        
-        
-       }
-        }
+					Controller.getController().getViewController().market();
+                }	 catch (NotEnoughMoneyException e1) {
+                    	new MessageFrame(null, "NOT ENOUGH MONEY");
+                	}
+            	}
+        	});
+        	contain.add(usa);
+       	}
+    	contain.setLayout(new GridLayout(Name1.size(), cols));
+    	contain.setBorder(new LineBorder(Color.GRAY, 4));
+    	window.setSize(100 * Name1.size(), 600);
+    	window.setVisible(true);
+	}
+    
+	public static void dispose() {
+		Controller.getController().updateStatus(State.WALKING);
+		window.dispose();
+	}
 }
+
+

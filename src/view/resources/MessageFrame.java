@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 
 import controller.Controller;
@@ -19,7 +20,7 @@ import controller.parameters.State;
 public class MessageFrame {
 
     public MessageFrame(State st, String... strs) {
-        JFrame fr = new JFrame();
+        JWindow fr = new JWindow();
         JPanel pa = new JPanel();
         pa.setBorder(new LineBorder(Color.GRAY, 4));
         pa.setLayout(new GridLayout(0,1));
@@ -45,7 +46,7 @@ public class MessageFrame {
         fr.setAlwaysOnTop(true);
         fr.setBounds(100, 100, 450, 100 * strs.length);
         fr.setLocationRelativeTo(null);
-        fr.setUndecorated(true);
+        //fr.setUndecorated(true);
         fr.setVisible(true);
     }
 }

@@ -18,24 +18,28 @@ import view.resources.MessageFrame;
 
 public class Squadra {
 
-        private static JFrame frame;
+        private static JWindow window;
 	
         public Squadra(boolean bl, boolean bl2) {
 		
-        frame = new JFrame("Squadra");
-        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        frame.setAlwaysOnTop(true);
-        frame.setUndecorated(true);
+        	window = new JWindow ();
+        	window.setAlwaysOnTop(true);
         
         JPanel contain = new JPanel();
-        frame.setContentPane(contain);
-        contain.setLayout(new GridLayout(1,1));
-
+        window.setContentPane(contain);
+        
         final ArrayList<String>names = new ArrayList<String>();
         final ArrayList<String>lvl = new ArrayList<String>();
         final ArrayList<String>cHP = new ArrayList<String>();
         final ArrayList<String>mHP = new ArrayList<String>();
         final ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
+        int cols = 1;
+        
+        names.add("NAME");
+        lvl.add("LEVEL");
+        cHP.add("HEALTH POINTS");
+        mHP.add("");
+        pk.add(null);
         
         for (Pokemon p : PlayerImpl.getPlayer().getSquad().getPokemonList()) {
         	names.add(p.getPokemon().name()); // Nome Pkmn
@@ -45,45 +49,26 @@ public class Squadra {
         	pk.add(p);
         }
         
-        contain.add(new Panel2(names, lvl, cHP, mHP, pk, bl, bl2, 1));
-        frame.setSize(900,100 * names.size());
-        frame.setVisible(true);
-    }
-        
-    public static void dispose() {
-        frame.dispose();
-    }
-}
-
-class Panel2 extends JPanel
-{
-    private static final long serialVersionUID = 222368330456306439L;
-    ArrayList<String> names = new ArrayList<String>();
-    ArrayList<String> lvl = new ArrayList<String>();
-    ArrayList<String> cHP = new ArrayList<String>();
-    ArrayList<String> mHP = new ArrayList<String>();
-    ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
-    int cols;
-
-    public Panel2(ArrayList<String> nam,ArrayList<String> lv,ArrayList<String> current, ArrayList<String> max, ArrayList<Pokemon> pkm, boolean bl, boolean bl2, int c) 
-    {
-        this.names = nam;
-        this.lvl =lv;
-        this.cHP = current;
-        this.mHP = max;
-        this.cols = c;
-        this.pk = pkm;
-
-        setLayout(new GridLayout(names.size(),cols));
-
         for(int i = 0; i<names.size();i++)
         {
+        	
+        	if (i == 0) {
+        		contain.add(new JLabel(names.get(i)));
+                contain.add(new JLabel(lvl.get(i)));
+                contain.add(new JLabel(cHP.get(i)));
+                contain.add(new JLabel(""));
+                contain.add(new JLabel(""));
+                contain.add(new JLabel(""));
+                contain.add(new JLabel(""));
+                contain.add(new JLabel(""));
+        		i++;
+        	}
+      
             final int index = i;
-            final Pokemon pkmn = pkm.get(i);
-            add(new JLabel(names.get(i)));
-            add(new JLabel(lvl.get(i)));
-            add(new JLabel(cHP.get(i)));
-            add(new JLabel(mHP.get(i)));
+            final Pokemon pkmn = pk.get(i);
+            contain.add(new JLabel(names.get(i)));
+            contain.add(new JLabel(lvl.get(i)));
+            contain.add(new JLabel(cHP.get(i) + " / " + mHP.get(i)));
             JButton but = new JButton("INFO");
             but.addActionListener(new ActionListener() {
                 private final Pokemon ID = pkmn;
@@ -92,16 +77,17 @@ class Panel2 extends JPanel
                     Controller.getController().getViewController().stats(ID);
                 }
             });
-            add(but);
+            contain.add(but);
             JButton but2 = new JButton("SET FIRST");
             but2.addActionListener(new ActionListener() {
                 private final int ID = index;
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (Controller.getController().getStatusController().getState() == State.MENU) {
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
-                            PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index-1).getCurrentHP() > 0) {
+                            PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID-1);
                             Squadra.dispose();
+                            new Squadra(true, false);
                         } else {
                             Squadra.dispose();
                             new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
@@ -132,7 +118,7 @@ class Panel2 extends JPanel
             if (bl2) {
                 but2.setEnabled(false);
             }
-            add(but2);
+            contain.add(but2);
             JButton but3 = new JButton("DEPOSIT");
             but3.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
@@ -150,7 +136,7 @@ class Panel2 extends JPanel
             if (Controller.getController().getStatusController().getState() != State.MENU || bl2) {
                 but3.setEnabled(false);
             }
-            add(but3);
+            contain.add(but3);
             JButton but4 = new JButton("SELECT");
             but4.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
@@ -162,7 +148,7 @@ class Panel2 extends JPanel
             if (!bl2) {
                 but4.setEnabled(false);
             }
-            add(but4);
+            contain.add(but4);
             JButton but5 = new JButton("EXIT");
             but5.addActionListener(new ActionListener() {
                 @Override
@@ -173,16 +159,18 @@ class Panel2 extends JPanel
             if (!bl) {
                 but5.setEnabled(false);
             }
-            add(but5);
-           }
-    }}
+            contain.add(but5);
+           }      
+        contain.setLayout(new GridLayout(names.size(), cols));
+        window.setSize(900,100 * names.size());
+        window.setVisible(true);
+        }
+    
+        
+    public static void dispose() {
+    	window.dispose();
+    }
+}
 
-/*add(new JLabel());
-add(new JLabel("Livello"));
-add(new JLabel("HpCorrenti"));
-add(new JLabel("HpMax"));   
-add(new JLabel(""));
-add(new JLabel(""));
-add(new JLabel(""));
-add(new JLabel(""));
-add(new JLabel(""));*/
+
+       

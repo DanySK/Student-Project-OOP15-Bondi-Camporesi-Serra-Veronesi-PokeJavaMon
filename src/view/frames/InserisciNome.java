@@ -100,6 +100,11 @@ public class InserisciNome {
 	    	        else {
 	    	        	try {
 		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BULBASAUR, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 6));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 7));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA,8));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.ZUBAT, 9));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.TENTACOOL, 10));
 		                 } catch (SquadFullException ex) {
 		                     ex.printStackTrace();
 		                 }
