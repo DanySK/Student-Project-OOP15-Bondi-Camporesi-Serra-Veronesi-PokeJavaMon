@@ -22,6 +22,7 @@ public class ViewController implements ViewControllerInterface {
     
     @Override
     public void market() {
+        Controller.getController().updateStatus(State.READING);
         new Market();
     }
     

@@ -103,8 +103,8 @@ class Panel2 extends JPanel
                             PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
                             Squadra.dispose();
                         } else {
-                            new MessageFrame("CANNOT SELECT THAT POKEMON", null);
                             Squadra.dispose();
+                            new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                         }
                     } else {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
@@ -112,18 +112,18 @@ class Panel2 extends JPanel
                                 Controller.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
                             } catch (PokemonIsExhaustedException e1) {
-                                new MessageFrame("CANNOT SELECT THAT POKEMON", null);
+                                new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             } catch (PokemonIsFightingException e1) {
-                                new MessageFrame("CANNOT SELECT THAT POKEMON", null);
+                                new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             }
                         } else {
                             try {
-                                Controller.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
+                                Controller.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                             } catch (PokemonIsExhaustedException e1) {
-                                new MessageFrame("CANNOT SELECT THAT POKEMON", null);
+                                new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             } catch (PokemonIsFightingException e1) {
-                                new MessageFrame("CANNOT SELECT THAT POKEMON", null);
+                                new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             }
                         }
                     }
@@ -141,9 +141,9 @@ class Panel2 extends JPanel
                     try {
                         PlayerImpl.getPlayer().getBox().depositPokemon(p, PlayerImpl.getPlayer().getSquad());
                     } catch (PokemonNotFoundException e1) {
-                        new MessageFrame("POKEMON NOT FOUND", null);
+                        new MessageFrame(null, "POKEMON NOT FOUND");
                     } catch (OnlyOnePokemonInSquadException e1) {
-                        new MessageFrame("CANNOT DEPOSIT LAST POKEMON", null);
+                        new MessageFrame(null, "CANNOT DEPOSIT LAST POKEMON");
                     }
                 }
             });

@@ -96,19 +96,19 @@ public static void useItem(Pokemon p) {
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (PokemonIsExhaustedException e1) {
-                new MessageFrame("POKEMON IS EXAUSTED", null);
+                new MessageFrame(null, "POKEMON IS EXAUSTED");
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (PokemonNotFoundException e1) {
-                new MessageFrame("POKEMON NOT FOUND", null);
+                new MessageFrame(null, "POKEMON NOT FOUND");
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (CannotCaughtTrainerPkmException e1) {
-                new MessageFrame("CANNOT CATCH TRAINER POKEMON", null);
+                new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON");
                 Zaino.selectItem(null);
                 Zaino.dispose();
             } catch (IllegalStateException e1) {
-                new MessageFrame("YOU HAVE NO MORE THIS ITEM", null);
+                new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
                 Zaino.selectItem(null);
                 Zaino.dispose();
             }
@@ -119,9 +119,9 @@ public static void useItem(Pokemon p) {
                     PlayerImpl.getPlayer().getInventory().consumeItem(itemToUse);
                     Zaino.dispose();
                 } catch (PokemonNotFoundException e) {
-                    new MessageFrame("POKEMON NOT FOUND", null);
+                    new MessageFrame(null, "POKEMON NOT FOUND");
                 } catch (IllegalStateException ex) {
-                    new MessageFrame("YOU HAVE NO MORE THIS ITEM", null);
+                    new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
                     Zaino.selectItem(null);
                     Zaino.dispose();
                 }
@@ -177,13 +177,14 @@ public Panel(ArrayList<String> a, ArrayList<String> b, ArrayList<String> d,Array
             public void actionPerformed(ActionEvent e) {
                 if (i.getType() != ItemType.POKEBALL) {
                 	Zaino.selectItem(i);
-                    Controller.getController().getViewController().team(true, true);
+                	Zaino.dispose();
+                        Controller.getController().getViewController().team(true, true);
                 } else {
                 	Zaino.selectItem(i);
                     if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
                     	Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
                     } else {
-                    	new MessageFrame("NON PUOI CATTURARE FUORI DALLA BATTAGLIA", null);
+                    	new MessageFrame(null, "NON PUOI CATTURARE FUORI DALLA BATTAGLIA");
                     	Zaino.useItem(null);
                     }
                 }

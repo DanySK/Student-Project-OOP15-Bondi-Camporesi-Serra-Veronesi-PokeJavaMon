@@ -33,7 +33,7 @@ public Menu() {
 			public void actionPerformed(ActionEvent ae) {
 				/*f.dispose();*/
  				if (PlayerImpl.getPlayer().getBox().getBoxSize() < 1) {
- 				    new MessageFrame("NO PKMN IN BOX", null);
+ 				    new MessageFrame(null, "NO PKMN IN BOX");
  				} else {
  				   Controller.getController().getViewController().box();
  				}
