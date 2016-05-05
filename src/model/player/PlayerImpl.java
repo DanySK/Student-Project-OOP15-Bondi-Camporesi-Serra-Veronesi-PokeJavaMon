@@ -120,6 +120,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     public void move(final Direction d, final PokeMap pm) {
     	int newX = this.tileX;
     	int newY = this.tileY;
+    	this.direction = d;
     	switch (d) {
     	case EAST :
     		newX += 1;
