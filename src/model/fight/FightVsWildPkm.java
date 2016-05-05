@@ -51,7 +51,7 @@ public class FightVsWildPkm extends AbstractFight {
     }
 
     @Override
-    protected boolean applyRun() throws CannotEscapeFromTrainerException {
+    public boolean applyRun() throws CannotEscapeFromTrainerException {
         final Random escapeRoll = new Random();
         final int escapeChance = (32 * allyPkm.getStat(Stat.SPD)) / (enemyPkm.getStat(Stat.SPD) / 4) + 30;
         return runValue = escapeChance > escapeRoll.nextInt(COEFFICIENT_PROB);
@@ -81,9 +81,9 @@ public class FightVsWildPkm extends AbstractFight {
                     isEnd = true;
                 }
             }
+            turnOrder = !turnOrder;
             attacksDone += 1;
         }
-        turnOrder = !turnOrder;
         if (attacksDone == ATTACKS_TO_DO) {
             if (isAllyFastest) {
                 if (isAllyExhausted) {
@@ -116,7 +116,7 @@ public class FightVsWildPkm extends AbstractFight {
 
     protected boolean setIsAllyFastest() {
         return isAllyFastest = (allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
-                >= (enemyPkm.getStat(Stat.SPD) * this.enemyPkmBoosts.get(Stat.SPD));
+                >= (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD));
     }
 
     protected int getExp() {

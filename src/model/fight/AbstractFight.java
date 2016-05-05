@@ -149,7 +149,7 @@ public abstract class AbstractFight implements Fight {
         return enemyPkm;
     }
 
-    protected final Map<Stat, Double> createBoostsMap() {
+    protected Map<Stat, Double> createBoostsMap() {
         final Map<Stat, Double> boosts = new HashMap<>();
         boosts.put(Stat.ATK, 1.0);
         boosts.put(Stat.DEF, 1.0);
