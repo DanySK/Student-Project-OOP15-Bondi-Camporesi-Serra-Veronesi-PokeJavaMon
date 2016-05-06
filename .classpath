@@ -29,5 +29,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PokeJavaMonTrial/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-natives.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
