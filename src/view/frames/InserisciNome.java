@@ -51,13 +51,13 @@ public class InserisciNome {
             Map<String, Integer> boostList = new HashMap<>();
             Map<String, Integer> ballList = new HashMap<>();
             potionList.put(PotionType.POTION.name(), 10);
-            potionList.put(PotionType.SUPERPOTION.name(), 1);
-            potionList.put(PotionType.HYPERPOTION.name(), 1);
-            boostList.put(Stat.SPD.name() + "X", 1);
-            boostList.put(Stat.DEF.name() + "X", 1);
-            boostList.put(Stat.ATK.name() + "X", 1);
-            ballList.put(PokeballType.Greatball.name(), 1);
-            ballList.put(PokeballType.Ultraball.name(), 1);
+            potionList.put(PotionType.SUPERPOTION.name(), 0);
+            potionList.put(PotionType.HYPERPOTION.name(), 0);
+            boostList.put(Stat.SPD.name() + "X", 0);
+            boostList.put(Stat.DEF.name() + "X", 0);
+            boostList.put(Stat.ATK.name() + "X", 0);
+            ballList.put(PokeballType.Greatball.name(), 0);
+            ballList.put(PokeballType.Ultraball.name(), 100);
             ballList.put(PokeballType.Pokeball.name(), 10);
             InventoryImpl.initializeInventory(potionList, boostList, ballList);
             
@@ -142,7 +142,7 @@ public class InserisciNome {
 	    	           }
 	    	        else {
 	    	        	try {
-		                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 5));
+		                    PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BLASTOISE, 45));
 		                } catch (SquadFullException ex) {
 		                    ex.printStackTrace();
 		                }
