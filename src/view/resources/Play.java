@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -41,9 +42,9 @@ public class Play implements Screen {
             camera.update();
             renderer.setView(camera);
             renderer.render(background);
-            renderer.getSpriteBatch().begin();                      
-            pls.update(renderer.getSpriteBatch());
-            renderer.getSpriteBatch().end();
+            renderer.getBatch().begin();                      
+            pls.update((SpriteBatch)renderer.getBatch());
+            renderer.getBatch().end();
             renderer.render(foreground); 
 	} 
 	

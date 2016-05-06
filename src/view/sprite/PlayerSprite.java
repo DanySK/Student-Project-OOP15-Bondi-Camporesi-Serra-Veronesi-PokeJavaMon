@@ -83,14 +83,14 @@ public class PlayerSprite extends Sprite {
         this.right_s = new Animation(1 / 6f, playerAtlas.findRegions("right_still"));
         this.up_s = new Animation(1 / 6f, playerAtlas.findRegions("up_still"));
         this.down_s = new Animation(1 / 6f, playerAtlas.findRegions("down_still"));
-        this.left.setPlayMode(Animation.LOOP);
-        this.right.setPlayMode(Animation.LOOP);
-        this.up.setPlayMode(Animation.LOOP);
-        this.down.setPlayMode(Animation.LOOP);
-        this.left_s.setPlayMode(Animation.LOOP);
-        this.right_s.setPlayMode(Animation.LOOP);
-        this.up_s.setPlayMode(Animation.LOOP);
-        this.down_s.setPlayMode(Animation.LOOP);
+        this.left.setPlayMode(Animation.PlayMode.LOOP);
+        this.right.setPlayMode(Animation.PlayMode.LOOP);
+        this.up.setPlayMode(Animation.PlayMode.LOOP);
+        this.down.setPlayMode(Animation.PlayMode.LOOP);
+        this.left_s.setPlayMode(Animation.PlayMode.LOOP);
+        this.right_s.setPlayMode(Animation.PlayMode.LOOP);
+        this.up_s.setPlayMode(Animation.PlayMode.LOOP);
+        this.down_s.setPlayMode(Animation.PlayMode.LOOP);
         setRegion(down_s.getKeyFrame(animationTime));
     }
     
