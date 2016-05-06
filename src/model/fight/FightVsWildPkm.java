@@ -9,6 +9,8 @@ import java.util.Random;
 import controller.Controller;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
+import exceptions.PokemonIsExhaustedException;
+import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Pokeball;
 import model.pokemon.Move;
@@ -55,6 +57,11 @@ public class FightVsWildPkm extends AbstractFight {
         final Random escapeRoll = new Random();
         final int escapeChance = (32 * allyPkm.getStat(Stat.SPD)) / (enemyPkm.getStat(Stat.SPD) / 4) + 30;
         return runValue = escapeChance > escapeRoll.nextInt(COEFFICIENT_PROB);
+    }
+
+    @Override//fatto per il test
+    public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
+        return super.applyItem(itemToUse, pkm);
     }
 
     @Override
