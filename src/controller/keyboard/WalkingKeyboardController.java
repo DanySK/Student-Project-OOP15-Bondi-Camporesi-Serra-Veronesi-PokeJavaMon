@@ -24,16 +24,16 @@ import view.sprite.PlayerSprite;
  */
 public class WalkingKeyboardController implements KeyboardController {
     
+    private final WalkingKeyboardControllerResolver resolver = new WalkingKeyboardControllerResolver();
     private static final int INCREMENT = 1;
     private static final int SPEED = 2;
     private static final int NULL_SPEED = 0;
     private int keys, x, y;
     private Direction direction = PlayerImpl.getPlayer().getDirection();
-    private Direction oppositeDirection;
+    private Direction oppositeDirection = resolver.changeOppositeDirection();
     private PokeMapImpl pm;
     private TileType t;
     private boolean left, right, up, down;
-    private final WalkingKeyboardControllerResolver resolver = new WalkingKeyboardControllerResolver();
     
     @Override
     public boolean keyDown(final int keycode) {
@@ -364,6 +364,24 @@ public class WalkingKeyboardController implements KeyboardController {
             } else {
                 PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
             }
+        }
+        
+        private Direction changeOppositeDirection() {
+            switch (direction) {
+            case EAST:
+                return Direction.WEST;
+            case NONE:
+                break;
+            case NORTH:
+                return Direction.SOUTH;
+            case SOUTH:
+                return Direction.NORTH;
+            case WEST:
+                return Direction.EAST;
+            default:
+                break;
+            }
+            return Direction.NONE;
         }
     }
 }

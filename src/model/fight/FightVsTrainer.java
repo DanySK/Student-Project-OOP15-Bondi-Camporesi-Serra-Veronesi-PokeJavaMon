@@ -131,7 +131,9 @@ public class FightVsTrainer extends AbstractFight {
                     //nemico attacca, alleato attacca, pokemon nemico esausto
                     if (checkLose(trainer.getSquad())) {
                         player.beatTrainer(trainer);
+                        trainer.defeat();
                         if (trainer instanceof GymLeader) {
+                            player.addBadge();
                             Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
                                     EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney() + GYM_LEADER_DEFEAT_MESS);
                         } else {
@@ -152,8 +154,10 @@ public class FightVsTrainer extends AbstractFight {
             if (isAllyFastest) {
                 //alleato attacca per primo, pkm nemico esausto
                 if (checkLose(trainer.getSquad())) {
+                    player.beatTrainer(trainer);
                     trainer.defeat();
                     if (trainer instanceof GymLeader) {
+                        player.addBadge();
                         Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
                                 EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney() + GYM_LEADER_DEFEAT_MESS);
                     } else {
@@ -162,7 +166,7 @@ public class FightVsTrainer extends AbstractFight {
                     }
                 } else {
                     trainerChange();
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, enemyPkm, EXP_MESSAGE + getExp());
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, enemyPkm, EXP_MESSAGE + getExp());
                 }
             } else {
                 //nemico attacca per primo, pkm alleato esausto
