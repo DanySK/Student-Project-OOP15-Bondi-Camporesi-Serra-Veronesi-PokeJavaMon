@@ -49,7 +49,7 @@ public class Box {
     	for (Pokemon p : PlayerImpl.getPlayer().getBox().getPokemonList()) {
             names.add(p.getPokemon().name()); // Nome Pkmn
             lvl.add("" + p.getStat(Stat.LVL)); // Livello
-            mHP.add("" + p.getStat(Stat.HP));
+            mHP.add("" + p.getStat(Stat.HP) + "/" + p.getCurrentHP());
             cHP.add("" + p.getCurrentHP());
             pk.add(p);
     	}
@@ -62,16 +62,20 @@ public class Box {
                 contain.add(new JLabel(lvl.get(i)));
                 contain.add(new JLabel(cHP.get(i)));
                 contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
-        		i++;
+                JButton but4 = new JButton("EXIT");
+                but4.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                Box.dispose();
+                        }
+                });
+                contain.add(but4);
+        	i++;
         	}
     		
 			final Pokemon pokmn = pk.get(i);
 			contain.add(new JLabel(names.get(i)));
 			contain.add(new JLabel(lvl.get(i)));
-			contain.add(new JLabel(cHP.get(i)));
 			contain.add(new JLabel(mHP.get(i)));
 			JButton but = new JButton("INFO");
 			but.addActionListener(new ActionListener() {
@@ -98,14 +102,7 @@ public class Box {
 				}
 			});
 			contain.add(but3);
-			JButton but4 = new JButton("EXIT");
-			but4.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					Box.dispose();
-				}
-			});
-			contain.add(but4);
+			
 		}
     	contain.setLayout(new GridLayout(names.size(), cols));
         window.setSize(900,100 * names.size());
