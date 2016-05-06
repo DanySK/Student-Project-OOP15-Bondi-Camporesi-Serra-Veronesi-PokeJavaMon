@@ -186,8 +186,8 @@ public class PokeMapImpl implements PokeMap {
 		final MapLayer trainerLayer = tiledMap.getLayers().get("trainerLayer");
 		AbstractCharacter retCharacter = null;
 		for (final MapObject mobj : trainerLayer.getObjects()) {
-			final int trainerInMapX = getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth);
-			final int trainerInMapY = getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
+			final int trainerInMapX = getTileUnitX(mobj.getProperties().get("x", Float.class).intValue() / this.tileWidth);
+			final int trainerInMapY = getTileUnitY(mobj.getProperties().get("y", Float.class).intValue() / this.tileHeight);
 
 			if (trainerInMapX == tileX && trainerInMapY == tileY ) {
 				final String npcType = mobj.getProperties().get("type", String.class);
@@ -303,8 +303,8 @@ public class PokeMapImpl implements PokeMap {
 		} 
 		for (final MapObject mobj : doorLayer.getObjects()) {
 			if (mobj.getProperties().containsKey("DOOR_X")) {
-				final int real_x = this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth);
-				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
+				final int real_x = this.getTileUnitX(mobj.getProperties().get("x", Float.class).intValue() / this.tileWidth);
+				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Float.class).intValue() / this.tileHeight);
 				final int to_x = Integer.parseInt((String)mobj.getProperties().get("DOOR_X"));
 				final int to_y = Integer.parseInt((String)mobj.getProperties().get("DOOR_Y"));
 				Teleport tmp;
@@ -341,8 +341,8 @@ public class PokeMapImpl implements PokeMap {
 		} 
 		for (final MapObject mobj : signLayer.getObjects()) {
 			if (mobj.getProperties().containsKey("signMessage")) {
-				final int real_x = this.getTileUnitX(this.getTileUnitX(mobj.getProperties().get("x", Integer.class) / this.tileWidth));
-				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Integer.class) / this.tileHeight);
+				final int real_x = this.getTileUnitX(this.getTileUnitX(mobj.getProperties().get("x", Float.class).intValue() / this.tileWidth));
+				final int real_y = this.getTileUnitY(mobj.getProperties().get("y", Float.class).intValue() / this.tileHeight);
 				final Sign tmp = new Sign(real_x, real_y, (String) mobj.getProperties().get("signMessage"));
 				this.signs.add(tmp);
 			}
