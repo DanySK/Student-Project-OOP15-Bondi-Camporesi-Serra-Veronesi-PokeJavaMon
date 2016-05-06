@@ -103,20 +103,20 @@ public Zaino() {
             Item i = itm;
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (i.getType() != ItemType.POKEBALL) {
-                	Zaino.selectItem(i);
-                	Zaino.dispose();
-                        Controller.getController().getViewController().team(true, true);
+                
+            if (i.getType() == ItemType.POTION) {
+                    Zaino.selectItem(i);
+                    Controller.getController().getViewController().team(true, true);
+            } else {
+                    Zaino.selectItem(i);
+                if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
+                    Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
                 } else {
-                	Zaino.selectItem(i);
-                    if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
-                    	Zaino.useItem(Controller.getController().getEnemyPokemonInFight());
-                    } else {
-                    	new MessageFrame(null, "NON PUOI CATTURARE FUORI DALLA BATTAGLIA");
-                    	Zaino.useItem(null);
-                    }
+                    new MessageFrame(null, "NON PUOI USARE QUESTO STRUMENTO FUORI DALLA BATTAGLIA");
+                    Zaino.useItem(null);
                 }
-                Zaino.dispose();
+            }
+                //Zaino.dispose();
             }
         });
     /*    if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {

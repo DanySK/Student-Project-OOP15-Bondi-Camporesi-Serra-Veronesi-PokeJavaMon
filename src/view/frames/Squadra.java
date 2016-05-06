@@ -64,7 +64,7 @@ public class Squadra {
         		i++;
         	}
       
-            final int index = i;
+            final int index = i - 1;
             final Pokemon pkmn = pk.get(i);
             contain.add(new JLabel(names.get(i)));
             contain.add(new JLabel(lvl.get(i)));
@@ -72,11 +72,14 @@ public class Squadra {
             JButton but = new JButton("INFO");
             but.addActionListener(new ActionListener() {
                 private final Pokemon ID = pkmn;
+                
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Controller.getController().getViewController().stats(ID);
+                    System.out.println(ID);
+                    new Statistics (ID);
                 }
             });
+   
             contain.add(but);
             JButton but2 = new JButton("SET FIRST");
             but2.addActionListener(new ActionListener() {
@@ -84,12 +87,12 @@ public class Squadra {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (Controller.getController().getStatusController().getState() == State.MENU) {
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index-1).getCurrentHP() > 0) {
-                            PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID-1);
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
+                            PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
                             Squadra.dispose();
                             new Squadra(true, false);
                         } else {
-                            Squadra.dispose();
+                            //Squadra.dispose();
                             new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                         }
                     } else {
@@ -97,6 +100,7 @@ public class Squadra {
                             try {
                                 Controller.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 Squadra.dispose();
+                          
                             } catch (PokemonIsExhaustedException e1) {
                                 new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             } catch (PokemonIsFightingException e1) {

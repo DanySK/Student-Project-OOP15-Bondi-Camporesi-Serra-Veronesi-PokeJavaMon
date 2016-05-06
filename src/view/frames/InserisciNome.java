@@ -51,12 +51,12 @@ public class InserisciNome {
             Map<String, Integer> boostList = new HashMap<>();
             Map<String, Integer> ballList = new HashMap<>();
             potionList.put(PotionType.POTION.name(), 10);
-            potionList.put(PotionType.SUPERPOTION.name(), 0);
-            potionList.put(PotionType.HYPERPOTION.name(), 0);
-            boostList.put(Stat.SPD.name() + "X", 0);
-            boostList.put(Stat.DEF.name() + "X", 0);
-            boostList.put(Stat.ATK.name() + "X", 0);
-            ballList.put(PokeballType.Greatball.name(), 0);
+            potionList.put(PotionType.SUPERPOTION.name(), 2);
+            potionList.put(PotionType.HYPERPOTION.name(), 2);
+            boostList.put(Stat.SPD.name() + "X", 2);
+            boostList.put(Stat.DEF.name() + "X", 2);
+            boostList.put(Stat.ATK.name() + "X", 2);
+            ballList.put(PokeballType.Greatball.name(), 2);
             ballList.put(PokeballType.Ultraball.name(), 100);
             ballList.put(PokeballType.Pokeball.name(), 10);
             InventoryImpl.initializeInventory(potionList, boostList, ballList);
@@ -99,12 +99,13 @@ public class InserisciNome {
 	    	           }
 	    	        else {
 	    	        	try {
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BULBASAUR, 5));
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 6));
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 7));
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA,8));
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.ZUBAT, 9));
-		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.TENTACOOL, 10));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 50));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA,5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.ZUBAT, 5));
+		                     PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.TENTACOOL, 5));
+		                     
 		                 } catch (SquadFullException ex) {
 		                     ex.printStackTrace();
 		                 }

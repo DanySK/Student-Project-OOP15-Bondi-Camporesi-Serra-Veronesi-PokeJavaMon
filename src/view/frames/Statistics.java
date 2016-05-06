@@ -1,12 +1,9 @@
 package view.frames;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
-import controller.Controller;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import java.awt.event.ActionEvent;
@@ -14,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 public class Statistics {
@@ -63,6 +59,9 @@ class NamePanel3 extends JPanel
 
 	public NamePanel3(Pokemon ID)
     {
+	    
+	//TODO ArrayList<moves> moves = new ArrayList<>();
+	//TODO ArrayList<stats> stats = new ArrayList<>();
     	ArrayList<String> moves = new ArrayList<String>();
     	ArrayList<String> names = new ArrayList<String>();
     	ArrayList<String> stats = new ArrayList<String>();
@@ -75,26 +74,39 @@ class NamePanel3 extends JPanel
                 moves.add("Move");
                 stats.add("Stat");
                 }
-        	names.add("" + ID.getCurrentMoves().get(0).name());
-        	names.add("" + ID.getCurrentMoves().get(1).name());
-        	names.add("" + ID.getCurrentMoves().get(2).name());
-        	names.add("" + ID.getCurrentMoves().get(3).name());
-        	values.add("" + ID.getStat(Stat.HP));
+        	if (ID.getCurrentMoves().get(0) != null) {
+                    names.add("" + ID.getCurrentMoves().get(0).name());
+                }
+        	if (ID.getCurrentMoves().get(1) != null) {
+        	    names.add("" + ID.getCurrentMoves().get(1).name());
+        	}
+                if (ID.getCurrentMoves().get(2) != null) {
+                    names.add("" + ID.getCurrentMoves().get(2).name());
+                }        	
+                if (ID.getCurrentMoves().get(3) != null) {
+                    names.add("" + ID.getCurrentMoves().get(3).name());
+                }
+                values.add("" + ID.getStat(Stat.HP));
         	values.add("" + ID.getStat(Stat.ATK));
         	values.add("" + ID.getStat(Stat.DEF));
         	values.add("" + ID.getStat(Stat.SPD));
         	
-        	System.out.println(moves);
+        /*System.out.println(moves);
             System.out.println(stats);
         	System.out.println(names);
         	System.out.println(values);
-        	System.out.println(ID);
+        	System.out.println(ID);*/
         }
 
         for(int i = 0; i<4;i++)
         {
-            add(new JLabel(moves.get(i)));
-            add(new JLabel(names.get(i)));
+            add(new JLabel(moves.get(i) + "" + (i+1)));
+            if (i < names.size()){
+                add(new JLabel(names.get(i)));
+            }
+            else{
+                add(new JLabel("")); 
+            }
             add(new JLabel(stats.get(i)));
             add(new JLabel(values.get(i)));
             }
