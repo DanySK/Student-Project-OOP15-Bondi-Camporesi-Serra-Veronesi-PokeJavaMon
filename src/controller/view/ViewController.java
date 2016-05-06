@@ -7,6 +7,7 @@ import controller.Controller;
 import controller.parameters.State;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
+import view.View;
 import view.frames.*;
 import view.resources.TiledMapGame;
 import view.resources.TitleWiew;
@@ -23,13 +24,17 @@ public class ViewController implements ViewControllerInterface {
     @Override
     public void market() {
         Controller.getController().updateStatus(State.READING);
-        new Market();
+        Market m = new Market();
+        View.getView().addNew(m);
+        View.getView().showCurrent();
     }
     
     @Override
     public void showMenu() {
         Controller.getController().updateStatus(State.MENU);
-        new Menu();
+        Menu m = new Menu();
+        View.getView().addNew(m);
+        View.getView().showCurrent();
     }
     
     @Override
@@ -66,7 +71,7 @@ public class ViewController implements ViewControllerInterface {
     
     @Override
     public void box() {
-        new Box();
+        new BoxMenu();
     }
     
     @Override
@@ -81,7 +86,7 @@ public class ViewController implements ViewControllerInterface {
     
     @Override
     public void stats(final Pokemon pokemon) {
-        new Stats(pokemon);
+        new Statistics(pokemon);
     }
 
     @Override
