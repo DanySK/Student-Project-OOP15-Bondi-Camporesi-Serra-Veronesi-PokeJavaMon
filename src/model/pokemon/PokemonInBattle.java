@@ -36,7 +36,7 @@ public class PokemonInBattle extends AbstractPokemon{
 	 * @return	true if it's ready to evolve, false if it isn't
 	 */
 	public boolean checkIfEvolves() {
-	    if (this.getStat(Stat.LVL) >= this.pokemon.getEvolveLevel()) {
+	    if (this.getStat(Stat.LVL) >= this.pokemon.getEvolveLevel() && this.pokemon.getEvolveLevel() > 0) {
 	        return true;
 	    }
 	    return false;
