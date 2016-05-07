@@ -5,13 +5,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.*;
-import javax.swing.Box;
+import javax.swing.border.LineBorder;
+
 import controller.Controller;
 import controller.parameters.State;
 import model.player.PlayerImpl;
 import view.View;
 
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 import java.awt.Component;
 
 public class Menu extends JWindow implements MyFrame {
@@ -27,7 +29,10 @@ public class Menu extends JWindow implements MyFrame {
     public void showFrame() {
         this.setAlwaysOnTop(true); 
         this.setBounds(100, 100, 180, 310);
-        this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        JPanel panel = new JPanel();
+        this.setContentPane(panel);     
+        panel.setBorder(new LineBorder(Color.GRAY, 4));
+        panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.add(Box.createVerticalGlue());
         box = new JButton("BoxMenu");
         box.setAlignmentX(Component.CENTER_ALIGNMENT);

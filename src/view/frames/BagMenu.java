@@ -1,10 +1,12 @@
 package view.frames;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import controller.parameters.State;
@@ -29,8 +31,8 @@ public class BagMenu extends JWindow implements MyFrame {
     private final ArrayList<String> Qnt = new ArrayList<String>();
     private final ArrayList<Item> it = new ArrayList<Item>();
     private int cols = 1;
-    private JButton esci2;
-    private JButton usa;
+    private JButton exit;
+    private JButton use;
 
     public void selectItem(Item it) {
         itemToUse = it;
@@ -83,7 +85,8 @@ public class BagMenu extends JWindow implements MyFrame {
     public void showFrame() {
         this.setAlwaysOnTop(true);
         contiene = new JPanel();
-        this.setContentPane(contiene);   
+        this.setContentPane(contiene);  
+        contiene.setBorder(new LineBorder(Color.GRAY, 4));
         contiene.setLayout(new GridLayout(1,1));
         Name1.add("TYPE");
         Name2.add("NAME");
@@ -118,8 +121,8 @@ public class BagMenu extends JWindow implements MyFrame {
                 contiene.add(new JLabel(Name1.get(j)));
                 contiene.add(new JLabel(Name2.get(j)));
                 contiene.add(new JLabel(Qnt.get(j)));
-                esci2 = new JButton("Exit");
-                esci2.addActionListener(new ActionListener() {
+                exit = new JButton("Exit");
+                exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -127,15 +130,15 @@ public class BagMenu extends JWindow implements MyFrame {
                         View.getView().resumeCurrent();
                     }
                 });
-                contiene.add(esci2);
+                contiene.add(exit);
                 j++;
             }
             final Item itm = it.get(j);
             contiene.add(new JLabel(Name1.get(j)));
             contiene.add(new JLabel(Name2.get(j)));
             contiene.add(new JLabel(Qnt.get(j)));
-            usa = new JButton("Use");
-            usa.addActionListener(new ActionListener() {     
+            use = new JButton("Use");
+            use.addActionListener(new ActionListener() {     
                 Item i = itm;
                 @Override
                 public void actionPerformed(ActionEvent e) {            
@@ -165,9 +168,9 @@ public class BagMenu extends JWindow implements MyFrame {
                 }
             });
             if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
-                usa.setEnabled(false);
+            	use.setEnabled(false);
             }
-            contiene.add(usa);
+            contiene.add(use);
         }
         
         contiene.setLayout(new GridLayout(Name1.size(), cols));

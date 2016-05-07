@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
@@ -24,17 +25,18 @@ public class BoxMenu extends JWindow implements MyFrame {
     private final ArrayList<String> mHP = new ArrayList<String>();
     private final ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
     private int cols = 1;
-    private JButton but4;
-    private JButton but;
-    private JButton but3;
-
+    private JButton info;
+    private JButton withdraw;
+    private JButton exit;
+    
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
         contain = new JPanel();
         pn = new JScrollPane(contain);
         this.setContentPane(pn);     
-        contain.setLayout(new GridLayout(1,1));    
+        contain.setBorder(new LineBorder(Color.GRAY, 4));
+        contain.setLayout(new GridLayout(1,1));      
         names.add("NAME");
         lvl.add("LEVEL");
         cHP.add("HEALTH POINTS");
@@ -53,8 +55,8 @@ public class BoxMenu extends JWindow implements MyFrame {
                 contain.add(new JLabel(lvl.get(i)));
                 contain.add(new JLabel(cHP.get(i)));
                 contain.add(new JLabel(""));
-                but4 = new JButton("EXIT");
-                but4.addActionListener(new ActionListener() {
+                exit = new JButton("EXIT");
+                exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -62,14 +64,14 @@ public class BoxMenu extends JWindow implements MyFrame {
                         View.getView().resumeCurrent();
                     }
                 });
-                contain.add(but4);
+                contain.add(exit);
             } else {
                 final Pokemon pokmn = pk.get(i);
                 contain.add(new JLabel(names.get(i)));
                 contain.add(new JLabel(lvl.get(i)));
                 contain.add(new JLabel(mHP.get(i)));
-                but = new JButton("INFO");
-                but.addActionListener(new ActionListener() {
+                info = new JButton("INFO");
+                info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pokmn;
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -79,9 +81,9 @@ public class BoxMenu extends JWindow implements MyFrame {
                         View.getView().showCurrent();
                     }
                 });
-                contain.add(but);
-                but3 = new JButton("WITHDRAW");
-                but3.addActionListener(new ActionListener() {
+                contain.add(info);
+                withdraw = new JButton("WITHDRAW");
+                withdraw.addActionListener(new ActionListener() {
                     final Pokemon selected = pokmn;
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -99,7 +101,7 @@ public class BoxMenu extends JWindow implements MyFrame {
                         }
                     }
                 });
-                contain.add(but3);
+                contain.add(withdraw);
             }               
         }
         contain.setLayout(new GridLayout(names.size(), cols));

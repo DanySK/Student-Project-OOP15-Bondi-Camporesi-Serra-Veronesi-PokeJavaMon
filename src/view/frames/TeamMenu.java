@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import controller.parameters.State;
@@ -26,10 +27,11 @@ public class TeamMenu extends JWindow implements MyFrame {
     private final ArrayList<String>mHP = new ArrayList<String>();
     private final ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
     private int cols = 1;
-    private JButton but;
-    private JButton but2;
-    private JButton but3;
-    private JButton but4;
+    private JButton info;
+    private JButton set;
+    private JButton deposit;
+    private JButton select;
+    private JButton exit;
     private boolean canExit, isChangingPoke;
     
     public TeamMenu(final boolean b1, final boolean b2) {
@@ -42,6 +44,7 @@ public class TeamMenu extends JWindow implements MyFrame {
         this.setAlwaysOnTop(true);
         contain = new JPanel();
         this.setContentPane(contain);
+        contain.setBorder(new LineBorder(Color.GRAY, 4));
         names.add("NAME");
         lvl.add("LEVEL");
         cHP.add("HEALTH POINTS");
@@ -62,8 +65,19 @@ public class TeamMenu extends JWindow implements MyFrame {
                 contain.add(new JLabel(""));
                 contain.add(new JLabel(""));
                 contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
+                exit = new JButton("EXIT");
+                exit.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        View.getView().disposeCurrent();
+                        View.getView().removeCurrent();
+                        View.getView().resumeCurrent();
+                    }
+                });
+                if (!canExit) {
+                	exit.setEnabled(false);
+                }
+                contain.add(exit);
                 i++;
             }
             final int index = i - 1;
@@ -71,8 +85,8 @@ public class TeamMenu extends JWindow implements MyFrame {
             contain.add(new JLabel(names.get(i)));
             contain.add(new JLabel(lvl.get(i)));
             contain.add(new JLabel(cHP.get(i) + " / " + mHP.get(i)));
-            but = new JButton("INFO");
-            but.addActionListener(new ActionListener() {
+            info = new JButton("INFO");
+            info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pkmn;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -82,9 +96,9 @@ public class TeamMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             });
-            contain.add(but);
-            but2 = new JButton("SET FIRST");
-            but2.addActionListener(new ActionListener() {
+            contain.add(info);
+            set = new JButton("SET FIRST");
+            set.addActionListener(new ActionListener() {
                 private final int ID = index;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -137,11 +151,11 @@ public class TeamMenu extends JWindow implements MyFrame {
                 }
             });
             if (isChangingPoke) {
-                but2.setEnabled(false);
+            	set.setEnabled(false);
             }
-            contain.add(but2);
-            but3 = new JButton("DEPOSIT");
-            but3.addActionListener(new ActionListener() {
+            contain.add(set);
+            deposit = new JButton("DEPOSIT");
+            deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
                     try {
@@ -159,11 +173,11 @@ public class TeamMenu extends JWindow implements MyFrame {
                 }
             });
             if (Controller.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
-                but3.setEnabled(false);
+            	deposit.setEnabled(false);
             }
-            contain.add(but3);
-            but4 = new JButton("SELECT");
-            but4.addActionListener(new ActionListener() {
+            contain.add(deposit);
+            select = new JButton("SELECT");
+            select.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
                     View.getView().disposeCurrent();
@@ -179,22 +193,9 @@ public class TeamMenu extends JWindow implements MyFrame {
                 }
             });
             if (!isChangingPoke) {
-                but4.setEnabled(false);
+            	select.setEnabled(false);
             }
-            contain.add(but4);
-            JButton but5 = new JButton("EXIT");
-            but5.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    View.getView().disposeCurrent();
-                    View.getView().removeCurrent();
-                    View.getView().resumeCurrent();
-                }
-            });
-            if (!canExit) {
-                but5.setEnabled(false);
-            }
-            contain.add(but5);
+            contain.add(select);
         }      
         contain.setLayout(new GridLayout(names.size(), cols));
         this.setSize(900,100 * names.size());
