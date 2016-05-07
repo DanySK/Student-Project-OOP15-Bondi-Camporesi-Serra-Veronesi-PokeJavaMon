@@ -278,7 +278,7 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public boolean isWalkable(int x, int y) {
+	public boolean isWalkable(final int x, final int y) {
 		if (this.isOutOfBounds(x, y)) {
 			return false;
 		}
@@ -292,6 +292,29 @@ public class PokeMapImpl implements PokeMap {
 		return this.map[x][y].isWalkable() && !isCollision;
 	}
 	
+	@Override
+	public boolean isWalkableNextToPlayer(final Direction d) {
+		int nextX = PlayerImpl.getPlayer().getTileX();
+		int nextY = PlayerImpl.getPlayer().getTileY();
+		switch (d) {
+		case NORTH :
+			nextY -= 1;
+			break;
+		case SOUTH :
+			nextY += 1;
+			break;
+		case EAST :
+			nextX += 1;
+			break;
+		case WEST :
+			nextX -= 1;
+			break;
+		default :
+			break;
+		}
+		return this.isWalkable(nextX, nextY);
+		
+	}
 	@Override
 	public TileType getTileNextToPlayer(final Direction d) {
 		Player p = PlayerImpl.getPlayer();

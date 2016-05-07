@@ -26,6 +26,7 @@ public interface PokeMap {
     public void removeCollision(final Position p);
     public void addCollision(final Position p);
     public boolean isWalkable(final int x, final int y);
+    public boolean isWalkableNextToPlayer(final Direction d);
     public TileType getTileNextToPlayer(final Direction d);
     
     public Set<Teleport> getTeleports();

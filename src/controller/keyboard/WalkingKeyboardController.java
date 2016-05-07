@@ -342,12 +342,11 @@ public class WalkingKeyboardController implements KeyboardController {
         private void resolveMove(final Direction direction) {
             pm = MainGameView.getMapImpl();
             t = pm.getTileNextToPlayer(direction);
-            if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
-                switch (direction) {
+
+            if (pm.isWalkableNextToPlayer(direction)) {
+            	switch (direction) {
                 case EAST:
                     PlayerSprite.getSprite().setVelocity(SPEED, NULL_SPEED);
-                    break;
-                case NONE:
                     break;
                 case NORTH:
                     PlayerSprite.getSprite().setVelocity(NULL_SPEED, SPEED);
