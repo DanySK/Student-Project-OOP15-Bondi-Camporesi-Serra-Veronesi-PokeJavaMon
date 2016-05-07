@@ -156,7 +156,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
-                    MyFrame fs = View.getView().getParent();
+                    MyFrame fs = View.getView().getCurrent();
                     ((FightScreen) fs).showMessage(array);
                 } else {
                     message.add("ALLY DEFEATED");
@@ -200,7 +200,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
-                    MyFrame fs = View.getView().getParent();
+                    MyFrame fs = View.getView().getCurrent();
                     ((FightScreen) fs).showMessage(array);                
                 } else {
                     message.add("ALLY DEFEATED");

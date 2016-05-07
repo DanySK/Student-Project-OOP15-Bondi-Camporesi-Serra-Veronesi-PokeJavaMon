@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import controller.Controller;
 import exceptions.CannotEscapeFromTrainerException;
 import model.player.PlayerImpl;
+import model.pokemon.Stat;
 import view.View;
 
 import java.awt.event.KeyAdapter;
@@ -368,12 +369,12 @@ class MyPanel extends JPanel {
         }
         if (image != null) {
             int width = 150;
-            double maxHP = 200; /*get maxHealth*/
-            double HP = 200; /*get currentHealth*/
-            double Scale = HP / maxHP;
-            double maxHP2 = 200; /*get maxHealth*/
-            double HP2 = 75; /*get currentHealth*/
+            double maxHP2 = PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.HP); /*get maxHealth*/
+            double HP2 = PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP(); /*get currentHealth*/
             double Scale2 = HP2 / maxHP2;
+            double maxHP = Controller.getController().getEnemyPokemonInFight().getStat(Stat.HP); /*get maxHealth*/
+            double HP = Controller.getController().getEnemyPokemonInFight().getCurrentHP(); /*get currentHealth*/
+            double Scale = HP / maxHP;
             g.drawRect(20, 20, width, 7);
             g.drawRect(272, 130, width, 7);
             g.fillRect(20, 20, (int) (width * Scale), 7);
