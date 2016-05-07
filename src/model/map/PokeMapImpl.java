@@ -43,6 +43,7 @@ public class PokeMapImpl implements PokeMap {
 	private Set<GymLeader> gymLeaders;
 	private PokeMarket market;
 	private TiledMap tiledMap;
+	private Position pokeCenterSpawn;
 	private final int mapHeight;
 	private final int mapWidth;
 	private final int tileHeight;
@@ -176,8 +177,12 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.START.toString())) {
 				PlayerImpl.START_X = tileX;
 				PlayerImpl.START_Y = tileY;
-				this.map[tileX][tileY] = TileType.TERRAIN;
+				this.map[tileX][tileY] = TileType.START;
 				PlayerImpl.getPlayer().setStartingPoint(tileX, tileY);
+			} else if (cellProperty.equals(TileType.DEFEAT.toString())) {
+				this.pokeCenterSpawn = new Position(tileX, tileY);
+				this.map[tileX][tileY] = TileType.DEFEAT;
+				System.out.println("Position @ " + this.pokeCenterSpawn + "is a PokemonCenterSpawn");
 			}
 		}
 	}
@@ -527,7 +532,13 @@ public class PokeMapImpl implements PokeMap {
 		return Arrays.copyOf(this.map, this.map.length);
 	}
 
+	@Override
 	public TiledMap getTiledMap() {
 	    return this.tiledMap;
+	}
+	
+	@Override
+	public Position getPokemonCenterSpawnPosition() {
+		return this.pokeCenterSpawn;
 	}
 }

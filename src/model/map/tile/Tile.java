@@ -4,7 +4,21 @@ import model.map.Drawable;
 
 public interface Tile extends Drawable{
     public static enum TileType {
-        POKEMON_ENCOUNTER(true, true), TERRAIN(false, true), WATER(true, false), TREE(false, false), WALL(false, false), TELEPORT(false, true), BADGETELEPORT(false, true), SIGN(false, false), NPC(false, false), MARKET(false, false), CENTER(false, false), START(true, false);
+        POKEMON_ENCOUNTER(true, true), 
+        TERRAIN(false, true), 
+        WATER(false, false), 
+        TREE(false, false), 
+        WALL(false, false), 
+        TELEPORT(false, true), 
+        BADGETELEPORT(false, true), 
+        SIGN(false, false), 
+        NPC(false, false), 
+        MARKET(false, false), 
+        CENTER(false, false), 
+        START(false, true),
+        DEFEAT(false, true),
+        
+        ;
     
         private TileType(final boolean wildEncounter, final boolean walkable) {
             this.wildEncounter = wildEncounter;

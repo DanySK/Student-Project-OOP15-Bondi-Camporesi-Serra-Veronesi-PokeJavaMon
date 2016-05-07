@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+
 import model.map.Drawable.Direction;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
@@ -57,5 +59,8 @@ public interface PokeMap {
 	public int getTileUnitY(final int cellY);
 
 	public TileType[][] getMap();
-	    
+	
+	public TiledMap getTiledMap();
+	
+	public Position getPokemonCenterSpawnPosition();
 }
