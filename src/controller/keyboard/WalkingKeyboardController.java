@@ -342,6 +342,7 @@ public class WalkingKeyboardController implements KeyboardController {
         private void resolveMove(final Direction direction) {
             pm = MainGameView.getMapImpl();
             t = pm.getTileNextToPlayer(direction);
+            System.out.println("Player Pos: " + PlayerImpl.getPlayer().getPosition() + "Tile to direction " + direction + " = " + t.toString());
             if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
                 switch (direction) {
                 case EAST:
@@ -364,6 +365,7 @@ public class WalkingKeyboardController implements KeyboardController {
             } else {
                 PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
             }
+
         }
         
         private Direction changeOppositeDirection() {

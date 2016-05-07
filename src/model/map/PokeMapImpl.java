@@ -182,7 +182,7 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.DEFEAT.toString())) {
 				this.pokeCenterSpawn = new Position(tileX, tileY);
 				this.map[tileX][tileY] = TileType.DEFEAT;
-				System.out.println("Position @ " + this.pokeCenterSpawn + "is a PokemonCenterSpawn");
+				System.out.println("Position @ " + this.pokeCenterSpawn + "is a PokemonCenterSpawn, is walkable? " + this.isWalkable(tileX, tileY) + "isTileWalkable?: " + TileType.DEFEAT.isWalkable() );
 			}
 		}
 	}
@@ -273,12 +273,12 @@ public class PokeMapImpl implements PokeMap {
 	}
 
 	@Override
-	public void addCollision(Position p) {
+	public void addCollision(final Position p) {
 		this.collisions.add(p);
 	}
 
 	@Override
-	public boolean isWalkable(int x, int y) {
+	public boolean isWalkable(final int x, final int y) {
 		if (this.isOutOfBounds(x, y)) {
 			return false;
 		}
@@ -291,6 +291,25 @@ public class PokeMapImpl implements PokeMap {
 		}
 		return this.map[x][y].isWalkable() && !isCollision;
 	}
+	
+	@Override
+	public boolean isWalkableNextTo(final Direction d) {
+		final int playerPosX = PlayerImpl.getPlayer().getTileX();
+		final int playerPosY = PlayerImpl.getPlayer().getTileY();
+		switch(d) {
+		case NORTH :
+			return this.isWalkable(playerPosX - 1, playerPosY);
+		case SOUTH :
+			return this.isWalkable(playerPosX + 1, playerPosY);
+		case EAST :
+			return this.isWalkable(playerPosX, playerPosY + 1);
+		case WEST :
+			return this.isWalkable(playerPosX, playerPosY - 1);
+		default :
+			return this.isWalkable(playerPosX, playerPosY);
+		}
+	}
+	
 	
 	@Override
 	public TileType getTileNextToPlayer(final Direction d) {

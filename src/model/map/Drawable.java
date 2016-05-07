@@ -10,6 +10,8 @@ public interface Drawable {
     
     public int getTileY();
     
+    public Position getPosition();
+    
     public Direction getDirection();
         
 }
