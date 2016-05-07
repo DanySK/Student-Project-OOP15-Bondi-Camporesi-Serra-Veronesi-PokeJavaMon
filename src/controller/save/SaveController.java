@@ -22,7 +22,7 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
-import view.resources.Play;
+import view.resources.MainGameView;
 
 /**
  * This class saves all the requested informations. 
@@ -100,7 +100,7 @@ public class SaveController implements SaveControllerInterface {
      */
     private void setTrainers() {
         final Element allenatori = new Element(XMLParameters.TRAINERS.getName());
-        final Set<Trainer> l = Play.getMapImpl().getTrainers();
+        final Set<Trainer> l = MainGameView.getMapImpl().getTrainers();
         for (final Trainer t : l) {
             if (t != null) {
                 allenatori.setAttribute("N" + t.getID(),Boolean.toString(t.isDefeated()));

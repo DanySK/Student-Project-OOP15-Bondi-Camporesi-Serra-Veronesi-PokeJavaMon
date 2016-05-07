@@ -22,7 +22,7 @@ import model.map.PokeMap;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
-import view.resources.Play;
+import view.resources.MainGameView;
 import view.sprite.PlayerSprite;
 
 /**
@@ -116,7 +116,7 @@ public class LoadController implements LoadControllerInterface {
      * Loads the trainers from the save file
      */
     private void getTrainers() {
-        final PokeMap map = Play.getMapImpl();
+        final PokeMap map = MainGameView.getMapImpl();
         final Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
         for (final Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {

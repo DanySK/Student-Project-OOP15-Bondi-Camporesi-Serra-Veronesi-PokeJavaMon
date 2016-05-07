@@ -3,13 +3,13 @@ package view.resources;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 
-public class TiledMapGame extends Game {       
+public class GameView extends Game {       
         LwjglApplication app;
         boolean keepShowing = true;
-        Play pl;      
+        MainGameView pl;      
         
-        public TiledMapGame(boolean bl) {
-            pl = new Play(bl);
+        public GameView(boolean bl) {
+            pl = new MainGameView(bl);
         }
         
         public void create() {	        

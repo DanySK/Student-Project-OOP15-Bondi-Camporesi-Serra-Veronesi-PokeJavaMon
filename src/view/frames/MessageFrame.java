@@ -1,4 +1,4 @@
-package view.resources;
+package view.frames;
 
 import java.awt.Color;
 import java.awt.GridLayout;

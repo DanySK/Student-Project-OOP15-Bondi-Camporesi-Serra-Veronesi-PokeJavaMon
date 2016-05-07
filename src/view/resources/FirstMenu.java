@@ -14,11 +14,11 @@ import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.State;
 
-public class TitleWiew {
+public class FirstMenu {
     
     private JFrame frame;
     
-    public TitleWiew() {
+    public FirstMenu() {
         frame = new JFrame("PokeJavaMon");
     }
     

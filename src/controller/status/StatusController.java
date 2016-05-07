@@ -15,7 +15,7 @@ import model.fight.FightVsTrainer;
 import model.map.Drawable.Direction;
 import model.player.PlayerImpl;
 import model.map.WalkableZone;
-import view.resources.Play;
+import view.resources.MainGameView;
 
 /**
  * This is the status controller of the game
@@ -42,12 +42,12 @@ public class StatusController implements StatusControllerInterface {
                     updateMusic();
                 }
                 keyboardController = new WalkingKeyboardController(); 
-                Play.updateKeyListener();
+                MainGameView.updateKeyListener();
                 break;
             case MENU:
                 state = s;
                 keyboardController = new MenuKeyboardController();
-                Play.updateKeyListener();
+                MainGameView.updateKeyListener();
                 break;
             case FIGHTING:
                 if (state != State.FIGHTING) {
@@ -69,13 +69,13 @@ public class StatusController implements StatusControllerInterface {
                         }
                     }
                     keyboardController = new FightingKeyboardController();
-                    Play.updateKeyListener();
+                    MainGameView.updateKeyListener();
                 }
                 break;
             case READING:
                 state = s;
                 keyboardController = new MenuKeyboardController();
-                Play.updateKeyListener();
+                MainGameView.updateKeyListener();
                 break;
             default:
                 break;
@@ -114,7 +114,7 @@ public class StatusController implements StatusControllerInterface {
 
     @Override
     public void updateMusic() {
-        final Optional<WalkableZone> zone = Play.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
+        final Optional<WalkableZone> zone = MainGameView.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (zone.isPresent()) {
             for (final Music m : Music.values()) {
                 if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && Controller.getController().getStatusController().getState() != State.FIGHTING) {

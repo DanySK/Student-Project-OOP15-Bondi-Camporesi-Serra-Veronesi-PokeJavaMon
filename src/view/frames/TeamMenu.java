@@ -15,9 +15,8 @@ import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;
-import view.resources.MessageFrame;
 
-public class Squadra extends JWindow implements MyFrame {
+public class TeamMenu extends JWindow implements MyFrame {
         
     private static final long serialVersionUID = 4848482754813638374L;
     private JPanel contain;
@@ -33,7 +32,7 @@ public class Squadra extends JWindow implements MyFrame {
     private JButton but4;
     private boolean canExit, isChangingPoke;
     
-    public Squadra(final boolean b1, final boolean b2) {
+    public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;
         this.isChangingPoke = b2;
     }
@@ -94,7 +93,7 @@ public class Squadra extends JWindow implements MyFrame {
                             PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
                             View.getView().disposeCurrent();
                             View.getView().removeCurrent();
-                            Squadra sc = new Squadra(true, false);
+                            TeamMenu sc = new TeamMenu(true, false);
                             View.getView().addNew(sc);
                             View.getView().showCurrent();
                         } else {
@@ -103,24 +102,34 @@ public class Squadra extends JWindow implements MyFrame {
                     } else {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                             try {
-                                Controller.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
+                                Controller.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                MyFrame fr = View.getView().getCurrent();
+                                ((FightScreen) fr).repaintFrame();
                                 View.getView().resumeCurrent();
                             } catch (PokemonIsExhaustedException e1) {
+                                TeamMenu tm = new TeamMenu(false, false);
+                                View.getView().addNew(tm);
+                                View.getView().showCurrent();
                                 new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             } catch (PokemonIsFightingException e1) {
+                                TeamMenu tm = new TeamMenu(false, false);
+                                View.getView().addNew(tm);
+                                View.getView().showCurrent();
                                 new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             }
                         } else {
                             try {
-                                Controller.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
+                                Controller.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 View.getView().resumeCurrent();
                             } catch (PokemonIsExhaustedException e1) {
+                                View.getView().resumeCurrent();
                                 new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             } catch (PokemonIsFightingException e1) {
+                                View.getView().resumeCurrent();
                                 new MessageFrame(null, "CANNOT SELECT THAT POKEMON");
                             }
                         }
@@ -139,7 +148,7 @@ public class Squadra extends JWindow implements MyFrame {
                         PlayerImpl.getPlayer().getBox().depositPokemon(p, PlayerImpl.getPlayer().getSquad());
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
-                        Squadra sc = new Squadra(canExit, isChangingPoke);
+                        TeamMenu sc = new TeamMenu(canExit, isChangingPoke);
                         View.getView().addNew(sc);
                         View.getView().showCurrent();
                     } catch (PokemonNotFoundException e1) {
@@ -160,15 +169,13 @@ public class Squadra extends JWindow implements MyFrame {
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
                     MyFrame fr = View.getView().getCurrent();
-                    ((Zaino) fr).useItem(p);
+                    ((BagMenu) fr).useItem(p);
                     if (Controller.getController().getStatusController().getState() == State.MENU) {
                         View.getView().removeCurrent();
-                        Zaino z = new Zaino();
+                        BagMenu z = new BagMenu();
                         View.getView().addNew(z);
                         View.getView().showCurrent();
-                    } else {
-                        View.getView().removeCurrent();
-                    }
+                    } 
                 }
             });
             if (!isChangingPoke) {
@@ -205,7 +212,7 @@ public class Squadra extends JWindow implements MyFrame {
     }
     
     @Override
-    public void resume() {
+    public void resumeFrame() {
         this.setVisible(true);
     }
 }      

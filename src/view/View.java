@@ -50,11 +50,11 @@ public class View {
     }
     
     public void resumeCurrent() {
-        stack.peek().resume();
+        stack.peek().resumeFrame();
     }
     
     public void resumeParent() {
-        parent.resume();
+        parent.resumeFrame();
     }
     
     public MyFrame getCurrent() {

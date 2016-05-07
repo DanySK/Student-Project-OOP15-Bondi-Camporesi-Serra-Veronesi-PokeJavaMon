@@ -10,7 +10,7 @@ import controller.parameters.Music;
 public interface MusicController {
     
     /**
-     * Play the selected {@link Music}
+     * MainGameView the selected {@link Music}
      * @param m the selected {@link Music}
      */
     void playMusic(Music m);

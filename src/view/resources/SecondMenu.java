@@ -1,4 +1,4 @@
-package view.frames;
+package view.resources;
 
 import java.awt.*;  
 import java.awt.event.*;
@@ -22,7 +22,7 @@ import model.pokemon.StaticPokemonFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InserisciNome {  
+public class SecondMenu {  
 	
     private JFrame f = new JFrame("PokeJavaMon");
     private static JTextField nickname = new JTextField();
@@ -33,7 +33,7 @@ public class InserisciNome {
 	return s;      
     }
 	    
-    public InserisciNome() {
+    public SecondMenu() {
 	nickname.requestFocusInWindow();
 	f.setFocusable(true);
 	f.setResizable(false);

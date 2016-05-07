@@ -58,7 +58,7 @@ public class Statistics extends JWindow implements MyFrame {
     }
     
     @Override
-    public void resume() {
+    public void resumeFrame() {
         this.setVisible(true);
     }
 }
@@ -76,7 +76,6 @@ class NamePanel3 extends JPanel {
         //TODO ArrayList<moves> moves = new ArrayList<>();
 	//TODO ArrayList<stats> stats = new ArrayList<>();
         if (ID.getPokemon().name() != null) {
-            System.out.println(ID);
             for (int j=0; j<4; j++){
                 moves.add("Move");
                 stats.add("Stat");

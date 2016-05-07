@@ -7,7 +7,7 @@ import com.badlogic.gdx.Input.Keys;
 import controller.Controller;
 import controller.parameters.State;
 import model.map.Drawable.Direction;
-import view.frames.InserisciNome;
+import view.resources.SecondMenu;
 
 /**
  * The {@link KeyboardController} active for the second menu.
@@ -30,7 +30,7 @@ public class SecondMenuKeyboardController implements KeyboardController {
     @Override
     public boolean keyUp(final int keycode) {
         if (keycode == Keys.ENTER) {
-            final String name = InserisciNome.getPlayerName();
+            final String name = SecondMenu.getPlayerName();
             if (name.length() < MIN || name.length() > MAX) {
                 JOptionPane.showMessageDialog(null,"You Naive Idiot");
             }

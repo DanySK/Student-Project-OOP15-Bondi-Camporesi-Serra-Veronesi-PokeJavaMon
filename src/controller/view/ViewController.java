@@ -9,8 +9,9 @@ import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import view.View;
 import view.frames.*;
-import view.resources.TiledMapGame;
-import view.resources.TitleWiew;
+import view.resources.SecondMenu;
+import view.resources.GameView;
+import view.resources.FirstMenu;
 
 /**
  * This class controls the menus from the view
@@ -40,13 +41,13 @@ public class ViewController implements ViewControllerInterface {
     @Override
     public void firstMenu() {
         Controller.getController().updateStatus(State.FIRST_MENU);
-        new TitleWiew().title();
+        new FirstMenu().title();
     }
     
     @Override
     public void secondMenu() {
         Controller.getController().updateStatus(State.SECOND_MENU);
-        new InserisciNome();
+        new SecondMenu();
     }
     
     @Override
@@ -56,7 +57,7 @@ public class ViewController implements ViewControllerInterface {
         cfg.useGL30 = true;
         cfg.width = WIDTH;
         cfg.height = HEIGHT;
-        final TiledMapGame tl = new TiledMapGame(newGame); 
+        final GameView tl = new GameView(newGame); 
         final LwjglApplication app = new LwjglApplication(tl, cfg);    
         tl.setApp(app);
     }
@@ -76,12 +77,12 @@ public class ViewController implements ViewControllerInterface {
     
     @Override
     public void team(final boolean canCloseMenu, final boolean canChangePokemon) {
-        new Squadra(canCloseMenu, canChangePokemon);
+        new TeamMenu(canCloseMenu, canChangePokemon);
     }
     
     @Override
     public void bag() {
-        new Zaino();
+        new BagMenu();
     }
     
     @Override
@@ -97,6 +98,8 @@ public class ViewController implements ViewControllerInterface {
     @Override
     public void fightScreen() {
         Controller.getController().updateStatus(State.FIGHTING);
-        new FightScreen();
+        FightScreen fs = new FightScreen();
+        View.getView().addNew(fs);
+        View.getView().showCurrent();
     }
 }

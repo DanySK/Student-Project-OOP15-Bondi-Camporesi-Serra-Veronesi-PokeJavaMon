@@ -2,7 +2,7 @@ package model.map;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
-import view.resources.Play;
+import view.resources.MainGameView;
 
 public abstract class AbstractCharacter implements Character {
     
@@ -38,7 +38,7 @@ public abstract class AbstractCharacter implements Character {
 		if (this.direction == d) {
 			return;
 		}
-	    PokeMapImpl pm = Play.getMapImpl();
+	    PokeMapImpl pm = MainGameView.getMapImpl();
 	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
 	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
 	    int val = -1;

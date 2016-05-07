@@ -10,7 +10,7 @@ import controller.Controller;
 import controller.parameters.State;
 import model.player.PlayerImpl;
 import view.View;
-import view.resources.MessageFrame;
+
 import java.awt.event.MouseEvent;
 import java.awt.Component;
 
@@ -54,7 +54,7 @@ public class Menu extends JWindow implements MyFrame {
         team.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 View.getView().hideCurrent();
-                Squadra tm = new Squadra(true, false);
+                TeamMenu tm = new TeamMenu(true, false);
                 View.getView().addNew(tm);
                 View.getView().showCurrent();
             }
@@ -66,7 +66,7 @@ public class Menu extends JWindow implements MyFrame {
         bag.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 View.getView().hideCurrent();
-                Zaino za = new Zaino();
+                BagMenu za = new BagMenu();
                 View.getView().addNew(za);
                 View.getView().showCurrent();
             }
@@ -108,7 +108,7 @@ public class Menu extends JWindow implements MyFrame {
     }
     
     @Override
-    public void resume() {
+    public void resumeFrame() {
         this.setVisible(true);
     }
 }

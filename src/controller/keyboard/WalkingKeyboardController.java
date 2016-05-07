@@ -14,8 +14,8 @@ import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import view.resources.MessageFrame;
-import view.resources.Play;
+import view.frames.MessageFrame;
+import view.resources.MainGameView;
 import view.sprite.PlayerSprite;
 
 /**
@@ -73,8 +73,8 @@ public class WalkingKeyboardController implements KeyboardController {
                 break;
             case Keys.ENTER:
                 if (!PlayerSprite.getSprite().isMoving()) {
-                    Play.getMapImpl();
-                    final TileType t = Play.getMapImpl().getTileNextToPlayer(direction);
+                    MainGameView.getMapImpl();
+                    final TileType t = MainGameView.getMapImpl().getTileNextToPlayer(direction);
                     switch (direction) {
                     case EAST:
                         x = PlayerImpl.getPlayer().getTileX() + INCREMENT;
@@ -194,7 +194,7 @@ public class WalkingKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        pm = Play.getMapImpl();
+        pm = MainGameView.getMapImpl();
         PlayerSprite.getSprite().updatePosition();
         t = pm.getTileType(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
@@ -234,7 +234,7 @@ public class WalkingKeyboardController implements KeyboardController {
     
     @Override
     public void checkEncounter() {
-        pm = Play.getMapImpl();
+        pm = MainGameView.getMapImpl();
         PlayerSprite.getSprite().updatePosition();
         t = pm.getTileType(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
         if (t == TileType.POKEMON_ENCOUNTER && (up || down || left || right )) {
@@ -340,7 +340,7 @@ public class WalkingKeyboardController implements KeyboardController {
          * Resolve the case player selects to move
          */
         private void resolveMove(final Direction direction) {
-            pm = Play.getMapImpl();
+            pm = MainGameView.getMapImpl();
             t = pm.getTileNextToPlayer(direction);
             if (t == TileType.POKEMON_ENCOUNTER || t == TileType.TELEPORT || t == TileType.TERRAIN) {
                 switch (direction) {

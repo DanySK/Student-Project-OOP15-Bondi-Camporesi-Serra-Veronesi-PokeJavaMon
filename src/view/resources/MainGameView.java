@@ -20,7 +20,7 @@ import model.map.PokeMapImpl;
 import model.player.PlayerImpl;
 import view.sprite.PlayerSprite;
 
-public class Play implements Screen {  
+public class MainGameView implements Screen {  
         private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
@@ -31,7 +31,7 @@ public class Play implements Screen {
 	private PlayerSprite pls;
 	private static Sprite sp;
 	
-	public Play(boolean b) {
+	public MainGameView(boolean b) {
         newGame = b;
 	}
 	

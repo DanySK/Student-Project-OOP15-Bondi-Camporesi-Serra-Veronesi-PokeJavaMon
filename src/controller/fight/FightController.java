@@ -18,8 +18,8 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
-import view.methods.MethodsImplemented;
-import view.methods.MethodsToImplement;
+import view.methods.InFightMessages;
+import view.methods.InFightMessagesInterface;
 
 /**
  * The Controller that controls the fight.
@@ -28,7 +28,7 @@ public class FightController implements FightControllerInterface {
 
     private static final int FIRST_POKEMON_POSITION = 0;
     private Fight fight;
-    private final MethodsToImplement view = new MethodsImplemented();
+    private final InFightMessagesInterface view = new InFightMessages();
     
     @Override
     public void newFightWithTrainer(final Trainer trainer) {

@@ -18,16 +18,15 @@ import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import view.View;
-import view.resources.MessageFrame;
 
-public class Zaino extends JWindow implements MyFrame {
+public class BagMenu extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = 4403659276705962715L;
     private Item itemToUse;
     private JPanel contiene;
-    private final ArrayList<String>Name1 = new ArrayList<String>();
-    private final ArrayList<String>Name2 = new ArrayList<String>();
-    private final ArrayList<String>Qnt = new ArrayList<String>();
+    private final ArrayList<String> Name1 = new ArrayList<String>();
+    private final ArrayList<String> Name2 = new ArrayList<String>();
+    private final ArrayList<String> Qnt = new ArrayList<String>();
     private final ArrayList<Item> it = new ArrayList<Item>();
     private int cols = 1;
     private JButton esci2;
@@ -41,25 +40,26 @@ public class Zaino extends JWindow implements MyFrame {
         if (itemToUse != null) {
             if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
                 try {
+                    View.getView().disposeCurrent();
+                    View.getView().removeCurrent();
                     Controller.getController().getFightController().useItem(itemToUse, p);
                     selectItem(null);
-                    disposeFrame();
                 } catch (PokemonIsExhaustedException e1) {
+                    selectItem(null);
+                    View.getView().resumeCurrent();
                     new MessageFrame(null, "POKEMON IS EXAUSTED");
-                    selectItem(null);
-                    disposeFrame();
                 } catch (PokemonNotFoundException e1) {
+                    selectItem(null);
+                    View.getView().resumeCurrent();
                     new MessageFrame(null, "POKEMON NOT FOUND");
-                    selectItem(null);
-                    disposeFrame();
                 } catch (CannotCaughtTrainerPkmException e1) {
+                    selectItem(null);
+                    View.getView().resumeCurrent();
                     new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON");
-                    selectItem(null);
-                    disposeFrame();
                 } catch (IllegalStateException e1) {
-                    new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
                     selectItem(null);
-                    disposeFrame();
+                    View.getView().resumeCurrent();
+                    new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
                 }
             } else {
                 if (itemToUse instanceof Potion) {
@@ -95,7 +95,6 @@ public class Zaino extends JWindow implements MyFrame {
                 Name2.add(i.toString()); 
                 Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
                 it.add(i);
-                System.out.println(""+ PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
             }
         }  
         for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).keySet()) { 
@@ -142,25 +141,32 @@ public class Zaino extends JWindow implements MyFrame {
                 public void actionPerformed(ActionEvent e) {            
                     if (i.getType() == ItemType.POTION) {
                         selectItem(i);
-                        Squadra sq = new Squadra(true, true);
+                        TeamMenu sq = new TeamMenu(true, true);
                         View.getView().hideCurrent();
                         View.getView().addNew(sq);
                         View.getView().showCurrent();
                     } else {
                         selectItem(i);
                         if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
-                            useItem(Controller.getController().getEnemyPokemonInFight());
+                            if (i.getType() == ItemType.POKEBALL) {
+                                useItem(Controller.getController().getEnemyPokemonInFight());
+                            } else {
+                                selectItem(i);
+                                TeamMenu sq = new TeamMenu(true, true);
+                                View.getView().hideCurrent();
+                                View.getView().addNew(sq);
+                                View.getView().showCurrent();
+                            }
                         } else {
                             new MessageFrame(null, "NON PUOI USARE QUESTO STRUMENTO FUORI DALLA BATTAGLIA");
                             useItem(null);
                         }
                     }
-//                    disposeFrame();
                 }
             });
-//            if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
-//                usa.setEnabled(false);
-//            }
+            if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
+                usa.setEnabled(false);
+            }
             contiene.add(usa);
         }
         
@@ -180,7 +186,7 @@ public class Zaino extends JWindow implements MyFrame {
     }
     
     @Override
-    public void resume() {
+    public void resumeFrame() {
         this.setVisible(true);
     }
 }

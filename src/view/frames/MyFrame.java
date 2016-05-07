@@ -8,5 +8,5 @@ public interface MyFrame {
     
     public void hideFrame();
     
-    public void resume();
+    public void resumeFrame();
 }

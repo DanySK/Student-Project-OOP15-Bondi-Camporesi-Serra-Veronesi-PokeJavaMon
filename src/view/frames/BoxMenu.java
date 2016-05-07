@@ -11,8 +11,7 @@ import exceptions.SquadFullException;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
-import view.View;
-import view.resources.MessageFrame;  
+import view.View;  
   
 public class BoxMenu extends JWindow implements MyFrame {
 
@@ -124,7 +123,7 @@ public class BoxMenu extends JWindow implements MyFrame {
     }
 
     @Override
-    public void resume() {
+    public void resumeFrame() {
         this.setVisible(true);
     }
 }
