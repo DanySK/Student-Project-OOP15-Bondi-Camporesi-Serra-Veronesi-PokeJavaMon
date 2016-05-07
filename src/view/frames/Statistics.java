@@ -73,12 +73,13 @@ class NamePanel3 extends JPanel {
     private int cols = 1;
 
     public NamePanel3(Pokemon ID) {	    
-        //TODO ArrayList<moves> moves = new ArrayList<>();
-	//TODO ArrayList<stats> stats = new ArrayList<>();
+        stats.add("MAX " + Stat.HP.name());
+        stats.add(Stat.ATK.name());
+        stats.add(Stat.DEF.name());
+        stats.add(Stat.SPD.name());
         if (ID.getPokemon().name() != null) {
             for (int j=0; j<4; j++){
                 moves.add("Move");
-                stats.add("Stat");
             }
             if (ID.getCurrentMoves().get(0) != null) {
                 names.add("" + ID.getCurrentMoves().get(0).name());
