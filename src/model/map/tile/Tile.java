@@ -6,7 +6,7 @@ public interface Tile extends Drawable{
     public static enum TileType {
         POKEMON_ENCOUNTER(true, true), 
         TERRAIN(false, true), 
-        WATER(false, false), 
+        WATER(false, false), //May be implemented later
         TREE(false, false), 
         WALL(false, false), 
         TELEPORT(false, true), 

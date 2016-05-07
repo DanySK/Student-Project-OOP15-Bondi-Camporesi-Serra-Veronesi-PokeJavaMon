@@ -12,6 +12,7 @@ import model.inventory.InventoryImpl;
 import model.items.Item;
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
+import model.map.Position;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
@@ -140,6 +141,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     	if (pm.isWalkable(newX, newY)) {
    			this.setPosition(newX, newY);
     	}
+    	
     }
     
     public void turn(final Direction d) {

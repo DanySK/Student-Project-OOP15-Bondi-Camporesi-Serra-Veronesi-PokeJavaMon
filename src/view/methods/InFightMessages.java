@@ -1,12 +1,13 @@
 package view.methods;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import controller.Controller;
 import controller.parameters.State;
 import model.fight.Effectiveness;
 import model.items.Item;
+import model.map.Position;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;

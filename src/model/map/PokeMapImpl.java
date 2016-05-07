@@ -182,7 +182,6 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.DEFEAT.toString())) {
 				this.pokeCenterSpawn = new Position(tileX, tileY);
 				this.map[tileX][tileY] = TileType.DEFEAT;
-				System.out.println("Position @ " + this.pokeCenterSpawn + "is a PokemonCenterSpawn");
 			}
 		}
 	}
