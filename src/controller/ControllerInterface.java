@@ -19,11 +19,6 @@ import model.pokemon.Pokemon;
 public interface ControllerInterface {
 
     /**
-     * Initializas the {@link Controller}
-     */
-    void initializeMainController();
-
-    /**
      * @return the current {@link Fight}
      */
     Fight getFight();

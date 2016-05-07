@@ -13,7 +13,6 @@ public final class GameStarter {
     
     public static void main(final String... varargs) {
         new Installer().install();
-        Controller.getController().initializeMainController();
         Controller.getController().updateStatus(State.FIRST_MENU);
         InitializeMoves.initAllPokemonsTypes();
         Controller.getController().getViewController().firstMenu();

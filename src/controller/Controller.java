@@ -31,7 +31,14 @@ public final class Controller implements ControllerInterface {
     /**
      * Private constructor, used by the method getController
      */
-    private Controller() {}
+    private Controller() {
+        this.fightController = new FightController();
+        this.loadController = new LoadController();
+        this.musicController = new MainMusicController();
+        this.saveController = new SaveController();
+        this.statusController = new StatusController();
+        this.viewController = new ViewController();
+    }
     
     /**
      * @return the current {@link Controller} ora a new {@link Controller} if this is the first time this method is invoked
@@ -45,16 +52,6 @@ public final class Controller implements ControllerInterface {
             }
         }
         return singleton;
-    }
-    
-    @Override
-    public void initializeMainController() {
-        this.fightController = new FightController();
-        this.loadController = new LoadController();
-        this.musicController = new MainMusicController();
-        this.saveController = new SaveController();
-        this.statusController = new StatusController();
-        this.viewController = new ViewController();
     }
     
     @Override
