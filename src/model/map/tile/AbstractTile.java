@@ -53,6 +53,11 @@ public abstract class AbstractTile implements Tile {
     }
     
     @Override
+    public Position getPosition() {
+    	return new Position(this.tileX, this.tileY);
+    }
+    
+    @Override
     public Direction getDirection() {
         return this.direction;
     }

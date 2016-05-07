@@ -33,6 +33,11 @@ public abstract class AbstractCharacter implements Character {
         return this.tileY;
     }
     
+    @Override
+    public Position getPosition() {
+    	return new Position(this.tileX, this.tileY);
+    }
+    
 	@Override
 	public void turn(final Direction d) {
 		if (this.direction == d) {
