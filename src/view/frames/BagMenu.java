@@ -25,7 +25,7 @@ public class BagMenu extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = 4403659276705962715L;
     private Item itemToUse;
-    private JPanel contiene;
+    private JPanel panel;
     private final ArrayList<String> Name1 = new ArrayList<String>();
     private final ArrayList<String> Name2 = new ArrayList<String>();
     private final ArrayList<String> Qnt = new ArrayList<String>();
@@ -84,10 +84,10 @@ public class BagMenu extends JWindow implements MyFrame {
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
-        contiene = new JPanel();
-        this.setContentPane(contiene);  
-        contiene.setBorder(new LineBorder(Color.GRAY, 4));
-        contiene.setLayout(new GridLayout(1,1));
+        panel = new JPanel();
+        this.setContentPane(panel);  
+        panel.setBorder(new LineBorder(Color.GRAY, 4));
+        panel.setLayout(new GridLayout(1,1));
         Name1.add("TYPE");
         Name2.add("NAME");
         Qnt.add("QUANTITY");
@@ -118,9 +118,9 @@ public class BagMenu extends JWindow implements MyFrame {
         } 
         for(int j = 0; j<Name1.size();j++) {   
             if (j==0) {
-                contiene.add(new JLabel(Name1.get(j)));
-                contiene.add(new JLabel(Name2.get(j)));
-                contiene.add(new JLabel(Qnt.get(j)));
+            	panel.add(new JLabel(Name1.get(j)));
+            	panel.add(new JLabel(Name2.get(j)));
+                panel.add(new JLabel(Qnt.get(j)));
                 exit = new JButton("Exit");
                 exit.addActionListener(new ActionListener() {
                     @Override
@@ -130,13 +130,13 @@ public class BagMenu extends JWindow implements MyFrame {
                         View.getView().resumeCurrent();
                     }
                 });
-                contiene.add(exit);
+                panel.add(exit);
                 j++;
             }
             final Item itm = it.get(j);
-            contiene.add(new JLabel(Name1.get(j)));
-            contiene.add(new JLabel(Name2.get(j)));
-            contiene.add(new JLabel(Qnt.get(j)));
+            panel.add(new JLabel(Name1.get(j)));
+            panel.add(new JLabel(Name2.get(j)));
+            panel.add(new JLabel(Qnt.get(j)));
             use = new JButton("Use");
             use.addActionListener(new ActionListener() {     
                 Item i = itm;
@@ -170,10 +170,10 @@ public class BagMenu extends JWindow implements MyFrame {
             if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
             	use.setEnabled(false);
             }
-            contiene.add(use);
+            panel.add(use);
         }
         
-        contiene.setLayout(new GridLayout(Name1.size(), cols));
+        panel.setLayout(new GridLayout(Name1.size(), cols));
         this.setSize(600,60 * Name1.size());
         this.setVisible(true);
     }

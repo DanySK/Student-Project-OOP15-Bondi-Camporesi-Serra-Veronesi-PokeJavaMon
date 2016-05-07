@@ -19,8 +19,8 @@ public class Statistics extends JWindow implements MyFrame {
 	
     private static final long serialVersionUID = 3339649136760979503L;
     private final Pokemon pk;
-    private JPanel contain;
-    private JButton but;
+    private JPanel panel;
+    private JButton exit;
     
     public Statistics(Pokemon ID) { 
         this.pk = ID;
@@ -31,19 +31,19 @@ public class Statistics extends JWindow implements MyFrame {
         this.setAlwaysOnTop(true);
         this.setVisible(true);
         this.setSize(400, 500);
-        contain = new JPanel();
-        this.setContentPane(contain);
-        contain.setLayout(new GridLayout(2,2));
-        but = new JButton("Exit");
-        but.addActionListener(new ActionListener() {
+        panel = new JPanel();
+        this.setContentPane(panel);
+        panel.setLayout(new GridLayout(2,2));
+        exit = new JButton("Exit");
+        exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 View.getView().disposeCurrent();
                 View.getView().removeCurrent();
                 View.getView().resumeCurrent();
             }
         });
-        contain.add(but);       
-        contain.add(new NamePanel3(pk));
+        panel.add(exit);       
+        panel.add(new statsPanel(pk));
         this.setVisible(true);
     }
     
@@ -63,7 +63,7 @@ public class Statistics extends JWindow implements MyFrame {
     }
 }
 
-class NamePanel3 extends JPanel {
+class statsPanel extends JPanel {
     
     private static final long serialVersionUID = 1L;
     private ArrayList<String> moves = new ArrayList<String>();
@@ -72,8 +72,8 @@ class NamePanel3 extends JPanel {
     private ArrayList<String> values = new ArrayList<String>();
     private int cols = 1;
 
-    public NamePanel3(Pokemon ID) {	    
-        stats.add("MAX " + Stat.HP.name());
+    public statsPanel(Pokemon ID) {	    
+        stats.add(Stat.HP.name());
         stats.add(Stat.ATK.name());
         stats.add(Stat.DEF.name());
         stats.add(Stat.SPD.name());
@@ -93,7 +93,7 @@ class NamePanel3 extends JPanel {
             if (ID.getCurrentMoves().get(3) != null) {
                 names.add("" + ID.getCurrentMoves().get(3).name());
             }
-            values.add("" + ID.getStat(Stat.HP));
+            values.add("" + ID.getStat(Stat.HP) + "/" + ID.getCurrentHP());
             values.add("" + ID.getStat(Stat.ATK));
             values.add("" + ID.getStat(Stat.DEF));
             values.add("" + ID.getStat(Stat.SPD));

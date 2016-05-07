@@ -23,22 +23,22 @@ import view.resources.MainGameView;
 public class Market extends JWindow implements MyFrame {
         
     private static final long serialVersionUID = 8636920096874072291L;
-    private JPanel contain;
+    private JPanel panel;
     private final ArrayList<String>Name1 = new ArrayList<String>();
     private final ArrayList<String>Name2 = new ArrayList<String>();
     private final ArrayList<String>Prz = new ArrayList<String>();
     private final ArrayList<String>Qnt = new ArrayList<String>();
     private final ArrayList<Item> it = new ArrayList<Item>();
     private int cols = 1;
-    private JButton esci2;
-    private JButton usa;
+    private JButton use;
+    private JButton exit;
 
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
         this.setSize(600,600); 
-        contain = new JPanel();
-        this.setContentPane(contain);
+        panel = new JPanel();
+        this.setContentPane(panel);
         Name1.add("TYPE");
         Name2.add("NAME");
         Prz.add("PRICE");
@@ -59,12 +59,12 @@ public class Market extends JWindow implements MyFrame {
         }
         for(int j = 0; j<Name1.size();j++) {           
             if (j==0) {
-                contain.add(new JLabel("Money: "+ PlayerImpl.getPlayer().getMoney()));
-                contain.add(new JLabel(Name2.get(j)));
-                contain.add(new JLabel(Prz.get(j)));
-                contain.add(new JLabel(Qnt.get(j)));
-                esci2 = new JButton("Exit");
-                esci2.addActionListener(new ActionListener() {
+            	panel.add(new JLabel("Money: "+ PlayerImpl.getPlayer().getMoney()));
+            	panel.add(new JLabel(Name2.get(j)));
+            	panel.add(new JLabel(Prz.get(j)));
+            	panel.add(new JLabel(Qnt.get(j)));
+                exit = new JButton("Exit");
+                exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -72,16 +72,16 @@ public class Market extends JWindow implements MyFrame {
                         Controller.getController().updateStatus(State.WALKING);
                     }
                 });
-                contain.add(esci2);
+                panel.add(exit);
                 j++;
             }
             final Item itm = it.get(j);
-            contain.add(new JLabel(Name1.get(j)));
-            contain.add(new JLabel(Name2.get(j)));
-            contain.add(new JLabel(Prz.get(j)));
-            contain.add(new JLabel(Qnt.get(j)));
-            usa = new JButton("Buy");
-            usa.addActionListener(new ActionListener() {     
+            panel.add(new JLabel(Name1.get(j)));
+            panel.add(new JLabel(Name2.get(j)));
+            panel.add(new JLabel(Prz.get(j)));
+            panel.add(new JLabel(Qnt.get(j)));
+            use = new JButton("Buy");
+            use.addActionListener(new ActionListener() {     
                 Item i = itm;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -97,10 +97,10 @@ public class Market extends JWindow implements MyFrame {
                     }
                 }
             });
-            contain.add(usa);
+            panel.add(use);
         }
-        contain.setLayout(new GridLayout(Name1.size(), cols));
-        contain.setBorder(new LineBorder(Color.GRAY, 4));
+        panel.setLayout(new GridLayout(Name1.size(), cols));
+        panel.setBorder(new LineBorder(Color.GRAY, 4));
         this.setSize(100 * Name1.size(), 600);
         this.setVisible(true);
     }

@@ -20,7 +20,7 @@ import view.View;
 public class TeamMenu extends JWindow implements MyFrame {
         
     private static final long serialVersionUID = 4848482754813638374L;
-    private JPanel contain;
+    private JPanel panel;
     private final ArrayList<String>names = new ArrayList<String>();
     private final ArrayList<String>lvl = new ArrayList<String>();
     private final ArrayList<String>cHP = new ArrayList<String>();
@@ -42,9 +42,9 @@ public class TeamMenu extends JWindow implements MyFrame {
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
-        contain = new JPanel();
-        this.setContentPane(contain);
-        contain.setBorder(new LineBorder(Color.GRAY, 4));
+        panel = new JPanel();
+        this.setContentPane(panel);
+        panel.setBorder(new LineBorder(Color.GRAY, 4));
         names.add("NAME");
         lvl.add("LEVEL");
         cHP.add("HEALTH POINTS");
@@ -59,12 +59,12 @@ public class TeamMenu extends JWindow implements MyFrame {
         }
         for(int i = 0; i<names.size();i++) {
             if (i == 0) {
-                contain.add(new JLabel(names.get(i)));
-                contain.add(new JLabel(lvl.get(i)));
-                contain.add(new JLabel(cHP.get(i)));
-                contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
-                contain.add(new JLabel(""));
+            	panel.add(new JLabel(names.get(i)));
+            	panel.add(new JLabel(lvl.get(i)));
+            	panel.add(new JLabel(cHP.get(i)));
+            	panel.add(new JLabel(""));
+            	panel.add(new JLabel(""));
+            	panel.add(new JLabel(""));
                 exit = new JButton("EXIT");
                 exit.addActionListener(new ActionListener() {
                     @Override
@@ -77,14 +77,14 @@ public class TeamMenu extends JWindow implements MyFrame {
                 if (!canExit) {
                 	exit.setEnabled(false);
                 }
-                contain.add(exit);
+                panel.add(exit);
                 i++;
             }
             final int index = i - 1;
             final Pokemon pkmn = pk.get(i);
-            contain.add(new JLabel(names.get(i)));
-            contain.add(new JLabel(lvl.get(i)));
-            contain.add(new JLabel(cHP.get(i) + " / " + mHP.get(i)));
+            panel.add(new JLabel(names.get(i)));
+            panel.add(new JLabel(lvl.get(i)));
+            panel.add(new JLabel(cHP.get(i) + " / " + mHP.get(i)));
             info = new JButton("INFO");
             info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pkmn;
@@ -96,7 +96,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             });
-            contain.add(info);
+            panel.add(info);
             set = new JButton("SET FIRST");
             set.addActionListener(new ActionListener() {
                 private final int ID = index;
@@ -153,7 +153,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             if (isChangingPoke) {
             	set.setEnabled(false);
             }
-            contain.add(set);
+            panel.add(set);
             deposit = new JButton("DEPOSIT");
             deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
@@ -175,7 +175,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             if (Controller.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
             	deposit.setEnabled(false);
             }
-            contain.add(deposit);
+            panel.add(deposit);
             select = new JButton("SELECT");
             select.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
@@ -195,9 +195,9 @@ public class TeamMenu extends JWindow implements MyFrame {
             if (!isChangingPoke) {
             	select.setEnabled(false);
             }
-            contain.add(select);
+            panel.add(select);
         }      
-        contain.setLayout(new GridLayout(names.size(), cols));
+        panel.setLayout(new GridLayout(names.size(), cols));
         this.setSize(900,100 * names.size());
         this.setVisible(true);
     }

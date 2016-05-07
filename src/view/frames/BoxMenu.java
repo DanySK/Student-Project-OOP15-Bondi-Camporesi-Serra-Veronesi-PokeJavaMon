@@ -17,7 +17,7 @@ import view.View;
 public class BoxMenu extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = 6312860320430410019L;
-    private JPanel contain;
+    private JPanel panel;
     private JScrollPane pn;
     private final ArrayList<String> names = new ArrayList<String>();
     private final ArrayList<String> lvl = new ArrayList<String>();
@@ -32,11 +32,11 @@ public class BoxMenu extends JWindow implements MyFrame {
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
-        contain = new JPanel();
-        pn = new JScrollPane(contain);
+        panel = new JPanel();
+        pn = new JScrollPane(panel);
         this.setContentPane(pn);     
-        contain.setBorder(new LineBorder(Color.GRAY, 4));
-        contain.setLayout(new GridLayout(1,1));      
+        panel.setBorder(new LineBorder(Color.GRAY, 4));
+        panel.setLayout(new GridLayout(1,1));      
         names.add("NAME");
         lvl.add("LEVEL");
         cHP.add("HEALTH POINTS");
@@ -51,10 +51,10 @@ public class BoxMenu extends JWindow implements MyFrame {
         }  
         for(int i = 0; i<names.size();i++) {
             if (i == 0) {
-                contain.add(new JLabel(names.get(i)));
-                contain.add(new JLabel(lvl.get(i)));
-                contain.add(new JLabel(cHP.get(i)));
-                contain.add(new JLabel(""));
+            	panel.add(new JLabel(names.get(i)));
+            	panel.add(new JLabel(lvl.get(i)));
+            	panel.add(new JLabel(cHP.get(i)));
+            	panel.add(new JLabel(""));
                 exit = new JButton("EXIT");
                 exit.addActionListener(new ActionListener() {
                     @Override
@@ -64,12 +64,12 @@ public class BoxMenu extends JWindow implements MyFrame {
                         View.getView().resumeCurrent();
                     }
                 });
-                contain.add(exit);
+                panel.add(exit);
             } else {
                 final Pokemon pokmn = pk.get(i);
-                contain.add(new JLabel(names.get(i)));
-                contain.add(new JLabel(lvl.get(i)));
-                contain.add(new JLabel(mHP.get(i)));
+                panel.add(new JLabel(names.get(i)));
+                panel.add(new JLabel(lvl.get(i)));
+                panel.add(new JLabel(mHP.get(i)));
                 info = new JButton("INFO");
                 info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pokmn;
@@ -81,7 +81,7 @@ public class BoxMenu extends JWindow implements MyFrame {
                         View.getView().showCurrent();
                     }
                 });
-                contain.add(info);
+                panel.add(info);
                 withdraw = new JButton("WITHDRAW");
                 withdraw.addActionListener(new ActionListener() {
                     final Pokemon selected = pokmn;
@@ -101,10 +101,10 @@ public class BoxMenu extends JWindow implements MyFrame {
                         }
                     }
                 });
-                contain.add(withdraw);
+                panel.add(withdraw);
             }               
         }
-        contain.setLayout(new GridLayout(names.size(), cols));
+        panel.setLayout(new GridLayout(names.size(), cols));
         this.setSize(900,100 * names.size());
         if (names.size() > 6) {
             this.setSize(800,600);

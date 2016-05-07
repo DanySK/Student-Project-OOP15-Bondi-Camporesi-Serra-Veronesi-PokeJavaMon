@@ -36,10 +36,10 @@ public class FightScreen extends JFrame implements MyFrame {
     private JPanel panel_2;
     private JPanel panel_3;
     private MyPanel panel;
-    private JButton Mossa1;
-    private JButton Mossa2;
-    private JButton Mossa3;
-    private JButton Mossa4;
+    private JButton Move1;
+    private JButton Move2;
+    private JButton Move3;
+    private JButton Move4;
     private JButton Fight;
     private JButton Squadra;
     private JButton Zaino;
@@ -53,11 +53,11 @@ public class FightScreen extends JFrame implements MyFrame {
             this.getContentPane().add(panel_3);
             panel_3.setLayout(null);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
-                Mossa1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+            	Move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
-                Mossa1 = new JButton("NULL");
+            	Move1 = new JButton("NULL");
             }
-            Mossa1.addActionListener(new ActionListener() {
+            Move1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -68,14 +68,14 @@ public class FightScreen extends JFrame implements MyFrame {
                             }
                     }
             });
-            Mossa1.setBounds(0, 0, 113, 30);
-            panel_3.add(Mossa1);            
+            Move1.setBounds(0, 0, 113, 30);
+            panel_3.add(Move1);            
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
-                Mossa2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            	Move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
-                Mossa2 = new JButton("NULL");
+            	Move2 = new JButton("NULL");
             }               
-            Mossa2.addActionListener(new ActionListener() {
+            Move2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -86,15 +86,15 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Mossa2.setBounds(113, 0, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Mossa2.setEnabled(false);
-            panel_3.add(Mossa2);
+            Move2.setBounds(113, 0, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Move2.setEnabled(false);
+            panel_3.add(Move2);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
-                Mossa3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            	Move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
-                Mossa3 = new JButton("NULL");
+            	Move3 = new JButton("NULL");
             }
-            Mossa3.addActionListener(new ActionListener() {
+            Move3.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -105,15 +105,15 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Mossa3.setBounds(0, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Mossa3.setEnabled(false);
-            panel_3.add(Mossa3);
+            Move3.setBounds(0, 30, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Move3.setEnabled(false);
+            panel_3.add(Move3);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
-                Mossa4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            	Move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
-                Mossa4 = new JButton("NULL");
+            	Move4 = new JButton("NULL");
             }
-            Mossa4.addActionListener(new ActionListener() {
+            Move4.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -124,9 +124,9 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Mossa4.setBounds(113, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Mossa4.setEnabled(false);
-            panel_3.add(Mossa4);
+            Move4.setBounds(113, 30, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Move4.setEnabled(false);
+            panel_3.add(Move4);
         }
         
         public void showMessage(String... message) {
@@ -246,11 +246,11 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
-                Mossa1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+            	Move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
-                Mossa1 = new JButton("NULL");
+            	Move1 = new JButton("NULL");
             }
-            Mossa1.addActionListener(new ActionListener() {
+            Move1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -261,14 +261,14 @@ public class FightScreen extends JFrame implements MyFrame {
                             }
                     }
             });
-            Mossa1.setBounds(0, 0, 113, 30);
-            panel_3.add(Mossa1);            
+            Move1.setBounds(0, 0, 113, 30);
+            panel_3.add(Move1);            
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
-                Mossa2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            	Move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
-                Mossa2 = new JButton("NULL");
+            	Move2 = new JButton("NULL");
             }               
-            Mossa2.addActionListener(new ActionListener() {
+            Move2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -279,15 +279,15 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Mossa2.setBounds(113, 0, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Mossa2.setEnabled(false);
-            panel_3.add(Mossa2);
+            Move2.setBounds(113, 0, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Move2.setEnabled(false);
+            panel_3.add(Move2);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
-                Mossa3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            	Move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
-                Mossa3 = new JButton("NULL");
+            	Move3 = new JButton("NULL");
             }
-            Mossa3.addActionListener(new ActionListener() {
+            Move3.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -298,15 +298,15 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Mossa3.setBounds(0, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Mossa3.setEnabled(false);
-            panel_3.add(Mossa3);
+            Move3.setBounds(0, 30, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Move3.setEnabled(false);
+            panel_3.add(Move3);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
-                Mossa4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            	Move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
-                Mossa4 = new JButton("NULL");
+            	Move4 = new JButton("NULL");
             }
-            Mossa4.addActionListener(new ActionListener() {
+            Move4.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
@@ -317,9 +317,9 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Mossa4.setBounds(113, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Mossa4.setEnabled(false);
-            panel_3.add(Mossa4);
+            Move4.setBounds(113, 30, 113, 30);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Move4.setEnabled(false);
+            panel_3.add(Move4);
             
             this.setVisible(true);
         }

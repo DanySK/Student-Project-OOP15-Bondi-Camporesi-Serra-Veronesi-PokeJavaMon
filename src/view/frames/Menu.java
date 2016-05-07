@@ -19,6 +19,7 @@ import java.awt.Component;
 public class Menu extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = 3868831254532069974L;
+    private JPanel panel;
     private JButton box;
     private JButton team;
     private JButton bag;
@@ -29,7 +30,7 @@ public class Menu extends JWindow implements MyFrame {
     public void showFrame() {
         this.setAlwaysOnTop(true); 
         this.setBounds(100, 100, 180, 310);
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         this.setContentPane(panel);     
         panel.setBorder(new LineBorder(Color.GRAY, 4));
         panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -53,7 +54,7 @@ public class Menu extends JWindow implements MyFrame {
             }
         });
         this.add(Box.createVerticalGlue());
-        team = new JButton  ("Team");
+        team = new JButton ("Team");
         team.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(team);
         team.addActionListener(new ActionListener() {

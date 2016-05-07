@@ -16,37 +16,42 @@ import javax.swing.border.LineBorder;
 import controller.Controller;
 import controller.parameters.State;
 
-public class MessageFrame {
+/* 
+ * implements -> extends -> mettere i this
+ */
 
+public class MessageFrame {
+	private JPanel panel;
+	private final List<JLabel> labels = new ArrayList<>();
+	private JButton ok;
+	
     public MessageFrame(State st, String... strs) {
-        JWindow fr = new JWindow();
-        JPanel pa = new JPanel();
-        pa.setBorder(new LineBorder(Color.GRAY, 4));
-        pa.setLayout(new GridLayout(0,1));
-        List<JLabel> labels = new ArrayList<>();
+        JWindow window = new JWindow();
+        panel = new JPanel();
+        panel.setBorder(new LineBorder(Color.GRAY, 4));
+        panel.setLayout(new GridLayout(0,1));
         for (String s : strs) {
             labels.add(new JLabel(s));
         }
         for (JLabel l : labels) {
-            pa.add(l);
+        	panel.add(l);
         }
-        JButton button = new JButton("OK");
-        button.addActionListener(new ActionListener() {
+        ok = new JButton("OK");
+        ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (st != null) {
                     Controller.getController().updateStatus(st);
                 }
-                fr.dispose();
+                window.dispose();
             }
         });
-        pa.add(button);
-        fr.getContentPane().add(pa);
-        fr.setAlwaysOnTop(true);
-        fr.setBounds(100, 100, 450, 100 * strs.length);
-        fr.setLocationRelativeTo(null);
-        //fr.setUndecorated(true);
-        fr.setVisible(true);
+        panel.add(ok);
+        window.getContentPane().add(panel);
+        window.setAlwaysOnTop(true);
+        window.setBounds(100, 100, 450, 100 * strs.length);
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
     }
 }
 
