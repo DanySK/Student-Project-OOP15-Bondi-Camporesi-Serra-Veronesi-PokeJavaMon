@@ -14,9 +14,21 @@ import view.View;
 import view.frames.FightScreen;
 import view.frames.MessageFrame;
 import view.frames.MyFrame;
+import view.resources.MainGameView;
+import view.sprite.PlayerSprite;
 
 public class InFightMessages implements InFightMessagesInterface {
 
+    
+    public void teleportToCenter() {
+        final int x = MainGameView.getMapImpl().getPokemonCenterSpawnPosition().getX();
+        final int y = MainGameView.getMapImpl().getPokemonCenterSpawnPosition().getY();
+        PlayerSprite.getSprite().setPlayerPosition(x, y);
+        PlayerSprite.getSprite().setVelocity(0, 0);
+        PlayerImpl.getPlayer().setPosition(x, y);
+        PlayerImpl.getPlayer().getSquad().healAllPokemon(MainGameView.getMapImpl());
+    }
+    
     @Override
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
@@ -60,6 +72,7 @@ public class InFightMessages implements InFightMessagesInterface {
                         String[] array = new String[message.size()];
                         message.toArray(array);
                         new MessageFrame(State.WALKING, array);
+                        teleportToCenter();
                     }
                 } else {
                     String[] array = new String[message.size()];
@@ -86,6 +99,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     new MessageFrame(State.WALKING, array);
+                    teleportToCenter();
                 }
             } else {
                 message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
@@ -137,6 +151,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 String[] array = new String[message.size()];
                 message.toArray(array);
                 new MessageFrame(State.WALKING, array);
+                teleportToCenter();
             }
         } else {
             String[] array = new String[message.size()];
@@ -166,6 +181,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     new MessageFrame(State.WALKING, array);
+                    teleportToCenter();
                 }
             } else {
                 String[] array = new String[message.size()];
@@ -210,6 +226,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     new MessageFrame(State.WALKING, array);
+                    teleportToCenter();
                 }
             } else {
                 String[] array = new String[message.size()];
