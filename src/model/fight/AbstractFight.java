@@ -32,8 +32,8 @@ public abstract class AbstractFight implements Fight {
     protected static final double LESS_EFFECTIVE = 0.5;
     protected static final int MIN_DAMAGE = 1;
     protected static final double MIN_BOOST_VALUE = 0.25;
-    protected static final double MAX_BOOST_VALUE = 2.0;
-    protected static final int BALANCE_BOOST_VALUE = 100;
+    protected static final double MAX_BOOST_VALUE = 1.75;
+    protected static final int BALANCE_BOOST_MOVE = 100;
     protected static final int ATTACKS_TO_DO = 2;
     protected static final int EXP_COEFFICIENT = 7;
     protected static final String EXP_MESSAGE = "You defeated a pokemon, your pokemon get experience: ";
@@ -268,19 +268,19 @@ public abstract class AbstractFight implements Fight {
         }
     }
 
-    //al sesto ruggito/rafforzatore, dice che non si può più diminuire/incrementare
     protected void applyMoveOnBoost(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
         double newBoostValue;
+        double moveValue = (double) move.getValue() / BALANCE_BOOST_MOVE;
         if (allyPkm.equals(stricker)) {
             if (move.isOnEnemy()) {
-                newBoostValue = getEnemyBoost(move.getStat()) - move.getValue() / BALANCE_BOOST_VALUE;
+                newBoostValue = getEnemyBoost(move.getStat()) - moveValue;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
                     allyEff = Effectiveness.CANNOTDECREASE;
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             } else {
-                newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) + move.getValue() / BALANCE_BOOST_VALUE;
+                newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) + moveValue;
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
                     allyEff = Effectiveness.CANNOTINCREASE;
@@ -289,17 +289,17 @@ public abstract class AbstractFight implements Fight {
             }
         } else {
             if (move.isOnEnemy()) {
-                newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) - move.getValue() / BALANCE_BOOST_VALUE;
+                newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) - moveValue;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
-                    this.enemyEff = Effectiveness.CANNOTDECREASE;
+                    enemyEff = Effectiveness.CANNOTDECREASE;
                 }
                 allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
             } else {
-                newBoostValue = getEnemyBoost(move.getStat()) + move.getValue() / BALANCE_BOOST_VALUE;
+                newBoostValue = getEnemyBoost(move.getStat()) + moveValue;
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
-                    this.enemyEff = Effectiveness.CANNOTINCREASE;
+                    enemyEff = Effectiveness.CANNOTINCREASE;
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             }
