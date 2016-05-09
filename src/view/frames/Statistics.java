@@ -93,7 +93,7 @@ class statsPanel extends JPanel {
             if (ID.getCurrentMoves().get(3) != null) {
                 names.add("" + ID.getCurrentMoves().get(3).name());
             }
-            values.add("" + ID.getStat(Stat.HP) + "/" + ID.getCurrentHP());
+            values.add("" + ID.getCurrentHP() + "/" + ID.getStat(Stat.HP));
             values.add("" + ID.getStat(Stat.ATK));
             values.add("" + ID.getStat(Stat.DEF));
             values.add("" + ID.getStat(Stat.SPD));

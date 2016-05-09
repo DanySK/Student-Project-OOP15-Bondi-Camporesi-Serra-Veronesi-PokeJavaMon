@@ -32,10 +32,10 @@ public class MainMusicController implements MusicController {
                 final Sound s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + m.getAbsolutePath()));
                 this.sounds.put(m, s);
                 Long endM = System.currentTimeMillis();
-                System.out.println(m.name() + "took " + ((endM - startM)/1000f) + "seconds to complete");
+                System.out.println(m.name() + " took " + ((endM - startM)/1000f) + " seconds to complete");
         }
         Long end = System.currentTimeMillis();
-        System.out.println("it took " + ((end - start)/1000f) + "seconds to complete this operation");
+        System.out.println("It took " + ((end - start)/1000f) + " seconds to complete this operation");
         isInit = true;
     }
     

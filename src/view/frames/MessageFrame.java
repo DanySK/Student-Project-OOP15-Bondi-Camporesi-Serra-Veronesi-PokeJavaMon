@@ -15,26 +15,32 @@ import javax.swing.border.LineBorder;
 
 import controller.Controller;
 import controller.parameters.State;
+import view.View;
 
-/* 
- * implements -> extends -> mettere i this
- */
-
-public class MessageFrame {
-	private JPanel panel;
+public class MessageFrame extends JWindow implements MyFrame {
+	
+    private static final long serialVersionUID = 1370776687087493267L;
+    private JPanel panel;
 	private final List<JLabel> labels = new ArrayList<>();
 	private JButton ok;
+	private String[] msgs;
+	private State st;
 	
     public MessageFrame(State st, String... strs) {
-        JWindow window = new JWindow();
+        this.st = st;
+        this.msgs = strs;
+    }
+
+    @Override
+    public void showFrame() {
         panel = new JPanel();
         panel.setBorder(new LineBorder(Color.GRAY, 4));
         panel.setLayout(new GridLayout(0,1));
-        for (String s : strs) {
+        for (String s : msgs) {
             labels.add(new JLabel(s));
         }
         for (JLabel l : labels) {
-        	panel.add(l);
+                panel.add(l);
         }
         ok = new JButton("OK");
         ok.addActionListener(new ActionListener() {
@@ -42,16 +48,34 @@ public class MessageFrame {
             public void actionPerformed(ActionEvent e) {
                 if (st != null) {
                     Controller.getController().updateStatus(st);
+                    disposeFrame();
+                } else {
+                    View.getView().disposeCurrent();
+                    View.getView().removeCurrent();
+                    View.getView().resumeCurrent();
                 }
-                window.dispose();
             }
         });
         panel.add(ok);
-        window.getContentPane().add(panel);
-        window.setAlwaysOnTop(true);
-        window.setBounds(100, 100, 450, 100 * strs.length);
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
+        this.getContentPane().add(panel);
+        this.setAlwaysOnTop(true);
+        this.setBounds(100, 100, 450, 100 * msgs.length);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+    }
+
+    @Override
+    public void disposeFrame() {
+        this.dispose();
+    }
+
+    @Override
+    public void hideFrame() {
+        this.setVisible(false);
+    }
+
+    @Override
+    public void resumeFrame() {
+        this.setVisible(true);
     }
 }
-

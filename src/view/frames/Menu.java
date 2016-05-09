@@ -44,7 +44,8 @@ public class Menu extends JWindow implements MyFrame {
                     disposeFrame();
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
-                    new MessageFrame(State.WALKING, "NO PKMN IN BOX");
+                    View.getView().addNew(new MessageFrame(State.WALKING, "NO PKMN IN BOX"));
+                    View.getView().showCurrent();
                 } else {
                     View.getView().hideCurrent();
                     BoxMenu bx = new BoxMenu();
@@ -86,7 +87,8 @@ public class Menu extends JWindow implements MyFrame {
             public void mouseClicked(MouseEvent e) {
                 disposeFrame();
                 Controller.getController().getViewController().save();
-                new MessageFrame(State.WALKING, "Salvataggio riuscito!");
+                View.getView().addNew(new MessageFrame(State.WALKING, "Salvataggio riuscito!"));
+                View.getView().showCurrent();
             }
         });   
         this.add(Box.createVerticalGlue());

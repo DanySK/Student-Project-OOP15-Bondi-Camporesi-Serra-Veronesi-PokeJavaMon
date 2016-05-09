@@ -14,6 +14,7 @@ import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
 import model.player.Player;
 import model.pokemon.Pokemon;
+import view.View;
 import view.frames.MessageFrame;
 import view.sprite.PlayerSprite;
 
@@ -266,7 +267,8 @@ public class WalkingKeyboardController implements KeyboardController {
          */
         private void resolvePokemonCenter() {
             Controller.getController().updateStatus(State.READING);
-            new MessageFrame(State.WALKING, "POKEMON'S HEALTH FULLY RESTORED");
+            View.getView().addNew(new MessageFrame(State.WALKING, "POKEMON'S HEALTH FULLY RESTORED"));
+            View.getView().showCurrent();
             player.getSquad().healAllPokemon(pm);
         }
         
@@ -277,9 +279,11 @@ public class WalkingKeyboardController implements KeyboardController {
         private void resolveSign() {
             Controller.getController().updateStatus(State.READING);
             if (pm.getSign(x, y).isPresent()) {
-                new MessageFrame(State.WALKING, pm.getSign(x, y).get().getMessage());
+                View.getView().addNew(new MessageFrame(State.WALKING, pm.getSign(x, y).get().getMessage()));
+                View.getView().showCurrent();
             } else {
-                new MessageFrame(State.WALKING, "SIGN_MESSAGE");
+                View.getView().addNew(new MessageFrame(State.WALKING, "SIGN_MESSAGE"));
+                View.getView().showCurrent();
             }
         }
         
@@ -294,7 +298,8 @@ public class WalkingKeyboardController implements KeyboardController {
                 }
                 if (pm.getTrainer(x, y).get().isDefeated()) {
                     Controller.getController().updateStatus(State.READING);
-                    new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED");
+                    View.getView().addNew(new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED"));
+                    View.getView().showCurrent();
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
@@ -305,14 +310,16 @@ public class WalkingKeyboardController implements KeyboardController {
                     pm.getNPC(x, y).get().turn(oppositeDirection);
                 }
                 Controller.getController().updateStatus(State.READING);
-                new MessageFrame(State.WALKING, pm.getNPC(x, y).get().getMessage());
+                View.getView().addNew(new MessageFrame(State.WALKING, pm.getNPC(x, y).get().getMessage()));
+                View.getView().showCurrent();
             } else if (pm.getGymLeader(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getGymLeader(x, y).get().turn(oppositeDirection);
                 }
                 if (pm.getGymLeader(x, y).get().isDefeated()) {
                     Controller.getController().updateStatus(State.READING);
-                    new MessageFrame(State.WALKING, "GYM LEADER ALREADY DEFEATED");
+                    View.getView().addNew(new MessageFrame(State.WALKING, "GYM LEADER ALREADY DEFEATED"));
+                    View.getView().showCurrent();
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());

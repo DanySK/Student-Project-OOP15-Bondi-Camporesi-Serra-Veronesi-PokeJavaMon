@@ -51,20 +51,20 @@ public class BagMenu extends JWindow implements MyFrame {
                     selectItem(null);
                 } catch (PokemonIsExhaustedException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "POKEMON IS EXAUSTED");
+                    View.getView().addNew(new MessageFrame(null, "POKEMON IS EXAUSTED"));
+                    View.getView().showCurrent();
                 } catch (PokemonNotFoundException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "POKEMON NOT FOUND");
+                    View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
+                    View.getView().showCurrent();
                 } catch (CannotCaughtTrainerPkmException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON");
+                    View.getView().addNew(new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON"));
+                    View.getView().showCurrent();
                 } catch (IllegalStateException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
+                    View.getView().addNew(new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM"));
+                    View.getView().showCurrent();
                 }
             } else {
                 if (itemToUse instanceof Potion) {
