@@ -47,6 +47,12 @@ public class Boost extends AbstractItem {
     
     @Override
     public boolean equals(Object object) {
+    	if (object == null) {
+    		return false;
+    	}
+    	if (!(object instanceof Boost) ) {
+    		return false;
+    	}
         return this.hashCode() == ((Boost) object).hashCode();
     }
     
