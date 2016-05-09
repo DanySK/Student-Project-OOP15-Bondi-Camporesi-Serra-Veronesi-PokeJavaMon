@@ -130,7 +130,6 @@ public abstract class AbstractFight implements Fight {
     public List<PokemonInBattle> getPkmsThatMustEvolve() {
         pkmsThatMustEvolve = new ArrayList<>();
         for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
-            System.out.println(pkm.checkIfEvolves());
             if (pkm.checkIfEvolves()) {
                 pkmsThatMustEvolve.add(pkm);
             }

@@ -216,7 +216,9 @@ public class FightScreen extends JFrame implements MyFrame {
                         View.getView().addNew(tm);
                         View.getView().showCurrent();
                     } else {
-                        new MessageFrame(null, "NO POKEMON ALIVE");
+                        View.getView().hideCurrent();
+                        View.getView().addNew(new MessageFrame(null, "NO POKEMON ALIVE"));
+                        View.getView().showCurrent();
                     }
                 }
             });
@@ -241,7 +243,9 @@ public class FightScreen extends JFrame implements MyFrame {
                             try {
                     Controller.getController().getFightController().run();
                 } catch (CannotEscapeFromTrainerException e1) {
-                    new MessageFrame(null, "CANNOT ESCAPE FROM TRAINER");
+                    View.getView().hideCurrent();
+                    View.getView().addNew(new MessageFrame(null, "CANNOT ESCAPE FROM TRAINER"));
+                    View.getView().showCurrent();
                 }
                     }
             });

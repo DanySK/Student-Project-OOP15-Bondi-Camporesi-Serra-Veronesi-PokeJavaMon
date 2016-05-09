@@ -105,7 +105,6 @@ public class MainGameView implements Screen {
 	} else {
 	    if (Controller.getController().saveExists()) {
 		Controller.getController().load();
-	        System.out.println(Controller.getController().getPlayer().getTileX() + " " + Controller.getController().getPlayer().getTileY());
 	        pls.setBounds(Controller.getController().getPlayer().getTileX()*16, (299 - Controller.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 		pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
