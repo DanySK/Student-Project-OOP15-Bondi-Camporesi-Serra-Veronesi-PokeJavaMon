@@ -10,7 +10,6 @@ import exceptions.SquadFullException;
 import model.pokemon.Pokemon;
 import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
-import model.pokemon.Stat;
 import model.squad.Squad;
 
 public class BoxImpl implements Box {
@@ -49,7 +48,7 @@ public class BoxImpl implements Box {
         if(!squad.getPokemonList().contains(pkmn)) {
             throw new PokemonNotFoundException();
         }
-        pkmn.heal(pkmn.getStat(Stat.HP) - pkmn.getCurrentHP());
+        //pkmn.heal(pkmn.getStat(Stat.HP) - pkmn.getCurrentHP());
         pokemonInBox.add(pkmn);
         squad.remove(pkmn);
     }
