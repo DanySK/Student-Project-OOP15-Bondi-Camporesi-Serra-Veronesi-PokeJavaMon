@@ -83,9 +83,6 @@ public class Pokeball extends AbstractItem {
     	if (object == null) {
     		return false;
     	}
-    	if (!(object instanceof Boost) ) {
-    		return false;
-    	}
         return this.hashCode() == ((Pokeball) object).hashCode();
     }
     

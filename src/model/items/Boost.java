@@ -50,9 +50,6 @@ public class Boost extends AbstractItem {
     	if (object == null) {
     		return false;
     	}
-    	if (!(object instanceof Boost) ) {
-    		return false;
-    	}
         return this.hashCode() == ((Boost) object).hashCode();
     }
     

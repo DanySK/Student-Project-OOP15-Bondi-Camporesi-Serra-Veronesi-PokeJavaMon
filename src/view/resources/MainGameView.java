@@ -71,12 +71,12 @@ public class MainGameView implements Screen {
 	        Map<String, Integer> boostList = new HashMap<>();
 	        Map<String, Integer> ballList = new HashMap<>();
 	        potionList.put(PotionType.POTION.name(), 10);
-	        potionList.put(PotionType.SUPERPOTION.name(), 2);
-	        potionList.put(PotionType.HYPERPOTION.name(), 2);
-	        boostList.put(Stat.SPD.name() + "X", 2);
-	        boostList.put(Stat.DEF.name() + "X", 2);
-	        boostList.put(Stat.ATK.name() + "X", 2);
-	        ballList.put(PokeballType.Greatball.name(), 2);
+	        potionList.put(PotionType.SUPERPOTION.name(), 0);
+	        potionList.put(PotionType.HYPERPOTION.name(), 0);
+	        boostList.put(Stat.SPD.name() + "X", 0);
+	        boostList.put(Stat.DEF.name() + "X", 0);
+	        boostList.put(Stat.ATK.name() + "X", 0);
+	        ballList.put(PokeballType.Greatball.name(), 0);
 	        ballList.put(PokeballType.Ultraball.name(), 100);
 	        ballList.put(PokeballType.Pokeball.name(), 10);     
 	        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
