@@ -18,7 +18,6 @@ import model.items.Item;
 import model.items.Item.ItemType;
 import model.player.PlayerImpl;
 import view.View;
-import view.resources.MainGameView;
 
 public class Market extends JWindow implements MyFrame {
         
@@ -44,7 +43,7 @@ public class Market extends JWindow implements MyFrame {
         Prz.add("PRICE");
         Qnt.add("QUANTITY");
         it.add(null); 
-        for (Item i : MainGameView.getMapImpl().getPokeMarket().getAvailableItems()) {         
+        for (Item i : Controller.getController().getPokeMap().getPokeMarket().getAvailableItems()) {         
             Name1.add(i.getType().name()); 
             Name2.add(i.toString()); 
             Prz.add("" + i.getPrice());

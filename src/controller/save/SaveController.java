@@ -11,6 +11,7 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.XMLParameters;
 import model.box.Box;
@@ -22,7 +23,6 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
-import view.resources.MainGameView;
 
 /**
  * This class saves all the requested informations. 
@@ -100,7 +100,7 @@ public class SaveController implements SaveControllerInterface {
      */
     private void setTrainers() {
         final Element allenatori = new Element(XMLParameters.TRAINERS.getName());
-        final Set<Trainer> l = MainGameView.getMapImpl().getTrainers();
+        final Set<Trainer> l = Controller.getController().getPokeMap().getTrainers();
         for (final Trainer t : l) {
             if (t != null) {
                 allenatori.setAttribute("N" + t.getID(),Boolean.toString(t.isDefeated()));

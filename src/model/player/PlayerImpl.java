@@ -12,7 +12,6 @@ import model.inventory.InventoryImpl;
 import model.items.Item;
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
-import model.map.Position;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;

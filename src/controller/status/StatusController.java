@@ -13,7 +13,6 @@ import controller.parameters.Music;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
 import model.map.Drawable.Direction;
-import model.player.PlayerImpl;
 import model.map.WalkableZone;
 import view.resources.MainGameView;
 
@@ -114,7 +113,7 @@ public class StatusController implements StatusControllerInterface {
 
     @Override
     public void updateMusic() {
-        final Optional<WalkableZone> zone = MainGameView.getMapImpl().getWalkableZone(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
+        final Optional<WalkableZone> zone = Controller.getController().getPokeMap().getWalkableZone(Controller.getController().getPlayer().getTileX(), Controller.getController().getPlayer().getTileY());
         if (zone.isPresent()) {
             for (final Music m : Music.values()) {
                 if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && Controller.getController().getStatusController().getState() != State.FIGHTING) {

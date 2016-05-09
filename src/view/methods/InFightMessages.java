@@ -1,13 +1,12 @@
 package view.methods;
 
 import java.util.ArrayList;
-import java.util.List;import com.badlogic.gdx.maps.tiled.TiledMap;
+import java.util.List;
 
 import controller.Controller;
 import controller.parameters.State;
 import model.fight.Effectiveness;
 import model.items.Item;
-import model.map.Position;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
@@ -15,19 +14,18 @@ import view.View;
 import view.frames.FightScreen;
 import view.frames.MessageFrame;
 import view.frames.MyFrame;
-import view.resources.MainGameView;
 import view.sprite.PlayerSprite;
 
 public class InFightMessages implements InFightMessagesInterface {
 
     
     public void teleportToCenter() {
-        final int x = MainGameView.getMapImpl().getPokemonCenterSpawnPosition().getX();
-        final int y = MainGameView.getMapImpl().getPokemonCenterSpawnPosition().getY();
+        final int x = Controller.getController().getPokeMap().getPokemonCenterSpawnPosition().getX();
+        final int y = Controller.getController().getPokeMap().getPokemonCenterSpawnPosition().getY();
         PlayerSprite.getSprite().setPlayerPosition(x, y);
         PlayerSprite.getSprite().setVelocity(0, 0);
         PlayerImpl.getPlayer().setPosition(x, y);
-        PlayerImpl.getPlayer().getSquad().healAllPokemon(MainGameView.getMapImpl());
+        PlayerImpl.getPlayer().getSquad().healAllPokemon(Controller.getController().getPokeMap());
     }
     
     @Override

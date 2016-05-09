@@ -12,7 +12,6 @@ import model.fight.Fight;
 import model.fight.FightVsTrainer;
 import model.fight.FightVsWildPkm;
 import model.items.Item;
-import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
@@ -26,7 +25,6 @@ import view.methods.InFightMessagesInterface;
  */
 public class FightController implements FightControllerInterface {
 
-    private static final int FIRST_POKEMON_POSITION = 0;
     private Fight fight;
     private final InFightMessagesInterface view = new InFightMessages();
     
@@ -40,7 +38,6 @@ public class FightController implements FightControllerInterface {
     public void newFightWithPokemon(final Pokemon pokemon) {
         fight = new FightVsWildPkm(pokemon);
         System.out.println("Fight with: " + pokemon.getPokemon().name() + " LVL: " + pokemon.getStat(Stat.LVL));
-        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(FIRST_POKEMON_POSITION).getCurrentHP());
     }
     
     @Override

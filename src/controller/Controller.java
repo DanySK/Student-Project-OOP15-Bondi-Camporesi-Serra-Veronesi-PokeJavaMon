@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Optional;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import controller.fight.FightController;
 import controller.load.LoadController;
 import controller.music.MainMusicController;
@@ -11,7 +12,10 @@ import controller.parameters.State;
 import controller.save.SaveController;
 import controller.status.StatusController;
 import controller.view.ViewController;
+import model.Model;
 import model.fight.Fight;
+import model.map.PokeMap;
+import model.player.Player;
 import model.pokemon.Pokemon;
 
 /**
@@ -26,6 +30,8 @@ public final class Controller implements ControllerInterface {
     private SaveController saveController;
     private StatusController statusController;
     private ViewController viewController;
+    private TiledMap map;
+    private Model model;
     private static ControllerInterface singleton;
     
     /**
@@ -132,5 +138,31 @@ public final class Controller implements ControllerInterface {
     @Override
     public ViewController getViewController() {
         return viewController;
+    }
+
+    @Override
+    public TiledMap getMap() {
+        return map;
+    }
+
+    @Override
+    public PokeMap getPokeMap() {
+        return model.getMap();
+    }
+
+    @Override
+    public Player getPlayer() {
+        return model.getPlayer();
+    }
+    
+    @Override
+    public Model getModel() {
+        return model;
+    }
+    
+    @Override
+    public void initializeModel(final TiledMap map) {
+        this.map = map;
+        this.model = new Model(map);
     }
 }
