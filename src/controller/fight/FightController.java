@@ -1,5 +1,6 @@
 package controller.fight;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.CannotCaughtTrainerPkmException;
@@ -90,12 +91,16 @@ public class FightController implements FightControllerInterface {
     }
     
     @Override
-    public List<PokemonInBattle> resolveEvolution() {
+    public List<String> resolveEvolution() {
         final List<PokemonInBattle> evolutions = fight.getPkmsThatMustEvolve();
+        final List<String> names = new ArrayList<>();
         if (!evolutions.isEmpty()) {
+            for (final PokemonInBattle p : evolutions) {
+                names.add(p.getPokemon().name());
+            }
             fight.evolvePkms();
-        }
-        return evolutions;
+        } 
+        return names;
     }
     
     @Override
