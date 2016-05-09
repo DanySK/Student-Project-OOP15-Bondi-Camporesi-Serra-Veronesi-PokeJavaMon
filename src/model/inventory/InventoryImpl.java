@@ -18,7 +18,7 @@ public class InventoryImpl implements Inventory {
     protected Map<Pokeball, Integer> pokeballs;
     protected Map<Potion, Integer> potions;
     protected Map<Boost, Integer> boosts;
-    private static boolean isSet = false;
+    private boolean isSet = false;
     
     
     private static Inventory SINGLETON;
@@ -54,10 +54,11 @@ public class InventoryImpl implements Inventory {
         return SINGLETON;
     }
 
-    public static Inventory initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList) {
+    @Override
+    public void initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList) {
 		final Inventory i = InventoryImpl.getInventory();
 		
-		if (InventoryImpl.isSet) {
+		if (this.isSet) {
 			throw new IllegalStateException("Can't initialize Inventory more than once");
 		}
 		
@@ -100,8 +101,7 @@ public class InventoryImpl implements Inventory {
 			}
 		        i.setPokeballs(bal);
 		}
-		InventoryImpl.isSet = true;
-		return i;
+		this.isSet = true;
 	}
 
     

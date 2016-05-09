@@ -75,4 +75,8 @@ public class View {
         }
         stack.push(f);
     }
+    
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
 }

@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Optional;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import controller.fight.FightController;
 import controller.load.LoadController;
 import controller.music.MainMusicController;
@@ -11,7 +12,10 @@ import controller.parameters.State;
 import controller.save.SaveController;
 import controller.status.StatusController;
 import controller.view.ViewController;
+import model.Model;
 import model.fight.Fight;
+import model.map.PokeMap;
+import model.player.Player;
 import model.pokemon.Pokemon;
 
 /**
@@ -26,6 +30,8 @@ public final class Controller implements ControllerInterface {
     private SaveController saveController;
     private StatusController statusController;
     private ViewController viewController;
+    private TiledMap map;
+    private Model model;
     private static ControllerInterface singleton;
     
     /**
@@ -56,81 +62,123 @@ public final class Controller implements ControllerInterface {
     
     @Override
     public Fight getFight() {
-        return fightController.getFight();
+        return this.fightController.getFight();
     }
     
     @Override
     public Pokemon getEnemyPokemonInFight() {
-        return fightController.getEnemyPokemon();
+        return this.fightController.getEnemyPokemon();
     }
     
     @Override
     public void load() {
-        loadController.load();
+        this.loadController.load();
     }
     
     @Override
     public boolean saveExists() {
-        return loadController.saveExists();
+        return this.loadController.saveExists();
     }
     
     @Override
     public void initializeMusicController() {
-        musicController.initializeMusicController();
+        this.musicController.initializeMusicController();
     }
     
     @Override
     public void playMusic(final Music m) {
-        musicController.playMusic(m);
+        this.musicController.playMusic(m);
     }
     
     @Override
     public void stopMusic() {
-        musicController.stopMusic();
+        this.musicController.stopMusic();
+    }
+    
+    @Override
+    public void pause() {
+        this.musicController.pause();
+    }
+
+    @Override
+    public void resume() {
+        this.musicController.resume();
+    }
+
+    @Override
+    public boolean isPaused() {
+        return this.musicController.isPaused();
     }
     
     @Override
     public Optional<Music> playing() {
-        return musicController.playing();
+        return this.musicController.playing();
     }
     
     @Override
     public void save() {
-        saveController.save();
+        this.saveController.setSave(this.model.getModelSnapshot());
+        this.saveController.save();
     }
     
     @Override
     public void updateStatus(final State s) {
-        statusController.updateStatus(s);
+        this.statusController.updateStatus(s);
     }
 
     @Override
     public FightController getFightController() {
-        return fightController;
+        return this.fightController;
     }
 
     @Override
     public LoadController getLoadController() {
-        return loadController;
+        return this.loadController;
     }
 
     @Override
     public MusicController getMusicController() {
-        return musicController;
+        return this.musicController;
     }
 
     @Override
     public SaveController getSaveController() {
-        return saveController;
+        return this.saveController;
     }
 
     @Override
     public StatusController getStatusController() {
-        return statusController;
+        return this.statusController;
     }
 
     @Override
     public ViewController getViewController() {
-        return viewController;
+        return this.viewController;
+    }
+
+    @Override
+    public TiledMap getMap() {
+        return this.map;
+    }
+
+    @Override
+    public PokeMap getPokeMap() {
+        return this.model.getMap();
+    }
+
+    @Override
+    public Player getPlayer() {
+        return this.model.getPlayer();
+    }
+    
+    @Override
+    public Model getModel() {
+        return this.model;
+    }
+    
+    @Override
+    public void initializeModel(final TiledMap map) {
+        this.map = map;
+        this.model = new Model(map);
     }
 }

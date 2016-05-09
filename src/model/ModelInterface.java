@@ -1,5 +1,7 @@
 package model;
 
+import model.box.Box;
+import model.inventory.Inventory;
 import model.map.NPC;
 import model.map.PokeMap;
 import model.map.Position;
@@ -33,7 +35,8 @@ public interface ModelInterface {
     public Set<NPC> getNPCs();
     
     public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, final List<Pokemon> squad,
-    					 final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box) throws SquadFullException;
+    					 final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box, 
+    					 final Map<String, Integer> pokeballs, final Map<String, Integer> boosts, final Map<String, Integer> potions) throws SquadFullException;
     
     
     public Save getModelSnapshot();
@@ -45,6 +48,8 @@ public interface ModelInterface {
     	public Position getPlayerPosition();    	
     	public List<PokemonInBattle> getPokemonSquad();
     	public Set<Trainer> getTrainers();
+    	public Inventory getInventory();
+    	public Box getBox();
     }
     
 }

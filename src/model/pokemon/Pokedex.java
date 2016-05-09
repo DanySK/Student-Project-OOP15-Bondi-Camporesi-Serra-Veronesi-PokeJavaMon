@@ -3,6 +3,7 @@ package model.pokemon;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import controller.parameters.BackSpriteImage;
 import controller.parameters.FrontSpriteImage;
@@ -70,6 +71,12 @@ public enum Pokedex {
     private Map<Integer, Move> moveset;
     private final FrontSpriteImage frontSprite;
     private final BackSpriteImage backSprite;
+    
+    static {
+    	for (final Entry<Pokedex, Map<Integer, Move>> e : InitializeMoves.getAllMoves().entrySet()) {
+    		e.getKey().initializeMoveset(e.getValue());
+    	}
+    }
     
     private Pokedex(final String name, final PokemonType firstType, final PokemonType secondType, final int baseHP, final int baseATK, final int baseDEF, final int baseSPD,
             final PokemonRarity rarity, final int evolveLevel, final String evolvesTo, final Map<Integer, Move> moveset, final FrontSpriteImage frontSprite, final BackSpriteImage backSprite) {

@@ -44,7 +44,7 @@ public final class StaticPokemonFactory {
 		retPkmn.currentMoves = moveset;
 
 
-		if (hp < retPkmn.getStat(Stat.HP) && hp > 0) {
+		if (hp < retPkmn.getStat(Stat.HP) && hp >= 0) {
 			retPkmn.damage(retPkmn.getStat(Stat.HP) - hp);
 		}
 		retPkmn.changeStat(Stat.EXP, exp);

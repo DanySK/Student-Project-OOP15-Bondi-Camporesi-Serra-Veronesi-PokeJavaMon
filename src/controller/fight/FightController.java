@@ -1,5 +1,6 @@
 package controller.fight;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.CannotCaughtTrainerPkmException;
@@ -12,7 +13,6 @@ import model.fight.Fight;
 import model.fight.FightVsTrainer;
 import model.fight.FightVsWildPkm;
 import model.items.Item;
-import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
@@ -26,21 +26,21 @@ import view.methods.InFightMessagesInterface;
  */
 public class FightController implements FightControllerInterface {
 
-    private static final int FIRST_POKEMON_POSITION = 0;
     private Fight fight;
-    private final InFightMessagesInterface view = new InFightMessages();
+    private InFightMessagesInterface view;
     
     @Override
     public void newFightWithTrainer(final Trainer trainer) {
-        fight = new FightVsTrainer(trainer);
+        this.fight = new FightVsTrainer(trainer);
+        this.view = new InFightMessages(); 
         System.out.println("Fight with: " + trainer.getID());
     }
     
     @Override
     public void newFightWithPokemon(final Pokemon pokemon) {
-        fight = new FightVsWildPkm(pokemon);
+        this.fight = new FightVsWildPkm(pokemon);
+        this.view = new InFightMessages();
         System.out.println("Fight with: " + pokemon.getPokemon().name() + " LVL: " + pokemon.getStat(Stat.LVL));
-        System.out.println("My Pkmn HP: " + PlayerImpl.getPlayer().getSquad().getPokemonList().get(FIRST_POKEMON_POSITION).getCurrentHP());
     }
     
     @Override
@@ -52,62 +52,66 @@ public class FightController implements FightControllerInterface {
     
     @Override
     public void resolveAttack(final Move myMove, final Effectiveness myMoveEffectiveness, final Move enemyMove, final Effectiveness enemyMoveEffectiveness, final boolean myMoveFirst, final boolean lastPokemonKills, final Pokemon nextEnemyPokemon, final String optionalMessage, final Move moveToLearn) {
-        view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage, final Move moveToLearn);
+        view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage, moveToLearn);
     }
     
     @Override
     public void resolveRun(final boolean success, final Move enemyMove, final boolean isMyPokemonDead) {
-        view.resolveRun(success, enemyMove, isMyPokemonDead);
+        this.view.resolveRun(success, enemyMove, isMyPokemonDead);
     }
     
     @Override
     public void resolveItem(final Item item, final Pokemon pokemon, final Move enemyMove, final boolean isMyPokemonDead) {
-        view.resolveUseItem(item, pokemon, enemyMove, isMyPokemonDead);
+        this.view.resolveUseItem(item, pokemon, enemyMove, isMyPokemonDead);
     }
     
     @Override
     public void resolvePokemon(final Pokemon myPokemon, final Move enemyMove, final boolean isMyPokemonDead) {
-        view.resolveChangePokemon(myPokemon, enemyMove, isMyPokemonDead);
+        this.view.resolveChangePokemon(myPokemon, enemyMove, isMyPokemonDead);
     }
     
     // Metodi che chiama la VIEW
     
     @Override
     public void attack(final Move move) {
-        fight.moveTurn(move);
+        this.fight.moveTurn(move);
     }
     
     @Override
     public void run() throws CannotEscapeFromTrainerException {
-        fight.runTurn();
+        this.fight.runTurn();
     }
     
     @Override
     public void changePokemon(final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        fight.changeTurn((PokemonInBattle) pokemon);
+        this.fight.changeTurn((PokemonInBattle) pokemon);
     }
     
     @Override
     public void useItem(final Item item, final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
-        fight.itemTurn(item, (PokemonInBattle) pokemon);
+        this.fight.itemTurn(item, (PokemonInBattle) pokemon);
     }
     
     @Override
-    public List<PokemonInBattle> resolveEvolution() {
-        final List<PokemonInBattle> evolutions = fight.getPkmsThatMustEvolve();
+    public List<String> resolveEvolution() {
+        final List<PokemonInBattle> evolutions = this.fight.getPkmsThatMustEvolve();
+        final List<String> names = new ArrayList<>();
         if (!evolutions.isEmpty()) {
-            fight.evolvePkms();
-        }
-        return evolutions;
+            for (final PokemonInBattle p : evolutions) {
+                names.add(p.getPokemon().name());
+            }
+            this.fight.evolvePkms();
+        } 
+        return names;
     }
     
     @Override
     public void selectPokemon(final Pokemon pokemon) throws PokemonIsExhaustedException, PokemonIsFightingException {
-        fight.applyChange((PokemonInBattle) pokemon);
+        this.fight.applyChange((PokemonInBattle) pokemon);
     }
 
     @Override
     public Pokemon getEnemyPokemon() {
-        return fight.getCurrentEnemyPokemon();
+        return this.fight.getCurrentEnemyPokemon();
     }
 }

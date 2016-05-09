@@ -1,7 +1,6 @@
 package model.fight;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.fail;
@@ -69,7 +68,7 @@ public class FightTest {
     }
 
     private void testSquadFull() {
-        InitializeMoves.initAllPokemonsTypes();
+        InitializeMoves.getAllMoves();
         try {
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BLASTOISE, 50));
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.WARTORTLE, 35));
@@ -85,7 +84,7 @@ public class FightTest {
     }
     
     private void testCheckLose() {
-        InitializeMoves.initAllPokemonsTypes();
+        InitializeMoves.getAllMoves();
         final Fight fight = createFightVsWildPkm();
         for (PokemonInBattle pkm : player.getSquad().getPokemonList()) {
             pkm.damage(A_LOT_OF_HP);
@@ -97,7 +96,7 @@ public class FightTest {
     }
 
     public void testApplyRun() {
-        InitializeMoves.initAllPokemonsTypes();
+        InitializeMoves.getAllMoves();
         final FightVsWildPkm fightWild = createFightVsWildPkm();
         final FightVsTrainer fightTrainer = this.createFightVsTrainer();
         //testo con WildPkm la fuga riesce al 100% perchè blastoise al 50 non può non fuggire contro un pikachu al 3
@@ -115,7 +114,7 @@ public class FightTest {
     }
 
     public void testApplyChange() {
-        InitializeMoves.initAllPokemonsTypes();
+        InitializeMoves.getAllMoves();
         final PokemonInBattle blastoise = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(THIRD_ELEM);
@@ -150,7 +149,7 @@ public class FightTest {
     }
 
     public void testApplyItem() {
-        InitializeMoves.initAllPokemonsTypes();
+        InitializeMoves.getAllMoves();
         final Item boost = new Boost(Stat.ATK);
         final Item potion = new Potion(Potion.PotionType.HYPERPOTION);
         final Item pokeball = new Pokeball(Pokeball.PokeballType.Ultraball);
@@ -232,7 +231,6 @@ public class FightTest {
 //            } catch (CannotCaughtTrainerPkmException e) {
 //                fail("You can use pokeball against a wild pokemon!");
 //            }
-          System.out.println(player.getSquad().getPokemonList().get(this.SECOND_ELEM));
     }
 
     public void testUseMove() {

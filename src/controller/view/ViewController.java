@@ -5,7 +5,6 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import controller.Controller;
 import controller.parameters.State;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import view.View;
 import view.frames.*;
@@ -58,14 +57,13 @@ public class ViewController implements ViewControllerInterface {
         cfg.width = WIDTH;
         cfg.height = HEIGHT;
         final GameView tl = new GameView(newGame); 
-        final LwjglApplication app = new LwjglApplication(tl, cfg);    
-        tl.setApp(app);
+        new LwjglApplication(tl, cfg);    
     }
     
     @Override
     public void save() {
-        if (name != null) {
-            PlayerImpl.getPlayer().setName(name);
+        if (this.name != null) {
+            Controller.getController().getPlayer().setName(this.name);
         }
         Controller.getController().save();
     }

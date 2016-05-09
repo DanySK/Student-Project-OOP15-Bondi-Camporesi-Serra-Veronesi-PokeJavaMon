@@ -167,6 +167,7 @@ public abstract class AbstractFight implements Fight {
         enemyEff = Effectiveness.NORMAL;
     }
 
+	//messo public per i test
     public void enemyTurn() {
         enemyMove = calculationEnemyMove();
         if (enemyMove.getStat() == Stat.HP) {
@@ -311,7 +312,8 @@ public abstract class AbstractFight implements Fight {
 
     protected abstract boolean useBall(Item itemToUse) throws CannotCaughtTrainerPkmException;
 
-    protected void allyTurn(final Move move) {
+	//messo public per i test
+    public void allyTurn(final Move move) {
         if (move.getStat() == Stat.HP) {
             applyDamage(allyPkm, enemyPkm, move);
             checkAndSetIsExhausted(enemyPkm);

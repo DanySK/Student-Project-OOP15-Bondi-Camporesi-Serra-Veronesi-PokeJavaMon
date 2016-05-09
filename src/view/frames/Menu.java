@@ -25,6 +25,10 @@ public class Menu extends JWindow implements MyFrame {
     private JButton bag;
     private JButton save;
     private JButton resume;
+    private JButton music;
+    private JLabel name;
+    private JLabel money;
+    private JLabel badges;
     
     @Override
     public void showFrame() {
@@ -33,7 +37,16 @@ public class Menu extends JWindow implements MyFrame {
         panel = new JPanel();
         this.setContentPane(panel);     
         panel.setBorder(new LineBorder(Color.GRAY, 4));
-        panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
+        name = new JLabel("Name: " + Controller.getController().getPlayer().getName());
+        name.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(name);
+        money = new JLabel("Money: " + Controller.getController().getPlayer().getMoney());
+        money.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(money);
+        badges = new JLabel("Badges: " + Controller.getController().getPlayer().getLastBadge());
+        badges.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(badges);
         this.add(Box.createVerticalGlue());
         box = new JButton("BoxMenu");
         box.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -44,7 +57,8 @@ public class Menu extends JWindow implements MyFrame {
                     disposeFrame();
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
-                    new MessageFrame(State.WALKING, "NO PKMN IN BOX");
+                    View.getView().addNew(new MessageFrame(State.WALKING, "NO PKMN IN BOX"));
+                    View.getView().showCurrent();
                 } else {
                     View.getView().hideCurrent();
                     BoxMenu bx = new BoxMenu();
@@ -76,7 +90,21 @@ public class Menu extends JWindow implements MyFrame {
                 View.getView().addNew(za);
                 View.getView().showCurrent();
             }
-        });      
+        });             
+        this.add(Box.createVerticalGlue());    
+        music = new JButton("MOOOOOSECA");
+        music.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(music);    
+        music.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                if (Controller.getController().isPaused()) {
+                    Controller.getController().resume();
+                    Controller.getController().getStatusController().updateMusic();
+                } else {
+                    Controller.getController().pause();
+                }
+            }
+        });         
         this.add(Box.createVerticalGlue());
         save = new JButton("Save");
         save.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -86,7 +114,8 @@ public class Menu extends JWindow implements MyFrame {
             public void mouseClicked(MouseEvent e) {
                 disposeFrame();
                 Controller.getController().getViewController().save();
-                new MessageFrame(State.WALKING, "Salvataggio riuscito!");
+                View.getView().addNew(new MessageFrame(State.WALKING, "Salvataggio riuscito!"));
+                View.getView().showCurrent();
             }
         });   
         this.add(Box.createVerticalGlue());
@@ -95,7 +124,8 @@ public class Menu extends JWindow implements MyFrame {
         this.getContentPane().add(resume);
         resume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                disposeFrame();
+                View.getView().disposeCurrent();
+                View.getView().removeCurrent();
                 Controller.getController().updateStatus(State.WALKING);
             }
         });     

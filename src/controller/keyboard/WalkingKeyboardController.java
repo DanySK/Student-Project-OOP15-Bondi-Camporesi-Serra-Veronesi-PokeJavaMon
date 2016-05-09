@@ -8,14 +8,14 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import controller.Controller;
 import controller.parameters.*;
 import model.map.Drawable.Direction;
-import model.map.PokeMapImpl;
+import model.map.PokeMap;
 import model.map.tile.BadgeTeleport;
 import model.map.tile.Teleport;
 import model.map.tile.Tile.TileType;
-import model.player.PlayerImpl;
+import model.player.Player;
 import model.pokemon.Pokemon;
+import view.View;
 import view.frames.MessageFrame;
-import view.resources.MainGameView;
 import view.sprite.PlayerSprite;
 
 /**
@@ -24,16 +24,29 @@ import view.sprite.PlayerSprite;
  */
 public class WalkingKeyboardController implements KeyboardController {
     
-    private final WalkingKeyboardControllerResolver resolver = new WalkingKeyboardControllerResolver();
     private static final int INCREMENT = 1;
     private static final int SPEED = 2;
     private static final int NULL_SPEED = 0;
-    private int keys, x, y;
-    private Direction direction = PlayerImpl.getPlayer().getDirection();
-    private Direction oppositeDirection = resolver.changeOppositeDirection();
-    private PokeMapImpl pm;
+    private WalkingKeyboardControllerResolver resolver;
+    private int keys;
+    private int x;
+    private int y;
+    private PokeMap pm;
     private TileType t;
-    private boolean left, right, up, down;
+    private Player player;
+    private Direction direction;
+    private Direction oppositeDirection;
+    private boolean left;
+    private boolean right;
+    private boolean up;
+    private boolean down;
+    
+    public WalkingKeyboardController() {
+        this.resolver = new WalkingKeyboardControllerResolver();
+        this.player = Controller.getController().getPlayer();
+        this.direction = this.player.getDirection();
+        this.oppositeDirection = resolver.changeOppositeDirection();
+    }
     
     @Override
     public boolean keyDown(final int keycode) {
@@ -41,30 +54,30 @@ public class WalkingKeyboardController implements KeyboardController {
             case Keys.W:
             case Keys.UP:
                 addKey();
-                up = true;
-                direction = Direction.NORTH;
-                oppositeDirection = Direction.SOUTH;
+                this.up = true;
+                this.direction = Direction.NORTH;
+                this.oppositeDirection = Direction.SOUTH;
                 break;
             case Keys.A:
             case Keys.LEFT:
                 addKey();
-                left = true;
-                direction = Direction.WEST;
-                oppositeDirection = Direction.EAST;
+                this.left = true;
+                this.direction = Direction.WEST;
+                this.oppositeDirection = Direction.EAST;
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 addKey();
-                right = true;
-                direction = Direction.EAST;
-                oppositeDirection = Direction.WEST;
+                this.right = true;
+                this.direction = Direction.EAST;
+                this.oppositeDirection = Direction.WEST;
                 break;
             case Keys.S:
             case Keys.DOWN:
                 addKey();
-                down = true;
-                direction = Direction.SOUTH;
-                oppositeDirection = Direction.NORTH;
+                this.down = true;
+                this.direction = Direction.SOUTH;
+                this.oppositeDirection = Direction.NORTH;
                 break; 
             case Keys.ESCAPE:
                 if (!PlayerSprite.getSprite().isMoving()) {
@@ -73,38 +86,38 @@ public class WalkingKeyboardController implements KeyboardController {
                 break;
             case Keys.ENTER:
                 if (!PlayerSprite.getSprite().isMoving()) {
-                    MainGameView.getMapImpl();
-                    final TileType t = MainGameView.getMapImpl().getTileNextToPlayer(direction);
+                    Controller.getController().getPokeMap();
+                    final TileType t = Controller.getController().getPokeMap().getTileNextToPlayer(direction);
                     switch (direction) {
                     case EAST:
-                        x = PlayerImpl.getPlayer().getTileX() + INCREMENT;
-                        y = PlayerImpl.getPlayer().getTileY();
+                        x = this.player.getTileX() + INCREMENT;
+                        y = this.player.getTileY();
                         break;
                     case NONE:
                         break;
                     case NORTH:
-                        x = PlayerImpl.getPlayer().getTileX();
-                        y = PlayerImpl.getPlayer().getTileY() - INCREMENT;
+                        x = this.player.getTileX();
+                        y = this.player.getTileY() - INCREMENT;
                         break;
                     case SOUTH:
-                        x = PlayerImpl.getPlayer().getTileX();
-                        y = PlayerImpl.getPlayer().getTileY() + INCREMENT;
+                        x = this.player.getTileX();
+                        y = this.player.getTileY() + INCREMENT;
                         break;
                     case WEST:
-                        x = PlayerImpl.getPlayer().getTileX() - INCREMENT;
-                        y = PlayerImpl.getPlayer().getTileY();
+                        x = this.player.getTileX() - INCREMENT;
+                        y = this.player.getTileY();
                         break;
                     default:
                         break;
                     }
                     if (t == TileType.CENTER) {
-                        resolver.resolvePokemonCenter();
+                        this.resolver.resolvePokemonCenter();
                     } else if (t == TileType.MARKET) {
                         Controller.getController().getViewController().market();
                     } else if (t == TileType.SIGN) {
-                        resolver.resolveSign();
+                        this.resolver.resolveSign();
                     } else if (t == TileType.NPC) {
-                    	resolver.resolveNPC();
+                        this.resolver.resolveNPC();
                     }
                 }
                 break;
@@ -120,22 +133,22 @@ public class WalkingKeyboardController implements KeyboardController {
             case Keys.W:
             case Keys.UP:
                 removeKey();
-                up = false;
+                this.up = false;
                 break;
             case Keys.A:
             case Keys.LEFT:
                 removeKey();
-                left = false;
+                this.left = false;
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 removeKey();
-                right = false;
+                this.right = false;
                 break;
             case Keys.S:
             case Keys.DOWN:
                 removeKey();
-                down = false;
+                this.down = false;
                 break;
             default:
                 break;
@@ -194,34 +207,33 @@ public class WalkingKeyboardController implements KeyboardController {
 
     @Override
     public void updateSpeed() {
-        pm = MainGameView.getMapImpl();
+        this.pm = Controller.getController().getPokeMap();
         PlayerSprite.getSprite().updatePosition();
-        t = pm.getTileType(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
-        if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
-                && !(pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport)) {
-            resolver.resolveTeleport();
+        this.t = pm.getTileType(player.getTileX(), player.getTileY());
+        if (this.t == TileType.TELEPORT && this.pm.getTeleport(this.player.getTileX(), this.player.getTileY()).isPresent() 
+                && !(this.pm.getTeleport(this.player.getTileX(), this.player.getTileY()).get() instanceof BadgeTeleport)) {
+            this.resolver.resolveTeleport();
             Controller.getController().getStatusController().updateMusic();
             return;
-        } else if (t == TileType.TELEPORT && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).isPresent() 
-                && pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get() instanceof BadgeTeleport 
-                && ((BadgeTeleport) pm.getTeleport(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY()).get()).canTeleport()) {
-            System.out.println("BADGE TELEPORT ACTIVE");
-            resolver.resolveTeleport();
+        } else if (this.t == TileType.TELEPORT && this.pm.getTeleport(this.player.getTileX(), this.player.getTileY()).isPresent() 
+                && this.pm.getTeleport(this.player.getTileX(), this.player.getTileY()).get() instanceof BadgeTeleport 
+                && ((BadgeTeleport) this.pm.getTeleport(this.player.getTileX(), this.player.getTileY()).get()).canTeleport()) {
+            this.resolver.resolveTeleport();
             Controller.getController().getStatusController().updateMusic();
             return;
         }
-        if (up) {
-            resolver.resolveMove(Direction.NORTH);
-            PlayerImpl.getPlayer().move(Direction.NORTH, pm);
-        } else if (down) {
-            resolver.resolveMove(Direction.SOUTH);
-            PlayerImpl.getPlayer().move(Direction.SOUTH, pm);
-        } else if (left) {
-            resolver.resolveMove(Direction.WEST);
-            PlayerImpl.getPlayer().move(Direction.WEST, pm);
-        } else if (right) {
-            resolver.resolveMove(Direction.EAST);
-            PlayerImpl.getPlayer().move(Direction.EAST, pm);
+        if (this.up) {
+            this.resolver.resolveMove(Direction.NORTH);
+            this.player.move(Direction.NORTH, pm);
+        } else if (this.down) {
+            this.resolver.resolveMove(Direction.SOUTH);
+            this.player.move(Direction.SOUTH, pm);
+        } else if (this.left) {
+            this.resolver.resolveMove(Direction.WEST);
+            this.player.move(Direction.WEST, pm);
+        } else if (this.right) {
+            this.resolver.resolveMove(Direction.EAST);
+            this.player.move(Direction.EAST, pm);
         } else {
             PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
         }
@@ -229,27 +241,27 @@ public class WalkingKeyboardController implements KeyboardController {
 
     @Override
     public Direction getDirection() {
-        return direction;
+        return this.direction;
     }
     
     @Override
     public void checkEncounter() {
-        pm = MainGameView.getMapImpl();
+        this.pm = Controller.getController().getPokeMap();
         PlayerSprite.getSprite().updatePosition();
-        t = pm.getTileType(PlayerImpl.getPlayer().getTileX(), PlayerImpl.getPlayer().getTileY());
-        if (t == TileType.POKEMON_ENCOUNTER && (up || down || left || right )) {
+        this.t = this.pm.getTileType(this.player.getTileX(), this.player.getTileY());
+        if (this.t == TileType.POKEMON_ENCOUNTER && (this.up || this.down || this.left || this.right )) {
             int x; 
             int y;
-            x = PlayerImpl.getPlayer().getTileX();
-            y = PlayerImpl.getPlayer().getTileY();
-            if (pm.getEncounterZone(x, y).isPresent() && pm.getEncounterZone(x, y).get().contains(x, y) && pm.getEncounterZone(x, y).get().isEncounterNow()) {
-                final Pokemon poke = pm.getEncounterZone(x, y).get().getPokemonEncounter();
+            x = this.player.getTileX();
+            y = this.player.getTileY();
+            if (this.pm.getEncounterZone(x, y).isPresent() && this.pm.getEncounterZone(x, y).get().contains(x, y) && this.pm.getEncounterZone(x, y).get().isEncounterNow()) {
+                final Pokemon poke = this.pm.getEncounterZone(x, y).get().getPokemonEncounter();
                 Controller.getController().getFightController().newFightWithPokemon(poke);
                 Controller.getController().getViewController().fightScreen();
-                up = false;
-                down = false;
-                left = false;
-                right = false;
+                this.up = false;
+                this.down = false;
+                this.left = false;
+                this.right = false;
                 PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
             }
         }
@@ -266,8 +278,9 @@ public class WalkingKeyboardController implements KeyboardController {
          */
         private void resolvePokemonCenter() {
             Controller.getController().updateStatus(State.READING);
-            new MessageFrame(State.WALKING, "POKEMON'S HEALTH FULLY RESTORED");
-            PlayerImpl.getPlayer().getSquad().healAllPokemon(pm);
+            View.getView().addNew(new MessageFrame(State.WALKING, "POKEMON'S HEALTH FULLY RESTORED"));
+            View.getView().showCurrent();
+            player.getSquad().healAllPokemon(pm);
         }
         
         /**
@@ -277,9 +290,11 @@ public class WalkingKeyboardController implements KeyboardController {
         private void resolveSign() {
             Controller.getController().updateStatus(State.READING);
             if (pm.getSign(x, y).isPresent()) {
-                new MessageFrame(State.WALKING, pm.getSign(x, y).get().getMessage());
+                View.getView().addNew(new MessageFrame(State.WALKING, pm.getSign(x, y).get().getMessage()));
+                View.getView().showCurrent();
             } else {
-                new MessageFrame(State.WALKING, "SIGN_MESSAGE");
+                View.getView().addNew(new MessageFrame(State.WALKING, "SIGN_MESSAGE"));
+                View.getView().showCurrent();
             }
         }
         
@@ -294,7 +309,8 @@ public class WalkingKeyboardController implements KeyboardController {
                 }
                 if (pm.getTrainer(x, y).get().isDefeated()) {
                     Controller.getController().updateStatus(State.READING);
-                    new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED");
+                    View.getView().addNew(new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED"));
+                    View.getView().showCurrent();
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
@@ -305,14 +321,16 @@ public class WalkingKeyboardController implements KeyboardController {
                     pm.getNPC(x, y).get().turn(oppositeDirection);
                 }
                 Controller.getController().updateStatus(State.READING);
-                new MessageFrame(State.WALKING, pm.getNPC(x, y).get().getMessage());
+                View.getView().addNew(new MessageFrame(State.WALKING, pm.getNPC(x, y).get().getMessage()));
+                View.getView().showCurrent();
             } else if (pm.getGymLeader(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getGymLeader(x, y).get().turn(oppositeDirection);
                 }
                 if (pm.getGymLeader(x, y).get().isDefeated()) {
                     Controller.getController().updateStatus(State.READING);
-                    new MessageFrame(State.WALKING, "GYM LEADER ALREADY DEFEATED");
+                    View.getView().addNew(new MessageFrame(State.WALKING, "GYM LEADER ALREADY DEFEATED"));
+                    View.getView().showCurrent();
                 } else {
                     Controller.getController().updateStatus(State.FIGHTING);
                     Controller.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
@@ -326,13 +344,13 @@ public class WalkingKeyboardController implements KeyboardController {
          * a teleport
          */
         private void resolveTeleport() {
-            final int x = PlayerImpl.getPlayer().getTileX();
-            final int y = PlayerImpl.getPlayer().getTileY();
+            final int x = player.getTileX();
+            final int y = player.getTileY();
             final Optional<Teleport> t = pm.getTeleport(x, y);
             if (t.isPresent()) {
                 PlayerSprite.getSprite().setPlayerPosition(t.get().getDestinationX(), t.get().getDestinationY());
                 PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
-                PlayerImpl.getPlayer().setPosition(t.get().getDestinationX(), t.get().getDestinationY());
+                player.setPosition(t.get().getDestinationX(), t.get().getDestinationY());
             }    
         }
         
@@ -340,7 +358,7 @@ public class WalkingKeyboardController implements KeyboardController {
          * Resolve the case player selects to move
          */
         private void resolveMove(final Direction direction) {
-            pm = MainGameView.getMapImpl();
+            pm = Controller.getController().getPokeMap();
             t = pm.getTileNextToPlayer(direction);
 
             if (pm.isWalkableNextToPlayer(direction)) {

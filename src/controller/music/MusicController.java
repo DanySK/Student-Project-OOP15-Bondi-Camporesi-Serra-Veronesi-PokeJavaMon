@@ -21,9 +21,24 @@ public interface MusicController {
     void stopMusic();
     
     /**
+     * Pauses the music
+     */
+    void pause();
+    
+    /**
+     * Resumes the music
+     */
+    void resume();
+    
+    /**
      * @return the {@link Music} that the controller is playing
      */
     Optional<Music> playing();
+    
+    /**
+     * @return true if music is paused, false otherwise
+     */
+    boolean isPaused();
 
     /**
      * Initializes the music controller

@@ -45,23 +45,26 @@ public class BagMenu extends JWindow implements MyFrame {
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
                     Controller.getController().getFightController().useItem(itemToUse, p);
+                    if (!View.getView().isEmpty()) {
+                        View.getView().resumeCurrent();
+                    }
                     selectItem(null);
                 } catch (PokemonIsExhaustedException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "POKEMON IS EXAUSTED");
+                    View.getView().addNew(new MessageFrame(null, "POKEMON IS EXAUSTED"));
+                    View.getView().showCurrent();
                 } catch (PokemonNotFoundException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "POKEMON NOT FOUND");
+                    View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
+                    View.getView().showCurrent();
                 } catch (CannotCaughtTrainerPkmException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON");
+                    View.getView().addNew(new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON"));
+                    View.getView().showCurrent();
                 } catch (IllegalStateException e1) {
                     selectItem(null);
-                    View.getView().resumeCurrent();
-                    new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
+                    View.getView().addNew(new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM"));
+                    View.getView().showCurrent();
                 }
             } else {
                 if (itemToUse instanceof Potion) {
@@ -153,6 +156,8 @@ public class BagMenu extends JWindow implements MyFrame {
                         if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
                             if (i.getType() == ItemType.POKEBALL) {
                                 useItem(Controller.getController().getEnemyPokemonInFight());
+                            } else if (i.getType() == ItemType.BOOST) {
+                                useItem(Controller.getController().getPlayer().getSquad().getPokemonList().get(0));
                             } else {
                                 selectItem(i);
                                 TeamMenu sq = new TeamMenu(true, true);

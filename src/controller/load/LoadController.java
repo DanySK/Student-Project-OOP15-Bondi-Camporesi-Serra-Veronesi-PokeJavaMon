@@ -13,31 +13,22 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import controller.parameters.FilePath;
+import controller.Controller;
+import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import exceptions.SquadFullException;
-import model.box.BoxImpl;
-import model.inventory.InventoryImpl;
-import model.map.PokeMap;
-import model.player.PlayerImpl;
+import model.map.Position;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
-import view.resources.MainGameView;
-import view.sprite.PlayerSprite;
 
 /**
  * This class loads all the requested informations. 
  */
 public class LoadController implements LoadControllerInterface {
-    private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
+    private static final String FILE_NAME = Folder.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private static final int FACTOR = 1;
     private static final int STRING_OFFSET = 1;
-    private static final int NOBADGE = 0;
-    private static final int MAXBADGE = 5;
-    private static final int TILEDIM = 16;
-    private static final int OFFSET = 299;
-    private static final float DIM = 15.9f;
     private Element root;
     
     /**
@@ -47,55 +38,50 @@ public class LoadController implements LoadControllerInterface {
         final SAXBuilder builder = new SAXBuilder();
         try {
             final Document document = builder.build(new File(FILE_NAME));
-            root = document.getRootElement(); 
+            this.root = document.getRootElement(); 
         } catch (JDOMException e) {
-            System.out.println("FAILED LOADING SAVE");
+            System.out.println("FAILED LOADING SAVEFOLDER");
         } catch (IOException e) {
-            System.out.println("FAILED LOADING SAVE");
+            System.out.println("FAILED LOADING SAVEFOLDER");
         }
     }
     
     /**
-     * Loads the money value from the save file
+     * Returns the saved money value
      */
-    private void getMoney() {
-        PlayerImpl.getPlayer().setMoney(Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName())));
+    private int getMoney() {
+        return Integer.parseInt(this.root.getAttributeValue(XMLParameters.MONEY.getName()));
     }
     
     /**
-     * Loads player's name value from the save file
+     * Returns the saved player's name
      */
-    private void getName() {
-        PlayerImpl.getPlayer().setName(root.getAttribute(XMLParameters.NAME.getName()).getValue());
+    private String getName() {
+        return this.root.getAttribute(XMLParameters.NAME.getName()).getValue();
     }
     
     /**
-     * Loads the badges value from the save file
+     * Returns the saved player's badges
      */
-    private void getBadges() {
-        final int badges = Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
-        for (int x = NOBADGE; x < MAXBADGE; x ++) {
-            if (x < badges) {
-                PlayerImpl.getPlayer().addBadge();
-            }
-        }
+    private int getBadges() {
+        return Integer.parseInt(this.root.getAttributeValue(XMLParameters.BADGES.getName()));
     }
     
     /**
-     * Loads player's position value from the save file
+     * Returns the saved player's position
      */
-    private void getPosition() {
-        final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
-        final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
-        PlayerImpl.getPlayer().setPosition(x, y);
-        PlayerSprite.getSprite().setBounds(x * TILEDIM, (OFFSET-y) * TILEDIM, DIM, DIM);
+    private Position getPosition() {
+        final int x = Integer.parseInt(this.root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
+        final int y = Integer.parseInt(this.root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
+        return new Position(x, y);
     }
     
     /**
-     * Loads the pokemon's team from the save file
+     * Returns the saved team
      */
-    private void getTeam() {
-        for (final Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
+    private List<Pokemon> getTeam() {
+        List<Pokemon> team = new ArrayList<>();
+        for (final Element e : this.root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
             final int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             final int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
             final int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
@@ -104,55 +90,65 @@ public class LoadController implements LoadControllerInterface {
             for (int a = MIN_MOVES; a <= cont; a++) {   
                 moves[a-FACTOR] = e.getAttributeValue(XMLParameters.MOVES_ID.getName()+a);
             }
-            try {
-                PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
-            } catch (SquadFullException e1) {
-                System.out.println("TEAM IS FULL");
-            }
+            team.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }     
+        return team;
     }
     
     /**
-     * Loads the trainers from the save file
+     * Returns the trainers that player defeated
      */
-    private void getTrainers() {
-        final PokeMap map = MainGameView.getMapImpl();
+    private Map<Integer, Boolean> getTrainers() {
         final Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
-        for (final Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
+        for (final Attribute a : this.root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
             	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(STRING_OFFSET, a.getName().length())), a.getBooleanValue());
             } catch (DataConversionException e) {
                 System.out.println("DATA CONVERSION FAILED");
             }
         }
-        map.initTrainers(trainer_isDefeated);
+        return trainer_isDefeated;
     }
     
     /**
-     * Loads the inventory from the save file
+     * Returns the saved potions
      */
-    private void getInventory() {
-        final Map<String, Integer> potions = new HashMap<String, Integer>();
-        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
-            potions.put(a.getName(), Integer.parseInt(a.getValue()));
+    private Map<String, Integer> getPotions() {
+        final Map<String, Integer> obj = new HashMap<String, Integer>();
+        for (final Attribute a : this.root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
+            obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        final Map<String, Integer> boosts = new HashMap<String, Integer>();
-        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
-            boosts.put(a.getName(), Integer.parseInt(a.getValue()));
+        return obj;
+    }
+    
+    /**
+     * Returns the saved boosts
+     */
+    private Map<String, Integer> getBoosts() {
+        final Map<String, Integer> obj = new HashMap<String, Integer>();
+        for (final Attribute a : this.root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
+            obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        final Map<String, Integer> balls = new HashMap<String, Integer>();
-        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
-            balls.put(a.getName(), Integer.parseInt(a.getValue()));
+        return obj;
+    }
+    
+    /**
+     * Returns the saved pokeballs
+     */
+    private Map<String, Integer> getPokeballs() {
+        final Map<String, Integer> obj = new HashMap<String, Integer>();
+        for (final Attribute a : this.root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
+            obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
-        InventoryImpl.initializeInventory(potions, boosts, balls);
+        return obj;
     }
 
     /**
-     * Loads the box from the save file
+     * Returns the saved pokemons in box
      */
-    private void getBox() {
+    private List<Pokemon> getBox() {
         final List<Pokemon> box = new ArrayList<Pokemon>();
-        for (final Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
+        for (final Element e : this.root.getChild(XMLParameters.BOX.getName()).getChildren()) {
             final int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             final int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
             final int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
@@ -163,20 +159,18 @@ public class LoadController implements LoadControllerInterface {
             }
             box.add(StaticPokemonFactory.createPokemon(e.getName(), lv, hp, exp, moves));
         }
-        BoxImpl.getBox().setPokemons(box);
+        return box;
     }
     
     @Override
     public void load() {
         setup();
-        getMoney();
-        getPosition();
-        getTeam();
-        getTrainers();
-        getName();
-        getBadges();
-        getInventory();
-        getBox();
+        try {
+            Controller.getController().getModel().loadSave(getMoney(), getName(), getBadges(), getPosition(), 
+                    getTeam(), getTrainers(), getBox(), getPokeballs(), getBoosts(), getPotions());
+        } catch (SquadFullException e) {
+            System.out.println("TEAM IS FULL");
+        }
     }
     
     @Override
