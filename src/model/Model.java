@@ -7,6 +7,7 @@ import java.util.Set;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import exceptions.SquadFullException;
+import model.box.Box;
 import model.inventory.Inventory;
 import model.map.NPC;
 import model.map.PokeMap;
@@ -131,6 +132,11 @@ public class Model implements ModelInterface {
 			@Override
 			public Inventory getInventory() {
 				return player.getInventory();
+			}
+
+			@Override
+			public Box getBox() {
+				return player.getBox();
 			}
 
 		};

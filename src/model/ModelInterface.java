@@ -1,5 +1,6 @@
 package model;
 
+import model.box.Box;
 import model.inventory.Inventory;
 import model.map.NPC;
 import model.map.PokeMap;
@@ -48,6 +49,7 @@ public interface ModelInterface {
     	public List<PokemonInBattle> getPokemonSquad();
     	public Set<Trainer> getTrainers();
     	public Inventory getInventory();
+    	public Box getBox();
     }
     
 }
