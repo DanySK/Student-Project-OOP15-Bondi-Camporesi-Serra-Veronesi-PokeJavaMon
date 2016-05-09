@@ -52,7 +52,6 @@ public class FirstMenu {
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Controller.getController().getViewController().map(false);
-                Controller.getController().updateStatus(State.WALKING);
                 frame.dispose();
             }
         });

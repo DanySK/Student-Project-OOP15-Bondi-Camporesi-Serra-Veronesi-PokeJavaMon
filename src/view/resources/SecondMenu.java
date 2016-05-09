@@ -10,7 +10,6 @@ import javax.swing.*;
 import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.FrontSpriteImage;
-import controller.parameters.State;
 import exceptions.SquadFullException;
 import model.player.PlayerImpl;
 import model.pokemon.Pokedex;
@@ -85,7 +84,6 @@ public class SecondMenu {
 		    }
 	    	    Controller.getController().getViewController().setName(nickname.getText());
 	            Controller.getController().getViewController().map(true);
-	            Controller.getController().updateStatus(State.WALKING);
 	            f.dispose();
 	    	}
 	    }
@@ -103,7 +101,6 @@ public class SecondMenu {
 		    }
 	    	    Controller.getController().getViewController().setName(nickname.getText());
 	            Controller.getController().getViewController().map(true);
-	            Controller.getController().updateStatus(State.WALKING);
 	            f.dispose();
 	    	}
 	    }
@@ -121,7 +118,6 @@ public class SecondMenu {
 		    }
 	    	    Controller.getController().getViewController().setName(nickname.getText());
 	            Controller.getController().getViewController().map(true);
-	            Controller.getController().updateStatus(State.WALKING);
 	            f.dispose();
 	    	}
 	    }

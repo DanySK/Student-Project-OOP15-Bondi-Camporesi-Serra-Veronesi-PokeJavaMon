@@ -18,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import controller.Controller;
 import controller.parameters.FilePath;
+import controller.parameters.State;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
@@ -63,20 +64,23 @@ public class MainGameView implements Screen {
             Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(FilePath.MAP.getResourcePath()).getPath()));
         }
 	Controller.getController().initializeMusicController();
+        Controller.getController().updateStatus(State.WALKING);
 	// Init the Inventory
-	Map<String, Integer> potionList = new HashMap<>();
-        Map<String, Integer> boostList = new HashMap<>();
-        Map<String, Integer> ballList = new HashMap<>();
-        potionList.put(PotionType.POTION.name(), 10);
-        potionList.put(PotionType.SUPERPOTION.name(), 2);
-        potionList.put(PotionType.HYPERPOTION.name(), 2);
-        boostList.put(Stat.SPD.name() + "X", 2);
-        boostList.put(Stat.DEF.name() + "X", 2);
-        boostList.put(Stat.ATK.name() + "X", 2);
-        ballList.put(PokeballType.Greatball.name(), 2);
-        ballList.put(PokeballType.Ultraball.name(), 100);
-        ballList.put(PokeballType.Pokeball.name(), 10);     
-        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+	if (newGame) {
+	    Map<String, Integer> potionList = new HashMap<>();
+	        Map<String, Integer> boostList = new HashMap<>();
+	        Map<String, Integer> ballList = new HashMap<>();
+	        potionList.put(PotionType.POTION.name(), 10);
+	        potionList.put(PotionType.SUPERPOTION.name(), 2);
+	        potionList.put(PotionType.HYPERPOTION.name(), 2);
+	        boostList.put(Stat.SPD.name() + "X", 2);
+	        boostList.put(Stat.DEF.name() + "X", 2);
+	        boostList.put(Stat.ATK.name() + "X", 2);
+	        ballList.put(PokeballType.Greatball.name(), 2);
+	        ballList.put(PokeballType.Ultraball.name(), 100);
+	        ballList.put(PokeballType.Pokeball.name(), 10);     
+	        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+	}
 	// End Init
         renderer = new OrthogonalTiledMapRenderer(Controller.getController().getMap());                    
 	sr = new ShapeRenderer();
@@ -101,6 +105,8 @@ public class MainGameView implements Screen {
 	} else {
 	    if (Controller.getController().saveExists()) {
 		Controller.getController().load();
+	        System.out.println(Controller.getController().getPlayer().getTileX() + " " + Controller.getController().getPlayer().getTileY());
+	        pls.setBounds(Controller.getController().getPlayer().getTileX()*16, (299 - Controller.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 		pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		if (PlayerImpl.START_X < 0) {
