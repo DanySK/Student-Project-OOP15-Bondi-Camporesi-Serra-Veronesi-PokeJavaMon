@@ -29,7 +29,6 @@ public class Model implements ModelInterface {
 	private boolean isContinued;
 	
 	public Model(final TiledMap tm) {
-		InitializeMoves.initAllPokemonsTypes();
 		this.map = new PokeMapImpl(tm);
 		this.player = PlayerImpl.getPlayer();
 		this.isContinued = false;
