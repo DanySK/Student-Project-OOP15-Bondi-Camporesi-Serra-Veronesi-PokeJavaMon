@@ -11,7 +11,6 @@ import model.items.Potion;
 import model.box.BoxImpl;
 import model.items.Pokeball;
 import model.player.PlayerImpl;
-import model.pokemon.InitializeMoves;
 import model.pokemon.Pokemon;
 import model.pokemon.Pokedex;
 import model.pokemon.Stat;
@@ -20,7 +19,6 @@ import model.pokemon.StaticPokemonFactory;
 public class SaveTest {
 
     public static void main(String[] args) {
-        InitializeMoves.initAllPokemonsTypes();
         PlayerImpl.getPlayer().setMoney(750);
         PlayerImpl.getPlayer().setPosition(28*16, (299 - 177) * 16);
         PlayerImpl.getPlayer().setName("DEFAULT_NAME");

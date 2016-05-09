@@ -25,7 +25,6 @@ import model.items.Potion;
 import model.map.Drawable.Direction;
 import model.player.Player;
 import model.player.PlayerImpl;
-import model.pokemon.InitializeMoves;
 import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -63,7 +62,6 @@ public class FightTest {
     }
 
     private void testSquadFull() {
-        InitializeMoves.initAllPokemonsTypes();
         try {
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BLASTOISE, 50));
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.WARTORTLE, 20));
@@ -79,7 +77,6 @@ public class FightTest {
     }
     
     private void testCheckLose() {
-        InitializeMoves.initAllPokemonsTypes();
         final Fight fight = createFightVsWildPkm();
         for (PokemonInBattle pkm : player.getSquad().getPokemonList()) {
             pkm.damage(A_LOT_OF_HP);
@@ -91,7 +88,6 @@ public class FightTest {
     }
 
     public void testApplyRun() {
-        InitializeMoves.initAllPokemonsTypes();
         final FightVsWildPkm fightWild = createFightVsWildPkm();
         final FightVsTrainer fightTrainer = this.createFightVsTrainer();
         //testo con WildPkm la fuga riesce al 100% perchè blastoise al 50 non può non fuggire contro un pikachu al 3
@@ -109,7 +105,6 @@ public class FightTest {
     }
 
     public void testApplyChange() {
-        InitializeMoves.initAllPokemonsTypes();
         final PokemonInBattle blastoise = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(THIRD_ELEM);
@@ -146,7 +141,6 @@ public class FightTest {
     }
 
     public void testEApplyItem() {
-        InitializeMoves.initAllPokemonsTypes();
         final Item boost = new Boost(Stat.ATK);
         final Item potion = new Potion(Potion.PotionType.HYPERPOTION);
         final Item pokeball = new Pokeball(Pokeball.PokeballType.Ultraball);
