@@ -20,4 +20,7 @@ public interface Inventory {
     public void setBoosts(final Map<Boost, Integer> boosts);
     
     public void setPotions(final Map<Potion, Integer> potions);
+    
+    public void initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList);
+    	
 }
