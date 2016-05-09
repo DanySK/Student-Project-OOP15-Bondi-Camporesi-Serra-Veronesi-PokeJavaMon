@@ -9,7 +9,6 @@ import controller.Controller;
 import exceptions.SquadFullException;
 import model.items.Potion;
 import model.box.BoxImpl;
-import model.inventory.InventoryImpl;
 import model.items.Pokeball;
 import model.player.PlayerImpl;
 import model.pokemon.InitializeMoves;
@@ -36,7 +35,7 @@ public class SaveTest {
         boosts.put(Stat.ATK.name()+"X", 20);
         Map<String, Integer> balls = new HashMap<String, Integer>();
         balls.put(Pokeball.PokeballType.Ultraball.name(), 35);
-        InventoryImpl.initializeInventory(potions, boosts, balls);
+        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potions, boosts, balls);
         List<Pokemon> box = new ArrayList<Pokemon>();
         box.add(StaticPokemonFactory.createPokemon(Pokedex.CHARIZARD, 30));
         box.add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 30));

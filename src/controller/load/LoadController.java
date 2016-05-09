@@ -111,16 +111,32 @@ public class LoadController implements LoadControllerInterface {
     }
     
     /**
-     * Returns the saved items
+     * Returns the saved potions
      */
-    private Map<String, Integer> getInventory() {
+    private Map<String, Integer> getPotions() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
         for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
             obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
+        return obj;
+    }
+    
+    /**
+     * Returns the saved boosts
+     */
+    private Map<String, Integer> getBoosts() {
+        final Map<String, Integer> obj = new HashMap<String, Integer>();
         for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
             obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
+        return obj;
+    }
+    
+    /**
+     * Returns the saved pokeballs
+     */
+    private Map<String, Integer> getPokeballs() {
+        final Map<String, Integer> obj = new HashMap<String, Integer>();
         for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
             obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
@@ -150,7 +166,8 @@ public class LoadController implements LoadControllerInterface {
     public void load() {
         setup();
         try {
-            Controller.getController().getModel().loadSave(getMoney(), getName(), getBadges(), getPosition(), getTeam(), getTrainers(), getBox());
+            Controller.getController().getModel().loadSave(getMoney(), getName(), getBadges(), getPosition(), 
+                    getTeam(), getTrainers(), getBox(), getPokeballs(), getBoosts(), getPotions());
         } catch (SquadFullException e) {
             System.out.println("TEAM IS FULL");
         }

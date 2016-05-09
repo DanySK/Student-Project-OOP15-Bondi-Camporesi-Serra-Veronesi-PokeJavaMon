@@ -12,7 +12,6 @@ import controller.parameters.FilePath;
 import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
 import exceptions.SquadFullException;
-import model.inventory.InventoryImpl;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
@@ -57,8 +56,8 @@ public class SecondMenu {
         boostList.put(Stat.ATK.name() + "X", 2);
         ballList.put(PokeballType.Greatball.name(), 2);
         ballList.put(PokeballType.Ultraball.name(), 100);
-        ballList.put(PokeballType.Pokeball.name(), 10);
-        InventoryImpl.initializeInventory(potionList, boostList, ballList);
+        ballList.put(PokeballType.Pokeball.name(), 10);     
+        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
         PlayerImpl.getPlayer().getBox().putCapturedPokemon(StaticPokemonFactory.createPokemon(Pokedex.RAYQUAZA, 50));
         JTextArea inserisciNome = new JTextArea();
 	inserisciNome.setHighlighter(null);
