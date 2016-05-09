@@ -1,5 +1,8 @@
 package view.resources;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -15,7 +18,10 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import controller.Controller;
 import controller.parameters.FilePath;
+import model.items.Pokeball.PokeballType;
+import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
+import model.pokemon.Stat;
 import view.sprite.PlayerSprite;
 
 public class MainGameView implements Screen {  
@@ -57,7 +63,22 @@ public class MainGameView implements Screen {
             Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(FilePath.MAP.getResourcePath()).getPath()));
         }
 	Controller.getController().initializeMusicController();
-	renderer = new OrthogonalTiledMapRenderer(Controller.getController().getMap());                    
+	// Init the Inventory
+	Map<String, Integer> potionList = new HashMap<>();
+        Map<String, Integer> boostList = new HashMap<>();
+        Map<String, Integer> ballList = new HashMap<>();
+        potionList.put(PotionType.POTION.name(), 10);
+        potionList.put(PotionType.SUPERPOTION.name(), 2);
+        potionList.put(PotionType.HYPERPOTION.name(), 2);
+        boostList.put(Stat.SPD.name() + "X", 2);
+        boostList.put(Stat.DEF.name() + "X", 2);
+        boostList.put(Stat.ATK.name() + "X", 2);
+        ballList.put(PokeballType.Greatball.name(), 2);
+        ballList.put(PokeballType.Ultraball.name(), 100);
+        ballList.put(PokeballType.Pokeball.name(), 10);     
+        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+	// End Init
+        renderer = new OrthogonalTiledMapRenderer(Controller.getController().getMap());                    
 	sr = new ShapeRenderer();
 	sr.setColor(Color.CYAN);
 	Gdx.gl.glLineWidth(3);

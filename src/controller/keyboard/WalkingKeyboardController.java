@@ -28,11 +28,11 @@ public class WalkingKeyboardController implements KeyboardController {
     private static final int SPEED = 2;
     private static final int NULL_SPEED = 0;
     private int keys, x, y;
-    private Direction oppositeDirection = resolver.changeOppositeDirection();
     private PokeMap pm;
     private TileType t;
     private Player player = Controller.getController().getPlayer();
     private Direction direction = player.getDirection();
+    private Direction oppositeDirection = resolver.changeOppositeDirection();
     private boolean left, right, up, down;
     
     @Override

@@ -12,14 +12,9 @@ import controller.parameters.FilePath;
 import controller.parameters.FrontSpriteImage;
 import controller.parameters.State;
 import exceptions.SquadFullException;
-import model.items.Pokeball.PokeballType;
-import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
 import model.pokemon.Pokedex;
-import model.pokemon.Stat;
-import model.pokemon.StaticPokemonFactory;  
-import java.util.HashMap;
-import java.util.Map;
+import model.pokemon.StaticPokemonFactory;
 
 public class SecondMenu {  
 	
@@ -45,19 +40,6 @@ public class SecondMenu {
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	f.setBounds(100, 100, 400, 300);
 	f.getContentPane().setLayout(null);
-	Map<String, Integer> potionList = new HashMap<>();
-        Map<String, Integer> boostList = new HashMap<>();
-        Map<String, Integer> ballList = new HashMap<>();
-        potionList.put(PotionType.POTION.name(), 10);
-        potionList.put(PotionType.SUPERPOTION.name(), 2);
-        potionList.put(PotionType.HYPERPOTION.name(), 2);
-        boostList.put(Stat.SPD.name() + "X", 2);
-        boostList.put(Stat.DEF.name() + "X", 2);
-        boostList.put(Stat.ATK.name() + "X", 2);
-        ballList.put(PokeballType.Greatball.name(), 2);
-        ballList.put(PokeballType.Ultraball.name(), 100);
-        ballList.put(PokeballType.Pokeball.name(), 10);     
-        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
         PlayerImpl.getPlayer().getBox().putCapturedPokemon(StaticPokemonFactory.createPokemon(Pokedex.RAYQUAZA, 50));
         JTextArea inserisciNome = new JTextArea();
 	inserisciNome.setHighlighter(null);

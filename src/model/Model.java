@@ -15,7 +15,6 @@ import model.map.PokeMapImpl;
 import model.map.Position;
 import model.player.Player;
 import model.player.PlayerImpl;
-import model.pokemon.InitializeMoves;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.WeaknessTable;
@@ -29,7 +28,6 @@ public class Model implements ModelInterface {
 	private boolean isContinued;
 	
 	public Model(final TiledMap tm) {
-		InitializeMoves.initAllPokemonsTypes();
 		this.map = new PokeMapImpl(tm);
 		this.player = PlayerImpl.getPlayer();
 		this.isContinued = false;
