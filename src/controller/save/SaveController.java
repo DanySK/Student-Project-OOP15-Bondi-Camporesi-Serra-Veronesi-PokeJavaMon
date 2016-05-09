@@ -14,10 +14,10 @@ import org.jdom2.output.XMLOutputter;
 import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.XMLParameters;
+import model.ModelInterface.Save;
 import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;
-import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
@@ -33,6 +33,7 @@ public class SaveController implements SaveControllerInterface {
     private Element root;
     private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
     private FileOutputStream fos;
+    private Save sv = Controller.getController().getModel().getModelSnapshot();
     
     /**
      * Prepares the save file
@@ -58,8 +59,8 @@ public class SaveController implements SaveControllerInterface {
      */
     private void setPosition() {
         final Element position = new Element(XMLParameters.POSITION.getName());
-        position.setAttribute(XMLParameters.X.getName(),Integer.toString(PlayerImpl.getPlayer().getTileX()));
-        position.setAttribute(XMLParameters.Y.getName(),Integer.toString(PlayerImpl.getPlayer().getTileY()));
+        position.setAttribute(XMLParameters.X.getName(),Integer.toString(sv.getPlayerPosition().getX()));
+        position.setAttribute(XMLParameters.Y.getName(),Integer.toString(sv.getPlayerPosition().getY()));
         root.addContent(position);
     }
     
@@ -67,7 +68,7 @@ public class SaveController implements SaveControllerInterface {
      * Saves player's badge value
      */
     private void setBadges() {
-        root.setAttribute(XMLParameters.BADGES.getName(),Integer.toString(PlayerImpl.getPlayer().getLastBadge()));
+        root.setAttribute(XMLParameters.BADGES.getName(),Integer.toString(sv.getPlayerBadges()));
     }
     
     /**
@@ -75,7 +76,7 @@ public class SaveController implements SaveControllerInterface {
      */
     private void setTeam() {
         final Element squadra = new Element(XMLParameters.TEAM.getName());
-        final List<PokemonInBattle> team = PlayerImpl.getPlayer().getSquad().getPokemonList();
+        final List<PokemonInBattle> team = sv.getPokemonSquad();
         for (final Pokemon x : team) { 
             final Element e = new Element(x.getPokemon().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
@@ -100,7 +101,7 @@ public class SaveController implements SaveControllerInterface {
      */
     private void setTrainers() {
         final Element allenatori = new Element(XMLParameters.TRAINERS.getName());
-        final Set<Trainer> l = Controller.getController().getPokeMap().getTrainers();
+        final Set<Trainer> l = sv.getTrainers();
         for (final Trainer t : l) {
             if (t != null) {
                 allenatori.setAttribute("N" + t.getID(),Boolean.toString(t.isDefeated()));
@@ -115,7 +116,7 @@ public class SaveController implements SaveControllerInterface {
     private void setBag() {
         final Element borsa = new Element(XMLParameters.BAG.getName());
         final Element instruments = new Element(XMLParameters.POTIONS.getName());
-        final Inventory i = PlayerImpl.getPlayer().getInventory();
+        final Inventory i = sv.getInventory();
         for (final Item item : i.getSubInventory(Item.ItemType.POTION).keySet()) {
             instruments.setAttribute(item.toString(),Integer.toString(i.getSubInventory(Item.ItemType.POTION).get(item)));
         }
@@ -137,14 +138,14 @@ public class SaveController implements SaveControllerInterface {
      * Saves player's money
      */
     private void setMoney() {
-        root.setAttribute(XMLParameters.MONEY.getName(),Integer.toString(PlayerImpl.getPlayer().getMoney()));
+        root.setAttribute(XMLParameters.MONEY.getName(),Integer.toString(sv.getPlayerMoney()));
     }
     
     /**
      * Saves player's name
      */
     private void setName() {
-        root.setAttribute(XMLParameters.NAME.getName(),PlayerImpl.getPlayer().getName());
+        root.setAttribute(XMLParameters.NAME.getName(),sv.getPlayerName());
     }
     
     /**
@@ -152,7 +153,7 @@ public class SaveController implements SaveControllerInterface {
      */
     private void setBox() {
         final Element box = new Element(XMLParameters.BOX.getName());
-        final Box b = PlayerImpl.getPlayer().getBox();
+        final Box b = sv.getBox();
         for (final Pokemon x : b.getPokemonList()) { 
             final Element e = new Element(x.getPokemon().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
