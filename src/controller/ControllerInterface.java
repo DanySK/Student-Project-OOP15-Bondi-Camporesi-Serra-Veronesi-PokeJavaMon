@@ -58,11 +58,26 @@ public interface ControllerInterface {
      * Stops playing {@link Music}
      */
     void stopMusic();
+    
+    /**
+     * Pauses the current music
+     */
+    void pause();
+    
+    /**
+     * Resumes the current music
+     */
+    void resume();
 
     /**
      * @return the {@link Music} playing
      */
     Optional<Music> playing();
+    
+    /**
+     * @return true if music is paused, false otherwise
+     */
+    boolean isPaused();
 
     /**
      * Saves the game

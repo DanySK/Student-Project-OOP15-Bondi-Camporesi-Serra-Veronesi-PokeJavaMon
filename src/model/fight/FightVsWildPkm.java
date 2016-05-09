@@ -80,7 +80,18 @@ public class FightVsWildPkm extends AbstractFight {
             if (turnOrder) {
                 allyTurn(move);
                 if (isEnemyExhausted) {
-                    giveExpAndCheckLvlUp(getExp());
+                    final int hpBeforeLvUp = allyPkm.getStat(Stat.HP);
+                    if (giveExpAndCheckLvlUp(getExp())) {
+                        int hpAfterLvUp = allyPkm.getStat(Stat.HP);
+                        hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
+                        allyPkm.heal(hpAfterLvUp);
+                        if (allyPkm.getPokemon().getMoveset().get(allyPkm.getStat(Stat.LVL)) != null) {
+                            moveToLearn = allyPkm.getPokemon().getMoveset().get(allyPkm.getStat(Stat.LVL));
+                        }
+                        else {
+                            moveToLearn = null;
+                        }
+                    }
                     isEnd = true;
                 }
             } else {
@@ -96,38 +107,40 @@ public class FightVsWildPkm extends AbstractFight {
             if (isAllyFastest) {
                 if (isAllyExhausted) {
                     //alleato attacca, nemico attacca, pokemon alleato esausto
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null, null);
                 } else {
                     //alleato attacca, nemico attacca, pokemon alleato sopravvive
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, null);
                 }
             } else {
                 if (isEnemyExhausted) {
                     //nemico attacca, alleato attacca, pokemon nemico esausto
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp());
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp(), moveToLearn);
                 } else {
                     //nemico attacca, alleato attacca, pokemon nemico sopravvive
-                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null);
+                    Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, null);
                 }
             }
         } else {
             if (isAllyFastest) {
                 //alleato attacca per primo, pkm nemico esausto
-                Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp());
+                Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp(), moveToLearn);
             } else {
                 //nemico attaccata per primo, pkm alleato esausto
-                Controller.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null);
+                Controller.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null, null);
             }
         }
         reset();
     }
 
-    protected boolean setIsAllyFastest() {
+    //messo public per i test
+    public boolean setIsAllyFastest() {
         return isAllyFastest = (allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
                 >= (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD));
     }
 
-    protected int getExp() {
+    //messo public per il test
+    public int getExp() {
         return (int) (expBaseCalculation() / EXP_COEFFICIENT);
     }
 

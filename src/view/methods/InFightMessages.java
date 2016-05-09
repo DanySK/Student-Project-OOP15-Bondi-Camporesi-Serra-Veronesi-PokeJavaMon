@@ -31,7 +31,7 @@ public class InFightMessages implements InFightMessagesInterface {
     @Override
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
-            Pokemon nextEnemyPokemon, String optionalMessage) {
+            Pokemon nextEnemyPokemon, String optionalMessage, final Move moveToLearn) {
         List<String> message = new ArrayList<>();
         if (myMoveFirst) {
             message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
@@ -51,7 +51,8 @@ public class InFightMessages implements InFightMessagesInterface {
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
                     message.toArray(array);
-                    new MessageFrame(State.WALKING, array);
+                    View.getView().addNew(new MessageFrame(State.WALKING, array));
+                    View.getView().showCurrent();
                 }
             } else {
                 message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
@@ -70,7 +71,8 @@ public class InFightMessages implements InFightMessagesInterface {
                         View.getView().removeCurrent();
                         String[] array = new String[message.size()];
                         message.toArray(array);
-                        new MessageFrame(State.WALKING, array);
+                        View.getView().addNew(new MessageFrame(State.WALKING, array));
+                        View.getView().showCurrent();
                         teleportToCenter();
                     }
                 } else {
@@ -97,7 +99,8 @@ public class InFightMessages implements InFightMessagesInterface {
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
                     message.toArray(array);
-                    new MessageFrame(State.WALKING, array);
+                    View.getView().addNew(new MessageFrame(State.WALKING, array));
+                    View.getView().showCurrent();
                     teleportToCenter();
                 }
             } else {
@@ -119,7 +122,8 @@ public class InFightMessages implements InFightMessagesInterface {
                         View.getView().removeCurrent();
                         String[] array = new String[message.size()];
                         message.toArray(array);
-                        new MessageFrame(State.WALKING, array);
+                        View.getView().addNew(new MessageFrame(State.WALKING, array));
+                        View.getView().showCurrent();
                     }
                 } else {
                     String[] array = new String[message.size()];
@@ -149,7 +153,8 @@ public class InFightMessages implements InFightMessagesInterface {
                 View.getView().removeCurrent();
                 String[] array = new String[message.size()];
                 message.toArray(array);
-                new MessageFrame(State.WALKING, array);
+                View.getView().addNew(new MessageFrame(State.WALKING, array));
+                View.getView().showCurrent();
                 teleportToCenter();
             }
         } else {
@@ -179,7 +184,8 @@ public class InFightMessages implements InFightMessagesInterface {
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
                     message.toArray(array);
-                    new MessageFrame(State.WALKING, array);
+                    View.getView().addNew(new MessageFrame(State.WALKING, array));
+                    View.getView().showCurrent();
                     teleportToCenter();
                 }
             } else {
@@ -196,7 +202,8 @@ public class InFightMessages implements InFightMessagesInterface {
             View.getView().removeCurrent();
             String[] array = new String[message.size()];
             message.toArray(array);
-            new MessageFrame(State.WALKING, array);
+            View.getView().addNew(new MessageFrame(State.WALKING, array));
+            View.getView().showCurrent();
         }
     }
 
@@ -224,7 +231,8 @@ public class InFightMessages implements InFightMessagesInterface {
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
                     message.toArray(array);
-                    new MessageFrame(State.WALKING, array);
+                    View.getView().addNew(new MessageFrame(State.WALKING, array));
+                    View.getView().showCurrent();
                     teleportToCenter();
                 }
             } else {

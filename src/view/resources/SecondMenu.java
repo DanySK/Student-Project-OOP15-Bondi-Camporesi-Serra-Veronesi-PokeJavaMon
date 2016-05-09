@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import controller.Controller;
-import controller.parameters.FilePath;
+import controller.parameters.Img;
 import controller.parameters.FrontSpriteImage;
 import exceptions.SquadFullException;
 import model.player.PlayerImpl;
@@ -31,10 +31,10 @@ public class SecondMenu {
 	f.setFocusable(true);
 	f.setResizable(false);
 	try {
-	    f.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
+	    f.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
 	} catch (Exception e) {
 	    //TODO: Fare catch di una semplice Exception e' sbagliato
-	    f.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
+	    f.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(Img.PALLA.getResourcePath()).getPath()));
 	}
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	f.setBounds(100, 100, 400, 300);

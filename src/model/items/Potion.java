@@ -56,9 +56,6 @@ public class Potion extends AbstractItem {
     	if (object == null) {
     		return false;
     	}
-    	if (!(object instanceof Boost) ) {
-    		return false;
-    	}
         return this.hashCode() == ((Potion) object).hashCode();
     }
     

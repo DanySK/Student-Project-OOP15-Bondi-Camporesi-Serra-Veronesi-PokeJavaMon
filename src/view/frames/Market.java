@@ -92,7 +92,9 @@ public class Market extends JWindow implements MyFrame {
                         View.getView().addNew(mk);
                         View.getView().showCurrent();
                     } catch (NotEnoughMoneyException e1) {
-                        new MessageFrame(null, "NOT ENOUGH MONEY");
+                        View.getView().hideCurrent();
+                        View.getView().addNew(new MessageFrame(null, "NOT ENOUGH MONEY"));
+                        View.getView().showCurrent();
                     }
                 }
             });
@@ -106,7 +108,6 @@ public class Market extends JWindow implements MyFrame {
 
     @Override
     public void disposeFrame() {
-        Controller.getController().updateStatus(State.WALKING);
         this.dispose();
     }
 

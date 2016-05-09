@@ -17,7 +17,8 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import controller.Controller;
-import controller.parameters.FilePath;
+import controller.parameters.Img;
+import controller.parameters.Maps;
 import controller.parameters.State;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
@@ -59,9 +60,9 @@ public class MainGameView implements Screen {
 	
     public void show() {	
         try {
-            Controller.getController().initializeModel(new TmxMapLoader().load(FilePath.MAP.getAbsolutePath()));
+            Controller.getController().initializeModel(new TmxMapLoader().load(Maps.MAP.getAbsolutePath()));
         } catch (Exception e) {
-            Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(FilePath.MAP.getResourcePath()).getPath()));
+            Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
 	Controller.getController().initializeMusicController();
         Controller.getController().updateStatus(State.WALKING);
@@ -71,12 +72,12 @@ public class MainGameView implements Screen {
 	        Map<String, Integer> boostList = new HashMap<>();
 	        Map<String, Integer> ballList = new HashMap<>();
 	        potionList.put(PotionType.POTION.name(), 10);
-	        potionList.put(PotionType.SUPERPOTION.name(), 2);
-	        potionList.put(PotionType.HYPERPOTION.name(), 2);
-	        boostList.put(Stat.SPD.name() + "X", 2);
-	        boostList.put(Stat.DEF.name() + "X", 2);
-	        boostList.put(Stat.ATK.name() + "X", 2);
-	        ballList.put(PokeballType.Greatball.name(), 2);
+	        potionList.put(PotionType.SUPERPOTION.name(), 0);
+	        potionList.put(PotionType.HYPERPOTION.name(), 0);
+	        boostList.put(Stat.SPD.name() + "X", 0);
+	        boostList.put(Stat.DEF.name() + "X", 0);
+	        boostList.put(Stat.ATK.name() + "X", 0);
+	        ballList.put(PokeballType.Greatball.name(), 0);
 	        ballList.put(PokeballType.Ultraball.name(), 100);
 	        ballList.put(PokeballType.Pokeball.name(), 10);     
 	        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
@@ -89,9 +90,9 @@ public class MainGameView implements Screen {
 	camera = new OrthographicCamera();	
 	Texture tx;
 	try {
-	    tx = new Texture(FilePath.PLAYER.getAbsolutePath());
+	    tx = new Texture(Img.PLAYER.getAbsolutePath());
 	} catch (Exception e) {
-	    tx = new Texture(this.getClass().getResource(FilePath.PLAYER.getResourcePath()).getPath());
+	    tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
 	}
 	TextureRegion gain = new TextureRegion(tx);
 	sp = new Sprite(gain);		
@@ -105,7 +106,6 @@ public class MainGameView implements Screen {
 	} else {
 	    if (Controller.getController().saveExists()) {
 		Controller.getController().load();
-	        System.out.println(Controller.getController().getPlayer().getTileX() + " " + Controller.getController().getPlayer().getTileY());
 	        pls.setBounds(Controller.getController().getPlayer().getTileX()*16, (299 - Controller.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 		pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);

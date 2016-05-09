@@ -39,9 +39,9 @@ public class PokeMarket extends NPC {
 
 	public Set<Item> getAvailableItems() {
 		switch (PlayerImpl.getPlayer().getLastBadge()) {
-		case -1 :
-			return Collections.unmodifiableSet(this.tier0);
 		case 0 :
+			return Collections.unmodifiableSet(this.tier0);
+		case 1 :
 			return Collections.unmodifiableSet(this.tier1);
 		default :
 			return Collections.unmodifiableSet(this.tier2);

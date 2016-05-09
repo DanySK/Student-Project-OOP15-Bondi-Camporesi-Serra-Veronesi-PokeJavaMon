@@ -53,6 +53,7 @@ public abstract class AbstractFight implements Fight {
     protected final WeaknessTable table = WeaknessTable.getWeaknessTable();
     protected List<PokemonInBattle> pkmsThatMustEvolve = new ArrayList<>();
     protected boolean runValue;
+    protected Move moveToLearn;
 
     public AbstractFight() {
         allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
@@ -130,7 +131,6 @@ public abstract class AbstractFight implements Fight {
     public List<PokemonInBattle> getPkmsThatMustEvolve() {
         pkmsThatMustEvolve = new ArrayList<>();
         for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
-            System.out.println(pkm.checkIfEvolves());
             if (pkm.checkIfEvolves()) {
                 pkmsThatMustEvolve.add(pkm);
             }
@@ -167,7 +167,8 @@ public abstract class AbstractFight implements Fight {
         enemyEff = Effectiveness.NORMAL;
     }
 
-    protected void enemyTurn() {
+	//messo public per i test
+    public void enemyTurn() {
         enemyMove = calculationEnemyMove();
         if (enemyMove.getStat() == Stat.HP) {
             applyDamage(enemyPkm, allyPkm, enemyMove);
@@ -195,6 +196,9 @@ public abstract class AbstractFight implements Fight {
             }
             return false;
         case POTION:
+            if(pkm.getCurrentHP() == 0) {
+                throw new PokemonIsExhaustedException();
+            }
             final Potion potion = (Potion) itemToUse;
             potion.effect(player, pkm);
         }
@@ -308,7 +312,8 @@ public abstract class AbstractFight implements Fight {
 
     protected abstract boolean useBall(Item itemToUse) throws CannotCaughtTrainerPkmException;
 
-    protected void allyTurn(final Move move) {
+	//messo public per i test
+    public void allyTurn(final Move move) {
         if (move.getStat() == Stat.HP) {
             applyDamage(allyPkm, enemyPkm, move);
             checkAndSetIsExhausted(enemyPkm);
@@ -343,13 +348,15 @@ public abstract class AbstractFight implements Fight {
         return baseExp;
     }
 
-    protected void giveExpAndCheckLvlUp(final int exp) {
+    //messo a public per i test
+    public boolean giveExpAndCheckLvlUp(final int exp) {
         if (allyPkm.getNecessaryExp() <= exp) {
             allyPkm.setExp(exp - allyPkm.getNecessaryExp());
             allyPkm.levelUp();
-        } else {
-            allyPkm.setExp(allyPkm.getStat(Stat.EXP) + exp);
+            return true;
         }
+        allyPkm.setExp(allyPkm.getStat(Stat.EXP) + exp);
+        return false;
     }
 
 }

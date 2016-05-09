@@ -11,9 +11,7 @@ import model.fight.Effectiveness;
 import model.fight.Fight;
 import model.items.Item;
 import model.pokemon.Move;
-import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonInBattle;
 import model.trainer.Trainer;
 
 /**
@@ -57,7 +55,7 @@ public interface FightControllerInterface {
      */
     void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
                 Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
-                Pokemon nextEnemyPokemon, String optionalMessage);
+                Pokemon nextEnemyPokemon, String optionalMessage, Move moveToLearn);
 
     /**
      * Resolve the {@link Fight}'s turn in case of run choice
@@ -127,9 +125,9 @@ public interface FightControllerInterface {
 
     /**
      * Search for {@link Pokemon}s that have to evolve
-     * @return the {@link List}<{@link Pokedex}> that have to evolve 
+     * @return the {@link List}<{@link String}> of the names of pokemon that have to evolve 
      */
-    List<PokemonInBattle> resolveEvolution();
+    List<String> resolveEvolution();
 
     /**
      * Select the next {@link Pokemon} to use in the {@link Fight}
