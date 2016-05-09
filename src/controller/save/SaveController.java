@@ -11,7 +11,6 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import controller.Controller;
 import controller.parameters.FilePath;
 import controller.parameters.XMLParameters;
 import model.ModelInterface.Save;
@@ -31,9 +30,17 @@ public class SaveController implements SaveControllerInterface {
     private static final int MIN_MOVES = 1;
     private Document document;
     private Element root;
-    private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
+    private final String FILE_NAME = FilePath.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private FileOutputStream fos;
-    private Save sv = Controller.getController().getModel().getModelSnapshot();
+    private Save sv;   
+    
+    /**
+     * Initializes the {@link Save}
+     * @param save the current {@link Save}
+     */
+    public void setSave(final Save save) {
+        this.sv = save;
+    }
     
     /**
      * Prepares the save file
@@ -49,7 +56,7 @@ public class SaveController implements SaveControllerInterface {
                 f.createNewFile();
                 fos = new FileOutputStream(new File(FILE_NAME));
             } catch (IOException e1) {
-                System.out.println("ERROR PREPARING SAVE FILE");
+                System.out.println("ERROR PREPARING SAVEFOLDER FILE");
             }
         }
     }
@@ -190,7 +197,7 @@ public class SaveController implements SaveControllerInterface {
             outputter.setFormat(Format.getPrettyFormat());
             outputter.output(document, fos);
         } catch (IOException e) {
-            System.out.println("ERROR IN SAVE");
+            System.out.println("ERROR IN SAVEFOLDER");
         }
     }
 }

@@ -44,52 +44,52 @@ public class Installer implements InstallerInterface {
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.SAVE.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.SAVE.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.SAVEFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.SAVEFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
-                System.out.println("FAILED CREATING SAVE FOLDER");
+                System.out.println("FAILED CREATING SAVEFOLDER FOLDER");
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.MUSIC.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.MUSIC.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.MUSICFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.MUSICFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
-                System.out.println("FAILED CREATING MUSIC FOLDER");
+                System.out.println("FAILED CREATING MUSICFOLDER FOLDER");
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.MAPS.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.MAPS.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.MAPSFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.MAPSFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
-                System.out.println("FAILED CREATING MAPS FOLDER");
+                System.out.println("FAILED CREATING MAPSFOLDER FOLDER");
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.IMG.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.IMG.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.IMGFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.IMGFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
                 System.out.println("FAILED CREATING IMG FOLDER");
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.SPRITES.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.SPRITES.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.SPRITESFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.SPRITESFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
-                System.out.println("FAILED CREATING SPRITES FOLDER");
+                System.out.println("FAILED CREATING SPRITESFOLDER FOLDER");
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.FRONT.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.FRONT.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.FRONTSPRITEFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.FRONTSPRITEFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
-                System.out.println("FAILED CREATING FRONT FOLDER");
+                System.out.println("FAILED CREATING FRONTSPRITEFOLDER FOLDER");
                 return;
             }
         }
-        if (!Files.exists(Paths.get(FilePath.BACK.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.BACK.getAbsolutePath()).mkdirs();
+        if (!Files.exists(Paths.get(FilePath.BACKSPRITEFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            success = new File(FilePath.BACKSPRITEFOLDER.getAbsolutePath()).mkdirs();
             if (!success) {
-                System.out.println("FAILED CREATING BACK FOLDER");
+                System.out.println("FAILED CREATING BACKSPRITEFOLDER FOLDER");
                 return;
             }
         }
@@ -100,9 +100,9 @@ public class Installer implements InstallerInterface {
      */
     private void installMusic() {
         for (final Music m : Music.values()) {
-            if (!Files.exists(Paths.get(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            if (!Files.exists(Paths.get(FilePath.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
-                        FileOutputStream fos = new FileOutputStream(FilePath.MUSIC.getAbsolutePath() + m.getAbsolutePath())) {
+                        FileOutputStream fos = new FileOutputStream(FilePath.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath())) {
                     final byte[] buf = new byte[SIZE];
                     int r = musicStream.read(buf);
                     while(r != NODATA) {
@@ -110,7 +110,7 @@ public class Installer implements InstallerInterface {
                         r = musicStream.read(buf);
                     }
                 } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING MUSIC");
+                    System.out.println("FAILED INSTALLING MUSICFOLDER");
                     return;
                 }
             }
@@ -132,7 +132,7 @@ public class Installer implements InstallerInterface {
                         r = is.read(buf);
                     }
                 } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING FRONT SPRITE");
+                    System.out.println("FAILED INSTALLING FRONTSPRITEFOLDER SPRITE");
                     return;
                 }
             }
@@ -154,7 +154,7 @@ public class Installer implements InstallerInterface {
                         r = is.read(buf);
                     }
                 } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING BACK SPRITE");
+                    System.out.println("FAILED INSTALLING BACKSPRITEFOLDER SPRITE");
                     return;
                 }
             }

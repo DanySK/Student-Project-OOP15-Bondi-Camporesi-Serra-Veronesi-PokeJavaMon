@@ -355,7 +355,7 @@ class MyPanel extends JPanel {
             try {
                 image = ImageIO.read(new File(Controller.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getResourcePath()));
             } catch (IOException e1) {
-                System.out.println("CANNOT LOAD FRONT SPRITE");
+                System.out.println("CANNOT LOAD FRONTSPRITEFOLDER SPRITE");
             }
         }
         try {                
@@ -364,7 +364,7 @@ class MyPanel extends JPanel {
             try {
                 image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getResourcePath()));
             } catch (IOException e) {
-                System.out.println("CANNOT LOAD BACK SPRITE");
+                System.out.println("CANNOT LOAD BACKSPRITEFOLDER SPRITE");
             }
         }
         if (image != null) {

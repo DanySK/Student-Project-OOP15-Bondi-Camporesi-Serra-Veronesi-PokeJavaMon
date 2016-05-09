@@ -102,6 +102,7 @@ public final class Controller implements ControllerInterface {
     
     @Override
     public void save() {
+        saveController.setSave(model.getModelSnapshot());
         saveController.save();
     }
     

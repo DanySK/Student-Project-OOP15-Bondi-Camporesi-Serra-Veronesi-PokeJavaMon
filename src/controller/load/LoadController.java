@@ -25,7 +25,7 @@ import model.pokemon.StaticPokemonFactory;
  * This class loads all the requested informations. 
  */
 public class LoadController implements LoadControllerInterface {
-    private final String FILE_NAME = FilePath.SAVE.getAbsolutePath() + File.separator + "save.xml";
+    private static final String FILE_NAME = FilePath.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private static final int FACTOR = 1;
     private static final int STRING_OFFSET = 1;
@@ -40,9 +40,9 @@ public class LoadController implements LoadControllerInterface {
             final Document document = builder.build(new File(FILE_NAME));
             root = document.getRootElement(); 
         } catch (JDOMException e) {
-            System.out.println("FAILED LOADING SAVE");
+            System.out.println("FAILED LOADING SAVEFOLDER");
         } catch (IOException e) {
-            System.out.println("FAILED LOADING SAVE");
+            System.out.println("FAILED LOADING SAVEFOLDER");
         }
     }
     
