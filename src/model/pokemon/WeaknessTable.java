@@ -41,6 +41,25 @@ public class WeaknessTable {
 	private double[][] table;
 	private static WeaknessTable singleton = null;
 	
+
+	private static int NORMAL = PokemonType.NORMAL.ordinal();
+	private static int FLYING = PokemonType.FLYING.ordinal();
+	private static int BUG = PokemonType.BUG.ordinal();
+	private static int FIRE = PokemonType.FIRE.ordinal();
+	private static int WATER = PokemonType.WATER.ordinal();
+	private static int GRASS = PokemonType.GRASS.ordinal();
+	private static int POISON = PokemonType.POISON.ordinal();
+	private static int GROUND = PokemonType.GROUND.ordinal();
+	private static int ELECTR = PokemonType.ELECTR.ordinal();
+	private static int DRAGON = PokemonType.DRAGON.ordinal();
+	private static int PSYCHIC = PokemonType.PSYCHIC.ordinal();
+	private static int FIGHT = PokemonType.FIGHT.ordinal();
+	private static int STEEL = PokemonType.STEEL.ordinal();
+	private static int ROCK = PokemonType.ROCK.ordinal();
+	private static int GHOST = PokemonType.GHOST.ordinal();
+	private static int DARK = PokemonType.DARK.ordinal();
+	private static int ICE = PokemonType.ICE.ordinal();
+	
 	private WeaknessTable() {
 		table = new double[PokemonType.values().length][PokemonType.values().length];
 		initWeaknesses();
@@ -87,20 +106,183 @@ public class WeaknessTable {
 				break;
 			
 			case NORMAL :
-				/*Ok*/
 				for (int i = 0; i < PokemonType.values().length; i++) {
-					table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					/*NotSoEffective*/
+					if (i == FIGHT || i == STEEL) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					/*Immune*/
+					} else if (i == GHOST){
+					table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
 				}
 				break;
 			
-			case FIRE :
+			case FIGHT :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == PokemonType.FIRE.ordinal() || i == PokemonType.WATER.ordinal() || i == PokemonType.DRAGON.ordinal()) {
+					if (i == FLYING || i == POISON || i == BUG || i == PSYCHIC) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
-					} else if (i == PokemonType.GRASS.ordinal()) {
+					} else if (i == NORMAL || i == ROCK || i == STEEL || i == ICE ||
+							   i == DARK) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+						
+					/*Immune*/
+					} else if (i == GHOST){
+							table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+						
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
+				
+			case FLYING :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == ELECTR || i == ROCK || i == STEEL) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == GRASS || i == BUG || i == FIGHT) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+					
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
+				
+			case POISON :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == GROUND || i == POISON || i == ROCK || i == GHOST) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == GRASS) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+						
+					/*Immune*/
+					} else if (i == STEEL){
+						table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+					
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
+			
+				
+			case GROUND :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == GRASS || i == BUG) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == FIRE || i == ELECTR || i == POISON || i == ROCK || 
+							   i == STEEL) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+					
+					/*Immune*/
+					} else if (i == FLYING){
+						table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+					
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
+	
+			case ROCK :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == FIGHT || i == GROUND || i == STEEL) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == FIRE || i == FLYING || i == BUG || i == ICE) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;	
+				
+			case BUG :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == FLYING || i == POISON || i == FIRE || i == FIGHT ||
+						i == GHOST || i == STEEL) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == GRASS || i == PSYCHIC || i == DARK) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+					
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
+				
+			case GHOST :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == DARK) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == PSYCHIC || i == GHOST) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+					
+					/*Immune*/
+					} else if (i == NORMAL){
+						table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+					
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;		
+				
+			case STEEL :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == FIRE || i == STEEL || i == WATER || i == ELECTR) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == ROCK || i == ICE) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+					
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
+		
+			case FIRE :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == FIRE || i == WATER || i == DRAGON || i == ROCK) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == GRASS || i == BUG || i == STEEL || i == ICE) {
 						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
 					
 					/*Ok*/
@@ -113,11 +295,11 @@ public class WeaknessTable {
 			case WATER :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == PokemonType.GRASS.ordinal() || i == PokemonType.WATER.ordinal() || i == PokemonType.ELECTR.ordinal() || i == PokemonType.DRAGON.ordinal()) {
+					if (i == GRASS || i == WATER || i == DRAGON) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
-					} else if (i == PokemonType.FIRE.ordinal() || i == PokemonType.GROUND.ordinal() ) {
+					} else if (i == FIRE || i == GROUND || i == ROCK) {
 						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
 					
 					/*Ok*/
@@ -130,11 +312,12 @@ public class WeaknessTable {
 			case GRASS :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == PokemonType.GRASS.ordinal() || i == PokemonType.FIRE.ordinal() || i == PokemonType.POISON.ordinal() || i == PokemonType.FLYING.ordinal() || i == PokemonType.DRAGON.ordinal()) {
+					if (i == GRASS || i == FIRE || i == POISON ||
+						i == FLYING || i == DRAGON || i == BUG || i == STEEL) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
-					} else if (i == PokemonType.WATER.ordinal() || i == PokemonType.GROUND.ordinal()) {
+					} else if (i == WATER || i == GROUND || i == ROCK) {
 						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
 					
 					/*Ok*/
@@ -147,87 +330,94 @@ public class WeaknessTable {
 			case ELECTR :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == PokemonType.GRASS.ordinal() || i == PokemonType.ELECTR.ordinal() || i == PokemonType.DRAGON.ordinal()) {
+					if (i == GRASS || i == ELECTR || i == DRAGON) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
-					} else if (i == PokemonType.WATER.ordinal() || i == PokemonType.FLYING.ordinal()) {
+					} else if (i == WATER || i == FLYING) {
 						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
-					
-					/*Ok*/
-					} else {
-						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
-					}
-				}
-				break;
-				
-			case GROUND :
-				for (int i = 0; i < PokemonType.values().length; i++) {
-					/*NotSoEffective*/
-					if (i == PokemonType.GRASS.ordinal()) {
-						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
-					
-					/*Supereffective*/
-					} else if (i == PokemonType.FIRE.ordinal() || i == PokemonType.ELECTR.ordinal() || i == PokemonType.POISON.ordinal()) {
-						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
-					
+						
 					/*Immune*/
-					} else if (i == PokemonType.FLYING.ordinal()){
-						table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
-					
+					} else if (i == GROUND){
+							table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+						
 					/*Ok*/
 					} else {
 						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
 					}
 				}
-				break;
+				break;		
 				
-			case POISON :
+			case PSYCHIC :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == PokemonType.GROUND.ordinal() || i == PokemonType.POISON.ordinal()) {
+					if (i == PSYCHIC || i == STEEL) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
-					} else if (i == PokemonType.GRASS.ordinal()) {
+					} else if (i == FIGHT || i == POISON) {
 						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
-					
+						
+					/*Immune*/
+					} else if (i == DARK){
+							table[p.ordinal()][i] = WeaknessType.IMMUNE.getMultiplier();
+						
 					/*Ok*/
 					} else {
 						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
 					}
 				}
-				break;
+				break;			
 				
-			case FLYING :
+			case ICE :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == PokemonType.ELECTR.ordinal()) {
+					if (i == STEEL || i == FIRE || i == WATER || i == ICE) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
-					} else if (i == PokemonType.GRASS.ordinal()) {
+					} else if (i == FLYING || i == GROUND || i == GRASS || i == DRAGON) {
 						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
-					
+
 					/*Ok*/
 					} else {
 						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
 					}
 				}
 				break;
-				
+
 			case DRAGON :
-                            for (int i = 0; i < PokemonType.values().length; i++) {
-                                /*Supereffective*/
-                                if (i == PokemonType.DRAGON.ordinal()) {
-                                        table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
-                                
-                                /*Ok*/
-                                } else {
-                                        table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
-                                }
-                            }
-                        break;
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+                    if (i == STEEL) {
+                    table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+                    
+                    /*Supereffective*/
+                    } else if (i == DRAGON) {
+                       	 table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+                    /*Ok*/
+                    } else {
+                    	table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+                    }
+                }
+				break;				
+                        
+			case DARK :
+				for (int i = 0; i < PokemonType.values().length; i++) {
+					/*NotSoEffective*/
+					if (i == FIGHT || i == DARK) {
+						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
+					
+					/*Supereffective*/
+					} else if (i == GHOST || i == PSYCHIC) {
+						table[p.ordinal()][i] = WeaknessType.SUPEREFFECTIVE.getMultiplier();
+
+					/*Ok*/
+					} else {
+						table[p.ordinal()][i] = WeaknessType.OK.getMultiplier();
+					}
+				}
+				break;
 			}
 		}
 	}

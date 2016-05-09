@@ -105,6 +105,7 @@ public class PokemonEncounterZone extends AbstractZone {
         case LEGENDARY :
         	return (double) PokemonRarity.LEGENDARY.getCoeff() / 7;
         case STARTER :
+        
         default :
         	throw new IllegalArgumentException("PokemonRarity not listed or is Starter so cannot be found");
         }

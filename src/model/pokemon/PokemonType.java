@@ -2,16 +2,23 @@ package model.pokemon;
 
 public enum PokemonType {
     NONE,
-    NORMAL, 
+    NORMAL,
+    FIGHT,
+    FLYING,
+    POISON,
+    GROUND,
+    ROCK,
+    BUG,
+    GHOST,
+    STEEL,
     FIRE,
     WATER,
     GRASS,
     ELECTR,
-    GROUND,
-    POISON,
-    FLYING,
+    PSYCHIC,
+    ICE,
     DRAGON,
-    
+    DARK,    
     ;
 }
 

@@ -2,7 +2,12 @@ package model.pokemon;
 
 public enum PokemonRarity {
 
-    COMMON(255), UNCOMMON(150), RARE(60), STARTER(15), LEGENDARY(3); 
+    COMMON(255), 
+    UNCOMMON(150), 
+    RARE(60), 
+    STARTER(15), 
+    LEGENDARY(3), 
+    UNFINDABLE(0); 
     
     private final int coeff;
     
