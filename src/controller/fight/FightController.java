@@ -39,6 +39,7 @@ public class FightController implements FightControllerInterface {
     @Override
     public void newFightWithPokemon(final Pokemon pokemon) {
         this.fight = new FightVsWildPkm(pokemon);
+        this.view = new InFightMessages();
         System.out.println("Fight with: " + pokemon.getPokemon().name() + " LVL: " + pokemon.getStat(Stat.LVL));
     }
     

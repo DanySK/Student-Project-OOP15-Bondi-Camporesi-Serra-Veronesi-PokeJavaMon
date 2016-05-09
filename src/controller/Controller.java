@@ -96,6 +96,21 @@ public final class Controller implements ControllerInterface {
     }
     
     @Override
+    public void pause() {
+        this.musicController.pause();
+    }
+
+    @Override
+    public void resume() {
+        this.musicController.resume();
+    }
+
+    @Override
+    public boolean isPaused() {
+        return this.musicController.isPaused();
+    }
+    
+    @Override
     public Optional<Music> playing() {
         return this.musicController.playing();
     }

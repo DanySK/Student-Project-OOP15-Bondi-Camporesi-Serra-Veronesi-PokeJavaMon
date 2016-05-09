@@ -18,10 +18,12 @@ public class MainMusicController implements MusicController {
     private Map<Music, Sound> sounds;
     private Optional<Music> m;
     private boolean isInit;
+    private boolean isPaused;
     
     public MainMusicController() {
         this.m = Optional.empty();
         this.isInit = false;
+        this.isPaused = false;
     }
     
     @Override
@@ -60,7 +62,24 @@ public class MainMusicController implements MusicController {
     }
     
     @Override
+    public void pause() {
+        s.pause();
+        this.isPaused = true;
+    }
+    
+    @Override
+    public void resume() {
+        s.resume();
+        this.isPaused = false;
+    }
+    
+    @Override
     public Optional<Music> playing() {
         return this.m;
+    }
+    
+    @Override
+    public boolean isPaused() {
+        return this.isPaused;
     }
 } 
