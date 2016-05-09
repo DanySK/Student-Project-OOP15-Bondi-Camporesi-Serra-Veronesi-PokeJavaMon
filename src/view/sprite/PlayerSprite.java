@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
 import controller.Controller;
-import controller.parameters.FilePath;
+import controller.parameters.Img;
 import model.map.Drawable.Direction;
 import model.utilities.Pair;
 import view.resources.MainGameView;
@@ -70,10 +70,10 @@ public class PlayerSprite extends Sprite {
 
     private void setupAnimation() {
         try {
-            playerAtlas = new TextureAtlas(FilePath.PACK.getAbsolutePath());
+            playerAtlas = new TextureAtlas(Img.PACK.getAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
-            playerAtlas = new TextureAtlas(this.getClass().getResource(FilePath.PACK.getResourcePath()).getPath());
+            playerAtlas = new TextureAtlas(this.getClass().getResource(Img.PACK.getResourcePath()).getPath());
         }
         this.left = new Animation(1 / 6f, playerAtlas.findRegions("left"));
         this.right = new Animation(1 / 6f, playerAtlas.findRegions("right"));

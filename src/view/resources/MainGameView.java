@@ -17,7 +17,8 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import controller.Controller;
-import controller.parameters.FilePath;
+import controller.parameters.Img;
+import controller.parameters.Maps;
 import controller.parameters.State;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
@@ -59,9 +60,9 @@ public class MainGameView implements Screen {
 	
     public void show() {	
         try {
-            Controller.getController().initializeModel(new TmxMapLoader().load(FilePath.MAP.getAbsolutePath()));
+            Controller.getController().initializeModel(new TmxMapLoader().load(Maps.MAP.getAbsolutePath()));
         } catch (Exception e) {
-            Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(FilePath.MAP.getResourcePath()).getPath()));
+            Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
 	Controller.getController().initializeMusicController();
         Controller.getController().updateStatus(State.WALKING);
@@ -89,9 +90,9 @@ public class MainGameView implements Screen {
 	camera = new OrthographicCamera();	
 	Texture tx;
 	try {
-	    tx = new Texture(FilePath.PLAYER.getAbsolutePath());
+	    tx = new Texture(Img.PLAYER.getAbsolutePath());
 	} catch (Exception e) {
-	    tx = new Texture(this.getClass().getResource(FilePath.PLAYER.getResourcePath()).getPath());
+	    tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
 	}
 	TextureRegion gain = new TextureRegion(tx);
 	sp = new Sprite(gain);		

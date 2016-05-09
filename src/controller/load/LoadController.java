@@ -14,7 +14,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 import controller.Controller;
-import controller.parameters.FilePath;
+import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import exceptions.SquadFullException;
 import model.map.Position;
@@ -25,7 +25,7 @@ import model.pokemon.StaticPokemonFactory;
  * This class loads all the requested informations. 
  */
 public class LoadController implements LoadControllerInterface {
-    private static final String FILE_NAME = FilePath.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
+    private static final String FILE_NAME = Folder.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private static final int FACTOR = 1;
     private static final int STRING_OFFSET = 1;

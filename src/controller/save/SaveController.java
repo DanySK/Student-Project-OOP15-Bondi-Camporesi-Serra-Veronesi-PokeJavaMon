@@ -11,7 +11,7 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import controller.parameters.FilePath;
+import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import model.ModelInterface.Save;
 import model.box.Box;
@@ -27,7 +27,7 @@ import model.trainer.Trainer;
  * This class saves all the requested informations. 
  */
 public class SaveController implements SaveControllerInterface {
-    private static final String FILE_NAME = FilePath.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
+    private static final String FILE_NAME = Folder.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private Document document;
     private Element root;

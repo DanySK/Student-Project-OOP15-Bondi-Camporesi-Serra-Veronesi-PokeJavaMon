@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
-import controller.parameters.FilePath;
+import controller.parameters.Img;
 import controller.parameters.State;
 
 public class FirstMenu {
@@ -27,10 +27,10 @@ public class FirstMenu {
         frame.setResizable(false);
         //frame.setLocation(100, 100);
         try {
-            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FilePath.PALLA.getAbsolutePath()));
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
         } catch (Exception e) {
             //TODO: Fare catch di una semplice Exception e' sbagliato
-            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(FilePath.PALLA.getResourcePath()).getPath()));
+            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(Img.PALLA.getResourcePath()).getPath()));
         }
         JPanel pane = new JPanel();
         JLabel text = new JLabel("Benvenuto in PokeJavaMon!!!");

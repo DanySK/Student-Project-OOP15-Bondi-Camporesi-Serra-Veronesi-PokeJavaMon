@@ -7,7 +7,6 @@ import java.util.Optional;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
-import controller.parameters.FilePath;
 import controller.parameters.Music;
 
 /**
@@ -34,7 +33,7 @@ public class MainMusicController implements MusicController {
     	this.sounds = new HashMap<>();
         for (final Music m : Music.values()) {
                 Long startM = System.currentTimeMillis();
-                final Sound s = Gdx.audio.newSound(Gdx.files.absolute(FilePath.SONG.getAbsolutePath() + m.getAbsolutePath()));
+                final Sound s = Gdx.audio.newSound(Gdx.files.absolute(Music.SONG.getAbsolutePath() + m.getAbsolutePath()));
                 this.sounds.put(m, s);
                 Long endM = System.currentTimeMillis();
                 System.out.println(m.name() + " took " + ((endM - startM)/1000f) + " seconds to complete");
