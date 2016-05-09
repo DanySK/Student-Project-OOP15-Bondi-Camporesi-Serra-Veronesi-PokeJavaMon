@@ -45,6 +45,9 @@ public class BagMenu extends JWindow implements MyFrame {
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
                     Controller.getController().getFightController().useItem(itemToUse, p);
+                    if (!View.getView().isEmpty()) {
+                        View.getView().resumeCurrent();
+                    }
                     selectItem(null);
                 } catch (PokemonIsExhaustedException e1) {
                     selectItem(null);
@@ -153,6 +156,8 @@ public class BagMenu extends JWindow implements MyFrame {
                         if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
                             if (i.getType() == ItemType.POKEBALL) {
                                 useItem(Controller.getController().getEnemyPokemonInFight());
+                            } else if (i.getType() == ItemType.BOOST) {
+                                useItem(Controller.getController().getPlayer().getSquad().getPokemonList().get(0));
                             } else {
                                 selectItem(i);
                                 TeamMenu sq = new TeamMenu(true, true);

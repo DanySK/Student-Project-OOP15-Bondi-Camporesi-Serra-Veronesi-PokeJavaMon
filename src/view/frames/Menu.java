@@ -95,7 +95,8 @@ public class Menu extends JWindow implements MyFrame {
         this.getContentPane().add(resume);
         resume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                disposeFrame();
+                View.getView().disposeCurrent();
+                View.getView().removeCurrent();
                 Controller.getController().updateStatus(State.WALKING);
             }
         });     
