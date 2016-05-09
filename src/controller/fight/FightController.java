@@ -51,8 +51,8 @@ public class FightController implements FightControllerInterface {
     // Metodi che chiama il MODEL
     
     @Override
-    public void resolveAttack(final Move myMove, final Effectiveness myMoveEffectiveness, final Move enemyMove, final Effectiveness enemyMoveEffectiveness, final boolean myMoveFirst, final boolean lastPokemonKills, final Pokemon nextEnemyPokemon, final String optionalMessage) {
-        this.view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage);
+    public void resolveAttack(final Move myMove, final Effectiveness myMoveEffectiveness, final Move enemyMove, final Effectiveness enemyMoveEffectiveness, final boolean myMoveFirst, final boolean lastPokemonKills, final Pokemon nextEnemyPokemon, final String optionalMessage, final Move moveToLearn) {
+        view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage, moveToLearn);
     }
     
     @Override

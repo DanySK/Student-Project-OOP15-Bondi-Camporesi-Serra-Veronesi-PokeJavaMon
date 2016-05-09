@@ -5,7 +5,9 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -20,11 +22,14 @@ import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.items.Boost;
 import model.items.Item;
+import model.items.Item.ItemType;
 import model.items.Pokeball;
 import model.items.Potion;
 import model.map.Drawable.Direction;
 import model.player.Player;
 import model.player.PlayerImpl;
+import model.pokemon.InitializeMoves;
+import model.pokemon.Move;
 import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -37,7 +42,7 @@ public class FightTest {
     private static final int FIRST_ELEM = 0;
     private static final int SECOND_ELEM = 1;
     private static final int THIRD_ELEM = 2;
-    private static final int MIN_HP = 1;
+    private static final int MIN_STAT = 1;
     private static final int EXHAUSTED_HP = 0;
     private static final int A_LOT_OF_HP = 999;
     private static final Player player = PlayerImpl.getPlayer();
@@ -48,6 +53,7 @@ public class FightTest {
         testCheckLose();
         testApplyRun();
         testApplyChange();
+        testApplyItem();
     }
 
     private FightVsWildPkm createFightVsWildPkm() {
@@ -56,16 +62,17 @@ public class FightTest {
 
     private FightVsTrainer createFightVsTrainer() {
         final Map<String, Integer> trainerPkmList = new HashMap<>();
-        trainerPkmList.put("RAICHU", 50);
+        trainerPkmList.put("RATTATA", 3);
         final Trainer trainer = StaticTrainerFactory.createTrainer("Blue", Direction.SOUTH, false, 0, 0, trainerPkmList, "Hi!", "Bye bye", "Yeah", 0, -1);
         return new FightVsTrainer(trainer);
     }
 
     private void testSquadFull() {
+        InitializeMoves.getAllMoves();
         try {
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BLASTOISE, 50));
-            player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.WARTORTLE, 20));
-            player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 10));
+            player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.WARTORTLE, 35));
+            player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 15));
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA, 5));
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA, 5));
             player.getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA, 5));
@@ -77,6 +84,7 @@ public class FightTest {
     }
     
     private void testCheckLose() {
+        InitializeMoves.getAllMoves();
         final Fight fight = createFightVsWildPkm();
         for (PokemonInBattle pkm : player.getSquad().getPokemonList()) {
             pkm.damage(A_LOT_OF_HP);
@@ -88,6 +96,7 @@ public class FightTest {
     }
 
     public void testApplyRun() {
+        InitializeMoves.getAllMoves();
         final FightVsWildPkm fightWild = createFightVsWildPkm();
         final FightVsTrainer fightTrainer = this.createFightVsTrainer();
         //testo con WildPkm la fuga riesce al 100% perchè blastoise al 50 non può non fuggire contro un pikachu al 3
@@ -105,6 +114,7 @@ public class FightTest {
     }
 
     public void testApplyChange() {
+        InitializeMoves.getAllMoves();
         final PokemonInBattle blastoise = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(THIRD_ELEM);
@@ -118,14 +128,14 @@ public class FightTest {
             assertNotSame("Wartortle can't be the first pkm in the squad! He is exhausted!", 
                     player.getSquad().getPokemonList().get(FIRST_ELEM), wartortle);
         } catch (PokemonIsFightingException e) {
-            fail("Pokemon should be exhausted! He should not be in fight!");
+            fail("Wartortle should be exhausted! He should not be in fight!");
         }
         //pokemon is fighting
         try {
             fight.applyChange(blastoise);
             fail("Blastoise is in fight! The metohd must throw the exception!");
         } catch (PokemonIsExhaustedException e) {
-            fail("Pokemon should be in fight! He should not be exhausted!");
+            fail("Blastoise should be in fight! He should not be exhausted!");
         } catch (PokemonIsFightingException e) {
             assertSame("Blastoise must be the pokemon in fight!", player.getSquad().getPokemonList().get(FIRST_ELEM), blastoise);
         }
@@ -133,14 +143,13 @@ public class FightTest {
         try {
             fight.applyChange(squirtle);
             assertSame("Squirtle must be the first pokemon in squad! Something in the change procedure is wrong!", player.getSquad().getPokemonList().get(FIRST_ELEM), squirtle);
-        } catch (PokemonIsExhaustedException e) {
-            fail("The change must be resolved correctly this time!");
-        } catch (PokemonIsFightingException e) {
+        } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
             fail("The change must be resolved correctly this time!");
         }
     }
 
-    public void testEApplyItem() {
+    public void testApplyItem() {
+        InitializeMoves.getAllMoves();
         final Item boost = new Boost(Stat.ATK);
         final Item potion = new Potion(Potion.PotionType.HYPERPOTION);
         final Item pokeball = new Pokeball(Pokeball.PokeballType.Ultraball);
@@ -152,16 +161,15 @@ public class FightTest {
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final PokemonInBattle pkmNotInTeam = StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5);
+        assertTrue("The boost must be in the inventory!", player.getInventory().getSubInventory(ItemType.BOOST).get(boost) == 1);
+        assertTrue("The potion must be in the inventory!", player.getInventory().getSubInventory(ItemType.POTION).get(potion) == 1);
+        assertTrue("The pokeball must be in the inventory!", player.getInventory().getSubInventory(ItemType.POKEBALL).get(pokeball) == 1);
         //testo il boost
         final double squirtleAtkBeforeBoost = fightWild.allyPkmsBoosts.get(squirtle).get(Stat.ATK);
         try {
             fightWild.applyItem(boost, null);
             assertTrue("Squirtle attack must be increased!", squirtleAtkBeforeBoost < squirtle.getStat(Stat.ATK));
-        } catch (PokemonIsExhaustedException e) {
-            fail("Boost can't throw any exception!");
-        } catch (PokemonNotFoundException e) {
-            fail("Boost can't throw any exception!");
-        } catch (CannotCaughtTrainerPkmException e) {
+        } catch (PokemonIsExhaustedException | PokemonNotFoundException | CannotCaughtTrainerPkmException e) {
             fail("Boost can't throw any exception!");
         }
         //testo la pozione
@@ -188,7 +196,7 @@ public class FightTest {
             fail("Potion can't throw this exception!");
         }
         //andata a buon fine
-        squirtle.damage(MIN_HP);
+        squirtle.damage(MIN_STAT);
         final int hpBeforeUsePotion = squirtle.getCurrentHP();
         try {
             fightWild.applyItem(potion, squirtle);
@@ -204,30 +212,56 @@ public class FightTest {
         try {
             fightTr.applyItem(pokeball, null);
             fail("Pokeball can't be used against a trainer! The method must throw exception!");
-        } catch (PokemonIsExhaustedException e1) {
-            fail("Pokeball can't throw this exception!");
-        } catch (PokemonNotFoundException e1) {
+        } catch (PokemonIsExhaustedException | PokemonNotFoundException e1) {
             fail("Pokeball can't throw this exception!");
         } catch (CannotCaughtTrainerPkmException e1) {
             //deve lanciare l'eccezione quindi non faccio nulla
         }
         //uso pokeball contro pokemon selvatico
         fightWild.getCurrentEnemyPokemon().damage(A_LOT_OF_HP);
-        fightWild.getCurrentEnemyPokemon().heal(MIN_HP);
+        fightWild.getCurrentEnemyPokemon().heal(MIN_STAT);
         //con un ultraball è impossibile non catturare un pikachu a livello 3
-            try {
-                assertTrue("Checking method applyItem, using a pokeball...the pokemon isn't captured!", 
-                        fightWild.applyItem(pokeball, null));
-            } catch (PokemonIsExhaustedException e) {
-                fail("The pokeball can't throw this exception!");
-            } catch (PokemonNotFoundException e) {
-                fail("The pokeball can't throw this exception!");
-            } catch (CannotCaughtTrainerPkmException e) {
-                fail("You can use pokeball against a wild pokemon!");
-            }
-            /*
-             * Controllare che gli oggetti vengano usati
-             */
+//        try {
+//            assertTrue("Checking method applyItem, using a pokeball...the pokemon isn't captured!", 
+//                    fightWild.applyItem(pokeball, null));
+//            } catch (PokemonIsExhaustedException e) {
+//                fail("The pokeball can't throw this exception!");
+//            } catch (PokemonNotFoundException e) {
+//                fail("The pokeball can't throw this exception!");
+//            } catch (CannotCaughtTrainerPkmException e) {
+//                fail("You can use pokeball against a wild pokemon!");
+//            }
+    }
+
+    public void testUseMove() {
+        final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
+        final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
+        final FightVsTrainer fightTr = createFightVsTrainer();
+        List<PokemonInBattle> pkmsBeforeEvolution = new ArrayList<>();
+        List<PokemonInBattle> pkmsAfterEvolution = new ArrayList<>();
+        assertTrue("Squirtle at lv 15 must be faster than a rattata at lv 3!", fightTr.setIsAllyFastest());
+        int statBeforeTurn = squirtle.getCurrentHP();
+        fightTr.enemyTurn();
+        assertTrue("Squirtle HP must be reduced by rattata attack!(rattata at lv 3 has only pound)", 
+                statBeforeTurn > squirtle.getCurrentHP());
+        statBeforeTurn = squirtle.getStat(Stat.DEF);
+        fightTr.allyTurn(Move.HARDEN);
+        assertTrue("Squirtle DEF must be increase by harden!", statBeforeTurn > squirtle.getCurrentHP());
+        squirtle.setExp(squirtle.getNecessaryExp() - MIN_STAT);
+        fightTr.giveExpAndCheckLvlUp(fightTr.getExp());//do l'esperienza di rattata squirtle
+        wartortle.heal(A_LOT_OF_HP);
+        try {
+            fightTr.applyChange(wartortle);
+        } catch (PokemonIsExhaustedException | PokemonIsFightingException e) {
+            fail("Something in change going wrong...");
+        }
+        wartortle.setExp(wartortle.getNecessaryExp() - MIN_STAT);
+        fightTr.giveExpAndCheckLvlUp(fightTr.getExp());//do l'esperienza di rattata squirtle
+        pkmsBeforeEvolution = new ArrayList<>(fightTr.getPkmsThatMustEvolve());
+        pkmsAfterEvolution = fightTr.getPkmsThatMustEvolve();
+        fightTr.evolvePkms();
+        assertNotSame("Wartortle must be evolved in blastoise!", pkmsBeforeEvolution.get(FIRST_ELEM), pkmsAfterEvolution.get(FIRST_ELEM));
+        assertNotSame("Squirtle must be evolved in wartortle!", pkmsBeforeEvolution.get(SECOND_ELEM), pkmsAfterEvolution.get(SECOND_ELEM));
     }
 
 }

@@ -55,7 +55,7 @@ public interface FightControllerInterface {
      */
     void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
                 Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
-                Pokemon nextEnemyPokemon, String optionalMessage);
+                Pokemon nextEnemyPokemon, String optionalMessage, Move moveToLearn);
 
     /**
      * Resolve the {@link Fight}'s turn in case of run choice
