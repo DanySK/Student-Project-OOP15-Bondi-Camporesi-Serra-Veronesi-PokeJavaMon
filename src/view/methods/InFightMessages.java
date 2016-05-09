@@ -33,7 +33,7 @@ public class InFightMessages implements InFightMessagesInterface {
     @Override
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
-            Pokemon nextEnemyPokemon, String optionalMessage) {
+            Pokemon nextEnemyPokemon, String optionalMessage, final Move moveToLearn) {
         List<String> message = new ArrayList<>();
         if (myMoveFirst) {
             message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);

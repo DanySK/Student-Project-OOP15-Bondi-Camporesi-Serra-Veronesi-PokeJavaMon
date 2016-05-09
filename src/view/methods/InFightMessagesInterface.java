@@ -10,7 +10,7 @@ public interface InFightMessagesInterface {
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
                             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst,
                             boolean lastPokemonKills, Pokemon nextEnemyPokemon,
-                            String optionalMessage);
+                            String optionalMessage, final Move moveToLearn);
     
     public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove,
                                      boolean isMyPokemonDead);
