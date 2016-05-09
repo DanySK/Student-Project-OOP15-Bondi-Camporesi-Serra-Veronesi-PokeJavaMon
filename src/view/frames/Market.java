@@ -48,7 +48,6 @@ public class Market extends JWindow implements MyFrame {
             Name2.add(i.toString()); 
             Prz.add("" + i.getPrice());
             if (i.getType() == ItemType.POTION) {
-                System.out.println(PlayerImpl.getPlayer().getInventory());
                 Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
             } else if (i.getType() == ItemType.POKEBALL) {
                 Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
