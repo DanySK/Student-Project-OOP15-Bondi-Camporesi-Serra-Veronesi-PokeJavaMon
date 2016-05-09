@@ -25,7 +25,6 @@ import model.items.Potion;
 import model.map.Drawable.Direction;
 import model.player.Player;
 import model.player.PlayerImpl;
-import model.pokemon.InitializeMoves;
 import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
