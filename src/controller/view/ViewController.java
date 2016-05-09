@@ -62,8 +62,8 @@ public class ViewController implements ViewControllerInterface {
     
     @Override
     public void save() {
-        if (name != null) {
-            Controller.getController().getPlayer().setName(name);
+        if (this.name != null) {
+            Controller.getController().getPlayer().setName(this.name);
         }
         Controller.getController().save();
     }

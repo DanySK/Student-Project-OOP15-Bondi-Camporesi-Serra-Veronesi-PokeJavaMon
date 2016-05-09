@@ -38,57 +38,57 @@ public class Installer implements InstallerInterface {
      */
     private void installFolders() {
         if (!Files.exists(Paths.get(FilePath.MAINFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.MAINFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.MAINFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING MAIN FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.SAVEFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.SAVEFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.SAVEFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING SAVEFOLDER FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.MUSICFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.MUSICFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.MUSICFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING MUSICFOLDER FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.MAPSFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.MAPSFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.MAPSFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING MAPSFOLDER FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.IMGFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.IMGFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.IMGFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING IMG FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.SPRITESFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.SPRITESFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.SPRITESFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING SPRITESFOLDER FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.FRONTSPRITEFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.FRONTSPRITEFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.FRONTSPRITEFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING FRONTSPRITEFOLDER FOLDER");
                 return;
             }
         }
         if (!Files.exists(Paths.get(FilePath.BACKSPRITEFOLDER.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-            success = new File(FilePath.BACKSPRITEFOLDER.getAbsolutePath()).mkdirs();
-            if (!success) {
+            this.success = new File(FilePath.BACKSPRITEFOLDER.getAbsolutePath()).mkdirs();
+            if (!this.success) {
                 System.out.println("FAILED CREATING BACKSPRITEFOLDER FOLDER");
                 return;
             }

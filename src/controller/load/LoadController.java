@@ -38,7 +38,7 @@ public class LoadController implements LoadControllerInterface {
         final SAXBuilder builder = new SAXBuilder();
         try {
             final Document document = builder.build(new File(FILE_NAME));
-            root = document.getRootElement(); 
+            this.root = document.getRootElement(); 
         } catch (JDOMException e) {
             System.out.println("FAILED LOADING SAVEFOLDER");
         } catch (IOException e) {
@@ -50,29 +50,29 @@ public class LoadController implements LoadControllerInterface {
      * Returns the saved money value
      */
     private int getMoney() {
-        return Integer.parseInt(root.getAttributeValue(XMLParameters.MONEY.getName()));
+        return Integer.parseInt(this.root.getAttributeValue(XMLParameters.MONEY.getName()));
     }
     
     /**
      * Returns the saved player's name
      */
     private String getName() {
-        return root.getAttribute(XMLParameters.NAME.getName()).getValue();
+        return this.root.getAttribute(XMLParameters.NAME.getName()).getValue();
     }
     
     /**
      * Returns the saved player's badges
      */
     private int getBadges() {
-        return Integer.parseInt(root.getAttributeValue(XMLParameters.BADGES.getName()));
+        return Integer.parseInt(this.root.getAttributeValue(XMLParameters.BADGES.getName()));
     }
     
     /**
      * Returns the saved player's position
      */
     private Position getPosition() {
-        final int x = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
-        final int y = Integer.parseInt(root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
+        final int x = Integer.parseInt(this.root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
+        final int y = Integer.parseInt(this.root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.Y.getName()));
         return new Position(x, y);
     }
     
@@ -81,7 +81,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private List<Pokemon> getTeam() {
         List<Pokemon> team = new ArrayList<>();
-        for (final Element e : root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
+        for (final Element e : this.root.getChild(XMLParameters.TEAM.getName()).getChildren()) {
             final int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             final int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
             final int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));
@@ -100,7 +100,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private Map<Integer, Boolean> getTrainers() {
         final Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
-        for (final Attribute a : root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
+        for (final Attribute a : this.root.getChild(XMLParameters.TRAINERS.getName()).getAttributes()) {
             try {
             	trainer_isDefeated.put(Integer.parseInt(a.getName().substring(STRING_OFFSET, a.getName().length())), a.getBooleanValue());
             } catch (DataConversionException e) {
@@ -115,7 +115,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private Map<String, Integer> getPotions() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
-        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
+        for (final Attribute a : this.root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.POTIONS.getName()).getAttributes()) {
             obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
         return obj;
@@ -126,7 +126,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private Map<String, Integer> getBoosts() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
-        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
+        for (final Attribute a : this.root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BOOSTS.getName()).getAttributes()) {      
             obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
         return obj;
@@ -137,7 +137,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private Map<String, Integer> getPokeballs() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
-        for (final Attribute a : root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
+        for (final Attribute a : this.root.getChild(XMLParameters.BAG.getName()).getChild(XMLParameters.BALLS.getName()).getAttributes()) {      
             obj.put(a.getName(), Integer.parseInt(a.getValue()));
         }
         return obj;
@@ -148,7 +148,7 @@ public class LoadController implements LoadControllerInterface {
      */
     private List<Pokemon> getBox() {
         final List<Pokemon> box = new ArrayList<Pokemon>();
-        for (final Element e : root.getChild(XMLParameters.BOX.getName()).getChildren()) {
+        for (final Element e : this.root.getChild(XMLParameters.BOX.getName()).getChildren()) {
             final int lv = Integer.parseInt(e.getAttributeValue(XMLParameters.LV.getName()));
             final int hp = Integer.parseInt(e.getAttributeValue(XMLParameters.HP.getName()));
             final int exp = Integer.parseInt(e.getAttributeValue(XMLParameters.EXP.getName()));

@@ -17,12 +17,17 @@ public class MainMusicController implements MusicController {
     
     private Sound s;
     private Map<Music, Sound> sounds;
-    private Optional<Music> m = Optional.empty();
-    private boolean isInit = false;
+    private Optional<Music> m;
+    private boolean isInit;
+    
+    public MainMusicController() {
+        this.m = Optional.empty();
+        this.isInit = false;
+    }
     
     @Override
     public void initializeMusicController() {
-    	if (isInit) {
+    	if (this.isInit) {
     		return;
     	}
         Long start = System.currentTimeMillis();
@@ -36,25 +41,25 @@ public class MainMusicController implements MusicController {
         }
         Long end = System.currentTimeMillis();
         System.out.println("It took " + ((end - start)/1000f) + " seconds to complete this operation");
-        isInit = true;
+        this.isInit = true;
     }
     
     @Override
     public void playMusic(final Music song) {   
 
         this.s = this.sounds.get(song);
-    	s.loop();
-        m = Optional.of(song);
+        this.s.loop();
+        this.m = Optional.of(song);
     }
     
     @Override
     public void stopMusic() {
-        s.stop();
-        m = Optional.empty();
+        this.s.stop();
+        this.m = Optional.empty();
     }
     
     @Override
     public Optional<Music> playing() {
-        return m;
+        return this.m;
     }
 } 

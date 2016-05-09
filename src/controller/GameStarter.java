@@ -2,6 +2,7 @@ package controller;
 
 import controller.installer.Installer;
 import controller.parameters.State;
+
 /**
  * This class starts the game
  */

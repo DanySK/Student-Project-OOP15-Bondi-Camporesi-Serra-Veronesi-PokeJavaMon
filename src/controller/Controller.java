@@ -62,103 +62,103 @@ public final class Controller implements ControllerInterface {
     
     @Override
     public Fight getFight() {
-        return fightController.getFight();
+        return this.fightController.getFight();
     }
     
     @Override
     public Pokemon getEnemyPokemonInFight() {
-        return fightController.getEnemyPokemon();
+        return this.fightController.getEnemyPokemon();
     }
     
     @Override
     public void load() {
-        loadController.load();
+        this.loadController.load();
     }
     
     @Override
     public boolean saveExists() {
-        return loadController.saveExists();
+        return this.loadController.saveExists();
     }
     
     @Override
     public void initializeMusicController() {
-        musicController.initializeMusicController();
+        this.musicController.initializeMusicController();
     }
     
     @Override
     public void playMusic(final Music m) {
-        musicController.playMusic(m);
+        this.musicController.playMusic(m);
     }
     
     @Override
     public void stopMusic() {
-        musicController.stopMusic();
+        this.musicController.stopMusic();
     }
     
     @Override
     public Optional<Music> playing() {
-        return musicController.playing();
+        return this.musicController.playing();
     }
     
     @Override
     public void save() {
-        saveController.setSave(model.getModelSnapshot());
-        saveController.save();
+        this.saveController.setSave(this.model.getModelSnapshot());
+        this.saveController.save();
     }
     
     @Override
     public void updateStatus(final State s) {
-        statusController.updateStatus(s);
+        this.statusController.updateStatus(s);
     }
 
     @Override
     public FightController getFightController() {
-        return fightController;
+        return this.fightController;
     }
 
     @Override
     public LoadController getLoadController() {
-        return loadController;
+        return this.loadController;
     }
 
     @Override
     public MusicController getMusicController() {
-        return musicController;
+        return this.musicController;
     }
 
     @Override
     public SaveController getSaveController() {
-        return saveController;
+        return this.saveController;
     }
 
     @Override
     public StatusController getStatusController() {
-        return statusController;
+        return this.statusController;
     }
 
     @Override
     public ViewController getViewController() {
-        return viewController;
+        return this.viewController;
     }
 
     @Override
     public TiledMap getMap() {
-        return map;
+        return this.map;
     }
 
     @Override
     public PokeMap getPokeMap() {
-        return model.getMap();
+        return this.model.getMap();
     }
 
     @Override
     public Player getPlayer() {
-        return model.getPlayer();
+        return this.model.getPlayer();
     }
     
     @Override
     public Model getModel() {
-        return model;
+        return this.model;
     }
     
     @Override
