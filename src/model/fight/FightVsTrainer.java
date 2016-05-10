@@ -24,8 +24,8 @@ public class FightVsTrainer extends AbstractFight {
     private static final int SUPER_EFFECTIVE_MAX_VALUE = 4;
     private final Trainer trainer;
     private final Map<PokemonInBattle, Map<Stat, Double>> enemyPkmsBoosts = new HashMap<>();
-    private static final String TRAINER_DEFEAT_MESS = "You defeated a trainer, you earn money: ";
-    private static final String GYM_LEADER_DEFEAT_MESS = "You defeated a gym leader, you gain a badge!";
+    private static final String TRAINER_DEFEAT_MESS = "Money earned: ";
+    private static final String GYM_LEADER_DEFEAT_MESS = "You gained a badge!";
 
     public FightVsTrainer(final Trainer trainer) {
         super();

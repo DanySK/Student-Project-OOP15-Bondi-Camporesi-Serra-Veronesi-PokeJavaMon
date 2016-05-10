@@ -39,7 +39,8 @@ public class InFightMessages implements InFightMessagesInterface {
             message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
             message.add(myMoveEffectiveness.name());
             if (enemyMove == null) {
-                message.add("ENEMY DEAD");
+                message.add("Enemy pokemon is exhausted");
+                message.add(optionalMessage);
                 if (nextEnemyPokemon != null) {
                     message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());                                     
                     if (moveToLearn != Move.NULLMOVE) {
@@ -53,7 +54,7 @@ public class InFightMessages implements InFightMessagesInterface {
                             View.getView().showCurrent();
                         } else {
                             Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
-                            message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                            message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
                             String[] array = new String[message.size()];
                             message.toArray(array);
                             MyFrame fs = View.getView().getCurrent();
@@ -66,8 +67,8 @@ public class InFightMessages implements InFightMessagesInterface {
                         ((FightScreen) fs).showMessage(array);
                     }
                 } else {
-                    message.add("ENEMY DEFEATED");
-                    message.add(" Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                    message.add("Enemy defeated");
+                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();                   
                     if (moveToLearn != Move.NULLMOVE) {
@@ -83,7 +84,7 @@ public class InFightMessages implements InFightMessagesInterface {
                             View.getView().showCurrent();
                         } else {
                             Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
-                            message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                            message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
                             String[] array = new String[message.size()];
                             message.toArray(array);
                             View.getView().addNew(new MessageFrame(State.WALKING, array));
@@ -100,15 +101,15 @@ public class InFightMessages implements InFightMessagesInterface {
                 message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
                 message.add(enemyMoveEffectiveness.name());
                 if (lastPokemonKills) {
-                    message.add("ALLY DEAD");
+                    message.add("Your pokemon is exhausted");
                     if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                         String[] array = new String[message.size()];
                         message.toArray(array);
                         MyFrame fs = View.getView().getCurrent();
                         ((FightScreen) fs).showMessage(array);
                     } else {
-                        message.add("ALLY DEFEATED");
-                        message.add(" Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                        message.add("You lost!");
+                        message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         String[] array = new String[message.size()];
@@ -128,14 +129,14 @@ public class InFightMessages implements InFightMessagesInterface {
             message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             message.add(enemyMoveEffectiveness.name());
             if (myMove == null) {
-                message.add("ALLY DEAD");
+                message.add("Your pokemon is exhausted");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     MyFrame fs = View.getView().getCurrent();
                     ((FightScreen) fs).showMessage(array);
                 } else {
-                    message.add("ALLY DEFEATED");
+                    message.add("You lost!");
                     message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
@@ -149,7 +150,8 @@ public class InFightMessages implements InFightMessagesInterface {
                 message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
                 message.add(myMoveEffectiveness.name());
                 if (lastPokemonKills) {
-                    message.add("ENEMY DEAD");
+                    message.add("Enemy pokemon is exhausted");
+                    message.add(optionalMessage);
                     if (nextEnemyPokemon != null) {
                         message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
                         if (moveToLearn != Move.NULLMOVE) {
@@ -163,7 +165,7 @@ public class InFightMessages implements InFightMessagesInterface {
                                 View.getView().showCurrent();
                             } else {
                                 Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
-                                message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                                message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
                                 String[] array = new String[message.size()];
                                 message.toArray(array);
                                 MyFrame fs = View.getView().getCurrent();
@@ -176,7 +178,7 @@ public class InFightMessages implements InFightMessagesInterface {
                             ((FightScreen) fs).showMessage(array);
                         }
                     } else {
-                        message.add("ENEMY DEFEATED");             
+                        message.add("Enemy defeated!");             
                         message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());                        
                         Controller.getController().updateStatus(State.WALKING);
                         View.getView().disposeCurrent();
@@ -192,7 +194,7 @@ public class InFightMessages implements InFightMessagesInterface {
                                 View.getView().showCurrent();
                             } else {
                                 Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
-                                message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                                message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
                                 String[] array = new String[message.size()];
                                 message.toArray(array);
                                 View.getView().addNew(new MessageFrame(State.WALKING, array));
@@ -220,14 +222,14 @@ public class InFightMessages implements InFightMessagesInterface {
         List<String> message = new ArrayList<>();
         message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
         if (isMyPokemonDead) {
-            message.add("ALLY DEAD");
+            message.add("Your pokemon is exhausted");
             if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                 String[] array = new String[message.size()];
                 message.toArray(array);
                 MyFrame fs = View.getView().getCurrent();
                 ((FightScreen) fs).showMessage(array);
             } else {
-                message.add("ALLY DEFEATED");
+                message.add("You lost!");
                 message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                 View.getView().disposeCurrent();
                 View.getView().removeCurrent();
@@ -251,14 +253,14 @@ public class InFightMessages implements InFightMessagesInterface {
         if (enemyMove != null) {
             message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
-                message.add("ALLY DEAD");
+                message.add("Your pokemon is exhausted");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     MyFrame fs = View.getView().getCurrent();
                     ((FightScreen) fs).showMessage(array);
                 } else {
-                    message.add("ALLY DEFEATED");
+                    message.add("You lost!");
                     message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
@@ -276,7 +278,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 ((FightScreen) fs).showMessage(array);
             }
         } else {
-            message.add("ENEMY CAUGHT!");
+            message.add("Pokemon caught!!");
             message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
             View.getView().disposeCurrent();
             View.getView().removeCurrent();
@@ -295,17 +297,17 @@ public class InFightMessages implements InFightMessagesInterface {
             View.getView().disposeCurrent();
             View.getView().removeCurrent();
         } else {
-            message.add("RUN FAILED!");
+            message.add("Run failed!");
             message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
-                message.add("ALLY DEAD");
+                message.add("Your pokemon is exhausted");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     MyFrame fs = View.getView().getCurrent();
                     ((FightScreen) fs).showMessage(array);                
                 } else {
-                    message.add("ALLY DEFEATED");
+                    message.add("You lost!");
                     message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();

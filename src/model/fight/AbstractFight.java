@@ -36,7 +36,7 @@ public abstract class AbstractFight implements Fight {
     protected static final int BALANCE_BOOST_MOVE = 100;
     protected static final int ATTACKS_TO_DO = 2;
     protected static final int EXP_COEFFICIENT = 7;
-    protected static final String EXP_MESSAGE = "You defeated a pokemon, your pokemon get experience: ";
+    protected static final String EXP_MESSAGE = "Exp gained: ";
 
     protected Player player = PlayerImpl.getPlayer();
     protected PokemonInBattle allyPkm;
