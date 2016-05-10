@@ -1,5 +1,19 @@
 package model.fight;
 
 public enum Effectiveness {
-    SUPEREFFECTIVE, LESSEFFECTIVE, NORMAL, CANNOTINCREASE, CANNOTDECREASE;
+    SUPEREFFECTIVE("Super effective!!"), 
+    LESSEFFECTIVE("Not very effective..."), 
+    NORMAL("That was effective"), 
+    CANNOTINCREASE("His stat cannot increase"), 
+    CANNOTDECREASE("His stat cannot decrease");
+    
+    private String msg;
+    
+    private Effectiveness(final String s) {
+        this.msg = s;
+    }
+    
+    public String getMessage() {
+        return this.msg;
+    }
 }

@@ -37,7 +37,7 @@ public class InFightMessages implements InFightMessagesInterface {
         List<String> message = new ArrayList<>();
         if (myMoveFirst) {
             message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
-            message.add(myMoveEffectiveness.name());
+            message.add(myMoveEffectiveness.getMessage());
             if (enemyMove == null) {
                 message.add("Enemy pokemon is exhausted");
                 message.add(optionalMessage);
@@ -68,13 +68,11 @@ public class InFightMessages implements InFightMessagesInterface {
                     }
                 } else {
                     message.add("Enemy defeated");
-                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());                        
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();                   
                     if (moveToLearn != Move.NULLMOVE) {
-                        System.out.println(moveToLearn);
                         if (Controller.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
-                            System.out.println(Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves());
                             String[] array = new String[message.size()];
                             message.toArray(array);
                             View.getView().addNew(new MessageFrame(State.WALKING, array));
@@ -99,7 +97,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 }
             } else {
                 message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
-                message.add(enemyMoveEffectiveness.name());
+                message.add(enemyMoveEffectiveness.getMessage());
                 if (lastPokemonKills) {
                     message.add("Your pokemon is exhausted");
                     if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
@@ -127,7 +125,7 @@ public class InFightMessages implements InFightMessagesInterface {
             }
         } else {
             message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
-            message.add(enemyMoveEffectiveness.name());
+            message.add(enemyMoveEffectiveness.getMessage());
             if (myMove == null) {
                 message.add("Your pokemon is exhausted");
                 if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
@@ -148,7 +146,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 }
             } else {
                 message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
-                message.add(myMoveEffectiveness.name());
+                message.add(myMoveEffectiveness.getMessage());
                 if (lastPokemonKills) {
                     message.add("Enemy pokemon is exhausted");
                     message.add(optionalMessage);

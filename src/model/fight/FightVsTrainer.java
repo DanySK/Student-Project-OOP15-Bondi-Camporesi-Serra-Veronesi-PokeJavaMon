@@ -146,10 +146,10 @@ public class FightVsTrainer extends AbstractFight {
                         if (trainer instanceof GymLeader) {
                             player.addBadge();
                             Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
-                                    EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney() + GYM_LEADER_DEFEAT_MESS, moveToLearn);
+                                    EXP_MESSAGE + getExp() + " " + TRAINER_DEFEAT_MESS + trainer.getMoney() + " " + GYM_LEADER_DEFEAT_MESS, moveToLearn);
                         } else {
                             Controller.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
-                                    EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
+                                    EXP_MESSAGE + getExp() + " " + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
                         }
                     } else {
                         trainerChange();
@@ -170,10 +170,10 @@ public class FightVsTrainer extends AbstractFight {
                     if (trainer instanceof GymLeader) {
                         player.addBadge();
                         Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
-                                EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney() + GYM_LEADER_DEFEAT_MESS, moveToLearn);
+                                EXP_MESSAGE + getExp() + " " + TRAINER_DEFEAT_MESS + trainer.getMoney() + " " + GYM_LEADER_DEFEAT_MESS, moveToLearn);
                     } else {
                         Controller.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
-                                EXP_MESSAGE + getExp() + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
+                                EXP_MESSAGE + getExp() + " " + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
                     }
                 } else {
                     trainerChange();
