@@ -376,16 +376,22 @@ class MyPanel extends JPanel {
         }
         if (image != null) {
             int width = 150;
-            double maxHP2 = PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.HP); /*get maxHealth*/
-            double HP2 = PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP(); /*get currentHealth*/
+            double maxHP2 = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.HP); /*get maxHealth*/
+            double HP2 = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentHP(); /*get currentHealth*/
             double Scale2 = HP2 / maxHP2;
+            double currentExp = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP);
+            double maxExp = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP) + Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getNecessaryExp();
+            double scale3 = currentExp / maxExp;
             double maxHP = Controller.getController().getEnemyPokemonInFight().getStat(Stat.HP); /*get maxHealth*/
             double HP = Controller.getController().getEnemyPokemonInFight().getCurrentHP(); /*get currentHealth*/
             double Scale = HP / maxHP;
             g.drawRect(20, 20, width, 7);
             g.drawRect(272, 130, width, 7);
+            g.drawRect(272,137,width,7);
             g.fillRect(20, 20, (int) (width * Scale), 7);
             g.fillRect(272, 130, (int) (width * Scale2), 7);
+            g.fillRect(272,137,(int) (width * scale3), 7);
+            repaint();
             repaint();
             repaint();
             g.drawImage(image, 300, 20, this);
