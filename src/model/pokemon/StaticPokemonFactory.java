@@ -19,7 +19,7 @@ public final class StaticPokemonFactory {
 	 */
 	public static PokemonInBattle createPokemon(final String pkmnID, final int lvl, final int hp, final int exp, final String[] moves) {
 		Pokedex pokemonID = null;
-		final Move[] moveset = new Move[PokemonInBattle.MAX_MOVES];
+		Move[] moveset = new Move[PokemonInBattle.MAX_MOVES];
 		
 		for (final Pokedex p : Pokedex.values()) {
 			if (pkmnID.toUpperCase().equals(p.name())) {
@@ -38,6 +38,9 @@ public final class StaticPokemonFactory {
 			if (moveset[i] == null) {
 				throw new IllegalArgumentException("Move not found");
 			}
+		}
+		for (int i = moves.length; i < AbstractPokemon.MAX_MOVES; i++) {
+		    moveset[i] = Move.NULLMOVE;
 		}
 		//TODO Check if moves are in the moveset
 		final PokemonInBattle retPkmn = new PokemonInBattle(pokemonID, lvl);

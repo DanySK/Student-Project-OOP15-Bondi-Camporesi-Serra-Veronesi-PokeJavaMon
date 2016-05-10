@@ -29,6 +29,9 @@ public class PokemonInBattle extends AbstractPokemon{
 	    }
 	    changeStat(Stat.LVL, this.mapStat.get(Stat.LVL) + 1);
 	    updateStats();
+	    if (this.getStat(Stat.LVL) == MAX_LEVEL) {
+	        this.changeStat(Stat.EXP, 0);
+	    }
     }
 	
 	/**

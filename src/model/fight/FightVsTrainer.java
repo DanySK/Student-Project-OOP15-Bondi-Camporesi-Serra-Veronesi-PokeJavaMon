@@ -70,7 +70,7 @@ public class FightVsTrainer extends AbstractFight {
         //se non ha mosse che fanno danno, usa la prima mossa
         final List<Move> moves = new ArrayList<>();
         for (final Move mov : enemyPkm.getCurrentMoves()) {
-            if (mov != null) {
+            if (mov != Move.NULLMOVE) {
                 moves.add(mov);
             }
         }
@@ -107,12 +107,14 @@ public class FightVsTrainer extends AbstractFight {
                         int hpAfterLvUp = allyPkm.getStat(Stat.HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
                         allyPkm.heal(hpAfterLvUp);
-                        if (allyPkm.getPokemon().getMoveset().get(allyPkm.getStat(Stat.LVL)) != null) {
+                        if (allyPkm.getPokemon().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
                             moveToLearn = allyPkm.getPokemon().getMoveset().get(allyPkm.getStat(Stat.LVL));
                         }
                         else {
-                            moveToLearn = null;
+                            moveToLearn = Move.NULLMOVE;
                         }
+                    } else {
+                        moveToLearn = Move.NULLMOVE;
                     }
                     isEnd = true;
                     allyPkmsBoosts.put(allyPkm, allyPkmBoost);

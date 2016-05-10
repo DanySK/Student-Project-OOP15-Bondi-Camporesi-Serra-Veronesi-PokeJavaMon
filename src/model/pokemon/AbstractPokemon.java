@@ -77,14 +77,16 @@ public abstract class AbstractPokemon implements Pokemon {
         
         for (int i = lvl; i > 0; i--) {
             if (totalMoveset.containsKey(i)) {
-                retList.add(totalMoveset.get(i));
+                if (totalMoveset.get(i) != null) {
+                    retList.add(totalMoveset.get(i));
+                }
                 if (retList.size() == MAX_MOVES) {
                     break;
                 }
             }
         }
-        
-        for (int i = MAX_MOVES; i < retList.size(); i--) {
+        final int size = retList.size();
+        for (int i = MAX_MOVES; i > size; i--) {
             retList.add(Move.NULLMOVE);
         }
         
@@ -158,6 +160,9 @@ public abstract class AbstractPokemon implements Pokemon {
     
     @Override
     public void setExp(final int exp) {
+        if (this.mapStat.get(Stat.LVL) >= MAX_LEVEL) {
+            return;
+        }
     	this.changeStat(Stat.EXP, exp);
     }
     
@@ -198,6 +203,7 @@ public abstract class AbstractPokemon implements Pokemon {
             for (int i = 0; i < MAX_MOVES; i++) {
                 if (this.currentMoves[i] == oldMove) {
                     this.currentMoves[i] = newMove;
+                    return;
                 }
             }
     }

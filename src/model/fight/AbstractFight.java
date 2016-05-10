@@ -56,6 +56,7 @@ public abstract class AbstractFight implements Fight {
     protected Move moveToLearn;
 
     public AbstractFight() {
+        this.moveToLearn = Move.NULLMOVE;
         allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
         for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
             this.allyPkmsBoosts.put(pkm, createBoostsMap());
