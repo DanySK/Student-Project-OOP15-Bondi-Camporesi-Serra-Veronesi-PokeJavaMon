@@ -57,7 +57,7 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     @Override
-    public void setEnemyBoost(final Stat stat, final Double d) {
+    protected void setEnemyBoost(final Stat stat, final Double d) {
         enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
     }
 

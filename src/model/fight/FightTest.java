@@ -5,7 +5,6 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +53,7 @@ public class FightTest {
         testApplyRun();
         testApplyChange();
         testApplyItem();
+        testUseMove();
     }
 
     private FightVsWildPkm createFightVsWildPkm() {
@@ -237,16 +237,16 @@ public class FightTest {
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final FightVsTrainer fightTr = createFightVsTrainer();
-        List<PokemonInBattle> pkmsBeforeEvolution = new ArrayList<>();
-        List<PokemonInBattle> pkmsAfterEvolution = new ArrayList<>();
+        final int hpBeforeTurn = squirtle.getCurrentHP();
+        final double boostBeforeTurn = fightTr.getAllyPkmsBoosts().get(squirtle).get(Stat.DEF);
+        final List<PokemonInBattle> pkmsToEvolve;
         assertTrue("Squirtle at lv 15 must be faster than a rattata at lv 3!", fightTr.setIsAllyFastest());
-        int statBeforeTurn = squirtle.getCurrentHP();
         fightTr.enemyTurn();
         assertTrue("Squirtle HP must be reduced by rattata attack!(rattata at lv 3 has only pound)", 
-                statBeforeTurn > squirtle.getCurrentHP());
-        statBeforeTurn = squirtle.getStat(Stat.DEF);
+                hpBeforeTurn > squirtle.getCurrentHP());
         fightTr.allyTurn(Move.HARDEN);
-        assertTrue("Squirtle DEF must be increase by harden!", statBeforeTurn > squirtle.getCurrentHP());
+        assertTrue("Squirtle DEF must be increase by harden!", 
+                boostBeforeTurn < fightTr.getAllyPkmsBoosts().get(squirtle).get(Stat.DEF));
         squirtle.setExp(squirtle.getNecessaryExp() - MIN_STAT);
         fightTr.giveExpAndCheckLvlUp(fightTr.getExp());//do l'esperienza di rattata squirtle
         wartortle.heal(A_LOT_OF_HP);
@@ -257,11 +257,9 @@ public class FightTest {
         }
         wartortle.setExp(wartortle.getNecessaryExp() - MIN_STAT);
         fightTr.giveExpAndCheckLvlUp(fightTr.getExp());//do l'esperienza di rattata squirtle
-        pkmsBeforeEvolution = new ArrayList<>(fightTr.getPkmsThatMustEvolve());
-        pkmsAfterEvolution = fightTr.getPkmsThatMustEvolve();
         fightTr.evolvePkms();
-        assertNotSame("Wartortle must be evolved in blastoise!", pkmsBeforeEvolution.get(FIRST_ELEM), pkmsAfterEvolution.get(FIRST_ELEM));
-        assertNotSame("Squirtle must be evolved in wartortle!", pkmsBeforeEvolution.get(SECOND_ELEM), pkmsAfterEvolution.get(SECOND_ELEM));
+        pkmsToEvolve = fightTr.getPkmsThatMustEvolve();
+        assertNotSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE, pkmsToEvolve.get(FIRST_ELEM).getPokemon());
+        assertNotSame("Squirtle must be evolved in wartortle!", Pokedex.BLASTOISE, pkmsToEvolve.get(SECOND_ELEM).getPokemon());
     }
-
 }
