@@ -64,6 +64,7 @@ public class MainGameView implements Screen {
         } catch (Exception e) {
             Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
+        Controller.getController().getViewController().initName();
 	Controller.getController().initializeMusicController();
         Controller.getController().updateStatus(State.WALKING);
 	// Init the Inventory

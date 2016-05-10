@@ -1,3 +1,4 @@
+
 package view.methods;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
 import view.frames.FightScreen;
+import view.frames.LearnMoveFrame;
 import view.frames.MessageFrame;
 import view.frames.MyFrame;
 import view.sprite.PlayerSprite;
@@ -39,20 +41,60 @@ public class InFightMessages implements InFightMessagesInterface {
             if (enemyMove == null) {
                 message.add("ENEMY DEAD");
                 if (nextEnemyPokemon != null) {
-                    message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
-                    String[] array = new String[message.size()];
-                    message.toArray(array);
-                    MyFrame fs = View.getView().getCurrent();
-                    ((FightScreen) fs).showMessage(array);
+                    message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());                                     
+                    if (moveToLearn != Move.NULLMOVE) {
+                        if (Controller.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                            String[] array = new String[message.size()];
+                            message.toArray(array);
+                            MyFrame fs = View.getView().getCurrent();
+                            ((FightScreen) fs).showMessage(array);
+                            View.getView().hideCurrent();
+                            View.getView().addNew(new LearnMoveFrame(moveToLearn));
+                            View.getView().showCurrent();
+                        } else {
+                            Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
+                            message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                            String[] array = new String[message.size()];
+                            message.toArray(array);
+                            MyFrame fs = View.getView().getCurrent();
+                            ((FightScreen) fs).showMessage(array);
+                        }
+                    } else {
+                        String[] array = new String[message.size()];
+                        message.toArray(array);
+                        MyFrame fs = View.getView().getCurrent();
+                        ((FightScreen) fs).showMessage(array);
+                    }
                 } else {
                     message.add("ENEMY DEFEATED");
                     message.add(" Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
-                    View.getView().removeCurrent();
-                    String[] array = new String[message.size()];
-                    message.toArray(array);
-                    View.getView().addNew(new MessageFrame(State.WALKING, array));
-                    View.getView().showCurrent();
+                    View.getView().removeCurrent();                   
+                    if (moveToLearn != Move.NULLMOVE) {
+                        System.out.println(moveToLearn);
+                        if (Controller.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                            System.out.println(Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves());
+                            String[] array = new String[message.size()];
+                            message.toArray(array);
+                            View.getView().addNew(new MessageFrame(State.WALKING, array));
+                            View.getView().showCurrent();
+                            View.getView().hideCurrent();
+                            View.getView().addNew(new LearnMoveFrame(moveToLearn));
+                            View.getView().showCurrent();
+                        } else {
+                            Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
+                            message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                            String[] array = new String[message.size()];
+                            message.toArray(array);
+                            View.getView().addNew(new MessageFrame(State.WALKING, array));
+                            View.getView().showCurrent();
+                        }
+                    } else {
+                        String[] array = new String[message.size()];
+                        message.toArray(array);
+                        View.getView().addNew(new MessageFrame(State.WALKING, array));
+                        View.getView().showCurrent();
+                    }
                 }
             } else {
                 message.add("Enemy " + Controller.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
@@ -110,20 +152,58 @@ public class InFightMessages implements InFightMessagesInterface {
                     message.add("ENEMY DEAD");
                     if (nextEnemyPokemon != null) {
                         message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
-                        String[] array = new String[message.size()];
-                        message.toArray(array);
-                        MyFrame fs = View.getView().getCurrent();
-                        ((FightScreen) fs).showMessage(array);
+                        if (moveToLearn != Move.NULLMOVE) {
+                            if (Controller.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                                String[] array = new String[message.size()];
+                                message.toArray(array);
+                                MyFrame fs = View.getView().getCurrent();
+                                ((FightScreen) fs).showMessage(array);
+                                View.getView().hideCurrent();
+                                View.getView().addNew(new LearnMoveFrame(moveToLearn));
+                                View.getView().showCurrent();
+                            } else {
+                                Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
+                                message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                                String[] array = new String[message.size()];
+                                message.toArray(array);
+                                MyFrame fs = View.getView().getCurrent();
+                                ((FightScreen) fs).showMessage(array);
+                            }
+                        } else {
+                            String[] array = new String[message.size()];
+                            message.toArray(array);
+                            MyFrame fs = View.getView().getCurrent();
+                            ((FightScreen) fs).showMessage(array);
+                        }
                     } else {
                         message.add("ENEMY DEFEATED");             
                         message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());                        
                         Controller.getController().updateStatus(State.WALKING);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
-                        String[] array = new String[message.size()];
-                        message.toArray(array);
-                        View.getView().addNew(new MessageFrame(State.WALKING, array));
-                        View.getView().showCurrent();
+                        if (moveToLearn != Move.NULLMOVE) {
+                            if (Controller.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                                String[] array = new String[message.size()];
+                                message.toArray(array);
+                                View.getView().addNew(new MessageFrame(State.WALKING, array));
+                                View.getView().showCurrent();
+                                View.getView().hideCurrent();
+                                View.getView().addNew(new LearnMoveFrame(moveToLearn));
+                                View.getView().showCurrent();
+                            } else {
+                                Controller.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, moveToLearn);
+                                message.add("Your pokemon learned the move: " + moveToLearn.name());  
+                                String[] array = new String[message.size()];
+                                message.toArray(array);
+                                View.getView().addNew(new MessageFrame(State.WALKING, array));
+                                View.getView().showCurrent();
+                            }
+                        } else {
+                            String[] array = new String[message.size()];
+                            message.toArray(array);
+                            View.getView().addNew(new MessageFrame(State.WALKING, array));
+                            View.getView().showCurrent();
+                        }
                     }
                 } else {
                     String[] array = new String[message.size()];

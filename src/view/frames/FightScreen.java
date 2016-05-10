@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 import controller.Controller;
 import exceptions.CannotEscapeFromTrainerException;
 import model.player.PlayerImpl;
+import model.pokemon.Move;
 import model.pokemon.Stat;
 import view.View;
 
@@ -29,6 +30,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class FightScreen extends JFrame implements MyFrame {
+//TODO: campi in minuscolo con camelCase, Quando usi i campi nella classe devono essere preceduti da this. Ripetizione di codice da eliminare, final ai campi/var che non vengono più inizializzate
 
     private static final long serialVersionUID = 1L;
     private JTextArea JTextArea;
@@ -52,16 +54,16 @@ public class FightScreen extends JFrame implements MyFrame {
             panel_3.setBounds(0, 213, 226, 60);
             this.getContentPane().add(panel_3);
             panel_3.setLayout(null);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
             	Move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
-            	Move1 = new JButton("NULL");
+            	Move1 = new JButton("----");
             }
             Move1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
                                 Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
                                 new MessageFrame(null, "MOVE NOT FOUND");
@@ -70,16 +72,16 @@ public class FightScreen extends JFrame implements MyFrame {
             });
             Move1.setBounds(0, 0, 113, 30);
             panel_3.add(Move1);            
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
             	Move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
-            	Move2 = new JButton("NULL");
+            	Move2 = new JButton("----");
             }               
             Move2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
@@ -87,18 +89,18 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             Move2.setBounds(113, 0, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Move2.setEnabled(false);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) Move2.setEnabled(false);
             panel_3.add(Move2);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
             	Move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
-            	Move3 = new JButton("NULL");
+            	Move3 = new JButton("----");
             }
             Move3.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
@@ -106,18 +108,18 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             Move3.setBounds(0, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Move3.setEnabled(false);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) Move3.setEnabled(false);
             panel_3.add(Move3);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
             	Move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
-            	Move4 = new JButton("NULL");
+            	Move4 = new JButton("----");
             }
             Move4.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
@@ -125,7 +127,7 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             Move4.setBounds(113, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Move4.setEnabled(false);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) Move4.setEnabled(false);
             panel_3.add(Move4);
         }
         
@@ -165,6 +167,7 @@ public class FightScreen extends JFrame implements MyFrame {
             JTextArea.setBounds(0, 0, 444, 60);
             panel_2.add(JTextArea);
             panel_1.setVisible(false);
+            panel_2.requestFocus();
             panel_2.setVisible(true);
             panel_3.setVisible(false);
         }
@@ -249,7 +252,7 @@ public class FightScreen extends JFrame implements MyFrame {
                 }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
             	Move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
             	Move1 = new JButton("NULL");
@@ -258,7 +261,7 @@ public class FightScreen extends JFrame implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != null) {
+                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
                                 Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
                                 new MessageFrame(null, "MOVE NOT FOUND");
@@ -267,7 +270,7 @@ public class FightScreen extends JFrame implements MyFrame {
             });
             Move1.setBounds(0, 0, 113, 30);
             panel_3.add(Move1);            
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
             	Move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
             	Move2 = new JButton("NULL");
@@ -276,7 +279,7 @@ public class FightScreen extends JFrame implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != null) {
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
@@ -284,9 +287,9 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             Move2.setBounds(113, 0, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == null) Move2.setEnabled(false);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) Move2.setEnabled(false);
             panel_3.add(Move2);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
             	Move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
             	Move3 = new JButton("NULL");
@@ -295,7 +298,7 @@ public class FightScreen extends JFrame implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != null) {
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
@@ -303,9 +306,9 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             Move3.setBounds(0, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == null) Move3.setEnabled(false);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) Move3.setEnabled(false);
             panel_3.add(Move3);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
             	Move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
             	Move4 = new JButton("NULL");
@@ -314,7 +317,7 @@ public class FightScreen extends JFrame implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             panel_1.setVisible(false);
                             panel_3.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != null) {
+                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
@@ -322,7 +325,7 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             Move4.setBounds(113, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == null) Move4.setEnabled(false);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) Move4.setEnabled(false);
             panel_3.add(Move4);
             
             this.setVisible(true);

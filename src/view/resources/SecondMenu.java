@@ -70,8 +70,7 @@ public class SecondMenu {
 	        s = nickname.getText();
 	    	if (s.length() < 4 || s.length() > 20) {
 	    	    JOptionPane.showMessageDialog(uno, "Insert a valid NAME");
-	    	}
-	    	else {
+	    	} else {
 	    	    try {
 	    	        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 50));
 		        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5));
@@ -95,7 +94,7 @@ public class SecondMenu {
 	    	    JOptionPane.showMessageDialog(due, "Insert a valid NAME");
 	    	} else {
 	    	    try {
-	    	        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 15));
+	    	        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 44));
 		    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }
