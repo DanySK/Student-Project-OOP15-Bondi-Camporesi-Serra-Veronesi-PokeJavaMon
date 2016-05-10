@@ -2,6 +2,7 @@ package view.frames;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,12 +12,14 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JWindow;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import controller.Controller;
@@ -28,41 +31,43 @@ import view.View;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class FightScreen extends JFrame implements MyFrame {
+public class FightScreen extends JWindow implements MyFrame {
 //TODO: campi in minuscolo con camelCase, Quando usi i campi nella classe devono essere preceduti da this. Ripetizione di codice da eliminare, final ai campi/var che non vengono più inizializzate
 
     private static final long serialVersionUID = 1L;
-    private JTextArea JTextArea;
-    private JPanel panel_1;
-    private JPanel panel_2;
-    private JPanel panel_3;
-    private MyPanel panel;
-    private JButton Move1;
-    private JButton Move2;
-    private JButton Move3;
-    private JButton Move4;
-    private JButton Fight;
-    private JButton Squadra;
-    private JButton Zaino;
-    private JButton Fuga;
+    private JTextArea dialog;
+    private JPanel decisionsPanel;
+    private JPanel dialogPanel;
+    private JPanel movesPanel;
+    private MyPanel mainPanel;
+    private JButton move1;
+    private JButton move2;
+    private JButton move3;
+    private JButton move4;
+    private JButton fight;
+    private JButton team;
+    private JButton bag;
+    private JButton run;
         
         public void repaintFrame() {
-            panel.repaint();
-            panel_3 = new JPanel();
-            panel_3.setVisible(false);
-            panel_3.setBounds(0, 213, 226, 60);
-            this.getContentPane().add(panel_3);
-            panel_3.setLayout(null);
+        	mainPanel.repaint();
+            movesPanel = new JPanel();
+            movesPanel.setVisible(false);
+    		movesPanel.setBounds(0, 213, 226, 60);
+    		this.add(movesPanel);
+    		movesPanel.setLayout(new GridLayout(0, 2, 0, 0));
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-            	Move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+            	move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
-            	Move1 = new JButton("----");
+            	move1 = new JButton("----");
             }
-            Move1.addActionListener(new ActionListener() {
+            move1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
                                 Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
@@ -70,17 +75,16 @@ public class FightScreen extends JFrame implements MyFrame {
                             }
                     }
             });
-            Move1.setBounds(0, 0, 113, 30);
-            panel_3.add(Move1);            
+            movesPanel.add(move1);            
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-            	Move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            	move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
-            	Move2 = new JButton("----");
+            	move2 = new JButton("----");
             }               
-            Move2.addActionListener(new ActionListener() {
+            move2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
@@ -88,18 +92,17 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Move2.setBounds(113, 0, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) Move2.setEnabled(false);
-            panel_3.add(Move2);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) move2.setEnabled(false);
+            movesPanel.add(move2);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-            	Move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            	move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
-            	Move3 = new JButton("----");
+            	move3 = new JButton("----");
             }
-            Move3.addActionListener(new ActionListener() {
+            move3.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
@@ -107,18 +110,17 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Move3.setBounds(0, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) Move3.setEnabled(false);
-            panel_3.add(Move3);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) move3.setEnabled(false);
+            movesPanel.add(move3);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-            	Move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            	move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
-            	Move4 = new JButton("----");
+            	move4 = new JButton("----");
             }
-            Move4.addActionListener(new ActionListener() {
+            move4.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
@@ -126,27 +128,25 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Move4.setBounds(113, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) Move4.setEnabled(false);
-            panel_3.add(Move4);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
+            movesPanel.add(move4);
         }
         
         public void showMessage(String... message) {
-            panel_2 = new JPanel();
-            panel_2.setVisible(false);
-            panel_2.setBounds(0, 213, 450, 60);
-            this.getContentPane().add(panel_2);
-            panel_2.setLayout(null);
+            dialogPanel = new JPanel();
+            dialogPanel.setVisible(false);
+            dialogPanel.setBounds(0, 213, 450, 60);
+            this.getContentPane().add(dialogPanel);
+            dialogPanel.setLayout(null);
             List<String> msgs = Arrays.asList(message);
             Iterator<String> it = msgs.iterator();
-            JTextArea = new JTextArea(it.next());
-            JTextArea.setEditable(false);
-            JTextArea.addKeyListener(new KeyAdapter() {
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                                if (e.getKeyCode()==KeyEvent.VK_ENTER){
-                                    if (it.hasNext()) {
-                                        JTextArea.setText(it.next());
+            dialog = new JTextArea(it.next());
+            dialog.setEditable(false);
+            dialog.addMouseListener(new MouseAdapter() {
+    			@Override
+    			public void mouseClicked(MouseEvent e) {
+    				if (it.hasNext()) {
+                                        dialog.setText(it.next());
                                     } else {
                                         if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent() && PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                                             View.getView().hideCurrent();
@@ -155,63 +155,62 @@ public class FightScreen extends JFrame implements MyFrame {
                                             View.getView().showCurrent();
                                         }
                                         repaintFrame();
-                                        panel_1.setVisible(true);
-                                        panel_2.setVisible(false);
-                                        panel_3.setVisible(false);
+                                        decisionsPanel.setVisible(true);
+                                        dialogPanel.setVisible(false);
+                                        movesPanel.setVisible(false);
                                     }
                                 }
-                    }});
-            JTextArea.setWrapStyleWord(true);
-            JTextArea.setLineWrap(true);
-            JTextArea.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-            JTextArea.setBounds(0, 0, 444, 60);
-            panel_2.add(JTextArea);
-            panel_1.setVisible(false);
-            panel_2.requestFocus();
-            panel_2.setVisible(true);
-            panel_3.setVisible(false);
+                    });
+            dialog.setWrapStyleWord(true);
+            dialog.setLineWrap(true);
+            dialog.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+            dialog.setBounds(0, 0, 444, 60);
+            dialogPanel.add(dialog);
+            decisionsPanel.setVisible(false);
+            dialogPanel.requestFocus();
+            dialogPanel.setVisible(true);
+            movesPanel.setVisible(false);
         }
 
         @Override
         public void showFrame() {
-            panel_1 = new JPanel();
-            panel_2 = new JPanel();
-            panel_3 = new JPanel();
+        	
+    		this.setBounds(0, 0, 450, 300);
+    		this.getContentPane().setLayout(null);
+            decisionsPanel = new JPanel();
+            dialogPanel = new JPanel();
+            movesPanel = new JPanel();
             this.setAlwaysOnTop(true);
-            this.setUndecorated(true);
-            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.setFocusable(true);
             this.setAlwaysOnTop(true);
             this.setBounds(100, 100, 450, 275);
             this.getContentPane().setLayout(null);
-            panel = new MyPanel();
-            panel.setBounds(0, 0, 450, 212);
-            this.getContentPane().add(panel);
-            panel.setLayout(null);
-            panel_1.setBounds(224, 213, 226, 60);
-            this.getContentPane().add(panel_1);
-            panel_1.setLayout(null);          
-            panel_2.setVisible(false);
-            panel_2.setBounds(0, 213, 450, 60);
-            this.getContentPane().add(panel_2);
-            panel_2.setLayout(null);           
-            panel_3.setVisible(false);
-            panel_3.setBounds(0, 213, 226, 60);
-            this.getContentPane().add(panel_3);
-            panel_3.setLayout(null);           
-            Fight = new JButton("Fight");
-            Fight.setBounds(0, 0, 113, 30);
-            Fight.addActionListener(new ActionListener() {
+            mainPanel = new MyPanel();
+            mainPanel.setBounds(0, 0, 450, 212);
+            this.getContentPane().add(mainPanel);
+            mainPanel.setLayout(null);
+            decisionsPanel.setBounds(224, 213, 226, 60);
+    		this.add(decisionsPanel);
+    		decisionsPanel.setLayout(new GridLayout(0, 2, 0, 0));
+            dialogPanel.setVisible(false);
+            dialogPanel.setBounds(0, 213, 450, 60);
+            this.getContentPane().add(dialogPanel);
+            dialogPanel.setLayout(null);           
+            movesPanel.setVisible(false);
+    		movesPanel.setBounds(0, 213, 226, 60);
+    		this.add(movesPanel);
+    		movesPanel.setLayout(new GridLayout(0, 2, 0, 0));
+    		fight = new JButton("Fight");
+            fight.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    panel_1.setVisible(false);
-                    panel_2.setVisible(false);
-                    panel_3.setVisible(true);
+                    decisionsPanel.setVisible(false);
+                    dialogPanel.setVisible(false);
+                    movesPanel.setVisible(true);
                 }
             });
-            panel_1.add(Fight);            
-            Squadra = new JButton("TeamMenu");
-            Squadra.setBounds(113, 0, 113, 30);
-            Squadra.addActionListener(new ActionListener() {
+            decisionsPanel.add(fight);            
+            team = new JButton("Team");
+            team.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
                         View.getView().hideCurrent();
@@ -225,11 +224,10 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
                 }
             });
-            panel_1.add(Squadra);
-            Zaino = new JButton("BagMenu");
-            Zaino.setBounds(0, 30, 113, 30);
-            panel_1.add(Zaino);
-            Zaino.addActionListener(new ActionListener() {
+            decisionsPanel.add(team);
+            bag = new JButton("Bag");
+            decisionsPanel.add(bag);
+            bag.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     View.getView().hideCurrent();
                     BagMenu za = new BagMenu();
@@ -237,11 +235,9 @@ public class FightScreen extends JFrame implements MyFrame {
                     View.getView().showCurrent();               
                 }
             });
-            
-            Fuga = new JButton("Fuga");
-            Fuga.setBounds(113, 30, 113, 30);
-            panel_1.add(Fuga);
-            Fuga.addActionListener(new ActionListener() {
+            run = new JButton("Run");
+            decisionsPanel.add(run);
+            run.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             try {
                     Controller.getController().getFightController().run();
@@ -253,14 +249,14 @@ public class FightScreen extends JFrame implements MyFrame {
                     }
             });
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-            	Move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+            	move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
-            	Move1 = new JButton("NULL");
+            	move1 = new JButton("NULL");
             }
-            Move1.addActionListener(new ActionListener() {
+            move1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
                                 Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
@@ -268,17 +264,16 @@ public class FightScreen extends JFrame implements MyFrame {
                             }
                     }
             });
-            Move1.setBounds(0, 0, 113, 30);
-            panel_3.add(Move1);            
+            movesPanel.add(move1);            
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-            	Move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            	move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
-            	Move2 = new JButton("NULL");
+            	move2 = new JButton("NULL");
             }               
-            Move2.addActionListener(new ActionListener() {
+            move2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
@@ -286,18 +281,17 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Move2.setBounds(113, 0, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) Move2.setEnabled(false);
-            panel_3.add(Move2);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) move2.setEnabled(false);
+            movesPanel.add(move2);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-            	Move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            	move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
-            	Move3 = new JButton("NULL");
+            	move3 = new JButton("NULL");
             }
-            Move3.addActionListener(new ActionListener() {
+            move3.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
@@ -305,18 +299,17 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Move3.setBounds(0, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) Move3.setEnabled(false);
-            panel_3.add(Move3);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) move3.setEnabled(false);
+            movesPanel.add(move3);
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-            	Move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            	move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
-            	Move4 = new JButton("NULL");
+            	move4 = new JButton("NULL");
             }
-            Move4.addActionListener(new ActionListener() {
+            move4.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                            panel_1.setVisible(false);
-                            panel_3.setVisible(false);
+                            decisionsPanel.setVisible(false);
+                            movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
                             Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
@@ -324,9 +317,8 @@ public class FightScreen extends JFrame implements MyFrame {
                         }
                     }
             });
-            Move4.setBounds(113, 30, 113, 30);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) Move4.setEnabled(false);
-            panel_3.add(Move4);
+            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
+            movesPanel.add(move4);
             
             this.setVisible(true);
         }
