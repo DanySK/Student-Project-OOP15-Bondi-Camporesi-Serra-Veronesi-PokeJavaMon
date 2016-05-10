@@ -81,6 +81,12 @@ public interface Pokemon {
     public void learnMove(Move oldMove, Move newMove) throws IllegalArgumentException ;
     
     /**
+     * A method that checks if there is a free spot in the current moveset
+     * @return true if there's no room for another Move
+     */
+    public boolean isCurrentMovesetFull();
+    
+    /**
      * A method that increase the currentHP of the {@link Pokemon}
      * @param value		the ammount of HP replenished
      * @throws IllegalArgumentException if the input value is negative

@@ -190,8 +190,8 @@ public abstract class AbstractPokemon implements Pokemon {
     
 
     @Override
-    public void learnMove(Move oldMove, Move newMove) throws IllegalArgumentException {
-            if (!containsThisMove(Arrays.asList(this.currentMoves), oldMove)) {
+    public void learnMove(final Move oldMove, final Move newMove) throws IllegalArgumentException {
+            if (newMove == null || !containsThisMove(Arrays.asList(this.currentMoves), oldMove)) {
                 throw new IllegalArgumentException("oldMove cannot be found in the current moveset");
             }
         
@@ -202,7 +202,11 @@ public abstract class AbstractPokemon implements Pokemon {
             }
     }
     
-    private static boolean containsThisMove(Iterable<Move> it, Move move) {
+    public boolean isCurrentMovesetFull() {
+        return !containsThisMove(Arrays.asList(this.currentMoves), Move.NULLMOVE);
+    }
+    
+    private static boolean containsThisMove(final Iterable<Move> it, final Move move) {
         boolean flag = false;
         for (final Move m : it) {
             if (m == move) {
