@@ -227,6 +227,10 @@ public abstract class AbstractFight implements Fight {
 
     protected abstract void setEnemyBoost(final Stat stat, final Double d);
 
+    public Map<PokemonInBattle, Map<Stat, Double>> getAllyPkmsBoosts(){
+        return this.allyPkmsBoosts;
+    }
+
     protected void isEffective(final PokemonInBattle stricker, final PokemonInBattle stricked, 
             final Move move) {
         effectiveValue = table.getMultiplierAttack(move.getType(), stricked.getPokemon().getFirstType(),
@@ -264,7 +268,8 @@ public abstract class AbstractFight implements Fight {
         return damage;
     }
 
-    protected void checkAndSetIsExhausted(final PokemonInBattle pkm) {
+    //messo public per i test
+    public void checkAndSetIsExhausted(final PokemonInBattle pkm) {
         if (pkm.equals(allyPkm)) {
             isAllyExhausted = pkm.getCurrentHP() == 0;
         } else {
