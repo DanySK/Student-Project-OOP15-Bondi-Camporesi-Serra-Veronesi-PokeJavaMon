@@ -7,6 +7,7 @@ import javax.swing.border.LineBorder;
 
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
+import model.pokemon.PokemonType;
 import model.pokemon.Stat;
 import view.View;
 
@@ -62,7 +63,11 @@ public class Statistics extends JWindow implements MyFrame {
 		panel_1.add(exit);       
 		type = new JLabel("Type");
 		panel_1.add(type);
-		typeValue = new JLabel(pk.getPokemon().getFirstType().name());
+		if (pk.getPokemon().getSecondType() != PokemonType.NONE) {
+		    typeValue = new JLabel(pk.getPokemon().getFirstType().name() + " / " + pk.getPokemon().getSecondType());
+		} else {
+	            typeValue = new JLabel(pk.getPokemon().getFirstType().name());
+		}
 		panel_1.add(typeValue);
 		pkmnName = new JLabel("" + pk.getPokemon());
 		panel_1.add(pkmnName);

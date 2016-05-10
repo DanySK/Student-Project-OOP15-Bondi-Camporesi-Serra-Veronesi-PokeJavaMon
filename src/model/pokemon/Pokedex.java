@@ -35,7 +35,7 @@ public enum Pokedex {
     BLASTOISE("Blastoise",   PokemonType.WATER,  PokemonType.NONE,    79,  83, 100,   78,  PokemonRarity.STARTER,    -1, "",           new HashMap<>(), FrontSpriteImage.BLASTOISE, BackSpriteImage.BLASTOISE),
     
     CATERPIE("Caterpie", 	 PokemonType.BUG,    PokemonType.NONE,    45,  30,  35,   45,  PokemonRarity.COMMON,      7, "METAPOD",    new HashMap<>(), FrontSpriteImage.CATERPIE, BackSpriteImage.CATERPIE),
-    METAPOD("Metapod", 	     PokemonType.BUG,    PokemonType.NONE,    50,  20,  55,   30,  PokemonRarity.UNCOMMON,   10, "BUTTERFLY",  new HashMap<>(), FrontSpriteImage.METAPOD, BackSpriteImage.METAPOD),
+    METAPOD("Metapod", 	     PokemonType.BUG,    PokemonType.NONE,    50,  20,  55,   30,  PokemonRarity.UNCOMMON,   10, "BUTTERFREE",  new HashMap<>(), FrontSpriteImage.METAPOD, BackSpriteImage.METAPOD),
     BUTTERFREE("Butterfree", PokemonType.BUG,    PokemonType.FLYING,  60,  45,	50,   70,  PokemonRarity.UNCOMMON,   -1, "",  		   new HashMap<>(), FrontSpriteImage.BUTTERFREE, BackSpriteImage.BUTTERFREE),
     
     WEEDLE("Weedle", 	     PokemonType.BUG,    PokemonType.POISON,  40,  35,  30,   50,  PokemonRarity.COMMON,      7, "KAKUNA",     new HashMap<>(), FrontSpriteImage.WEEDLE, BackSpriteImage.WEEDLE),

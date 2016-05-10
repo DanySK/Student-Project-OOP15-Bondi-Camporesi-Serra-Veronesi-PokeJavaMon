@@ -20,7 +20,6 @@ import view.sprite.PlayerSprite;
 
 public class InFightMessages implements InFightMessagesInterface {
 
-    
     public void teleportToCenter() {
         final int x = Controller.getController().getPokeMap().getPokemonCenterSpawnPosition().getX();
         final int y = Controller.getController().getPokeMap().getPokemonCenterSpawnPosition().getY();
@@ -68,7 +67,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     }
                 } else {
                     message.add("Enemy defeated");
-                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());                        
+                    message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());                        
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();                   
                     if (moveToLearn != Move.NULLMOVE) {
@@ -107,7 +106,7 @@ public class InFightMessages implements InFightMessagesInterface {
                         ((FightScreen) fs).showMessage(array);
                     } else {
                         message.add("You lost!");
-                        message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                        message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         String[] array = new String[message.size()];
@@ -135,7 +134,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     ((FightScreen) fs).showMessage(array);
                 } else {
                     message.add("You lost!");
-                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                    message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
@@ -177,7 +176,7 @@ public class InFightMessages implements InFightMessagesInterface {
                         }
                     } else {
                         message.add("Enemy defeated!");             
-                        message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());                        
+                        message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());                        
                         Controller.getController().updateStatus(State.WALKING);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
@@ -228,7 +227,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 ((FightScreen) fs).showMessage(array);
             } else {
                 message.add("You lost!");
-                message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());
                 View.getView().disposeCurrent();
                 View.getView().removeCurrent();
                 String[] array = new String[message.size()];
@@ -259,7 +258,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     ((FightScreen) fs).showMessage(array);
                 } else {
                     message.add("You lost!");
-                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                    message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
@@ -277,7 +276,7 @@ public class InFightMessages implements InFightMessagesInterface {
             }
         } else {
             message.add("Pokemon caught!!");
-            message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+            message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());
             View.getView().disposeCurrent();
             View.getView().removeCurrent();
             String[] array = new String[message.size()];
@@ -306,7 +305,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     ((FightScreen) fs).showMessage(array);                
                 } else {
                     message.add("You lost!");
-                    message.add("Evolving Pokemon: " + Controller.getController().getFightController().resolveEvolution());
+                    message.add("Evolving Pokemons: " + Controller.getController().getFightController().resolveEvolution());
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
                     String[] array = new String[message.size()];
