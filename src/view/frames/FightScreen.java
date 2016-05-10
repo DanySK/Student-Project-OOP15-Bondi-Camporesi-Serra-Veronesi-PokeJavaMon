@@ -387,12 +387,25 @@ class MyPanel extends JPanel {
             double Scale = HP / maxHP;
             g.drawRect(20, 20, width, 7);
             g.drawRect(272, 130, width, 7);
-            g.drawRect(272,137,width,7);
-            g.fillRect(20, 20, (int) (width * Scale), 7);
-            g.fillRect(272, 130, (int) (width * Scale2), 7);
-            g.fillRect(272,137,(int) (width * scale3), 7);
-            repaint();
-            repaint();
+            g.drawRect(272,137,width,5);
+            if (HP <= maxHP / 4) {
+                g.setColor(Color.RED);
+            } else if (HP <= maxHP / 2) {
+                g.setColor(Color.YELLOW);
+            } else {
+                g.setColor(Color.GREEN);
+            }
+            g.fillRect(21, 21, (int) (width * Scale)-1, 6);
+            if (HP2 <= maxHP2 / 4) {
+                g.setColor(Color.RED);
+            } else if (HP2 <= maxHP2 / 2) {
+                g.setColor(Color.YELLOW);
+            } else {
+                g.setColor(Color.GREEN);
+            }
+            g.fillRect(273, 131, (int) (width * Scale2)-1, 6);
+            g.setColor(Color.BLUE);
+            g.fillRect(273,138,(int) (width * scale3)-1, 4);
             repaint();
             g.drawImage(image, 300, 20, this);
             g.drawImage(image2, 50, 130, this);
