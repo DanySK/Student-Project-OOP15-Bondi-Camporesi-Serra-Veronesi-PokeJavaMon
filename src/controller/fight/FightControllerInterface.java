@@ -52,6 +52,7 @@ public interface FightControllerInterface {
      * @param nextEnemyPokemon the next enemy's {@link Pokemon} if it changes, null 
      * otherwise 
      * @param optionalMessage an optional message, null if there is no message to show
+     * @param moveToLearn the {@link Move} ally {@link Pokemon} can learn
      */
     void resolveAttack(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
                 Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,

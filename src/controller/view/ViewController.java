@@ -94,6 +94,13 @@ public class ViewController implements ViewControllerInterface {
     }
     
     @Override
+    public void initName() {
+        if (this.name != null) {
+            Controller.getController().getPlayer().setName(this.name);
+        }
+    }
+    
+    @Override
     public void fightScreen() {
         Controller.getController().updateStatus(State.FIGHTING);
         FightScreen fs = new FightScreen();

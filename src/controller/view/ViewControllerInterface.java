@@ -67,6 +67,11 @@ public interface ViewControllerInterface {
      * @param name the selected name
      */
     void setName(String name);
+    
+    /**
+     * Initializes player's name
+     */
+    void initName();
 
     /**
      * Shows the fight menu
