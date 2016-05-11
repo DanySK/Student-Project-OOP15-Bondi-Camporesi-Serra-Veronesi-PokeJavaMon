@@ -2,6 +2,8 @@ package model.trainer;
 
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
+import model.pokemon.Pokemon;
+import model.pokemon.Stat;
 import model.squad.Squad;
 
 public class Trainer extends AbstractCharacter {
@@ -65,6 +67,12 @@ public class Trainer extends AbstractCharacter {
     
     public String toString() {
         return "Name= " + this.name + " Defeated= " + this.isDefeated + ", Squad: " + this.squad + ", D: " + this.direction.name();
+    }
+    
+    public void healAllPokemons() {
+    	for (final Pokemon p : this.squad.getPokemonList()) {
+    		p.heal(p.getStat(Stat.HP));
+    	}
     }
 
 	@Override
