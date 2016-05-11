@@ -35,9 +35,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class FightScreen extends JWindow implements MyFrame {
+/**
+	 * 
+	 */
 //TODO: campi in minuscolo con camelCase, Quando usi i campi nella classe devono essere preceduti da this. Ripetizione di codice da eliminare, final ai campi/var che non vengono più inizializzate
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3997502312610503237L;	
     private JTextArea dialog;
     private JPanel decisionsPanel;
     private JPanel dialogPanel;
@@ -56,7 +59,7 @@ public class FightScreen extends JWindow implements MyFrame {
         	mainPanel.repaint();
             movesPanel = new JPanel();
             movesPanel.setVisible(false);
-    		movesPanel.setBounds(0, 213, 226, 60);
+    		movesPanel.setBounds(0, 225, 225, 75);
     		this.add(movesPanel);
     		movesPanel.setLayout(new GridLayout(0, 2, 0, 0));
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
@@ -135,9 +138,9 @@ public class FightScreen extends JWindow implements MyFrame {
         public void showMessage(String... message) {
             dialogPanel = new JPanel();
             dialogPanel.setVisible(false);
-            dialogPanel.setBounds(0, 213, 450, 60);
+            dialogPanel.setBounds(0, 225, 450, 75);
             this.getContentPane().add(dialogPanel);
-            dialogPanel.setLayout(null);
+            dialogPanel.setLayout(new GridLayout(0, 1, 0, 0));
             List<String> msgs = Arrays.asList(message);
             Iterator<String> it = msgs.iterator();
             dialog = new JTextArea(it.next());
@@ -161,43 +164,40 @@ public class FightScreen extends JWindow implements MyFrame {
                                     }
                                 }
                     });
-            dialog.setWrapStyleWord(true);
-            dialog.setLineWrap(true);
+//            dialog.setWrapStyleWord(true);
+//            dialog.setLineWrap(true);
             dialog.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-            dialog.setBounds(0, 0, 444, 60);
             dialogPanel.add(dialog);
             decisionsPanel.setVisible(false);
             dialogPanel.requestFocus();
             dialogPanel.setVisible(true);
-            movesPanel.setVisible(false);
+            movesPanel.setVisible(false);   
         }
 
         @Override
         public void showFrame() {
         	
-    		this.setBounds(0, 0, 450, 300);
-    		this.getContentPane().setLayout(null);
             decisionsPanel = new JPanel();
             dialogPanel = new JPanel();
             movesPanel = new JPanel();
             this.setAlwaysOnTop(true);
             this.setFocusable(true);
             this.setAlwaysOnTop(true);
-            this.setBounds(100, 100, 450, 275);
+            this.setBounds(0, 0, 450, 300);
             this.getContentPane().setLayout(null);
             mainPanel = new MyPanel();
-            mainPanel.setBounds(0, 0, 450, 212);
+            mainPanel.setBounds(0, 0, 450, 225);
             this.getContentPane().add(mainPanel);
             mainPanel.setLayout(null);
-            decisionsPanel.setBounds(224, 213, 226, 60);
+            decisionsPanel.setBounds(225, 225, 225, 75);
     		this.add(decisionsPanel);
     		decisionsPanel.setLayout(new GridLayout(0, 2, 0, 0));
             dialogPanel.setVisible(false);
-            dialogPanel.setBounds(0, 213, 450, 60);
+            dialogPanel.setBounds(0, 225, 450, 75);
             this.getContentPane().add(dialogPanel);
-            dialogPanel.setLayout(null);           
+            dialogPanel.setLayout(new GridLayout(0, 1, 0, 0));           
             movesPanel.setVisible(false);
-    		movesPanel.setBounds(0, 213, 226, 60);
+    		movesPanel.setBounds(0, 225, 225, 75);
     		this.add(movesPanel);
     		movesPanel.setLayout(new GridLayout(0, 2, 0, 0));
     		fight = new JButton("Fight");
@@ -318,8 +318,7 @@ public class FightScreen extends JWindow implements MyFrame {
                     }
             });
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
-            movesPanel.add(move4);
-            
+            movesPanel.add(move4);  
             this.setVisible(true);
         }
 
