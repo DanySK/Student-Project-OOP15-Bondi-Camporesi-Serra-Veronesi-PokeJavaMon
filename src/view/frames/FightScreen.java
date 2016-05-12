@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import exceptions.CannotEscapeFromTrainerException;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
@@ -67,7 +67,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-                                Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+                                MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
                                 new MessageFrame(null, "MOVE NOT FOUND");
                             }
@@ -84,7 +84,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
@@ -102,7 +102,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
@@ -120,7 +120,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
@@ -235,7 +235,7 @@ public class FightScreen extends JWindow implements MyFrame {
             run.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                             try {
-                    Controller.getController().getFightController().run();
+                    MainController.getController().getFightController().run();
                 } catch (CannotEscapeFromTrainerException e1) {
                     View.getView().hideCurrent();
                     View.getView().addNew(new MessageFrame(null, "CANNOT ESCAPE FROM TRAINER"));
@@ -253,7 +253,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-                                Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+                                MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
                                 new MessageFrame(null, "MOVE NOT FOUND");
                             }
@@ -270,7 +270,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
@@ -288,7 +288,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
@@ -306,7 +306,7 @@ public class FightScreen extends JWindow implements MyFrame {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-                            Controller.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
@@ -343,10 +343,10 @@ class MyPanel extends JPanel {
     public void paint(Graphics g) {
         super.paintComponent(g);
         try {
-            image = ImageIO.read(new File(Controller.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getAbsolutePath()));
+            image = ImageIO.read(new File(MainController.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getAbsolutePath()));
         } catch (Exception e) {
             try {
-                image = ImageIO.read(new File(Controller.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getResourcePath()));
+                image = ImageIO.read(new File(MainController.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getResourcePath()));
             } catch (IOException e1) {
                 System.out.println("CANNOT LOAD FRONTSPRITEFOLDER SPRITE");
             }
@@ -362,14 +362,14 @@ class MyPanel extends JPanel {
         }
         if (image != null) {
             int width = 150;
-            double maxHP2 = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.HP); /*get maxHealth*/
-            double HP2 = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentHP(); /*get currentHealth*/
+            double maxHP2 = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.HP); /*get maxHealth*/
+            double HP2 = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentHP(); /*get currentHealth*/
             double Scale2 = HP2 / maxHP2;
-            double currentExp = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP);
-            double maxExp = Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP) + Controller.getController().getPlayer().getSquad().getPokemonList().get(0).getNecessaryExp();
+            double currentExp = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP);
+            double maxExp = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP) + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getNecessaryExp();
             double scale3 = currentExp / maxExp;
-            double maxHP = Controller.getController().getEnemyPokemonInFight().getStat(Stat.HP); /*get maxHealth*/
-            double HP = Controller.getController().getEnemyPokemonInFight().getCurrentHP(); /*get currentHealth*/
+            double maxHP = MainController.getController().getEnemyPokemonInFight().getStat(Stat.HP); /*get maxHealth*/
+            double HP = MainController.getController().getEnemyPokemonInFight().getCurrentHP(); /*get currentHealth*/
             double Scale = HP / maxHP;
             g.drawRect(20, 20, width, 7);
             g.drawRect(272, 130, width, 7);

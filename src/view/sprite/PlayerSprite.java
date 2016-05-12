@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.Img;
 import model.map.Drawable.Direction;
 import model.utilities.Pair;
@@ -43,9 +43,9 @@ public class PlayerSprite extends Sprite {
     
     public void update(SpriteBatch spriteBatch) {
         if (pos == 0) {
-            Controller.getController().getStatusController().updateSpeed();
+            MainController.getController().getStatusController().updateSpeed();
             if (velocity.x == 0 && velocity.y == 0) {
-                setOrientation(Controller.getController().getStatusController().getDirection());
+                setOrientation(MainController.getController().getStatusController().getDirection());
             } else {
                 move();
             }
@@ -55,7 +55,7 @@ public class PlayerSprite extends Sprite {
         updatePosition();
         super.draw(spriteBatch); 
         if (update) {
-            Controller.getController().getStatusController().updateMusic();
+            MainController.getController().getStatusController().updateMusic();
             update = false;
         }
     }
@@ -140,8 +140,8 @@ public class PlayerSprite extends Sprite {
         pos ++;
         if (pos == 8) {
             pos = 0;
-            Controller.getController().getStatusController().checkEncounter();
-            Controller.getController().getStatusController().updateMusic();
+            MainController.getController().getStatusController().checkEncounter();
+            MainController.getController().getStatusController().updateMusic();
         }
     }
     

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import controller.Controller;
+import controller.MainController;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
@@ -80,7 +80,7 @@ public abstract class AbstractFight implements Fight {
         if (!applyRun()) {
             enemyTurn();
         }
-        Controller.getController().getFightController().resolveRun(runValue, enemyMove, isAllyExhausted);
+        MainController.getController().getFightController().resolveRun(runValue, enemyMove, isAllyExhausted);
     }
 
     @Override
@@ -107,7 +107,7 @@ public abstract class AbstractFight implements Fight {
         reset();
         applyChange(pkm);
         enemyTurn();
-        Controller.getController().getFightController().resolvePokemon(allyPkm, enemyMove, isAllyExhausted);
+        MainController.getController().getFightController().resolvePokemon(allyPkm, enemyMove, isAllyExhausted);
     }
 
     @Override
@@ -116,15 +116,15 @@ public abstract class AbstractFight implements Fight {
         player.getInventory().consumeItem(itemToUse);
         if (applyItem(itemToUse, pkm)) { 
             if (itemToUse.getType() == ItemType.POKEBALL) {
-                Controller.getController().getFightController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
+                MainController.getController().getFightController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
                 return;
             } else {
                 enemyTurn();
-                Controller.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+                MainController.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
             }
         } else {
             enemyTurn();
-            Controller.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+            MainController.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
         }
     }
 

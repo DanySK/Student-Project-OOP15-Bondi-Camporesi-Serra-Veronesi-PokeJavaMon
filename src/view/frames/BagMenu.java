@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.State;
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.PokemonIsExhaustedException;
@@ -40,11 +40,11 @@ public class BagMenu extends JWindow implements MyFrame {
 
     public void useItem(Pokemon p) {
         if (itemToUse != null) {
-            if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
+            if (MainController.getController().getStatusController().getState() == State.FIGHTING) {
                 try {
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();
-                    Controller.getController().getFightController().useItem(itemToUse, p);
+                    MainController.getController().getFightController().useItem(itemToUse, p);
                     if (!View.getView().isEmpty()) {
                         View.getView().resumeCurrent();
                     }
@@ -153,11 +153,11 @@ public class BagMenu extends JWindow implements MyFrame {
                         View.getView().showCurrent();
                     } else {
                         selectItem(i);
-                        if (Controller.getController().getStatusController().getState() == State.FIGHTING) {
+                        if (MainController.getController().getStatusController().getState() == State.FIGHTING) {
                             if (i.getType() == ItemType.POKEBALL) {
-                                useItem(Controller.getController().getEnemyPokemonInFight());
+                                useItem(MainController.getController().getEnemyPokemonInFight());
                             } else if (i.getType() == ItemType.BOOST) {
-                                useItem(Controller.getController().getPlayer().getSquad().getPokemonList().get(0));
+                                useItem(MainController.getController().getPlayer().getSquad().getPokemonList().get(0));
                             } else {
                                 selectItem(i);
                                 TeamMenu sq = new TeamMenu(true, true);
@@ -172,7 +172,7 @@ public class BagMenu extends JWindow implements MyFrame {
                     }
                 }
             });
-            if (itm.getType() != ItemType.POTION && Controller.getController().getStatusController().getState() != State.FIGHTING) {
+            if (itm.getType() != ItemType.POTION && MainController.getController().getStatusController().getState() != State.FIGHTING) {
             	use.setEnabled(false);
             }
             panel.add(use);

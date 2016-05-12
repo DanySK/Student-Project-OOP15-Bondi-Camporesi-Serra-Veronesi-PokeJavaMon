@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
@@ -38,7 +38,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         
         public LearnMoveFrame(final Move mv) {
             this.newMove = mv;
-            this.pk = Controller.getController().getPlayer().getSquad().getPokemonList().get(0);
+            this.pk = MainController.getController().getPlayer().getSquad().getPokemonList().get(0);
         }
         @Override
         public void showFrame() {

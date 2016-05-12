@@ -7,7 +7,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.FrontSpriteImage;
 import exceptions.SquadFullException;
@@ -81,8 +81,8 @@ public class SecondMenu {
 	    	    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }
-	    	    Controller.getController().getViewController().setName(nickname.getText());
-	            Controller.getController().getViewController().map(true);
+	    	    MainController.getController().getViewController().setName(nickname.getText());
+	            MainController.getController().getViewController().map(true);
 	            f.dispose();
 	    	}
 	    }
@@ -98,8 +98,8 @@ public class SecondMenu {
 		    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }
-	    	    Controller.getController().getViewController().setName(nickname.getText());
-	            Controller.getController().getViewController().map(true);
+	    	    MainController.getController().getViewController().setName(nickname.getText());
+	            MainController.getController().getViewController().map(true);
 	            f.dispose();
 	    	}
 	    }
@@ -115,8 +115,8 @@ public class SecondMenu {
 		    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }
-	    	    Controller.getController().getViewController().setName(nickname.getText());
-	            Controller.getController().getViewController().map(true);
+	    	    MainController.getController().getViewController().setName(nickname.getText());
+	            MainController.getController().getViewController().map(true);
 	            f.dispose();
 	    	}
 	    }

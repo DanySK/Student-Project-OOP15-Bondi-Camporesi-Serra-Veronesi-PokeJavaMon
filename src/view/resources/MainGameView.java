@@ -16,7 +16,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.Maps;
 import controller.parameters.State;
@@ -60,13 +60,13 @@ public class MainGameView implements Screen {
 	
     public void show() {	
         try {
-            Controller.getController().initializeModel(new TmxMapLoader().load(Maps.MAP.getAbsolutePath()));
+            MainController.getController().initializeModel(new TmxMapLoader().load(Maps.MAP.getAbsolutePath()));
         } catch (Exception e) {
-            Controller.getController().initializeModel(new TmxMapLoader().load(Controller.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
+            MainController.getController().initializeModel(new TmxMapLoader().load(MainController.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
-        Controller.getController().getViewController().initName();
-	Controller.getController().initializeMusicController();
-        Controller.getController().updateStatus(State.WALKING);
+        MainController.getController().getViewController().initName();
+	MainController.getController().initializeMusicController();
+        MainController.getController().updateStatus(State.WALKING);
 	// Init the Inventory
 	if (newGame) {
 	    Map<String, Integer> potionList = new HashMap<>();
@@ -81,10 +81,10 @@ public class MainGameView implements Screen {
 	        ballList.put(PokeballType.Greatball.name(), 0);
 	        ballList.put(PokeballType.Ultraball.name(), 100);
 	        ballList.put(PokeballType.Pokeball.name(), 10);     
-	        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+	        MainController.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
 	}
 	// End Init
-        renderer = new OrthogonalTiledMapRenderer(Controller.getController().getMap());                    
+        renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap());                    
 	sr = new ShapeRenderer();
 	sr.setColor(Color.CYAN);
 	Gdx.gl.glLineWidth(3);
@@ -105,9 +105,9 @@ public class MainGameView implements Screen {
 	        System.out.println("Initial Position not found");
 	    } 
 	} else {
-	    if (Controller.getController().saveExists()) {
-		Controller.getController().load();
-	        pls.setBounds(Controller.getController().getPlayer().getTileX()*16, (299 - Controller.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
+	    if (MainController.getController().saveExists()) {
+		MainController.getController().load();
+	        pls.setBounds(MainController.getController().getPlayer().getTileX()*16, (299 - MainController.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 		pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		if (PlayerImpl.START_X < 0) {
@@ -135,13 +135,13 @@ public class MainGameView implements Screen {
     }
 	
     public void dispose() {        
-	Controller.getController().getMap().dispose();
+	MainController.getController().getMap().dispose();
 	renderer.dispose();
 	sr.dispose();
     }
 	
     public static void updateKeyListener() {
-        Gdx.input.setInputProcessor(Controller.getController().getStatusController().getCurrentController());
+        Gdx.input.setInputProcessor(MainController.getController().getStatusController().getCurrentController());
     }
 	
     public static Sprite getSprite() {

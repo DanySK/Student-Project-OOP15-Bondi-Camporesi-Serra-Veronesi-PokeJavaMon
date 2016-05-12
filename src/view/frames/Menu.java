@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.State;
 import model.player.PlayerImpl;
 import view.View;
@@ -38,13 +38,13 @@ public class Menu extends JWindow implements MyFrame {
         this.setContentPane(panel);     
         panel.setBorder(new LineBorder(Color.GRAY, 4));
         panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
-        name = new JLabel("Name: " + Controller.getController().getPlayer().getName());
+        name = new JLabel("Name: " + MainController.getController().getPlayer().getName());
         name.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(name);
-        money = new JLabel("Money: " + Controller.getController().getPlayer().getMoney());
+        money = new JLabel("Money: " + MainController.getController().getPlayer().getMoney());
         money.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(money);
-        badges = new JLabel("Badges: " + Controller.getController().getPlayer().getLastBadge());
+        badges = new JLabel("Badges: " + MainController.getController().getPlayer().getLastBadge());
         badges.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(badges);
         this.add(Box.createVerticalGlue());
@@ -97,11 +97,11 @@ public class Menu extends JWindow implements MyFrame {
         this.getContentPane().add(music);    
         music.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                if (Controller.getController().isPaused()) {
-                    Controller.getController().resume();
-                    Controller.getController().getStatusController().updateMusic();
+                if (MainController.getController().isPaused()) {
+                    MainController.getController().resume();
+                    MainController.getController().getStatusController().updateMusic();
                 } else {
-                    Controller.getController().pause();
+                    MainController.getController().pause();
                 }
             }
         });         
@@ -113,7 +113,7 @@ public class Menu extends JWindow implements MyFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 disposeFrame();
-                Controller.getController().getViewController().save();
+                MainController.getController().getViewController().save();
                 View.getView().addNew(new MessageFrame(State.WALKING, "Salvataggio riuscito!"));
                 View.getView().showCurrent();
             }
@@ -126,7 +126,7 @@ public class Menu extends JWindow implements MyFrame {
             public void actionPerformed(ActionEvent ae) {
                 View.getView().disposeCurrent();
                 View.getView().removeCurrent();
-                Controller.getController().updateStatus(State.WALKING);
+                MainController.getController().updateStatus(State.WALKING);
             }
         });     
         this.add(Box.createVerticalGlue());

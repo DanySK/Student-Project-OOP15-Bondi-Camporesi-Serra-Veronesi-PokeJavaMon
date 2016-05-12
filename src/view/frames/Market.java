@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.State;
 import exceptions.NotEnoughMoneyException;
 import model.items.Item;
@@ -43,7 +43,7 @@ public class Market extends JWindow implements MyFrame {
         Prz.add("PRICE");
         Qnt.add("QUANTITY");
         it.add(null); 
-        for (Item i : Controller.getController().getPokeMap().getPokeMarket().getAvailableItems()) {         
+        for (Item i : MainController.getController().getPokeMap().getPokeMarket().getAvailableItems()) {         
             Name1.add(i.getType().name()); 
             Name2.add(i.toString()); 
             Prz.add("" + i.getPrice());
@@ -68,7 +68,7 @@ public class Market extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
-                        Controller.getController().updateStatus(State.WALKING);
+                        MainController.getController().updateStatus(State.WALKING);
                     }
                 });
                 panel.add(exit);

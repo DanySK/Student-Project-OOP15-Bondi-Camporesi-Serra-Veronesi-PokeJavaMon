@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.State;
 
@@ -43,19 +43,19 @@ public class FirstMenu {
         nuova.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                Controller.getController().updateStatus(State.SECOND_MENU);
-                Controller.getController().getViewController().secondMenu();
+                MainController.getController().updateStatus(State.SECOND_MENU);
+                MainController.getController().getViewController().secondMenu();
             }
         });
         pane.add(nuova);
         JButton continua = new JButton("CONTINUA");
         continua.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Controller.getController().getViewController().map(false);
+                MainController.getController().getViewController().map(false);
                 frame.dispose();
             }
         });
-        if (!Controller.getController().saveExists()) {
+        if (!MainController.getController().saveExists()) {
             continua.setEnabled(false);
         }
         pane.add(continua);

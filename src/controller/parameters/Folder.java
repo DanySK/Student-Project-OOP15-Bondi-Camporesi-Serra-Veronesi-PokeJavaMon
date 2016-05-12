@@ -6,7 +6,6 @@ import java.io.File;
  * This enum contains the paths to project's installation folders
  */
 public enum Folder {
-
     MAINFOLDER (Constants.NONE, System.getProperty("user.home") + File.separator + ".pokejava"),
     SAVEFOLDER (Constants.NONE, MAINFOLDER.getAbsolutePath() + File.separator + "save"),
     MAPSFOLDER (Constants.NONE, MAINFOLDER.getAbsolutePath() + File.separator + Constants.MAPS),

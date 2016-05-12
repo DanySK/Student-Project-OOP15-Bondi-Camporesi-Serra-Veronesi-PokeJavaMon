@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.State;
 import view.View;
 
@@ -47,7 +47,7 @@ public class MessageFrame extends JWindow implements MyFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (st != null) {
-                    Controller.getController().updateStatus(st);
+                    MainController.getController().updateStatus(st);
                     disposeFrame();
                 } else {
                     View.getView().disposeCurrent();

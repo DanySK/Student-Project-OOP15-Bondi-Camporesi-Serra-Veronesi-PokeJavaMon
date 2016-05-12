@@ -6,7 +6,6 @@ import java.io.File;
  * This enum contains the paths to the resources of the project in Maps folder
  */
 public enum Maps {
-
     MAP ("/maps/map.tmx", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.MAPS + File.separator + "map.tmx"),
     TILESET ("/maps/tileset5.png", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.MAPS + File.separator + "tileset5.png"),
     PSD ("/maps/tileset5.psd", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.MAPS + File.separator + "tileset5.psd");

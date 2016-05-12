@@ -6,7 +6,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import controller.Controller;
+import controller.MainController;
 import controller.parameters.State;
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
@@ -102,7 +102,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                 private final int ID = index;
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (Controller.getController().getStatusController().getState() == State.MENU) {
+                    if (MainController.getController().getStatusController().getState() == State.MENU) {
                         if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
                             PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
                             View.getView().disposeCurrent();
@@ -120,7 +120,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                             try {
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                Controller.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                MainController.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 MyFrame fr = View.getView().getCurrent();
                                 ((FightScreen) fr).repaintFrame();
                                 View.getView().resumeCurrent();
@@ -143,7 +143,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                             try {
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                Controller.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                MainController.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
                                 View.getView().resumeCurrent();
                             } catch (PokemonIsExhaustedException e1) {
                                 View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
@@ -182,7 +182,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                     }
                 }
             });
-            if (Controller.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
+            if (MainController.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
             	deposit.setEnabled(false);
             }
             panel.add(deposit);
@@ -194,7 +194,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                     View.getView().removeCurrent();
                     MyFrame fr = View.getView().getCurrent();
                     ((BagMenu) fr).useItem(p);
-                    if (Controller.getController().getStatusController().getState() == State.MENU) {
+                    if (MainController.getController().getStatusController().getState() == State.MENU) {
                         View.getView().removeCurrent();
                         BagMenu z = new BagMenu();
                         View.getView().addNew(z);

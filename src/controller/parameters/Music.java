@@ -5,8 +5,7 @@ import java.io.File;
 /**
  * This enum contains all the songs
  */
-public enum Music {
-    
+public enum Music {   
     SONG ("NONE", Folder.MAINFOLDER.getAbsolutePath() + File.separator + "music" + File.separator),
     HOME("/music/home.mp3", "/home.mp3"), 
     OPENING("/music/opening.mp3", "/opening.mp3"),

@@ -3,9 +3,9 @@ package controller;
 import java.util.Optional;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
+
 import controller.fight.FightController;
 import controller.load.LoadController;
-import controller.music.MainMusicController;
 import controller.music.MusicController;
 import controller.parameters.Music;
 import controller.parameters.State;
@@ -19,166 +19,130 @@ import model.player.Player;
 import model.pokemon.Pokemon;
 
 /**
- * This is the main controller of the game. It contains all the other controllers.
- * It implements the singleton programmation pattern
+ * This interface explains all the methods that can be called on {@link MainController}
  */
-public final class Controller implements ControllerInterface {
+public interface Controller {
 
-    private FightController fightController;
-    private LoadController loadController;
-    private MusicController musicController;
-    private SaveController saveController;
-    private StatusController statusController;
-    private ViewController viewController;
-    private TiledMap map;
-    private Model model;
-    private static ControllerInterface singleton;
+    /**
+     * @return the current {@link Fight}
+     */
+    Fight getFight();
+
+    /**
+     * @return the current enemy {@link Pokemon} in fight
+     */
+    Pokemon getEnemyPokemonInFight();
+
+    /**
+     * Loads the game
+     */
+    void load();
+
+    /**
+     * @return true if a save file exists, false otherwise
+     */
+    boolean saveExists();
     
     /**
-     * Private constructor, used by the method getController
+     * Initializes the {@link MusicController}
      */
-    private Controller() {
-        this.fightController = new FightController();
-        this.loadController = new LoadController();
-        this.musicController = new MainMusicController();
-        this.saveController = new SaveController();
-        this.statusController = new StatusController();
-        this.viewController = new ViewController();
-    }
+    void initializeMusicController();
+
+    /**
+     * Plays the selected {@link Music}
+     * @param m the selected {@link Music}
+     */
+    void playMusic(Music m);
+
+    /**
+     * Stops playing {@link Music}
+     */
+    void stopMusic();
     
     /**
-     * @return the current {@link Controller} ora a new {@link Controller} if this is the first time this method is invoked
+     * Pauses the current music
      */
-    public static ControllerInterface getController() {
-        if (singleton == null) {
-            synchronized (Controller.class) {
-                if (singleton == null) {
-                    singleton = new Controller();
-                }
-            }
-        }
-        return singleton;
-    }
+    void pause();
     
-    @Override
-    public Fight getFight() {
-        return this.fightController.getFight();
-    }
-    
-    @Override
-    public Pokemon getEnemyPokemonInFight() {
-        return this.fightController.getEnemyPokemon();
-    }
-    
-    @Override
-    public void load() {
-        this.loadController.load();
-    }
-    
-    @Override
-    public boolean saveExists() {
-        return this.loadController.saveExists();
-    }
-    
-    @Override
-    public void initializeMusicController() {
-        this.musicController.initializeMusicController();
-    }
-    
-    @Override
-    public void playMusic(final Music m) {
-        this.musicController.playMusic(m);
-    }
-    
-    @Override
-    public void stopMusic() {
-        this.musicController.stopMusic();
-    }
-    
-    @Override
-    public void pause() {
-        this.musicController.pause();
-    }
+    /**
+     * Resumes the current music
+     */
+    void resume();
 
-    @Override
-    public void resume() {
-        this.musicController.resume();
-    }
-
-    @Override
-    public boolean isPaused() {
-        return this.musicController.isPaused();
-    }
+    /**
+     * @return the {@link Music} playing
+     */
+    Optional<Music> playing();
     
-    @Override
-    public Optional<Music> playing() {
-        return this.musicController.playing();
-    }
+    /**
+     * @return true if music is paused, false otherwise
+     */
+    boolean isPaused();
+
+    /**
+     * Saves the game
+     */
+    void save();
+
+    /**
+     * Updates the game {@link State}
+     * @param s the new {@link State}
+     */
+    void updateStatus(State s);
+
+    /**
+     * @return the {@link FightController}
+     */
+    FightController getFightController();
+
+    /**
+     * @return the {@link LoadController}
+     */
+    LoadController getLoadController();
+
+    /**
+     * @return the {@link MusicController}
+     */
+    MusicController getMusicController();
+
+    /**
+     * @return the {@link SaveController}
+     */
+    SaveController getSaveController();
+
+    /**
+     * @return the {@link StatusController}
+     */
+    StatusController getStatusController();
+
+    /**
+     * @return the {@link ViewController}
+     */
+    ViewController getViewController();
     
-    @Override
-    public void save() {
-        this.saveController.setSave(this.model.getModelSnapshot());
-        this.saveController.save();
-    }
+    /**
+     * @return the {@link TiledMap} used in the game
+     */
+    TiledMap getMap();
     
-    @Override
-    public void updateStatus(final State s) {
-        this.statusController.updateStatus(s);
-    }
-
-    @Override
-    public FightController getFightController() {
-        return this.fightController;
-    }
-
-    @Override
-    public LoadController getLoadController() {
-        return this.loadController;
-    }
-
-    @Override
-    public MusicController getMusicController() {
-        return this.musicController;
-    }
-
-    @Override
-    public SaveController getSaveController() {
-        return this.saveController;
-    }
-
-    @Override
-    public StatusController getStatusController() {
-        return this.statusController;
-    }
-
-    @Override
-    public ViewController getViewController() {
-        return this.viewController;
-    }
-
-    @Override
-    public TiledMap getMap() {
-        return this.map;
-    }
-
-    @Override
-    public PokeMap getPokeMap() {
-        return this.model.getMap();
-    }
-
-    @Override
-    public Player getPlayer() {
-        return this.model.getPlayer();
-    }
+    /**
+     * @return the current {@link PokeMap} 
+     */
+    PokeMap getPokeMap();
     
-    @Override
-    public Model getModel() {
-        return this.model;
-    }
+    /**
+     * @return the current {@link Player}
+     */
+    Player getPlayer();
     
-    @Override
-    public void initializeModel(final TiledMap map) {
-        this.map = map;
-        this.model = new Model(map);
-    }
+    /**
+     * @return the current {@link Model}
+     */
+    Model getModel();
+
+    /**
+     * Initializes the {@link Model}
+     * @param map the current {@link TiledMap}
+     */
+    void initializeModel(TiledMap map);
 }

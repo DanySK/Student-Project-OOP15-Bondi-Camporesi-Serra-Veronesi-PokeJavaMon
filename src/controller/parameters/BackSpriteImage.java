@@ -158,7 +158,6 @@ public enum BackSpriteImage {
     DRAGONITE("/sprites/back/B149.png",System.getProperty(Constants.HOME) + File.separator + Constants.MAINFOLDER + File.separator + Constants.SPRITES + File.separator + Constants.BACK + File.separator + "B149.png"),
     MEWTWO("/sprites/back/B150.png",System.getProperty(Constants.HOME) + File.separator + Constants.MAINFOLDER + File.separator + Constants.SPRITES + File.separator + Constants.BACK + File.separator + "B150.png"),
     MEW("/sprites/back/B151.png",System.getProperty(Constants.HOME) + File.separator + Constants.MAINFOLDER + File.separator + Constants.SPRITES + File.separator + Constants.BACK + File.separator + "B151.png"),
-
     RAYQUAZA("/sprites/back/B384.png", System.getProperty(Constants.HOME) + File.separator + Constants.MAINFOLDER + File.separator + Constants.SPRITES + File.separator + Constants.BACK + File.separator + "B384.png");
     
     private String resourcePath;

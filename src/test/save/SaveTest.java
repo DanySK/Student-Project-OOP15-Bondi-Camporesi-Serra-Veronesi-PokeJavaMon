@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import controller.Controller;
+import controller.MainController;
 import exceptions.SquadFullException;
 import model.items.Potion;
 import model.box.BoxImpl;
@@ -33,11 +33,11 @@ public class SaveTest {
         boosts.put(Stat.ATK.name()+"X", 20);
         Map<String, Integer> balls = new HashMap<String, Integer>();
         balls.put(Pokeball.PokeballType.Ultraball.name(), 35);
-        Controller.getController().getModel().getPlayer().getInventory().initializeInventory(potions, boosts, balls);
+        MainController.getController().getModel().getPlayer().getInventory().initializeInventory(potions, boosts, balls);
         List<Pokemon> box = new ArrayList<Pokemon>();
         box.add(StaticPokemonFactory.createPokemon(Pokedex.CHARIZARD, 30));
         box.add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 30));
         BoxImpl.getBox().setPokemons(box);
-        Controller.getController().save();
+        MainController.getController().save();
     }
 }

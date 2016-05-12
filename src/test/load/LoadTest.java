@@ -1,12 +1,12 @@
 package test.load;
 
-import controller.Controller;
+import controller.MainController;
 import model.player.PlayerImpl;
 
 public class LoadTest {
 
     public static void main(String[] args) {
-        Controller.getController().load();
+        MainController.getController().load();
         System.out.println("LOADED SUCCESSFULLY");
         System.out.println(Integer.toString(PlayerImpl.getPlayer().getMoney()));
         System.out.println(Float.toString(PlayerImpl.getPlayer().getTileX()));
