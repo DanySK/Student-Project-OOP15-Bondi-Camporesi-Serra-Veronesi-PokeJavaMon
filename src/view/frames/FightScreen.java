@@ -15,9 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.LineBorder;
@@ -29,8 +26,6 @@ import model.pokemon.Move;
 import model.pokemon.Stat;
 import view.View;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
