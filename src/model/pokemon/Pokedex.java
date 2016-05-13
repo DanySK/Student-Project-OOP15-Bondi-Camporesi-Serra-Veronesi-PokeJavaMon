@@ -143,13 +143,13 @@ public enum Pokedex {
     DODUO("Doduo",           PokemonType.NORMAL, PokemonType.FLYING,  35,  85,  45,   75,  PokemonRarity.COMMON,     31, "DODRIO",     new HashMap<>(), FrontSpriteImage.DODUO, BackSpriteImage.DODUO),
     DODRIO("Dodrio",         PokemonType.NORMAL, PokemonType.FLYING,  50, 110,  70,  100,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.DODRIO, BackSpriteImage.DODRIO),
     
-    SEEL("Seel",             PokemonType.WATER,  PokemonType.ICE,     65,  45,  55,   45,  PokemonRarity.COMMON,    34, "DEWGONG",     new HashMap<>(), FrontSpriteImage.SEEL, BackSpriteImage.SEEL),
+    SEEL("Seel",             PokemonType.WATER,  PokemonType.NONE,    65,  45,  55,   45,  PokemonRarity.COMMON,    34, "DEWGONG",     new HashMap<>(), FrontSpriteImage.SEEL, BackSpriteImage.SEEL),
     DEWGONG("Dewgong",       PokemonType.WATER,  PokemonType.ICE,     90,  70,  80,   70,  PokemonRarity.RARE,      -1, "",            new HashMap<>(), FrontSpriteImage.DEWGONG, BackSpriteImage.DEWGONG),
     
     GRIMER("Grimer",         PokemonType.POISON,   PokemonType.NONE,  80,  80,  50,   25,  PokemonRarity.COMMON,     29, "MUK",        new HashMap<>(), FrontSpriteImage.GRIMER, BackSpriteImage.GRIMER),
     MUK("Muk",               PokemonType.POISON,   PokemonType.NONE, 105, 105,  75,   50,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.MUK, BackSpriteImage.MUK),
 
-    SHELLDER("Shellder",     PokemonType.WATER,  PokemonType.ICE,     30,  65, 100,   70,  PokemonRarity.COMMON,    25, "CLOYSTER",    new HashMap<>(), FrontSpriteImage.SHELLDER, BackSpriteImage.SHELLDER),
+    SHELLDER("Shellder",     PokemonType.WATER,  PokemonType.NONE,     30,  65, 100,   70,  PokemonRarity.COMMON,    25, "CLOYSTER",    new HashMap<>(), FrontSpriteImage.SHELLDER, BackSpriteImage.SHELLDER),
     CLOYSTER("Cloyster",     PokemonType.WATER,  PokemonType.ICE,     50,  95, 180,   80,  PokemonRarity.RARE,      -1, "",            new HashMap<>(), FrontSpriteImage.CLOYSTER, BackSpriteImage.CLOYSTER),
 
     GASTLY("Gastly",         PokemonType.GHOST,  PokemonType.POISON,  30,  35,  30,   80,  PokemonRarity.COMMON,     25, "HAUNTER",    new HashMap<>(), FrontSpriteImage.GASTLY, BackSpriteImage.GASTLY),
