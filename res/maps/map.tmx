@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="270">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="282">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
   <tile id="0">
@@ -649,8 +649,8 @@
   </tile>
   <tile id="107">
    <properties>
-    <property name="tileType" value="TREE"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="108">
@@ -3633,10 +3633,8 @@
   </tile>
   <tile id="558">
    <properties>
-    <property name="X" value="0"/>
-    <property name="Y" value="0"/>
-    <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="559">
@@ -4154,12 +4152,12 @@
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="doorLayer">
@@ -4834,60 +4832,53 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="pokemonEncounterLayer" visible="0">
+ <objectgroup name="pokemonEncounterLayer">
   <object id="148" x="128" y="368" width="528" height="96">
    <properties>
-    <property name="avgLvl" value="14"/>
-    <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL SANDSHREW"/>
+    <property name="avgLvl" value="12"/>
+    <property name="pokemonList" value="PIKACHU EKANS MAGIKARP DODUO VOLTORB"/>
     <property name="zoneID" value="4"/>
-   </properties>
-  </object>
-  <object id="150" x="656" y="1328" width="848" height="752">
-   <properties>
-    <property name="avgLvl" value="3"/>
-    <property name="pokemonList" value="RATTATA PIDGEY SANDSHREW"/>
-    <property name="zoneID" value="2"/>
    </properties>
   </object>
   <object id="151" x="480" y="1760" width="128" height="112">
    <properties>
     <property name="avgLvl" value="2"/>
-    <property name="pokemonList" value="PIKACHU"/>
-    <property name="zoneID" value="1"/>
+    <property name="pokemonList" value="PIKACHU SPEAROW ODDISH"/>
+    <property name="zoneID" value="2"/>
    </properties>
   </object>
-  <object id="152" x="624" y="2400" width="272" height="256">
+  <object id="152" x="624" y="2512" width="272" height="144">
    <properties>
     <property name="avgLvl" value="2"/>
     <property name="pokemonList" value="PIDGEY RATTATA"/>
     <property name="zoneID" value="0"/>
    </properties>
   </object>
-  <object id="153" x="128" y="3968" width="432" height="752">
+  <object id="153" x="144" y="4448" width="416" height="272">
    <properties>
-    <property name="avgLvl" value="7"/>
-    <property name="pokemonList" value="ZUBAT "/>
-    <property name="zoneID" value="3"/>
+    <property name="avgLvl" value="6"/>
+    <property name="pokemonList" value="ZUBAT DIGLETT GEODUDE JIGGLYPUFF PARAS MACHOP ONIX"/>
+    <property name="zoneID" value="7"/>
    </properties>
   </object>
   <object id="154" x="1040" y="656" width="256" height="80">
    <properties>
     <property name="avgLvl" value="18"/>
-    <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL SANDSHREW"/>
+    <property name="pokemonList" value="RATICATE PIDGEOTTO SANDSHREW RHYHORN DROWZEE POLIWAG"/>
     <property name="zoneID" value="5"/>
    </properties>
   </object>
   <object id="155" x="2208" y="736" width="176" height="320">
    <properties>
     <property name="avgLvl" value="27"/>
-    <property name="pokemonList" value="RATICATE PIDGEOTTO TENTACOOL TENTACRUEL SANDSHREW SANDSLASH"/>
+    <property name="pokemonList" value="RATICATE  TENTACOOL SANDSLASH NIDORINO NIDORINA GLOOM VENONAT GRIMER KOFFING GOLDEEN"/>
     <property name="zoneID" value="6"/>
    </properties>
   </object>
   <object id="157" x="2480" y="96" width="768" height="384">
    <properties>
     <property name="avgLvl" value="26"/>
-    <property name="pokemonList" value="RATICATE PIDGEOTTO PIKACHU RAICHU TENTACOOL GOLBAT"/>
+    <property name="pokemonList" value="SHELLDER CLOYSTER SEEL DEWGONG HORSEA SEADRA SEAKING GOLDEEN"/>
     <property name="zoneID" value="7"/>
    </properties>
   </object>
@@ -4898,15 +4889,99 @@
     <property name="zoneID" value="9"/>
    </properties>
   </object>
-  <object id="160" x="704" y="3968" width="704" height="720">
+  <object id="160" x="704" y="3968" width="288" height="176">
    <properties>
     <property name="avgLvl" value="35"/>
-    <property name="pokemonList" value="GOLBAT"/>
+    <property name="pokemonList" value="GOLBAT GRAVELER DUGTRIO MAGNETON"/>
+    <property name="zoneID" value="8"/>
+   </properties>
+  </object>
+  <object id="270" x="624" y="2400" width="272" height="112">
+   <properties>
+    <property name="avgLvl" value="2"/>
+    <property name="pokemonList" value="CATERPIE WEEDLE PIDGEY"/>
+    <property name="zoneID" value="1"/>
+   </properties>
+  </object>
+  <object id="271" x="1216" y="1712" width="272" height="208">
+   <properties>
+    <property name="avgLvl" value="3"/>
+    <property name="pokemonList" value="NIDORANM NIDORANF PARAS"/>
+    <property name="zoneID" value="4"/>
+   </properties>
+  </object>
+  <object id="272" x="1232" y="1952" width="272" height="128">
+   <properties>
+    <property name="avgLvl" value="3"/>
+    <property name="pokemonList" value="FARFETCHD MEOWTH MANKEY"/>
+    <property name="zoneID" value="3"/>
+   </properties>
+  </object>
+  <object id="273" x="928" y="1552" width="560" height="160">
+   <properties>
+    <property name="avgLvl" value="4"/>
+    <property name="pokemonList" value="NIDORANM NIDORANF PARAS METAPOD"/>
+    <property name="zoneID" value="5"/>
+   </properties>
+  </object>
+  <object id="274" x="656" y="1328" width="368" height="224">
+   <properties>
+    <property name="avgLvl" value="4"/>
+    <property name="pokemonList" value="PSYDUCK VULPIX POLIWAG EKANS RATTATA SPEAROW KAKUNA"/>
+    <property name="zoneID" value="6"/>
+   </properties>
+  </object>
+  <object id="275" x="128" y="3968" width="256" height="160">
+   <properties>
+    <property name="avgLvl" value="7"/>
+    <property name="pokemonList" value="ZUBAT DIGLETT GEODUDE CLEFAIRY PARAS MACHOP ONIX"/>
+    <property name="zoneID" value="8"/>
+   </properties>
+  </object>
+  <object id="276" x="1472" y="31.0922" width="64" height="48">
+   <properties>
+    <property name="avgLvl" value="11"/>
+    <property name="pokemonList" value="BELLSPROUT GROWLITHE POLIWAG ABRA"/>
+    <property name="zoneID" value="5"/>
+   </properties>
+  </object>
+  <object id="277" x="1680" y="176" width="48" height="64">
+   <properties>
+    <property name="avgLvl" value="25"/>
+    <property name="pokemonList" value="EEVEE VAPOREON JOLTEON FLAREON"/>
+    <property name="zoneID" value="5"/>
+   </properties>
+  </object>
+  <object id="278" x="2000" y="2416" width="192" height="160">
+   <properties>
+    <property name="avgLvl" value="21"/>
+    <property name="pokemonList" value="GASTLY HAUNTER CUBONE"/>
+    <property name="zoneID" value="3"/>
+   </properties>
+  </object>
+  <object id="279" x="2416" y="2736" width="128" height="112">
+   <properties>
+    <property name="avgLvl" value="30"/>
+    <property name="pokemonList" value="KANGASKHAN PINSIR SCYTHER CHANSEY EXEGGUTOR LICKITUNG RHYHORN TANGELA MRMIME JYNX ELECTABUZZ MAGMAR TAUROS LAPRAS PORYGON KABUTO OMANYTE"/>
+    <property name="zoneID" value="3"/>
+   </properties>
+  </object>
+  <object id="280" x="1568" y="2976" width="48" height="48">
+   <properties>
+    <property name="avgLvl" value="5"/>
+    <property name="pokemonList" value="FARFETCHD MEW"/>
+    <property name="zoneID" value="3"/>
+   </properties>
+  </object>
+  <object id="281" x="896" y="4528" width="496" height="144">
+   <properties>
+    <property name="avgLvl" value="35"/>
+    <property name="pokemonList" value="GOLBAT GRAVELER DUGTRIO MAGNETON"/>
     <property name="zoneID" value="8"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="zoneLayer">
+ <objectgroup name="zoneLayer" visible="0">
   <object id="161" x="4400" y="48" width="304" height="144">
    <properties>
     <property name="music" value="center.mp3"/>
@@ -5020,9 +5095,9 @@
   <object id="197" type="GYM_LEADER" x="4016" y="1184" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=31"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
-    <property name="3_POKEMON=LVL" value="TENTACRUEL=34"/>
-    <property name="4_POKEMON=LVL" value="BLASTOISE=36"/>
+    <property name="2_POKEMON=LVL" value="POLIWHIRL=31"/>
+    <property name="3_POKEMON=LVL" value="POLIWRATH=34"/>
+    <property name="4_POKEMON=LVL" value="BLASTOISE=34"/>
     <property name="badgeID" type="int" value="3"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I am your last test before your final &quot;commit&quot;, are you ready?"/>
@@ -5035,9 +5110,9 @@
   </object>
   <object id="199" type="GYM_LEADER" x="4016" y="640" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="GOLBAT=22"/>
-    <property name="2_POKEMON=LVL" value="SANSLASH=23"/>
-    <property name="3_POKEMON=LVL" value="IVYSAUR=25"/>
+    <property name="1_POKEMON=LVL" value="EXEGGCUTE=19"/>
+    <property name="2_POKEMON=LVL" value="TANGELA=21"/>
+    <property name="3_POKEMON=LVL" value="IVYSAUR=22"/>
     <property name="badgeID" type="int" value="1"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="This is your first real challenge, bring it on!"/>
@@ -5050,10 +5125,10 @@
   </object>
   <object id="200" type="GYM_LEADER" x="4016" y="1824" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOTTO=25"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=27"/>
-    <property name="3_POKEMON=LVL" value="SANSLASH=30"/>
-    <property name="4_POKEMON=LVL" value="CHARMELEON=32"/>
+    <property name="1_POKEMON=LVL" value="NINETALES=25"/>
+    <property name="2_POKEMON=LVL" value="FLAREON=27"/>
+    <property name="3_POKEMON=LVL" value="MAGMAR=28"/>
+    <property name="4_POKEMON=LVL" value="ARCANINE=30"/>
     <property name="badgeID" type="int" value="2"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="This is your second test, are you ready?"/>
@@ -5066,11 +5141,12 @@
   </object>
   <object id="201" type="GYM_LEADER" x="3824" y="3056" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOT=33"/>
+    <property name="1_POKEMON=LVL" value="GENGAR=33"/>
     <property name="2_POKEMON=LVL" value="RAICHU=34"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=35"/>
+    <property name="3_POKEMON=LVL" value="GYARADOS=36"/>
     <property name="4_POKEMON=LVL" value="BLASTOISE=38"/>
     <property name="5_POKEMON=LVL" value="CHARIZARD=38"/>
+    <property name="6_POKEMON=LVL" value="DRAGONITE=40"/>
     <property name="badgeID" type="int" value="4"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Show me your knowledge!"/>
@@ -5083,7 +5159,9 @@
   </object>
   <object id="202" type="TRAINER" x="3760" y="1888" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="CHARMELEON=27"/>
+    <property name="1_POKEMON=LVL" value="GROWLITHE=24"/>
+    <property name="2_POKEMON=LVL" value="PONYTA=25"/>
+    <property name="3_POKEMON=LVL" value="VULPIX=25"/>
     <property name="direction" value="NORTH"/>
     <property name="initMessage" value="Fire baby!"/>
     <property name="lostMessage" value="I got burnt."/>
@@ -5095,8 +5173,8 @@
   </object>
   <object id="203" type="TRAINER" x="3648" y="1727" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATICATE=26"/>
-    <property name="2_POKEMON=LVL" value="SANDSLASH=27"/>
+    <property name="1_POKEMON=LVL" value="GRAVELER=26"/>
+    <property name="2_POKEMON=LVL" value="CUBONE=26"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Whatcha watching, uh?"/>
     <property name="lostMessage" value="Go away!"/>
@@ -5109,7 +5187,7 @@
   <object id="204" type="TRAINER" x="3680" y="1264" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=30"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="2_POKEMON=LVL" value="SEADRA=31"/>
     <property name="3_POKEMON=LVL" value="TENTACRUEL=32"/>
     <property name="direction" value="NORTH"/>
     <property name="initMessage" value="Am I moving? Or is it the water?"/>
@@ -5122,8 +5200,8 @@
   </object>
   <object id="205" type="TRAINER" x="224" y="4480" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=10"/>
-    <property name="2_POKEMON=LVL" value="SANDSLASH=10"/>
+    <property name="1_POKEMON=LVL" value="ZUBAT=8"/>
+    <property name="2_POKEMON=LVL" value="GEODUDE=7"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I don't even know how I got here"/>
     <property name="lostMessage" value="I guess I'll search the exit now"/>
@@ -5135,7 +5213,7 @@
   </object>
   <object id="206" type="TRAINER" x="624" y="2368" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEY=4"/>
+    <property name="1_POKEMON=LVL" value="WEEDLE=4"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Heya"/>
     <property name="lostMessage" value="Goodbye"/>
@@ -5148,7 +5226,7 @@
   <object id="207" type="TRAINER" x="880" y="2496" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="RATTATA=3"/>
-    <property name="2_POKEMON=LVL" value="PIDGEY=3"/>
+    <property name="2_POKEMON=LVL" value="CATERPIE=3"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Fight me"/>
     <property name="lostMessage" value="Nice..."/>
@@ -5160,9 +5238,9 @@
   </object>
   <object id="208" type="TRAINER" x="1488" y="1936" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEY=3"/>
-    <property name="2_POKEMON=LVL" value="RATTATA=4"/>
-    <property name="3_POKEMON=LVL" value="PIDGEY=5"/>
+    <property name="1_POKEMON=LVL" value="PIDGEY=4"/>
+    <property name="2_POKEMON=LVL" value="ODDISH=4"/>
+    <property name="3_POKEMON=LVL" value="MEOWTH=5"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Wassap"/>
     <property name="lostMessage" value="bruh"/>
@@ -5174,7 +5252,7 @@
   </object>
   <object id="209" type="TRAINER" x="1536" y="1488" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIKACHU=6"/>
+    <property name="1_POKEMON=LVL" value="PARAS=6"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Check my rare pokemon"/>
     <property name="lostMessage" value="Now my rare pokemon is exhausted, thanks."/>
@@ -5186,8 +5264,8 @@
   </object>
   <object id="210" type="TRAINER" x="1216" y="1456" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=6"/>
-    <property name="2_POKEMON=LVL" value="RATTATA=7"/>
+    <property name="1_POKEMON=LVL" value="NIDORANF=6"/>
+    <property name="2_POKEMON=LVL" value="NIDORANM=7"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="What?? Now I can't even piss in peace"/>
     <property name="lostMessage" value="Okay you won, now let me piss alone"/>
@@ -5199,7 +5277,7 @@
   </object>
   <object id="211" type="TRAINER" x="736" y="1312" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=7"/>
+    <property name="1_POKEMON=LVL" value="PSYDUCK=7"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Yo dawg"/>
     <property name="lostMessage" value="Damn dawg"/>
@@ -5249,8 +5327,8 @@
   </object>
   <object id="215" type="TRAINER" x="512" y="4528" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="SANDSLASH=18"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=20"/>
+    <property name="1_POKEMON=LVL" value="VULPIX=18"/>
+    <property name="2_POKEMON=LVL" value="EKANS=20"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="It's better if you go north: there's a gym"/>
     <property name="lostMessage" value="Even if you beat me you will miss your first Gym if you don't go north"/>
@@ -5262,7 +5340,7 @@
   </object>
   <object id="216" type="TRAINER" x="160" y="4000" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=10"/>
+    <property name="1_POKEMON=LVL" value="DIGLETT=9"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Peace V/\"/>
     <property name="lostMessage" value="...peace"/>
@@ -5274,7 +5352,8 @@
   </object>
   <object id="217" type="TRAINER" x="1552" y="1936" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="GOLBAT=25"/>
+    <property name="1_POKEMON=LVL" value="GRIMER=25"/>
+    <property name="2_POKEMON=LVL" value="DODUO=22"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Today is a good day to fight."/>
     <property name="lostMessage" value="Nevermind."/>
@@ -5286,8 +5365,8 @@
   </object>
   <object id="218" type="TRAINER" x="576" y="1072" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="SANDSHREW=10"/>
-    <property name="2_POKEMON=LVL" value="PIKACHU=9"/>
+    <property name="1_POKEMON=LVL" value="SANDSHREW=8"/>
+    <property name="2_POKEMON=LVL" value="MACHOP=9"/>
     <property name="3_POKEMON=LVL" value="ZUBAT=10"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Nice weather"/>
@@ -5300,9 +5379,8 @@
   </object>
   <object id="219" type="TRAINER" x="784" y="1008" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=10"/>
-    <property name="2_POKEMON=LVL" value="PIDGEY=11"/>
-    <property name="3_POKEMON=LVL" value="PIKACHU=12"/>
+    <property name="1_POKEMON=LVL" value="FARFETCHD=10"/>
+    <property name="2_POKEMON=LVL" value="PIKACHU=12"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="O_O"/>
     <property name="lostMessage" value=":("/>
@@ -5328,8 +5406,8 @@
   </object>
   <object id="221" type="TRAINER" x="992" y="576" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=10"/>
-    <property name="2_POKEMON=LVL" value="PIDGEY=11"/>
+    <property name="1_POKEMON=LVL" value="ONIX=10"/>
+    <property name="2_POKEMON=LVL" value="JIGGLYPUFF=11"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="Kim doesn’t understand what a blessing I am to her."/>
     <property name="lostMessage" value="George Bush doesn't care about black people"/>
@@ -5341,8 +5419,8 @@
   </object>
   <object id="222" type="TRAINER" x="1040" y="144" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIKACHU=12"/>
-    <property name="2_POKEMON=LVL" value="SANDSHREW=12"/>
+    <property name="1_POKEMON=LVL" value="BUTTERFREE=12"/>
+    <property name="2_POKEMON=LVL" value="BEEDRILL=12"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I like to beat the brush."/>
     <property name="lostMessage" value="You need the dark in order to show the light."/>
@@ -5354,8 +5432,8 @@
   </object>
   <object id="223" type="TRAINER" x="1584" y="192" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIKACHU=13"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=13"/>
+    <property name="1_POKEMON=LVL" value="BELLSPROUT=13"/>
+    <property name="2_POKEMON=LVL" value="GROWLITHE=13"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage">Ah... I love this
 prospectively wrong waterfall</property>
@@ -5380,8 +5458,12 @@ prospectively wrong waterfall</property>
   </object>
   <object id="225" type="TRAINER" x="576" y="560" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="SANDSLASH=15"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=15"/>
+    <property name="1_POKEMON=LVL" value="MAGIKARP=16"/>
+    <property name="2_POKEMON=LVL" value="MAGIKARP=17"/>
+    <property name="3_POKEMON=LVL" value="MAGIKARP=18"/>
+    <property name="4_POKEMON=LVL" value="MAGIKARP=19"/>
+    <property name="5_POKEMON=LVL" value="MAGIKARP=20"/>
+    <property name="6_POKEMON=LVL" value="MAGIKARP=21"/>
     <property name="direction" value="NORTH"/>
     <property name="initMessage" value="You won't beat me"/>
     <property name="lostMessage" value="I did lose on purpose"/>
@@ -5393,8 +5475,8 @@ prospectively wrong waterfall</property>
   </object>
   <object id="226" type="TRAINER" x="624" y="144" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=14"/>
-    <property name="2_POKEMON=LVL" value="ZUBAT=15"/>
+    <property name="1_POKEMON=LVL" value="EKANS=14"/>
+    <property name="2_POKEMON=LVL" value="MAGNEMITE=12"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Get rich or die tryin’."/>
     <property name="lostMessage" value="I love you like a fat kid loves cake."/>
@@ -5418,9 +5500,9 @@ prospectively wrong waterfall</property>
   </object>
   <object id="228" type="TRAINER" x="128" y="464" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="TENTACOOL=15"/>
+    <property name="1_POKEMON=LVL" value="DODUO=15"/>
     <property name="2_POKEMON=LVL" value="PIKACHU=16"/>
-    <property name="3_POKEMON=LVL" value="SANDSHREW=17"/>
+    <property name="3_POKEMON=LVL" value="EKANS=17"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="Hike hike hike!"/>
     <property name="lostMessage" value="Lose lose lose..."/>
@@ -5432,9 +5514,9 @@ prospectively wrong waterfall</property>
   </object>
   <object id="229" type="TRAINER" x="1296" y="912" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RAICHU=19"/>
-    <property name="2_POKEMON=LVL" value="RATICATE=20"/>
-    <property name="3_POKEMON=LVL" value="PIDGEOTTO=20"/>
+    <property name="1_POKEMON=LVL" value="CLEFAIRY=19"/>
+    <property name="2_POKEMON=LVL" value="JIGGLYPUFF=20"/>
+    <property name="3_POKEMON=LVL" value="MEOWTH=20"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="I don't believe in art. I believe in artists."/>
     <property name="lostMessage" value="Love the art in yourself not yourself in the art."/>
@@ -5447,7 +5529,8 @@ prospectively wrong waterfall</property>
   <object id="230" type="TRAINER" x="1728" y="1552" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=21"/>
-    <property name="2_POKEMON=LVL" value="SANDSLASH=22"/>
+    <property name="2_POKEMON=LVL" value="MANKEY=22"/>
+    <property name="3_POKEMON=LVL" value="GRAVELER=21"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="A dyslexic man walks into a bra."/>
     <property name="lostMessage" value="Did you hear about the man who stole a calendar? He got 12 months."/>
@@ -5460,8 +5543,9 @@ It hasn't come out yet.</property>
   </object>
   <object id="231" type="TRAINER" x="2368" y="1104" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="PIDGEOTTO=29"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=30"/>
+    <property name="1_POKEMON=LVL" value="KOFFING=28"/>
+    <property name="2_POKEMON=LVL" value="GRIMER=27"/>
+    <property name="3_POKEMON=LVL" value="GOLDEEN=27"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="I will build a great, great wall and I will make Mexico pay for it!"/>
     <property name="lostMessage" value="The beauty of me is that I’m very rich."/>
@@ -5474,8 +5558,8 @@ It hasn't come out yet.</property>
   <object id="232" type="TRAINER" x="2208" y="480" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=28"/>
-    <property name="2_POKEMON=LVL" value="RATICATE=27"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=27"/>
+    <property name="2_POKEMON=LVL" value="SEEL=27"/>
+    <property name="3_POKEMON=LVL" value="SHELLDER=27"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Brace yourselves, winter is coming..."/>
     <property name="lostMessage" value="Nothing burns like the cold."/>
@@ -5487,8 +5571,8 @@ It hasn't come out yet.</property>
   </object>
   <object id="233" type="TRAINER" x="2480" y="208" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=30"/>
+    <property name="1_POKEMON=LVL" value="SEAKING=29"/>
+    <property name="2_POKEMON=LVL" value="HORSEA=28"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="Why is it so cold in here?!"/>
     <property name="lostMessage" value="I better get a warm cup of coffee."/>
@@ -5500,9 +5584,9 @@ It hasn't come out yet.</property>
   </object>
   <object id="234" type="TRAINER" x="2800" y="128" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATICATE=28"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=28"/>
-    <property name="3_POKEMON=LVL" value="SANDSLASH=28"/>
+    <property name="1_POKEMON=LVL" value="SEADRA=28"/>
+    <property name="2_POKEMON=LVL" value="GRIMER=28"/>
+    <property name="3_POKEMON=LVL" value="KOFFING=28"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="I like playing with snowballs"/>
     <property name="lostMessage" value="Sniff...sniff..."/>
@@ -5515,7 +5599,7 @@ It hasn't come out yet.</property>
   <object id="235" type="TRAINER" x="2832" y="400" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
-    <property name="2_POKEMON=LVL" value="SANDSLASH=30"/>
+    <property name="2_POKEMON=LVL" value="SHELLDER=30"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="The end is near"/>
     <property name="lostMessage" value="Just a gym left for you."/>
@@ -5541,9 +5625,10 @@ It hasn't come out yet.</property>
   </object>
   <object id="237" type="TRAINER" x="2112" y="2496" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="WARTORTLE=25"/>
-    <property name="2_POKEMON=LVL" value="IVYSAUR=25"/>
-    <property name="3_POKEMON=LVL" value="CHARMELEON=25"/>
+    <property name="1_POKEMON=LVL" value="EEVEE=15"/>
+    <property name="2_POKEMON=LVL" value="JOLTEON=25"/>
+    <property name="3_POKEMON=LVL" value="VAPOREON=25"/>
+    <property name="4_POKEMON=LVL" value="FLAREON=25"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="You're gonna have a bad time."/>
     <property name="lostMessage" value="Take care of yourself, kid. 'cause someone really cares about you."/>
@@ -5555,8 +5640,8 @@ It hasn't come out yet.</property>
   </object>
   <object id="238" type="TRAINER" x="3840" y="672" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="RATTATA=19"/>
-    <property name="2_POKEMON=LVL" value="RATICATE=20"/>
+    <property name="1_POKEMON=LVL" value="EKANS=17"/>
+    <property name="2_POKEMON=LVL" value="GLOOM=18"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I'm bald"/>
     <property name="lostMessage" value="I wish I had hair"/>
@@ -5568,9 +5653,8 @@ It hasn't come out yet.</property>
   </object>
   <object id="239" type="TRAINER" x="3792" y="528" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="ZUBAT=16"/>
-    <property name="2_POKEMON=LVL" value="PIDGEOTTO=18"/>
-    <property name="3_POKEMON=LVL" value="RATICATE=20"/>
+    <property name="1_POKEMON=LVL" value="WEEPINBELL=21"/>
+    <property name="2_POKEMON=LVL" value="EXEGGCUTE=18"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="I don't even know what to say."/>
     <property name="lostMessage" value="I ran out of words"/>
@@ -5583,7 +5667,7 @@ It hasn't come out yet.</property>
   <object id="240" type="TRAINER" x="3680" y="720" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="ZUBAT=17"/>
-    <property name="2_POKEMON=LVL" value="SANSLASH=18"/>
+    <property name="2_POKEMON=LVL" value="BELLSPROUT=16"/>
     <property name="3_POKEMON=LVL" value="BULBASAUR=15"/>
     <property name="direction" value="NORTH"/>
     <property name="initMessage" value="En garde"/>
@@ -5610,8 +5694,8 @@ It hasn't come out yet.</property>
   </object>
   <object id="242" type="TRAINER" x="3744" y="1248" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
-    <property name="2_POKEMON=LVL" value="TENTACRUEL=30"/>
+    <property name="1_POKEMON=LVL" value="SEEL=29"/>
+    <property name="2_POKEMON=LVL" value="GOLDEEN=30"/>
     <property name="direction" value="SOUTH"/>
     <property name="initMessage" value="..."/>
     <property name="lostMessage" value="..."/>
@@ -5623,9 +5707,9 @@ It hasn't come out yet.</property>
   </object>
   <object id="243" type="TRAINER" x="3616" y="1088" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="TENTACOOL=29"/>
-    <property name="2_POKEMON=LVL" value="TENTACOOL=30"/>
-    <property name="3_POKEMON=LVL" value="TENTACOOL=31"/>
+    <property name="1_POKEMON=LVL" value="POLIWHIRL=29"/>
+    <property name="2_POKEMON=LVL" value="HORSEA=30"/>
+    <property name="3_POKEMON=LVL" value="SEADRA=31"/>
     <property name="direction" value="EAST"/>
     <property name="initMessage" value="We all silent, uh?"/>
     <property name="lostMessage" value="I guess I'll shut up as well."/>
@@ -5637,9 +5721,9 @@ It hasn't come out yet.</property>
   </object>
   <object id="244" type="TRAINER" x="3856" y="1712" width="16" height="16">
    <properties>
-    <property name="1_POKEMON=LVL" value="GOLBAT=26"/>
-    <property name="2_POKEMON=LVL" value="RAICHU=28"/>
-    <property name="3_POKEMON=LVL" value="RATICATE=25"/>
+    <property name="1_POKEMON=LVL" value="VULPIX=24"/>
+    <property name="2_POKEMON=LVL" value="MAGMAR=28"/>
+    <property name="3_POKEMON=LVL" value="GROWLITHE=25"/>
     <property name="direction" value="WEST"/>
     <property name="initMessage" value="En garde!"/>
     <property name="lostMessage" value="...Sigh."/>

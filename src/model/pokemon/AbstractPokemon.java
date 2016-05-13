@@ -111,7 +111,7 @@ public abstract class AbstractPokemon implements Pokemon {
         case EXP :
             return (int) Math.pow(lvl , 3) * 4 / 5;
         case HP :
-            return this.pokemon.getBaseHP() * 2 * lvl / 100 + lvl;
+            return 10 + (this.pokemon.getBaseHP() * 2 * lvl / 100 + lvl);
         case LVL :
             return this.mapStat.get(Stat.LVL);
         default :
