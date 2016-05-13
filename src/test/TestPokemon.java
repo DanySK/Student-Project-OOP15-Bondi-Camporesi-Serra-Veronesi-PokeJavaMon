@@ -7,9 +7,12 @@ import model.pokemon.StaticPokemonFactory;
 public class TestPokemon {
 
     public static void main(String[] args) {
+        int x = 0;
         for (final Pokedex p : Pokedex.values()) {
             Pokemon pk = StaticPokemonFactory.createPokemon(p, 50);
-            System.out.println(p + ", stats: " + pk.getAllStats());
+            x++;
+            System.out.println(p + ", Moves: " + pk.getCurrentMoves());
         }
+        System.out.println(x);
     }
 }
