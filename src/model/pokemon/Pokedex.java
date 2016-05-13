@@ -178,11 +178,18 @@ public enum Pokedex {
     
     LICKITUNG("Lickitung",   PokemonType.NORMAL,  PokemonType.NONE,   90,  55,  75,   30,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.LICKITUNG, BackSpriteImage.LICKITUNG),
     
+    KOFFING("Koffing",       PokemonType.POISON,  PokemonType.NONE,   40,  65,  95,   35,  PokemonRarity.UNCOMMON,   42, "WEEZING",    new HashMap<>(), FrontSpriteImage.KOFFING, BackSpriteImage.KOFFING),
+    WEEZING("Weezing",       PokemonType.POISON,  PokemonType.NONE,   65,  90, 120,   60,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.WEEZING, BackSpriteImage.WEEZING),
+    
     RHYHORN("Rhyhorn",       PokemonType.GROUND,  PokemonType.ROCK,   80,  85,  95,   25,  PokemonRarity.UNCOMMON,   42, "RHYDON",     new HashMap<>(), FrontSpriteImage.RHYHORN, BackSpriteImage.RHYHORN),
     RHYDON("Rhydon",         PokemonType.GROUND,  PokemonType.ROCK,  105, 130, 120,   40,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.RHYDON, BackSpriteImage.RHYDON),
 
     CHANSEY("Chansey",       PokemonType.NORMAL,  PokemonType.NONE,  250,   5,   5,   50,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.CHANSEY, BackSpriteImage.CHANSEY),
 
+    TANGELA("Tangela",       PokemonType.GRASS,  PokemonType.NONE,    65,   55, 155,  60,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.CHANSEY, BackSpriteImage.CHANSEY),
+    
+    KANGASKHAN("Kangaskhan", PokemonType.NORMAL,  PokemonType.NONE,  105,   95,  80,  90,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.KANGASKHAN, BackSpriteImage.KANGASKHAN),
+    
     HORSEA("Horsea",         PokemonType.WATER,  PokemonType.NONE,    30,  40,  70,   60,  PokemonRarity.COMMON,     32, "SEADRA",     new HashMap<>(), FrontSpriteImage.HORSEA, BackSpriteImage.HORSEA),
     SEADRA("Seadra",         PokemonType.WATER,  PokemonType.NONE,    55,  65,  95,   85,  PokemonRarity.UNCOMMON,   -1, "",           new HashMap<>(), FrontSpriteImage.SEADRA, BackSpriteImage.SEADRA),
 
