@@ -42,7 +42,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 message.add(optionalMessage);
                 if (nextEnemyPokemon != null) {
                     message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());                                     
-                    if (moveToLearn != Move.NULLMOVE) {
+                    if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
                         if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
                             String[] array = new String[message.size()];
                             message.toArray(array);
@@ -70,7 +70,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();                   
-                    if (moveToLearn != Move.NULLMOVE) {
+                    if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
                         if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
                             String[] array = new String[message.size()];
                             message.toArray(array);
@@ -151,7 +151,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     message.add(optionalMessage);
                     if (nextEnemyPokemon != null) {
                         message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokemon().name());
-                        if (moveToLearn != Move.NULLMOVE) {
+                        if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
                             if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
                                 String[] array = new String[message.size()];
                                 message.toArray(array);
@@ -180,7 +180,7 @@ public class InFightMessages implements InFightMessagesInterface {
                         MainController.getController().updateStatus(State.WALKING);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
-                        if (moveToLearn != Move.NULLMOVE) {
+                        if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
                             if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
                                 String[] array = new String[message.size()];
                                 message.toArray(array);
