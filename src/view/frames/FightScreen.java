@@ -56,18 +56,17 @@ public class FightScreen extends JWindow implements MyFrame {
     private JLabel allyName_Lvl;
     
         public void repaintFrame() {
-        	mainPanel.repaint();
-        	
-        	namePanel = new JPanel();
-        	namePanel.setVisible(true);
-            namePanel.setBounds(50, 5, 450, 10);
-            this.add(namePanel);
-            namePanel.setLayout(new GridLayout(1, 0, 0, 0));
-            allyName_Lvl = new JLabel (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() +   "Lv"  + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+        	mainPanel.repaint();  
+        	namePanel.setVisible(false);
+        	namePanel = new JPanel();           
+                namePanel.setLayout(new GridLayout(1, 0, 0, 0));
+        	namePanel.setBounds(50, 5, 450, 10);
+        	System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            allyName_Lvl = new JLabel (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
-            enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + "  Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
+            enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
             namePanel.add(enemyName_Lvl);
-        	
+            this.add(namePanel);
             movesPanel = new JPanel();
             movesPanel.setVisible(false);
     		movesPanel.setBounds(0, 225, 225, 75);
@@ -149,6 +148,7 @@ public class FightScreen extends JWindow implements MyFrame {
         }
         
         public void showMessage(String... message) {
+            repaintFrame();
             dialogPanel = new JPanel();
             dialogPanel.setVisible(false);
             dialogPanel.setBounds(0, 225, 450, 75);
@@ -161,21 +161,21 @@ public class FightScreen extends JWindow implements MyFrame {
             dialog.addMouseListener(new MouseAdapter() {
     			@Override
     			public void mouseClicked(MouseEvent e) {
-    				if (it.hasNext()) {
-                                        dialog.setText(it.next());
-                                    } else {
-                                        if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent() && PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
-                                            View.getView().hideCurrent();
-                                            TeamMenu tm = new TeamMenu(false, false);
-                                            View.getView().addNew(tm);
-                                            View.getView().showCurrent();
-                                        }
-                                        repaintFrame();
-                                        decisionsPanel.setVisible(true);
-                                        dialogPanel.setVisible(false);
-                                        movesPanel.setVisible(false);
+    				if (it.hasNext()) {    
+    				    dialog.setText(it.next());
+                                } else {
+                                    if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent() && PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
+                                        View.getView().hideCurrent();
+                                        TeamMenu tm = new TeamMenu(false, false);
+                                        View.getView().addNew(tm);
+                                        View.getView().showCurrent();
                                     }
+                                    repaintFrame();
+                                    decisionsPanel.setVisible(true);
+                                    dialogPanel.setVisible(false);
+                                    movesPanel.setVisible(false);
                                 }
+                        }
                     });
 //            dialog.setWrapStyleWord(true);
 //            dialog.setLineWrap(true);
@@ -201,9 +201,9 @@ public class FightScreen extends JWindow implements MyFrame {
             namePanel = new JPanel();
             namePanel.setLayout(new GridLayout(1, 0, 0, 0));
             namePanel.setBounds(50, 5, 450, 10);
-            allyName_Lvl = new JLabel (""+ MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + "  Lv " + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            allyName_Lvl = new JLabel (""+ MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + " Lv " + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
-            enemyName_Lvl = new JLabel (""+ MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + "  Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
+            enemyName_Lvl = new JLabel (""+ MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
             namePanel.add(enemyName_Lvl);
             this.add(namePanel);
             mainPanel = new MyPanel();
@@ -355,6 +355,7 @@ public class FightScreen extends JWindow implements MyFrame {
 
         @Override
         public void resumeFrame() {
+            this.repaintFrame();
             this.setVisible(true);
         }
 }
