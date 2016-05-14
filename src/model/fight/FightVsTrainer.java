@@ -14,6 +14,7 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
+import model.pokemon.WeaknessTable;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
@@ -37,31 +38,6 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     @Override
-    public boolean applyRun() throws CannotEscapeFromTrainerException{
-        throw new CannotEscapeFromTrainerException();
-    }
-
-    @Override//fatto per il test
-    public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
-        return super.applyItem(itemToUse, pkm);
-    }
-
-    @Override
-    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
-        throw new CannotCaughtTrainerPkmException();
-    }
-
-    @Override
-    protected double getEnemyBoost(final Stat stat) {
-        return enemyPkmsBoosts.get(enemyPkm).get(stat);
-    }
-
-    @Override
-    protected void setEnemyBoost(final Stat stat, final Double d) {
-        enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
-    }
-
-    @Override
     protected Move calculationEnemyMove() {
         Move move = enemyPkm.getCurrentMoves().get(FIRST_ELEM);
         boolean superEffective = false;
@@ -76,10 +52,10 @@ public class FightVsTrainer extends AbstractFight {
         }
         for (final Move m : moves) {
             if (m.getStat() == Stat.HP) {
-                if (SUPER_EFFECTIVE_MAX_VALUE == table.getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
+                if (SUPER_EFFECTIVE_MAX_VALUE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
                     move = m;
                     break;
-                } else if (SUPER_EFFECTIVE == table.getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
+                } else if (SUPER_EFFECTIVE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
                     superEffective = true;
                     move = m;
                 } else if (move.getValue() < m.getValue() && !superEffective) {
@@ -88,6 +64,31 @@ public class FightVsTrainer extends AbstractFight {
             }
         }
         return move;
+    }
+
+    @Override
+    protected double getEnemyBoost(final Stat stat) {
+        return enemyPkmsBoosts.get(enemyPkm).get(stat);
+    }
+
+    @Override
+    protected void setEnemyBoost(final Stat stat, final Double d) {
+        enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
+    }
+
+    @Override
+    public boolean applyRun() throws CannotEscapeFromTrainerException{
+        throw new CannotEscapeFromTrainerException();
+    }
+
+    @Override
+    public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
+        return super.applyItem(itemToUse, pkm);
+    }
+
+    @Override
+    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
+        throw new CannotCaughtTrainerPkmException();
     }
 
     @Override
@@ -187,12 +188,6 @@ public class FightVsTrainer extends AbstractFight {
         reset();
     }
 
-    //messo public per i test
-    public boolean setIsAllyFastest() {
-        return isAllyFastest = (allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD))
-                >= (enemyPkm.getStat(Stat.SPD) * enemyPkmsBoosts.get(enemyPkm).get(Stat.SPD));
-    }
-
     public int getExp() {
         return (int) (expBaseCalculation() * 1.5) / EXP_COEFFICIENT; 
     }
@@ -200,17 +195,17 @@ public class FightVsTrainer extends AbstractFight {
     protected void trainerChange() {
         //manda il primo pkm che trova e che ha un tipo superefficace contro l'allyPkm
         for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
-            if (STANDARD_EFFECTIVENESS_VALUE < table.getMultiplierAttack(pkm.getPokemon().getFirstType(), 
-                    allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())
-                    || STANDARD_EFFECTIVENESS_VALUE < table.getMultiplierAttack(pkm.getPokemon().getSecondType(), 
-                            allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
+            if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
+                    pkm.getPokemon().getFirstType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())
+                    || STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
+                            pkm.getPokemon().getSecondType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
                 enemyPkm = pkm;
                 break;
             }
         }
         //se non ne trova nessuno manda il primo pokemon che trova
         if (enemyPkm.getCurrentHP() == 0) {
-            for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
+            for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
                 if (pkm.getCurrentHP() > 0) {
                     enemyPkm = pkm;
                     break;

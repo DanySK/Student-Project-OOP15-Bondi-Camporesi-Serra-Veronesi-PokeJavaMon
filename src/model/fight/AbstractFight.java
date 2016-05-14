@@ -1,9 +1,7 @@
 package model.fight;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import controller.MainController;
 import exceptions.CannotCaughtTrainerPkmException;
@@ -16,51 +14,20 @@ import model.items.Boost;
 import model.items.Item;
 import model.items.Potion;
 import model.items.Item.ItemType;
-import model.player.Player;
-import model.player.PlayerImpl;
-import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
-import model.pokemon.Stat;
-import model.pokemon.WeaknessTable;
 import model.squad.Squad;
 
-public abstract class AbstractFight implements Fight {
-    protected static final int FIRST_ELEM = 0;
-    protected static final double STAB_ACTIVE = 1.5;
-    protected static final int SUPER_EFFECTIVE = 2;
-    protected static final double LESS_EFFECTIVE = 0.5;
-    protected static final int MIN_DAMAGE = 1;
-    protected static final double MIN_BOOST_VALUE = 0.25;
-    protected static final double MAX_BOOST_VALUE = 1.75;
-    protected static final int BALANCE_BOOST_MOVE = 100;
+public abstract class AbstractFight extends BasicFight implements Fight {
     protected static final int ATTACKS_TO_DO = 2;
     protected static final int EXP_COEFFICIENT = 7;
     protected static final String EXP_MESSAGE = "Exp gained: ";
 
-    protected Player player = PlayerImpl.getPlayer();
-    protected PokemonInBattle allyPkm;
-    protected PokemonInBattle enemyPkm;
-    protected boolean isAllyExhausted;
-    protected boolean isEnemyExhausted;
-    protected double effectiveValue;
-    protected Effectiveness allyEff;
-    protected Effectiveness enemyEff;
-    protected double stab;
-    protected boolean isAllyFastest;
-    protected Move enemyMove;
-    protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
-    protected final WeaknessTable table = WeaknessTable.getWeaknessTable();
     protected List<PokemonInBattle> pkmsThatMustEvolve = new ArrayList<>();
     protected boolean runValue;
-    protected Move moveToLearn;
 
-    public AbstractFight() {
-        this.moveToLearn = Move.NULLMOVE;
-        allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
-        for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
-            this.allyPkmsBoosts.put(pkm, createBoostsMap());
-        }
+    protected AbstractFight() {
+        super();
     }
 
     @Override
@@ -151,33 +118,7 @@ public abstract class AbstractFight implements Fight {
         return enemyPkm;
     }
 
-    protected Map<Stat, Double> createBoostsMap() {
-        final Map<Stat, Double> boosts = new HashMap<>();
-        boosts.put(Stat.ATK, 1.0);
-        boosts.put(Stat.DEF, 1.0);
-        boosts.put(Stat.SPD, 1.0);
-        return boosts;
-    }
-
     protected abstract boolean applyRun() throws CannotEscapeFromTrainerException;
-
-    protected void reset() {
-        isAllyExhausted = false;
-        isEnemyExhausted = false;
-        allyEff = Effectiveness.NORMAL;
-        enemyEff = Effectiveness.NORMAL;
-    }
-
-	//messo public per i test
-    public void enemyTurn() {
-        enemyMove = calculationEnemyMove();
-        if (enemyMove.getStat() == Stat.HP) {
-            applyDamage(enemyPkm, allyPkm, enemyMove);
-            checkAndSetIsExhausted(allyPkm);
-        } else {
-            applyMoveOnBoost(enemyPkm, allyPkm, enemyMove);
-        }
-    }
 
     protected boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         switch(itemToUse.getType()) {
@@ -206,163 +147,7 @@ public abstract class AbstractFight implements Fight {
         return true;
     }
 
-    protected abstract Move calculationEnemyMove();
-
-    protected void applyDamage(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
-        isEffective(stricker, stricked, move);
-        stab = stabCalculation(stricker, move);
-        final double atkBoost;
-        final double defBoost;
-        if (stricker.equals(allyPkm)) {
-            atkBoost = allyPkmsBoosts.get(stricker).get(Stat.ATK);
-            defBoost = getEnemyBoost(Stat.DEF);
-        } else {
-            atkBoost = getEnemyBoost(Stat.ATK);
-            defBoost = allyPkmsBoosts.get(stricked).get(Stat.ATK);
-        }
-        final int damageDone = damageCalculation(stricker, stricked, atkBoost, defBoost, move);
-        stricked.damage(damageDone);
-    }
-
-    protected abstract double getEnemyBoost(final Stat stat);
-
-    protected abstract void setEnemyBoost(final Stat stat, final Double d);
-
-    public Map<PokemonInBattle, Map<Stat, Double>> getAllyPkmsBoosts(){
-        return this.allyPkmsBoosts;
-    }
-
-    protected void isEffective(final PokemonInBattle stricker, final PokemonInBattle stricked, 
-            final Move move) {
-        effectiveValue = table.getMultiplierAttack(move.getType(), stricked.getPokemon().getFirstType(),
-                stricked.getPokemon().getSecondType());
-        if (effectiveValue >= SUPER_EFFECTIVE) {
-            if (stricker.equals(allyPkm)) {
-                allyEff = Effectiveness.SUPEREFFECTIVE;
-            } else {
-                enemyEff = Effectiveness.SUPEREFFECTIVE;
-            }
-        } else if (effectiveValue <= LESS_EFFECTIVE) {
-            if (stricker.equals(allyPkm)) {
-                allyEff = Effectiveness.LESSEFFECTIVE;
-            } else {
-                enemyEff = Effectiveness.LESSEFFECTIVE;
-            }
-        }
-    }
-
-    protected double stabCalculation(final PokemonInBattle stricker, final Move move) {
-        if (stricker.getPokemon().getFirstType() == move.getType() 
-                || stricker.getPokemon().getSecondType() == move.getType()) {
-            return STAB_ACTIVE;
-        }
-        return 1;
-    }
-
-    protected int damageCalculation(final PokemonInBattle stricker, final PokemonInBattle stricked, 
-            final double atkBoost, final double defBoost, final Move move) {
-        final int damage = (int) ((((2 * stricker.getStat(Stat.LVL) + 10) * (stricker.getStat(Stat.ATK) 
-                * atkBoost * move.getValue())) / ((stricked.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
-        if (damage <= 0) {
-            return MIN_DAMAGE;
-        }
-        return damage;
-    }
-
-    //messo public per i test
-    public void checkAndSetIsExhausted(final PokemonInBattle pkm) {
-        if (pkm.equals(allyPkm)) {
-            isAllyExhausted = pkm.getCurrentHP() == 0;
-        } else {
-            isEnemyExhausted = pkm.getCurrentHP() == 0;
-        }
-    }
-
-    protected void applyMoveOnBoost(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
-        double newBoostValue;
-        double moveValue = (double) move.getValue() / BALANCE_BOOST_MOVE;
-        if (allyPkm.equals(stricker)) {
-            if (move.isOnEnemy()) {
-                newBoostValue = getEnemyBoost(move.getStat()) - moveValue;
-                if (newBoostValue < MIN_BOOST_VALUE) {
-                    newBoostValue = MIN_BOOST_VALUE;
-                    allyEff = Effectiveness.CANNOTDECREASE;
-                }
-                setEnemyBoost(move.getStat(), newBoostValue);
-            } else {
-                newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) + moveValue;
-                if (newBoostValue > MAX_BOOST_VALUE) {
-                    newBoostValue = MAX_BOOST_VALUE;
-                    allyEff = Effectiveness.CANNOTINCREASE;
-                }
-                allyPkmsBoosts.get(stricker).replace(move.getStat(), newBoostValue);
-            }
-        } else {
-            if (move.isOnEnemy()) {
-                newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) - moveValue;
-                if (newBoostValue < MIN_BOOST_VALUE) {
-                    newBoostValue = MIN_BOOST_VALUE;
-                    enemyEff = Effectiveness.CANNOTDECREASE;
-                }
-                allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
-            } else {
-                newBoostValue = getEnemyBoost(move.getStat()) + moveValue;
-                if (newBoostValue > MAX_BOOST_VALUE) {
-                    newBoostValue = MAX_BOOST_VALUE;
-                    enemyEff = Effectiveness.CANNOTINCREASE;
-                }
-                setEnemyBoost(move.getStat(), newBoostValue);
-            }
-        }
-    }
-
     protected abstract boolean useBall(Item itemToUse) throws CannotCaughtTrainerPkmException;
 
-	//messo public per i test
-    public void allyTurn(final Move move) {
-        if (move.getStat() == Stat.HP) {
-            applyDamage(allyPkm, enemyPkm, move);
-            checkAndSetIsExhausted(enemyPkm);
-        } else {
-            applyMoveOnBoost(allyPkm, enemyPkm, move);
-        }
-    }
-
-    protected double expBaseCalculation() {
-        //TODO testare se è bilanciata la quantità di baseExp
-        double baseExp;
-        switch(enemyPkm.getPokemon().getRarity()){
-        case COMMON:
-            baseExp = 60;
-            break;
-        case UNCOMMON:
-            baseExp = 90;
-            break;
-        case RARE:
-            baseExp = 120;
-            break;
-        case STARTER:
-            baseExp = 150;
-            break;
-        case LEGENDARY:
-            baseExp = 300;
-            break;
-        default:
-            baseExp = 1;
-        }
-        baseExp = baseExp * enemyPkm.getStat(Stat.LVL);
-        return baseExp;
-    }
-
-    //messo a public per i test
-    public boolean giveExpAndCheckLvlUp(final int exp) {
-        if (allyPkm.getNecessaryExp() <= exp) {
-            allyPkm.setExp(exp - allyPkm.getNecessaryExp());
-            allyPkm.levelUp();
-            return true;
-        }
-        allyPkm.setExp(allyPkm.getStat(Stat.EXP) + exp);
-        return false;
-    }
-
+    protected abstract int getExp();
 }

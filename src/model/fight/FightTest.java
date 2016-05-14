@@ -238,7 +238,7 @@ public class FightTest {
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final FightVsTrainer fightTr = createFightVsTrainer();
         final int hpBeforeTurn = squirtle.getCurrentHP();
-        final double boostBeforeTurn = fightTr.getAllyPkmsBoosts().get(squirtle).get(Stat.DEF);
+        final double boostBeforeTurn = fightTr.getAllyBoost(Stat.DEF);
         final List<PokemonInBattle> pkmsToEvolve;
         assertTrue("Squirtle at lv 15 must be faster than a rattata at lv 3!", fightTr.setIsAllyFastest());
         fightTr.enemyTurn();
@@ -246,7 +246,7 @@ public class FightTest {
                 hpBeforeTurn > squirtle.getCurrentHP());
         fightTr.allyTurn(Move.HARDEN);
         assertTrue("Squirtle DEF must be increase by harden!", 
-                boostBeforeTurn < fightTr.getAllyPkmsBoosts().get(squirtle).get(Stat.DEF));
+                boostBeforeTurn < fightTr.getAllyBoost(Stat.DEF));
         squirtle.setExp(squirtle.getNecessaryExp() - MIN_STAT);
         fightTr.giveExpAndCheckLvlUp(fightTr.getExp());//do l'esperienza di rattata squirtle
         wartortle.heal(A_LOT_OF_HP);
