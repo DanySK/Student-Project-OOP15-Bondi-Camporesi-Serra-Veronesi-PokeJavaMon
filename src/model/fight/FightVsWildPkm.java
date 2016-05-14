@@ -21,12 +21,11 @@ import model.pokemon.Stat;
 public class FightVsWildPkm extends AbstractFight {
 
     private static final int COEFFICIENT_PROB = 255;
-    private final Map<Stat, Double> enemyPkmBoosts;
+    private final Map<Stat, Double> enemyPkmBoosts = new HashMap<>(createBoostsMap());
 
     public FightVsWildPkm(final Pokemon pkm) {
         super();
         enemyPkm = (PokemonInBattle) pkm;
-        enemyPkmBoosts = new HashMap<>(createBoostsMap());
     }
 
     @Override
@@ -59,7 +58,7 @@ public class FightVsWildPkm extends AbstractFight {
         return runValue = escapeChance > escapeRoll.nextInt(COEFFICIENT_PROB);
     }
 
-    @Override//fatto per il test
+    @Override
     public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         return super.applyItem(itemToUse, pkm);
     }
@@ -135,13 +134,6 @@ public class FightVsWildPkm extends AbstractFight {
         reset();
     }
 
-    //messo public per i test
-    public boolean setIsAllyFastest() {
-        return isAllyFastest = (allyPkm.getStat(Stat.SPD) * allyPkmsBoosts.get(allyPkm).get(Stat.SPD)) 
-                >= (enemyPkm.getStat(Stat.SPD) * enemyPkmBoosts.get(Stat.SPD));
-    }
-
-    //messo public per il test
     public int getExp() {
         return (int) (expBaseCalculation() / EXP_COEFFICIENT);
     }
