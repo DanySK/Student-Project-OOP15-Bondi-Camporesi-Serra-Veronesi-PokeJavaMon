@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.LineBorder;
@@ -49,15 +51,30 @@ public class FightScreen extends JWindow implements MyFrame {
     private JButton team;
     private JButton bag;
     private JButton run;
-        
+    private JPanel namePanel;
+    private JLabel enemyName_Lvl;
+    private JLabel allyName_Lvl;
+    
         public void repaintFrame() {
         	mainPanel.repaint();
+        	
+        	namePanel = new JPanel();
+        	namePanel.setVisible(true);
+            namePanel.setBounds(50, 5, 450, 10);
+            this.add(namePanel);
+            namePanel.setLayout(new GridLayout(1, 0, 0, 0));
+            allyName_Lvl = new JLabel (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() +   "Lv"  + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            namePanel.add(allyName_Lvl);
+            enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + "  Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
+            namePanel.add(enemyName_Lvl);
+        	
             movesPanel = new JPanel();
             movesPanel.setVisible(false);
     		movesPanel.setBounds(0, 225, 225, 75);
     		this.add(movesPanel);
     		movesPanel.setLayout(new GridLayout(0, 2, 0, 0));
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
+           
+    		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
             	move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
             	move1 = new JButton("----");
@@ -74,6 +91,7 @@ public class FightScreen extends JWindow implements MyFrame {
                     }
             });
             movesPanel.add(move1);            
+           
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
             	move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
@@ -180,8 +198,16 @@ public class FightScreen extends JWindow implements MyFrame {
             this.setAlwaysOnTop(true);
             this.setBounds(0, 0, 450, 300);
             this.getContentPane().setLayout(null);
+            namePanel = new JPanel();
+            namePanel.setLayout(new GridLayout(1, 0, 0, 0));
+            namePanel.setBounds(50, 5, 450, 10);
+            allyName_Lvl = new JLabel (""+ MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + "  Lv " + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            namePanel.add(allyName_Lvl);
+            enemyName_Lvl = new JLabel (""+ MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + "  Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
+            namePanel.add(enemyName_Lvl);
+            this.add(namePanel);
             mainPanel = new MyPanel();
-            mainPanel.setBounds(0, 0, 450, 225);
+            mainPanel.setBounds(0, 15, 450, 210);
             this.getContentPane().add(mainPanel);
             mainPanel.setLayout(null);
             decisionsPanel.setBounds(225, 225, 225, 75);
@@ -246,7 +272,7 @@ public class FightScreen extends JWindow implements MyFrame {
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
             	move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
-            	move1 = new JButton("NULL");
+            	move1 = new JButton("----");
             }
             move1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -263,7 +289,7 @@ public class FightScreen extends JWindow implements MyFrame {
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
             	move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
-            	move2 = new JButton("NULL");
+            	move2 = new JButton("----");
             }               
             move2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -281,7 +307,7 @@ public class FightScreen extends JWindow implements MyFrame {
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
             	move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
-            	move3 = new JButton("NULL");
+            	move3 = new JButton("----");
             }
             move3.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -299,7 +325,7 @@ public class FightScreen extends JWindow implements MyFrame {
             if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
             	move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
-            	move4 = new JButton("NULL");
+            	move4 = new JButton("----");
             }
             move4.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -374,7 +400,7 @@ class MyPanel extends JPanel {
             g.drawRect(20, 20, width, 7);
             g.drawRect(272, 130, width, 7);
             g.drawRect(272,137,width,5);
-            if (HP <= maxHP / 4) {
+            if (HP <= maxHP / 5) {
                 g.setColor(Color.RED);
             } else if (HP <= maxHP / 2) {
                 g.setColor(Color.YELLOW);
@@ -382,7 +408,7 @@ class MyPanel extends JPanel {
                 g.setColor(Color.GREEN);
             }
             g.fillRect(21, 21, (int) (width * Scale)-1, 6);
-            if (HP2 <= maxHP2 / 4) {
+            if (HP2 <= maxHP2 / 5) {
                 g.setColor(Color.RED);
             } else if (HP2 <= maxHP2 / 2) {
                 g.setColor(Color.YELLOW);

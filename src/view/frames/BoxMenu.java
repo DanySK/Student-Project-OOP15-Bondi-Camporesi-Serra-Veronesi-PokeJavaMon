@@ -45,7 +45,7 @@ public class BoxMenu extends JWindow implements MyFrame {
         for (Pokemon p : PlayerImpl.getPlayer().getBox().getPokemonList()) {
             names.add(p.getPokemon().name()); // Nome Pkmn
             lvl.add("" + p.getStat(Stat.LVL)); // Livello
-            mHP.add("" + p.getStat(Stat.HP) + "/" + p.getCurrentHP());
+            mHP.add("" + p.getCurrentHP() + "/" + p.getStat(Stat.HP));
             cHP.add("" + p.getCurrentHP());
             pk.add(p);
         }  
