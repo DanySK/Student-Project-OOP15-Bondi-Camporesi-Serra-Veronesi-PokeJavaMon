@@ -72,7 +72,7 @@ public interface ViewController {
      * Initializes player's name
      */
     void initName();
-
+    
     /**
      * Shows the fight menu
      */

@@ -7,14 +7,10 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Paths;
-import java.util.Arrays;
-
-import controller.parameters.BackSpriteImage;
 import controller.parameters.Folder;
-import controller.parameters.Img;
-import controller.parameters.Maps;
 import controller.parameters.Music;
-import controller.parameters.FrontSpriteImage;
+import controller.parameters.ResourcesGetter;
+import model.utilities.Pair;
 
 /**
  * This class installs all the requested files into the disk
@@ -30,14 +26,11 @@ public class MainInstaller implements Installer {
     public void install() {
         installFolders();
         installMusic();
-        installFrontSprites();
-        installBackSprites();      
-        installMaps();
-        installImg();
+        installResources();
     }
     
     /**
-     * Install the required folders
+     * Installs the required folders
      */
     private void installFolders() {
         for (Folder f : Folder.values()) {
@@ -51,11 +44,11 @@ public class MainInstaller implements Installer {
     }
     
     /**
-     * Install the required songs
+     * Installs the required songs
      */
     private void installMusic() {
         for (final Music m : Music.values()) {
-            if (m != Music.SONG && !Files.exists(Paths.get(Folder.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
+            if (!Files.exists(Paths.get(Folder.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(Folder.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath())) {
                     final byte[] buf = new byte[SIZE];
@@ -65,7 +58,7 @@ public class MainInstaller implements Installer {
                         r = musicStream.read(buf);
                     }
                 } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING MUSICFOLDER");
+                    System.out.println("FAILED INSTALLING MUSIC");
                     return;
                 }
             }
@@ -73,13 +66,13 @@ public class MainInstaller implements Installer {
     }
     
     /**
-     * Install the required front sprites
+     * Installs the required resources
      */
-    private void installFrontSprites() {
-        for (final FrontSpriteImage s : FrontSpriteImage.values()) {
-            if (!Files.exists(Paths.get(s.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-                try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
-                        FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
+    private void installResources() {
+        for (final Pair<String, String> p : new ResourcesGetter().getResources()) {
+            if (!Files.exists(Paths.get(p.getX()), LinkOption.NOFOLLOW_LINKS)) {
+                try(InputStream is = this.getClass().getResourceAsStream(p.getY());
+                        FileOutputStream fos = new FileOutputStream(p.getX())) {
                     final byte[] buf = new byte[SIZE];
                     int r = is.read(buf);
                     while(r != NODATA) {
@@ -87,73 +80,7 @@ public class MainInstaller implements Installer {
                         r = is.read(buf);
                     }
                 } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING FRONTSPRITEFOLDER SPRITE");
-                    return;
-                }
-            }
-        }
-    }
-    
-    /**
-     * Install the required back sprites
-     */
-    private void installBackSprites() {
-        for (final BackSpriteImage s : BackSpriteImage.values()) {
-            if (!Files.exists(Paths.get(s.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-                try(InputStream is = this.getClass().getResourceAsStream(s.getResourcePath());
-                        FileOutputStream fos = new FileOutputStream(s.getAbsolutePath())) {
-                    final byte[] buf = new byte[SIZE];
-                    int r = is.read(buf);
-                    while(r != NODATA) {
-                        fos.write(buf, OFFSET, r);
-                        r = is.read(buf);
-                    }
-                } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING BACKSPRITEFOLDER SPRITE");
-                    return;
-                }
-            }
-        }
-    }
-    
-    /**
-     * Install the required files in Maps folder
-     */
-    private void installMaps() {
-        for (final Maps fp : Arrays.asList(Maps.MAP, Maps.TILESET, Maps.PSD)) {
-            if (!Files.exists(Paths.get(fp.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-                try(InputStream is = this.getClass().getResourceAsStream(fp.getResourcePath());
-                        FileOutputStream fos = new FileOutputStream(fp.getAbsolutePath())) {
-                    final byte[] buf = new byte[SIZE];
-                    int r = is.read(buf);
-                    while(r != NODATA) {
-                        fos.write(buf, OFFSET, r);
-                        r = is.read(buf);
-                    }
-                } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING MAPS");
-                    return;
-                }
-            }
-        }
-    }
-    
-    /**
-     * Install the required files in Img folder
-     */
-    private void installImg() {
-        for (final Img fp : Arrays.asList(Img.SHEET, Img.PACK, Img.PLAYER, Img.PALLA)) {
-            if (!Files.exists(Paths.get(fp.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
-                try(InputStream is = this.getClass().getResourceAsStream(fp.getResourcePath());
-                        FileOutputStream fos = new FileOutputStream(fp.getAbsolutePath())) {
-                    final byte[] buf = new byte[SIZE];
-                    int r = is.read(buf);
-                    while(r != NODATA) {
-                        fos.write(buf, OFFSET, r);
-                        r = is.read(buf);
-                    }
-                } catch (IOException e) {
-                    System.out.println("FAILED INSTALLING IMG");
+                    System.out.println("FAILED INSTALLING RESOURCE");
                     return;
                 }
             }

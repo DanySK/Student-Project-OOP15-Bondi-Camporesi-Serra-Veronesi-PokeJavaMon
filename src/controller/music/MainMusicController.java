@@ -1,5 +1,6 @@
 package controller.music;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -7,6 +8,7 @@ import java.util.Optional;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
+import controller.parameters.Folder;
 import controller.parameters.Music;
 
 /**
@@ -14,6 +16,7 @@ import controller.parameters.Music;
  */
 public class MainMusicController implements MusicController {
     
+    private static final String SONG = Folder.MAINFOLDER.getAbsolutePath() + File.separator + "music" + File.separator;
     private Sound s;
     private Map<Music, Sound> sounds;
     private Optional<Music> m;
@@ -34,13 +37,11 @@ public class MainMusicController implements MusicController {
         Long start = System.currentTimeMillis();
     	this.sounds = new HashMap<>();
         for (final Music m : Music.values()) {
-                if (m != Music.SONG) {
-                    Long startM = System.currentTimeMillis();
-                    final Sound s = Gdx.audio.newSound(Gdx.files.absolute(Music.SONG.getAbsolutePath() + m.getAbsolutePath()));
-                    this.sounds.put(m, s);
-                    Long endM = System.currentTimeMillis();
-                    System.out.println(m.name() + " took " + ((endM - startM)/1000f) + " seconds to complete");
-                }
+            Long startM = System.currentTimeMillis();
+            final Sound s = Gdx.audio.newSound(Gdx.files.absolute(SONG + m.getAbsolutePath()));
+            this.sounds.put(m, s);
+            Long endM = System.currentTimeMillis();
+            System.out.println(m.name() + " took " + ((endM - startM)/1000f) + " seconds to complete");
         }
         Long end = System.currentTimeMillis();
         System.out.println("It took " + ((end - start)/1000f) + " seconds to complete this operation");
