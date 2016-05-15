@@ -106,6 +106,8 @@ public class PokemonEncounterZone extends AbstractZone {
             return (double) PokemonRarity.VERY_RARE.getCoeff() / 8;
         case LEGENDARY :
         	return (double) PokemonRarity.LEGENDARY.getCoeff() / 7;
+        case UNFINDABLE :
+        	return (double) PokemonRarity.UNFINDABLE.getCoeff() / 6;
         case STARTER :
         
         default :

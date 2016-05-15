@@ -27,7 +27,7 @@ public class Statistics extends JWindow implements MyFrame {
 	
     private static final long serialVersionUID = 3339649136760979503L;
     private MyPanel2 IMMAGINEPKMNPANEL;
-    private JPanel panel_1;
+    private JPanel panel;
     private JLabel pkmnName;
     private JLabel type;
     private JLabel typeValue;
@@ -48,10 +48,10 @@ public class Statistics extends JWindow implements MyFrame {
     	this.setAlwaysOnTop(true);
 		this.setBounds(100, 100, 500, 550);
 		this.getContentPane().setLayout(new GridLayout(2, 4));
-		panel_1 = new JPanel();
-		this.getContentPane().add(panel_1);
-		panel_1.setLayout(new GridLayout(4, 0));
-		panel_1.setBorder(new LineBorder(Color.GRAY, 3));
+		panel = new JPanel();
+		this.getContentPane().add(panel);
+		panel.setLayout(new GridLayout(4, 0));
+		panel.setBorder(new LineBorder(Color.GRAY, 3));
 		exit = new JButton("Exit");
 		exit.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -60,28 +60,28 @@ public class Statistics extends JWindow implements MyFrame {
 		        View.getView().resumeCurrent();
 		    }
 		});
-		panel_1.add(exit);       
+		panel.add(exit);       
 		type = new JLabel("Type");
-		panel_1.add(type);
+		panel.add(type);
 		if (pk.getPokemon().getSecondType() != PokemonType.NONE) {
 		    typeValue = new JLabel(pk.getPokemon().getFirstType().name() + " / " + pk.getPokemon().getSecondType());
 		} else {
 	            typeValue = new JLabel(pk.getPokemon().getFirstType().name());
 		}
-		panel_1.add(typeValue);
+		panel.add(typeValue);
 		pkmnName = new JLabel("" + pk.getPokemon());
-		panel_1.add(pkmnName);
+		panel.add(pkmnName);
 		level = new JLabel("Level");
-		panel_1.add(level);
+		panel.add(level);
 		levelValue = new JLabel(""+ pk.getStat(Stat.LVL));
-		panel_1.add(levelValue);
+		panel.add(levelValue);
 		IMMAGINEPKMNPANEL = new MyPanel2(pk);
-		panel_1.add(IMMAGINEPKMNPANEL);
+		panel.add(IMMAGINEPKMNPANEL);
 		exp = new JLabel("Experience");
-		panel_1.add(exp);
+		panel.add(exp);
 		expValue = new JLabel (""+ pk.getStat(Stat.EXP) + "/" + (pk.getNecessaryExp()+pk.getStat(Stat.EXP)));
 		//è possibile aggiungere anche exp corrente
-		panel_1.add(expValue);
+		panel.add(expValue);
 		this.add(new statsPanel(pk));
         this.setVisible(true);
     }

@@ -29,7 +29,12 @@ public class MainGameView implements Screen {
     private boolean newGame;
     private PlayerSprite pls;
     private static Sprite sp;
-	
+//	private Texture tx;
+//	final int START_X = MainController.getController().getInitialPosition().getX();
+//    final int START_Y = MainController.getController().getInitialPosition().getY();
+//    final int DEFAULT_START_X = MainController.getController().getDefaultInitialPosition().getX();
+//    final int DEFAULT_START_Y = MainController.getController().getDefaultInitialPosition().getY();
+    
     public MainGameView(boolean b) {
         newGame = b;    
     }

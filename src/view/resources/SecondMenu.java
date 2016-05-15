@@ -15,6 +15,12 @@ import model.pokemon.Pokedex;
 public class SecondMenu {  
 	
     private JFrame f = new JFrame("PokeJavaMon");
+    private JTextArea insertName;
+    private JButton firstStarter;
+    private JButton	secondStarter;
+    private JButton thirdStarter;
+    private StarterPanel starterPanel;
+    
     private static JTextField nickname = new JTextField();
     private static String s;
 	        
@@ -36,36 +42,36 @@ public class SecondMenu {
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	f.setBounds(100, 100, 400, 300);
 	f.getContentPane().setLayout(null);
-        JTextArea inserisciNome = new JTextArea();
-	inserisciNome.setHighlighter(null);
-	inserisciNome.setEditable(false);
-	inserisciNome.setBackground(SystemColor.control);
-	inserisciNome.setFont(new Font("Elephant", Font.PLAIN, 16));
-	inserisciNome.setText("INSERT NAME");
-	inserisciNome.setBounds(130, 41, 190, 35);
-	f.getContentPane().add(inserisciNome);
+	insertName = new JTextArea();
+	insertName.setHighlighter(null);
+	insertName.setEditable(false);
+	insertName.setBackground(SystemColor.control);
+	insertName.setFont(new Font("Elephant", Font.PLAIN, 16));
+	insertName.setText("INSERT NAME");
+	insertName.setBounds(130, 41, 190, 35);
+	f.getContentPane().add(insertName);
 	nickname.setBounds(102, 106, 190, 22);
 	f.setLocationRelativeTo(null);
 	f.getContentPane().add(nickname);
 	nickname.setColumns(40);    	
-	JButton uno = new JButton("Bulbasaur");
-	uno.setBounds(21, 160, 105, 25);
-	f.getContentPane().add(uno);
-	JButton due = new JButton("Charmander");
-	due.setBounds(146, 160, 105, 25);
-	f.getContentPane().add(due);
-	JButton tre = new JButton("Squirtle");
-	tre.setBounds(272, 160, 105, 25);
-	f.getContentPane().add(tre);
-	StarterPanel panel_1 = new StarterPanel();
-	panel_1.setBounds(20, 196, 352, 50);
-	f.getContentPane().add(panel_1);
-	panel_1.setLayout(null);
-	uno.addActionListener(new ActionListener() {
+	firstStarter = new JButton("Bulbasaur");
+	firstStarter.setBounds(21, 160, 105, 25);
+	f.getContentPane().add(firstStarter);
+	secondStarter = new JButton("Charmander");
+	secondStarter.setBounds(146, 160, 105, 25);
+	f.getContentPane().add(secondStarter);
+	thirdStarter = new JButton("Squirtle");
+	thirdStarter.setBounds(272, 160, 105, 25);
+	f.getContentPane().add(thirdStarter);
+	starterPanel = new StarterPanel();
+	starterPanel.setBounds(20, 196, 352, 50);
+	f.getContentPane().add(starterPanel);
+	starterPanel.setLayout(null);
+	firstStarter.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 	        s = nickname.getText();
 	    	if (s.length() < 4 || s.length() > 20) {
-	    	    JOptionPane.showMessageDialog(uno, "Insert a valid NAME");
+	    	    JOptionPane.showMessageDialog(firstStarter, "Insert a valid NAME");
 	    	} else {
                     MainController.getController().selectStarter(Pokedex.BULBASAUR);
 	    	    MainController.getController().getViewController().setName(nickname.getText());
@@ -74,11 +80,11 @@ public class SecondMenu {
 	    	}
 	    }
 	});
-	due.addActionListener(new ActionListener() {
+	secondStarter.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 	        s = nickname.getText();
 	    	if (s.length() < 4 || s.length() > 20) {
-	    	    JOptionPane.showMessageDialog(due, "Insert a valid NAME");
+	    	    JOptionPane.showMessageDialog(secondStarter, "Insert a valid NAME");
 	    	} else {
 	            MainController.getController().selectStarter(Pokedex.CHARMANDER);
 	    	    MainController.getController().getViewController().setName(nickname.getText());
@@ -87,11 +93,11 @@ public class SecondMenu {
 	    	}
 	    }
 	});
-	tre.addActionListener(new ActionListener() {
+	thirdStarter.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 	        s = nickname.getText();
 	        if (s.length() < 4 || s.length() > 20) {
-	            JOptionPane.showMessageDialog(tre, "Insert a valid NAME");
+	            JOptionPane.showMessageDialog(thirdStarter, "Insert a valid NAME");
 	    	} else {
                     MainController.getController().selectStarter(Pokedex.SQUIRTLE);
 	    	    MainController.getController().getViewController().setName(nickname.getText());

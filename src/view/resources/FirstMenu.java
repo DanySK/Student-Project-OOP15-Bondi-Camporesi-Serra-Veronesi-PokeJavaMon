@@ -17,6 +17,10 @@ import controller.parameters.State;
 public class FirstMenu {
     
     private JFrame frame;
+    private JPanel pane;
+    private JLabel text;
+    private JButton newGame;
+    private	JButton continueGame;
     
     public FirstMenu() {
         frame = new JFrame("PokeJavaMon");
@@ -32,33 +36,33 @@ public class FirstMenu {
             //TODO: Fare catch di una semplice Exception e' sbagliato
             frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(Img.PALLA.getResourcePath()).getPath()));
         }
-        JPanel pane = new JPanel();
-        JLabel text = new JLabel("Benvenuto in PokeJavaMon!!!");
+        pane = new JPanel();
+        text = new JLabel("Benvenuto in PokeJavaMon!!!");
         pane.add(text);
         pane.setPreferredSize(new Dimension(400,200));
         text.setOpaque(false);
         frame.setMinimumSize(new Dimension(500,300));
         frame.setFocusable(true);
-        JButton nuova = new JButton("NUOVA PARTITA");
-        nuova.addActionListener(new ActionListener() {
+        newGame = new JButton("NUOVA PARTITA");
+        newGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 MainController.getController().updateStatus(State.SECOND_MENU);
                 MainController.getController().getViewController().secondMenu();
             }
         });
-        pane.add(nuova);
-        JButton continua = new JButton("CONTINUA");
-        continua.addActionListener(new ActionListener() {
+        pane.add(newGame);
+        continueGame = new JButton("CONTINUA");
+        continueGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 MainController.getController().getViewController().map(false);
                 frame.dispose();
             }
         });
         if (!MainController.getController().saveExists()) {
-            continua.setEnabled(false);
+        	continueGame.setEnabled(false);
         }
-        pane.add(continua);
+        pane.add(continueGame);
         frame.add(pane);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

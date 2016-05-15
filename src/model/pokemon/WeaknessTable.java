@@ -108,7 +108,7 @@ public class WeaknessTable {
 			case NORMAL :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == FIGHT || i == STEEL) {
+					if (i == ROCK || i == STEEL) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					/*Immune*/
 					} else if (i == GHOST){
@@ -240,7 +240,7 @@ public class WeaknessTable {
 			case GHOST :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == DARK) {
+					if (i == DARK || i == STEEL) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
@@ -405,7 +405,7 @@ public class WeaknessTable {
 			case DARK :
 				for (int i = 0; i < PokemonType.values().length; i++) {
 					/*NotSoEffective*/
-					if (i == FIGHT || i == DARK) {
+					if (i == FIGHT || i == DARK || i == STEEL) {
 						table[p.ordinal()][i] = WeaknessType.NOT_SO_EFFECTIVE.getMultiplier();
 					
 					/*Supereffective*/
