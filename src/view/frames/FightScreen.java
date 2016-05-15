@@ -58,7 +58,7 @@ public class FightScreen extends JWindow implements MyFrame {
         	mainPanel.repaint();  
         	namePanel.setVisible(false);
         	namePanel = new JPanel();           
-                namePanel.setLayout(new GridLayout(1, 0, 0, 0));
+            namePanel.setLayout(new GridLayout(1, 0, 0, 0));
         	namePanel.setBounds(50, 5, 450, 10);
             allyName_Lvl = new JLabel (MainController.getController().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + MainController.getController().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
