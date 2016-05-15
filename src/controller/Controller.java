@@ -241,4 +241,16 @@ public interface Controller {
      * @throws SquadFullException if {@link Squad} is full
      */
     void addPokemonToSquad(Pokedex p) throws SquadFullException;
+    
+    /**
+     * Selects the initial starter pokemon in {@link Pokedex}
+     * @param p
+     */
+    void selectStarter(Pokedex p);
+    
+    /**
+     * Initializes the starter pokemon
+     * @throws SquadFullException if the {@link Squad} is full
+     */
+    void initializeStarter() throws SquadFullException;
 }

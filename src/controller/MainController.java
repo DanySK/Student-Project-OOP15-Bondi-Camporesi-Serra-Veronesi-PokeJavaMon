@@ -63,6 +63,7 @@ public final class MainController implements Controller {
     private ViewController viewController;
     private TiledMap map;
     private Model model;
+    private Pokedex starter;
     private static Controller singleton;
     
     /**
@@ -301,5 +302,15 @@ public final class MainController implements Controller {
     @Override
     public void addPokemonToSquad(final Pokedex p) throws SquadFullException {
         this.model.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(p, DEFAULT_LVL));
+    }
+
+    @Override
+    public void selectStarter(final Pokedex p) {
+        this.starter = p;
+    }
+
+    @Override
+    public void initializeStarter() throws SquadFullException {
+        addPokemonToSquad(starter);
     }
 }

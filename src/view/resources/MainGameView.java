@@ -17,6 +17,7 @@ import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.Maps;
 import controller.parameters.State;
+import exceptions.SquadFullException;
 import view.sprite.PlayerSprite;
 
 public class MainGameView implements Screen {  
@@ -60,11 +61,14 @@ public class MainGameView implements Screen {
         MainController.getController().getViewController().initName();
 	MainController.getController().initializeMusicController();
         MainController.getController().updateStatus(State.WALKING);
-	// Init the Inventory
 	if (newGame) {
+	    try {
+                MainController.getController().initializeStarter();
+            } catch (SquadFullException e) {
+                System.out.println("FAILED INITIALIZING STARTER POKEMON");
+            }
 	    MainController.getController().initInventory();
 	}
-	// End Init
         renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap());                    
 	sr = new ShapeRenderer();
 	sr.setColor(Color.CYAN);

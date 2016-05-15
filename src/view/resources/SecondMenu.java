@@ -10,7 +10,6 @@ import javax.swing.*;
 import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.FrontSpriteImage;
-import exceptions.SquadFullException;
 import model.pokemon.Pokedex;
 
 public class SecondMenu {  
@@ -68,11 +67,7 @@ public class SecondMenu {
 	    	if (s.length() < 4 || s.length() > 20) {
 	    	    JOptionPane.showMessageDialog(uno, "Insert a valid NAME");
 	    	} else {
-	    	    try {
-	    	        MainController.getController().addPokemonToSquad(Pokedex.BULBASAUR);
-	    	    } catch (SquadFullException ex) {
-		        ex.printStackTrace();
-		    }
+                    MainController.getController().selectStarter(Pokedex.BULBASAUR);
 	    	    MainController.getController().getViewController().setName(nickname.getText());
 	            MainController.getController().getViewController().map(true);
 	            f.dispose();
@@ -85,11 +80,7 @@ public class SecondMenu {
 	    	if (s.length() < 4 || s.length() > 20) {
 	    	    JOptionPane.showMessageDialog(due, "Insert a valid NAME");
 	    	} else {
-	    	    try {
-	                  MainController.getController().addPokemonToSquad(Pokedex.CHARMANDER);
-		    } catch (SquadFullException ex) {
-		        ex.printStackTrace();
-		    }
+	            MainController.getController().selectStarter(Pokedex.CHARMANDER);
 	    	    MainController.getController().getViewController().setName(nickname.getText());
 	            MainController.getController().getViewController().map(true);
 	            f.dispose();
@@ -102,11 +93,7 @@ public class SecondMenu {
 	        if (s.length() < 4 || s.length() > 20) {
 	            JOptionPane.showMessageDialog(tre, "Insert a valid NAME");
 	    	} else {
-	    	    try {
-	                  MainController.getController().addPokemonToSquad(Pokedex.SQUIRTLE);
-		    } catch (SquadFullException ex) {
-		        ex.printStackTrace();
-		    }
+                    MainController.getController().selectStarter(Pokedex.SQUIRTLE);
 	    	    MainController.getController().getViewController().setName(nickname.getText());
 	            MainController.getController().getViewController().map(true);
 	            f.dispose();
