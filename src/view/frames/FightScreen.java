@@ -23,7 +23,6 @@ import javax.swing.border.LineBorder;
 
 import controller.MainController;
 import exceptions.CannotEscapeFromTrainerException;
-import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Stat;
 import view.View;
@@ -61,8 +60,7 @@ public class FightScreen extends JWindow implements MyFrame {
         	namePanel = new JPanel();           
                 namePanel.setLayout(new GridLayout(1, 0, 0, 0));
         	namePanel.setBounds(50, 5, 450, 10);
-        	System.out.println(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
-            allyName_Lvl = new JLabel (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            allyName_Lvl = new JLabel (MainController.getController().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + MainController.getController().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
             enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
             namePanel.add(enemyName_Lvl);
@@ -73,8 +71,8 @@ public class FightScreen extends JWindow implements MyFrame {
     		this.add(movesPanel);
     		movesPanel.setLayout(new GridLayout(0, 2, 0, 0));
            
-    		if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-            	move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+    		if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
+            	move1 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
             	move1 = new JButton("----");
             }
@@ -82,8 +80,8 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-                                MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+                            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
+                                MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
                                 new MessageFrame(null, "MOVE NOT FOUND");
                             }
@@ -91,8 +89,8 @@ public class FightScreen extends JWindow implements MyFrame {
             });
             movesPanel.add(move1);            
            
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-            	move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
+            	move2 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
             	move2 = new JButton("----");
             }               
@@ -100,17 +98,17 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
+                            MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) move2.setEnabled(false);
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) move2.setEnabled(false);
             movesPanel.add(move2);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-            	move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
+            	move3 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
             	move3 = new JButton("----");
             }
@@ -118,17 +116,17 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
+                            MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) move3.setEnabled(false);
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) move3.setEnabled(false);
             movesPanel.add(move3);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-            	move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
+            	move4 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
             	move4 = new JButton("----");
             }
@@ -136,14 +134,14 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
+                            MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
             movesPanel.add(move4);
         }
         
@@ -164,7 +162,7 @@ public class FightScreen extends JWindow implements MyFrame {
     				if (it.hasNext()) {    
     				    dialog.setText(it.next());
                                 } else {
-                                    if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent() && PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
+                                    if (MainController.getController().getSquad().getNextAlivePokemon().isPresent() && MainController.getController().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                                         View.getView().hideCurrent();
                                         TeamMenu tm = new TeamMenu(false, false);
                                         View.getView().addNew(tm);
@@ -233,7 +231,7 @@ public class FightScreen extends JWindow implements MyFrame {
             team = new JButton("Team");
             team.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+                    if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
                         View.getView().hideCurrent();
                         TeamMenu tm = new TeamMenu(true, false);
                         View.getView().addNew(tm);
@@ -269,8 +267,8 @@ public class FightScreen extends JWindow implements MyFrame {
                 }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-            	move1 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
+            	move1 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
             } else {
             	move1 = new JButton("----");
             }
@@ -278,16 +276,16 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
-                                MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
+                            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
+                                MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0));
                             } else {
                                 new MessageFrame(null, "MOVE NOT FOUND");
                             }
                     }
             });
             movesPanel.add(move1);            
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-            	move2 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
+            	move2 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1).name());
             } else {
             	move2 = new JButton("----");
             }               
@@ -295,17 +293,17 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
-                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) != Move.NULLMOVE) {
+                            MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) move2.setEnabled(false);
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(1) == Move.NULLMOVE) move2.setEnabled(false);
             movesPanel.add(move2);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-            	move3 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
+            	move3 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2).name());
             } else {
             	move3 = new JButton("----");
             }
@@ -313,17 +311,17 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
-                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) != Move.NULLMOVE) {
+                            MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) move3.setEnabled(false);
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(2) == Move.NULLMOVE) move3.setEnabled(false);
             movesPanel.add(move3);
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-            	move4 = new JButton(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
+            	move4 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3).name());
             } else {
             	move4 = new JButton("----");
             }
@@ -331,14 +329,14 @@ public class FightScreen extends JWindow implements MyFrame {
                     public void actionPerformed(ActionEvent e) {
                             decisionsPanel.setVisible(false);
                             movesPanel.setVisible(false);
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
-                            MainController.getController().getFightController().attack(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) != Move.NULLMOVE) {
+                            MainController.getController().getFightController().attack(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3));
                         } else {
                             new MessageFrame(null, "MOVE NOT FOUND");
                         }
                     }
             });
-            if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
+            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
             movesPanel.add(move4);  
             this.setVisible(true);
         }
@@ -379,10 +377,10 @@ class MyPanel extends JPanel {
             }
         }
         try {                
-            image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
+            image2 = ImageIO.read(new File(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
         } catch (Exception ex) {
             try {
-                image2 = ImageIO.read(new File(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getResourcePath()));
+                image2 = ImageIO.read(new File(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getResourcePath()));
             } catch (IOException e) {
                 System.out.println("CANNOT LOAD BACKSPRITEFOLDER SPRITE");
             }

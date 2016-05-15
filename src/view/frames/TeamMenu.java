@@ -12,7 +12,6 @@ import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;
@@ -50,7 +49,7 @@ public class TeamMenu extends JWindow implements MyFrame {
         cHP.add("HEALTH POINTS");
         mHP.add("");
         pk.add(null);
-        for (Pokemon p : PlayerImpl.getPlayer().getSquad().getPokemonList()) {
+        for (Pokemon p : MainController.getController().getSquad().getPokemonList()) {
             names.add(p.getPokemon().name()); // Nome Pkmn
             lvl.add("" + p.getStat(Stat.LVL)); // Livello
             mHP.add("" + p.getStat(Stat.HP));
@@ -103,8 +102,8 @@ public class TeamMenu extends JWindow implements MyFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (MainController.getController().getStatusController().getState() == State.MENU) {
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
-                            PlayerImpl.getPlayer().getSquad().switchPokemon(0, ID);
+                        if (MainController.getController().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
+                            MainController.getController().switchPokemon(0, ID);
                             View.getView().disposeCurrent();
                             View.getView().removeCurrent();
                             TeamMenu sc = new TeamMenu(true, false);
@@ -116,11 +115,11 @@ public class TeamMenu extends JWindow implements MyFrame {
                             View.getView().showCurrent();
                         }
                     } else {
-                        if (PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
+                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
                             try {
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                MainController.getController().getFightController().selectPokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                MainController.getController().getFightController().selectPokemon(MainController.getController().getSquad().getPokemonList().get(index));
                                 MyFrame fr = View.getView().getCurrent();
                                 ((FightScreen) fr).repaintFrame();
                                 View.getView().resumeCurrent();
@@ -143,7 +142,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                             try {
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                MainController.getController().getFightController().changePokemon(PlayerImpl.getPlayer().getSquad().getPokemonList().get(index));
+                                MainController.getController().getFightController().changePokemon(MainController.getController().getSquad().getPokemonList().get(index));
                                 View.getView().resumeCurrent();
                             } catch (PokemonIsExhaustedException e1) {
                                 View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
@@ -165,7 +164,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        PlayerImpl.getPlayer().getBox().depositPokemon(p, PlayerImpl.getPlayer().getSquad());
+                        MainController.getController().depositPokemon(p);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         TeamMenu sc = new TeamMenu(canExit, isChangingPoke);

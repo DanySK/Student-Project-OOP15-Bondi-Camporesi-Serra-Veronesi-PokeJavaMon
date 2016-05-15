@@ -17,11 +17,23 @@ import controller.status.MainStatusController;
 import controller.status.StatusController;
 import controller.view.MainViewController;
 import controller.view.ViewController;
+import exceptions.NotEnoughMoneyException;
+import exceptions.OnlyOnePokemonInSquadException;
+import exceptions.PokemonNotFoundException;
+import exceptions.SquadFullException;
 import model.Model;
+import model.box.Box;
 import model.fight.Fight;
+import model.inventory.Inventory;
+import model.items.Item;
+import model.items.Item.ItemType;
+import model.items.Potion;
 import model.map.PokeMap;
 import model.player.Player;
+import model.pokemon.Move;
 import model.pokemon.Pokemon;
+import model.pokemon.PokemonInBattle;
+import model.squad.Squad;
 
 /**
  * This is the main controller of the game. It contains all the other controllers.
@@ -177,6 +189,11 @@ public final class MainController implements Controller {
     }
     
     @Override
+    public Inventory getInventory() {
+        return this.model.getPlayer().getInventory();
+    }
+    
+    @Override
     public Model getModel() {
         return this.model;
     }
@@ -185,5 +202,48 @@ public final class MainController implements Controller {
     public void initializeModel(final TiledMap map) {
         this.map = map;
         this.model = new Model(map);
+    }
+
+    @Override
+    public void effectItem(final Item i, final Pokemon p) throws PokemonNotFoundException {
+        if (i.getType() == ItemType.POTION) {
+            ((Potion) i).effect(this.model.getPlayer(), (PokemonInBattle) p);
+            this.model.getPlayer().getInventory().consumeItem(i);
+        }
+    }
+
+    @Override
+    public Box getBox() {
+        return this.model.getPlayer().getBox();
+    }
+
+    @Override
+    public void withdrawPokemon(final Pokemon p) throws PokemonNotFoundException, SquadFullException {
+        this.model.getPlayer().getBox().withdrawPokemon(p, this.model.getPlayer().getSquad());
+    }
+
+    @Override
+    public void learnMove(final Pokemon p, final Move oldMove, final Move newMove) {
+        p.learnMove(oldMove, newMove);
+    }
+    
+    @Override
+    public void buyItem(final Item i) throws NotEnoughMoneyException {
+        this.model.getPlayer().buyItem(i);
+    }
+
+    @Override
+    public Squad getSquad() {
+        return this.model.getPlayer().getSquad();
+    }
+    
+    @Override
+    public void switchPokemon(final int index1, final int index2) {
+        this.model.getPlayer().getSquad().switchPokemon(index1, index2);
+    }
+
+    @Override
+    public void depositPokemon(final Pokemon p) throws PokemonNotFoundException, OnlyOnePokemonInSquadException {
+        this.model.getPlayer().getBox().depositPokemon(p, this.model.getPlayer().getSquad());
     }
 }

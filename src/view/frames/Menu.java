@@ -9,7 +9,6 @@ import javax.swing.border.LineBorder;
 
 import controller.MainController;
 import controller.parameters.State;
-import model.player.PlayerImpl;
 import view.View;
 
 import java.awt.event.MouseEvent;
@@ -53,7 +52,7 @@ public class Menu extends JWindow implements MyFrame {
         this.getContentPane().add(box);
         box.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                if (PlayerImpl.getPlayer().getBox().getBoxSize() < 1) {
+                if (MainController.getController().getBox().getBoxSize() < 1) {
                     disposeFrame();
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();

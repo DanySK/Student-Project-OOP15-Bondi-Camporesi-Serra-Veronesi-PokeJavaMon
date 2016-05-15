@@ -16,9 +16,7 @@ import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Item.ItemType;
 import model.items.Potion;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
-import model.pokemon.PokemonInBattle;
 import view.View;
 
 public class BagMenu extends JWindow implements MyFrame {
@@ -69,8 +67,7 @@ public class BagMenu extends JWindow implements MyFrame {
             } else {
                 if (itemToUse instanceof Potion) {
                     try {
-                        ((Potion) itemToUse).effect(PlayerImpl.getPlayer(), (PokemonInBattle) p);
-                        PlayerImpl.getPlayer().getInventory().consumeItem(itemToUse);
+                        MainController.getController().effectItem(itemToUse, p);
                         disposeFrame();
                     } catch (PokemonNotFoundException e) {
                         new MessageFrame(null, "POKEMON NOT FOUND");
@@ -95,27 +92,27 @@ public class BagMenu extends JWindow implements MyFrame {
         Name2.add("NAME");
         Qnt.add("QUANTITY");
         it.add(null);   
-        for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).keySet()) { 
-            if (PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i) != 0) {
+        for (Item i : MainController.getController().getInventory().getSubInventory(ItemType.POTION).keySet()) { 
+            if (MainController.getController().getInventory().getSubInventory(ItemType.POTION).get(i) != 0) {
                 Name1.add(i.getType().name()); 
                 Name2.add(i.toString()); 
-                Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
+                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POTION).get(i));
                 it.add(i);
             }
         }  
-        for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).keySet()) { 
-            if (PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i) != 0) {
+        for (Item i : MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).keySet()) { 
+            if (MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).get(i) != 0) {
                 Name1.add(i.getType().name());
                 Name2.add(i.toString()); 
-                Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
+                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
                 it.add(i);
             }
         }  
-        for (Item i : PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).keySet()) { 
-            if (PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i) != 0) {
+        for (Item i : MainController.getController().getInventory().getSubInventory(ItemType.BOOST).keySet()) { 
+            if (MainController.getController().getInventory().getSubInventory(ItemType.BOOST).get(i) != 0) {
                 Name1.add(i.getType().name()); 
                 Name2.add(i.toString()); 
-                Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i));
+                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.BOOST).get(i));
                 it.add(i);
             }
         } 

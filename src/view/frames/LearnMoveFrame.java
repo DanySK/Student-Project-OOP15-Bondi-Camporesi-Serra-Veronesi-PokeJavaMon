@@ -75,7 +75,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 move1.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        pk.learnMove(pk.getCurrentMoves().get(0), newMove);
+                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(0), newMove);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         View.getView().resumeCurrent();
@@ -91,7 +91,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 move2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        pk.learnMove(pk.getCurrentMoves().get(1), newMove);
+                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(1), newMove);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         View.getView().resumeCurrent();
@@ -107,7 +107,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 move3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        pk.learnMove(pk.getCurrentMoves().get(2), newMove);
+                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(2), newMove);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         View.getView().resumeCurrent();
@@ -123,7 +123,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 move4.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        pk.learnMove(pk.getCurrentMoves().get(3), newMove);
+                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(3), newMove);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         View.getView().resumeCurrent();

@@ -16,7 +16,6 @@ import controller.parameters.State;
 import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.items.Item.ItemType;
-import model.player.PlayerImpl;
 import view.View;
 
 public class Market extends JWindow implements MyFrame {
@@ -48,17 +47,17 @@ public class Market extends JWindow implements MyFrame {
             Name2.add(i.toString()); 
             Prz.add("" + i.getPrice());
             if (i.getType() == ItemType.POTION) {
-                Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POTION).get(i));
+                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POTION).get(i));
             } else if (i.getType() == ItemType.POKEBALL) {
-                Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
+                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
             } else {
-                Qnt.add("" + PlayerImpl.getPlayer().getInventory().getSubInventory(ItemType.BOOST).get(i));
+                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.BOOST).get(i));
             }
             it.add(i);
         }
         for(int j = 0; j<Name1.size();j++) {           
             if (j==0) {
-            	panel.add(new JLabel("Money: "+ PlayerImpl.getPlayer().getMoney()));
+            	panel.add(new JLabel("Money: "+ MainController.getController().getPlayer().getMoney()));
             	panel.add(new JLabel(Name2.get(j)));
             	panel.add(new JLabel(Prz.get(j)));
             	panel.add(new JLabel(Qnt.get(j)));
@@ -85,7 +84,7 @@ public class Market extends JWindow implements MyFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        PlayerImpl.getPlayer().buyItem(i);
+                        MainController.getController().buyItem(i);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         Market mk = new Market();

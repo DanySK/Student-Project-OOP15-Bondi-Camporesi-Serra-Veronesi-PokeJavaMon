@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import controller.MainController;
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;  
@@ -42,7 +42,7 @@ public class BoxMenu extends JWindow implements MyFrame {
         cHP.add("HEALTH POINTS");
         mHP.add("");
         pk.add(null);     
-        for (Pokemon p : PlayerImpl.getPlayer().getBox().getPokemonList()) {
+        for (Pokemon p : MainController.getController().getBox().getPokemonList()) {
             names.add(p.getPokemon().name()); // Nome Pkmn
             lvl.add("" + p.getStat(Stat.LVL)); // Livello
             mHP.add("" + p.getCurrentHP() + "/" + p.getStat(Stat.HP));
@@ -88,7 +88,7 @@ public class BoxMenu extends JWindow implements MyFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
-                            PlayerImpl.getPlayer().getBox().withdrawPokemon(selected, PlayerImpl.getPlayer().getSquad());
+                            MainController.getController().withdrawPokemon(selected);
                             View.getView().disposeCurrent();
                             View.getView().removeCurrent();
                             BoxMenu bx = new BoxMenu();
