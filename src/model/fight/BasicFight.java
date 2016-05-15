@@ -87,12 +87,16 @@ public abstract class BasicFight {
 
     protected abstract Move calculationEnemyMove();
 
-    protected abstract double getEnemyBoost(final Stat stat);
+    public abstract double getEnemyBoost(final Stat stat);
 
-    protected abstract void setEnemyBoost(final Stat stat, final Double d);
+    public abstract void setEnemyBoost(final Stat stat, final Double d);
 
     public double getAllyBoost(final Stat stat){
         return allyPkmsBoosts.get(allyPkm).get(stat);
+    }
+
+    public void setAllyBoost(final Stat stat, final Double d){
+        allyPkmsBoosts.get(allyPkm).replace(stat, d);
     }
 
     protected void applyMoveOnBoost(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
@@ -107,21 +111,21 @@ public abstract class BasicFight {
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             } else {
-                newBoostValue = allyPkmsBoosts.get(stricker).get(move.getStat()) + moveValue;
+                newBoostValue = getAllyBoost(move.getStat()) + moveValue;
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
                     allyEff = Effectiveness.CANNOTINCREASE;
                 }
-                allyPkmsBoosts.get(stricker).replace(move.getStat(), newBoostValue);
+                setAllyBoost(move.getStat(), newBoostValue);
             }
         } else {
             if (move.isOnEnemy()) {
-                newBoostValue = allyPkmsBoosts.get(stricked).get(move.getStat()) - moveValue;
+                newBoostValue = getAllyBoost(move.getStat()) - moveValue;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
                     enemyEff = Effectiveness.CANNOTDECREASE;
                 }
-                allyPkmsBoosts.get(stricked).replace(move.getStat(), newBoostValue);
+                setAllyBoost(move.getStat(), newBoostValue);
             } else {
                 newBoostValue = getEnemyBoost(move.getStat()) + moveValue;
                 if (newBoostValue > MAX_BOOST_VALUE) {
@@ -129,6 +133,20 @@ public abstract class BasicFight {
                     enemyEff = Effectiveness.CANNOTINCREASE;
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
+            }
+        }
+        //DA ELIMINAREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        if (allyPkm.equals(stricker)) {
+            if (move.isOnEnemy()) {
+                System.out.println(this.getEnemyBoost(move.getStat()));
+            } else {
+                System.out.println(this.getAllyBoost(move.getStat()));
+            }
+        } else {
+            if (move.isOnEnemy()) {
+                System.out.println(this.getAllyBoost(move.getStat()));
+            } else {
+                System.out.println(this.getEnemyBoost(move.getStat()));
             }
         }
     }
@@ -139,11 +157,11 @@ public abstract class BasicFight {
         final double atkBoost;
         final double defBoost;
         if (stricker.equals(allyPkm)) {
-            atkBoost = allyPkmsBoosts.get(stricker).get(Stat.ATK);
+            atkBoost = getAllyBoost(Stat.ATK);
             defBoost = getEnemyBoost(Stat.DEF);
         } else {
             atkBoost = getEnemyBoost(Stat.ATK);
-            defBoost = allyPkmsBoosts.get(stricked).get(Stat.ATK);
+            defBoost = getAllyBoost(Stat.DEF);
         }
         final int damageDone = damageCalculation(stricker, stricked, atkBoost, defBoost, move);
         stricked.damage(damageDone);
@@ -206,25 +224,26 @@ public abstract class BasicFight {
         double baseExp;
         switch(enemyPkm.getPokemon().getRarity()){
         case COMMON:
-            baseExp = 60;
+            baseExp = 80;
             break;
         case UNCOMMON:
-            baseExp = 90;
+            baseExp = 100;
             break;
         case RARE:
             baseExp = 120;
             break;
-        case STARTER:
+        case VERY_RARE:
             baseExp = 150;
+            break;
+        case STARTER:
+            baseExp = 180;
             break;
         case LEGENDARY:
             baseExp = 300;
             break;
-        case UNFINDABLE:
-            baseExp = 0;
-            break;
+        //default ricopre il caso unfindable
         default:
-            baseExp = 1;
+            baseExp = 0;
         }
         baseExp = baseExp * enemyPkm.getStat(Stat.LVL);
         return baseExp;
