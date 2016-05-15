@@ -11,9 +11,7 @@ import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.FrontSpriteImage;
 import exceptions.SquadFullException;
-import model.player.PlayerImpl;
 import model.pokemon.Pokedex;
-import model.pokemon.StaticPokemonFactory;
 
 public class SecondMenu {  
 	
@@ -39,7 +37,6 @@ public class SecondMenu {
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	f.setBounds(100, 100, 400, 300);
 	f.getContentPane().setLayout(null);
-        PlayerImpl.getPlayer().getBox().putCapturedPokemon(StaticPokemonFactory.createPokemon(Pokedex.RAYQUAZA, 50));
         JTextArea inserisciNome = new JTextArea();
 	inserisciNome.setHighlighter(null);
 	inserisciNome.setEditable(false);
@@ -72,12 +69,7 @@ public class SecondMenu {
 	    	    JOptionPane.showMessageDialog(uno, "Insert a valid NAME");
 	    	} else {
 	    	    try {
-	    	        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 50));
-		        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5));
-		        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 5));
-		        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.RATTATA,5));
-		        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.ZUBAT, 5));
-		        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.TENTACOOL, 5));	                     
+	    	        MainController.getController().addPokemonToSquad(Pokedex.BULBASAUR);
 	    	    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }
@@ -94,7 +86,7 @@ public class SecondMenu {
 	    	    JOptionPane.showMessageDialog(due, "Insert a valid NAME");
 	    	} else {
 	    	    try {
-	    	        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 44));
+	                  MainController.getController().addPokemonToSquad(Pokedex.CHARMANDER);
 		    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }
@@ -111,7 +103,7 @@ public class SecondMenu {
 	            JOptionPane.showMessageDialog(tre, "Insert a valid NAME");
 	    	} else {
 	    	    try {
-	    	        PlayerImpl.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(Pokedex.BLASTOISE, 45));
+	                  MainController.getController().addPokemonToSquad(Pokedex.SQUIRTLE);
 		    } catch (SquadFullException ex) {
 		        ex.printStackTrace();
 		    }

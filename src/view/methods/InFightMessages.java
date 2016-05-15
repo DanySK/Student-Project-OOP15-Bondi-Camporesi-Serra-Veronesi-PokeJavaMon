@@ -8,7 +8,6 @@ import controller.MainController;
 import controller.parameters.State;
 import model.fight.Effectiveness;
 import model.items.Item;
-import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
@@ -16,18 +15,8 @@ import view.frames.FightScreen;
 import view.frames.LearnMoveFrame;
 import view.frames.MessageFrame;
 import view.frames.MyFrame;
-import view.sprite.PlayerSprite;
 
 public class InFightMessages implements InFightMessagesInterface {
-
-    public void teleportToCenter() {
-        final int x = MainController.getController().getPokeMap().getPokemonCenterSpawnPosition().getX();
-        final int y = MainController.getController().getPokeMap().getPokemonCenterSpawnPosition().getY();
-        PlayerSprite.getSprite().setPlayerPosition(x, y);
-        PlayerSprite.getSprite().setVelocity(0, 0);
-        PlayerImpl.getPlayer().setPosition(x, y);
-        PlayerImpl.getPlayer().getSquad().healAllPokemon(MainController.getController().getPokeMap());
-    }
     
     @Override
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
@@ -35,7 +24,7 @@ public class InFightMessages implements InFightMessagesInterface {
             Pokemon nextEnemyPokemon, String optionalMessage, final Move moveToLearn) {
         List<String> message = new ArrayList<>();
         if (myMoveFirst) {
-            message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
+            message.add(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
             message.add(myMoveEffectiveness.getMessage());
             if (enemyMove == null) {
                 message.add("Enemy pokemon is exhausted");
@@ -99,7 +88,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 message.add(enemyMoveEffectiveness.getMessage());
                 if (lastPokemonKills) {
                     message.add("Your pokemon is exhausted");
-                    if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+                    if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
                         String[] array = new String[message.size()];
                         message.toArray(array);
                         MyFrame fs = View.getView().getCurrent();
@@ -113,7 +102,7 @@ public class InFightMessages implements InFightMessagesInterface {
                         message.toArray(array);
                         View.getView().addNew(new MessageFrame(State.WALKING, array));
                         View.getView().showCurrent();
-                        teleportToCenter();
+                        MainController.getController().teleportToCenter();
                     }
                 } else {
                     String[] array = new String[message.size()];
@@ -127,7 +116,7 @@ public class InFightMessages implements InFightMessagesInterface {
             message.add(enemyMoveEffectiveness.getMessage());
             if (myMove == null) {
                 message.add("Your pokemon is exhausted");
-                if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     MyFrame fs = View.getView().getCurrent();
@@ -141,10 +130,10 @@ public class InFightMessages implements InFightMessagesInterface {
                     message.toArray(array);
                     View.getView().addNew(new MessageFrame(State.WALKING, array));
                     View.getView().showCurrent();
-                    teleportToCenter();
+                    MainController.getController().teleportToCenter();
                 }
             } else {
-                message.add(PlayerImpl.getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
+                message.add(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
                 message.add(myMoveEffectiveness.getMessage());
                 if (lastPokemonKills) {
                     message.add("Enemy pokemon is exhausted");
@@ -220,7 +209,7 @@ public class InFightMessages implements InFightMessagesInterface {
         message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
         if (isMyPokemonDead) {
             message.add("Your pokemon is exhausted");
-            if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+            if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
                 String[] array = new String[message.size()];
                 message.toArray(array);
                 MyFrame fs = View.getView().getCurrent();
@@ -234,7 +223,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 message.toArray(array);
                 View.getView().addNew(new MessageFrame(State.WALKING, array));
                 View.getView().showCurrent();
-                teleportToCenter();
+                MainController.getController().teleportToCenter();
             }
         } else {
             String[] array = new String[message.size()];
@@ -251,7 +240,7 @@ public class InFightMessages implements InFightMessagesInterface {
             message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
                 message.add("Your pokemon is exhausted");
-                if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     MyFrame fs = View.getView().getCurrent();
@@ -265,7 +254,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     message.toArray(array);
                     View.getView().addNew(new MessageFrame(State.WALKING, array));
                     View.getView().showCurrent();
-                    teleportToCenter();
+                    MainController.getController().teleportToCenter();
                 }
             } else {
                 String[] array = new String[message.size()];
@@ -298,7 +287,7 @@ public class InFightMessages implements InFightMessagesInterface {
             message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
                 message.add("Your pokemon is exhausted");
-                if (PlayerImpl.getPlayer().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
                     String[] array = new String[message.size()];
                     message.toArray(array);
                     MyFrame fs = View.getView().getCurrent();
@@ -312,7 +301,7 @@ public class InFightMessages implements InFightMessagesInterface {
                     message.toArray(array);
                     View.getView().addNew(new MessageFrame(State.WALKING, array));
                     View.getView().showCurrent();
-                    teleportToCenter();
+                    MainController.getController().teleportToCenter();
                 }
             } else {
                 String[] array = new String[message.size()];

@@ -24,8 +24,10 @@ import model.items.Item;
 import model.map.PokeMap;
 import model.player.Player;
 import model.pokemon.Move;
+import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
 import model.squad.Squad;
+import model.utilities.Pair;
 
 /**
  * This interface explains all the methods that can be called on {@link MainController}
@@ -213,4 +215,30 @@ public interface Controller {
      * in {@link Squad}
      */
     void depositPokemon(Pokemon p) throws PokemonNotFoundException, OnlyOnePokemonInSquadException;
+
+    /**
+     * Teleports the player to pokemon center and heals all his {@link Pokemon}s
+     */
+    void teleportToCenter();
+    
+    /**
+     * Initializes player's {@link Inventory}
+     */
+    void initInventory();
+    
+    /**
+     * @return the initial player's position
+     */
+    Pair<Integer, Integer> getInitialPosition();
+
+    /**
+     * @return the default initial player's position
+     */
+    Pair<Integer, Integer> getDefaultInitialPosition();
+    
+    /**
+     * @param p the pokemon to add
+     * @throws SquadFullException if {@link Squad} is full
+     */
+    void addPokemonToSquad(Pokedex p) throws SquadFullException;
 }

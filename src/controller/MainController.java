@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -27,13 +29,21 @@ import model.fight.Fight;
 import model.inventory.Inventory;
 import model.items.Item;
 import model.items.Item.ItemType;
+import model.items.Pokeball.PokeballType;
 import model.items.Potion;
+import model.items.Potion.PotionType;
 import model.map.PokeMap;
 import model.player.Player;
+import model.player.PlayerImpl;
 import model.pokemon.Move;
+import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.pokemon.Stat;
+import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
+import model.utilities.Pair;
+import view.sprite.PlayerSprite;
 
 /**
  * This is the main controller of the game. It contains all the other controllers.
@@ -41,6 +51,10 @@ import model.squad.Squad;
  */
 public final class MainController implements Controller {
 
+    private static final int DEFAULT_LVL = 5;
+    private static final int DEFAULT_QUANTITY = 10;
+    private static final int NO_ITEM = 0;
+    private static final int NO_SPEED = 0;
     private FightController fightController;
     private LoadController loadController;
     private MusicController musicController;
@@ -245,5 +259,47 @@ public final class MainController implements Controller {
     @Override
     public void depositPokemon(final Pokemon p) throws PokemonNotFoundException, OnlyOnePokemonInSquadException {
         this.model.getPlayer().getBox().depositPokemon(p, this.model.getPlayer().getSquad());
+    }
+    
+    @Override
+    public void teleportToCenter() {
+        final int x = MainController.getController().getPokeMap().getPokemonCenterSpawnPosition().getX();
+        final int y = MainController.getController().getPokeMap().getPokemonCenterSpawnPosition().getY();
+        PlayerSprite.getSprite().setPlayerPosition(x, y);
+        PlayerSprite.getSprite().setVelocity(NO_SPEED, NO_SPEED);
+        this.model.getPlayer().setPosition(x, y);
+        this.model.getPlayer().getSquad().healAllPokemon(MainController.getController().getPokeMap());
+    }
+
+    @Override
+    public void initInventory() {
+        Map<String, Integer> potionList = new HashMap<>();
+        Map<String, Integer> boostList = new HashMap<>();
+        Map<String, Integer> ballList = new HashMap<>();
+        potionList.put(PotionType.POTION.name(), DEFAULT_QUANTITY);
+        potionList.put(PotionType.SUPERPOTION.name(), NO_ITEM);
+        potionList.put(PotionType.HYPERPOTION.name(), NO_ITEM);
+        boostList.put(Stat.SPD.name() + "X", NO_ITEM);
+        boostList.put(Stat.DEF.name() + "X", NO_ITEM);
+        boostList.put(Stat.ATK.name() + "X", NO_ITEM);
+        ballList.put(PokeballType.Greatball.name(), NO_ITEM);
+        ballList.put(PokeballType.Ultraball.name(), NO_ITEM);
+        ballList.put(PokeballType.Pokeball.name(), DEFAULT_QUANTITY);     
+        this.model.getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+    }
+
+    @Override
+    public Pair<Integer, Integer> getInitialPosition() {
+        return new Pair<Integer, Integer>(PlayerImpl.START_X, PlayerImpl.START_Y);
+    }
+    
+    @Override
+    public Pair<Integer, Integer> getDefaultInitialPosition() {
+        return new Pair<Integer, Integer>(PlayerImpl.DEFAULT_START_X, PlayerImpl.DEFAULT_START_Y);
+    }
+
+    @Override
+    public void addPokemonToSquad(final Pokedex p) throws SquadFullException {
+        this.model.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(p, DEFAULT_LVL));
     }
 }

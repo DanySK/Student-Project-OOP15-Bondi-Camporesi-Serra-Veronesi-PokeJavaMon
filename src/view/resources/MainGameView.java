@@ -1,8 +1,5 @@
 package view.resources;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -20,10 +17,6 @@ import controller.MainController;
 import controller.parameters.Img;
 import controller.parameters.Maps;
 import controller.parameters.State;
-import model.items.Pokeball.PokeballType;
-import model.items.Potion.PotionType;
-import model.player.PlayerImpl;
-import model.pokemon.Stat;
 import view.sprite.PlayerSprite;
 
 public class MainGameView implements Screen {  
@@ -69,19 +62,7 @@ public class MainGameView implements Screen {
         MainController.getController().updateStatus(State.WALKING);
 	// Init the Inventory
 	if (newGame) {
-	    Map<String, Integer> potionList = new HashMap<>();
-	        Map<String, Integer> boostList = new HashMap<>();
-	        Map<String, Integer> ballList = new HashMap<>();
-	        potionList.put(PotionType.POTION.name(), 10);
-	        potionList.put(PotionType.SUPERPOTION.name(), 0);
-	        potionList.put(PotionType.HYPERPOTION.name(), 0);
-	        boostList.put(Stat.SPD.name() + "X", 0);
-	        boostList.put(Stat.DEF.name() + "X", 0);
-	        boostList.put(Stat.ATK.name() + "X", 0);
-	        ballList.put(PokeballType.Greatball.name(), 0);
-	        ballList.put(PokeballType.Ultraball.name(), 100);
-	        ballList.put(PokeballType.Pokeball.name(), 10);     
-	        MainController.getController().getModel().getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+	    MainController.getController().initInventory();
 	}
 	// End Init
         renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap());                    
@@ -98,10 +79,14 @@ public class MainGameView implements Screen {
 	TextureRegion gain = new TextureRegion(tx);
 	sp = new Sprite(gain);		
 	pls = PlayerSprite.getSprite();
+	final int START_X = MainController.getController().getInitialPosition().getX();
+        final int START_Y = MainController.getController().getInitialPosition().getY();
+        final int DEFAULT_START_X = MainController.getController().getDefaultInitialPosition().getX();
+        final int DEFAULT_START_Y = MainController.getController().getDefaultInitialPosition().getY();
 	if (newGame) {
 	    //TODO Magic numbers... c'è un metodo nella mappa
-	    pls.setBounds(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16  : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16  : (299 -PlayerImpl.DEFAULT_START_Y) * 16, 15.9f, 15.9f);
-	    if (PlayerImpl.START_X < 0) {
+	    pls.setBounds(START_X > 0 ? START_X * 16  : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16  : (299 - DEFAULT_START_Y) * 16, 15.9f, 15.9f);
+	    if (START_X < 0) {
 	        System.out.println("Initial Position not found");
 	    } 
 	} else {
@@ -110,10 +95,10 @@ public class MainGameView implements Screen {
 	        pls.setBounds(MainController.getController().getPlayer().getTileX()*16, (299 - MainController.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 		pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		if (PlayerImpl.START_X < 0) {
+		if (START_X < 0) {
 		    System.out.println("Initial Position not found");
 		}
-		pls.setPosition(PlayerImpl.START_X > 0 ? PlayerImpl.START_X * 16 : PlayerImpl.DEFAULT_START_X * 16, PlayerImpl.START_Y > 0 ? (299 - PlayerImpl.START_Y) * 16 : (299 - PlayerImpl.DEFAULT_START_Y) * 16);
+		pls.setPosition(START_X > 0 ? START_X * 16 : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16 : (299 - DEFAULT_START_Y) * 16);
 	    }
 	}	        
     }
