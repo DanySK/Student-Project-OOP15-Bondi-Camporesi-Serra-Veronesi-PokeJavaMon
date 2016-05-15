@@ -19,6 +19,7 @@ import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 
 public abstract class AbstractFight extends BasicFight implements Fight {
+
     protected static final int ATTACKS_TO_DO = 2;
     protected static final int EXP_COEFFICIENT = 7;
     protected static final String EXP_MESSAGE = "Exp gained: ";
@@ -124,8 +125,8 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         switch(itemToUse.getType()) {
         case BOOST:
             final Boost boost = (Boost) itemToUse;
-            allyPkmsBoosts.get(allyPkm).replace(boost.getStat(), 
-                    allyPkmsBoosts.get(allyPkm).get(boost.getStat()) + boost.getCoeff());
+            final Double newBoostValue = getAllyBoost(boost.getStat()) + boost.getCoeff();
+            setAllyBoost(boost.getStat(), newBoostValue);
             break;
         case POKEBALL:
             if (useBall(itemToUse)) {

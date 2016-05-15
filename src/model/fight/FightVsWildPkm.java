@@ -42,12 +42,12 @@ public class FightVsWildPkm extends AbstractFight {
     }
 
     @Override
-    protected double getEnemyBoost(final Stat stat) {
+    public double getEnemyBoost(final Stat stat) {
         return enemyPkmBoosts.get(stat);
     }
 
     @Override
-    protected void setEnemyBoost(final Stat stat, final Double d) {
+    public void setEnemyBoost(final Stat stat, final Double d) {
         enemyPkmBoosts.replace(stat, d);
     }
 

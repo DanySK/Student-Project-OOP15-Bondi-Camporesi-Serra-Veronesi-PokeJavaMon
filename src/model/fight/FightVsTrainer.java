@@ -67,12 +67,12 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     @Override
-    protected double getEnemyBoost(final Stat stat) {
+    public double getEnemyBoost(final Stat stat) {
         return enemyPkmsBoosts.get(enemyPkm).get(stat);
     }
 
     @Override
-    protected void setEnemyBoost(final Stat stat, final Double d) {
+    public void setEnemyBoost(final Stat stat, final Double d) {
         enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
     }
 
@@ -194,7 +194,7 @@ public class FightVsTrainer extends AbstractFight {
 
     protected void trainerChange() {
         //manda il primo pkm che trova e che ha un tipo superefficace contro l'allyPkm
-        for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
+        for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
             if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
                     pkm.getPokemon().getFirstType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())
                     || STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
