@@ -97,12 +97,13 @@ class StarterPanel extends JPanel {
     private BufferedImage image3;
     
     public StarterPanel() {
-        this.loadImages(image1, FrontSpriteImage.BULBASAUR);
-        this.loadImages(image2, FrontSpriteImage.CHARMANDER);
-    	this.loadImages(image3, FrontSpriteImage.SQUIRTLE);
+        this.image1 = this.loadImages(FrontSpriteImage.BULBASAUR);
+        this.image2 = this.loadImages(FrontSpriteImage.CHARMANDER);
+    	this.image3 = this.loadImages(FrontSpriteImage.SQUIRTLE);
     }
     
-    private void loadImages(BufferedImage b, final FrontSpriteImage s) {
+    private BufferedImage loadImages(final FrontSpriteImage s) {
+        BufferedImage b = null;
         try {                
             b = ImageIO.read(new File(s.getAbsolutePath()));
         } catch (Exception ex) {
@@ -112,6 +113,7 @@ class StarterPanel extends JPanel {
                 System.out.println("CANNOT LOAD SPRITE");
             }
         }
+        return b;
     }
     
     @Override
