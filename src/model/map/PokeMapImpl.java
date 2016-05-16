@@ -189,10 +189,10 @@ public class PokeMapImpl implements PokeMap {
 				this.pokeCenterSpawn = new Position(tileX, tileY);
 				this.map[tileX][tileY] = TileType.DEFEAT;
 			
-			} else if (cellProperty.equals(TileType.ENCOUNTER.toString())) {
+			} else if (cellProperty.equals(TileType.SINGLE_ENCOUNTER_TILE.toString())) {
 				this.tileEncounters.add(new EncounterTile(Pokedex.valueOf(mp.get("pokemon", String.class)), 
 						Integer.parseInt(mp.get("lvl", String.class)), tileX, tileY, Direction.SOUTH, mp.get("cry", String.class)));
-				this.map[tileX][tileY] = TileType.ENCOUNTER;
+				this.map[tileX][tileY] = TileType.SINGLE_ENCOUNTER_TILE;
 				System.out.println(new Position(tileX, tileY) + " = EncounterTile of " + mp.get("pokemon", String.class));
 				System.out.println(this.tileEncounters);
 			}
@@ -520,7 +520,7 @@ public class PokeMapImpl implements PokeMap {
     }
     
     public Optional<EncounterTile> getEncounterTile(final int x, final int y) {
-		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.ENCOUNTER) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.SINGLE_ENCOUNTER_TILE) {
 			for (final EncounterTile et : this.tileEncounters) {
 				if (et.getTileX() == x && et.getTileY() == y) {
 					return Optional.of(et);
@@ -530,6 +530,14 @@ public class PokeMapImpl implements PokeMap {
 		return Optional.empty();
     }
 	
+    public void deleteEncounterTile(final int x, final int y) {
+    	for (final EncounterTile et : this.tileEncounters) {
+    		if (et.tileX == x && et.tileY == y) {
+    			this.tileEncounters.remove(et);
+    			return;
+    		}
+    	}
+    }
 	
 	@Override
 	public PokeMarket getPokeMarket() {
