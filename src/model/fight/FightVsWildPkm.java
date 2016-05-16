@@ -18,6 +18,11 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 
+/**
+ * A concrete class which deals operations to manage a fight against a 
+ * wild {@link model.pokemon.Pokemon}.
+ *
+ */
 public class FightVsWildPkm extends AbstractFight {
 
     private static final int COEFFICIENT_PROB = 255;
@@ -131,7 +136,6 @@ public class FightVsWildPkm extends AbstractFight {
                 MainController.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
             }
         }
-        reset();
     }
 
     public int getExp() {

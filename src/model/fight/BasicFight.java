@@ -10,11 +10,18 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.pokemon.WeaknessTable;
 
+/**
+ * Abstract class which provides the basic method for perform operation in fight classes 
+ * that implements the interface {@link model.fight.Fight}.
+ * 
+ * This class is extended by {@link model.fight.AbstractFight}.
+ */
 public abstract class BasicFight {
     protected static final int FIRST_ELEM = 0;
-    protected static final int BALANCE_BOOST_MOVE = 100;
+    protected static final double BOOST_COEFF = 0.15;
+    protected static final double BOOST_COEFF_INCR = 2;
     protected static final double MIN_BOOST_VALUE = 0.25;
-    protected static final double MAX_BOOST_VALUE = 1.75;
+    protected static final double MAX_BOOST_VALUE = 2.8;
     protected static final double STAB_ACTIVE = 1.5;
     protected static final double STAB_DISABLED = 1;
     protected static final int SUPER_EFFECTIVE = 2;
@@ -35,7 +42,7 @@ public abstract class BasicFight {
     protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
     protected Move moveToLearn;
 
-    protected BasicFight(){
+    protected BasicFight() {
         moveToLearn = Move.NULLMOVE;
         allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
         for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
@@ -59,21 +66,20 @@ public abstract class BasicFight {
     }
 
     public void allyTurn(final Move move) {
-        if (move.getStat() == Stat.MAX_HP) {
-            applyDamage(allyPkm, enemyPkm, move);
-            checkAndSetIsExhausted(enemyPkm);
-        } else {
-            applyMoveOnBoost(allyPkm, enemyPkm, move);
-        }
+        applyMove(move, allyPkm, enemyPkm);
     }
 
     public void enemyTurn() {
         enemyMove = calculationEnemyMove();
-        if (enemyMove.getStat() == Stat.MAX_HP) {
-            applyDamage(enemyPkm, allyPkm, enemyMove);
-            checkAndSetIsExhausted(allyPkm);
+        applyMove(enemyMove, enemyPkm, allyPkm);
+    }
+
+    protected void applyMove(final Move move, final PokemonInBattle striker, final PokemonInBattle stricken) {
+        if (move.getStat() == Stat.MAX_HP) {
+            applyDamage(striker, stricken, move);
+            checkAndSetIsExhausted(stricken);
         } else {
-            applyMoveOnBoost(enemyPkm, allyPkm, enemyMove);
+            applyMoveOnBoost(striker, stricken, move);
         }
     }
 
@@ -91,18 +97,18 @@ public abstract class BasicFight {
 
     public abstract void setEnemyBoost(final Stat stat, final Double d);
 
-    public double getAllyBoost(final Stat stat){
+    public double getAllyBoost(final Stat stat) {
         return allyPkmsBoosts.get(allyPkm).get(stat);
     }
 
-    public void setAllyBoost(final Stat stat, final Double d){
+    public void setAllyBoost(final Stat stat, final Double d) {
         allyPkmsBoosts.get(allyPkm).replace(stat, d);
     }
 
-    protected void applyMoveOnBoost(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
+    protected void applyMoveOnBoost(final PokemonInBattle striker, final PokemonInBattle stricken, final Move move) {
         double newBoostValue;
-        double moveValue = (double) move.getValue() / BALANCE_BOOST_MOVE;
-        if (allyPkm.equals(stricker)) {
+        double moveValue = move.getValue() * BOOST_COEFF;
+        if (allyPkm.equals(striker)) {
             if (move.isOnEnemy()) {
                 newBoostValue = getEnemyBoost(move.getStat()) - moveValue;
                 if (newBoostValue < MIN_BOOST_VALUE) {
@@ -111,7 +117,7 @@ public abstract class BasicFight {
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             } else {
-                newBoostValue = getAllyBoost(move.getStat()) + moveValue;
+                newBoostValue = getAllyBoost(move.getStat()) + (moveValue * BOOST_COEFF_INCR);
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
                     allyEff = Effectiveness.CANNOTINCREASE;
@@ -135,50 +141,36 @@ public abstract class BasicFight {
                 setEnemyBoost(move.getStat(), newBoostValue);
             }
         }
-        //DA ELIMINAREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-        if (allyPkm.equals(stricker)) {
-            if (move.isOnEnemy()) {
-                System.out.println(this.getEnemyBoost(move.getStat()));
-            } else {
-                System.out.println(this.getAllyBoost(move.getStat()));
-            }
-        } else {
-            if (move.isOnEnemy()) {
-                System.out.println(this.getAllyBoost(move.getStat()));
-            } else {
-                System.out.println(this.getEnemyBoost(move.getStat()));
-            }
-        }
     }
 
-    protected void applyDamage(final PokemonInBattle stricker, final PokemonInBattle stricked, final Move move) {
-        isEffective(stricker, stricked, move);
-        stab = stabCalculation(stricker, move);
+    protected void applyDamage(final PokemonInBattle striker, final PokemonInBattle stricken, final Move move) {
+        isEffective(striker, stricken, move);
+        stab = stabCalculation(striker, move);
         final double atkBoost;
         final double defBoost;
-        if (stricker.equals(allyPkm)) {
+        if (striker.equals(allyPkm)) {
             atkBoost = getAllyBoost(Stat.ATK);
             defBoost = getEnemyBoost(Stat.DEF);
         } else {
             atkBoost = getEnemyBoost(Stat.ATK);
             defBoost = getAllyBoost(Stat.DEF);
         }
-        final int damageDone = damageCalculation(stricker, stricked, atkBoost, defBoost, move);
-        stricked.damage(damageDone);
+        final int damageDone = damageCalculation(striker, stricken, atkBoost, defBoost, move);
+        stricken.damage(damageDone);
     }
 
-    protected void isEffective(final PokemonInBattle stricker, final PokemonInBattle stricked, 
+    protected void isEffective(final PokemonInBattle striker, final PokemonInBattle stricken, 
             final Move move) {
-        effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricked.getPokemon().getFirstType(),
-                stricked.getPokemon().getSecondType());
+        effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricken.getPokemon().getFirstType(),
+                stricken.getPokemon().getSecondType());
         if (effectiveValue >= SUPER_EFFECTIVE) {
-            if (stricker.equals(allyPkm)) {
+            if (striker.equals(allyPkm)) {
                 allyEff = Effectiveness.SUPEREFFECTIVE;
             } else {
                 enemyEff = Effectiveness.SUPEREFFECTIVE;
             }
         } else if (effectiveValue <= LESS_EFFECTIVE) {
-            if (stricker.equals(allyPkm)) {
+            if (striker.equals(allyPkm)) {
                 allyEff = Effectiveness.LESSEFFECTIVE;
             } else {
                 enemyEff = Effectiveness.LESSEFFECTIVE;
@@ -186,18 +178,18 @@ public abstract class BasicFight {
         }
     }
 
-    protected double stabCalculation(final PokemonInBattle stricker, final Move move) {
-        if (stricker.getPokemon().getFirstType() == move.getType() 
-                || stricker.getPokemon().getSecondType() == move.getType()) {
+    protected double stabCalculation(final PokemonInBattle striker, final Move move) {
+        if (striker.getPokemon().getFirstType() == move.getType() 
+                || striker.getPokemon().getSecondType() == move.getType()) {
             return STAB_ACTIVE;
         }
         return 1;
     }
 
-    protected int damageCalculation(final PokemonInBattle stricker, final PokemonInBattle stricked, 
+    protected int damageCalculation(final PokemonInBattle striker, final PokemonInBattle stricken, 
             final double atkBoost, final double defBoost, final Move move) {
-        final int damage = (int) ((((2 * stricker.getStat(Stat.LVL) + 10) * (stricker.getStat(Stat.ATK) 
-                * atkBoost * move.getValue())) / ((stricked.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
+        final int damage = (int) ((((2 * striker.getStat(Stat.LVL) + 10) * (striker.getStat(Stat.ATK) 
+                * atkBoost * move.getValue())) / ((stricken.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
         if (damage <= 0) {
             return MIN_DAMAGE;
         }
@@ -224,25 +216,24 @@ public abstract class BasicFight {
         double baseExp;
         switch(enemyPkm.getPokemon().getRarity()){
         case COMMON:
-            baseExp = 120;
+            baseExp = 80;
             break;
         case UNCOMMON:
-            baseExp = 150;
+            baseExp = 100;
             break;
         case RARE:
-            baseExp = 180;
+            baseExp = 120;
             break;
         case VERY_RARE:
-            baseExp = 230;
+            baseExp = 150;
             break;
         case STARTER:
-            baseExp = 280;
+            baseExp = 180;
             break;
         case LEGENDARY:
-            baseExp = 450;
+            baseExp = 300;
             break;
-        case UNFINDABLE:
-        	baseExp = 350;
+        //default ricopre il caso unfindable
         default:
             baseExp = 0;
         }
