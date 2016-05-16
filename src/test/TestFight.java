@@ -309,8 +309,8 @@ public class TestFight {
         fightTr.giveExpAndCheckLvlUp(fightTr.getExp());
         pkmsToEvolve = fightTr.getPkmsThatMustEvolve();
         fightTr.evolvePkms();
-        assertSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE, pkmsToEvolve.get(FIRST_ELEM).getPokemon());
-        assertSame("Squirtle must be evolved in wartortle!", Pokedex.WARTORTLE, pkmsToEvolve.get(SECOND_ELEM).getPokemon());
+        assertSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE, pkmsToEvolve.get(FIRST_ELEM).getPokedexEntry());
+        assertSame("Squirtle must be evolved in wartortle!", Pokedex.WARTORTLE, pkmsToEvolve.get(SECOND_ELEM).getPokedexEntry());
     }
 
 }

@@ -86,7 +86,7 @@ public class SquadImpl implements Squad {
     public String toString() {
         String retString = "";
         for (final PokemonInBattle p : this.pokemonInSquad) {
-            retString = retString + " " + p.getPokemon().getName() + ",lvl= " + p.getStat(Stat.LVL) + " /";
+            retString = retString + " " + p.getPokedexEntry().getName() + ",lvl= " + p.getStat(Stat.LVL) + " /";
         }
         return retString;
     }

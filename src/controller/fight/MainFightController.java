@@ -91,7 +91,7 @@ public class MainFightController implements FightController {
         final List<String> names = new ArrayList<>();
         if (!evolutions.isEmpty()) {
             for (final PokemonInBattle p : evolutions) {
-                names.add(p.getPokemon().name());
+                names.add(p.getPokedexEntry().name());
             }
             this.fight.evolvePkms();
         } 

@@ -82,7 +82,7 @@ public class MainSaveController implements SaveController {
         final Element squadra = new Element(XMLParameters.TEAM.getName());
         final List<PokemonInBattle> team = this.sv.getPokemonSquad();
         for (final Pokemon x : team) { 
-            final Element e = new Element(x.getPokemon().getName());
+            final Element e = new Element(x.getPokedexEntry().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
             e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
             e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getStat(Stat.EXP)));
@@ -159,7 +159,7 @@ public class MainSaveController implements SaveController {
         final Element box = new Element(XMLParameters.BOX.getName());
         final Box b = this.sv.getBox();
         for (final Pokemon x : b.getPokemonList()) { 
-            final Element e = new Element(x.getPokemon().getName());
+            final Element e = new Element(x.getPokedexEntry().getName());
             e.setAttribute(XMLParameters.LV.getName(),Integer.toString(x.getStat(Stat.LVL)));
             e.setAttribute(XMLParameters.HP.getName(),Integer.toString(x.getCurrentHP()));
             e.setAttribute(XMLParameters.EXP.getName(),Integer.toString(x.getStat(Stat.EXP)));

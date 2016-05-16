@@ -60,9 +60,9 @@ public class FightScreen extends JWindow implements MyFrame {
         	namePanel = new JPanel();           
             namePanel.setLayout(new GridLayout(1, 0, 0, 0));
         	namePanel.setBounds(50, 5, 450, 10);
-            allyName_Lvl = new JLabel (MainController.getController().getSquad().getPokemonList().get(0).getPokemon().name() +   " Lv "  + MainController.getController().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            allyName_Lvl = new JLabel (MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().name() +   " Lv "  + MainController.getController().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
-            enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
+            enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
             namePanel.add(enemyName_Lvl);
             this.add(namePanel);
             movesPanel = new JPanel();
@@ -199,9 +199,9 @@ public class FightScreen extends JWindow implements MyFrame {
             namePanel = new JPanel();
             namePanel.setLayout(new GridLayout(1, 0, 0, 0));
             namePanel.setBounds(50, 5, 450, 10);
-            allyName_Lvl = new JLabel (""+ MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getPokemon().name() + " Lv " + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            allyName_Lvl = new JLabel (""+ MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getPokedexEntry().name() + " Lv " + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
-            enemyName_Lvl = new JLabel (""+ MainController.getController().getEnemyPokemonInFight().getPokemon().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
+            enemyName_Lvl = new JLabel (""+ MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
             namePanel.add(enemyName_Lvl);
             this.add(namePanel);
             mainPanel = new MyPanel();
@@ -368,19 +368,19 @@ class MyPanel extends JPanel {
     public void paint(Graphics g) {
         super.paintComponent(g);
         try {
-            image = ImageIO.read(new File(MainController.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getAbsolutePath()));
+            image = ImageIO.read(new File(MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getFrontSprite().getAbsolutePath()));
         } catch (Exception e) {
             try {
-                image = ImageIO.read(new File(MainController.getController().getEnemyPokemonInFight().getPokemon().getFrontSprite().getResourcePath()));
+                image = ImageIO.read(new File(MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getFrontSprite().getResourcePath()));
             } catch (IOException e1) {
                 System.out.println("CANNOT LOAD FRONTSPRITEFOLDER SPRITE");
             }
         }
         try {                
-            image2 = ImageIO.read(new File(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getAbsolutePath()));
+            image2 = ImageIO.read(new File(MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().getBackSprite().getAbsolutePath()));
         } catch (Exception ex) {
             try {
-                image2 = ImageIO.read(new File(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().getBackSprite().getResourcePath()));
+                image2 = ImageIO.read(new File(MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().getBackSprite().getResourcePath()));
             } catch (IOException e) {
                 System.out.println("CANNOT LOAD BACKSPRITEFOLDER SPRITE");
             }
