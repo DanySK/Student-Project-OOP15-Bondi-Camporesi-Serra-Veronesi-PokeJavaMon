@@ -131,7 +131,6 @@ public class FightVsWildPkm extends AbstractFight {
                 MainController.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
             }
         }
-        reset();
     }
 
     public int getExp() {
