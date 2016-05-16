@@ -36,7 +36,7 @@ public class InventoryImpl implements Inventory {
         
         this.boosts = new HashMap<>();
         for (final Stat s : Stat.values()) {
-            if (s != Stat.HP && s != Stat.EXP && s != Stat.LVL) {
+            if (s != Stat.MAX_HP && s != Stat.EXP && s != Stat.LVL) {
                 boosts.put(new Boost(s), 0);
             }
         }
@@ -79,7 +79,7 @@ public class InventoryImpl implements Inventory {
 		        Map<Boost, Integer> boo = new HashMap<>();
 			for (final String s : boostList.keySet()) {
 				for (final Stat stat : Stat.values()) {
-					if (stat == Stat.EXP || stat == Stat.HP || stat == Stat.LVL) {
+					if (stat == Stat.EXP || stat == Stat.MAX_HP || stat == Stat.LVL) {
 						continue;
 					}
 					if (s.toUpperCase().equals(stat.name().toUpperCase()+"X")) {

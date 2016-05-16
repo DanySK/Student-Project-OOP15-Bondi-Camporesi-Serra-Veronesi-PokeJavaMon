@@ -136,7 +136,7 @@ public enum Pokedex {
     SLOWBRO("Slowbro",       PokemonType.WATER,  PokemonType.PSYCHIC, 95,  75, 110,   30,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.SLOWBRO, BackSpriteImage.SLOWBRO),
  
     MAGNEMITE("Magnemite",   PokemonType.ELECTR,  PokemonType.STEEL,  25,  35,  70,   45,  PokemonRarity.UNCOMMON,   30, "MAGNETON",   new HashMap<>(), FrontSpriteImage.MAGNEMITE, BackSpriteImage.MAGNEMITE),
-    MAGNETON("Magneton",     PokemonType.ELECTR,  PokemonType.STEEL,  50,  75,  95,   75,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.MAGNETON, BackSpriteImage.MAGNETON),
+    MAGNETON("Magneton",     PokemonType.ELECTR,  PokemonType.STEEL,  50,  75,  95,   75,  PokemonRarity.VERY_RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.MAGNETON, BackSpriteImage.MAGNETON),
  
     FARFETCHD("Farfetchd",   PokemonType.FLYING,  PokemonType.NORMAL, 75,  90,  80,   100,  PokemonRarity.VERY_RARE,  -1, "",           new HashMap<>(), FrontSpriteImage.FARFETCHD, BackSpriteImage.FARFETCHD),
 

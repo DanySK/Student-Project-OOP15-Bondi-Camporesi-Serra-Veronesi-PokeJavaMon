@@ -79,9 +79,9 @@ public class FightVsWildPkm extends AbstractFight {
             if (turnOrder) {
                 allyTurn(move);
                 if (isEnemyExhausted) {
-                    final int hpBeforeLvUp = allyPkm.getStat(Stat.HP);
+                    final int hpBeforeLvUp = allyPkm.getStat(Stat.MAX_HP);
                     if (giveExpAndCheckLvlUp(getExp())) {
-                        int hpAfterLvUp = allyPkm.getStat(Stat.HP);
+                        int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
                         allyPkm.heal(hpAfterLvUp);
                         if (allyPkm.getPokemon().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
