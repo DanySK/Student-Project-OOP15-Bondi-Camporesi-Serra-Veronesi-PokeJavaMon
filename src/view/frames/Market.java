@@ -22,14 +22,23 @@ public class Market extends JWindow implements MyFrame {
         
     private static final long serialVersionUID = 8636920096874072291L;
     private JPanel panel;
-    private final ArrayList<String>Name1 = new ArrayList<String>();
-    private final ArrayList<String>Name2 = new ArrayList<String>();
-    private final ArrayList<String>Prz = new ArrayList<String>();
-    private final ArrayList<String>Qnt = new ArrayList<String>();
-    private final ArrayList<Item> it = new ArrayList<Item>();
-    private int cols = 1;
+    private final ArrayList<String>Name1;
+    private final ArrayList<String>Name2;
+    private final ArrayList<String>Prz;
+    private final ArrayList<String>Qnt;
+    private final ArrayList<Item> it;
+    private int cols;
     private JButton use;
     private JButton exit;
+    
+    public Market() {
+        this.Name1 = new ArrayList<String>();
+        this.Name2 = new ArrayList<String>();
+        this.Prz = new ArrayList<String>();
+        this.Qnt = new ArrayList<String>();
+        this.it = new ArrayList<Item>();
+        this.cols = 1;    
+    }
 
     @Override
     public void showFrame() {

@@ -19,44 +19,52 @@ public class BoxMenu extends JWindow implements MyFrame {
     private static final long serialVersionUID = 6312860320430410019L;
     private JPanel panel;
     private JScrollPane pn;
-    private final ArrayList<String> names = new ArrayList<String>();
-    private final ArrayList<String> lvl = new ArrayList<String>();
-    private final ArrayList<String> cHP = new ArrayList<String>();
-    private final ArrayList<String> mHP = new ArrayList<String>();
-    private final ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
+    private final ArrayList<String> names;
+    private final ArrayList<String> lvl;
+    private final ArrayList<String> cHP;
+    private final ArrayList<String> mHP;
+    private final ArrayList<Pokemon> pk;
     private int cols = 1;
     private JButton info;
     private JButton withdraw;
     private JButton exit;
     
+    public BoxMenu() {
+        this.names = new ArrayList<String>();
+        this.lvl = new ArrayList<String>();
+        this.cHP = new ArrayList<String>();
+        this.mHP = new ArrayList<String>();
+        this.pk = new ArrayList<Pokemon>();
+    }
+    
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
-        panel = new JPanel();
-        pn = new JScrollPane(panel);
-        this.setContentPane(pn);     
-        panel.setBorder(new LineBorder(Color.GRAY, 4));
-        panel.setLayout(new GridLayout(1,1));      
-        names.add("NAME");
-        lvl.add("LEVEL");
-        cHP.add("HEALTH POINTS");
-        mHP.add("");
-        pk.add(null);     
+        this.panel = new JPanel();
+        this.pn = new JScrollPane(this.panel);
+        this.setContentPane(this.pn);     
+        this.panel.setBorder(new LineBorder(Color.GRAY, 4));
+        this.panel.setLayout(new GridLayout(1,1));      
+        this.names.add("NAME");
+        this.lvl.add("LEVEL");
+        this.cHP.add("HEALTH POINTS");
+        this.mHP.add("");
+        this.pk.add(null);     
         for (Pokemon p : MainController.getController().getBox().getPokemonList()) {
-            names.add(p.getPokemon().name()); // Nome Pkmn
-            lvl.add("" + p.getStat(Stat.LVL)); // Livello
-            mHP.add("" + p.getCurrentHP() + "/" + p.getStat(Stat.HP));
-            cHP.add("" + p.getCurrentHP());
-            pk.add(p);
+            this.names.add(p.getPokemon().name()); // Nome Pkmn
+            this.lvl.add("" + p.getStat(Stat.LVL)); // Livello
+            this.mHP.add("" + p.getCurrentHP() + "/" + p.getStat(Stat.HP));
+            this.cHP.add("" + p.getCurrentHP());
+            this.pk.add(p);
         }  
-        for(int i = 0; i<names.size();i++) {
+        for(int i = 0; i<this.names.size();i++) {
             if (i == 0) {
-            	panel.add(new JLabel(names.get(i)));
-            	panel.add(new JLabel(lvl.get(i)));
-            	panel.add(new JLabel(cHP.get(i)));
-            	panel.add(new JLabel(""));
-                exit = new JButton("EXIT");
-                exit.addActionListener(new ActionListener() {
+                this.panel.add(new JLabel(this.names.get(i)));
+            	this.panel.add(new JLabel(this.lvl.get(i)));
+            	this.panel.add(new JLabel(this.cHP.get(i)));
+            	this.panel.add(new JLabel(""));
+            	this.exit = new JButton("EXIT");
+            	this.exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -64,14 +72,14 @@ public class BoxMenu extends JWindow implements MyFrame {
                         View.getView().resumeCurrent();
                     }
                 });
-                panel.add(exit);
+            	this.panel.add(this.exit);
             } else {
-                final Pokemon pokmn = pk.get(i);
-                panel.add(new JLabel(names.get(i)));
-                panel.add(new JLabel(lvl.get(i)));
-                panel.add(new JLabel(mHP.get(i)));
-                info = new JButton("INFO");
-                info.addActionListener(new ActionListener() {
+                final Pokemon pokmn = this.pk.get(i);
+                this.panel.add(new JLabel(this.names.get(i)));
+                this.panel.add(new JLabel(this.lvl.get(i)));
+                this.panel.add(new JLabel(this.mHP.get(i)));
+                this.info = new JButton("INFO");
+                this.info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pokmn;
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -81,9 +89,9 @@ public class BoxMenu extends JWindow implements MyFrame {
                         View.getView().showCurrent();
                     }
                 });
-                panel.add(info);
-                withdraw = new JButton("WITHDRAW");
-                withdraw.addActionListener(new ActionListener() {
+                this.panel.add(info);
+                this.withdraw = new JButton("WITHDRAW");
+                this.withdraw.addActionListener(new ActionListener() {
                     final Pokemon selected = pokmn;
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -105,15 +113,15 @@ public class BoxMenu extends JWindow implements MyFrame {
                         }
                     }
                 });
-                panel.add(withdraw);
+                this.panel.add(this.withdraw);
             }               
         }
-        panel.setLayout(new GridLayout(names.size(), cols));
-        this.setSize(900,100 * names.size());
-        if (names.size() > 6) {
+        this.panel.setLayout(new GridLayout(this.names.size(), this.cols));
+        this.setSize(900,100 * this.names.size());
+        if (this.names.size() > 6) {
             this.setSize(800,600);
         } else {
-            this.setSize(800,100 * names.size());
+            this.setSize(800,100 * this.names.size());
         }
         this.setVisible(true);
     }

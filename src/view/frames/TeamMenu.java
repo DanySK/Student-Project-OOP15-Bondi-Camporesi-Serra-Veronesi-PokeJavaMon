@@ -20,11 +20,11 @@ public class TeamMenu extends JWindow implements MyFrame {
         
     private static final long serialVersionUID = 4848482754813638374L;
     private JPanel panel;
-    private final ArrayList<String>names = new ArrayList<String>();
-    private final ArrayList<String>lvl = new ArrayList<String>();
-    private final ArrayList<String>cHP = new ArrayList<String>();
-    private final ArrayList<String>mHP = new ArrayList<String>();
-    private final ArrayList<Pokemon> pk = new ArrayList<Pokemon>();
+    private final ArrayList<String>names;
+    private final ArrayList<String>lvl;
+    private final ArrayList<String>cHP;
+    private final ArrayList<String>mHP;
+    private final ArrayList<Pokemon> pk;
     private int cols = 1;
     private JButton info;
     private JButton set;
@@ -36,6 +36,11 @@ public class TeamMenu extends JWindow implements MyFrame {
     public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;
         this.isChangingPoke = b2;
+        this.names = new ArrayList<String>();
+        this.lvl = new ArrayList<String>();
+        this.cHP = new ArrayList<String>();
+        this.mHP = new ArrayList<String>();
+        this.pk = new ArrayList<Pokemon>();
     }
     
     @Override

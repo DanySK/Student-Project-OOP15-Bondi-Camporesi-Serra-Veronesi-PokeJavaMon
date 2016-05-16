@@ -20,51 +20,50 @@ public class FirstMenu {
     private JPanel pane;
     private JLabel text;
     private JButton newGame;
-    private	JButton continueGame;
+    private JButton continueGame;
     
     public FirstMenu() {
-        frame = new JFrame("PokeJavaMon");
+        this.frame = new JFrame("PokeJavaMon");
     }
     
     public void title() {
         
-        frame.setResizable(false);
-        //frame.setLocation(100, 100);
+        this.frame.setResizable(false);
         try {
-            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
+            this.frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
         } catch (Exception e) {
             //TODO: Fare catch di una semplice Exception e' sbagliato
-            frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(Img.PALLA.getResourcePath()).getPath()));
+            this.frame.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(Img.PALLA.getResourcePath()).getPath()));
         }
-        pane = new JPanel();
-        text = new JLabel("Benvenuto in PokeJavaMon!!!");
-        pane.add(text);
-        pane.setPreferredSize(new Dimension(400,200));
-        text.setOpaque(false);
-        frame.setMinimumSize(new Dimension(500,300));
-        frame.setFocusable(true);
-        newGame = new JButton("NUOVA PARTITA");
-        newGame.addActionListener(new ActionListener() {
+        this.pane = new JPanel();
+        this.text = new JLabel("Welcome to PokeJavaMon!!!");
+        this.pane.add(this.text);
+        this.pane.setPreferredSize(new Dimension(400,200));
+        this.text.setOpaque(false);
+        this.frame.setMinimumSize(new Dimension(500,300));
+        this.frame.setFocusable(true);
+        this.newGame = new JButton("NEW GAME");
+        this.newGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 MainController.getController().updateStatus(State.SECOND_MENU);
                 MainController.getController().getViewController().secondMenu();
             }
         });
-        pane.add(newGame);
-        continueGame = new JButton("CONTINUA");
-        continueGame.addActionListener(new ActionListener() {
+        this.pane.add(this.newGame);
+        this.continueGame = new JButton("CONTINUE");
+        this.continueGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 MainController.getController().getViewController().map(false);
                 frame.dispose();
             }
         });
         if (!MainController.getController().saveExists()) {
-        	continueGame.setEnabled(false);
+            this.continueGame.setEnabled(false);
         }
-        pane.add(continueGame);
-        frame.add(pane);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        this.pane.add(this.continueGame);
+        this.frame.add(this.pane);
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
     }
 }

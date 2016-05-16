@@ -40,6 +40,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
             this.newMove = mv;
             this.pk = MainController.getController().getPlayer().getSquad().getPokemonList().get(0);
         }
+        
         @Override
         public void showFrame() {
                 this.setAlwaysOnTop(true); 
@@ -68,71 +69,30 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 move5.setAlignmentX(Component.CENTER_ALIGNMENT);
                 this.getContentPane().add(move5);
                 this.getContentPane().add(Box.createVerticalGlue());
-                forget1 = new JLabel("Forget:");
-                forget1.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(forget1);
-                move1 = new JButton(pk.getCurrentMoves().get(0).name());
-                move1.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(0), newMove);
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        View.getView().resumeCurrent();
-                    } 
-                });
-                move1.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(move1);
-                this.getContentPane().add(Box.createVerticalGlue());
-                forget2 = new JLabel("Forget:");
-                forget2.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(forget2);
-                move2 = new JButton(pk.getCurrentMoves().get(1).name());
-                move2.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(1), newMove);
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        View.getView().resumeCurrent();
-                    } 
-                });
-                move2.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(move2);
-                this.getContentPane().add(Box.createVerticalGlue());
-                forget3 = new JLabel("Forget:");
-                forget3.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(forget3);
-                move3 = new JButton(pk.getCurrentMoves().get(2).name());
-                move3.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(2), newMove);
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        View.getView().resumeCurrent();
-                    } 
-                });
-                move3.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(move3);
-                this.getContentPane().add(Box.createVerticalGlue());
-                forget4 = new JLabel("Forget:");
-                forget4.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(forget4);
-                move4 = new JButton(pk.getCurrentMoves().get(3).name());
-                move4.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        MainController.getController().learnMove(pk, pk.getCurrentMoves().get(3), newMove);
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        View.getView().resumeCurrent();
-                    } 
-                });
-                move4.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(move4);
-                this.getContentPane().add(Box.createVerticalGlue());
+                this.setButton(forget1, move1, 0);
+                this.setButton(forget2, move2, 1);
+                this.setButton(forget3, move3, 2);
+                this.setButton(forget4, move4, 3);
                 this.setVisible(true);
+        }
+        
+        private void setButton(JLabel l, JButton b, int x) {
+            l = new JLabel("Forget:");
+            l.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.getContentPane().add(l);
+            b = new JButton(pk.getCurrentMoves().get(x).name());
+            b.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MainController.getController().learnMove(pk, pk.getCurrentMoves().get(x), newMove);
+                    View.getView().disposeCurrent();
+                    View.getView().removeCurrent();
+                    View.getView().resumeCurrent();
+                } 
+            });
+            b.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.getContentPane().add(b);
+            this.getContentPane().add(Box.createVerticalGlue());
         }
 
         @Override

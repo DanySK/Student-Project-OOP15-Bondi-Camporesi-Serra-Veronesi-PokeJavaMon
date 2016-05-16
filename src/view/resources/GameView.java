@@ -7,11 +7,11 @@ public class GameView extends Game {
     private MainGameView pl;      
         
     public GameView(boolean bl) {
-        pl = new MainGameView(bl);
+        this.pl = new MainGameView(bl);
     }
         
     public void create() {	        
-	setScreen(pl); 
+	setScreen(this.pl); 
     }
 
     public void dispose() {	    

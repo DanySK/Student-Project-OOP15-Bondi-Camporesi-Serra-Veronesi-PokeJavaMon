@@ -29,11 +29,11 @@ public class MainGameView implements Screen {
     private boolean newGame;
     private PlayerSprite pls;
     private static Sprite sp;
-//	private Texture tx;
-//	final int START_X = MainController.getController().getInitialPosition().getX();
-//    final int START_Y = MainController.getController().getInitialPosition().getY();
-//    final int DEFAULT_START_X = MainController.getController().getDefaultInitialPosition().getX();
-//    final int DEFAULT_START_Y = MainController.getController().getDefaultInitialPosition().getY();
+    private Texture tx;
+    private static final int START_X = MainController.getController().getInitialPosition().getX();
+    private static final int START_Y = MainController.getController().getInitialPosition().getY();
+    private static final int DEFAULT_START_X = MainController.getController().getDefaultInitialPosition().getX();
+    private static final int DEFAULT_START_Y = MainController.getController().getDefaultInitialPosition().getY();
     
     public MainGameView(boolean b) {
         newGame = b;    
@@ -42,19 +42,19 @@ public class MainGameView implements Screen {
     public void render(float delta) {		
 	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);                                       
-        camera.position.set(pls.getX() + pls.getWidth() / 2, pls.getY() + pls.getHeight() / 2, 0);
-        camera.update();
-        renderer.setView(camera);
-        renderer.render(background);
-        renderer.getBatch().begin();                      
-        pls.update((SpriteBatch)renderer.getBatch());
-        renderer.getBatch().end();
-        renderer.render(foreground); 
+        this.camera.position.set(this.pls.getX() + this.pls.getWidth() / 2, this.pls.getY() + this.pls.getHeight() / 2, 0);
+        this.camera.update();
+        this.renderer.setView(this.camera);
+        this.renderer.render(this.background);
+        this.renderer.getBatch().begin();                      
+        this.pls.update((SpriteBatch)this.renderer.getBatch());
+        this.renderer.getBatch().end();
+        this.renderer.render(this.foreground); 
     } 
 		
     public void resize(int width, int height) {		
-        camera.viewportWidth = width / 2.5f;
-        camera.viewportHeight = height / 2.5f;
+        this.camera.viewportWidth = width / 2.5f;
+        this.camera.viewportHeight = height / 2.5f;
     }
 	
     public void show() {	
@@ -66,7 +66,7 @@ public class MainGameView implements Screen {
         MainController.getController().getViewController().initName();
 	MainController.getController().initializeMusicController();
         MainController.getController().updateStatus(State.WALKING);
-	if (newGame) {
+	if (this.newGame) {
 	    try {
                 MainController.getController().initializeStarter();
             } catch (SquadFullException e) {
@@ -74,64 +74,59 @@ public class MainGameView implements Screen {
             }
 	    MainController.getController().initInventory();
 	}
-        renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap());                    
-	sr = new ShapeRenderer();
-	sr.setColor(Color.CYAN);
+	this.renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap());                    
+        this.sr = new ShapeRenderer();
+	this.sr.setColor(Color.CYAN);
 	Gdx.gl.glLineWidth(3);
-	camera = new OrthographicCamera();	
-	Texture tx;
+	this.camera = new OrthographicCamera();	
 	try {
-	    tx = new Texture(Img.PLAYER.getAbsolutePath());
+	    this.tx = new Texture(Img.PLAYER.getAbsolutePath());
 	} catch (Exception e) {
-	    tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
+	    this.tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
 	}
 	TextureRegion gain = new TextureRegion(tx);
 	sp = new Sprite(gain);		
-	pls = PlayerSprite.getSprite();
-	final int START_X = MainController.getController().getInitialPosition().getX();
-        final int START_Y = MainController.getController().getInitialPosition().getY();
-        final int DEFAULT_START_X = MainController.getController().getDefaultInitialPosition().getX();
-        final int DEFAULT_START_Y = MainController.getController().getDefaultInitialPosition().getY();
+	this.pls = PlayerSprite.getSprite();
 	if (newGame) {
 	    //TODO Magic numbers... c'è un metodo nella mappa
-	    pls.setBounds(START_X > 0 ? START_X * 16  : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16  : (299 - DEFAULT_START_Y) * 16, 15.9f, 15.9f);
+	    this.pls.setBounds(START_X > 0 ? START_X * 16  : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16  : (299 - DEFAULT_START_Y) * 16, 15.9f, 15.9f);
 	    if (START_X < 0) {
 	        System.out.println("Initial Position not found");
 	    } 
 	} else {
 	    if (MainController.getController().saveExists()) {
 		MainController.getController().load();
-	        pls.setBounds(MainController.getController().getPlayer().getTileX()*16, (299 - MainController.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
+		this.pls.setBounds(MainController.getController().getPlayer().getTileX()*16, (299 - MainController.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
-		pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
+	        this.pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		if (START_X < 0) {
 		    System.out.println("Initial Position not found");
 		}
-		pls.setPosition(START_X > 0 ? START_X * 16 : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16 : (299 - DEFAULT_START_Y) * 16);
+		this.pls.setPosition(START_X > 0 ? START_X * 16 : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16 : (299 - DEFAULT_START_Y) * 16);
 	    }
 	}	        
     }
 
     public void hide() {		
-	dispose();
+        this.dispose();
     }
 
     public float getXPosition() {    
-	return pls.getX();
+	return this.pls.getX();
     }
 	
     public float getYPosition() {	    
-	return pls.getY();
+	return this.pls.getY();
     }
 	
     public void setPosition(float x, float y) {	    
-	pls.setPlayerPosition(x, y);
+        this.pls.setPlayerPosition(x, y);
     }
 	
     public void dispose() {        
 	MainController.getController().getMap().dispose();
-	renderer.dispose();
-	sr.dispose();
+	this.renderer.dispose();
+	this.sr.dispose();
     }
 	
     public static void updateKeyListener() {
@@ -144,9 +139,11 @@ public class MainGameView implements Screen {
 
     @Override
     public void pause() {
+        // EMPTY METHOD
     }
 
     @Override
     public void resume() {
+        // EMPTY METHOD
     }
 }
