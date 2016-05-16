@@ -118,6 +118,8 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                         this.resolver.resolveSign();
                     } else if (t == TileType.NPC) {
                         this.resolver.resolveNPC();
+                    } else if (t == TileType.ENCOUNTER) {
+                    	this.resolver.resolveNPC();
                     }
                 }
                 break;
@@ -273,6 +275,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
          * an npc
          */
         private void resolveNPC() {
+//        	System.out.println(pm.getTileType(x, y));
             if (pm.getTrainer(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getTrainer(x, y).get().turn(oppositeDirection);
@@ -307,7 +310,10 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                     MainController.getController().getViewController().fightScreen();
                 }        
             } else if (pm.getEncounterTile(x, y).isPresent()) { //TODO CANCELLARE SPRITEAFTER
-
+            	MainController.getController().updateStatus(State.FIGHTING);
+                MainController.getController().getFightController().newFightWithPokemon(pm.getEncounterTile(x, y).get().getPokemon());
+                MainController.getController().getViewController().fightScreen();
+            
             }
         }
         
