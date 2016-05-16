@@ -45,20 +45,20 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         public void showFrame() {
                 this.setAlwaysOnTop(true); 
                 this.setBounds(100, 100, 220, 300);
-                panel = new JPanel();
-                this.setContentPane(panel);   
-                panel.setBorder(new LineBorder(Color.GRAY, 4));
-                panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
+                this.panel = new JPanel();
+                this.setContentPane(this.panel);   
+                this.panel.setBorder(new LineBorder(Color.GRAY, 4));
+                this.panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
                 this.getContentPane().add(Box.createVerticalGlue());
-                tooltip = new JLabel("Pokemon already knows 4 moves!");
-                tooltip.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(tooltip);
+                this.tooltip = new JLabel("Pokemon already knows 4 moves!");
+                this.tooltip.setAlignmentX(Component.CENTER_ALIGNMENT);
+                this.getContentPane().add(this.tooltip);
                 this.getContentPane().add(Box.createVerticalGlue());
-                forget5 = new JLabel("Do not learn:");
-                forget5.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(forget5);
-                move5 = new JButton(newMove.name());
-                move5.addActionListener(new ActionListener() {
+                this.forget5 = new JLabel("Do not learn:");
+                this.forget5.setAlignmentX(Component.CENTER_ALIGNMENT);
+                this.getContentPane().add(this.forget5);
+                this.move5 = new JButton(this.newMove.name());
+                this.move5.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -66,13 +66,13 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                         View.getView().resumeCurrent();
                     } 
                 });
-                move5.setAlignmentX(Component.CENTER_ALIGNMENT);
+                this.move5.setAlignmentX(Component.CENTER_ALIGNMENT);
                 this.getContentPane().add(move5);
                 this.getContentPane().add(Box.createVerticalGlue());
-                this.setButton(forget1, move1, 0);
-                this.setButton(forget2, move2, 1);
-                this.setButton(forget3, move3, 2);
-                this.setButton(forget4, move4, 3);
+                this.setButton(this.forget1, this.move1, 0);
+                this.setButton(this.forget2, this.move2, 1);
+                this.setButton(this.forget3, this.move3, 2);
+                this.setButton(this.forget4, this.move4, 3);
                 this.setVisible(true);
         }
         
@@ -80,7 +80,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
             l = new JLabel("Forget:");
             l.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.getContentPane().add(l);
-            b = new JButton(pk.getCurrentMoves().get(x).name());
+            b = new JButton(this.pk.getCurrentMoves().get(x).name());
             b.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

@@ -33,24 +33,24 @@ public class Menu extends JWindow implements MyFrame {
     public void showFrame() {
         this.setAlwaysOnTop(true); 
         this.setBounds(100, 100, 180, 310);
-        panel = new JPanel();
-        this.setContentPane(panel);     
-        panel.setBorder(new LineBorder(Color.GRAY, 4));
-        panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
-        name = new JLabel("Name: " + MainController.getController().getPlayer().getName());
-        name.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(name);
-        money = new JLabel("Money: " + MainController.getController().getPlayer().getMoney());
-        money.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(money);
-        badges = new JLabel("Badges: " + MainController.getController().getPlayer().getLastBadge());
-        badges.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(badges);
+        this.panel = new JPanel();
+        this.setContentPane(this.panel);     
+        this.panel.setBorder(new LineBorder(Color.GRAY, 4));
+        this.panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
+        this.name = new JLabel("Name: " + MainController.getController().getPlayer().getName());
+        this.name.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.name);
+        this.money = new JLabel("Money: " + MainController.getController().getPlayer().getMoney());
+        this.money.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.money);
+        this.badges = new JLabel("Badges: " + MainController.getController().getPlayer().getLastBadge());
+        this.badges.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.badges);
         this.add(Box.createVerticalGlue());
-        box = new JButton("BoxMenu");
-        box.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(box);
-        box.addActionListener(new ActionListener() {
+        this.box = new JButton("BoxMenu");
+        this.box.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.box);
+        this.box.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 if (MainController.getController().getBox().getBoxSize() < 1) {
                     disposeFrame();
@@ -67,10 +67,10 @@ public class Menu extends JWindow implements MyFrame {
             }
         });
         this.add(Box.createVerticalGlue());
-        team = new JButton ("Team");
-        team.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(team);
-        team.addActionListener(new ActionListener() {
+        this.team = new JButton ("Team");
+        this.team.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.team);
+        this.team.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 View.getView().hideCurrent();
                 TeamMenu tm = new TeamMenu(true, false);
@@ -79,10 +79,10 @@ public class Menu extends JWindow implements MyFrame {
             }
         });
         this.add(Box.createVerticalGlue());    
-        bag = new JButton("Bag");
-        bag.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(bag);    
-        bag.addActionListener(new ActionListener() {
+        this.bag = new JButton("Bag");
+        this.bag.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.bag);    
+        this.bag.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 View.getView().hideCurrent();
                 BagMenu za = new BagMenu();
@@ -91,10 +91,10 @@ public class Menu extends JWindow implements MyFrame {
             }
         });             
         this.add(Box.createVerticalGlue());    
-        music = new JButton("MOOOOOSECA");
-        music.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(music);    
-        music.addActionListener(new ActionListener() {
+        this.music = new JButton("Musica");
+        this.music.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.music);    
+        this.music.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 if (MainController.getController().isPaused()) {
                     MainController.getController().resume();
@@ -105,10 +105,10 @@ public class Menu extends JWindow implements MyFrame {
             }
         });         
         this.add(Box.createVerticalGlue());
-        save = new JButton("Save");
-        save.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(save);
-        save.addMouseListener(new MouseAdapter() {
+        this.save = new JButton("Save");
+        this.save.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.save);
+        this.save.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 disposeFrame();
@@ -118,10 +118,10 @@ public class Menu extends JWindow implements MyFrame {
             }
         });   
         this.add(Box.createVerticalGlue());
-        resume = new JButton("Resume");
-        resume.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.getContentPane().add(resume);
-        resume.addActionListener(new ActionListener() {
+        this.resume = new JButton("Resume");
+        this.resume.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.getContentPane().add(this.resume);
+        this.resume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 View.getView().disposeCurrent();
                 View.getView().removeCurrent();

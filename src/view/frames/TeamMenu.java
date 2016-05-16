@@ -46,31 +46,31 @@ public class TeamMenu extends JWindow implements MyFrame {
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
-        panel = new JPanel();
+        this.panel = new JPanel();
         this.setContentPane(panel);
-        panel.setBorder(new LineBorder(Color.GRAY, 4));
-        names.add("NAME");
-        lvl.add("LEVEL");
-        cHP.add("HEALTH POINTS");
-        mHP.add("");
-        pk.add(null);
+        this.panel.setBorder(new LineBorder(Color.GRAY, 4));
+        this.names.add("NAME");
+        this.lvl.add("LEVEL");
+        this.cHP.add("HEALTH POINTS");
+        this.mHP.add("");
+        this.pk.add(null);
         for (Pokemon p : MainController.getController().getSquad().getPokemonList()) {
-            names.add(p.getPokemon().name()); // Nome Pkmn
-            lvl.add("" + p.getStat(Stat.LVL)); // Livello
-            mHP.add("" + p.getStat(Stat.MAX_HP));
-            cHP.add("" + p.getCurrentHP());
-            pk.add(p);
+        	this.names.add(p.getPokemon().name()); // Nome Pkmn
+        	this.lvl.add("" + p.getStat(Stat.LVL)); // Livello
+        	this.mHP.add("" + p.getStat(Stat.MAX_HP));
+        	this.cHP.add("" + p.getCurrentHP());
+            this.pk.add(p);
         }
         for(int i = 0; i<names.size();i++) {
             if (i == 0) {
-            	panel.add(new JLabel(names.get(i)));
-            	panel.add(new JLabel(lvl.get(i)));
-            	panel.add(new JLabel(cHP.get(i)));
-            	panel.add(new JLabel(""));
-            	panel.add(new JLabel(""));
-            	panel.add(new JLabel(""));
-                exit = new JButton("EXIT");
-                exit.addActionListener(new ActionListener() {
+            	this.panel.add(new JLabel(this.names.get(i)));
+            	this.panel.add(new JLabel(this.lvl.get(i)));
+            	this.panel.add(new JLabel(this.cHP.get(i)));
+            	this.panel.add(new JLabel(""));
+            	this.panel.add(new JLabel(""));
+            	this.panel.add(new JLabel(""));
+            	this.exit = new JButton("EXIT");
+            	this.exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -79,18 +79,18 @@ public class TeamMenu extends JWindow implements MyFrame {
                     }
                 });
                 if (!canExit) {
-                	exit.setEnabled(false);
+                	this.exit.setEnabled(false);
                 }
-                panel.add(exit);
+                this.panel.add(this.exit);
                 i++;
             }
             final int index = i - 1;
-            final Pokemon pkmn = pk.get(i);
-            panel.add(new JLabel(names.get(i)));
-            panel.add(new JLabel(lvl.get(i)));
-            panel.add(new JLabel(cHP.get(i) + " / " + mHP.get(i)));
-            info = new JButton("INFO");
-            info.addActionListener(new ActionListener() {
+            final Pokemon pkmn = this.pk.get(i);
+            this.panel.add(new JLabel(this.names.get(i)));
+            this.panel.add(new JLabel(this.lvl.get(i)));
+            this.panel.add(new JLabel(this.cHP.get(i) + " / " + this.mHP.get(i)));
+            this.info = new JButton("INFO");
+            this.info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pkmn;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -100,9 +100,9 @@ public class TeamMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             });
-            panel.add(info);
-            set = new JButton("SET FIRST");
-            set.addActionListener(new ActionListener() {
+            this.panel.add(this.info);
+            this.set = new JButton("SET FIRST");
+            this.set.addActionListener(new ActionListener() {
                 private final int ID = index;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -161,11 +161,11 @@ public class TeamMenu extends JWindow implements MyFrame {
                 }
             });
             if (isChangingPoke) {
-            	set.setEnabled(false);
+            	this.set.setEnabled(false);
             }
-            panel.add(set);
-            deposit = new JButton("DEPOSIT");
-            deposit.addActionListener(new ActionListener() {
+            this.panel.add(this.set);
+            this.deposit = new JButton("DEPOSIT");
+            this.deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
                     try {
@@ -189,9 +189,9 @@ public class TeamMenu extends JWindow implements MyFrame {
             if (MainController.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
             	deposit.setEnabled(false);
             }
-            panel.add(deposit);
-            select = new JButton("SELECT");
-            select.addActionListener(new ActionListener() {
+            this.panel.add(this.deposit);
+            this.select = new JButton("SELECT");
+            this.select.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
                     View.getView().disposeCurrent();
@@ -207,11 +207,11 @@ public class TeamMenu extends JWindow implements MyFrame {
                 }
             });
             if (!isChangingPoke) {
-            	select.setEnabled(false);
+            	this.select.setEnabled(false);
             }
-            panel.add(select);
+            this.panel.add(this.select);
         }      
-        panel.setLayout(new GridLayout(names.size(), cols));
+        this.panel.setLayout(new GridLayout(this.names.size(), this.cols));
         this.setSize(900,100 * names.size());
         this.setVisible(true);
     }

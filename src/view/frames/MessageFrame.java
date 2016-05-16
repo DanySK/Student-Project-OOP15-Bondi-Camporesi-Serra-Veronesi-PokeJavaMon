@@ -33,17 +33,17 @@ public class MessageFrame extends JWindow implements MyFrame {
 
     @Override
     public void showFrame() {
-        panel = new JPanel();
-        panel.setBorder(new LineBorder(Color.GRAY, 4));
-        panel.setLayout(new GridLayout(0,1));
+    	this.panel = new JPanel();
+    	this.panel.setBorder(new LineBorder(Color.GRAY, 4));
+    	this.panel.setLayout(new GridLayout(0,1));
         for (String s : msgs) {
-            labels.add(new JLabel(s));
+        	this.labels.add(new JLabel(s));
         }
         for (JLabel l : labels) {
-                panel.add(l);
+        	this.panel.add(l);
         }
-        ok = new JButton("OK");
-        ok.addActionListener(new ActionListener() {
+        this.ok = new JButton("OK");
+        this.ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (st != null) {
@@ -56,8 +56,8 @@ public class MessageFrame extends JWindow implements MyFrame {
                 }
             }
         });
-        panel.add(ok);
-        this.getContentPane().add(panel);
+        this.panel.add(this.ok);
+        this.getContentPane().add(this.panel);
         this.setAlwaysOnTop(true);
         if (msgs.length > 4) {
             this.setBounds(100, 100, 450, 400);

@@ -48,40 +48,40 @@ public class Statistics extends JWindow implements MyFrame {
     	this.setAlwaysOnTop(true);
 		this.setBounds(100, 100, 500, 550);
 		this.getContentPane().setLayout(new GridLayout(2, 4));
-		panel = new JPanel();
-		this.getContentPane().add(panel);
-		panel.setLayout(new GridLayout(4, 0));
-		panel.setBorder(new LineBorder(Color.GRAY, 3));
-		exit = new JButton("Exit");
-		exit.addActionListener(new ActionListener() {
+		this.panel = new JPanel();
+		this.getContentPane().add(this.panel);
+		this.panel.setLayout(new GridLayout(4, 0));
+		this.panel.setBorder(new LineBorder(Color.GRAY, 3));
+		this.exit = new JButton("Exit");
+		this.exit.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        View.getView().disposeCurrent();
 		        View.getView().removeCurrent();
 		        View.getView().resumeCurrent();
 		    }
 		});
-		panel.add(exit);       
-		type = new JLabel("Type");
-		panel.add(type);
+		this.panel.add(this.exit);       
+		this.type = new JLabel("Type");
+		this.panel.add(type);
 		if (pk.getPokemon().getSecondType() != PokemonType.NONE) {
-		    typeValue = new JLabel(pk.getPokemon().getFirstType().name() + " / " + pk.getPokemon().getSecondType());
+			this.typeValue = new JLabel(this.pk.getPokemon().getFirstType().name() + " / " + this.pk.getPokemon().getSecondType());
 		} else {
-	            typeValue = new JLabel(pk.getPokemon().getFirstType().name());
+			this.typeValue = new JLabel(this.pk.getPokemon().getFirstType().name());
 		}
-		panel.add(typeValue);
-		pkmnName = new JLabel("" + pk.getPokemon());
-		panel.add(pkmnName);
-		level = new JLabel("Level");
-		panel.add(level);
-		levelValue = new JLabel(""+ pk.getStat(Stat.LVL));
-		panel.add(levelValue);
-		IMMAGINEPKMNPANEL = new MyPanel2(pk);
-		panel.add(IMMAGINEPKMNPANEL);
-		exp = new JLabel("Experience");
-		panel.add(exp);
-		expValue = new JLabel (""+ pk.getStat(Stat.EXP) + "/" + (pk.getNecessaryExp()+pk.getStat(Stat.EXP)));
+		this.panel.add(this.typeValue);
+		this.pkmnName = new JLabel("" + this.pk.getPokemon());
+		this.panel.add(pkmnName);
+		this.level = new JLabel("Level");
+		this.panel.add(level);
+		this.levelValue = new JLabel(""+ this.pk.getStat(Stat.LVL));
+		this.panel.add(levelValue);
+		this.IMMAGINEPKMNPANEL = new MyPanel2(this.pk);
+		this.panel.add(this.IMMAGINEPKMNPANEL);
+		this.exp = new JLabel("Experience");
+		this.panel.add(this.exp);
+		this.expValue = new JLabel (""+ this.pk.getStat(Stat.EXP) + "/" + (this.pk.getNecessaryExp()+this.pk.getStat(Stat.EXP)));
 		//è possibile aggiungere anche exp corrente
-		panel.add(expValue);
+		this.panel.add(expValue);
 		this.add(new statsPanel(pk));
         this.setVisible(true);
     }
@@ -113,40 +113,40 @@ class statsPanel extends JPanel {
 
     public statsPanel(Pokemon ID) {	 
     	this.setBorder(new LineBorder(Color.GRAY, 3));
-        stats.add(Stat.MAX_HP.name());
-        stats.add(Stat.ATK.name());
-        stats.add(Stat.DEF.name());
-        stats.add(Stat.SPD.name());
+    	this.stats.add(Stat.MAX_HP.name());
+        this.stats.add(Stat.ATK.name());
+        this.stats.add(Stat.DEF.name());
+        this.stats.add(Stat.SPD.name());
         if (ID.getPokemon().name() != null) {
             for (int j=0; j<4; j++){
-                moves.add("Move");
+            	this.moves.add("Move");
             }
             if (ID.getCurrentMoves().get(0) != Move.NULLMOVE) {
-                names.add("" + ID.getCurrentMoves().get(0).name());
+            	this.names.add("" + ID.getCurrentMoves().get(0).name());
             }
             if (ID.getCurrentMoves().get(1) != Move.NULLMOVE) {
-                names.add("" + ID.getCurrentMoves().get(1).name());
+            	this.names.add("" + ID.getCurrentMoves().get(1).name());
             }
             if (ID.getCurrentMoves().get(2) != Move.NULLMOVE) {
-                names.add("" + ID.getCurrentMoves().get(2).name());
+            	this.names.add("" + ID.getCurrentMoves().get(2).name());
             }        	
             if (ID.getCurrentMoves().get(3) != Move.NULLMOVE) {
-                names.add("" + ID.getCurrentMoves().get(3).name());
+            	this.names.add("" + ID.getCurrentMoves().get(3).name());
             }
-            values.add("" + ID.getCurrentHP() + "/" + ID.getStat(Stat.MAX_HP));
-            values.add("" + ID.getStat(Stat.ATK));
-            values.add("" + ID.getStat(Stat.DEF));
-            values.add("" + ID.getStat(Stat.SPD));
+            this.values.add("" + ID.getCurrentHP() + "/" + ID.getStat(Stat.MAX_HP));
+            this.values.add("" + ID.getStat(Stat.ATK));
+            this.values.add("" + ID.getStat(Stat.DEF));
+            this.values.add("" + ID.getStat(Stat.SPD));
         }
         for(int i = 0; i<4;i++) {
-            add(new JLabel(moves.get(i) + "" + (i+1)));
+            add(new JLabel(this.moves.get(i) + "" + (i+1)));
             if (i < names.size()){
-                add(new JLabel(names.get(i)));
+                add(new JLabel(this.names.get(i)));
             } else{
                 add(new JLabel("")); 
             }
-            add(new JLabel(stats.get(i)));
-            add(new JLabel(values.get(i)));
+            add(new JLabel(this.stats.get(i)));
+            add(new JLabel(this.values.get(i)));
         }
         setLayout(new GridLayout(4,cols));
     }
@@ -166,14 +166,13 @@ class MyPanel2 extends JPanel{
     public void paint(Graphics g) {
         super.paintComponents(g);
         try {                
-    	    image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getAbsolutePath()));
+        	this.image = ImageIO.read(new File(this.pk.getPokemon().getFrontSprite().getAbsolutePath()));
     	} catch (Exception ex) {
     	    try {
-    	        image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getResourcePath()));
+    	    	this.image = ImageIO.read(new File(this.pk.getPokemon().getFrontSprite().getResourcePath()));
             } catch (Exception e) {
-                System.out.println("CANNOT LOAD SPRITE");
             }
     	}
-        g.drawImage(image, 0, 0, null);           
+        g.drawImage(this.image, 0, 0, null);           
     }
 }

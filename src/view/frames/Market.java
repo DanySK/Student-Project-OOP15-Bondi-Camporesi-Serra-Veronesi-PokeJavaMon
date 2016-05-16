@@ -44,34 +44,34 @@ public class Market extends JWindow implements MyFrame {
     public void showFrame() {
         this.setAlwaysOnTop(true);
         this.setSize(600,600); 
-        panel = new JPanel();
-        this.setContentPane(panel);
-        Name1.add("TYPE");
-        Name2.add("NAME");
-        Prz.add("PRICE");
-        Qnt.add("QUANTITY");
-        it.add(null); 
+        this.panel = new JPanel();
+        this.setContentPane(this.panel);
+        this.Name1.add("TYPE");
+        this.Name2.add("NAME");
+        this.Prz.add("PRICE");
+        this.Qnt.add("QUANTITY");
+        this.it.add(null); 
         for (Item i : MainController.getController().getPokeMap().getPokeMarket().getAvailableItems()) {         
-            Name1.add(i.getType().name()); 
-            Name2.add(i.toString()); 
-            Prz.add("" + i.getPrice());
+        	this.Name1.add(i.getType().name()); 
+        	this.Name2.add(i.toString()); 
+        	this.Prz.add("" + i.getPrice());
             if (i.getType() == ItemType.POTION) {
-                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POTION).get(i));
+            	this.Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POTION).get(i));
             } else if (i.getType() == ItemType.POKEBALL) {
-                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
+            	this.Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
             } else {
-                Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.BOOST).get(i));
+            	this.Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.BOOST).get(i));
             }
             it.add(i);
         }
         for(int j = 0; j<Name1.size();j++) {           
             if (j==0) {
-            	panel.add(new JLabel("Money: "+ MainController.getController().getPlayer().getMoney()));
-            	panel.add(new JLabel(Name2.get(j)));
-            	panel.add(new JLabel(Prz.get(j)));
-            	panel.add(new JLabel(Qnt.get(j)));
-                exit = new JButton("Exit");
-                exit.addActionListener(new ActionListener() {
+            	this.panel.add(new JLabel("Money: "+ MainController.getController().getPlayer().getMoney()));
+            	this.panel.add(new JLabel(this.Name2.get(j)));
+            	this.panel.add(new JLabel(this.Prz.get(j)));
+            	this.panel.add(new JLabel(this.Qnt.get(j)));
+            	this.exit = new JButton("Exit");
+            	this.exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         View.getView().disposeCurrent();
@@ -79,16 +79,16 @@ public class Market extends JWindow implements MyFrame {
                         MainController.getController().updateStatus(State.WALKING);
                     }
                 });
-                panel.add(exit);
+            	this.panel.add(this.exit);
                 j++;
             }
             final Item itm = it.get(j);
-            panel.add(new JLabel(Name1.get(j)));
-            panel.add(new JLabel(Name2.get(j)));
-            panel.add(new JLabel(Prz.get(j)));
-            panel.add(new JLabel(Qnt.get(j)));
-            use = new JButton("Buy");
-            use.addActionListener(new ActionListener() {     
+            this.panel.add(new JLabel(this.Name1.get(j)));
+            this.panel.add(new JLabel(this.Name2.get(j)));
+            this.panel.add(new JLabel(this.Prz.get(j)));
+            this.panel.add(new JLabel(this.Qnt.get(j)));
+            this.use = new JButton("Buy");
+            this.use.addActionListener(new ActionListener() {     
                 Item i = itm;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -106,10 +106,10 @@ public class Market extends JWindow implements MyFrame {
                     }
                 }
             });
-            panel.add(use);
+            this.panel.add(this.use);
         }
-        panel.setLayout(new GridLayout(Name1.size(), cols));
-        panel.setBorder(new LineBorder(Color.GRAY, 4));
+        this.panel.setLayout(new GridLayout(this.Name1.size(), cols));
+        this.panel.setBorder(new LineBorder(Color.GRAY, 4));
         this.setSize(100 * Name1.size(), 600);
         this.setVisible(true);
     }
