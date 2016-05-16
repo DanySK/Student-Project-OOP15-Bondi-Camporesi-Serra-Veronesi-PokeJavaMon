@@ -52,7 +52,7 @@ public class PokeMapImpl implements PokeMap {
 	private final int tileHeight;
 	private final int tileWidth;
 	
-	//TODO: Refactoring getTrainer/ect methods?
+	//TODO: Refactoring refactor strings
 	public PokeMapImpl(final TiledMap map) {
 		this.tiledMap = map;
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
@@ -131,6 +131,7 @@ public class PokeMapImpl implements PokeMap {
 				this.map[tileX][tileY] = TileType.WALL;
 			
 			} else if (cellProperty.equals(TileType.WATER.toString())) {
+				/*Until we implement water*/
 				this.collisions.add(p);
 				this.map[tileX][tileY] = TileType.WATER;
 				
@@ -535,6 +536,14 @@ public class PokeMapImpl implements PokeMap {
     	for (final EncounterTile et : this.tileEncounters) {
     		if (et.tileX == x && et.tileY == y) {
     			this.tileEncounters.remove(et);
+    			this.map[x][y] = TileType.TERRAIN;
+    			( (TiledMapTileLayer) this.tiledMap.getLayers().get("foreground")).getCell(getTileUnitX(x), getTileUnitY(y)).setTile(null);
+    			for (final Position p : this.collisions) {
+    				if (p.getX() == x && p.getY() == y) {
+    					this.collisions.remove(p);
+    					break;
+    				}
+    			}
     			return;
     		}
     	}

@@ -193,6 +193,7 @@ public abstract class BasicFight {
         if (damage <= 0) {
             return MIN_DAMAGE;
         }
+        System.out.println(striker.getPokedexEntry() + " (lvl = " + striker.getStat(Stat.LVL) +") " + "attacks " + stricken.getPokedexEntry() + "(HP/MAX = " + stricken.getCurrentHP() + "/" + stricken.getStat(Stat.MAX_HP) + ") with " + move + ", dealing " + damage);
         return damage;
     }
 
