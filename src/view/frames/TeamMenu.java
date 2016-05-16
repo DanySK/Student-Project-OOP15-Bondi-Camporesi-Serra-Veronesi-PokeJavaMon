@@ -52,7 +52,7 @@ public class TeamMenu extends JWindow implements MyFrame {
         for (Pokemon p : MainController.getController().getSquad().getPokemonList()) {
             names.add(p.getPokemon().name()); // Nome Pkmn
             lvl.add("" + p.getStat(Stat.LVL)); // Livello
-            mHP.add("" + p.getStat(Stat.HP));
+            mHP.add("" + p.getStat(Stat.MAX_HP));
             cHP.add("" + p.getCurrentHP());
             pk.add(p);
         }

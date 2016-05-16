@@ -114,7 +114,7 @@ public class SquadImpl implements Squad {
     	});
     	
         for (final Pokemon p : this.pokemonInSquad) {
-            p.heal(p.getStat(Stat.HP));
+            p.heal(p.getStat(Stat.MAX_HP));
         }	
 	}
 

@@ -59,7 +59,7 @@ public abstract class BasicFight {
     }
 
     public void allyTurn(final Move move) {
-        if (move.getStat() == Stat.HP) {
+        if (move.getStat() == Stat.MAX_HP) {
             applyDamage(allyPkm, enemyPkm, move);
             checkAndSetIsExhausted(enemyPkm);
         } else {
@@ -69,7 +69,7 @@ public abstract class BasicFight {
 
     public void enemyTurn() {
         enemyMove = calculationEnemyMove();
-        if (enemyMove.getStat() == Stat.HP) {
+        if (enemyMove.getStat() == Stat.MAX_HP) {
             applyDamage(enemyPkm, allyPkm, enemyMove);
             checkAndSetIsExhausted(allyPkm);
         } else {
@@ -224,24 +224,25 @@ public abstract class BasicFight {
         double baseExp;
         switch(enemyPkm.getPokemon().getRarity()){
         case COMMON:
-            baseExp = 80;
-            break;
-        case UNCOMMON:
-            baseExp = 100;
-            break;
-        case RARE:
             baseExp = 120;
             break;
-        case VERY_RARE:
+        case UNCOMMON:
             baseExp = 150;
             break;
-        case STARTER:
+        case RARE:
             baseExp = 180;
             break;
-        case LEGENDARY:
-            baseExp = 300;
+        case VERY_RARE:
+            baseExp = 230;
             break;
-        //default ricopre il caso unfindable
+        case STARTER:
+            baseExp = 280;
+            break;
+        case LEGENDARY:
+            baseExp = 450;
+            break;
+        case UNFINDABLE:
+        	baseExp = 350;
         default:
             baseExp = 0;
         }

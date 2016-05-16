@@ -4,9 +4,9 @@ public enum PokemonRarity {
 
     COMMON(255), 
     UNCOMMON(150), 
-    RARE(75), 
-    VERY_RARE(30),
-    STARTER(15), 
+    RARE(90), 
+    VERY_RARE(60),
+    STARTER(45), 
     LEGENDARY(3), 
     UNFINDABLE(0); 
     

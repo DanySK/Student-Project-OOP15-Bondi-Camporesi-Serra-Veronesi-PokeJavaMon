@@ -47,8 +47,8 @@ public final class StaticPokemonFactory {
 		retPkmn.currentMoves = moveset;
 
 
-		if (hp < retPkmn.getStat(Stat.HP) && hp >= 0) {
-			retPkmn.damage(retPkmn.getStat(Stat.HP) - hp);
+		if (hp < retPkmn.getStat(Stat.MAX_HP) && hp >= 0) {
+			retPkmn.damage(retPkmn.getStat(Stat.MAX_HP) - hp);
 		}
 		retPkmn.changeStat(Stat.EXP, exp);
 		
@@ -74,8 +74,8 @@ public final class StaticPokemonFactory {
 	 */
 	public static PokemonInBattle createPokemon(final Pokedex pkmnID, final int lvl, final int hp) {
 		final PokemonInBattle retPkmn = new PokemonInBattle(pkmnID, lvl);
-		if (hp < retPkmn.getStat(Stat.HP) && hp > 0) {
-			retPkmn.damage(retPkmn.getStat(Stat.HP) - hp);
+		if (hp < retPkmn.getStat(Stat.MAX_HP) && hp > 0) {
+			retPkmn.damage(retPkmn.getStat(Stat.MAX_HP) - hp);
 		}
 		return retPkmn;
 	}

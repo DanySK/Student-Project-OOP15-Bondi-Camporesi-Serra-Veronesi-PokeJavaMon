@@ -51,7 +51,7 @@ public class FightVsTrainer extends AbstractFight {
             }
         }
         for (final Move m : moves) {
-            if (m.getStat() == Stat.HP) {
+            if (m.getStat() == Stat.MAX_HP) {
                 if (SUPER_EFFECTIVE_MAX_VALUE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
                     move = m;
                     break;
@@ -103,9 +103,9 @@ public class FightVsTrainer extends AbstractFight {
                 if (isEnemyExhausted) {
                     final PokemonInBattle allyPkmNotUpdated = allyPkm;
                     final Map<Stat, Double> allyPkmBoost = allyPkmsBoosts.remove(allyPkmNotUpdated);
-                    final int hpBeforeLvUp = allyPkm.getStat(Stat.HP);
+                    final int hpBeforeLvUp = allyPkm.getStat(Stat.MAX_HP);
                     if (giveExpAndCheckLvlUp(getExp())) {
-                        int hpAfterLvUp = allyPkm.getStat(Stat.HP);
+                        int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
                         allyPkm.heal(hpAfterLvUp);
                         if (allyPkm.getPokemon().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
