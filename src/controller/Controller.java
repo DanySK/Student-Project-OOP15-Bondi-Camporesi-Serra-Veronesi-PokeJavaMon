@@ -253,4 +253,9 @@ public interface Controller {
      * @throws SquadFullException if the {@link Squad} is full
      */
     void initializeStarter() throws SquadFullException;
+
+    /**
+     * If the tile in front of the player is a legendary pokemon, deletes the tile
+     */
+    void checkLegendaryAndDelete();
 }

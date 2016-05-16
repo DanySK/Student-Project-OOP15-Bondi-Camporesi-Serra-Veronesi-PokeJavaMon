@@ -49,6 +49,7 @@ public class InFightMessages implements InFightMessagesInterface {
                         this.showMessage();
                     }
                 } else {
+                    MainController.getController().checkLegendaryAndDelete();
                     this.message.add("Enemy defeated");
                     this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                     View.getView().disposeCurrent();
@@ -108,6 +109,7 @@ public class InFightMessages implements InFightMessagesInterface {
                             showMessage();
                         }
                     } else {
+                        MainController.getController().checkLegendaryAndDelete();
                         this.message.add("Enemy defeated!");             
                         this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                         MainController.getController().updateStatus(State.WALKING);
@@ -169,6 +171,7 @@ public class InFightMessages implements InFightMessagesInterface {
                 ((FightScreen) fs).showMessage(array);
             }
         } else {
+            MainController.getController().checkLegendaryAndDelete();
             this.message.add("Pokemon caught!!");
             this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());
             View.getView().disposeCurrent();
@@ -184,6 +187,7 @@ public class InFightMessages implements InFightMessagesInterface {
     public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead) {
         this.message = new ArrayList<>();
         if (success) {
+            MainController.getController().checkLegendaryAndDelete();
             MainController.getController().updateStatus(State.WALKING);
             View.getView().disposeCurrent();
             View.getView().removeCurrent();
