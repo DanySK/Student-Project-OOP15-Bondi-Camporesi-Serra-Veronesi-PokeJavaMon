@@ -118,7 +118,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                         this.resolver.resolveSign();
                     } else if (t == TileType.NPC) {
                         this.resolver.resolveNPC();
-                    } else if (t == TileType.SINGLE_ENCOUNTER_TILE) {
+                    } else if (t == TileType.ENCOUNTER) {
                     	this.resolver.resolveNPC();
                     }
                 }

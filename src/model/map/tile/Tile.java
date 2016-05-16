@@ -17,7 +17,7 @@ public interface Tile extends Drawable{
         CENTER(false, false), 
         START(false, true),
         DEFEAT(false, true),
-        SINGLE_ENCOUNTER_TILE(false, false);
+        ENCOUNTER(false, false);
         
         ;
     
