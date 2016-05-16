@@ -387,13 +387,13 @@ class MyPanel extends JPanel {
         }
         if (image != null) {
             int width = 150;
-            double maxHP2 = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.HP); /*get maxHealth*/
+            double maxHP2 = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.MAX_HP); /*get maxHealth*/
             double HP2 = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentHP(); /*get currentHealth*/
             double Scale2 = HP2 / maxHP2;
             double currentExp = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP);
             double maxExp = MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getStat(Stat.EXP) + MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getNecessaryExp();
             double scale3 = currentExp / maxExp;
-            double maxHP = MainController.getController().getEnemyPokemonInFight().getStat(Stat.HP); /*get maxHealth*/
+            double maxHP = MainController.getController().getEnemyPokemonInFight().getStat(Stat.MAX_HP); /*get maxHealth*/
             double HP = MainController.getController().getEnemyPokemonInFight().getCurrentHP(); /*get currentHealth*/
             double Scale = HP / maxHP;
             g.drawRect(20, 20, width, 7);

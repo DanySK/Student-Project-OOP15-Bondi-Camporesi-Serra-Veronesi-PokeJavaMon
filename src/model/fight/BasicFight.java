@@ -10,6 +10,12 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.pokemon.WeaknessTable;
 
+/**
+ * Abstract class which provides the basic method for perform operation in fight classes 
+ * that implements the interface {@link model.fight.Fight}.
+ * 
+ * This class is extended by {@link model.fight.AbstractFight}.
+ */
 public abstract class BasicFight {
     protected static final int FIRST_ELEM = 0;
     protected static final double BOOST_COEFF = 0.15;
@@ -69,7 +75,7 @@ public abstract class BasicFight {
     }
 
     protected void applyMove(final Move move, final PokemonInBattle striker, final PokemonInBattle stricken) {
-        if (move.getStat() == Stat.HP) {
+        if (move.getStat() == Stat.MAX_HP) {
             applyDamage(striker, stricken, move);
             checkAndSetIsExhausted(stricken);
         } else {

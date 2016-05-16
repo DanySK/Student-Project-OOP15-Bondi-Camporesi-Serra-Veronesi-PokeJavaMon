@@ -45,7 +45,7 @@ public abstract class AbstractPokemon implements Pokemon {
             mapStat.put(s, s == Stat.LVL ? lvl : 0);
         }
         updateStats();
-        this.currentHP = mapStat.get(Stat.HP);
+        this.currentHP = mapStat.get(Stat.MAX_HP);
         
         
         List<Move> last4Moves = getLast4Moves(lvl);
@@ -110,7 +110,7 @@ public abstract class AbstractPokemon implements Pokemon {
             return this.pokemon.getBaseSPD() * 2 * lvl / 100 + 5;
         case EXP :
             return (int) Math.pow(lvl , 3) * 4 / 5;
-        case HP :
+        case MAX_HP :
             return 10 + (this.pokemon.getBaseHP() * 2 * lvl / 100 + lvl);
         case LVL :
             return this.mapStat.get(Stat.LVL);
@@ -228,8 +228,8 @@ public abstract class AbstractPokemon implements Pokemon {
     		throw new IllegalArgumentException("Heal value cannot be negative");
     	}
         this.currentHP += value;
-        if (this.currentHP > this.mapStat.get(Stat.HP)) {
-            this.currentHP = this.mapStat.get(Stat.HP);
+        if (this.currentHP > this.mapStat.get(Stat.MAX_HP)) {
+            this.currentHP = this.mapStat.get(Stat.MAX_HP);
         }
     }
 

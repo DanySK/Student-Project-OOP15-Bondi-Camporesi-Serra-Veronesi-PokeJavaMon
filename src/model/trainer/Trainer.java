@@ -71,7 +71,7 @@ public class Trainer extends AbstractCharacter {
     
     public void healAllPokemons() {
     	for (final Pokemon p : this.squad.getPokemonList()) {
-    		p.heal(p.getStat(Stat.HP));
+    		p.heal(p.getStat(Stat.MAX_HP));
     	}
     }
 

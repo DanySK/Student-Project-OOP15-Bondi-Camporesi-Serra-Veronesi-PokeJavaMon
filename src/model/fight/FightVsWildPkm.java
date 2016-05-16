@@ -18,6 +18,11 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 
+/**
+ * A concrete class which deals operations to manage a fight against a 
+ * wild {@link model.pokemon.Pokemon}.
+ *
+ */
 public class FightVsWildPkm extends AbstractFight {
 
     private static final int COEFFICIENT_PROB = 255;
@@ -79,9 +84,9 @@ public class FightVsWildPkm extends AbstractFight {
             if (turnOrder) {
                 allyTurn(move);
                 if (isEnemyExhausted) {
-                    final int hpBeforeLvUp = allyPkm.getStat(Stat.HP);
+                    final int hpBeforeLvUp = allyPkm.getStat(Stat.MAX_HP);
                     if (giveExpAndCheckLvlUp(getExp())) {
-                        int hpAfterLvUp = allyPkm.getStat(Stat.HP);
+                        int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
                         allyPkm.heal(hpAfterLvUp);
                         if (allyPkm.getPokemon().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {

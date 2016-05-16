@@ -113,7 +113,7 @@ class statsPanel extends JPanel {
 
     public statsPanel(Pokemon ID) {	 
     	this.setBorder(new LineBorder(Color.GRAY, 3));
-        stats.add(Stat.HP.name());
+        stats.add(Stat.MAX_HP.name());
         stats.add(Stat.ATK.name());
         stats.add(Stat.DEF.name());
         stats.add(Stat.SPD.name());
@@ -133,7 +133,7 @@ class statsPanel extends JPanel {
             if (ID.getCurrentMoves().get(3) != Move.NULLMOVE) {
                 names.add("" + ID.getCurrentMoves().get(3).name());
             }
-            values.add("" + ID.getCurrentHP() + "/" + ID.getStat(Stat.HP));
+            values.add("" + ID.getCurrentHP() + "/" + ID.getStat(Stat.MAX_HP));
             values.add("" + ID.getStat(Stat.ATK));
             values.add("" + ID.getStat(Stat.DEF));
             values.add("" + ID.getStat(Stat.SPD));

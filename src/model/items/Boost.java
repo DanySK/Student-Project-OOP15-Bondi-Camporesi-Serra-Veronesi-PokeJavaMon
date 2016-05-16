@@ -13,7 +13,7 @@ public class Boost extends AbstractItem {
     
     public Boost(final Stat stat) {
         super(500, Item.ItemType.BOOST, false);
-        if (stat == Stat.EXP || stat == Stat.HP || stat == Stat.LVL) {
+        if (stat == Stat.EXP || stat == Stat.MAX_HP || stat == Stat.LVL) {
             throw new IllegalArgumentException();
         }
         this.stat = stat;

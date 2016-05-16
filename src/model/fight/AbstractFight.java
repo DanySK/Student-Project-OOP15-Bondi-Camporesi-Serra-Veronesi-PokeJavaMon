@@ -18,6 +18,12 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.squad.Squad;
 
+/**
+ * Abstract class which must be extended for create a concrete fight class.
+ * 
+ * This class is extended by {@link model.fight.FightVsWildPkm}
+ * This class is extended by {@link model.fight.FightVsTrainer}
+ */
 public abstract class AbstractFight extends BasicFight implements Fight {
 
     protected static final int ATTACKS_TO_DO = 2;

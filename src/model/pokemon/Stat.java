@@ -6,5 +6,5 @@ package model.pokemon;
  * HP = MAX HP
  */
 public enum Stat {
-    ATK, DEF, SPD, HP, EXP, LVL;
+    ATK, DEF, SPD, MAX_HP, EXP, LVL;
 }

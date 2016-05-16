@@ -42,23 +42,24 @@ public class Pokeball extends AbstractItem {
     
     public boolean isCaptured(final Pokemon pkmn) {
         double x = new Random().nextDouble();
-        double y = (double) this.calculateProbabilityCatch(pkmn, pkmn.getCurrentHP() == pkmn.getStat(Stat.HP));
-        System.out.println("Prob: " + y + ", value: " + x + ", enemy hp: " + pkmn.getCurrentHP() + ", rarity: " + pkmn.getPokemon().getRarity());
+        double y = (double) this.calculateProbabilityCatch(pkmn, pkmn.getCurrentHP() == pkmn.getStat(Stat.MAX_HP));
+        System.out.println("Trying to capture " + pkmn.getPokemon().getName() + ", Prob: " + y + ", value: " + x + ", enemy hp: " + pkmn.getCurrentHP() + ", rarity: " + pkmn.getPokemon().getRarity());
         return x <= y;
     }
     
-    private double calculateProbabilityCatch(final Pokemon pkmn, final boolean isFullHP) {
-        final int maxHP = pkmn.getStat(Stat.HP);
+    public double calculateProbabilityCatch(final Pokemon pkmn, final boolean isFullHP) {
+        final int maxHP = pkmn.getStat(Stat.MAX_HP);
         final int currentHP = pkmn.getCurrentHP();
         final int rarity = pkmn.getPokemon().getRarity().getCoeff();
         final double pokeballRate = this.quality.getPokeballValue();
-        final double prob;
+        double prob;
         if (isFullHP) {
-            prob = ((1 / maxHP * 3) + ((rarity * pokeballRate ) / 3)) / 256;
+        	prob = ((1 / maxHP * 3) + ((rarity * pokeballRate ) / 3)) / 256;
         } else {
-            prob = (( 1 + ( maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) / ( maxHP * 3 )) / 256;
+        	System.out.println(this.quality + " " + pkmn.getPokemon() + ", MaxHP/cHP= " + pkmn.getStat(Stat.MAX_HP) + "/" + pkmn.getCurrentHP() + ", (1+catchRate) / (maxHP*3) / 256 = (" + 1 + "+" + ((maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) + ") / " + (maxHP*3) + " / 256" );
+        	prob = (( 1 + ( maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) / ( maxHP * 3 )) / 256;
         }
-        return prob;
+        return prob <= 1 ? prob : 1;
     }
 
     @Override
@@ -82,7 +83,7 @@ public class Pokeball extends AbstractItem {
     public boolean equals(Object object) {
     	if (object == null) {
     		return false;
-    	}
+    	}	
         return this.hashCode() == ((Pokeball) object).hashCode();
     }
     
