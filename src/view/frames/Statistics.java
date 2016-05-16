@@ -63,13 +63,13 @@ public class Statistics extends JWindow implements MyFrame {
 		this.panel.add(this.exit);       
 		this.type = new JLabel("Type");
 		this.panel.add(type);
-		if (pk.getPokemon().getSecondType() != PokemonType.NONE) {
-			this.typeValue = new JLabel(this.pk.getPokemon().getFirstType().name() + " / " + this.pk.getPokemon().getSecondType());
+		if (pk.getPokedexEntry().getSecondType() != PokemonType.NONE) {
+			this.typeValue = new JLabel(this.pk.getPokedexEntry().getFirstType().name() + " / " + this.pk.getPokedexEntry().getSecondType());
 		} else {
-			this.typeValue = new JLabel(this.pk.getPokemon().getFirstType().name());
+			this.typeValue = new JLabel(this.pk.getPokedexEntry().getFirstType().name());
 		}
 		this.panel.add(this.typeValue);
-		this.pkmnName = new JLabel("" + this.pk.getPokemon());
+		this.pkmnName = new JLabel("" + this.pk.getPokedexEntry());
 		this.panel.add(pkmnName);
 		this.level = new JLabel("Level");
 		this.panel.add(level);
@@ -117,7 +117,7 @@ class statsPanel extends JPanel {
         this.stats.add(Stat.ATK.name());
         this.stats.add(Stat.DEF.name());
         this.stats.add(Stat.SPD.name());
-        if (ID.getPokemon().name() != null) {
+        if (ID.getPokedexEntry().name() != null) {
             for (int j=0; j<4; j++){
             	this.moves.add("Move");
             }
@@ -166,10 +166,10 @@ class MyPanel2 extends JPanel{
     public void paint(Graphics g) {
         super.paintComponents(g);
         try {                
-        	this.image = ImageIO.read(new File(this.pk.getPokemon().getFrontSprite().getAbsolutePath()));
+        	this.image = ImageIO.read(new File(this.pk.getPokedexEntry().getFrontSprite().getAbsolutePath()));
     	} catch (Exception ex) {
     	    try {
-    	    	this.image = ImageIO.read(new File(this.pk.getPokemon().getFrontSprite().getResourcePath()));
+    	    	this.image = ImageIO.read(new File(this.pk.getPokedexEntry().getFrontSprite().getResourcePath()));
             } catch (Exception e) {
             }
     	}
