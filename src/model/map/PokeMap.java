@@ -7,6 +7,7 @@ import java.util.Set;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import model.map.Drawable.Direction;
+import model.map.tile.EncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
@@ -45,6 +46,9 @@ public interface PokeMap {
    
     public Set<NPC> getNPCs();
     public Optional<NPC> getNPC(final int x, final int y);
+    
+    public Set<EncounterTile> getEncounterTiles();
+    public Optional<EncounterTile> getEncounterTile(final int x, final int y);
    
     public PokeMarket getPokeMarket();
     

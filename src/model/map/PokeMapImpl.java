@@ -19,12 +19,14 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import model.map.Drawable.Direction;
 import model.map.tile.BadgeTeleport;
+import model.map.tile.EncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
 import model.player.Player;
 import model.player.PlayerImpl;
+import model.pokemon.Pokedex;
 import model.trainer.GymLeader;
 import model.trainer.StaticTrainerFactory;
 import model.trainer.Trainer;
@@ -41,6 +43,7 @@ public class PokeMapImpl implements PokeMap {
 	private Set<WalkableZone> walkableZones;
 	private Set<NPC> npcs;
 	private Set<GymLeader> gymLeaders;
+	private Set<EncounterTile> tileEncounters;
 	private PokeMarket market;
 	private TiledMap tiledMap;
 	private Position pokeCenterSpawn;
@@ -69,6 +72,7 @@ public class PokeMapImpl implements PokeMap {
 		this.teleports = new HashSet<>();
 		this.trainers = new HashSet<>();
 		this.gymLeaders = new HashSet<>();
+		this.tileEncounters = new HashSet<>();
 		this.npcs = new HashSet<>();
 		this.pokemonEncounterZones = new HashSet<>();
 		this.walkableZones = new HashSet<>();
@@ -182,6 +186,10 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.DEFEAT.toString())) {
 				this.pokeCenterSpawn = new Position(tileX, tileY);
 				this.map[tileX][tileY] = TileType.DEFEAT;
+			} else if (cellProperty.equals(TileType.ENCOUNTER.toString())) {
+				this.tileEncounters.add(new EncounterTile(Pokedex.valueOf(mp.get("pokemon", String.class)), 
+						Integer.parseInt(mp.get("lvl", String.class)), tileX, tileY, Direction.SOUTH, mp.get("cry", String.class)));
+				this.map[tileX][tileY] = TileType.ENCOUNTER;
 			}
 		}
 	}
@@ -501,6 +509,22 @@ public class PokeMapImpl implements PokeMap {
 		}
 		return Optional.empty();
 	}
+
+    public Set<EncounterTile> getEncounterTiles() {
+		return Collections.unmodifiableSet(this.tileEncounters);
+    }
+    
+    public Optional<EncounterTile> getEncounterTile(final int x, final int y) {
+		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.ENCOUNTER) {
+			for (final EncounterTile et : this.tileEncounters) {
+				if (et.getTileX() == x && et.getTileY() == y) {
+					return Optional.of(et);
+				}
+			}
+		}
+		return Optional.empty();
+    }
+	
 	
 	@Override
 	public PokeMarket getPokeMarket() {
