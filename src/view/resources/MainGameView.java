@@ -30,13 +30,13 @@ public class MainGameView implements Screen {
     private PlayerSprite pls;
     private static Sprite sp;
     private Texture tx;
-    private static final int START_X = MainController.getController().getInitialPosition().getX();
-    private static final int START_Y = MainController.getController().getInitialPosition().getY();
-    private static final int DEFAULT_START_X = MainController.getController().getDefaultInitialPosition().getX();
-    private static final int DEFAULT_START_Y = MainController.getController().getDefaultInitialPosition().getY();
+    private int startX;
+    private int startY;
+    private int defaultStartX;
+    private int defaultStartY;
     
     public MainGameView(boolean b) {
-        newGame = b;    
+        this.newGame = b;    
     }
 	
     public void render(float delta) {		
@@ -56,6 +56,13 @@ public class MainGameView implements Screen {
         this.camera.viewportWidth = width / 2.5f;
         this.camera.viewportHeight = height / 2.5f;
     }
+    
+    private void initConstants() {
+        this.startX = MainController.getController().getInitialPosition().getX();
+        this.startY = MainController.getController().getInitialPosition().getY();
+        this.defaultStartX = MainController.getController().getDefaultInitialPosition().getX();
+        this.defaultStartY = MainController.getController().getDefaultInitialPosition().getY();
+    }
 	
     public void show() {	
         try {
@@ -63,6 +70,7 @@ public class MainGameView implements Screen {
         } catch (Exception e) {
             MainController.getController().initializeModel(new TmxMapLoader().load(MainController.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
+        this.initConstants();
         MainController.getController().getViewController().initName();
 	MainController.getController().initializeMusicController();
         MainController.getController().updateStatus(State.WALKING);
@@ -89,8 +97,8 @@ public class MainGameView implements Screen {
 	this.pls = PlayerSprite.getSprite();
 	if (newGame) {
 	    //TODO Magic numbers... c'è un metodo nella mappa
-	    this.pls.setBounds(START_X > 0 ? START_X * 16  : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16  : (299 - DEFAULT_START_Y) * 16, 15.9f, 15.9f);
-	    if (START_X < 0) {
+	    this.pls.setBounds(startX > 0 ? startX * 16  : defaultStartX * 16, startY > 0 ? (299 - startY) * 16  : (299 - defaultStartY) * 16, 15.9f, 15.9f);
+	    if (startX < 0) {
 	        System.out.println("Initial Position not found");
 	    } 
 	} else {
@@ -99,10 +107,10 @@ public class MainGameView implements Screen {
 		this.pls.setBounds(MainController.getController().getPlayer().getTileX()*16, (299 - MainController.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 	        this.pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		if (START_X < 0) {
+		if (startX < 0) {
 		    System.out.println("Initial Position not found");
 		}
-		this.pls.setPosition(START_X > 0 ? START_X * 16 : DEFAULT_START_X * 16, START_Y > 0 ? (299 - START_Y) * 16 : (299 - DEFAULT_START_Y) * 16);
+		this.pls.setPosition(startX > 0 ? startX * 16 : defaultStartX * 16, startY > 0 ? (299 - startY) * 16 : (299 - defaultStartY) * 16);
 	    }
 	}	        
     }

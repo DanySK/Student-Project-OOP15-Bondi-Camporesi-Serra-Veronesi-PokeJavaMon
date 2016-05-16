@@ -29,6 +29,7 @@ public class InFightMessages implements InFightMessagesInterface {
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
             Pokemon nextEnemyPokemon, String optionalMessage, final Move moveToLearn) {
+        this.message = new ArrayList<>();
         this.moveToLearn = moveToLearn;
         if (myMoveFirst) {
             this.message.add(MainController.getController().getSquad().getPokemonList().get(0).getPokemon().name() + ": " + myMove);
@@ -134,6 +135,7 @@ public class InFightMessages implements InFightMessagesInterface {
 
     @Override
     public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead) {
+        this.message = new ArrayList<>();
         this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
         if (isMyPokemonDead) {
             this.message.add("Your pokemon is exhausted");
@@ -149,6 +151,7 @@ public class InFightMessages implements InFightMessagesInterface {
 
     @Override
     public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead) {
+        this.message = new ArrayList<>();
         if (enemyMove != null) {
             this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokemon().name() + ": " + enemyMove);
             if (isMyPokemonDead) {
@@ -179,6 +182,7 @@ public class InFightMessages implements InFightMessagesInterface {
 
     @Override
     public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead) {
+        this.message = new ArrayList<>();
         if (success) {
             MainController.getController().updateStatus(State.WALKING);
             View.getView().disposeCurrent();

@@ -21,10 +21,10 @@ public class MessageFrame extends JWindow implements MyFrame {
 	
     private static final long serialVersionUID = 1370776687087493267L;
     private JPanel panel;
-	private final List<JLabel> labels = new ArrayList<>();
-	private JButton ok;
-	private String[] msgs;
-	private State st;
+    private final List<JLabel> labels = new ArrayList<>();
+    private JButton ok;
+    private String[] msgs;
+    private State st;
 	
     public MessageFrame(State st, String... strs) {
         this.st = st;
@@ -59,7 +59,11 @@ public class MessageFrame extends JWindow implements MyFrame {
         panel.add(ok);
         this.getContentPane().add(panel);
         this.setAlwaysOnTop(true);
-        this.setBounds(100, 100, 450, 100 * msgs.length);
+        if (msgs.length > 4) {
+            this.setBounds(100, 100, 450, 400);
+        } else {
+            this.setBounds(100, 100, 450, 100 * msgs.length);
+        }
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
