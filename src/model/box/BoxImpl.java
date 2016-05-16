@@ -63,7 +63,7 @@ public class BoxImpl implements Box {
             throw new PokemonNotFoundException();
         }
         
-        if (pkmn.getPokemon() == Pokedex.MISSINGNO) {
+        if (pkmn.getPokedexEntry() == Pokedex.MISSINGNO) {
             throw new IllegalArgumentException();
         }
         
@@ -73,7 +73,7 @@ public class BoxImpl implements Box {
 
     public void putCapturedPokemon(final Pokemon pkmn) {
         
-        if (pkmn.getPokemon() == Pokedex.MISSINGNO) {
+        if (pkmn.getPokedexEntry() == Pokedex.MISSINGNO) {
             throw new IllegalArgumentException();
         }
         
@@ -114,7 +114,7 @@ public class BoxImpl implements Box {
     public String toString() {
         String retString = "";
         for (final Pokemon p : pokemonInBox) {
-          retString = retString + " " + p.getPokemon().getName();  
+          retString = retString + " " + p.getPokedexEntry().getName();  
         }
         return retString;
     }

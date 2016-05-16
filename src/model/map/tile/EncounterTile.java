@@ -17,5 +17,10 @@ public class EncounterTile extends NPC {
 	public Pokemon getPokemon() {
 		return this.pokemon;
 	}
+	
+	@Override
+	public String toString() {
+		return "Pokemon Encounter Tile of " + this.pokemon.getPokedexEntry();
+	}
 
 }

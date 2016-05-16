@@ -161,8 +161,8 @@ public abstract class BasicFight {
 
     protected void isEffective(final PokemonInBattle striker, final PokemonInBattle stricken, 
             final Move move) {
-        effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricken.getPokemon().getFirstType(),
-                stricken.getPokemon().getSecondType());
+        effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricken.getPokedexEntry().getFirstType(),
+                stricken.getPokedexEntry().getSecondType());
         if (effectiveValue >= SUPER_EFFECTIVE) {
             if (striker.equals(allyPkm)) {
                 allyEff = Effectiveness.SUPEREFFECTIVE;
@@ -179,8 +179,8 @@ public abstract class BasicFight {
     }
 
     protected double stabCalculation(final PokemonInBattle striker, final Move move) {
-        if (striker.getPokemon().getFirstType() == move.getType() 
-                || striker.getPokemon().getSecondType() == move.getType()) {
+        if (striker.getPokedexEntry().getFirstType() == move.getType() 
+                || striker.getPokedexEntry().getSecondType() == move.getType()) {
             return STAB_ACTIVE;
         }
         return 1;
@@ -214,7 +214,7 @@ public abstract class BasicFight {
     protected double expBaseCalculation() {
         //TODO testare se è bilanciata la quantità di baseExp
         double baseExp;
-        switch(enemyPkm.getPokemon().getRarity()){
+        switch(enemyPkm.getPokedexEntry().getRarity()){
         case COMMON:
             baseExp = 80;
             break;

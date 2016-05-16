@@ -178,18 +178,23 @@ public class PokeMapImpl implements PokeMap {
 			} else if (cellProperty.equals(TileType.CENTER.toString())) {
 				this.map[tileX][tileY] = TileType.CENTER;
 				this.collisions.add(p);
+			
 			} else if (cellProperty.equals(TileType.START.toString())) {
 				PlayerImpl.START_X = tileX;
 				PlayerImpl.START_Y = tileY;
 				this.map[tileX][tileY] = TileType.START;
 				PlayerImpl.getPlayer().setStartingPoint(tileX, tileY);
+			
 			} else if (cellProperty.equals(TileType.DEFEAT.toString())) {
 				this.pokeCenterSpawn = new Position(tileX, tileY);
 				this.map[tileX][tileY] = TileType.DEFEAT;
+			
 			} else if (cellProperty.equals(TileType.ENCOUNTER.toString())) {
 				this.tileEncounters.add(new EncounterTile(Pokedex.valueOf(mp.get("pokemon", String.class)), 
 						Integer.parseInt(mp.get("lvl", String.class)), tileX, tileY, Direction.SOUTH, mp.get("cry", String.class)));
 				this.map[tileX][tileY] = TileType.ENCOUNTER;
+				System.out.println(new Position(tileX, tileY) + " = EncounterTile of " + mp.get("pokemon", String.class));
+				System.out.println(this.tileEncounters);
 			}
 		}
 	}

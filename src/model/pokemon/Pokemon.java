@@ -21,7 +21,7 @@ public interface Pokemon {
 	 * @return		the Pokedex type of the Pokemon
 	 * @see			Pokedex
 	 */
-    public Pokedex getPokemon();
+    public Pokedex getPokedexEntry();
     
     /**
      * A method to get the currentHP of the {@link Pokemon}

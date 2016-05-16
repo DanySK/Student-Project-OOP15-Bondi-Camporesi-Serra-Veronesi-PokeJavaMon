@@ -42,8 +42,8 @@ public class TestTrainer {
         assertEquals("Parameter isDefeated is wrong!", false, blue.isDefeated());
         assertSame("Parameter TileX is wrong!", tileX, blue.getTileX());
         assertSame("Parameter TileY is wrong!", tileY, blue.getTileY());
-        assertSame("A pokemon in the squad is wrong!", Pokedex.RATICATE, blue.getSquad().getPokemonList().get(0).getPokemon());
-        assertSame("A pokemon in the squad is wrong!", Pokedex.RATTATA, blue.getSquad().getPokemonList().get(1).getPokemon());
+        assertSame("A pokemon in the squad is wrong!", Pokedex.RATICATE, blue.getSquad().getPokemonList().get(0).getPokedexEntry());
+        assertSame("A pokemon in the squad is wrong!", Pokedex.RATTATA, blue.getSquad().getPokemonList().get(1).getPokedexEntry());
         assertEquals("Parameter initialMessage is wrong!", initMessage, blue.getInitialMessage());
         assertEquals("Parameter trainerLostMessage is wrong!", trainerDefeatedMessage , blue.getTtrainerLostMessage());
         assertEquals("Parameter trainerWonMessage is wrong!", trainerWonMessage, blue.getTrainerWonMessageMessage());
@@ -60,8 +60,8 @@ public class TestTrainer {
         assertEquals("Parameter isDefeated is wrong!", true, blue2.isDefeated());
         assertSame("Parameter TileX is wrong!", tileX, blue2.getTileX());
         assertSame("Parameter TileY is wrong!", tileY, blue2.getTileY());
-        assertSame("A pokemon in the squad is wrong!", Pokedex.RATICATE, blue2.getSquad().getPokemonList().get(0).getPokemon());
-        assertSame("A pokemon in the squad is wrong!", Pokedex.RATTATA, blue2.getSquad().getPokemonList().get(1).getPokemon());
+        assertSame("A pokemon in the squad is wrong!", Pokedex.RATICATE, blue2.getSquad().getPokemonList().get(0).getPokedexEntry());
+        assertSame("A pokemon in the squad is wrong!", Pokedex.RATTATA, blue2.getSquad().getPokemonList().get(1).getPokedexEntry());
         assertEquals("Parameter initialMessage is wrong!", initMessage, blue2.getInitialMessage());
         assertEquals("Parameter trainerLostMessage is wrong!", trainerDefeatedMessage , blue2.getTtrainerLostMessage());
         assertEquals("Parameter trainerWonMessage is wrong!", trainerWonMessage, blue2.getTrainerWonMessageMessage());

@@ -43,20 +43,20 @@ public class Pokeball extends AbstractItem {
     public boolean isCaptured(final Pokemon pkmn) {
         double x = new Random().nextDouble();
         double y = (double) this.calculateProbabilityCatch(pkmn, pkmn.getCurrentHP() == pkmn.getStat(Stat.MAX_HP));
-        System.out.println("Trying to capture " + pkmn.getPokemon().getName() + ", Prob: " + y + ", value: " + x + ", enemy hp: " + pkmn.getCurrentHP() + ", rarity: " + pkmn.getPokemon().getRarity());
+        System.out.println("Trying to capture " + pkmn.getPokedexEntry().getName() + ", Prob: " + y + ", value: " + x + ", enemy hp: " + pkmn.getCurrentHP() + ", rarity: " + pkmn.getPokedexEntry().getRarity());
         return x <= y;
     }
     
     public double calculateProbabilityCatch(final Pokemon pkmn, final boolean isFullHP) {
         final int maxHP = pkmn.getStat(Stat.MAX_HP);
         final int currentHP = pkmn.getCurrentHP();
-        final int rarity = pkmn.getPokemon().getRarity().getCoeff();
+        final int rarity = pkmn.getPokedexEntry().getRarity().getCoeff();
         final double pokeballRate = this.quality.getPokeballValue();
         double prob;
         if (isFullHP) {
         	prob = ((1 / maxHP * 3) + ((rarity * pokeballRate ) / 3)) / 256;
         } else {
-        	System.out.println(this.quality + " " + pkmn.getPokemon() + ", MaxHP/cHP= " + pkmn.getStat(Stat.MAX_HP) + "/" + pkmn.getCurrentHP() + ", (1+catchRate) / (maxHP*3) / 256 = (" + 1 + "+" + ((maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) + ") / " + (maxHP*3) + " / 256" );
+        	System.out.println(this.quality + " " + pkmn.getPokedexEntry() + ", MaxHP/cHP= " + pkmn.getStat(Stat.MAX_HP) + "/" + pkmn.getCurrentHP() + ", (1+catchRate) / (maxHP*3) / 256 = (" + 1 + "+" + ((maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) + ") / " + (maxHP*3) + " / 256" );
         	prob = (( 1 + ( maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) / ( maxHP * 3 )) / 256;
         }
         return prob <= 1 ? prob : 1;

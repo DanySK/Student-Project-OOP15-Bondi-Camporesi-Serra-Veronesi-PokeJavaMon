@@ -139,7 +139,7 @@ public abstract class AbstractPokemon implements Pokemon {
     }
     
     @Override
-    public Pokedex getPokemon() {
+    public Pokedex getPokedexEntry() {
         return this.pokemon;
     }
 

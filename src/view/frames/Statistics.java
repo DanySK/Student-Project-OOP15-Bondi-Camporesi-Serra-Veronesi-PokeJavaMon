@@ -63,13 +63,13 @@ public class Statistics extends JWindow implements MyFrame {
 		panel.add(exit);       
 		type = new JLabel("Type");
 		panel.add(type);
-		if (pk.getPokemon().getSecondType() != PokemonType.NONE) {
-		    typeValue = new JLabel(pk.getPokemon().getFirstType().name() + " / " + pk.getPokemon().getSecondType());
+		if (pk.getPokedexEntry().getSecondType() != PokemonType.NONE) {
+		    typeValue = new JLabel(pk.getPokedexEntry().getFirstType().name() + " / " + pk.getPokedexEntry().getSecondType());
 		} else {
-	            typeValue = new JLabel(pk.getPokemon().getFirstType().name());
+	            typeValue = new JLabel(pk.getPokedexEntry().getFirstType().name());
 		}
 		panel.add(typeValue);
-		pkmnName = new JLabel("" + pk.getPokemon());
+		pkmnName = new JLabel("" + pk.getPokedexEntry());
 		panel.add(pkmnName);
 		level = new JLabel("Level");
 		panel.add(level);
@@ -117,7 +117,7 @@ class statsPanel extends JPanel {
         stats.add(Stat.ATK.name());
         stats.add(Stat.DEF.name());
         stats.add(Stat.SPD.name());
-        if (ID.getPokemon().name() != null) {
+        if (ID.getPokedexEntry().name() != null) {
             for (int j=0; j<4; j++){
                 moves.add("Move");
             }
@@ -166,10 +166,10 @@ class MyPanel2 extends JPanel{
     public void paint(Graphics g) {
         super.paintComponents(g);
         try {                
-    	    image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getAbsolutePath()));
+    	    image = ImageIO.read(new File(pk.getPokedexEntry().getFrontSprite().getAbsolutePath()));
     	} catch (Exception ex) {
     	    try {
-    	        image = ImageIO.read(new File(pk.getPokemon().getFrontSprite().getResourcePath()));
+    	        image = ImageIO.read(new File(pk.getPokedexEntry().getFrontSprite().getResourcePath()));
             } catch (Exception e) {
                 System.out.println("CANNOT LOAD SPRITE");
             }

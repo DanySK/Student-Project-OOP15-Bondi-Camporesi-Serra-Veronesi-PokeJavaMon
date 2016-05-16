@@ -259,7 +259,7 @@ public class FightTest {
         fightTr.giveExpAndCheckLvlUp(fightTr.getExp());//do l'esperienza di rattata squirtle
         fightTr.evolvePkms();
         pkmsToEvolve = fightTr.getPkmsThatMustEvolve();
-        assertNotSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE, pkmsToEvolve.get(FIRST_ELEM).getPokemon());
-        assertNotSame("Squirtle must be evolved in wartortle!", Pokedex.BLASTOISE, pkmsToEvolve.get(SECOND_ELEM).getPokemon());
+        assertNotSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE, pkmsToEvolve.get(FIRST_ELEM).getPokedexEntry());
+        assertNotSame("Squirtle must be evolved in wartortle!", Pokedex.BLASTOISE, pkmsToEvolve.get(SECOND_ELEM).getPokedexEntry());
     }
 }

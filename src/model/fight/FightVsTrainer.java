@@ -52,10 +52,10 @@ public class FightVsTrainer extends AbstractFight {
         }
         for (final Move m : moves) {
             if (m.getStat() == Stat.MAX_HP) {
-                if (SUPER_EFFECTIVE_MAX_VALUE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
+                if (SUPER_EFFECTIVE_MAX_VALUE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())) {
                     move = m;
                     break;
-                } else if (SUPER_EFFECTIVE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
+                } else if (SUPER_EFFECTIVE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())) {
                     superEffective = true;
                     move = m;
                 } else if (move.getValue() < m.getValue() && !superEffective) {
@@ -108,8 +108,8 @@ public class FightVsTrainer extends AbstractFight {
                         int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
                         allyPkm.heal(hpAfterLvUp);
-                        if (allyPkm.getPokemon().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
-                            moveToLearn = allyPkm.getPokemon().getMoveset().get(allyPkm.getStat(Stat.LVL));
+                        if (allyPkm.getPokedexEntry().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
+                            moveToLearn = allyPkm.getPokedexEntry().getMoveset().get(allyPkm.getStat(Stat.LVL));
                         }
                         else {
                             moveToLearn = Move.NULLMOVE;
@@ -196,9 +196,9 @@ public class FightVsTrainer extends AbstractFight {
         //manda il primo pkm che trova e che ha un tipo superefficace contro l'allyPkm
         for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
             if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
-                    pkm.getPokemon().getFirstType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())
+                    pkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())
                     || STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
-                            pkm.getPokemon().getSecondType(), allyPkm.getPokemon().getFirstType(), allyPkm.getPokemon().getSecondType())) {
+                            pkm.getPokedexEntry().getSecondType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())) {
                 enemyPkm = pkm;
                 break;
             }
