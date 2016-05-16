@@ -61,6 +61,11 @@ public interface Pokemon {
     public List<Move> getCurrentMoves();
     
     /**
+     * Method that updates {@link Stat}s accordingly to the level
+     */
+    public void updateStats();
+    
+    /**
      * A method to change the current {@link Stat.EXP} of the {@link Pokemon}
      * @param exp	the new ammount of exp
      */

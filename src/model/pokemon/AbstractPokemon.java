@@ -179,7 +179,7 @@ public abstract class AbstractPokemon implements Pokemon {
     /**
      * Method that updates {@link Stat}s accordingly to the level
      */
-    protected void updateStats() {
+    public void updateStats() {
         for (final Entry<Stat, Integer> e : mapStat.entrySet()) {
             if (e.getKey() == Stat.LVL || e.getKey() == Stat.EXP) {
                 continue;
