@@ -16,6 +16,7 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.pokemon.Stat;
 import model.trainer.Trainer;
 import view.methods.InFightMessages;
 import view.methods.InFightMessagesInterface;
@@ -27,10 +28,12 @@ public class MainFightController implements FightController {
 
     private Fight fight;
     private InFightMessagesInterface view;
+    private Trainer trainer;
     
     @Override
     public void newFightWithTrainer(final Trainer trainer) {
         this.fight = new FightVsTrainer(trainer);
+        this.trainer = trainer;
         this.view = new InFightMessages(); 
     }
     
@@ -106,5 +109,16 @@ public class MainFightController implements FightController {
     @Override
     public Pokemon getEnemyPokemon() {
         return this.fight.getCurrentEnemyPokemon();
+    }
+    
+    @Override
+    public void healEnemy() {
+        if (this.fight instanceof FightVsTrainer) {
+            if (this.trainer != null) {
+                this.trainer.healAllPokemons();
+            }
+        } else {
+            this.fight.getCurrentEnemyPokemon().heal(this.fight.getCurrentEnemyPokemon().getStat(Stat.MAX_HP));
+        }
     }
 }
