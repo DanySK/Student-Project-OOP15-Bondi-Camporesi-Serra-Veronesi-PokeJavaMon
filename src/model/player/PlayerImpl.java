@@ -40,8 +40,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.box = BoxImpl.getBox();
         this.inv = InventoryImpl.getInventory();
         this.trainersBeaten = new HashSet<>();
-        this.badges = 0;
-        
+        this.badges = 0;    
     }
     
     public static Player getPlayer() {
@@ -118,55 +117,53 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     
     @Override
     public void move(final Direction d, final PokeMap pm) {
-    	int newX = this.tileX;
+        int newX = this.tileX;
     	int newY = this.tileY;
     	this.direction = d;
     	switch (d) {
     	case EAST :
-    		newX += 1;
-    		break;
+    	    newX += 1;
+    	    break;
     	case WEST :
-    		newX -= 1;
-    		break;
+    	    newX -= 1;
+    	    break;
     	case NORTH :
-    		newY -= 1;
-    		break;
+    	    newY -= 1;
+    	    break;
     	case SOUTH :
-    		newY += 1;
-    		break;
+    	    newY += 1;
+    	    break;
     	default :
-    		return;
+    	    return;
     	}
     	if (pm.isWalkable(newX, newY)) {
-   			this.setPosition(newX, newY);
+    	    this.setPosition(newX, newY);
     	}
-    	
     }
     
     public void turn(final Direction d) {
     	this.direction = d;
     }
+    
+    @Override
+    public int getLastBadge() {
+        return this.badges;
+    }
 
-	@Override
-	public int getLastBadge() {
-		return this.badges;
-	}
-
-	@Override
-	public void addBadge() {
-		this.badges++;
-	}
+    @Override
+    public void addBadge() {
+        this.badges++;
+    }
 	
-	@Override
-	public void setBadges(final int badges) {
-		this.badges = badges;
-	}
+    @Override
+    public void setBadges(final int badges) {
+        this.badges = badges;
+    }
 	
-	@Override
-	public void setStartingPoint(final int tileX, final int tileY) {
-		PlayerImpl.START_X = tileX;
-		PlayerImpl.START_Y = tileY;
-		this.setPosition(tileX, tileY);
-	}
-	
+    @Override
+    public void setStartingPoint(final int tileX, final int tileY) {
+        PlayerImpl.START_X = tileX;
+        PlayerImpl.START_Y = tileY;
+        this.setPosition(tileX, tileY);
+    }
 }

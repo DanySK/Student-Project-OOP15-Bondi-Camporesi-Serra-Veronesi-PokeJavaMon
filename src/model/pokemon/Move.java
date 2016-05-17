@@ -290,9 +290,9 @@ public enum Move {
     ;
 	
 	
-	public static enum MoveType {
-		PHYSICAL, SPECIAL, STATUS, 
-	}
+    public static enum MoveType {
+	PHYSICAL, SPECIAL, STATUS, 
+    }
 
     
     private final PokemonType type;
@@ -333,9 +333,6 @@ public enum Move {
     @Override
     public String toString() {
         return this.name();
-    }
-    
-    
-    
+    }  
 }
 

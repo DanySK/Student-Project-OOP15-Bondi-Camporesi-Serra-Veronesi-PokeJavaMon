@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import model.pokemon.InitializeMoves;
 import model.pokemon.PokemonType;
 import model.pokemon.WeaknessTable;
 
@@ -20,7 +21,7 @@ public class TestWeakness {
 	
 	@Test
 	public void testSingleWeaknesses() {
-		
+		InitializeMoves.getAllMoves();
 		for (final PokemonType pt : PokemonType.values()) {
 			for (final PokemonType pt2 : PokemonType.values()) {
 				if (mapWeaknesses.get(pt2) == null) {

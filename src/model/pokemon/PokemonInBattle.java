@@ -11,85 +11,85 @@ package model.pokemon;
  */
 public class PokemonInBattle extends AbstractPokemon{
 
-	private boolean canEvolve;
-	private Pokedex evolvesTo;
+    private boolean canEvolve;
+    private Pokedex evolvesTo;
 
-	protected PokemonInBattle(Pokedex pokemon, int lvl) {   
-		super(pokemon, lvl);
-		if (pokemon.getEvolvesToPokemon() != Pokedex.MISSINGNO) {
-			canEvolve = true;
-			evolvesTo = pokemon.getEvolvesToPokemon();
-		}
-	}
+    protected PokemonInBattle(Pokedex pokemon, int lvl) {   
+        super(pokemon, lvl);
+        if (pokemon.getEvolvesToPokemon() != Pokedex.MISSINGNO) {
+            canEvolve = true;
+            evolvesTo = pokemon.getEvolvesToPokemon();
+        }
+    }
 	
-	@Override
-	public void levelUp() {
-	    if (this.getStat(Stat.LVL) == MAX_LEVEL) {
-	        return;
-	    }
-	    changeStat(Stat.LVL, this.mapStat.get(Stat.LVL) + 1);
-	    updateStats();
-	    if (this.getStat(Stat.LVL) == MAX_LEVEL) {
-	        this.changeStat(Stat.EXP, 0);
-	    }
+    @Override
+    public void levelUp() {
+        if (this.getStat(Stat.LVL) == MAX_LEVEL) {
+            return;
+        }
+        changeStat(Stat.LVL, this.mapStat.get(Stat.LVL) + 1);
+        updateStats();
+        if (this.getStat(Stat.LVL) == MAX_LEVEL) {
+            this.changeStat(Stat.EXP, 0);
+        }
     }
 	
 	/**
 	 * A method that tells if this Pokemon is ready to evolve, judgying by its level.
 	 * @return	true if it's ready to evolve, false if it isn't
 	 */
-	public boolean checkIfEvolves() {
-	    if (this.getStat(Stat.LVL) >= this.pokemon.getEvolveLevel() && this.pokemon.getEvolveLevel() > 0) {
-	        return true;
-	    }
+    public boolean checkIfEvolves() {
+        if (this.getStat(Stat.LVL) >= this.pokemon.getEvolveLevel() && this.pokemon.getEvolveLevel() > 0) {
+            return true;
+    }
 	    return false;
-	}
+    }
 	
-	@Override
-	public void evolve() throws IllegalStateException {
-	    if (!canEvolve || !this.checkIfEvolves()) {
-	        throw new IllegalStateException();
-	    }
-	    this.pokemon = this.evolvesTo;
-	    if (this.evolvesTo.getEvolveLevel() > 0) {
-	        this.canEvolve = true;
-	        this.evolvesTo = this.evolvesTo.getEvolvesToPokemon();
-	    } else {
-	        this.canEvolve = false;
-	        this.evolvesTo = Pokedex.MISSINGNO;
-	    }
-	}
+    @Override
+    public void evolve() throws IllegalStateException {
+        if (!canEvolve || !this.checkIfEvolves()) {
+            throw new IllegalStateException();
+        }
+        this.pokemon = this.evolvesTo;
+        if (this.evolvesTo.getEvolveLevel() > 0) {
+            this.canEvolve = true;
+            this.evolvesTo = this.evolvesTo.getEvolvesToPokemon();
+        } else {
+            this.canEvolve = false;
+            this.evolvesTo = Pokedex.MISSINGNO;
+        }
+    }
 	
 	/**
 	 * A method that tells if a Pokemon will be able to evolve or if it has reached its final form
 	 * @return true if it still can evolve, false if not
 	 */
-	public boolean canEvolve() {
-	    return this.canEvolve;
-	}
+    public boolean canEvolve() {
+        return this.canEvolve;
+    }
 	
 	/**
 	 * A method that returns the {@link Pokedex} value of the Pokemon which it will evolve to
 	 * @return		The {@link Pokedex} value of its next evolved form
 	 * @see	Pokedex
 	 */
-	public Pokedex evolvesTo() {
-	    return this.evolvesTo;
-	}
+    public Pokedex evolvesTo() {
+        return this.evolvesTo;
+    }
 	
-	@Override
-	public void damage(final int dmg) {
-	    this.currentHP -= dmg;
-	    if (this.currentHP < 0) {
-	        this.currentHP = 0;
-	    }
-	}
+    @Override
+    public void damage(final int dmg) {
+        this.currentHP -= dmg;
+        if (this.currentHP < 0) {
+            this.currentHP = 0;
+        }
+    }
 
     
     /**
      * Overriding {@link Object#hashCode()} to make Pokemon comparison faster
      */
-	@Override
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -112,10 +112,10 @@ public class PokemonInBattle extends AbstractPokemon{
             return false;
         PokemonInBattle other = (PokemonInBattle) obj;
         if (other.pokemon == this.pokemon 
-                && other.getStat(Stat.LVL) == this.getStat(Stat.LVL)
-                && other.currentHP == this.currentHP 
-                && other.getNecessaryExp() == this.getNecessaryExp()
-                && other.randID == this.randID) {
+            && other.getStat(Stat.LVL) == this.getStat(Stat.LVL)
+            && other.currentHP == this.currentHP 
+            && other.getNecessaryExp() == this.getNecessaryExp()
+            && other.randID == this.randID) {
             return true;
         }
         return false;
