@@ -8,7 +8,7 @@ import model.squad.Squad;
 
 public class Trainer extends AbstractCharacter {
     
-	public final static String TYPE_TRAINER_NAME = "TRAINER";
+    public final static String TYPE_TRAINER_NAME = "TRAINER";
     private final Squad squad;
     private final String name;
     protected boolean isDefeated;
@@ -17,10 +17,9 @@ public class Trainer extends AbstractCharacter {
     private final String trainerLostMessage;
     private final int money;
     private final int trainerID;
-    
-    
+      
     protected Trainer(final String name, final int x, final int y, final Direction d, final boolean isDefeated, final Squad squad,
-    				  final String initMessage, final String wonMessage, final String lostMessage, final int money, final int trainerID) {
+                      final String initMessage, final String wonMessage, final String lostMessage, final int money, final int trainerID) {
         super(x,y,d);
         this.name = name;
         this.squad = squad;
@@ -75,8 +74,6 @@ public class Trainer extends AbstractCharacter {
     	}
     }
 
-	@Override
-	public void move(final Direction d, final PokeMap pm) {
-	
-	}
+    @Override
+    public void move(final Direction d, final PokeMap pm) {}
 }

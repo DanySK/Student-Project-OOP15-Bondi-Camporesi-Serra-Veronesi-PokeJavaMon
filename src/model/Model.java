@@ -23,122 +23,114 @@ import model.trainer.Trainer;
 
 public class Model implements ModelInterface {
 
-	private final PokeMap map; 
-	private final Player player;
-	private boolean isContinued;
+    private final PokeMap map; 
+    private final Player player;
+    private boolean isContinued;
 	
-	public Model(final TiledMap tm) {
-		this.map = new PokeMapImpl(tm);
-		this.player = PlayerImpl.getPlayer();
-		this.isContinued = false;
-	}
+    public Model(final TiledMap tm) {
+        this.map = new PokeMapImpl(tm);
+        this.player = PlayerImpl.getPlayer();
+        this.isContinued = false;
+    }
 	
-	@Override
-	public Player getPlayer() {
-		return this.player;
-	}
+    @Override
+    public Player getPlayer() {
+        return this.player;
+    }
 
-	@Override
-	public void setPlayerName(String name) {
-		this.player.setName(name);
-	}
+    @Override
+    public void setPlayerName(String name) {
+        this.player.setName(name);
+    }
 
-	@Override
-	public PokeMap getMap() {
-		return this.map;
-	}
+    @Override
+    public PokeMap getMap() {
+        return this.map;
+    }
 
-	@Override
-	public WeaknessTable getWeaknessTable() {
-		return WeaknessTable.getWeaknessTable();
-	}
+    @Override
+    public WeaknessTable getWeaknessTable() {
+        return WeaknessTable.getWeaknessTable();
+    }
 
-	@Override
-	public Set<GymLeader> getGymLeaders() {
-		return this.map.getGymLeaders();
-	}
+    @Override
+    public Set<GymLeader> getGymLeaders() {
+        return this.map.getGymLeaders();
+    }
 
-	@Override
-	public Set<Trainer> getTrainers() {
-		return this.map.getTrainers();
-	}
+    @Override
+    public Set<Trainer> getTrainers() {
+        return this.map.getTrainers();
+    }
 
-	@Override
-	public Set<NPC> getNPCs() {
-		return this.map.getNPCs();
-	}
+    @Override
+    public Set<NPC> getNPCs() {
+        return this.map.getNPCs();
+    }
 
-	@Override
-	public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, 
-			final List<Pokemon> squad, final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box, 
-			final Map<String, Integer> pokeballs, final Map<String, Integer> boosts, final Map<String, Integer> potions) throws SquadFullException {
-		
-		if (isContinued) {
-			return;
-		}
-		this.player.setMoney(playerMoney);
-		this.player.setName(name);
-		this.player.setBadges(badges);
-		this.player.setPosition(playerPosition.getX(), playerPosition.getY());
-		for (final Pokemon p : squad) {
-			this.player.getSquad().add(p);
-		}
-		this.map.initTrainers(idTrainer_isDefeated);
-		this.map.initGymLeaders(badges);
-		this.player.getBox().setPokemons(box);
-		this.player.getInventory().initializeInventory(potions, boosts, pokeballs);
+    @Override
+    public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, 
+			 final List<Pokemon> squad, final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box, 
+			 final Map<String, Integer> pokeballs, final Map<String, Integer> boosts, final Map<String, Integer> potions) throws SquadFullException {
+        if (isContinued) {
+            return;
+        }
+        this.player.setMoney(playerMoney);
+        this.player.setName(name);
+        this.player.setBadges(badges);
+        this.player.setPosition(playerPosition.getX(), playerPosition.getY());
+        for (final Pokemon p : squad) {
+            this.player.getSquad().add(p);
+        }
+        this.map.initTrainers(idTrainer_isDefeated);
+        this.map.initGymLeaders(badges);
+        this.player.getBox().setPokemons(box);
+        this.player.getInventory().initializeInventory(potions, boosts, pokeballs);
+    }
 
-	}
+    @Override
+    public Save getModelSnapshot() {
+        return new Save() {
 
-	@Override
-	public Save getModelSnapshot() {
-		return new Save() {
+            @Override
+            public int getPlayerMoney() {
+                return player.getMoney();
+            }
 
-			@Override
-	    	public int getPlayerMoney() {
-	    		return player.getMoney();
-	    	}
-
-			@Override
-	    	public String getPlayerName() {
-	    		return player.getName();
-	    	}
+            @Override
+            public String getPlayerName() {
+                return player.getName();
+            }
 	    	
-
-			@Override
-	    	public int getPlayerBadges() {
-	    		return player.getLastBadge();
-	    	}
+            @Override
+            public int getPlayerBadges() {
+                return player.getLastBadge();
+            }
 	    	
-
-			@Override
-	    	public Position getPlayerPosition() {
-	    		return new Position(player.getTileX(), player.getTileY());
-	    	}
+            @Override
+            public Position getPlayerPosition() {
+                return new Position(player.getTileX(), player.getTileY());
+            }
 	    	
+            @Override
+            public List<PokemonInBattle> getPokemonSquad() {
+                return player.getSquad().getPokemonList();
+            }
 
-			@Override
-	    	public List<PokemonInBattle> getPokemonSquad() {
-	    		return player.getSquad().getPokemonList();
-	    	}
+            @Override
+            public Set<Trainer> getTrainers() {
+                return map.getTrainers();
+            }
 
-			@Override
-			public Set<Trainer> getTrainers() {
-				return map.getTrainers();
-			}
+            @Override
+            public Inventory getInventory() {
+                return player.getInventory();
+                }
 
-			@Override
-			public Inventory getInventory() {
-				return player.getInventory();
-			}
-
-			@Override
-			public Box getBox() {
-				return player.getBox();
-			}
-
-		};
-	}
-
-
+            @Override
+            public Box getBox() {
+                return player.getBox();
+                }
+        };
+    }
 }

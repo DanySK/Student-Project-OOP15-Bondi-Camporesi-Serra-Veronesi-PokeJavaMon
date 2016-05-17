@@ -142,4 +142,9 @@ public interface FightController {
      * @return the enemy's fighting {@link Pokemon}
      */
     Pokemon getEnemyPokemon();
+
+    /**
+     * Heals the last enemy
+     */
+    void healEnemy();
 }

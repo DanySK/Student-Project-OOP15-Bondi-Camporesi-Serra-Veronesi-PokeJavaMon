@@ -226,6 +226,7 @@ public class InFightMessages implements InFightMessagesInterface {
     }
     
     private void lostMessage() {
+        MainController.getController().getFightController().healEnemy();
         this.message.add("You lost!");
         this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());
         View.getView().disposeCurrent();
