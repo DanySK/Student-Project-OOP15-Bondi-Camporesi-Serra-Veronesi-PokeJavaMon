@@ -28,7 +28,12 @@ public class FightVsTrainer extends AbstractFight {
     private static final String TRAINER_DEFEAT_MESS = "Money earned: ";
     private static final String GYM_LEADER_DEFEAT_MESS = "You gained a badge!";
 
-    public FightVsTrainer(final Trainer trainer) {
+    /**
+     * Constructor for a fight against a trainer.
+     * 
+     * @param trainer   The {@link model.trainer.Trainer} challenged.
+     */
+    protected FightVsTrainer(final Trainer trainer) {
         super();
         this.trainer = trainer;
         enemyPkm = this.trainer.getSquad().getPokemonList().get(FIRST_ELEM);
@@ -37,13 +42,19 @@ public class FightVsTrainer extends AbstractFight {
         }
     }
 
+    /**
+     * Calculate the enemy move.
+     * The method try to find a {@link Effectiveness#SUPEREFFECTIVE} move.
+     * If it dont't found a move, it return the move which have highest value ({@link model.pokemon.Move#getValue()}).
+     * If method don't found a move, it return the first move in the move list ({@link model.pokemon.Pokemon#getCurrentMoves()}).
+     * 
+     * @return  The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
+     * @see     {@link BasicFight#calculationEnemyMove()}
+     */
     @Override
     protected Move calculationEnemyMove() {
         Move move = enemyPkm.getCurrentMoves().get(FIRST_ELEM);
         boolean superEffective = false;
-        //cerca di ritornare prima una mossa superefficace, 
-        //se non la trovo, ritorna la mossa che fa più danno
-        //se non ha mosse che fanno danno, usa la prima mossa
         final List<Move> moves = new ArrayList<>();
         for (final Move mov : enemyPkm.getCurrentMoves()) {
             if (mov != Move.NULLMOVE) {
@@ -66,26 +77,48 @@ public class FightVsTrainer extends AbstractFight {
         return move;
     }
 
+    /**
+     * @see {@link BasicFight#getEnemyBoost(Stat)}
+     */
     @Override
     public double getEnemyBoost(final Stat stat) {
         return enemyPkmsBoosts.get(enemyPkm).get(stat);
     }
 
+    /**
+     * @see {@link BasicFight#setEnemyBoost(Stat, Double)}
+     */
     @Override
     public void setEnemyBoost(final Stat stat, final Double d) {
         enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
     }
 
+    /**
+     * Resolve the run option.
+     * 
+     * @throws CannotEscapeFromTrainerException If the user fight against a {@link model.trainer.Trainer}.
+     * @see                                     {@link AbstractFight#applyRun()}
+     */
     @Override
     public boolean applyRun() throws CannotEscapeFromTrainerException{
         throw new CannotEscapeFromTrainerException();
     }
 
+    /**
+     * @see {@link AbstractFight#applyItem(Item, PokemonInBattle)}
+     */
     @Override
     public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         return super.applyItem(itemToUse, pkm);
     }
 
+    /**
+     * Resolve the use of a pokeball.
+     * 
+     * @param itemToUse                         The {@link model.items.Pokeball} to use.
+     * @throws CannotCaughtTrainerPkmException  If the user fight against a {@link model.trainer.Trainer}.
+     * @see                                     {@link AbstractFight#useBall(Item)}
+     */
     @Override
     protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
         throw new CannotCaughtTrainerPkmException();
@@ -188,12 +221,21 @@ public class FightVsTrainer extends AbstractFight {
         reset();
     }
 
+    /**
+     * @see {@link AbstractFight#getExp()}
+     */
+    @Override
     public int getExp() {
         return (int) (expBaseCalculation() * 1.5) / EXP_COEFFICIENT; 
     }
 
+    /**
+     * Apply the trainer change. The method set the first pokemon which have the types 
+     * ({@link model.pokemon.Pokedex#getFirstType()} {@link model.pokemon.Pokedex#getSecondType()}) super effective {@link Effectiveness#SUPEREFFECTIVE}.
+     * If it don't found, set the first pokemon founded.
+     * The method set {@link BasicFight#enemyPkm}.
+     */
     protected void trainerChange() {
-        //manda il primo pkm che trova e che ha un tipo superefficace contro l'allyPkm
         for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
             if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
                     pkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())
@@ -203,7 +245,6 @@ public class FightVsTrainer extends AbstractFight {
                 break;
             }
         }
-        //se non ne trova nessuno manda il primo pokemon che trova
         if (enemyPkm.getCurrentHP() == 0) {
             for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
                 if (pkm.getCurrentHP() > 0) {

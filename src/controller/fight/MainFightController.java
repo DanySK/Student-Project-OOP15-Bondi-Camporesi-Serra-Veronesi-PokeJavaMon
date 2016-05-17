@@ -10,8 +10,7 @@ import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
 import model.fight.Effectiveness;
 import model.fight.Fight;
-import model.fight.FightVsTrainer;
-import model.fight.FightVsWildPkm;
+import model.fight.StaticSimpleFightFactory;
 import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
@@ -30,13 +29,13 @@ public class MainFightController implements FightController {
     
     @Override
     public void newFightWithTrainer(final Trainer trainer) {
-        this.fight = new FightVsTrainer(trainer);
+        this.fight = StaticSimpleFightFactory.createFight(trainer);
         this.view = new InFightMessages(); 
     }
     
     @Override
     public void newFightWithPokemon(final Pokemon pokemon) {
-        this.fight = new FightVsWildPkm(pokemon);
+        this.fight = StaticSimpleFightFactory.createFight(pokemon);
         this.view = new InFightMessages();
     }
     

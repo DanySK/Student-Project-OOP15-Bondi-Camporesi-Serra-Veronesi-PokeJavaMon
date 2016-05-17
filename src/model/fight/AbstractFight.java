@@ -16,6 +16,7 @@ import model.items.Potion;
 import model.items.Item.ItemType;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.pokemon.Stat;
 import model.squad.Squad;
 
 /**
@@ -115,18 +116,54 @@ public abstract class AbstractFight extends BasicFight implements Fight {
 
     @Override
     public void evolvePkms() {
+        int hpBeforeEvolution;
+        int hpGainedByLvl;
         for (PokemonInBattle pkm : pkmsThatMustEvolve) {
+            hpBeforeEvolution = pkm.getStat(Stat.MAX_HP);
             pkm.evolve();
+            pkm.levelUp();
+            hpGainedByLvl = pkm.getStat(Stat.MAX_HP) - hpBeforeEvolution;
+            pkm.heal(hpGainedByLvl);
         }
     }
 
+    /**
+     * Get the enemy pokemon which is in battle.
+     * @return          The current enemy {@link model.pokemon.Pokemon}.
+     */
     @Override
     public Pokemon getCurrentEnemyPokemon() {
         return enemyPkm;
     }
 
+    /**
+     * @see {@link BasicFight#getEnemyBoost(Stat)}
+     */
+    public abstract double getEnemyBoost(final Stat stat);
+
+    /**
+     * @see {@link BasicFight#setEnemyBoost(Stat, Double)}
+     */
+    public abstract void setEnemyBoost(final Stat stat, final Double d);
+
+    /**
+     * Resolve the run option.
+     * 
+     * @return                                  True if escape from {@link Fight}.
+     * @throws CannotEscapeFromTrainerException If the user fight against a {@link model.trainer.Trainer}.
+     */
     protected abstract boolean applyRun() throws CannotEscapeFromTrainerException;
 
+    /**
+     * Resolve the use of an {@link model.items.Item}.
+     * 
+     * @param itemToUse                         The target {@link model.items.Item}.
+     * @param pkm                               The target {@link model.pokemon.Pokemon}.
+     * @return                                  False if item is a {@link model.items.Pokeball} and the {@link model.pokemon.Pokemon} isn't captured.
+     * @throws PokemonIsExhaustedException      If target {@link model.pokemon.Pokemon} is exhausted.
+     * @throws PokemonNotFoundException         If target {@link model.pokemon.Pokemon} was not found.
+     * @throws CannotCaughtTrainerPkmException  If itemToUse is a {@link model.items.Pokeball} and the user is fight against {@link model.trainer.Trainer}.
+    */
     protected boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         switch(itemToUse.getType()) {
         case BOOST:
@@ -154,7 +191,19 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         return true;
     }
 
+    /**
+     * Resolve the use of a {@link model.items.Pokeball}.
+     * 
+     * @param itemToUse                         The {@link model.items.Pokeball} to use.
+     * @return                                  True if enemy {@link model.pokemon.Pokemon} is caught.
+     * @throws CannotCaughtTrainerPkmException  If the user fight against a {@link model.trainer.Trainer}.
+     */
     protected abstract boolean useBall(Item itemToUse) throws CannotCaughtTrainerPkmException;
 
+    /**
+     * Calculate the exp gained by defeating a {@link model.pokemon.Pokemon}.
+     * 
+     * @return The exp gained by beating a {@link model.pokemon.Pokemon}.
+     */
     protected abstract int getExp();
 }

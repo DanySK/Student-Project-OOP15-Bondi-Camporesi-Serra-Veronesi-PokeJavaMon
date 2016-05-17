@@ -19,7 +19,7 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 
 /**
- * A concrete class which deals operations to manage a fight against a 
+ * A concrete class which deals operations to manage a {@link Fight} against a 
  * wild {@link model.pokemon.Pokemon}.
  *
  */
@@ -28,11 +28,23 @@ public class FightVsWildPkm extends AbstractFight {
     private static final int COEFFICIENT_PROB = 255;
     private final Map<Stat, Double> enemyPkmBoosts = new HashMap<>(createBoostsMap());
 
-    public FightVsWildPkm(final Pokemon pkm) {
+    /**
+     * A constructor for {@link FightVsWildPkm}.
+     * 
+     * @param pkm       The wild {@link model.pokemon.Pokemon} that appears.
+     */
+    protected FightVsWildPkm(final Pokemon pkm) {
         super();
         enemyPkm = (PokemonInBattle) pkm;
     }
 
+    /**
+     * Calculate the enemy {@link model.pokemon.Move}.
+     * A wild {@link model.pokemon.Pokemon} do a random move.
+     * 
+     * @return  The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
+     * @see {@link BasicFight#calculationEnemyMove()}
+     */
     @Override
     protected Move calculationEnemyMove() {
         final Random numberMove = new Random();
@@ -46,16 +58,28 @@ public class FightVsWildPkm extends AbstractFight {
         return moves.get(numberMove.nextInt(movesNumber));
     }
 
+    /**
+     * @see {@link BasicFight#getEnemyBoost(Stat)}
+     */
     @Override
     public double getEnemyBoost(final Stat stat) {
         return enemyPkmBoosts.get(stat);
     }
 
+    /**
+     * @see {@link BasicFight#setEnemyBoost(Stat, Double)}
+     */
     @Override
     public void setEnemyBoost(final Stat stat, final Double d) {
         enemyPkmBoosts.replace(stat, d);
     }
 
+    /**
+     * Resolve the run option.
+     * 
+     * @return  True if escape from {@link Fight}.
+     * @see {@link AbstractFight#applyRun()}
+     */
     @Override
     public boolean applyRun() throws CannotEscapeFromTrainerException {
         final Random escapeRoll = new Random();
@@ -63,11 +87,28 @@ public class FightVsWildPkm extends AbstractFight {
         return runValue = escapeChance > escapeRoll.nextInt(COEFFICIENT_PROB);
     }
 
+    /**
+     * Resolve the use of an {@link model.items.Item}.
+     * 
+     * @param itemToUse                         The target {@link model.items.Item}.
+     * @param pkm                               The target {@link model.pokemon.Pokemon}.
+     * @return                                  False if item is a {@link model.items.Pokeball} and the {@link model.pokemon.Pokemon} isn't captured.
+     * @throws PokemonIsExhaustedException      If target {@link model.pokemon.Pokemon} is exhausted.
+     * @throws PokemonNotFoundException         If target {@link model.pokemon.Pokemon} was not found.
+     * @see {@link AbstractFight#applyItem(Item, PokemonInBattle)}
+     */
     @Override
     public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         return super.applyItem(itemToUse, pkm);
     }
 
+    /**
+     * Resolve the use of a {@link model.items.Pokeball}.
+     * 
+     * @param itemToUse                         The {@link model.items.Pokeball} to use.
+     * @return                                  True if enemy {@link model.pokemon.Pokemon} is caught.
+     * @see {@link AbstractFight#useBall(Item)}
+     */
     @Override
     protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
         final Pokeball ball = (Pokeball) itemToUse;
@@ -138,6 +179,10 @@ public class FightVsWildPkm extends AbstractFight {
         }
     }
 
+    /**
+     * @see {@link AbstractFight#getExp()}
+     */
+    @Override
     public int getExp() {
         return (int) (expBaseCalculation() / EXP_COEFFICIENT);
     }

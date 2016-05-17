@@ -14,6 +14,7 @@ import exceptions.SquadFullException;
 import model.fight.Fight;
 import model.fight.FightVsTrainer;
 import model.fight.FightVsWildPkm;
+import model.fight.StaticSimpleFightFactory;
 import model.items.Boost;
 import model.items.Item;
 import model.items.Item.ItemType;
@@ -65,19 +66,19 @@ public class TestFight {
      * 
      * @return An instance of FightVsWildPkm {@link model.fight.FightVsWildPkm}
      */
-    private FightVsWildPkm createFightVsWildPkm() {
-        return new FightVsWildPkm(StaticPokemonFactory.createPokemon(Pokedex.PIKACHU, 3));
+    private Fight createFightVsWildPkm() {
+        return StaticSimpleFightFactory.createFight(StaticPokemonFactory.createPokemon(Pokedex.PIKACHU, 3));
     }
 
     /**
      * 
      * @return An instance of FightVsTrainer {@link model.fight.FightVsTrainer}
      */
-    private FightVsTrainer createFightVsTrainer() {
+    private Fight createFightVsTrainer() {
         final Map<String, Integer> trainerPkmList = new HashMap<>();
         trainerPkmList.put("RATTATA", 3);
         final Trainer trainer = StaticTrainerFactory.createTrainer("Blue", Direction.SOUTH, false, 0, 0, trainerPkmList, "Hi!", "Bye bye", "Yeah", 0, -1);
-        return new FightVsTrainer(trainer);
+        return StaticSimpleFightFactory.createFight(trainer);
     }
 
     /**
@@ -107,8 +108,8 @@ public class TestFight {
      */
     public void testRun() {
         InitializeMoves.getAllMoves();
-        final FightVsWildPkm fightWild = createFightVsWildPkm();
-        final FightVsTrainer fightTrainer = createFightVsTrainer();
+        final FightVsWildPkm fightWild = (FightVsWildPkm) createFightVsWildPkm();
+        final FightVsTrainer fightTrainer = (FightVsTrainer) createFightVsTrainer();
         /*
          * test run against a wild pokemon at level 3, the ally front pokemon is at level 50,
          * the method should return true!
@@ -182,8 +183,8 @@ public class TestFight {
         player.getInventory().addItem(boost);
         player.getInventory().addItem(potion);
         player.getInventory().addItem(pokeball);
-        final FightVsWildPkm fightWild = createFightVsWildPkm();
-        final FightVsTrainer fightTr = createFightVsTrainer();
+        final FightVsWildPkm fightWild = (FightVsWildPkm) createFightVsWildPkm();
+        final FightVsTrainer fightTr = (FightVsTrainer) createFightVsTrainer();
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final PokemonInBattle pkmNotInTeam = StaticPokemonFactory.createPokemon(Pokedex.CHARMANDER, 5);
@@ -277,7 +278,7 @@ public class TestFight {
      */
     public void testUseMove() {
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
-        final FightVsTrainer fightTr = createFightVsTrainer();
+        final FightVsTrainer fightTr = (FightVsTrainer) createFightVsTrainer();
         final int hpBeforeTurn = squirtle.getCurrentHP();
         final double boostBeforeTurn = fightTr.getAllyBoost(Stat.DEF);
         assertTrue("Squirtle at lv 15 must be faster than a rattata at lv 3!", fightTr.setIsAllyFastest());
@@ -295,7 +296,7 @@ public class TestFight {
     public void testEvolve(){
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
-        final FightVsTrainer fightTr = createFightVsTrainer();
+        final FightVsTrainer fightTr = (FightVsTrainer) createFightVsTrainer();
         List<PokemonInBattle> pkmsToEvolve = new ArrayList<>();
         squirtle.setExp(squirtle.getNecessaryExp() - MIN_STAT);
         fightTr.giveExpAndCheckLvlUp(fightTr.getExp());

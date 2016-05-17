@@ -1,5 +1,8 @@
 package model.fight;
 
+/**
+ * Enumeration used for communicate moves effectiveness.
+ */
 public enum Effectiveness {
     SUPEREFFECTIVE("Super effective!!"), 
     LESSEFFECTIVE("Not very effective..."), 
