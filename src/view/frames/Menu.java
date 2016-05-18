@@ -91,7 +91,7 @@ public class Menu extends JWindow implements MyFrame {
             }
         });             
         this.add(Box.createVerticalGlue());    
-        this.music = new JButton("Musica");
+        this.music = new JButton("Music");
         this.music.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.music);    
         this.music.addActionListener(new ActionListener() {
