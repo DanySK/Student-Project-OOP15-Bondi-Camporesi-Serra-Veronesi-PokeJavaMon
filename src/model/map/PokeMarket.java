@@ -24,15 +24,15 @@ public class PokeMarket extends NPC {
 		super("PokeMarketGuy", x, y, Direction.SOUTH, "Welcome to the PokeMarket!");
 		this.tier0 = new HashSet<>();
 		tier0.add(new Pokeball(PokeballType.Pokeball));
-		tier0.add(new Potion(PotionType.POTION));
-		tier0.add(new Potion(PotionType.SUPERPOTION));
+		tier0.add(new Potion(PotionType.Potion));
+		tier0.add(new Potion(PotionType.Superpotion));
 		this.tier1 = new HashSet<>(tier0);
 		tier1.add(new Boost(Stat.ATK));
 		tier1.add(new Boost(Stat.DEF));
 		tier1.add(new Pokeball(PokeballType.Greatball));
 		this.tier2 = new HashSet<>(tier1);
 		tier2.add(new Pokeball(PokeballType.Ultraball));
-		tier2.add(new Potion(PotionType.HYPERPOTION));
+		tier2.add(new Potion(PotionType.Hyperpotion));
 		tier2.add(new Boost(Stat.SPD));
 		
 	}

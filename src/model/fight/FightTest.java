@@ -151,7 +151,7 @@ public class FightTest {
     public void testApplyItem() {
         InitializeMoves.getAllMoves();
         final Item boost = new Boost(Stat.ATK);
-        final Item potion = new Potion(Potion.PotionType.HYPERPOTION);
+        final Item potion = new Potion(Potion.PotionType.Hyperpotion);
         final Item pokeball = new Pokeball(Pokeball.PokeballType.Ultraball);
         player.getInventory().addItem(boost);
         player.getInventory().addItem(potion);

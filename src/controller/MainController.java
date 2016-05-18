@@ -280,9 +280,9 @@ public final class MainController implements Controller {
         Map<String, Integer> potionList = new HashMap<>();
         Map<String, Integer> boostList = new HashMap<>();
         Map<String, Integer> ballList = new HashMap<>();
-        potionList.put(PotionType.POTION.name(), DEFAULT_QUANTITY);
-        potionList.put(PotionType.SUPERPOTION.name(), NO_ITEM);
-        potionList.put(PotionType.HYPERPOTION.name(), NO_ITEM);
+        potionList.put(PotionType.Potion.name(), DEFAULT_QUANTITY);
+        potionList.put(PotionType.Superpotion.name(), NO_ITEM);
+        potionList.put(PotionType.Hyperpotion.name(), NO_ITEM);
         boostList.put(Stat.SPD.name() + "X", NO_ITEM);
         boostList.put(Stat.DEF.name() + "X", NO_ITEM);
         boostList.put(Stat.ATK.name() + "X", NO_ITEM);
