@@ -5024,7 +5024,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="zoneLayer" visible="0">
+ <objectgroup name="zoneLayer">
   <object id="161" x="4400" y="48" width="304" height="144">
    <properties>
     <property name="music" value="center.mp3"/>
@@ -5073,13 +5073,13 @@
     <property name="zoneType" value="CITY_1"/>
    </properties>
   </object>
-  <object id="173" x="128" y="16" width="1472" height="1264">
+  <object id="173" x="16" y="16" width="1584" height="1264">
    <properties>
     <property name="music" value="route.mp3"/>
     <property name="zoneType" value="MOUNTAIN_1"/>
    </properties>
   </object>
-  <object id="174" x="1600" y="480" width="880" height="912">
+  <object id="174" x="1600" y="16" width="880" height="1376">
    <properties>
     <property name="music" value="opening.mp3"/>
     <property name="zoneType" value="CITY_2"/>
