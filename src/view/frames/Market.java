@@ -1,6 +1,7 @@
 package view.frames;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +44,7 @@ public class Market extends JWindow implements MyFrame {
     @Override
     public void showFrame() {
         this.setAlwaysOnTop(true);
-        this.setSize(600,600); 
+        this.setMinimumSize(new Dimension(700,600)); 
         this.panel = new JPanel();
         this.setContentPane(this.panel);
         this.Name1.add("TYPE");

@@ -7,7 +7,7 @@ import model.pokemon.PokemonInBattle;
 public class Potion extends AbstractItem {
 
     public static enum PotionType {
-        POTION(20, 300), SUPERPOTION(50, 700), HYPERPOTION(200, 1200);
+        Potion(20, 300), Superpotion(50, 700), Hyperpotion(200, 1200);
         
         private PotionType(final int heal, final int cost) {
             this.heal = heal;
@@ -62,11 +62,11 @@ public class Potion extends AbstractItem {
     @Override
     public int hashCode() {
         switch (this.quality) {
-        case HYPERPOTION :
+        case Hyperpotion :
             return 9999970;
-        case  SUPERPOTION :
+        case  Superpotion :
             return 9999971;
-        case  POTION :
+        case  Potion :
             return 9999972;
         }
         return 0;

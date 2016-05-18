@@ -147,6 +147,9 @@ public class FightVsTrainer extends AbstractFight {
                         else {
                             moveToLearn = Move.NULLMOVE;
                         }
+                        if (allyPkm.checkIfEvolves()) {
+                            pkmsThatMustEvolve.add(allyPkm);
+                        }
                     } else {
                         moveToLearn = Move.NULLMOVE;
                     }

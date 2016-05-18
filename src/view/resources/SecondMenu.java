@@ -77,7 +77,7 @@ public class SecondMenu {
         b.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 s = nickname.getText();
-                if (s.length() < 4 || s.length() > 20) {
+                if (s.length() < 4 || s.length() > 15) {
                     JOptionPane.showMessageDialog(b, "Insert a valid NAME");
                 } else {
                     MainController.getController().selectStarter(p);

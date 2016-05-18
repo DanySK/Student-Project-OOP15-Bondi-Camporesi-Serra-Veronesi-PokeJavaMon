@@ -105,12 +105,6 @@ public abstract class AbstractFight extends BasicFight implements Fight {
 
     @Override
     public List<PokemonInBattle> getPkmsThatMustEvolve() {
-        pkmsThatMustEvolve = new ArrayList<>();
-        for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
-            if (pkm.checkIfEvolves()) {
-                pkmsThatMustEvolve.add(pkm);
-            }
-        }
         return pkmsThatMustEvolve;
     }
 

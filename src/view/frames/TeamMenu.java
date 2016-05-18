@@ -168,22 +168,32 @@ public class TeamMenu extends JWindow implements MyFrame {
             this.deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
-                    try {
-                        MainController.getController().depositPokemon(p);
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        TeamMenu sc = new TeamMenu(canExit, isChangingPoke);
-                        View.getView().addNew(sc);
-                        View.getView().showCurrent();
-                    } catch (PokemonNotFoundException e1) {
-                        View.getView().hideCurrent();
-                        View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
-                        View.getView().showCurrent();
-                    } catch (OnlyOnePokemonInSquadException e1) {
-                        View.getView().hideCurrent();
-                        View.getView().addNew(new MessageFrame(null, "CANNOT DEPOSIT LAST POKEMON"));
-                        View.getView().showCurrent();
+                    for (final Pokemon pok : MainController.getController().getSquad().getPokemonList()) {
+                        if (pok != p && pok.getCurrentHP() > 0) {
+                            try {
+                                MainController.getController().depositPokemon(p);
+                                View.getView().disposeCurrent();
+                                View.getView().removeCurrent();
+                                TeamMenu sc = new TeamMenu(canExit, isChangingPoke);
+                                View.getView().addNew(sc);
+                                View.getView().showCurrent();
+                                return;
+                            } catch (PokemonNotFoundException e1) {
+                                View.getView().hideCurrent();
+                                View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
+                                View.getView().showCurrent();
+                                return;
+                            } catch (OnlyOnePokemonInSquadException e1) {
+                                View.getView().hideCurrent();
+                                View.getView().addNew(new MessageFrame(null, "CANNOT DEPOSIT LAST POKEMON"));
+                                View.getView().showCurrent();
+                                return;
+                            }
+                        }
                     }
+                    View.getView().hideCurrent();
+                    View.getView().addNew(new MessageFrame(null, "CANNOT DEPOSIT LAST ALIVE POKEMON"));
+                    View.getView().showCurrent();
                 }
             });
             if (MainController.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
