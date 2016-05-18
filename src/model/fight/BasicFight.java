@@ -1,14 +1,14 @@
 package model.fight;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import model.player.Player;
 import model.player.PlayerImpl;
 import model.pokemon.Move;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.pokemon.WeaknessTable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Abstract class which provides the basic method for perform operation in fight classes 
@@ -21,11 +21,12 @@ public abstract class BasicFight {
     protected static final double BOOST_COEFF = 0.15;
     protected static final double BOOST_COEFF_INCR = 2;
     protected static final double MIN_BOOST_VALUE = 0.2;
-    protected static final double MAX_BOOST_VALUE = 2.8;
+    protected static final double MAX_BOOST_VALUE = 2.75;
     protected static final double STAB_ACTIVE = 1.5;
     protected static final double STAB_DISABLED = 1;
     protected static final int SUPER_EFFECTIVE = 2;
     protected static final double LESS_EFFECTIVE = 0.5;
+    protected static final double IMMUNE = 0;
     protected static final int MIN_DAMAGE = 1;
 
     protected Player player = PlayerImpl.getPlayer();
@@ -42,6 +43,9 @@ public abstract class BasicFight {
     protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
     protected Move moveToLearn;
 
+    /**
+     * A simple constructor for BasicFight, it just initialize some ally parameters.
+     */
     protected BasicFight() {
         moveToLearn = Move.NULLMOVE;
         allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
@@ -51,8 +55,9 @@ public abstract class BasicFight {
     }
 
     /**
+     * Create a battle boosts map for a pokemon.
      * 
-     * @return          A boost map that store the battle stats of a pokemon.
+     * @return  A boost map that store the battle {@link model.pokemon.Stat} multipliers of a pokemon.
      */
     protected Map<Stat, Double> createBoostsMap() {
         final Map<Stat, Double> boosts = new HashMap<>();
@@ -74,9 +79,9 @@ public abstract class BasicFight {
 
     
     /**
-     * Resolve an ally turn using the choosen move.
+     * Resolve an ally turn using the chosen move by user.
      * 
-     * @param move      The move choosen by the user.
+     * @param move      The chosen {@link model.pokemon.Move}.
      */
     public void allyTurn(final Move move) {
         applyMove(move, allyPkm, enemyPkm);
@@ -93,9 +98,9 @@ public abstract class BasicFight {
     /**
      * Resolve the move use.
      * 
-     * @param move      The move which must be used.
-     * @param striker   The pokemon which use the move.
-     * @param stricken  The pokemon which is stricken by the move.
+     * @param move      The {@link model.pokemon.Move} which must be used.
+     * @param striker   The {@link model.pokemon.Pokemon} which use the move.
+     * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
      */
     protected void applyMove(final Move move, final PokemonInBattle striker, final PokemonInBattle stricken) {
         if (move.getStat() == Stat.MAX_HP) {
@@ -107,9 +112,10 @@ public abstract class BasicFight {
     }
 
     /**
-     * Check if the argument pkm taken in input is exhausted and set his exhaust variable true.
+     * Check if the pokemon taken as argument is exhausted and if it is, 
+     * set his exhaust variable true.
      * 
-     * @param pkm       The pokemon that must be checked.
+     * @param pkm       The {@link model.pokemon.Pokemon} that must be checked.
      */
     public void checkAndSetIsExhausted(final PokemonInBattle pkm) {
         if (pkm.equals(allyPkm)) {
@@ -120,32 +126,44 @@ public abstract class BasicFight {
     }
 
     /**
-     * Calculate the enemy {@link model.pokemon.Move}.
+     * Calculate the enemy move to use.
      * 
      * @return          The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
      */
     protected abstract Move calculationEnemyMove();
 
     /**
-     * Get an enemy battle {@link model.pokemon.Stat}.
+     * Get an enemy battle stat value of the same type of the stat insert as argument.
      * 
-     * @param stat      The battle {@link model.pokemon.Stat} required.
-     * @return          The relative battle {@link model.pokemon.Stat} inserted as argument of the current enemy pokemon.
+     * @param stat      The battle {@link model.pokemon.Stat} to get.
+     * @return          The relative battle stat value.
      */
     public abstract double getEnemyBoost(final Stat stat);
 
     /**
-     * Set a new enemy battle {@link model.pokemon.Stat} value.
+     * Set a new enemy battle stat value.
      * 
      * @param stat      The battle {@link model.pokemon.Stat} to modified.
-     * @param d         The new battle {@link model.pokemon.Stat} value.
+     * @param d         The new battle stat value to set.
      */
     public abstract void setEnemyBoost(final Stat stat, final Double d);
 
+    /**
+     * Get an ally battle stat value of the same type of the stat insert as argument.
+     * 
+     * @param stat      The battle {@link model.pokemon.Stat} to get.
+     * @return          The relative battle stat value.
+     */
     public double getAllyBoost(final Stat stat) {
         return allyPkmsBoosts.get(allyPkm).get(stat);
     }
 
+    /**
+     * Set a new ally battle stat value.
+     * 
+     * @param stat      The battle {@link model.pokemon.Stat} to modified.
+     * @param d         The new battle stat value to set.
+     */
     public void setAllyBoost(final Stat stat, final Double d) {
         allyPkmsBoosts.get(allyPkm).replace(stat, d);
     }
@@ -153,11 +171,12 @@ public abstract class BasicFight {
     /**
      * Resolve a move which target a boost stat.
      * 
-     * @param striker   The pokemon which use the move.
-     * @param stricken  The pokemon which is stricken by the move.
-     * @param move      The move which must be used.
+     * @param striker   The {@link model.pokemon.Pokemon} which use the move.
+     * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
+     * @param move      The {@link model.pokemon.Move} which must be used.
      */
-    protected void applyMoveOnBoost(final PokemonInBattle striker, final PokemonInBattle stricken, final Move move) {
+    protected void applyMoveOnBoost(final PokemonInBattle striker, final PokemonInBattle stricken,
+            final Move move) {
         double newBoostValue;
         double moveValue = move.getValue() * BOOST_COEFF;
         if (allyPkm.equals(striker)) {
@@ -198,11 +217,12 @@ public abstract class BasicFight {
     /**
      * Resolve a move which do damage.
      * 
-     * @param striker   The pokemon which use the move.
-     * @param stricken  The pokemon which is stricken by the move.
-     * @param move      The move which must be used.
+     * @param striker   The {@link model.pokemon.Pokemon} which use the move.
+     * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
+     * @param move      The {@link model.pokemon.Move} which must be used.
      */
-    protected void applyDamage(final PokemonInBattle striker, final PokemonInBattle stricken, final Move move) {
+    protected void applyDamage(final PokemonInBattle striker, final PokemonInBattle stricken,
+            final Move move) {
         isEffective(striker, stricken, move);
         stab = stabCalculation(striker, move);
         final double atkBoost;
@@ -222,9 +242,9 @@ public abstract class BasicFight {
      * Set the effective parameters: the multiplier and the enumeration value to pass 
      * to the view methods.
      * 
-     * @param striker   The pokemon which use the move.
-     * @param stricken  The pokemon which is stricken by the move.
-     * @param move      The move which must be used.
+     * @param striker   The {@link model.pokemon.Pokemon} which use the move.
+     * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
+     * @param move      The {@link model.pokemon.Move} which must be used.
      */
     protected void isEffective(final PokemonInBattle striker, final PokemonInBattle stricken, 
             final Move move) {
@@ -235,6 +255,12 @@ public abstract class BasicFight {
                 allyEff = Effectiveness.SUPEREFFECTIVE;
             } else {
                 enemyEff = Effectiveness.SUPEREFFECTIVE;
+            }
+        } else if (effectiveValue <= IMMUNE) {
+            if (striker.equals(allyPkm)) {
+                allyEff = Effectiveness.IMMUNE;
+            } else {
+                enemyEff = Effectiveness.IMMUNE;
             }
         } else if (effectiveValue <= LESS_EFFECTIVE) {
             if (striker.equals(allyPkm)) {
@@ -248,8 +274,8 @@ public abstract class BasicFight {
     /**
      * Calculate the stab value.
      * 
-     * @param striker   The pokemon which use the move.
-     * @param move      The move which must be used.      
+     * @param striker   The {@link model.pokemon.Pokemon} which use the move.
+     * @param move      The {@link model.pokemon.Move} which must be used.      
      * @return          The stab value.
      */
     protected double stabCalculation(final PokemonInBattle striker, final Move move) {
@@ -263,11 +289,11 @@ public abstract class BasicFight {
     /**
      * Calculate the damage done.
      * 
-     * @param striker   The pokemon which use the move.
-     * @param stricken  The pokemon which is stricken by the move.
-     * @param atkBoost  The battle boost ATK of the stricker pokemon.
-     * @param defBoost  The battle boost DEF of the stricken pokemon.
-     * @param move      The move which must be used.
+     * @param striker   The {@link model.pokemon.Pokemon} which use the move.
+     * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
+     * @param atkBoost  The battle boost ATK of the stricker.
+     * @param defBoost  The battle boost DEF of the stricken.
+     * @param move      The {@link model.pokemon.Move} which must be used.
      * @return          The damage.
      */
     protected int damageCalculation(final PokemonInBattle striker, final PokemonInBattle stricken, 
@@ -283,7 +309,7 @@ public abstract class BasicFight {
     /**
      * Calculate, set and return true if ally pokemon is faster than enemy pokemon.
      * 
-     * @return          The boolean variable which indicate what pokemon is faster.
+     * @return  The boolean variable which indicate what pokemon is faster.
      */
     public boolean setIsAllyFastest() {
         return isAllyFastest = (allyPkm.getStat(Stat.SPD) * getAllyBoost(Stat.SPD))
@@ -291,11 +317,11 @@ public abstract class BasicFight {
     }
 
     /**
-     * Give to ally pokemon the experience of enemy pokemon and if is enough,
-     * ally pokemon level up.
+     * Give to ally pokemon the experience of enemy pokemon and if 
+     * is enough to level up, ally pokemon level up.
      * 
-     * @param exp       The exp gained by beating enemy pokemon.
-     * @return          True, if pokemon level up.
+     * @param exp       The experience gained ({@link AbstractFight#getExp()}) by beating enemy pokemon.
+     * @return          True, if ally {@link model.pokemon.Pokemon} level up.
      */
     public boolean giveExpAndCheckLvlUp(final int exp) {
         if (allyPkm.getNecessaryExp() <= exp) {
@@ -308,7 +334,10 @@ public abstract class BasicFight {
     }
 
     /**
-     * @return          The exp gained by beating enemy pokemon according to rarity.
+     * Return the experience gained by beating an enemy pokemon according to rarity.
+     * 
+     * @return          The experience gained.
+     * @see {@link AbstractFight#getExp()}
      */
     protected double expBaseCalculation() {
         //TODO testare se è bilanciata la quantità di baseExp
@@ -332,7 +361,6 @@ public abstract class BasicFight {
         case LEGENDARY:
             baseExp = 300;
             break;
-        //default ricopre il caso unfindable
         default:
             baseExp = 0;
         }
