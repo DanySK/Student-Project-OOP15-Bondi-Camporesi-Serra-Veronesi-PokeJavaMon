@@ -300,7 +300,7 @@ public abstract class BasicFight {
             final double atkBoost, final double defBoost, final Move move) {
         final int damage = (int) ((((2 * striker.getStat(Stat.LVL) + 10) * (striker.getStat(Stat.ATK) 
                 * atkBoost * move.getValue())) / ((stricken.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
-        if (damage <= 0) {
+        if (damage <= 0 && effectiveValue > 0) {
             return MIN_DAMAGE;
         }
         return damage;
@@ -344,22 +344,25 @@ public abstract class BasicFight {
         double baseExp;
         switch(enemyPkm.getPokedexEntry().getRarity()){
         case COMMON:
-            baseExp = 80;
-            break;
-        case UNCOMMON:
             baseExp = 100;
             break;
-        case RARE:
-            baseExp = 120;
+        case UNCOMMON:
+            baseExp = 130;
             break;
-        case VERY_RARE:
+        case RARE:
             baseExp = 150;
             break;
-        case STARTER:
+        case VERY_RARE:
             baseExp = 180;
             break;
+        case UNFINDABLE:
+            baseExp = 200;
+            break;
+        case STARTER:
+            baseExp = 250;
+            break;
         case LEGENDARY:
-            baseExp = 300;
+            baseExp = 500;
             break;
         default:
             baseExp = 0;

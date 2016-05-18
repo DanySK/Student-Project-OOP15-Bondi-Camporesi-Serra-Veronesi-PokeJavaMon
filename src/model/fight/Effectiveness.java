@@ -6,7 +6,7 @@ package model.fight;
 public enum Effectiveness {
     SUPEREFFECTIVE("Super effective!!"), 
     LESSEFFECTIVE("Not very effective..."), 
-    IMMUNE("Enemy is immune!"),
+    IMMUNE("Is immune!"),
     NORMAL("That was effective"), 
     CANNOTINCREASE("His stat cannot increase"), 
     CANNOTDECREASE("His stat cannot decrease");
