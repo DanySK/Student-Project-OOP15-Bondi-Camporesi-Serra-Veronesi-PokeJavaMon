@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,13 +55,30 @@ public class FightScreen extends JWindow implements MyFrame {
     private JLabel enemyName_Lvl;
     private JLabel allyName_Lvl;
     
+    
+    private FightPanel mainMainPanel;
+    
+    	public FightScreen() {
+            this.setAlwaysOnTop(true);
+            this.setFocusable(true);
+            this.setAlwaysOnTop(true);
+            this.setBounds(0, 0, 450, 300);
+            this.getContentPane().setLayout(null);
+    		this.mainMainPanel = new FightPanel(MainController.getController().getEnemyPokemonInFight(), MainController.getController().getSquad().getPokemonList().get(0));
+    		this.mainMainPanel.setBounds(0,0, 440, 390);
+    		this.getContentPane().add(mainMainPanel);
+    	}
+    
         public void repaintFrame() {
+        	
+        	mainMainPanel.refresh();
+        	/*
         	mainPanel.repaint();  
         	namePanel.setVisible(false);
         	namePanel = new JPanel();           
             namePanel.setLayout(new GridLayout(1, 0, 0, 0));
         	namePanel.setBounds(50, 5, 450, 10);
-            allyName_Lvl = new JLabel (MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().name() +   " Lv "  + MainController.getController().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
+            allyName_Lvl = new JLabel (MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().getName() +   " Lv "  + MainController.getController().getSquad().getPokemonList().get(0).getStat(Stat.LVL));
             namePanel.add(allyName_Lvl);
             enemyName_Lvl = new JLabel (MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + " Lv " + MainController.getController().getEnemyPokemonInFight().getStat(Stat.LVL));
             namePanel.add(enemyName_Lvl);
@@ -143,10 +161,16 @@ public class FightScreen extends JWindow implements MyFrame {
             });
             if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
             movesPanel.add(move4);
+            */
         }
         
         public void showMessage(String... message) {
-            repaintFrame();
+//            repaintFrame();
+        	for (final String s : message) {
+        		new MessageFrame(null, s);
+        	}
+        	
+            /*
             dialogPanel = new JPanel();
             dialogPanel.setVisible(false);
             dialogPanel.setBounds(0, 225, 450, 75);
@@ -183,11 +207,13 @@ public class FightScreen extends JWindow implements MyFrame {
             dialogPanel.requestFocus();
             dialogPanel.setVisible(true);
             movesPanel.setVisible(false);   
+            */
         }
 
         @Override
         public void showFrame() {
-        	
+        	this.setVisible(true);
+        	/*
             decisionsPanel = new JPanel();
             dialogPanel = new JPanel();
             movesPanel = new JPanel();
@@ -257,15 +283,15 @@ public class FightScreen extends JWindow implements MyFrame {
             run = new JButton("Run");
             decisionsPanel.add(run);
             run.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                            try {
-                    MainController.getController().getFightController().run();
-                } catch (CannotEscapeFromTrainerException e1) {
-                    View.getView().hideCurrent();
-                    View.getView().addNew(new MessageFrame(null, "CANNOT ESCAPE FROM TRAINER"));
-                    View.getView().showCurrent();
-                }
+            	public void actionPerformed(ActionEvent e) {
+            		try {
+            			MainController.getController().getFightController().run();
+            		} catch (CannotEscapeFromTrainerException e1) {
+                    	View.getView().hideCurrent();
+                    	View.getView().addNew(new MessageFrame(null, "CANNOT ESCAPE FROM TRAINER"));
+                    	View.getView().showCurrent();
                     }
+                }
             });
             if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0) != Move.NULLMOVE) {
             	move1 = new JButton(MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(0).name());
@@ -337,8 +363,9 @@ public class FightScreen extends JWindow implements MyFrame {
                     }
             });
             if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentMoves().get(3) == Move.NULLMOVE) move4.setEnabled(false);
-            movesPanel.add(move4);  
+            movesPanel.add(move4);
             this.setVisible(true);
+            */
         }
 
         @Override

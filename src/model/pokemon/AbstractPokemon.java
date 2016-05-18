@@ -119,12 +119,8 @@ public abstract class AbstractPokemon implements Pokemon {
         }
     }
     
-    /**
-     * Method that calculates the necessary exp to jump from this current level
-     * to the next one, starting with 0 exp.
-     * @return 		the necessary exp to level up
-     */
-    protected int getLevelExp() {
+    @Override
+    public int getLevelExp() {
         return (int) Math.pow(mapStat.get(Stat.LVL) , 3) * 4 / 5;
     }
     
@@ -150,7 +146,7 @@ public abstract class AbstractPokemon implements Pokemon {
 
     @Override
     public int getNecessaryExp() {
-        return this.getLevelExp() - mapStat.get(Stat.EXP);
+        return (this.getLevelExp() - mapStat.get(Stat.EXP));
     }
 
     @Override

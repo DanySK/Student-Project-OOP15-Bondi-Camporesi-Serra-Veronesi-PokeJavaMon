@@ -35,7 +35,7 @@ public enum Pokedex {
     BLASTOISE("Blastoise",   PokemonType.WATER,  PokemonType.NONE,    79,  83, 100,   78,  PokemonRarity.STARTER,    -1, "",           new HashMap<>(), FrontSpriteImage.BLASTOISE, BackSpriteImage.BLASTOISE),
     
     CATERPIE("Caterpie", 	 PokemonType.BUG,    PokemonType.NONE,    45,  30,  35,   45,  PokemonRarity.COMMON,      7, "METAPOD",    new HashMap<>(), FrontSpriteImage.CATERPIE, BackSpriteImage.CATERPIE),
-    METAPOD("Metapod", 	     PokemonType.BUG,    PokemonType.NONE,    50,  20,  55,   30,  PokemonRarity.UNCOMMON,   10, "BUTTERFREE",  new HashMap<>(), FrontSpriteImage.METAPOD, BackSpriteImage.METAPOD),
+    METAPOD("Metapod", 	     PokemonType.BUG,    PokemonType.NONE,    50,  20,  55,   30,  PokemonRarity.UNCOMMON,   10, "BUTTERFREE", new HashMap<>(), FrontSpriteImage.METAPOD, BackSpriteImage.METAPOD),
     BUTTERFREE("Butterfree", PokemonType.BUG,    PokemonType.FLYING,  60,  45,	50,   70,  PokemonRarity.UNCOMMON,   -1, "",  		   new HashMap<>(), FrontSpriteImage.BUTTERFREE, BackSpriteImage.BUTTERFREE),
     
     WEEDLE("Weedle", 	     PokemonType.BUG,    PokemonType.POISON,  40,  35,  30,   50,  PokemonRarity.COMMON,      7, "KAKUNA",     new HashMap<>(), FrontSpriteImage.WEEDLE, BackSpriteImage.WEEDLE),
@@ -100,7 +100,7 @@ public enum Pokedex {
     PSYDUCK("Psyduck",       PokemonType.WATER, PokemonType.NONE,     50,  52,  48,   55,  PokemonRarity.UNCOMMON,   33, "GOLDUCK",    new HashMap<>(), FrontSpriteImage.PSYDUCK, BackSpriteImage.PSYDUCK),
     GOLDUCK("Golduck",       PokemonType.WATER, PokemonType.NONE,     80,  82,  78,   85,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.GOLDUCK, BackSpriteImage.GOLDUCK),
     
-    MANKEY("Mankey",         PokemonType.FIGHT, PokemonType.NONE,     40,  80,  35,   70,  PokemonRarity.UNCOMMON,   28, "PRIMEAPE",    new HashMap<>(), FrontSpriteImage.MANKEY, BackSpriteImage.MANKEY),
+    MANKEY("Mankey",         PokemonType.FIGHT, PokemonType.NONE,     40,  80,  35,   70,  PokemonRarity.UNCOMMON,   28, "PRIMEAPE",   new HashMap<>(), FrontSpriteImage.MANKEY, BackSpriteImage.MANKEY),
     PRIMEAPE("Primaepe",     PokemonType.FIGHT, PokemonType.NONE,     65, 105,  60,   95,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.PRIMEAPE, BackSpriteImage.PRIMEAPE),
     
     GROWLITHE("Growlithe",   PokemonType.FIRE,   PokemonType.NONE,    55,  70,  45,   60,  PokemonRarity.UNCOMMON,   29, "ARCANINE",   new HashMap<>(), FrontSpriteImage.GROWLITHE, BackSpriteImage.GROWLITHE),
@@ -136,9 +136,9 @@ public enum Pokedex {
     SLOWBRO("Slowbro",       PokemonType.WATER,  PokemonType.PSYCHIC, 95,  75, 110,   30,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.SLOWBRO, BackSpriteImage.SLOWBRO),
  
     MAGNEMITE("Magnemite",   PokemonType.ELECTR,  PokemonType.STEEL,  25,  35,  70,   45,  PokemonRarity.UNCOMMON,   30, "MAGNETON",   new HashMap<>(), FrontSpriteImage.MAGNEMITE, BackSpriteImage.MAGNEMITE),
-    MAGNETON("Magneton",     PokemonType.ELECTR,  PokemonType.STEEL,  50,  75,  95,   75,  PokemonRarity.VERY_RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.MAGNETON, BackSpriteImage.MAGNETON),
+    MAGNETON("Magneton",     PokemonType.ELECTR,  PokemonType.STEEL,  50,  75,  95,   75,  PokemonRarity.VERY_RARE,  -1, "",           new HashMap<>(), FrontSpriteImage.MAGNETON, BackSpriteImage.MAGNETON),
  
-    FARFETCHD("Farfetchd",   PokemonType.FLYING,  PokemonType.NORMAL, 75,  90,  80,   100,  PokemonRarity.VERY_RARE,  -1, "",           new HashMap<>(), FrontSpriteImage.FARFETCHD, BackSpriteImage.FARFETCHD),
+    FARFETCHD("Farfetchd",   PokemonType.FLYING,  PokemonType.NORMAL, 75,  90,  80,  100,  PokemonRarity.VERY_RARE,  -1, "",           new HashMap<>(), FrontSpriteImage.FARFETCHD, BackSpriteImage.FARFETCHD),
 
     DODUO("Doduo",           PokemonType.NORMAL, PokemonType.FLYING,  35,  85,  45,   75,  PokemonRarity.COMMON,     31, "DODRIO",     new HashMap<>(), FrontSpriteImage.DODUO, BackSpriteImage.DODUO),
     DODRIO("Dodrio",         PokemonType.NORMAL, PokemonType.FLYING,  50, 110,  70,  100,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.DODRIO, BackSpriteImage.DODRIO),
@@ -149,8 +149,8 @@ public enum Pokedex {
     GRIMER("Grimer",         PokemonType.POISON,   PokemonType.NONE,  80,  80,  50,   25,  PokemonRarity.COMMON,     29, "MUK",        new HashMap<>(), FrontSpriteImage.GRIMER, BackSpriteImage.GRIMER),
     MUK("Muk",               PokemonType.POISON,   PokemonType.NONE, 105, 105,  75,   50,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.MUK, BackSpriteImage.MUK),
 
-    SHELLDER("Shellder",     PokemonType.WATER,  PokemonType.NONE,     30,  65, 100,   70, PokemonRarity.COMMON,     25, "CLOYSTER",   new HashMap<>(), FrontSpriteImage.SHELLDER, BackSpriteImage.SHELLDER),
-    CLOYSTER("Cloyster",     PokemonType.WATER,  PokemonType.ICE,      50,  95, 180,   80, PokemonRarity.RARE,       -1, "",           	new HashMap<>(), FrontSpriteImage.CLOYSTER, BackSpriteImage.CLOYSTER),
+    SHELLDER("Shellder",     PokemonType.WATER,  PokemonType.NONE,    30,  65, 100,   70, PokemonRarity.COMMON,      25, "CLOYSTER",   new HashMap<>(), FrontSpriteImage.SHELLDER, BackSpriteImage.SHELLDER),
+    CLOYSTER("Cloyster",     PokemonType.WATER,  PokemonType.ICE,     50,  95, 180,   80, PokemonRarity.RARE,        -1, "",           new HashMap<>(), FrontSpriteImage.CLOYSTER, BackSpriteImage.CLOYSTER),
 
     GASTLY("Gastly",         PokemonType.GHOST,  PokemonType.POISON,  30,  35,  30,   80,  PokemonRarity.COMMON,     25, "HAUNTER",    new HashMap<>(), FrontSpriteImage.GASTLY, BackSpriteImage.GASTLY),
     HAUNTER("Haunter",       PokemonType.GHOST,  PokemonType.POISON,  45,  50,  45,   95,  PokemonRarity.UNCOMMON,   32, "GENGAR",     new HashMap<>(), FrontSpriteImage.HAUNTER, BackSpriteImage.HAUNTER),
@@ -184,9 +184,9 @@ public enum Pokedex {
     RHYHORN("Rhyhorn",       PokemonType.GROUND,  PokemonType.ROCK,   80,  85,  95,   25,  PokemonRarity.UNCOMMON,   42, "RHYDON",     new HashMap<>(), FrontSpriteImage.RHYHORN, BackSpriteImage.RHYHORN),
     RHYDON("Rhydon",         PokemonType.GROUND,  PokemonType.ROCK,  105, 130, 120,   40,  PokemonRarity.UNFINDABLE, -1, "",           new HashMap<>(), FrontSpriteImage.RHYDON, BackSpriteImage.RHYDON),
 
-    CHANSEY("Chansey",       PokemonType.NORMAL,  PokemonType.NONE,  250,   50,   50,   50,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.CHANSEY, BackSpriteImage.CHANSEY),
+    CHANSEY("Chansey",       PokemonType.NORMAL,  PokemonType.NONE,  250, 50,   50,   50,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.CHANSEY, BackSpriteImage.CHANSEY),
 
-    TANGELA("Tangela",       PokemonType.GRASS,  PokemonType.NONE,    65,   55, 155,  60,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.CHANSEY, BackSpriteImage.CHANSEY),
+    TANGELA("Tangela",       PokemonType.GRASS,  PokemonType.NONE,    65,   55, 155,  60,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.TANGELA, BackSpriteImage.TANGELA),
     
     KANGASKHAN("Kangaskhan", PokemonType.NORMAL,  PokemonType.NONE,  105,   95,  80,  90,  PokemonRarity.RARE,       -1, "",           new HashMap<>(), FrontSpriteImage.KANGASKHAN, BackSpriteImage.KANGASKHAN),
     
@@ -194,7 +194,7 @@ public enum Pokedex {
     SEADRA("Seadra",         PokemonType.WATER,  PokemonType.NONE,    55,  65,  95,   85,  PokemonRarity.UNCOMMON,   -1, "",           new HashMap<>(), FrontSpriteImage.SEADRA, BackSpriteImage.SEADRA),
 
     GOLDEEN("Goldeen",       PokemonType.WATER,  PokemonType.NONE,    45,  67,  60,   63,  PokemonRarity.COMMON,     33, "SEAKING",    new HashMap<>(), FrontSpriteImage.GOLDEEN, BackSpriteImage.GOLDEEN),
-    SEAKING("Seaking",       PokemonType.WATER,  PokemonType.NONE,    80,  92,  75,   100,  PokemonRarity.UNCOMMON,   -1, "",           new HashMap<>(), FrontSpriteImage.SEAKING, BackSpriteImage.SEAKING),
+    SEAKING("Seaking",       PokemonType.WATER,  PokemonType.NONE,    80,  92,  75,  100,  PokemonRarity.UNCOMMON,   -1, "",           new HashMap<>(), FrontSpriteImage.SEAKING, BackSpriteImage.SEAKING),
 
     STARYU("Staryu",         PokemonType.WATER,  PokemonType.NONE,    30,  40,  70,   60,  PokemonRarity.COMMON,     28, "STARMIE",    new HashMap<>(), FrontSpriteImage.STARYU, BackSpriteImage.STARYU),
     STARMIE("Starmie",       PokemonType.WATER,  PokemonType.PSYCHIC, 55,  75,  95,   95,  PokemonRarity.UNCOMMON,   -1, "",           new HashMap<>(), FrontSpriteImage.STARMIE, BackSpriteImage.STARMIE),

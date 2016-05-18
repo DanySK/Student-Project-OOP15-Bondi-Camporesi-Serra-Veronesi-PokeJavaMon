@@ -29,6 +29,14 @@ public interface Pokemon {
      */
     public int getCurrentHP();
     
+    
+    /**
+     * Method that calculates the necessary exp to jump from this current level
+     * to the next one, starting with 0 exp.
+     * @return 		the necessary exp to level up
+     */
+    public int getLevelExp();
+    
     /**
      * A method that calcolates the experience left to level up a {@link Pokemon}
      * Not to be confused with {@link getStat(Stat.EXP)} which returns the total exp needed in the current level.
