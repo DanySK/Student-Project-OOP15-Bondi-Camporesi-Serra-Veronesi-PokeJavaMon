@@ -28,7 +28,7 @@ public class SaveTest {
             e.printStackTrace();
         }
         Map<String, Integer> potions = new HashMap<String, Integer>();
-        potions.put(Potion.PotionType.SUPERPOTION.name(), 15);
+        potions.put(Potion.PotionType.Superpotion.name(), 15);
         Map<String, Integer> boosts = new HashMap<String, Integer>();
         boosts.put(Stat.ATK.name()+"X", 20);
         Map<String, Integer> balls = new HashMap<String, Integer>();

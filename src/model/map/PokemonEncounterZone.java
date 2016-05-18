@@ -20,7 +20,7 @@ public class PokemonEncounterZone extends AbstractZone {
 	private final int id;
 	private final List<Pokedex> pokemonList;
 	private final int avgLvl;
-    private final static double ENCOUNTER_CHANCE = 20 / 187.5;
+    private final static double ENCOUNTER_CHANCE = 15 / 187.5;
     private final static int LEVEL_VARIATION = 2;
     private boolean encountered = false;
 	
