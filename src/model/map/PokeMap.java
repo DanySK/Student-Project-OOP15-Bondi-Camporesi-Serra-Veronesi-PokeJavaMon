@@ -49,6 +49,7 @@ public interface PokeMap {
     
     public Set<EncounterTile> getEncounterTiles();
     public Optional<EncounterTile> getEncounterTile(final int x, final int y);
+    public void setDeletedEncounterTiles(final Set<String> pkmnsToBeDeleted);
     public void deleteEncounterTile(final int x, final int y);
    
     public PokeMarket getPokeMarket();

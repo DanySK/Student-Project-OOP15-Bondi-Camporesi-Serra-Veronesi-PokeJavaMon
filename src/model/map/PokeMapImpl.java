@@ -517,10 +517,12 @@ public class PokeMapImpl implements PokeMap {
 		return Optional.empty();
 	}
 
+	@Override
     public Set<EncounterTile> getEncounterTiles() {
 		return Collections.unmodifiableSet(this.tileEncounters);
     }
     
+    @Override
     public Optional<EncounterTile> getEncounterTile(final int x, final int y) {
 		if (!this.isOutOfBounds(x, y) && this.map[x][y] == TileType.ENCOUNTER) {
 			for (final EncounterTile et : this.tileEncounters) {
@@ -531,10 +533,25 @@ public class PokeMapImpl implements PokeMap {
 		}
 		return Optional.empty();
     }
+    
+    @Override
+    public void setDeletedEncounterTiles(final Set<String> pkmnsToBeDeleted) {
+    	for (final String p : pkmnsToBeDeleted) {
+    		for (final EncounterTile et : this.tileEncounters) {
+    			if (et != null && p != null) {
+	    			if (et.getPokemon().getPokedexEntry().name().equals(p.toUpperCase())) {
+	    				this.deleteEncounterTile(et.tileX, et.tileY);
+	    			}
+    			}
+    		}
+    	}
+    }
 	
+    @Override
     public void deleteEncounterTile(final int x, final int y) {
     	for (final EncounterTile et : this.tileEncounters) {
-    		if (et.tileX == x && et.tileY == y) {
+    		if (et != null && et.tileX == x && et.tileY == y) {
+    			et.setNotEncounterable();
     			this.tileEncounters.remove(et);
     			this.map[x][y] = TileType.TERRAIN;
     			( (TiledMapTileLayer) this.tiledMap.getLayers().get("foreground")).getCell(getTileUnitX(x), getTileUnitY(y)).setTile(null);
