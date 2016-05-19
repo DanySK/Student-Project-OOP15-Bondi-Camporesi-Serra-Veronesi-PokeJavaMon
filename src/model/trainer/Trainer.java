@@ -38,49 +38,98 @@ public class Trainer extends AbstractCharacter {
         this.trainerID = trainerID;
     }
 
+    /**
+     * 
+     * @return Trainer's {@link Squad}
+     */
     public Squad getSquad() {
         return this.squad;
     }
     
     
+    /**
+     * 
+     * @return First message he says when you interact with him
+     */
     public String getInitialMessage() {
         return this.initialMessage;
     }
     
+    /**
+     * 
+     * @return Message he says when you defeat him
+     */
     public String getTtrainerLostMessage() {
         return this.trainerLostMessage;
     }
     
+    /**
+     * 
+     * @return Message he says when he defeates you
+     */
     public String getTrainerWonMessageMessage() {
         return this.trainerWonMessage;
     }
     
+    /**
+     * Sets isDefeated to true, after that he cannot be fought again
+     */
     public void defeat() {
         this.isDefeated = true;
     }
     
+    /**
+     * 
+     * @return true if is already defeated, false otherwise
+     */
     public boolean isDefeated() {
         return this.isDefeated;
     }
     
+    /**
+     * 
+     * @return the money you get if you defeat him
+     */
     public int getMoney() {
     	return this.money;
     }
     
+    /**
+     * 
+     * @return identifier of the trainer
+     */
     public int getID() {
     	return this.trainerID;
     }
     
-    public String toString() {
-        return "Name= " + this.name + " Defeated= " + this.isDefeated + ", Squad: " + this.squad + ", D: " + this.direction.name();
+    /**
+     * 
+     * @return {@link Trainer}'s name
+     */
+    public String getName() {
+    	return this.name;
     }
-    
+
+    /**
+     * Heals the whole {@link Squad} to full HP
+     */
     public void healAllPokemons() {
     	for (final Pokemon p : this.squad.getPokemonList()) {
     		p.heal(p.getStat(Stat.MAX_HP));
     	}
     }
 
+    /**
+     * Overriden to do nothing as a {@link Trainer} cannot move
+     * @param d
+     * @param pm
+     */
     @Override
     public void move(final Direction d, final PokeMap pm) {}
+    
+    
+    public String toString() {
+        return "Name= " + this.name + " Defeated= " + this.isDefeated + ", Squad: " + this.squad + ", D: " + this.direction.name();
+    }
+    
 }

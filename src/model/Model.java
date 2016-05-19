@@ -13,6 +13,7 @@ import model.map.NPC;
 import model.map.PokeMap;
 import model.map.PokeMapImpl;
 import model.map.Position;
+import model.map.tile.EncounterTile;
 import model.player.Player;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
@@ -71,7 +72,7 @@ public class Model implements ModelInterface {
     @Override
     public void loadSave(final int playerMoney, final String name, final int badges, final Position playerPosition, 
 			 final List<Pokemon> squad, final Map<Integer, Boolean> idTrainer_isDefeated, final List<Pokemon> box, 
-			 final Map<String, Integer> pokeballs, final Map<String, Integer> boosts, final Map<String, Integer> potions) throws SquadFullException {
+			 final Map<String, Integer> pokeballs, final Map<String, Integer> boosts, final Map<String, Integer> potions, final Set<String> deletedEncounterTiles) throws SquadFullException {
         if (isContinued) {
             return;
         }
@@ -86,6 +87,7 @@ public class Model implements ModelInterface {
         this.map.initGymLeaders(badges);
         this.player.getBox().setPokemons(box);
         this.player.getInventory().initializeInventory(potions, boosts, pokeballs);
+        this.map.setDeletedEncounterTiles(deletedEncounterTiles);
     }
 
     @Override
@@ -125,12 +127,17 @@ public class Model implements ModelInterface {
             @Override
             public Inventory getInventory() {
                 return player.getInventory();
-                }
+            }
 
             @Override
             public Box getBox() {
                 return player.getBox();
-                }
+            }
+            
+            @Override
+            public Set<EncounterTile> getEncounterTiles() {
+            	return map.getEncounterTiles();
+            }
         };
     }
 }

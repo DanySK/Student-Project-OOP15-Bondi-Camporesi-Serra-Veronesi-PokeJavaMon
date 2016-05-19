@@ -39,7 +39,7 @@ public class WeaknessTable {
      * Rows are attacking Types, Columns are defending types
      */
     private double[][] table;
-    private static WeaknessTable singleton = null;
+    private static WeaknessTable SINGLETON = null;
 	
     private static int NORMAL = PokemonType.NORMAL.ordinal();
     private static int FLYING = PokemonType.FLYING.ordinal();
@@ -69,10 +69,10 @@ public class WeaknessTable {
      * @return the only object of {@link WeaknessTable} that can be generated
      */
     public static WeaknessTable getWeaknessTable() {
-        if (singleton == null) {
-            singleton = new WeaknessTable();
+        if (SINGLETON == null) {
+            SINGLETON = new WeaknessTable();
         }
-        return singleton;
+        return SINGLETON;
     }
 	
     /**
