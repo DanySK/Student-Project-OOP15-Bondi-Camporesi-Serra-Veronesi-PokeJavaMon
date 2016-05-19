@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -135,8 +137,14 @@ public class Model implements ModelInterface {
             }
             
             @Override
-            public Set<EncounterTile> getEncounterTiles() {
-            	return map.getEncounterTiles();
+            public Set<EncounterTile> getEncounterTilesToBeRemoved() {
+            	final Set<EncounterTile> toBeRemoved = new HashSet<>();
+            	for (final EncounterTile et : map.getEncounterTiles()) {
+            		if (!et.isEncounterable()) {
+            			toBeRemoved.add(et);
+            		}
+            	}
+            	return Collections.unmodifiableSet(toBeRemoved);
             }
         };
     }

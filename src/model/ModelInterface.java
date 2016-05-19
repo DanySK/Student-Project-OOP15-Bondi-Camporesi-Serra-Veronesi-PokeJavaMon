@@ -50,6 +50,6 @@ public interface ModelInterface {
     	public Set<Trainer> getTrainers();
     	public Inventory getInventory();
     	public Box getBox();
-    	public Set<EncounterTile> getEncounterTiles();
+    	public Set<EncounterTile> getEncounterTilesToBeRemoved();
     }  
 }
