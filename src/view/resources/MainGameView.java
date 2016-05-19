@@ -27,6 +27,7 @@ public class MainGameView implements Screen {
     private int[] background = new int[] {0}, foreground = new int[] {1};
     private ShapeRenderer sr;
     private boolean newGame;
+    private boolean toDispose;
     private PlayerSprite pls;
     private static Sprite sp;
     private Texture tx;
@@ -37,6 +38,7 @@ public class MainGameView implements Screen {
     
     public MainGameView(boolean b) {
         this.newGame = b;    
+        this.toDispose = true;
     }
 	
     public void render(float delta) {		
@@ -65,6 +67,8 @@ public class MainGameView implements Screen {
     }
 	
     public void show() {	
+        final LoadingScreen ls = new LoadingScreen();
+        ls.showLoadingScreen();
         try {
             MainController.getController().initializeModel(new TmxMapLoader().load(Maps.MAP.getAbsolutePath()));
         } catch (Exception e) {
@@ -73,6 +77,10 @@ public class MainGameView implements Screen {
         this.initConstants();
         MainController.getController().getViewController().initName();
 	MainController.getController().initializeMusicController();
+	if (toDispose) {
+	    ls.disposeWindow();
+	    this.toDispose = false;
+	}
         MainController.getController().updateStatus(State.WALKING);
 	if (this.newGame) {
 	    try {
