@@ -53,10 +53,8 @@ public class Menu extends JWindow implements MyFrame {
         this.box.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 if (MainController.getController().getBox().getBoxSize() < 1) {
-                    disposeFrame();
-                    View.getView().disposeCurrent();
-                    View.getView().removeCurrent();
-                    View.getView().addNew(new MessageFrame(State.WALKING, "NO PKMN IN BOX"));
+                    View.getView().hideCurrent();
+                    View.getView().addNew(new MessageFrame(null, "NO PKMN IN BOX"));
                     View.getView().showCurrent();
                 } else {
                     View.getView().hideCurrent();
@@ -113,7 +111,7 @@ public class Menu extends JWindow implements MyFrame {
             public void mouseClicked(MouseEvent e) {
                 disposeFrame();
                 MainController.getController().getViewController().save();
-                View.getView().addNew(new MessageFrame(State.WALKING, "Salvataggio riuscito!"));
+                View.getView().addNew(new MessageFrame(State.WALKING, "Save complete!"));
                 View.getView().showCurrent();
             }
         });   
