@@ -5,6 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 
+/**
+ * Static class that implements all the different {@link Move}s a {@link Pokemon} can learn.
+ * All moveMaps where extracted from a http://bulbapedia.bulbagarden.net/ via bash scripting
+ * and are built thanks to Guava's {@link ImmutableMap}.
+ * The static method {@link InitializeMoves#getAllMoves()} is used in the Enumeration {@link Pokedex} to initialize all entries.
+ * Map's keys are the levels when a {@link Pokemon} learn the {@link Move} and the value is the {@link Move} itself
+ */
 public final class InitializeMoves {
 
     private static Map<Integer, Move> bulbasaurMap;
@@ -2356,6 +2363,11 @@ public final class InitializeMoves {
         }
     }
     
+    /**
+     * 
+     * @return A {@link Map} with {@link Pokedex} as keys and as value the moveMap where
+     * the keys are the levels when a {@link Pokemon} learn the {@link Move} and the value is the {@link Move} itself
+     */
     public static Map<Pokedex, Map<Integer, Move>> getAllMoves() {
         final Map<Pokedex, Map<Integer, Move>> retMap = new HashMap<>();
 	initializeMoves();

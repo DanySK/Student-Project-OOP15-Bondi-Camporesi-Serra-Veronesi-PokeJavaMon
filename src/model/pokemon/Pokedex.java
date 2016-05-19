@@ -235,7 +235,7 @@ public enum Pokedex {
     
     AERODACTYL("Aerodactyl", PokemonType.FLYING,  PokemonType.ROCK,     80, 105,  65, 130,  PokemonRarity.UNFINDABLE, -1,           "", new HashMap<>(), FrontSpriteImage.AERODACTYL, BackSpriteImage.AERODACTYL),
 
-    SNORLAX("Snorlax",       PokemonType.NORMAL,  PokemonType.NONE,    160, 110,  65,  30,  PokemonRarity.UNFINDABLE, -1,           "", new HashMap<>(), FrontSpriteImage.SNORLAX,    BackSpriteImage.SNORLAX),
+    SNORLAX("Snorlax",       PokemonType.NORMAL,  PokemonType.NONE,    160, 110,  65,  30,  PokemonRarity.VERY_RARE,  -1,           "", new HashMap<>(), FrontSpriteImage.SNORLAX,    BackSpriteImage.SNORLAX),
 
     ARTICUNO("Articuno",     PokemonType.ICE,     PokemonType.FLYING,  100,  90,  95,  85,  PokemonRarity.LEGENDARY,  -1,           "", new HashMap<>(), FrontSpriteImage.ARTICUNO,   BackSpriteImage.ARTICUNO),
     ZAPDOS("Zapdos",         PokemonType.ELECTR,  PokemonType.FLYING,   80, 110,  75, 100,  PokemonRarity.LEGENDARY,  -1,           "", new HashMap<>(), FrontSpriteImage.ZAPDOS,     BackSpriteImage.ZAPDOS),
@@ -254,13 +254,15 @@ public enum Pokedex {
     private String name;
     private PokemonType firstType;
     private PokemonType secondType;
+    
     /*
-     * Da Migliorare
+     * Base stats
      */
     private int baseHP;
     private int baseATK;
     private int baseDEF;
     private int baseSPD;
+    
     private PokemonRarity rarity;
     private int evolveLevel;
     private String evolvesTo;
@@ -268,6 +270,9 @@ public enum Pokedex {
     private final FrontSpriteImage frontSprite;
     private final BackSpriteImage backSprite;
     
+    /*
+     * To initialize the whole moveset statically
+     */
     static {
     	for (final Entry<Pokedex, Map<Integer, Move>> e : InitializeMoves.getAllMoves().entrySet()) {
     		e.getKey().initializeMoveset(e.getValue());

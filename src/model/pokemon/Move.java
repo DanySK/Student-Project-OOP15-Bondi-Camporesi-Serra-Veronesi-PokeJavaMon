@@ -2,7 +2,7 @@ package model.pokemon;
 
 /**
  * A "database" in form of Enumeration that contains all the possible Moves
- * Each entry has a {@link PokemonType}, a {@link Stat} modifies (excluding LVL and EXP), 
+ * Each entry has a {@link PokemonType}, a {@link Stat} modifies (excluding {@link Stat#EXP} and {@link Stat#LVL}), 
  * a boolean value which indicates whether or not the Move affects the enemy or the {@link Pokemon} itself,
  * and as well as the actual value of the Move.
  * @see Pokemon
@@ -11,58 +11,7 @@ package model.pokemon;
 public enum Move {
 
     NULLMOVE(PokemonType.NONE, Stat.MAX_HP, MoveType.PHYSICAL, false, 0),
-    
-	
-//    POUND(PokemonType.NORMAL, Stat.HP, MoveType.PHYSICAL, true, 30),
-//    CUT(PokemonType.NORMAL, Stat.HP, MoveType.PHYSICAL, true, 50),
-//    SLASH(PokemonType.NORMAL, Stat.HP, MoveType.PHYSICAL, true, 70),
-//    STRENGTH(PokemonType.NORMAL, Stat.HP, MoveType.PHYSICAL, true, 80),
-//    HYPERBEAM(PokemonType.NORMAL, Stat.HP, MoveType.SPECIAL, true, 150),
-//    
-//    HOWL(PokemonType.NORMAL, Stat.ATK, MoveType.STATUS, true, 15),
-//    HARDEN(PokemonType.NORMAL, Stat.DEF, MoveType.STATUS, false, 15),
-//    TAIL_WHIP(PokemonType.NORMAL, Stat.DEF, MoveType.STATUS, true, 15),
-//    SCREECH(PokemonType.NORMAL, Stat.DEF, MoveType.STATUS, true, 30),
-//    SWORD_DANCE(PokemonType.NORMAL, Stat.ATK, MoveType.STATUS, false, 30),
-//    SCARY_FACE(PokemonType.NORMAL, Stat.SPD, MoveType.STATUS, true, 30),
-//    AGILITY(PokemonType.NORMAL, Stat.SPD, MoveType.STATUS, false, 30),
-//    
-//    EMBER(PokemonType.FIRE, Stat.HP, MoveType.SPECIAL, true, 40),
-//    FLAMETHROWER(PokemonType.FIRE, Stat.HP, MoveType.SPECIAL, true, 90),
-//    FIRE_BLAST(PokemonType.FIRE, Stat.HP, MoveType.SPECIAL, true, 110),
-//    BLAST_BURN(PokemonType.FIRE, Stat.HP, MoveType.SPECIAL, true, 150),
-//    V_CREATE(PokemonType.FIRE, Stat.HP, MoveType.SPECIAL, true, 170),
 
-//    WATERGUN(PokemonType.WATER, Stat.HP, MoveType.SPECIAL, true, 40),
-//    SURF(PokemonType.WATER, Stat.HP, MoveType.SPECIAL, true, 95),
-//    HYDROPUMP(PokemonType.WATER, Stat.HP, MoveType.SPECIAL, true, 110),
-//    HYDROCANNON(PokemonType.WATER, Stat.HP, MoveType.SPECIAL, true, 150),
-////TODO
-//    VINE_WHIP(PokemonType.GRASS, Stat.HP, MoveType.PHYSICAL, true, 45),
-//    LEAFBLADE(PokemonType.GRASS ,Stat.HP, MoveType.PHYSICAL, true, 90),
-//    SOLARBEAM(PokemonType.GRASS, Stat.HP, MoveType.PHYSICAL, true, 120),
-//    FRENZY_PLANT(PokemonType.GRASS, Stat.HP, MoveType.PHYSICAL, true, 150),
-//    
-//    THUNDERSHOCK(PokemonType.ELECTR, Stat.HP, MoveType.PHYSICAL, true, 40),
-//    THUNDERBOLT(PokemonType.ELECTR, Stat.HP, MoveType.PHYSICAL, true, 90),
-//    THUNDER(PokemonType.ELECTR, Stat.HP, MoveType.PHYSICAL, true, 110),
-//    
-//    MUDSLAP(PokemonType.GROUND, Stat.HP, MoveType.PHYSICAL, true, 20),
-//    MUDBOMB(PokemonType.GROUND, Stat.HP, MoveType.PHYSICAL, true, 65),
-//    EARTHQUAKE(PokemonType.GROUND, Stat.HP, MoveType.PHYSICAL, true, 100),
-//    
-//    ACID(PokemonType.POISON, Stat.HP, MoveType.PHYSICAL, true, 40),
-//    SLUDGEBOMB(PokemonType.POISON, Stat.HP, MoveType.PHYSICAL, true, 90),
-//    BELCH(PokemonType.POISON, Stat.HP, MoveType.PHYSICAL, true, 120),
-//    
-//    PECK(PokemonType.FLYING, Stat.HP, MoveType.PHYSICAL, true, 35),
-//    FLY(PokemonType.FLYING, Stat.HP, MoveType.PHYSICAL, true, 90),
-//    HURRICANE(PokemonType.FLYING, Stat.HP, MoveType.PHYSICAL, true, 110),
-//    DRAGON_ASCENT(PokemonType.FLYING, Stat.HP, MoveType.PHYSICAL, true, 170),
-//    
-//    OUTRAGE(PokemonType.DRAGON, Stat.HP, MoveType.PHYSICAL, true, 120),
-//    DRACO_METEOR(PokemonType.DRAGON, Stat.HP, MoveType.PHYSICAL, true, 130),
-    
     ABSORB(PokemonType.GRASS, Stat.MAX_HP, MoveType.SPECIAL, true, 30),
     ACID(PokemonType.POISON, Stat.MAX_HP, MoveType.SPECIAL, true, 40),
     ACID_ARMOR(PokemonType.POISON, Stat.DEF, MoveType.STATUS, false, 2),
@@ -291,7 +240,7 @@ public enum Move {
 	
 	
     public static enum MoveType {
-	PHYSICAL, SPECIAL, STATUS, 
+    	PHYSICAL, SPECIAL, STATUS, 
     }
 
     
@@ -304,28 +253,55 @@ public enum Move {
     
     private Move(final PokemonType type, final Stat stat, final MoveType moveType, final boolean isOnEnemy, final int value) {
         this.type = type;
+        if (stat == Stat.EXP || stat == Stat.LVL) {
+        	throw new IllegalArgumentException("Cannot have EXP or LVL as Stat");
+        }
         this.stat = stat;
         this.isOnEnemy = isOnEnemy;
         this.value = value;
         this.moveType = moveType;
     }
 
+    /**
+     * 
+     * @return The {@link Stat} target of the {@link Move}
+     */
     public Stat getStat() {
         return stat;
     }
 
+    /**
+     * 
+     * @return true if the {@link Move} is aimed at the enemy, false if it is aimed to the attacker itself
+     */
     public boolean isOnEnemy() {
         return isOnEnemy;
     }
 
+    /**
+     * A method to obtain the base value of the {@link Move}, it's a damaging one (if it's {@link Stat#MAX_HP})
+     * it returns the base damage, otherwise, returns the number of stages
+     * @return the integer 
+     */
     public int getValue() {
         return value;
     }
     
+    /**
+     * 
+     * @return the {@link PokemonType}
+     */
     public PokemonType getType() {
     	return this.type;
     }
     
+    /**
+     * Not implemented but a {@link Move} can be {@link MoveType#PHYSICAL} and it will use
+     * attacker {@link Stat#ATK} and defender {@link Stat#DEF}.
+     * If it's {@link MoveType#SPECIAL} it will involve instead attacker {@link Stat}.ATK_SPEC
+     * and defender {@link Stat}.DEF_SPEC (To be implemented) 
+     * @return the {@link MoveType} of the {@link Move}
+     */
     public MoveType getMoveType() {
     	return this.moveType;
     }
