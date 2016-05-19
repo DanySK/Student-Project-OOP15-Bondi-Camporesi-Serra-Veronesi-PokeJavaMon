@@ -163,6 +163,9 @@ public class TeamMenu extends JWindow implements MyFrame {
             if (isChangingPoke) {
             	this.set.setEnabled(false);
             }
+            if (index == 0) {
+                this.set.setEnabled(false);
+            }
             this.panel.add(this.set);
             this.deposit = new JButton("DEPOSIT");
             this.deposit.addActionListener(new ActionListener() {

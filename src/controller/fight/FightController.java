@@ -1,6 +1,7 @@
 package controller.fight;
 
 import java.util.List;
+import java.util.Optional;
 
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
@@ -147,4 +148,10 @@ public interface FightController {
      * Heals the last enemy
      */
     void healEnemy();
+
+    /**
+     * @return the enemy {@link Trainer} in fight or an empty optional if the fight is against a 
+     * wild {@link Pokemon}
+     */
+    Optional<Trainer> getEnemyTrainer();
 }

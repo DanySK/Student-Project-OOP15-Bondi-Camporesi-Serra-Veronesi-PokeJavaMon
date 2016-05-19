@@ -51,6 +51,9 @@ public class InFightMessages implements InFightMessagesInterface {
                 } else {
                     MainController.getController().checkLegendaryAndDelete();
                     this.message.add("Enemy defeated");
+                    if (MainController.getController().getFightController().getEnemyTrainer().isPresent()) {
+                        this.message.add(MainController.getController().getFightController().getEnemyTrainer().get().getName() + ": " + MainController.getController().getFightController().getEnemyTrainer().get().getTtrainerLostMessage());
+                    }
                     this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();                   
@@ -110,7 +113,10 @@ public class InFightMessages implements InFightMessagesInterface {
                         }
                     } else {
                         MainController.getController().checkLegendaryAndDelete();
-                        this.message.add("Enemy defeated!");             
+                        this.message.add("Enemy defeated!");    
+                        if (MainController.getController().getFightController().getEnemyTrainer().isPresent()) {
+                            this.message.add(MainController.getController().getFightController().getEnemyTrainer().get().getName() + ": " + MainController.getController().getFightController().getEnemyTrainer().get().getTtrainerLostMessage());
+                        }
                         this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                         MainController.getController().updateStatus(State.WALKING);
                         View.getView().disposeCurrent();
@@ -228,6 +234,9 @@ public class InFightMessages implements InFightMessagesInterface {
     private void lostMessage() {
         MainController.getController().getFightController().healEnemy();
         this.message.add("You lost!");
+        if (MainController.getController().getFightController().getEnemyTrainer().isPresent()) {
+            this.message.add(MainController.getController().getFightController().getEnemyTrainer().get().getName() + ": " + MainController.getController().getFightController().getEnemyTrainer().get().getTrainerWonMessageMessage());
+        }
         this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());
         View.getView().disposeCurrent();
         View.getView().removeCurrent();

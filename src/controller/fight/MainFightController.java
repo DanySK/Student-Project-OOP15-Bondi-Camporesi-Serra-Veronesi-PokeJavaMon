@@ -2,6 +2,7 @@ package controller.fight;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import exceptions.CannotCaughtTrainerPkmException;
 import exceptions.CannotEscapeFromTrainerException;
@@ -109,6 +110,15 @@ public class MainFightController implements FightController {
     @Override
     public Pokemon getEnemyPokemon() {
         return this.fight.getCurrentEnemyPokemon();
+    }
+    
+    @Override
+    public Optional<Trainer> getEnemyTrainer() {
+        if (this.trainer == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.trainer);
+        }
     }
     
     @Override
