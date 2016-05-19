@@ -1,4 +1,4 @@
-package view.frames;
+package view.windows;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

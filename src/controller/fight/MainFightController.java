@@ -19,8 +19,8 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
-import view.methods.InFightMessages;
-import view.methods.InFightMessagesInterface;
+import view.fight.InFightMessages;
+import view.fight.InFightMessagesInterface;
 
 /**
  * The MainController that controls the fight.
@@ -29,12 +29,12 @@ public class MainFightController implements FightController {
 
     private Fight fight;
     private InFightMessagesInterface view;
-    private Trainer trainer;
+    private Optional<Trainer> trainer;
     
     @Override
     public void newFightWithTrainer(final Trainer trainer) {
         this.fight = StaticSimpleFightFactory.createFight(trainer);
-        this.trainer = trainer;
+        this.trainer = Optional.of(trainer);
         this.view = new InFightMessages(); 
     }
     
@@ -42,6 +42,7 @@ public class MainFightController implements FightController {
     public void newFightWithPokemon(final Pokemon pokemon) {
         this.fight = StaticSimpleFightFactory.createFight(pokemon);
         this.view = new InFightMessages();
+        this.trainer = Optional.empty();
     }
     
     @Override
@@ -117,7 +118,7 @@ public class MainFightController implements FightController {
         if (this.trainer == null) {
             return Optional.empty();
         } else {
-            return Optional.of(this.trainer);
+            return this.trainer;
         }
     }
     
@@ -125,7 +126,7 @@ public class MainFightController implements FightController {
     public void healEnemy() {
         if (this.fight instanceof FightVsTrainer) {
             if (this.trainer != null) {
-                this.trainer.healAllPokemons();
+                this.trainer.get().healAllPokemons();
             }
         } else {
             this.fight.getCurrentEnemyPokemon().heal(this.fight.getCurrentEnemyPokemon().getStat(Stat.MAX_HP));
