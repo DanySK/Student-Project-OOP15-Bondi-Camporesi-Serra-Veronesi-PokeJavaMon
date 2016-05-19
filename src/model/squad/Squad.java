@@ -65,7 +65,7 @@ public interface Squad {
     /**
      * Heals all the {@link Pokemon} in {@link Squad} to max HP.
      * Takes a {@link PokeMap} as argument to verify that the player is in a PokemonCenter Zone
-     * @param pm	{@link PokeMap} 
+     * @param pm {@link PokeMap} 
      */
     public void healAllPokemon(final PokeMap pm);
     
