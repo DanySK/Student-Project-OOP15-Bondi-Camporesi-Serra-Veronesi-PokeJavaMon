@@ -17,6 +17,7 @@ import model.ModelInterface.Save;
 import model.box.Box;
 import model.inventory.Inventory;
 import model.items.Item;
+import model.map.tile.EncounterTile;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
@@ -177,6 +178,20 @@ public class MainSaveController implements SaveController {
         this.root.addContent(box);
     }
     
+    /**
+     * Saves the defeated {@link EncounterTile}s
+     */
+    private void setDefeatedEncounterTiles() {
+        final Element e = new Element(XMLParameters.ENCOUNTER.getName());
+        int counter = 0;
+        System.out.println(sv.getEncounterTilesToBeRemoved());
+        for (final EncounterTile et : sv.getEncounterTilesToBeRemoved()) {
+            e.setAttribute(Integer.toString(counter), et.getPokemon().getPokedexEntry().name());
+            counter ++;
+        }
+        this.root.addContent(e);
+    }
+    
     @Override
     public void save() {
         setup();
@@ -188,6 +203,7 @@ public class MainSaveController implements SaveController {
         setName();
         setBadges();
         setBox();
+        setDefeatedEncounterTiles();
         try {
             XMLOutputter outputter;
             outputter = new XMLOutputter(); 

@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import org.jdom2.Attribute;
 import org.jdom2.DataConversionException;
 import org.jdom2.Document;
@@ -18,6 +21,7 @@ import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import exceptions.SquadFullException;
 import model.map.Position;
+import model.map.tile.EncounterTile;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 
@@ -162,12 +166,27 @@ public class MainLoadController implements LoadController {
         return box;
     }
     
+    /**
+     * @return the {@link Set} of defeated {@link EncounterTile}'s names
+     */
+    private Set<String> getDefeatedEncounterTiles() {
+        final Set<String> set = new HashSet<>();
+        int counter = 0;
+        if (this.root.getChild(XMLParameters.ENCOUNTER.getName()).hasAttributes()) {
+            for (final Element e : this.root.getChild(XMLParameters.ENCOUNTER.name()).getChildren()) {
+                set.add(e.getAttributeValue(Integer.toString(counter)));
+                counter ++;
+            }
+        }
+        return set;
+    }
+    
     @Override
     public void load() {
         setup();
         try {
             MainController.getController().getModel().loadSave(getMoney(), getName(), getBadges(), getPosition(), 
-                    getTeam(), getTrainers(), getBox(), getPokeballs(), getBoosts(), getPotions());
+                    getTeam(), getTrainers(), getBox(), getPokeballs(), getBoosts(), getPotions(), getDefeatedEncounterTiles());
         } catch (SquadFullException e) {
             System.out.println("TEAM IS FULL");
         }
