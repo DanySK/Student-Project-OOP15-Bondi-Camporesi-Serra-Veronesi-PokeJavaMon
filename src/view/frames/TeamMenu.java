@@ -172,6 +172,9 @@ public class TeamMenu extends JWindow implements MyFrame {
                         if (pok != p && pok.getCurrentHP() > 0) {
                             try {
                                 MainController.getController().depositPokemon(p);
+                                if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
+                                    MainController.getController().getSquad().switchPokemon(0, MainController.getController().getSquad().getPokemonList().indexOf(pok));
+                                }
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
                                 TeamMenu sc = new TeamMenu(canExit, isChangingPoke);

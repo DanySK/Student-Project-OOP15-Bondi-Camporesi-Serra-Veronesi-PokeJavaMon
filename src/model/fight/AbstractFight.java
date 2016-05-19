@@ -115,7 +115,6 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         for (PokemonInBattle pkm : pkmsThatMustEvolve) {
             hpBeforeEvolution = pkm.getStat(Stat.MAX_HP);
             pkm.evolve();
-            pkm.levelUp();
             hpGainedByLvl = pkm.getStat(Stat.MAX_HP) - hpBeforeEvolution;
             pkm.heal(hpGainedByLvl);
         }
