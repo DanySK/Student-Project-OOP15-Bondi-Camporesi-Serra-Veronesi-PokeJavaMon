@@ -184,9 +184,8 @@ public class MainSaveController implements SaveController {
     private void setDefeatedEncounterTiles() {
         final Element e = new Element(XMLParameters.ENCOUNTER.getName());
         int counter = 0;
-        System.out.println(sv.getEncounterTilesToBeRemoved());
         for (final EncounterTile et : sv.getEncounterTilesToBeRemoved()) {
-            e.setAttribute(Integer.toString(counter), et.getPokemon().getPokedexEntry().name());
+            e.setAttribute("N" + Integer.toString(counter), et.getPokemon().getPokedexEntry().name());
             counter ++;
         }
         this.root.addContent(e);

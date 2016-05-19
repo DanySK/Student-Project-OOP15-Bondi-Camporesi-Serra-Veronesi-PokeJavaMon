@@ -1,6 +1,7 @@
 package view.frames;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
@@ -18,7 +19,8 @@ public class FightScreen extends JWindow implements MyFrame {
             this.setAlwaysOnTop(true);
             this.setFocusable(true);
             this.setAlwaysOnTop(true);
-            this.setBounds(0, 0, 450, 300);
+            this.setMinimumSize(new Dimension(450, 300));
+            this.setLocationRelativeTo(null);
             this.getContentPane().setLayout(null);
             this.mainPanel = new FightPanel(MainController.getController().getEnemyPokemonInFight(), MainController.getController().getSquad().getPokemonList().get(0));
             this.mainPanel.setBounds(0,0, 450, 300);

@@ -44,6 +44,7 @@ public class PokeMapImpl implements PokeMap {
 	private Set<NPC> npcs;
 	private Set<GymLeader> gymLeaders;
 	private Set<EncounterTile> tileEncounters;
+	private Set<EncounterTile> tileEncountersRemoved;
 	private PokeMarket market;
 	private TiledMap tiledMap;
 	private Position pokeCenterSpawn;
@@ -72,7 +73,8 @@ public class PokeMapImpl implements PokeMap {
 		this.teleports = new HashSet<>();
 		this.trainers = new HashSet<>();
 		this.gymLeaders = new HashSet<>();
-		this.tileEncounters = new HashSet<>();
+                this.tileEncounters = new HashSet<>();
+                this.tileEncountersRemoved = new HashSet<>();
 		this.npcs = new HashSet<>();
 		this.pokemonEncounterZones = new HashSet<>();
 		this.walkableZones = new HashSet<>();
@@ -536,15 +538,24 @@ public class PokeMapImpl implements PokeMap {
     
     @Override
     public void setDeletedEncounterTiles(final Set<String> pkmnsToBeDeleted) {
+        final Set<Position> positionsToBeRemoved = new HashSet<>();
     	for (final String p : pkmnsToBeDeleted) {
-    		for (final EncounterTile et : this.tileEncounters) {
-    			if (et != null && p != null) {
-	    			if (et.getPokemon().getPokedexEntry().name().equals(p.toUpperCase())) {
-	    				this.deleteEncounterTile(et.tileX, et.tileY);
-	    			}
-    			}
+    	    for (final EncounterTile et : this.tileEncounters) {
+    		if (et != null && p != null) {
+	    		if (et.getPokemon().getPokedexEntry().name().equals(p.toUpperCase())) {
+	    			positionsToBeRemoved.add(new Position(et.tileX, et.tileY));
+	    		}
     		}
+    	    }
     	}
+    	for (final Position p : positionsToBeRemoved) {
+    	    this.deleteEncounterTile(p.getX(), p.getY());
+    	}
+    }
+    
+    @Override
+    public Set<EncounterTile> getRemovedEncounterTiles() {
+        return Collections.unmodifiableSet(this.tileEncountersRemoved);
     }
 	
     @Override
@@ -553,6 +564,7 @@ public class PokeMapImpl implements PokeMap {
     		if (et != null && et.tileX == x && et.tileY == y) {
     			et.setNotEncounterable();
     			this.tileEncounters.remove(et);
+    			this.tileEncountersRemoved.add(et);
     			this.map[x][y] = TileType.TERRAIN;
     			( (TiledMapTileLayer) this.tiledMap.getLayers().get("foreground")).getCell(getTileUnitX(x), getTileUnitY(y)).setTile(null);
     			for (final Position p : this.collisions) {

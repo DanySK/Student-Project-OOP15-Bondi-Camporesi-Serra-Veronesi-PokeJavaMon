@@ -171,11 +171,9 @@ public class MainLoadController implements LoadController {
      */
     private Set<String> getDefeatedEncounterTiles() {
         final Set<String> set = new HashSet<>();
-        int counter = 0;
         if (this.root.getChild(XMLParameters.ENCOUNTER.getName()).hasAttributes()) {
-            for (final Element e : this.root.getChild(XMLParameters.ENCOUNTER.name()).getChildren()) {
-                set.add(e.getAttributeValue(Integer.toString(counter)));
-                counter ++;
+            for (final Attribute a : this.root.getChild(XMLParameters.ENCOUNTER.getName()).getAttributes()) {
+                set.add(a.getValue());
             }
         }
         return set;
