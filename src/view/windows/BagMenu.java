@@ -103,67 +103,74 @@ public class BagMenu extends JWindow implements MyFrame {
         this.forCycles(ItemType.POTION);
         this.forCycles(ItemType.POKEBALL); 
         this.forCycles(ItemType.BOOST);
-        for(int j = 0; j<this.name1.size();j++) {   
-            if (j==0) {
+        if (this.it.size() > 1) {
+            for(int j = 0; j<this.name1.size();j++) {   
+                if (j==0) {
+                    this.panel.add(new JLabel(this.name1.get(j)));
+                    this.panel.add(new JLabel(this.name2.get(j)));
+                    this.panel.add(new JLabel(this.qnt.get(j)));
+                    this.exit = new JButton("Exit");
+                    this.exit.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            View.getView().disposeCurrent();
+                            View.getView().removeCurrent();
+                            View.getView().resumeCurrent();
+                        }
+                    });
+                    this.panel.add(this.exit);
+                    j++;
+                }
+                final Item itm = this.it.get(j);
                 this.panel.add(new JLabel(this.name1.get(j)));
-            	this.panel.add(new JLabel(this.name2.get(j)));
-            	this.panel.add(new JLabel(this.qnt.get(j)));
-                this.exit = new JButton("Exit");
-                this.exit.addActionListener(new ActionListener() {
+                this.panel.add(new JLabel(this.name2.get(j)));
+                this.panel.add(new JLabel(this.qnt.get(j)));
+                this.use = new JButton("Use");
+                this.use.addActionListener(new ActionListener() {     
+                    Item i = itm;
                     @Override
-                    public void actionPerformed(ActionEvent e) {
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        View.getView().resumeCurrent();
-                    }
-                });
-                this.panel.add(this.exit);
-                j++;
-            }
-            final Item itm = this.it.get(j);
-            this.panel.add(new JLabel(this.name1.get(j)));
-            this.panel.add(new JLabel(this.name2.get(j)));
-            this.panel.add(new JLabel(this.qnt.get(j)));
-            this.use = new JButton("Use");
-            this.use.addActionListener(new ActionListener() {     
-                Item i = itm;
-                @Override
-                public void actionPerformed(ActionEvent e) {            
-                    if (this.i.getType() == ItemType.POTION) {
-                        selectItem(this.i);
-                        TeamMenu sq = new TeamMenu(true, true);
-                        View.getView().hideCurrent();
-                        View.getView().addNew(sq);
-                        View.getView().showCurrent();
-                    } else {
-                        selectItem(this.i);
-                        if (MainController.getController().getStatusController().getState() == State.FIGHTING) {
-                            if (this.i.getType() == ItemType.POKEBALL) {
-                                useItem(MainController.getController().getEnemyPokemonInFight());
-                            } else if (this.i.getType() == ItemType.BOOST) {
-                                useItem(MainController.getController().getPlayer().getSquad().getPokemonList().get(0));
-                            } else {
-                                selectItem(this.i);
-                                TeamMenu sq = new TeamMenu(true, true);
-                                View.getView().hideCurrent();
-                                View.getView().addNew(sq);
-                                View.getView().showCurrent();
-                            }
+                    public void actionPerformed(ActionEvent e) {            
+                        if (this.i.getType() == ItemType.POTION) {
+                            selectItem(this.i);
+                            TeamMenu sq = new TeamMenu(true, true);
+                            View.getView().hideCurrent();
+                            View.getView().addNew(sq);
+                            View.getView().showCurrent();
                         } else {
-                            new MessageFrame(null, "NON PUOI USARE QUESTO STRUMENTO FUORI DALLA BATTAGLIA");
-                            useItem(null);
+                            selectItem(this.i);
+                            if (MainController.getController().getStatusController().getState() == State.FIGHTING) {
+                                if (this.i.getType() == ItemType.POKEBALL) {
+                                    useItem(MainController.getController().getEnemyPokemonInFight());
+                                } else if (this.i.getType() == ItemType.BOOST) {
+                                    useItem(MainController.getController().getPlayer().getSquad().getPokemonList().get(0));
+                                } else {
+                                    selectItem(this.i);
+                                    TeamMenu sq = new TeamMenu(true, true);
+                                    View.getView().hideCurrent();
+                                    View.getView().addNew(sq);
+                                    View.getView().showCurrent();
+                                }
+                            } else {
+                                new MessageFrame(null, "NON PUOI USARE QUESTO STRUMENTO FUORI DALLA BATTAGLIA");
+                                useItem(null);
+                            }
                         }
                     }
+                });
+                if (itm.getType() != ItemType.POTION && MainController.getController().getStatusController().getState() != State.FIGHTING) {
+                    this.use.setEnabled(false);
                 }
-            });
-            if (itm.getType() != ItemType.POTION && MainController.getController().getStatusController().getState() != State.FIGHTING) {
-                this.use.setEnabled(false);
-            }
-            this.panel.add(this.use);
-        }       
-        this.panel.setLayout(new GridLayout(name1.size(), cols));
-        this.setSize(600,60 * name1.size());
-        this.setVisible(true);
+                this.panel.add(this.use);
+            }       
+            this.panel.setLayout(new GridLayout(name1.size(), cols));
+            this.setSize(600,60 * name1.size());
+            this.setVisible(true);
+        } else {
+            View.getView().disposeCurrent();
+            View.getView().removeCurrent();
+            View.getView().addNew(new MessageFrame(null, "NO MORE ITEM IN BAG"));
+            View.getView().showCurrent();
+        }
     }
     
     private void forCycles(final ItemType it) {
