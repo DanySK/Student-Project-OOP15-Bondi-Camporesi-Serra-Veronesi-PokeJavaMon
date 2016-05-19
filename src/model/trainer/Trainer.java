@@ -6,6 +6,13 @@ import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import model.squad.Squad;
 
+/**
+ * Represent a fightable Character who contains a {@link Squad}, has 3 different messages
+ * and gives money in case of win. Each one is identified with a trainerID.
+ * To create an instance of Trainer use {@link StaticTrainerFactory}.createTrainer()
+ * @see StaticTrainerFactory
+ * @see AbstractCharacter
+ */
 public class Trainer extends AbstractCharacter {
     
     public final static String TYPE_TRAINER_NAME = "TRAINER";
