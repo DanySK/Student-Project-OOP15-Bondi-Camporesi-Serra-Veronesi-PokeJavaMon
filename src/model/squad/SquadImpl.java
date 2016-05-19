@@ -13,8 +13,15 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 
+/**
+ * Implementation of the {@link Squad} interface. 
+ * Uses an {@link ArrayList} to store {@link Pokemon} inside and has maximum size of {@link SquadImpl#MAX_SIZE}
+ */
 public class SquadImpl implements Squad {
     
+	/**
+	 * Maximum number of {@link Pokemon} accepted
+	 */
     public static int MAX_SIZE = 6;
 
     private final List<PokemonInBattle> pokemonInSquad;
@@ -67,19 +74,6 @@ public class SquadImpl implements Squad {
             }
         }
         return false;
-    }
-
-    @Override
-    public PokemonInBattle getPokemon(Pokemon pkmn) {
-        if (!this.contains(pkmn)) {
-            throw new IllegalArgumentException();
-        }
-        for (final PokemonInBattle p : pokemonInSquad) {
-            if (((PokemonInBattle) pkmn).equals(p)) {
-                return p;
-            }
-        }
-        return null;
     }
     
     @Override
