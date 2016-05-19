@@ -36,8 +36,6 @@ public abstract class BasicFight {
     protected boolean isEnemyExhausted;
     protected Effectiveness allyEff;
     protected Effectiveness enemyEff;
-    protected double effectiveValue;
-    protected double stab;
     protected boolean isAllyFastest;
     protected Move enemyMove;
     protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
@@ -224,7 +222,6 @@ public abstract class BasicFight {
     protected void applyDamage(final PokemonInBattle striker, final PokemonInBattle stricken,
             final Move move) {
         isEffective(striker, stricken, move);
-        stab = stabCalculation(striker, move);
         final double atkBoost;
         final double defBoost;
         if (striker.equals(allyPkm)) {
@@ -234,7 +231,8 @@ public abstract class BasicFight {
             atkBoost = getEnemyBoost(Stat.ATK);
             defBoost = getAllyBoost(Stat.DEF);
         }
-        final int damageDone = damageCalculation(striker, stricken, atkBoost, defBoost, move);
+        final int damageDone = damageCalculation(striker, stricken, atkBoost, defBoost, move,
+                stabCalculation(striker, move), isEffective(striker, stricken, move));
         stricken.damage(damageDone);
     }
 
@@ -245,10 +243,11 @@ public abstract class BasicFight {
      * @param striker   The {@link model.pokemon.Pokemon} which use the move.
      * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
      * @param move      The {@link model.pokemon.Move} which must be used.
+     * @return 
      */
-    protected void isEffective(final PokemonInBattle striker, final PokemonInBattle stricken, 
+    protected double isEffective(final PokemonInBattle striker, final PokemonInBattle stricken, 
             final Move move) {
-        effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricken.getPokedexEntry().getFirstType(),
+        final double effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricken.getPokedexEntry().getFirstType(),
                 stricken.getPokedexEntry().getSecondType());
         if (effectiveValue >= SUPER_EFFECTIVE) {
             if (striker.equals(allyPkm)) {
@@ -269,6 +268,7 @@ public abstract class BasicFight {
                 enemyEff = Effectiveness.LESSEFFECTIVE;
             }
         }
+        return effectiveValue;
     }
 
     /**
@@ -297,10 +297,10 @@ public abstract class BasicFight {
      * @return          The damage.
      */
     protected int damageCalculation(final PokemonInBattle striker, final PokemonInBattle stricken, 
-            final double atkBoost, final double defBoost, final Move move) {
+            final double atkBoost, final double defBoost, final Move move, final double stab, final double effectiveValue) {
         final int damage = (int) ((((2 * striker.getStat(Stat.LVL) + 10) * (striker.getStat(Stat.ATK) 
                 * atkBoost * move.getValue())) / ((stricken.getStat(Stat.DEF) * defBoost) * 250 + 2)) * stab * effectiveValue);
-        if (damage <= 0 && effectiveValue > 0) {
+        if (damage <= 0 && effectiveValue > 0 && !move.equals(Move.SPLASH)) {
             return MIN_DAMAGE;
         }
         return damage;

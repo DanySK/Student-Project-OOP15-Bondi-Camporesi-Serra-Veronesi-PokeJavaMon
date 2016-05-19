@@ -22,7 +22,7 @@ import model.trainer.Trainer;
 public class FightVsTrainer extends AbstractFight {
 
     private static final int STANDARD_EFFECTIVENESS_VALUE = 1;
-    private static final int SUPER_EFFECTIVE_MAX_VALUE = 4;
+    private static final int BOOST_MOVE_DAMAGE = 0;
     private final Trainer trainer;
     private final Map<PokemonInBattle, Map<Stat, Double>> enemyPkmsBoosts = new HashMap<>();
     private static final String TRAINER_DEFEAT_MESS = "Money earned: ";
@@ -53,28 +53,24 @@ public class FightVsTrainer extends AbstractFight {
      */
     @Override
     protected Move calculationEnemyMove() {
-        Move move = enemyPkm.getCurrentMoves().get(FIRST_ELEM);
-        boolean superEffective = false;
-        final List<Move> moves = new ArrayList<>();
-        for (final Move mov : enemyPkm.getCurrentMoves()) {
-            if (mov != Move.NULLMOVE) {
-                moves.add(mov);
+        final List<Integer> movesDamages = new ArrayList<>();
+        int movDam = BOOST_MOVE_DAMAGE;
+        int movPos = FIRST_ELEM;
+        for (final Move move : enemyPkm.getCurrentMoves()) {
+            if (move.getStat() == Stat.MAX_HP) {
+                movesDamages.add(damageCalculation(enemyPkm, allyPkm, getEnemyBoost(Stat.ATK), getAllyBoost(Stat.DEF),
+                        move, stabCalculation(enemyPkm, move), isEffective(enemyPkm, allyPkm, move)));
+            } else {
+                movesDamages.add(BOOST_MOVE_DAMAGE);
             }
         }
-        for (final Move m : moves) {
-            if (m.getStat() == Stat.MAX_HP) {
-                if (SUPER_EFFECTIVE_MAX_VALUE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())) {
-                    move = m;
-                    break;
-                } else if (SUPER_EFFECTIVE == WeaknessTable.getWeaknessTable().getMultiplierAttack(m.getType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())) {
-                    superEffective = true;
-                    move = m;
-                } else if (move.getValue() < m.getValue() && !superEffective) {
-                    move = m;
-                }
+        for (int i = FIRST_ELEM; i < enemyPkm.getCurrentMoves().size(); i++) {
+            if (movDam < movesDamages.get(i)) {
+                movDam = movesDamages.get(i);
+                movPos = i;
             }
         }
-        return move;
+        return enemyPkm.getCurrentMoves().get(movPos);
     }
 
     /**
