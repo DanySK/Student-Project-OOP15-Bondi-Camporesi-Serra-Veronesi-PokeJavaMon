@@ -1,4 +1,4 @@
-package view.frames;
+package view.windows;
 
 public interface MyFrame {
 

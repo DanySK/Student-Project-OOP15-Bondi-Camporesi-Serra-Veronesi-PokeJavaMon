@@ -1,4 +1,4 @@
-package test;
+package test.model;
 
 import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;

@@ -2,7 +2,7 @@ package view;
 
 import java.util.Stack;
 
-import view.frames.MyFrame;
+import view.windows.MyFrame;
 
 public class View {
 

@@ -1,5 +1,5 @@
 
-package view.methods;
+package view.fight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +11,10 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
-import view.frames.FightScreen;
-import view.frames.LearnMoveFrame;
-import view.frames.MessageFrame;
-import view.frames.MyFrame;
+import view.windows.FightScreen;
+import view.windows.LearnMoveFrame;
+import view.windows.MessageFrame;
+import view.windows.MyFrame;
 
 public class InFightMessages implements InFightMessagesInterface {
     

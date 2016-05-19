@@ -7,8 +7,8 @@ import controller.MainController;
 import controller.parameters.State;
 import model.pokemon.Pokemon;
 import view.View;
-import view.frames.*;
 import view.resources.SecondMenu;
+import view.windows.*;
 import view.resources.GameView;
 import view.resources.FirstMenu;
 

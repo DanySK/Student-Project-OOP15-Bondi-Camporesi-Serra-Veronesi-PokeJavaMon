@@ -1,4 +1,4 @@
-package view.methods;
+package view.fight;
 
 import model.fight.Effectiveness;
 import model.items.Item;

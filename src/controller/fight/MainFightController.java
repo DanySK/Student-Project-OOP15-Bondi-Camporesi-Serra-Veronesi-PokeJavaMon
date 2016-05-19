@@ -19,8 +19,8 @@ import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.trainer.Trainer;
-import view.methods.InFightMessages;
-import view.methods.InFightMessagesInterface;
+import view.fight.InFightMessages;
+import view.fight.InFightMessagesInterface;
 
 /**
  * The MainController that controls the fight.

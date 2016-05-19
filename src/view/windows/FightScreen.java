@@ -1,4 +1,4 @@
-package view.frames;
+package view.windows;
 
 import java.awt.Color;
 import java.awt.Dimension;

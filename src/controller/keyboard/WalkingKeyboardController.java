@@ -15,8 +15,8 @@ import model.map.tile.Tile.TileType;
 import model.player.Player;
 import model.pokemon.Pokemon;
 import view.View;
-import view.frames.MessageFrame;
 import view.sprite.PlayerSprite;
+import view.windows.MessageFrame;
 
 /**
  * The {@link KeyboardController} active when the {@link State} is WALKING.
