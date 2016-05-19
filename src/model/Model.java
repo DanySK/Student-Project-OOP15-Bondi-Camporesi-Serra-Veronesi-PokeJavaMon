@@ -139,9 +139,9 @@ public class Model implements ModelInterface {
             @Override
             public Set<EncounterTile> getEncounterTilesToBeRemoved() {
             	final Set<EncounterTile> toBeRemoved = new HashSet<>();
-            	for (final EncounterTile et : map.getEncounterTiles()) {
-            		if (!et.isEncounterable()) {
-            			toBeRemoved.add(et);
+            	for (final EncounterTile e : map.getEncounterTiles()) {
+            		if (!e.isEncounterable()) {
+            			toBeRemoved.add(e);
             		}
             	}
             	return Collections.unmodifiableSet(toBeRemoved);
