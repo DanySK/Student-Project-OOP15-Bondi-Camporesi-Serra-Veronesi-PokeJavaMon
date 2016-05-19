@@ -58,6 +58,7 @@ public class PokemonInBattle extends AbstractPokemon{
             this.canEvolve = false;
             this.evolvesTo = Pokedex.MISSINGNO;
         }
+        this.updateStats();
     }
 	
 	/**

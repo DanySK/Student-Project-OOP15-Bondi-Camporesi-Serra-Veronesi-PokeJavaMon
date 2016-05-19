@@ -1,5 +1,8 @@
 package model.pokemon;
 
+/**
+ * Enumeration that lists all different Elemental Types of {@link Pokemon} and {@link Move}
+ */
 public enum PokemonType {
     NONE,
     NORMAL,
