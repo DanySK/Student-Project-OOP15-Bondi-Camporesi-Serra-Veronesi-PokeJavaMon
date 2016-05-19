@@ -1,11 +1,11 @@
 package model;
 
-import model.box.Box;
-import model.inventory.Inventory;
 import model.map.NPC;
 import model.map.PokeMap;
 import model.map.Position;
 import model.map.tile.EncounterTile;
+import model.player.Box;
+import model.player.Inventory;
 import model.player.Player;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;

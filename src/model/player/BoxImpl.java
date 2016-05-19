@@ -1,4 +1,4 @@
-package model.box;
+package model.player;
 
 import java.util.ArrayList;
 import java.util.Collections;

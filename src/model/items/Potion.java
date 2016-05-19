@@ -7,7 +7,7 @@ import model.pokemon.PokemonInBattle;
 public class Potion extends AbstractItem {
 
     public static enum PotionType {
-        Potion(20, 300), Superpotion(50, 700), Hyperpotion(200, 1200);
+        Potion(20, 200), Superpotion(50, 400), Hyperpotion(200, 600);
         
         private PotionType(final int heal, final int cost) {
             this.heal = heal;

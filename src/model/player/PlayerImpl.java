@@ -5,10 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import exceptions.NotEnoughMoneyException;
-import model.box.Box;
-import model.box.BoxImpl;
-import model.inventory.Inventory;
-import model.inventory.InventoryImpl;
 import model.items.Item;
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
@@ -16,6 +12,10 @@ import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
 
+/**
+ * Implements {@link Player} interface, also follows Singleton's pattern as there
+ * cannot be created more than one {@link Player}
+ */
 public class PlayerImpl extends AbstractCharacter implements Player{
     
     private String name;
@@ -27,10 +27,18 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     private int badges;
     
     private static Player SINGLETON;
-    
-    //TODO: Player position IMPORT FROM MAP
+
+    /**
+     * Actual Starting {@link Position}, if modified it uses the new values,
+     * otherwise uses {@link PlayerImpl#DEFAULT_START_X}, {@link PlayerImpl#DEFAULT_START_Y}
+     */
     public static int START_X = -1;
     public static int START_Y = -1;
+
+    /**
+     * In case the map.tmx does not specify a {@link Tile} which has the property tileType set to START
+     * starting {@link Position} is set to (278, 71)
+     */
     public static final int DEFAULT_START_X = 278;
     public static final int DEFAULT_START_Y = 71;
     
@@ -43,6 +51,10 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.badges = 0;    
     }
     
+    /**
+     * Singleton main method, to get the one and only instance of {@link Player}
+     * @return
+     */
     public static Player getPlayer() {
         if (SINGLETON == null) {
             synchronized (PlayerImpl.class) {
@@ -81,7 +93,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     }
 
     @Override
-    public Set<Trainer> getEnemyBeaten() {
+    public Set<Trainer> getDefeatedTrainers() {
         return Collections.unmodifiableSet(trainersBeaten);
     }
 
@@ -110,6 +122,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
         this.trainersBeaten.add(trainer);
     }
     
+    @Override
     public void setPosition(final int x, final int y) {
     	this.tileX = x;
     	this.tileY = y;
@@ -141,6 +154,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     	}
     }
     
+    @Override
     public void turn(final Direction d) {
     	this.direction = d;
     }
