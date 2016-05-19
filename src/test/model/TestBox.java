@@ -8,7 +8,7 @@ import org.junit.Test;
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
-import model.box.Box;
+import model.player.Box;
 import model.player.PlayerImpl;
 import model.pokemon.Pokedex;
 import model.pokemon.PokemonInBattle;
@@ -23,7 +23,7 @@ public class TestBox {
     private static final PokemonInBattle squirtle = StaticPokemonFactory.createPokemon(Pokedex.SQUIRTLE, 5);
 
     /**
-     * Test {@link model.box.Box} methods. Tests need an order because they need to manage different 
+     * Test {@link model.player.Box} methods. Tests need an order because they need to manage different 
      * situations of the squad status, which is changed by the execution of the methods.
      */
     @Test
@@ -33,7 +33,7 @@ public class TestBox {
     }
     
     /**
-     * Test all case of possible {@link model.box.Box#withdrawPokemon(model.pokemon.Pokemon, Squad)}
+     * Test all case of possible {@link model.player.Box#withdrawPokemon(model.pokemon.Pokemon, Squad)}
      */
     private void testWithdraw() {
         final PokemonInBattle raticate = StaticPokemonFactory.createPokemon(Pokedex.RATICATE, 25);
@@ -86,7 +86,7 @@ public class TestBox {
     }
 
     /**
-     * Test all case of possible {@link model.box.Box#depositPokemon(model.pokemon.Pokemon, Squad)}
+     * Test all case of possible {@link model.player.Box#depositPokemon(model.pokemon.Pokemon, Squad)}
      */
     private void testDeposit() {
         /*

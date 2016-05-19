@@ -1,4 +1,4 @@
-package model.inventory;
+package model.player;
 
 import java.util.Collections;
 import java.util.HashMap;

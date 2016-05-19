@@ -3288,7 +3288,7 @@
   <tile id="509">
    <properties>
     <property name="cry" value="Gyaoo!"/>
-    <property name="lvl" type="int" value="50"/>
+    <property name="lvl" type="int" value="45"/>
     <property name="pokemon" value="ARTICUNO"/>
     <property name="tileType" value="ENCOUNTER"/>
     <property name="walkable" type="bool" value="false"/>
@@ -3306,7 +3306,7 @@
   <tile id="511">
    <properties>
     <property name="cry" value="Gyaoo!"/>
-    <property name="lvl" type="int" value="50"/>
+    <property name="lvl" type="int" value="45"/>
     <property name="pokemon" value="MOLTRES"/>
     <property name="tileType" value="ENCOUNTER"/>
     <property name="walkable" type="bool" value="false"/>
@@ -3660,7 +3660,7 @@
   <tile id="559">
    <properties>
     <property name="cry" value="..."/>
-    <property name="lvl" type="int" value="50"/>
+    <property name="lvl" type="int" value="45"/>
     <property name="pokemon" value="MEWTWO"/>
     <property name="tileType" value="ENCOUNTER"/>
     <property name="walkable" type="bool" value="false"/>

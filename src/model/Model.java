@@ -7,13 +7,13 @@ import java.util.Set;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import exceptions.SquadFullException;
-import model.box.Box;
-import model.inventory.Inventory;
 import model.map.NPC;
 import model.map.PokeMap;
 import model.map.PokeMapImpl;
 import model.map.Position;
 import model.map.tile.EncounterTile;
+import model.player.Box;
+import model.player.Inventory;
 import model.player.Player;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
