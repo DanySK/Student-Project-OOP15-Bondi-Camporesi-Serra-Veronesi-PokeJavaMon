@@ -288,6 +288,13 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                     MainController.getController().updateStatus(State.FIGHTING);
                     MainController.getController().getFightController().newFightWithTrainer(pm.getTrainer(x, y).get());
                     MainController.getController().getViewController().fightScreen();
+                    View.getView().hideCurrent();
+                    final String[] aray = new String[] {
+                            pm.getTrainer(x, y).get().getName() + " wants to fight!",
+                            pm.getTrainer(x, y).get().getName() + ": " + pm.getTrainer(x, y).get().getInitialMessage()
+                    };
+                    View.getView().addNew(new MessageFrame(null, aray));
+                    View.getView().showCurrent();
                 }
             } else if (pm.getNPC(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
@@ -313,7 +320,13 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
             	MainController.getController().updateStatus(State.FIGHTING);
                 MainController.getController().getFightController().newFightWithPokemon(pm.getEncounterTile(x, y).get().getPokemon());
                 MainController.getController().getViewController().fightScreen();
-            
+                View.getView().hideCurrent();
+                final String[] aray = new String[] {
+                        pm.getTrainer(x, y).get().getName() + " wants to fight!",
+                        pm.getTrainer(x, y).get().getName() + ": " + pm.getTrainer(x, y).get().getInitialMessage()
+                };
+                View.getView().addNew(new MessageFrame(null, aray));
+                View.getView().showCurrent();
             }
         }
         
