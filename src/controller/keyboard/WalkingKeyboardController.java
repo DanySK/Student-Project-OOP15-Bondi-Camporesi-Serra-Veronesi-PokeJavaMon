@@ -315,18 +315,18 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                     MainController.getController().updateStatus(State.FIGHTING);
                     MainController.getController().getFightController().newFightWithTrainer(pm.getGymLeader(x, y).get());
                     MainController.getController().getViewController().fightScreen();
+                    View.getView().hideCurrent();
+                    final String[] aray = new String[] {
+                            pm.getTrainer(x, y).get().getName() + " wants to fight!",
+                            pm.getTrainer(x, y).get().getName() + ": " + pm.getTrainer(x, y).get().getInitialMessage()
+                    };
+                    View.getView().addNew(new MessageFrame(null, aray));
+                    View.getView().showCurrent();
                 }        
             } else if (pm.getEncounterTile(x, y).isPresent() && direction == Direction.NORTH) { 
             	MainController.getController().updateStatus(State.FIGHTING);
                 MainController.getController().getFightController().newFightWithPokemon(pm.getEncounterTile(x, y).get().getPokemon());
                 MainController.getController().getViewController().fightScreen();
-                View.getView().hideCurrent();
-                final String[] aray = new String[] {
-                        pm.getTrainer(x, y).get().getName() + " wants to fight!",
-                        pm.getTrainer(x, y).get().getName() + ": " + pm.getTrainer(x, y).get().getInitialMessage()
-                };
-                View.getView().addNew(new MessageFrame(null, aray));
-                View.getView().showCurrent();
             }
         }
         
