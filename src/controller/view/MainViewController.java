@@ -40,7 +40,8 @@ public class MainViewController implements ViewController {
     @Override
     public void firstMenu() {
         MainController.getController().updateStatus(State.FIRST_MENU);
-        new FirstMenu().title();
+        View.getView().addNew(new FirstMenu());
+        View.getView().showCurrent();
     }
     
     @Override
