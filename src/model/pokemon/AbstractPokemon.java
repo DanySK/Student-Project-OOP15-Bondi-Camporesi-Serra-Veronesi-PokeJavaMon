@@ -109,7 +109,7 @@ public abstract class AbstractPokemon implements Pokemon {
         case SPD :
             return this.pokemon.getBaseSPD() * 2 * lvl / 100 + 5;
         case EXP :
-            return (int) Math.pow(lvl , 3) * 4 / 5;
+            return ((int) (((Math.pow(lvl , 3)) * 3) / 6) + 25);
         case MAX_HP :
             return 10 + (this.pokemon.getBaseHP() * 2 * lvl / 100 + lvl);
         case LVL :
@@ -121,7 +121,7 @@ public abstract class AbstractPokemon implements Pokemon {
     
     @Override
     public int getLevelExp() {
-        return (int) Math.pow(mapStat.get(Stat.LVL) , 3) * 4 / 5;
+        return (int) (Math.pow(mapStat.get(Stat.LVL) , 3) * 3 / 6) +25;
     }
     
     /**
