@@ -286,7 +286,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                 }
                 if (pm.getTrainer(x, y).get().isDefeated()) {
                     MainController.getController().updateStatus(State.READING);
-                    View.getView().addNew(new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED"));
+                    View.getView().addNew(new MessageFrame(State.WALKING, pm.getTrainer(x, y).get().getTtrainerLostMessage()));
                     View.getView().showCurrent();
                 } else {
                     MainController.getController().updateStatus(State.FIGHTING);
