@@ -160,6 +160,10 @@ public class FightPanel extends JPanel {
         this.choice2 = this.choicesList.get(1);
         this.choice3 = this.choicesList.get(2);
         this.choice4 = this.choicesList.get(3);
+        for (final JButton b : this.choicesList) {
+        	b.setBorderPainted(false);
+        	b.setFocusable(false);
+        }
         setGroupLayout4Buttons(this.subPanel, this.choice1, this.choice2, this.choice3, this.choice4);		
     }
 	

@@ -17,8 +17,8 @@ import view.resources.FirstMenu;
  */
 public class MainViewController implements ViewController {
     
-    private static final int WIDTH = 1280;
-    private static final int HEIGHT = 720;
+    private static final int WIDTH = 1280 / 2;
+    private static final int HEIGHT = 720 / 2;
     private String name;
     
     @Override

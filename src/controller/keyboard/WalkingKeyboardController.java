@@ -323,7 +323,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                     View.getView().addNew(new MessageFrame(null, aray));
                     View.getView().showCurrent();
                 }        
-            } else if (pm.getEncounterTile(x, y).isPresent() && direction == Direction.NORTH) { 
+            } else if (pm.getEncounterTile(x, y).isPresent()) { 
             	MainController.getController().updateStatus(State.FIGHTING);
                 MainController.getController().getFightController().newFightWithPokemon(pm.getEncounterTile(x, y).get().getPokemon());
                 MainController.getController().getViewController().fightScreen();

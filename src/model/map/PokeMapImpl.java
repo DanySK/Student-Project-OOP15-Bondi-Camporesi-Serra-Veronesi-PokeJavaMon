@@ -197,8 +197,8 @@ public class PokeMapImpl implements PokeMap {
 						Integer.parseInt(mp.get("lvl", String.class)), tileX, tileY, Direction.SOUTH, mp.get("cry", String.class)));
 				this.map[tileX][tileY] = TileType.ENCOUNTER;
 				this.collisions.add(new Position(tileX, tileY));
-				System.out.println(new Position(tileX, tileY) + " = EncounterTile of " + mp.get("pokemon", String.class));
-				System.out.println(this.tileEncounters);
+//				System.out.println(new Position(tileX, tileY) + " = EncounterTile of " + mp.get("pokemon", String.class));
+//				System.out.println(this.tileEncounters);
 			}
 		}
 	}
