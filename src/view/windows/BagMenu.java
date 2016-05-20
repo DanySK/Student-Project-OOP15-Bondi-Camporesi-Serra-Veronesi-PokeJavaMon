@@ -110,6 +110,7 @@ public class BagMenu extends JWindow implements MyFrame {
                     this.panel.add(new JLabel(this.name2.get(j)));
                     this.panel.add(new JLabel(this.qnt.get(j)));
                     this.exit = new JButton("Exit");
+                    this.exit.setBorderPainted(false);
                     this.exit.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -126,6 +127,7 @@ public class BagMenu extends JWindow implements MyFrame {
                 this.panel.add(new JLabel(this.name2.get(j)));
                 this.panel.add(new JLabel(this.qnt.get(j)));
                 this.use = new JButton("Use");
+                this.use.setBorderPainted(false);
                 this.use.addActionListener(new ActionListener() {     
                     Item i = itm;
                     @Override

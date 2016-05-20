@@ -11,8 +11,6 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
-import view.windows.FightScreen;
-import view.windows.LearnMoveFrame;
 import view.windows.MessageFrame;
 import view.windows.MyFrame;
 
@@ -118,7 +116,6 @@ public class InFightMessages implements InFightMessagesInterface {
                             this.message.add(MainController.getController().getFightController().getEnemyTrainer().get().getName() + ": " + MainController.getController().getFightController().getEnemyTrainer().get().getTtrainerLostMessage());
                         }
                         this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
-                        MainController.getController().updateStatus(State.WALKING);
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
                         if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {

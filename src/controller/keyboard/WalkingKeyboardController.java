@@ -195,15 +195,19 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
             return;
         }
         if (this.up) {
+            this.direction = Direction.NORTH;
             this.resolver.resolveMove(Direction.NORTH);
             this.player.move(Direction.NORTH, pm);
         } else if (this.down) {
+            this.direction = Direction.SOUTH;
             this.resolver.resolveMove(Direction.SOUTH);
             this.player.move(Direction.SOUTH, pm);
         } else if (this.left) {
+            this.direction = Direction.WEST;
             this.resolver.resolveMove(Direction.WEST);
             this.player.move(Direction.WEST, pm);
         } else if (this.right) {
+            this.direction = Direction.EAST;
             this.resolver.resolveMove(Direction.EAST);
             this.player.move(Direction.EAST, pm);
         } else {
@@ -221,7 +225,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
         this.pm = MainController.getController().getPokeMap();
         PlayerSprite.getSprite().updatePosition();
         this.t = this.pm.getTileType(this.player.getTileX(), this.player.getTileY());
-        if (this.t == TileType.POKEMON_ENCOUNTER && (this.up || this.down || this.left || this.right )) {
+        if (this.t == TileType.POKEMON_ENCOUNTER /*&& (this.up || this.down || this.left || this.right )*/) {
             int x; 
             int y;
             x = this.player.getTileX();
@@ -282,7 +286,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                 }
                 if (pm.getTrainer(x, y).get().isDefeated()) {
                     MainController.getController().updateStatus(State.READING);
-                    View.getView().addNew(new MessageFrame(State.WALKING, "TRAINER ALREADY DEFEATED"));
+                    View.getView().addNew(new MessageFrame(State.WALKING, pm.getTrainer(x, y).get().getName() + ": " + pm.getTrainer(x, y).get().getTtrainerLostMessage()));
                     View.getView().showCurrent();
                 } else {
                     MainController.getController().updateStatus(State.FIGHTING);
@@ -323,7 +327,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                     View.getView().addNew(new MessageFrame(null, aray));
                     View.getView().showCurrent();
                 }        
-            } else if (pm.getEncounterTile(x, y).isPresent() && direction == Direction.NORTH) { 
+            } else if (pm.getEncounterTile(x, y).isPresent()) { 
             	MainController.getController().updateStatus(State.FIGHTING);
                 MainController.getController().getFightController().newFightWithPokemon(pm.getEncounterTile(x, y).get().getPokemon());
                 MainController.getController().getViewController().fightScreen();

@@ -1,4 +1,4 @@
-package view.windows;
+package view.fight;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +26,9 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import net.miginfocom.swing.MigLayout;
 import view.View;
+import view.windows.BagMenu;
+import view.windows.MessageFrame;
+import view.windows.TeamMenu;
 
 public class FightPanel extends JPanel {
 
@@ -160,6 +163,10 @@ public class FightPanel extends JPanel {
         this.choice2 = this.choicesList.get(1);
         this.choice3 = this.choicesList.get(2);
         this.choice4 = this.choicesList.get(3);
+        for (final JButton b : this.choicesList) {
+        	b.setBorderPainted(false);
+        	b.setFocusable(false);
+        }
         setGroupLayout4Buttons(this.subPanel, this.choice1, this.choice2, this.choice3, this.choice4);		
     }
 	

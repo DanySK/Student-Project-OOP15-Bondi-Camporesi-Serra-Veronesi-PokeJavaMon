@@ -7,6 +7,7 @@ import controller.MainController;
 import controller.parameters.State;
 import model.pokemon.Pokemon;
 import view.View;
+import view.fight.FightScreen;
 import view.resources.SecondMenu;
 import view.windows.*;
 import view.resources.GameView;
@@ -17,8 +18,8 @@ import view.resources.FirstMenu;
  */
 public class MainViewController implements ViewController {
     
-    private static final int WIDTH = 1280;
-    private static final int HEIGHT = 720;
+    private static final int WIDTH = 1280 / 2;
+    private static final int HEIGHT = 720 / 2;
     private String name;
     
     @Override
@@ -40,7 +41,8 @@ public class MainViewController implements ViewController {
     @Override
     public void firstMenu() {
         MainController.getController().updateStatus(State.FIRST_MENU);
-        new FirstMenu().title();
+        View.getView().addNew(new FirstMenu());
+        View.getView().showCurrent();
     }
     
     @Override

@@ -48,6 +48,7 @@ public class Menu extends JWindow implements MyFrame {
         this.getContentPane().add(this.badges);
         this.add(Box.createVerticalGlue());
         this.box = new JButton("BoxMenu");
+        this.box.setBorderPainted(false);
         this.box.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.box);
         this.box.addActionListener(new ActionListener() {
@@ -66,6 +67,7 @@ public class Menu extends JWindow implements MyFrame {
         });
         this.add(Box.createVerticalGlue());
         this.team = new JButton ("Team");
+        this.team.setBorderPainted(false);
         this.team.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.team);
         this.team.addActionListener(new ActionListener() {
@@ -78,6 +80,7 @@ public class Menu extends JWindow implements MyFrame {
         });
         this.add(Box.createVerticalGlue());    
         this.bag = new JButton("Bag");
+        this.bag.setBorderPainted(false);
         this.bag.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.bag);    
         this.bag.addActionListener(new ActionListener() {
@@ -90,6 +93,7 @@ public class Menu extends JWindow implements MyFrame {
         });             
         this.add(Box.createVerticalGlue());    
         this.music = new JButton("Music");
+        this.music.setBorderPainted(false);
         this.music.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.music);    
         this.music.addActionListener(new ActionListener() {
@@ -104,6 +108,7 @@ public class Menu extends JWindow implements MyFrame {
         });         
         this.add(Box.createVerticalGlue());
         this.save = new JButton("Save");
+        this.save.setBorderPainted(false);
         this.save.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.save);
         this.save.addMouseListener(new MouseAdapter() {
@@ -117,6 +122,7 @@ public class Menu extends JWindow implements MyFrame {
         });   
         this.add(Box.createVerticalGlue());
         this.resume = new JButton("Resume");
+        this.resume.setBorderPainted(false);
         this.resume.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.resume);
         this.resume.addActionListener(new ActionListener() {

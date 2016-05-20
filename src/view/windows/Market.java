@@ -72,6 +72,7 @@ public class Market extends JWindow implements MyFrame {
             	this.panel.add(new JLabel(this.Prz.get(j)));
             	this.panel.add(new JLabel(this.Qnt.get(j)));
             	this.exit = new JButton("Exit");
+            	this.exit.setBorderPainted(false);
             	this.exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -89,6 +90,7 @@ public class Market extends JWindow implements MyFrame {
             this.panel.add(new JLabel(this.Prz.get(j)));
             this.panel.add(new JLabel(this.Qnt.get(j)));
             this.use = new JButton("Buy");
+            this.use.setBorderPainted(false);
             this.use.addActionListener(new ActionListener() {     
                 Item i = itm;
                 @Override

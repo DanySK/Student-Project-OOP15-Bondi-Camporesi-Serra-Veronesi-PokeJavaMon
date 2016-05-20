@@ -53,6 +53,7 @@ public class Statistics extends JWindow implements MyFrame {
 		this.panel.setLayout(new GridLayout(4, 0));
 		this.panel.setBorder(new LineBorder(Color.GRAY, 3));
 		this.exit = new JButton("Exit");
+		this.exit.setBorderPainted(false);
 		this.exit.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        View.getView().disposeCurrent();

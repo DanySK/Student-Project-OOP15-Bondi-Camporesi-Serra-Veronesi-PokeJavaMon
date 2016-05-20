@@ -43,6 +43,7 @@ public class MessageFrame extends JWindow implements MyFrame {
         	this.panel.add(l);
         }
         this.ok = new JButton("OK");
+        this.ok.setBorderPainted(false);
         this.ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,9 +61,9 @@ public class MessageFrame extends JWindow implements MyFrame {
         this.getContentPane().add(this.panel);
         this.setAlwaysOnTop(true);
         if (msgs.length > 4) {
-            this.setBounds(100, 100, 450, 400);
+            this.setBounds(100, 100, 600, 400);
         } else {
-            this.setBounds(100, 100, 450, 100 * msgs.length);
+            this.setBounds(100, 100, 600, 100 * msgs.length);
         }
         this.setLocationRelativeTo(null);
         this.setVisible(true);

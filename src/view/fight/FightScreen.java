@@ -1,4 +1,4 @@
-package view.windows;
+package view.fight;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,6 +8,9 @@ import javax.swing.border.LineBorder;
 
 import controller.MainController;
 import view.View;
+import view.windows.MessageFrame;
+import view.windows.MyFrame;
+import view.windows.TeamMenu;
 
 public class FightScreen extends JWindow implements MyFrame {
 
