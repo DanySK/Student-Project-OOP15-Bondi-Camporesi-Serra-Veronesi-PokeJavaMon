@@ -186,7 +186,7 @@ public enum Pokedex {
 
     CHANSEY("Chansey",       PokemonType.NORMAL,  PokemonType.NONE,    250,  50,  50,  50,  PokemonRarity.RARE,       -1,           "", new HashMap<>(), FrontSpriteImage.CHANSEY,    BackSpriteImage.CHANSEY),
 
-    TANGELA("Tangela",       PokemonType.GRASS,   PokemonType.NONE,     65,  55, 155,  60,  PokemonRarity.RARE,       -1,           "", new HashMap<>(), FrontSpriteImage.TANGELA,    BackSpriteImage.TANGELA),
+    TANGELA("Tangela",       PokemonType.GRASS,   PokemonType.NONE,     65,  55, 115,  60,  PokemonRarity.RARE,       -1,           "", new HashMap<>(), FrontSpriteImage.TANGELA,    BackSpriteImage.TANGELA),
     
     KANGASKHAN("Kangaskhan", PokemonType.NORMAL,  PokemonType.NONE,    105,  95,  80,  90,  PokemonRarity.RARE,       -1,           "", new HashMap<>(), FrontSpriteImage.KANGASKHAN, BackSpriteImage.KANGASKHAN),
     
