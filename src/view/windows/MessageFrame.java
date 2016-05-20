@@ -43,6 +43,7 @@ public class MessageFrame extends JWindow implements MyFrame {
         	this.panel.add(l);
         }
         this.ok = new JButton("OK");
+        this.ok.setBorderPainted(false);
         this.ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

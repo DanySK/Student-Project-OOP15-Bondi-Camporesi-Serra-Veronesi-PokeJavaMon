@@ -58,6 +58,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 this.forget5.setAlignmentX(Component.CENTER_ALIGNMENT);
                 this.getContentPane().add(this.forget5);
                 this.move5 = new JButton(this.newMove.name());
+                this.move5.setBorderPainted(false);
                 this.move5.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -81,6 +82,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
             l.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.getContentPane().add(l);
             b = new JButton(this.pk.getCurrentMoves().get(x).name());
+            b.setBorderPainted(false);
             b.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

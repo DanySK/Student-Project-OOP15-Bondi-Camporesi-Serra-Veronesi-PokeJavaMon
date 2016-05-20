@@ -70,6 +70,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             	this.panel.add(new JLabel(""));
             	this.panel.add(new JLabel(""));
             	this.exit = new JButton("EXIT");
+            	this.exit.setBorderPainted(false);
             	this.exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -90,6 +91,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             this.panel.add(new JLabel(this.lvl.get(i)));
             this.panel.add(new JLabel(this.cHP.get(i) + " / " + this.mHP.get(i)));
             this.info = new JButton("INFO");
+            this.info.setBorderPainted(false);
             this.info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pkmn;
                 @Override
@@ -102,6 +104,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             });
             this.panel.add(this.info);
             this.set = new JButton("SET FIRST");
+            this.set.setBorderPainted(false);
             this.set.addActionListener(new ActionListener() {
                 private final int ID = index;
                 @Override
@@ -168,6 +171,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             }
             this.panel.add(this.set);
             this.deposit = new JButton("DEPOSIT");
+            this.deposit.setBorderPainted(false);
             this.deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
@@ -207,6 +211,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             }
             this.panel.add(this.deposit);
             this.select = new JButton("SELECT");
+            this.select.setBorderPainted(false);
             this.select.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {

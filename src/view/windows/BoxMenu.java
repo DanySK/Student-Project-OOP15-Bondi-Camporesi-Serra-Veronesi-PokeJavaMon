@@ -64,6 +64,7 @@ public class BoxMenu extends JWindow implements MyFrame {
             	this.panel.add(new JLabel(this.cHP.get(i)));
             	this.panel.add(new JLabel(""));
             	this.exit = new JButton("EXIT");
+            	this.exit.setBorderPainted(false);
             	this.exit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -79,6 +80,7 @@ public class BoxMenu extends JWindow implements MyFrame {
                 this.panel.add(new JLabel(this.lvl.get(i)));
                 this.panel.add(new JLabel(this.mHP.get(i)));
                 this.info = new JButton("INFO");
+                this.info.setBorderPainted(false);
                 this.info.addActionListener(new ActionListener() {
                 private final Pokemon ID = pokmn;
                     @Override
@@ -91,6 +93,7 @@ public class BoxMenu extends JWindow implements MyFrame {
                 });
                 this.panel.add(info);
                 this.withdraw = new JButton("WITHDRAW");
+                this.withdraw.setBorderPainted(false);
                 this.withdraw.addActionListener(new ActionListener() {
                     final Pokemon selected = pokmn;
                     @Override
