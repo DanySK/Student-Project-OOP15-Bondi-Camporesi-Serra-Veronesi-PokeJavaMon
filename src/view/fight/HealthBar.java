@@ -1,4 +1,4 @@
-package view.windows;
+package view.fight;
 
 import java.awt.Color;
 

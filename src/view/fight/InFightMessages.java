@@ -11,8 +11,6 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
-import view.windows.FightScreen;
-import view.windows.LearnMoveFrame;
 import view.windows.MessageFrame;
 import view.windows.MyFrame;
 

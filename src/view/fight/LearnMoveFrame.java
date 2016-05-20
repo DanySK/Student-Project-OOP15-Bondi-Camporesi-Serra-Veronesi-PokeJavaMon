@@ -1,4 +1,4 @@
-package view.windows;
+package view.fight;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -17,6 +17,7 @@ import controller.MainController;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
+import view.windows.MyFrame;
 
 public class LearnMoveFrame extends JWindow implements MyFrame {        
         

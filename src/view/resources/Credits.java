@@ -51,6 +51,7 @@ public class Credits extends JWindow implements MyFrame {
 		    }
 		    
 		    this.back = new JButton("BACK");
+		    this.back.setBorderPainted(false);
 	        this.back.addActionListener(new ActionListener() {      
 	            @Override
 	            public void actionPerformed(ActionEvent e) {

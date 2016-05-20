@@ -1,4 +1,4 @@
-package view.windows;
+package view.fight;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +26,9 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import net.miginfocom.swing.MigLayout;
 import view.View;
+import view.windows.BagMenu;
+import view.windows.MessageFrame;
+import view.windows.TeamMenu;
 
 public class FightPanel extends JPanel {
 

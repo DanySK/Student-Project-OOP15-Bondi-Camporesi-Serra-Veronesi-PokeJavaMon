@@ -70,7 +70,8 @@ public class FirstMenu extends JFrame implements MyFrame {
 
 	@Override
 	public void showFrame() {
-		try {
+            this.setLocationRelativeTo(null);
+	    try {
 		    this.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
 		} catch (Exception e) {
 		    //TODO: Fare catch di una semplice Exception e' sbagliato

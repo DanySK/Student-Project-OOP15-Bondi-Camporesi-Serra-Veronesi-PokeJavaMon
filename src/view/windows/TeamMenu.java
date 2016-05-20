@@ -15,6 +15,7 @@ import exceptions.PokemonNotFoundException;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;
+import view.fight.FightScreen;
 
 public class TeamMenu extends JWindow implements MyFrame {
         
