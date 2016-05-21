@@ -4,7 +4,7 @@ import model.pokemon.Pokemon;
 import model.trainer.Trainer;
 
 /**
- * A static class for create {@link Fight}. It implement the pattern of a static simple factory.
+ * A static class for create fight instance. It implement the pattern of a simple factory.
  */
 public final class StaticSimpleFightFactory {
 

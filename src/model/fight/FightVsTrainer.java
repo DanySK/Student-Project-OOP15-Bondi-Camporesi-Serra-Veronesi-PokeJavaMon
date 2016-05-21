@@ -18,7 +18,9 @@ import model.pokemon.WeaknessTable;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
-
+/**
+ * A concrete class which deals operations to manage a {@link Fight} against a trainer.
+ */
 public class FightVsTrainer extends AbstractFight {
 
     private static final int STANDARD_EFFECTIVENESS_VALUE = 1;
@@ -29,7 +31,7 @@ public class FightVsTrainer extends AbstractFight {
     private static final String GYM_LEADER_DEFEAT_MESS = "You gained a badge!";
 
     /**
-     * Constructor for a fight against a trainer.
+     * Constructor for a {@link FightVsTrainer}.
      * 
      * @param trainer   The {@link model.trainer.Trainer} challenged.
      */
@@ -43,13 +45,11 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     /**
-     * Calculate the enemy move.
-     * The method try to find a {@link Effectiveness#SUPEREFFECTIVE} move.
-     * If it dont't found a move, it return the move which have highest value ({@link model.pokemon.Move#getValue()}).
-     * If method don't found a move, it return the first move in the move list ({@link model.pokemon.Pokemon#getCurrentMoves()}).
+     * Calculate the enemy move. A pokemon of a trainer, search and return the move 
+     * which do more damage. If method don't find any move which hit HP, it return 
+     * the first move in the move list.
      * 
      * @return  The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
-     * @see     {@link BasicFight#calculationEnemyMove()}
      */
     @Override
     protected Move calculationEnemyMove() {
@@ -73,48 +73,26 @@ public class FightVsTrainer extends AbstractFight {
         return enemyPkm.getCurrentMoves().get(movPos);
     }
 
-    /**
-     * @see {@link BasicFight#getEnemyBoost(Stat)}
-     */
     @Override
     public double getEnemyBoost(final Stat stat) {
         return enemyPkmsBoosts.get(enemyPkm).get(stat);
     }
 
-    /**
-     * @see {@link BasicFight#setEnemyBoost(Stat, Double)}
-     */
     @Override
     public void setEnemyBoost(final Stat stat, final Double d) {
         enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
     }
 
-    /**
-     * Resolve the run option.
-     * 
-     * @throws CannotEscapeFromTrainerException If the user fight against a {@link model.trainer.Trainer}.
-     * @see                                     {@link AbstractFight#applyRun()}
-     */
     @Override
     public boolean applyRun() throws CannotEscapeFromTrainerException{
         throw new CannotEscapeFromTrainerException();
     }
 
-    /**
-     * @see {@link AbstractFight#applyItem(Item, PokemonInBattle)}
-     */
     @Override
     public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         return super.applyItem(itemToUse, pkm);
     }
 
-    /**
-     * Resolve the use of a pokeball.
-     * 
-     * @param itemToUse                         The {@link model.items.Pokeball} to use.
-     * @throws CannotCaughtTrainerPkmException  If the user fight against a {@link model.trainer.Trainer}.
-     * @see                                     {@link AbstractFight#useBall(Item)}
-     */
     @Override
     protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
         throw new CannotCaughtTrainerPkmException();
@@ -220,19 +198,15 @@ public class FightVsTrainer extends AbstractFight {
         reset();
     }
 
-    /**
-     * @see {@link AbstractFight#getExp()}
-     */
     @Override
     public int getExp() {
         return (int) (expBaseCalculation() * 1.5) / EXP_COEFFICIENT; 
     }
 
     /**
-     * Apply the trainer change. The method set the first pokemon which have the types 
-     * ({@link model.pokemon.Pokedex#getFirstType()} {@link model.pokemon.Pokedex#getSecondType()}) super effective {@link Effectiveness#SUPEREFFECTIVE}.
-     * If it don't found, set the first pokemon founded.
-     * The method set {@link BasicFight#enemyPkm}.
+     * Apply the trainer change. The method search and send in battle the first 
+     * pokemon which have the super effective types against the user pokemon. 
+     * If method don't find any pokemon, send the first pokemon in the list which can battle.
      */
     protected void trainerChange() {
         for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {

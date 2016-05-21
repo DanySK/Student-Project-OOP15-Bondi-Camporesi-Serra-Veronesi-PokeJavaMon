@@ -17,28 +17,94 @@ import java.util.Map;
  * This class is extended by {@link AbstractFight}.
  */
 public abstract class BasicFight {
+    /**
+     * The value used for accede at the first element of a list.
+     */
     protected static final int FIRST_ELEM = 0;
+    /**
+     * A value used the boost formula.
+     */
     protected static final double BOOST_COEFF = 0.15;
+    /**
+     * A value used the boost formula in case of an increment.
+     */
     protected static final double BOOST_COEFF_INCR = 2;
+    /**
+     * The value which indicates the minimun value reachable in a battle boost.
+     */
     protected static final double MIN_BOOST_VALUE = 0.2;
+    /**
+     * The value which indicates the maximum value reachable in a battle boost.
+     */
     protected static final double MAX_BOOST_VALUE = 2.75;
+    /**
+     * The value which indicates the stab value when is active.
+     */
     protected static final double STAB_ACTIVE = 1.5;
+    /**
+     * The value which indicates the stab value when is deactivated.
+     */
     protected static final double STAB_DISABLED = 1;
+    /**
+     * The value which indicates when a move is super effective.
+     */
     protected static final int SUPER_EFFECTIVE = 2;
+    /**
+     * The value which indicates when a move is less effective.
+     */
     protected static final double LESS_EFFECTIVE = 0.5;
+    /**
+     * The value which indicates when a move has no effect against the opponent pokemon.
+     */
     protected static final double IMMUNE = 0;
+    /**
+     * The value which indicates the minimum damage done by a move which targets HP.
+     */
     protected static final int MIN_DAMAGE = 1;
-
+    /**
+     * A reference at player, to make more easier the access.
+     */
     protected Player player = PlayerImpl.getPlayer();
+    /**
+     * The ally front pokemon which stand the fight.
+     */
     protected PokemonInBattle allyPkm;
+    /**
+     * The enemy front pokemon which stand the fight.
+     */
     protected PokemonInBattle enemyPkm;
+    /**
+     * The value which indicates if {@link BasicFight#allyPkm} cannot fight anymore.
+     */
     protected boolean isAllyExhausted;
+    /**
+     * The value which indicates if {@link BasicFight#enemyPkm} cannot fight anymore.
+     */
     protected boolean isEnemyExhausted;
+    /**
+     * The value which indicates the effectiveness of ally move.
+     */
     protected Effectiveness allyEff;
+    /**
+     * The value which indicates the effectiveness of {@link BasicFight#enemyMove}.
+     */
     protected Effectiveness enemyEff;
+    /**
+     * The value which is true if the ally pokemon is more faster than enemy pokemon.
+     */
     protected boolean isAllyFastest;
+    /**
+     * The variable which contains the enemy move used.
+     */
     protected Move enemyMove;
+    /**
+     * The map which contains all boost of all pokemon in the player squad.
+     */
     protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
+    /**
+     * The variable which contains the move that an ally pokemon should learn
+     * (in case a pokemon level up and it is able to learn a new move).
+     */
     protected Move moveToLearn;
 
     /**
@@ -237,7 +303,7 @@ public abstract class BasicFight {
     }
 
     /**
-     * Set the effective parameters: the multiplier and the enumeration value to pass 
+     * Set the effectiveness parameters: the multiplier and the enumeration value to pass 
      * to the view methods.
      * 
      * @param striker   The {@link model.pokemon.Pokemon} which use the move.

@@ -2,6 +2,8 @@ package model.fight;
 
 /**
  * Enumeration used for communicate moves effectiveness.
+ * 
+ * @see BasicFight#isEffective(model.pokemon.PokemonInBattle, model.pokemon.PokemonInBattle, model.pokemon.Move)
  */
 public enum Effectiveness {
     SUPEREFFECTIVE("Super effective!!"), 
