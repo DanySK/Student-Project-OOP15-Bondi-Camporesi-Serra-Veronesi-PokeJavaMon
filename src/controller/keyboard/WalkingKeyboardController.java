@@ -56,28 +56,28 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                 addKey();
                 this.up = true;
                 this.direction = Direction.NORTH;
-                this.oppositeDirection = Direction.SOUTH;
+                this.oppositeDirection = resolver.changeOppositeDirection();
                 break;
             case Keys.A:
             case Keys.LEFT:
                 addKey();
                 this.left = true;
                 this.direction = Direction.WEST;
-                this.oppositeDirection = Direction.EAST;
+                this.oppositeDirection = resolver.changeOppositeDirection();
                 break;
             case Keys.D:
             case Keys.RIGHT:
                 addKey();
                 this.right = true;
                 this.direction = Direction.EAST;
-                this.oppositeDirection = Direction.WEST;
+                this.oppositeDirection = resolver.changeOppositeDirection();
                 break;
             case Keys.S:
             case Keys.DOWN:
                 addKey();
                 this.down = true;
                 this.direction = Direction.SOUTH;
-                this.oppositeDirection = Direction.NORTH;
+                this.oppositeDirection = resolver.changeOppositeDirection();
                 break; 
             case Keys.ESCAPE:
                 if (!PlayerSprite.getSprite().isMoving()) {
@@ -196,18 +196,22 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
         }
         if (this.up) {
             this.direction = Direction.NORTH;
+            this.oppositeDirection = resolver.changeOppositeDirection();
             this.resolver.resolveMove(Direction.NORTH);
             this.player.move(Direction.NORTH, pm);
         } else if (this.down) {
             this.direction = Direction.SOUTH;
+            this.oppositeDirection = resolver.changeOppositeDirection();
             this.resolver.resolveMove(Direction.SOUTH);
             this.player.move(Direction.SOUTH, pm);
         } else if (this.left) {
             this.direction = Direction.WEST;
+            this.oppositeDirection = resolver.changeOppositeDirection();
             this.resolver.resolveMove(Direction.WEST);
             this.player.move(Direction.WEST, pm);
         } else if (this.right) {
             this.direction = Direction.EAST;
+            this.oppositeDirection = resolver.changeOppositeDirection();
             this.resolver.resolveMove(Direction.EAST);
             this.player.move(Direction.EAST, pm);
         } else {
