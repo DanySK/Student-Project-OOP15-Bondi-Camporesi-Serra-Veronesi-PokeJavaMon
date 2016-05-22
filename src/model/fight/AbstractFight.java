@@ -48,6 +48,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
      * The value which indicates if the ally if escape from fight.
      */
     protected boolean runValue;
+    protected boolean levelUp = false;
 
     /**
      * A simple constructor for AbstractFight, it just call the superclass constructor
