@@ -33,6 +33,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
 
     protected List<PokemonInBattle> pkmsThatMustEvolve = new ArrayList<>();
     protected boolean runValue;
+    protected boolean levelUp = false;
 
     /**
      * A simple constructor for AbstractFight, it just call the superclass constructor

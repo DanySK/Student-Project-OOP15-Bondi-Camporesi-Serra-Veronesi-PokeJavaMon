@@ -267,6 +267,19 @@ public abstract class BasicFight {
             } else {
                 enemyEff = Effectiveness.LESSEFFECTIVE;
             }
+        } else {
+            if (striker.equals(allyPkm)) {
+                allyEff = Effectiveness.NORMAL;
+            } else {
+                enemyEff = Effectiveness.NORMAL;
+            }
+        }
+        if (move.equals(Move.SPLASH)) {
+            if (striker.equals(allyPkm)) {
+                allyEff = Effectiveness.NONE;
+            } else {
+                enemyEff = Effectiveness.NONE;
+            }
         }
         return effectiveValue;
     }

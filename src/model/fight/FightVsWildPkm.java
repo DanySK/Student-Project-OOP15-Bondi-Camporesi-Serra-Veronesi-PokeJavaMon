@@ -127,6 +127,7 @@ public class FightVsWildPkm extends AbstractFight {
                 if (isEnemyExhausted) {
                     final int hpBeforeLvUp = allyPkm.getStat(Stat.MAX_HP);
                     if (giveExpAndCheckLvlUp(getExp())) {
+                        this.levelUp = true;
                         int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
                         allyPkm.heal(hpAfterLvUp);
@@ -165,7 +166,12 @@ public class FightVsWildPkm extends AbstractFight {
             } else {
                 if (isEnemyExhausted) {
                     //nemico attacca, alleato attacca, pokemon nemico esausto
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp(), moveToLearn);
+                    if (levelUp) {
+                        MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp() + " - Level up!", moveToLearn);
+                        this.levelUp = false;
+                    } else {
+                        MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp(), moveToLearn);
+                    }
                 } else {
                     //nemico attacca, alleato attacca, pokemon nemico sopravvive
                     MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
@@ -174,7 +180,12 @@ public class FightVsWildPkm extends AbstractFight {
         } else {
             if (isAllyFastest) {
                 //alleato attacca per primo, pkm nemico esausto
-                MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp(), moveToLearn);
+                if (levelUp) {
+                    MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp() + " - Level up!", moveToLearn);
+                    this.levelUp = false;
+                } else {
+                    MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp(), moveToLearn);
+                }
             } else {
                 //nemico attaccata per primo, pkm alleato esausto
                 MainController.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
