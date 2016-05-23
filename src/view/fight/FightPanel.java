@@ -89,7 +89,7 @@ public class FightPanel extends JPanel {
         this.fightMenuListeners.put(SQUAD, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().get().getNextAlivePokemon().isPresent()) {
                     View.getView().hideCurrent();
                     TeamMenu tm = new TeamMenu(true, false);
                     View.getView().addNew(tm);
@@ -204,7 +204,7 @@ public class FightPanel extends JPanel {
     }
 
     private void set4MovesToButtons() {
-        final List<Move> moves = this.ctrl.getSquad().getPokemonList().get(0).getCurrentMoves();
+        final List<Move> moves = this.ctrl.getSquad().get().getPokemonList().get(0).getCurrentMoves();
         int count = 0;
         for (final JButton b : this.choicesList) {
             if (b.getText().equals("FIGHT")) {
@@ -255,8 +255,8 @@ public class FightPanel extends JPanel {
     }
     
     public void refresh() {
-        final Pokemon currentEnemy = this.ctrl.getEnemyPokemonInFight();
-        final Pokemon currentAlly = this.ctrl.getSquad().getPokemonList().get(0);
+        final Pokemon currentEnemy = this.ctrl.getEnemyPokemonInFight().get();
+        final Pokemon currentAlly = this.ctrl.getSquad().get().getPokemonList().get(0);
         this.enemyLvl.setText("lvl " + currentEnemy.getStat(Stat.LVL));
         this.enemyName.setText(currentEnemy.getPokedexEntry().getName());
         this.enemyHealthBar.setMaximum(currentEnemy.getStat(Stat.MAX_HP));

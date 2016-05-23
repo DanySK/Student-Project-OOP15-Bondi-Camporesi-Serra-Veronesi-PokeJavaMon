@@ -36,7 +36,7 @@ public interface FightController {
     /**
      * @return the current {@link Fight}
      */
-    Fight getFight();
+    Optional<Fight> getFight();
 
     /**
      * Resolve the {@link Fight}'s turn in case of a {@link Move} of the player
@@ -126,7 +126,7 @@ public interface FightController {
                 CannotCaughtTrainerPkmException, IllegalStateException;
 
     /**
-     * Search for {@link Pokemon}s that have to evolve
+     * Search for {@link Pokemon}s that have to evolve and evolves them
      * @return the {@link List}<{@link String}> of the names of pokemon that have to evolve 
      */
     List<String> resolveEvolution();
@@ -142,7 +142,7 @@ public interface FightController {
     /**
      * @return the enemy's fighting {@link Pokemon}
      */
-    Pokemon getEnemyPokemon();
+    Optional<Pokemon> getEnemyPokemon();
 
     /**
      * Heals the last enemy

@@ -3,4 +3,12 @@ package controller.keyboard;
 /**
  * The {@link KeyboardController} active for the menu.
  */
-public class MenuKeyboardController extends AbstractKeyboardController {}
+public class MenuKeyboardController extends AbstractKeyboardController {
+    
+    private final String name = "MenuKeyboardController";
+    
+    @Override
+    public String toString() {
+        return this.name;
+    }
+}

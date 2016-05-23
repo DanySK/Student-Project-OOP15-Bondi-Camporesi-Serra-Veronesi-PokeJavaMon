@@ -55,7 +55,7 @@ public class TeamMenu extends JWindow implements MyFrame {
         this.cHP.add("HEALTH POINTS");
         this.mHP.add("");
         this.pk.add(null);
-        for (Pokemon p : MainController.getController().getSquad().getPokemonList()) {
+        for (Pokemon p : MainController.getController().getSquad().get().getPokemonList()) {
         	this.names.add(p.getPokedexEntry().name()); // Nome Pkmn
         	this.lvl.add("" + p.getStat(Stat.LVL)); // Livello
         	this.mHP.add("" + p.getStat(Stat.MAX_HP));
@@ -111,7 +111,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (MainController.getController().getStatusController().getState() == State.MENU) {
-                        if (MainController.getController().getSquad().getPokemonList().get(index).getCurrentHP() > 0) {
+                        if (MainController.getController().getSquad().get().getPokemonList().get(index).getCurrentHP() > 0) {
                             MainController.getController().switchPokemon(0, ID);
                             View.getView().disposeCurrent();
                             View.getView().removeCurrent();
@@ -124,11 +124,11 @@ public class TeamMenu extends JWindow implements MyFrame {
                             View.getView().showCurrent();
                         }
                     } else {
-                        if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
+                        if (MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentHP() == 0) {
                             try {
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                MainController.getController().getFightController().selectPokemon(MainController.getController().getSquad().getPokemonList().get(index));
+                                MainController.getController().getFightController().selectPokemon(MainController.getController().getSquad().get().getPokemonList().get(index));
                                 MyFrame fr = View.getView().getCurrent();
                                 ((FightScreen) fr).repaintFrame();
                                 View.getView().resumeCurrent();
@@ -151,7 +151,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                             try {
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                MainController.getController().getFightController().changePokemon(MainController.getController().getSquad().getPokemonList().get(index));
+                                MainController.getController().getFightController().changePokemon(MainController.getController().getSquad().get().getPokemonList().get(index));
                                 View.getView().resumeCurrent();
                             } catch (PokemonIsExhaustedException e1) {
                                 View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
@@ -176,12 +176,12 @@ public class TeamMenu extends JWindow implements MyFrame {
             this.deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
                 public void actionPerformed(ActionEvent e) {
-                    for (final Pokemon pok : MainController.getController().getSquad().getPokemonList()) {
+                    for (final Pokemon pok : MainController.getController().getSquad().get().getPokemonList()) {
                         if (pok != p && pok.getCurrentHP() > 0) {
                             try {
                                 MainController.getController().depositPokemon(p);
-                                if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
-                                    MainController.getController().getSquad().switchPokemon(0, MainController.getController().getSquad().getPokemonList().indexOf(pok));
+                                if (MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentHP() == 0) {
+                                    MainController.getController().getSquad().get().switchPokemon(0, MainController.getController().getSquad().get().getPokemonList().indexOf(pok));
                                 }
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();

@@ -90,7 +90,7 @@ public class MainGameView implements Screen {
             }
 	    MainController.getController().initInventory();
 	}
-	this.renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap());                    
+	this.renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap().get());                    
         this.sr = new ShapeRenderer();
 	this.sr.setColor(Color.CYAN);
 	Gdx.gl.glLineWidth(3);
@@ -112,7 +112,7 @@ public class MainGameView implements Screen {
 	} else {
 	    if (MainController.getController().saveExists()) {
 		MainController.getController().load();
-		this.pls.setBounds(MainController.getController().getPlayer().getTileX()*16, (299 - MainController.getController().getPlayer().getTileY()) * 16, 15.9f, 15.9f);
+		this.pls.setBounds(MainController.getController().getPlayer().get().getTileX()*16, (299 - MainController.getController().getPlayer().get().getTileY()) * 16, 15.9f, 15.9f);
 	    } else {
 	        this.pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
 		if (startX < 0) {
@@ -140,7 +140,7 @@ public class MainGameView implements Screen {
     }
 	
     public void dispose() {        
-	MainController.getController().getMap().dispose();
+	MainController.getController().getMap().get().dispose();
 	this.renderer.dispose();
 	this.sr.dispose();
     }

@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
@@ -18,8 +21,13 @@ import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.Model;
 import model.fight.Fight;
+import model.items.Boost;
 import model.items.Item;
+import model.items.Pokeball;
+import model.items.Potion;
 import model.map.PokeMap;
+import model.map.Position;
+import model.map.tile.EncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.player.Player;
@@ -37,12 +45,12 @@ public interface Controller {
     /**
      * @return the current {@link Fight}
      */
-    Fight getFight();
+    Optional<Fight> getFight();
 
     /**
      * @return the current enemy {@link Pokemon} in fight
      */
-    Pokemon getEnemyPokemonInFight();
+    Optional<Pokemon> getEnemyPokemonInFight();
 
     /**
      * Loads the game
@@ -134,23 +142,18 @@ public interface Controller {
     /**
      * @return the {@link TiledMap} used in the game
      */
-    TiledMap getMap();
+    Optional<TiledMap> getMap();
     
     /**
      * @return the current {@link PokeMap} 
      */
-    PokeMap getPokeMap();
+    Optional<PokeMap> getPokeMap();
     
     /**
      * @return the current {@link Player}
      */
-    Player getPlayer();
+    Optional<Player> getPlayer();
     
-    /**
-     * @return the current {@link Model}
-     */
-    Model getModel();
-
     /**
      * Initializes the {@link Model}
      * @param map the current {@link TiledMap}
@@ -160,12 +163,12 @@ public interface Controller {
     /**
      * @return player's {@link Inventory}
      */
-    Inventory getInventory();
+    Optional<Inventory> getInventory();
     
     /**
      * @return player's {@link Box}
      */
-    Box getBox();
+    Optional<Box> getBox();
     
     /**
      * @param p the selected {@link Pokemon}
@@ -199,7 +202,7 @@ public interface Controller {
     /**
      * @return current {@link Pokemon}'s {@link Squad}
      */
-    Squad getSquad();
+    Optional<Squad> getSquad();
 
     /**
      * Switches two {@link Pokemon}s
@@ -258,4 +261,24 @@ public interface Controller {
      * If the tile in front of the player is a legendary pokemon, deletes the tile
      */
     void checkLegendaryAndDelete();
+
+    /**
+     * Loads old save
+     * @param money the old moneys
+     * @param name the old player's name
+     * @param badges old badges
+     * @param position old player's {@link Position}
+     * @param team old player's team
+     * @param trainers beaten trainers
+     * @param box old player's pokemon box
+     * @param pokeballs the old number of items of {@link Pokeball} type
+     * @param boosts the old number of items of {@link Boost} type
+     * @param potions the old number of items of {@link Potion} type
+     * @param defeatedEncounterTiles the defeated {@link EncounterTile}s
+     * @throws SquadFullException if squad is full
+     */
+    void loadSave(int money, String name, int badges, Position position, List<Pokemon> team,
+            Map<Integer, Boolean> trainers, List<Pokemon> box, Map<String, Integer> pokeballs,
+            Map<String, Integer> boosts, Map<String, Integer> potions, Set<String> defeatedEncounterTiles) 
+            throws SquadFullException;
 }

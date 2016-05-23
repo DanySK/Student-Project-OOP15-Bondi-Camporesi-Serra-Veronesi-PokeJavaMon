@@ -46,13 +46,18 @@ public class MainFightController implements FightController {
     }
     
     @Override
-    public Fight getFight() {
-        return this.fight;
+    public Optional<Fight> getFight() {
+        if (this.fight == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.fight);
+        }
     }
     
     @Override
-    public void resolveAttack(final Move myMove, final Effectiveness myMoveEffectiveness, final Move enemyMove, final Effectiveness enemyMoveEffectiveness, final boolean myMoveFirst, final boolean lastPokemonKills, final Pokemon nextEnemyPokemon, final String optionalMessage, final Move moveToLearn) {
-        view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage, moveToLearn);
+    public void resolveAttack(final Move myMove, final Effectiveness myMoveEffectiveness, final Move enemyMove, final Effectiveness enemyMoveEffectiveness, final boolean myMoveFirst, 
+            final boolean lastPokemonKills, final Pokemon nextEnemyPokemon, final String optionalMessage, final Move moveToLearn) {
+        this.view.resolveMove(myMove, myMoveEffectiveness, enemyMove, enemyMoveEffectiveness, myMoveFirst, lastPokemonKills, nextEnemyPokemon, optionalMessage, moveToLearn);
     }
     
     @Override
@@ -109,8 +114,12 @@ public class MainFightController implements FightController {
     }
 
     @Override
-    public Pokemon getEnemyPokemon() {
-        return this.fight.getCurrentEnemyPokemon();
+    public Optional<Pokemon> getEnemyPokemon() {
+        if (this.fight.getCurrentEnemyPokemon() == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.fight.getCurrentEnemyPokemon());
+        }
     }
     
     @Override
@@ -125,11 +134,13 @@ public class MainFightController implements FightController {
     @Override
     public void healEnemy() {
         if (this.fight instanceof FightVsTrainer) {
-            if (this.trainer != null) {
+            if (this.trainer.isPresent()) {
                 this.trainer.get().healAllPokemons();
             }
         } else {
-            this.fight.getCurrentEnemyPokemon().heal(this.fight.getCurrentEnemyPokemon().getStat(Stat.MAX_HP));
+            if (this.fight.getCurrentEnemyPokemon() != null) {
+                this.fight.getCurrentEnemyPokemon().heal(this.fight.getCurrentEnemyPokemon().getStat(Stat.MAX_HP));
+            }
         }
     }
 }

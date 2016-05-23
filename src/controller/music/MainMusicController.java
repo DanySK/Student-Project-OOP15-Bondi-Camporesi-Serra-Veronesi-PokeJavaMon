@@ -32,25 +32,18 @@ public class MainMusicController implements MusicController {
     @Override
     public void initializeMusicController() {
     	if (this.isInit) {
-    		return;
+    	    return;
     	}
-        Long start = System.currentTimeMillis();
     	this.sounds = new HashMap<>();
         for (final Music m : Music.values()) {
-            Long startM = System.currentTimeMillis();
             final Sound s = Gdx.audio.newSound(Gdx.files.absolute(SONG + m.getAbsolutePath()));
             this.sounds.put(m, s);
-            Long endM = System.currentTimeMillis();
-            System.out.println(m.name() + " took " + ((endM - startM)/1000f) + " seconds to complete");
         }
-        Long end = System.currentTimeMillis();
-        System.out.println("It took " + ((end - start)/1000f) + " seconds to complete this operation");
         this.isInit = true;
     }
     
     @Override
     public void playMusic(final Music song) {   
-
         this.s = this.sounds.get(song);
         this.s.loop();
         this.m = Optional.of(song);
@@ -64,13 +57,13 @@ public class MainMusicController implements MusicController {
     
     @Override
     public void pause() {
-        s.pause();
+        this.s.pause();
         this.isPaused = true;
     }
     
     @Override
     public void resume() {
-        s.resume();
+        this.s.resume();
         this.isPaused = false;
     }
     

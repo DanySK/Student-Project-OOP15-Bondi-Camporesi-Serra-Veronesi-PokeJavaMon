@@ -25,7 +25,7 @@ public class FightScreen extends JWindow implements MyFrame {
             this.setMinimumSize(new Dimension(450, 300));
             this.setLocationRelativeTo(null);
             this.getContentPane().setLayout(null);
-            this.mainPanel = new FightPanel(MainController.getController().getEnemyPokemonInFight(), MainController.getController().getSquad().getPokemonList().get(0));
+            this.mainPanel = new FightPanel(MainController.getController().getEnemyPokemonInFight().get(), MainController.getController().getSquad().get().getPokemonList().get(0));
             this.mainPanel.setBounds(0,0, 450, 300);
             this.mainPanel.setBorder(new LineBorder(Color.GRAY, 4));
             this.getContentPane().add(mainPanel);
@@ -37,7 +37,7 @@ public class FightScreen extends JWindow implements MyFrame {
         
         public void showMessage(String... message) {
             View.getView().hideCurrent();
-            if (MainController.getController().getSquad().getPokemonList().get(0).getCurrentHP() == 0) {
+            if (MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentHP() == 0) {
                 View.getView().addNew(new TeamMenu(false, false));
                 View.getView().showCurrent();
                 View.getView().hideCurrent();

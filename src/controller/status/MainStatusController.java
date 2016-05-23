@@ -55,14 +55,14 @@ public class MainStatusController implements StatusController {
                         if (MainController.getController().playing().isPresent()) {
                             if (MainController.getController().playing().get() != Music.TRAINER || MainController.getController().playing().get() != Music.WILD) {
                                 MainController.getController().stopMusic();
-                                if (MainController.getController().getFight() instanceof FightVsTrainer) {
+                                if (MainController.getController().getFight().get() instanceof FightVsTrainer) {
                                     MainController.getController().playMusic(Music.TRAINER);
                                 } else {
                                     MainController.getController().playMusic(Music.WILD);
                                 }
                             }
                         } else {
-                            if (MainController.getController().getFight() instanceof FightVsTrainer) {
+                            if (MainController.getController().getFight().get() instanceof FightVsTrainer) {
                                 MainController.getController().playMusic(Music.TRAINER);
                             } else {
                                 MainController.getController().playMusic(Music.WILD);
@@ -115,7 +115,8 @@ public class MainStatusController implements StatusController {
 
     @Override
     public void updateMusic() {
-        final Optional<WalkableZone> zone = MainController.getController().getPokeMap().getWalkableZone(MainController.getController().getPlayer().getTileX(), MainController.getController().getPlayer().getTileY());
+        final Optional<WalkableZone> zone = MainController.getController().getPokeMap().get().getWalkableZone(MainController.getController().getPlayer().get().getTileX(), 
+                MainController.getController().getPlayer().get().getTileY());
         if (!MainController.getController().isPaused())
             if (zone.isPresent())
                 for (final Music m : Music.values())

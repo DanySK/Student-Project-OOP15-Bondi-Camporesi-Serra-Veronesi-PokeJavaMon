@@ -50,7 +50,7 @@ public class BoxMenu extends JWindow implements MyFrame {
         this.cHP.add("HEALTH POINTS");
         this.mHP.add("");
         this.pk.add(null);     
-        for (Pokemon p : MainController.getController().getBox().getPokemonList()) {
+        for (Pokemon p : MainController.getController().getBox().get().getPokemonList()) {
             this.names.add(p.getPokedexEntry().name()); // Nome Pkmn
             this.lvl.add("" + p.getStat(Stat.LVL)); // Livello
             this.mHP.add("" + p.getCurrentHP() + "/" + p.getStat(Stat.MAX_HP));

@@ -65,7 +65,7 @@ public class MainViewController implements ViewController {
     @Override
     public void save() {
         if (this.name != null) {
-            MainController.getController().getPlayer().setName(this.name);
+            MainController.getController().getPlayer().get().setName(this.name);
         }
         MainController.getController().save();
     }
@@ -106,7 +106,7 @@ public class MainViewController implements ViewController {
     @Override
     public void initName() {
         if (this.name != null) {
-            MainController.getController().getPlayer().setName(this.name);
+            MainController.getController().getPlayer().get().setName(this.name);
         }
     }
     

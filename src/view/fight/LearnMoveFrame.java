@@ -39,7 +39,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         
         public LearnMoveFrame(final Move mv) {
             this.newMove = mv;
-            this.pk = MainController.getController().getPlayer().getSquad().getPokemonList().get(0);
+            this.pk = MainController.getController().getPlayer().get().getSquad().getPokemonList().get(0);
         }
         
         @Override

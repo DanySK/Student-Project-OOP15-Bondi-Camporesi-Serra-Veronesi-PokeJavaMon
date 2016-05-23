@@ -15,6 +15,7 @@ public class SecondMenuKeyboardController extends AbstractKeyboardController {
     
     private static final int MIN = 4;
     private static final int MAX = 20;
+    private final String name = "SecondMenuKeyboardController";
 
     @Override
     public boolean keyUp(final int keycode) {
@@ -30,5 +31,10 @@ public class SecondMenuKeyboardController extends AbstractKeyboardController {
             }
         }
         return false;
+    }
+    
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

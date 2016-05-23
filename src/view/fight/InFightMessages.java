@@ -30,15 +30,15 @@ public class InFightMessages implements InFightMessagesInterface {
         this.message = new ArrayList<>();
         this.moveToLearn = moveToLearn;
         if (myMoveFirst) {
-            this.message.add(MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().getName() + ": " + myMove);
+            this.message.add(MainController.getController().getSquad().get().getPokemonList().get(0).getPokedexEntry().getName() + ": " + myMove);
             this.message.add(myMoveEffectiveness.getMessage());
             if (enemyMove == null) {
                 this.message.add("Enemy pokemon is exhausted");
                 this.message.add(optionalMessage);
                 if (nextEnemyPokemon != null) {
                     this.message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokedexEntry().getName());                                     
-                    if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
-                        if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                    if (moveToLearn != Move.NULLMOVE && !MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
+                        if (MainController.getController().getSquad().get().getPokemonList().get(0).isCurrentMovesetFull()) {
                             this.newMoveMessage();
                         } else {
                             this.learnedMessage();
@@ -55,8 +55,8 @@ public class InFightMessages implements InFightMessagesInterface {
                     this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();                   
-                    if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
-                        if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                    if (moveToLearn != Move.NULLMOVE && !MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
+                        if (MainController.getController().getSquad().get().getPokemonList().get(0).isCurrentMovesetFull()) {
                             this.winningMessage();
                         } else {
                             this.learnedMoveAndWalking();
@@ -69,11 +69,11 @@ public class InFightMessages implements InFightMessagesInterface {
                     }
                 }
             } else {
-                this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + ": " + enemyMove);
+                this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().get().getPokedexEntry().getName() + ": " + enemyMove);
                 this.message.add(enemyMoveEffectiveness.getMessage());
                 if (lastPokemonKills) {
                     this.message.add("Your pokemon is exhausted");
-                    if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
+                    if (MainController.getController().getSquad().get().getNextAlivePokemon().isPresent()) {
                         showMessage();
                     } else {
                         lostMessage();
@@ -83,25 +83,25 @@ public class InFightMessages implements InFightMessagesInterface {
                 }
             }
         } else {
-            this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + ": " + enemyMove);
+            this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().get().getPokedexEntry().getName() + ": " + enemyMove);
             this.message.add(enemyMoveEffectiveness.getMessage());
             if (myMove == null) {
                 this.message.add("Your pokemon is exhausted");
-                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().get().getNextAlivePokemon().isPresent()) {
                     showMessage();
                 } else {
                     lostMessage();
                 }
             } else {
-                this.message.add(MainController.getController().getSquad().getPokemonList().get(0).getPokedexEntry().getName() + ": " + myMove);
+                this.message.add(MainController.getController().getSquad().get().getPokemonList().get(0).getPokedexEntry().getName() + ": " + myMove);
                 this.message.add(myMoveEffectiveness.getMessage());
                 if (lastPokemonKills) {
                     this.message.add("Enemy pokemon is exhausted");
                     this.message.add(optionalMessage);
                     if (nextEnemyPokemon != null) {
                         this.message.add("Next enemy pokemon: " + nextEnemyPokemon.getPokedexEntry().getName());
-                        if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
-                            if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                        if (moveToLearn != Move.NULLMOVE && !MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
+                            if (MainController.getController().getSquad().get().getPokemonList().get(0).isCurrentMovesetFull()) {
                                 newMoveMessage();
                             } else {
                                 learnedMessage();
@@ -118,8 +118,8 @@ public class InFightMessages implements InFightMessagesInterface {
                         this.message.add("Evolving Pokemons: " + MainController.getController().getFightController().resolveEvolution());                        
                         View.getView().disposeCurrent();
                         View.getView().removeCurrent();
-                        if (moveToLearn != Move.NULLMOVE && !MainController.getController().getPlayer().getSquad().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
-                            if (MainController.getController().getPlayer().getSquad().getPokemonList().get(0).isCurrentMovesetFull()) {
+                        if (moveToLearn != Move.NULLMOVE && !MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentMoves().contains(moveToLearn)) {
+                            if (MainController.getController().getSquad().get().getPokemonList().get(0).isCurrentMovesetFull()) {
                                 winningMessage();
                             } else {
                                 learnedMoveAndWalking();
@@ -141,10 +141,10 @@ public class InFightMessages implements InFightMessagesInterface {
     @Override
     public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead) {
         this.message = new ArrayList<>();
-        this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + ": " + enemyMove);
+        this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().get().getPokedexEntry().getName() + ": " + enemyMove);
         if (isMyPokemonDead) {
             this.message.add("Your pokemon is exhausted");
-            if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
+            if (MainController.getController().getSquad().get().getNextAlivePokemon().isPresent()) {
                 showMessage();
             } else {
                 lostMessage();
@@ -158,10 +158,10 @@ public class InFightMessages implements InFightMessagesInterface {
     public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead) {
         this.message = new ArrayList<>();
         if (enemyMove != null) {
-            this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + ": " + enemyMove);
+            this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().get().getPokedexEntry().getName() + ": " + enemyMove);
             if (isMyPokemonDead) {
                 this.message.add("Your pokemon is exhausted");
-                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().get().getNextAlivePokemon().isPresent()) {
                     showMessage();
                 } else {
                     lostMessage();
@@ -196,10 +196,10 @@ public class InFightMessages implements InFightMessagesInterface {
             View.getView().removeCurrent();
         } else {
             this.message.add("Run failed!");
-            this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().getPokedexEntry().getName() + ": " + enemyMove);
+            this.message.add("Enemy " + MainController.getController().getEnemyPokemonInFight().get().getPokedexEntry().getName() + ": " + enemyMove);
             if (isMyPokemonDead) {
                 this.message.add("Your pokemon is exhausted");
-                if (MainController.getController().getSquad().getNextAlivePokemon().isPresent()) {
+                if (MainController.getController().getSquad().get().getNextAlivePokemon().isPresent()) {
                     showMessage();                
                 } else {
                     lostMessage();
@@ -220,7 +220,7 @@ public class InFightMessages implements InFightMessagesInterface {
     }
     
     private void learnedMessage() {
-        MainController.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
+        MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
         this.message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
         String[] array = new String[this.message.size()];
         this.message.toArray(array);
@@ -245,7 +245,7 @@ public class InFightMessages implements InFightMessagesInterface {
     }
     
     private void learnedMoveAndWalking() {
-        MainController.getController().getPlayer().getSquad().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
+        MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
         this.message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
         String[] array = new String[this.message.size()];
         this.message.toArray(array);

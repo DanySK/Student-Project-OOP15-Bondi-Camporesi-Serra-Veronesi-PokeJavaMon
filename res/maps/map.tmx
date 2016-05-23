@@ -1,746 +1,746 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="296">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="300" tilewidth="16" tileheight="16" nextobjectid="297">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="624" columns="26">
   <image source="tileset5.png" trans="ff00ff" width="443" height="410"/>
   <tile id="0">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="8">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="11">
    <properties>
     <property name="tileType" value="POKEMON_ENCOUNTER"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="12">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="13">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="14">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="15">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="16">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="17">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="21">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="22">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="23">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="24">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="25">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="26">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
     <property name="text" value="Market"/>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="32">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="33">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="34">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="35">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="36">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="37">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="38">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="39">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="40">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="41">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="42">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="43">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="44">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="45">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="46">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="47">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="48">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="49">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="50">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="51">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="52">
    <properties>
     <property name="tileType" value="POKEMON_ENCOUNTER"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="53">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="54">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="55">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="56">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="57">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="58">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="59">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="60">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="61">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="62">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="63">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="64">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="65">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="66">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="67">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="68">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="69">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="70">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="71">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="72">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="73">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="74">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="75">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="76">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="77">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="78">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="79">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="80">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="81">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="82">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="83">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="84">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="85">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="86">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="87">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="88">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="89">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="90">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="91">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="92">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="93">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="94">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="95">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="96">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="97">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="98">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="99">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="100">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="101">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="102">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="103">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="104">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="105">
    <properties>
     <property name="text" value="Pokemon Center"/>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="106">
    <properties>
     <property name="text" value="Pokemon Gym"/>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="107">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="108">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="109">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="110">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="111">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="112">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="113">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="114">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="115">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="116">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="117">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="118">
    <properties>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="119">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="120">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="121">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="122">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="123">
@@ -748,7 +748,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="124">
@@ -756,151 +756,151 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="125">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="126">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="127">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="128">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="129">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="130">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="131">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="132">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="133">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="134">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="135">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="136">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="137">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="138">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="139">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="140">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="141">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="142">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="143">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="144">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="145">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="146">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="147">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="148">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="149">
@@ -908,7 +908,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="150">
@@ -916,151 +916,151 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="151">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="152">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="153">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="154">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="155">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="156">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="157">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="158">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="159">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="160">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="161">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="162">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="163">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="164">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="165">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="166">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="167">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="168">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="169">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="170">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="171">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="172">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="173">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="174">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="175">
@@ -1068,7 +1068,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="176">
@@ -1076,79 +1076,79 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="177">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="178">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="179">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="180">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="181">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="182">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="183">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="184">
    <properties>
-    <property name="tileType" value=""/>
-    <property name="walkable" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="185">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="186">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="187">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="188">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="189">
@@ -1156,7 +1156,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="190">
@@ -1164,134 +1164,134 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="191">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="192">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="193">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="194">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="195">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="196">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="197">
    <properties>
     <property name="text" value="Pokemon Center"/>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="198">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="199">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="200">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="201">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="202">
    <properties>
     <property name="tileType" value="CENTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="203">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="204">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="205">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="206">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="207">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="208">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="209">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="210">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="211">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="212">
@@ -1299,7 +1299,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="213">
@@ -1307,7 +1307,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="214">
@@ -1315,7 +1315,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="215">
@@ -1323,68 +1323,68 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="216">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="217">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="218">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="219">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="220">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="221">
    <properties>
     <property name="tileType" value=""/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="222">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="223">
    <properties>
     <property name="text" value="Pokemon Market"/>
     <property name="tileType" value="SIGN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="224">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="225">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="226">
@@ -1394,157 +1394,157 @@
     <property name="REAR_ID" value="252"/>
     <property name="RIGHT_ID" value="278"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="227">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="228">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="229">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="230">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="231">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="232">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="233">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="234">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="235">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="236">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="237">
    <properties>
     <property name="tileType" value="POKEMON_ENCOUNTER"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="238">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="239">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="240">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="241">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="242">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="243">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="244">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="245">
    <properties>
     <property name="tileType" value=""/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="246">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="247">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="248">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="249">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="250">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="251">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="252">
@@ -1554,157 +1554,157 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="278"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="253">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="254">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="255">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="256">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="257">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="258">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="259">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="260">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="261">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="262">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="263">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="264">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="265">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="266">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="267">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="268">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="269">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="270">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="271">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="272">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="273">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="274">
    <properties>
     <property name="tileType" value=""/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="275">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="276">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="277">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="278">
@@ -1714,67 +1714,67 @@
     <property name="REAR_ID" value="252"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="279">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="280">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="281">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="282">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="283">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="284">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="285">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="286">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="287">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="288">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="289">
@@ -1782,91 +1782,91 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="290">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="291">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="292">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="293">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="294">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="295">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="296">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="297">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="298">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="299">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="300">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="301">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="302">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="303">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="304">
@@ -1876,73 +1876,73 @@
     <property name="REAR_ID" value="252"/>
     <property name="RIGHT_ID" value="278"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="305">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="306">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="307">
    <properties>
     <property name="tileType" value="PLAYER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="308">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="309">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="310">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="311">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="312">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="313">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="314">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="315">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="316">
@@ -1950,7 +1950,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="317">
@@ -1958,7 +1958,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="318">
@@ -1966,7 +1966,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="319">
@@ -1974,37 +1974,37 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="320">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="321">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="322">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="323">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="324">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="325">
@@ -2012,31 +2012,31 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="326">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="327">
    <properties>
-    <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="328">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="329">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="330">
@@ -2046,7 +2046,7 @@
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="331">
@@ -2056,7 +2056,7 @@
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="332">
@@ -2066,7 +2066,7 @@
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="333">
@@ -2076,7 +2076,7 @@
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="334">
@@ -2086,133 +2086,133 @@
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="335">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="336">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="337">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="338">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="339">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="340">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="341">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="342">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="343">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="344">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="345">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="346">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="347">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="348">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="349">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="350">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="351">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="352">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="353">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="354">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="355">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="356">
@@ -2222,7 +2222,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="382"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="357">
@@ -2232,7 +2232,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="383"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="358">
@@ -2242,7 +2242,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="384"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="359">
@@ -2252,7 +2252,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="385"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="360">
@@ -2262,133 +2262,133 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="386"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="361">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="362">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="363">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="364">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="365">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="366">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="367">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="368">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="369">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="370">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="371">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="372">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="373">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="374">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="375">
    <properties>
-    <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="tileType" value="TERRAIN"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="376">
    <properties>
     <property name="tileType" value="TREE"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="377">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="378">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="379">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="380">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="381">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="382">
@@ -2398,7 +2398,7 @@
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="383">
@@ -2408,7 +2408,7 @@
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="384">
@@ -2418,7 +2418,7 @@
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="385">
@@ -2428,7 +2428,7 @@
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="386">
@@ -2438,133 +2438,133 @@
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="387">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="388">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="389">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="390">
    <properties>
     <property name="tileType" value="POKEMON_ENCOUNTER"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="391">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="392">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="393">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="394">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="395">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="396">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="397">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="398">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="399">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="400">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="401">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="402">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="403">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="404">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="405">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="406">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="407">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="408">
@@ -2574,7 +2574,7 @@
     <property name="REAR_ID" value="356"/>
     <property name="RIGHT_ID" value="382"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="409">
@@ -2584,7 +2584,7 @@
     <property name="REAR_ID" value="357"/>
     <property name="RIGHT_ID" value="383"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="410">
@@ -2594,7 +2594,7 @@
     <property name="REAR_ID" value="358"/>
     <property name="RIGHT_ID" value="384"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="411">
@@ -2604,7 +2604,7 @@
     <property name="REAR_ID" value="359"/>
     <property name="RIGHT_ID" value="385"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="412">
@@ -2614,19 +2614,19 @@
     <property name="REAR_ID" value="360"/>
     <property name="RIGHT_ID" value="386"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="413">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="414">
    <properties>
     <property name="tileType" value=""/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="415">
@@ -2634,115 +2634,115 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="416">
    <properties>
     <property name="tileType" value="POKEMON_ENCOUNTER"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="417">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="418">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="419">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="420">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="421">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="422">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="423">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="424">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="425">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="426">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="427">
    <properties>
-    <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="tileType" value="WALL"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="428">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="429">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="430">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="431">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="432">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="433">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="434">
@@ -2752,7 +2752,7 @@
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="435">
@@ -2762,7 +2762,7 @@
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="436">
@@ -2772,7 +2772,7 @@
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="437">
@@ -2782,7 +2782,7 @@
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="438">
@@ -2792,7 +2792,7 @@
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="439">
@@ -2802,7 +2802,7 @@
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="440">
@@ -2812,7 +2812,7 @@
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="441">
@@ -2820,115 +2820,115 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="442">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="443">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="444">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="445">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="446">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="447">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="448">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="449">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="450">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="451">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="452">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="453">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="454">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="455">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="456">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="457">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="458">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="459">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="460">
@@ -2938,7 +2938,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="486"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="461">
@@ -2948,7 +2948,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="487"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="462">
@@ -2958,7 +2958,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="488"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="463">
@@ -2968,7 +2968,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="489"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="464">
@@ -2978,7 +2978,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="490"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="465">
@@ -2988,7 +2988,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="491"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="466">
@@ -2998,7 +2998,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="492"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="467">
@@ -3006,115 +3006,115 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="468">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="469">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="470">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="471">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="472">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="473">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="474">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="475">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="476">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="477">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="478">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="479">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="480">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="481">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="482">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="483">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="484">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="485">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="486">
@@ -3124,7 +3124,7 @@
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="487">
@@ -3134,7 +3134,7 @@
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="488">
@@ -3144,7 +3144,7 @@
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="489">
@@ -3154,7 +3154,7 @@
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="490">
@@ -3164,7 +3164,7 @@
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="491">
@@ -3174,7 +3174,7 @@
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="492">
@@ -3184,7 +3184,7 @@
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="493">
@@ -3192,97 +3192,97 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="494">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="495">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="496">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="497">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="498">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="499">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="500">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="501">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="502">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="503">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="504">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="505">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="506">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="507">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="508">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="509">
@@ -3291,7 +3291,7 @@
     <property name="lvl" value="45"/>
     <property name="pokemon" value="ARTICUNO"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="510">
@@ -3300,7 +3300,7 @@
     <property name="lvl" value="50"/>
     <property name="pokemon" value="ZAPDOS"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="511">
@@ -3309,7 +3309,7 @@
     <property name="lvl" value="45"/>
     <property name="pokemon" value="MOLTRES"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="512">
@@ -3319,7 +3319,7 @@
     <property name="REAR_ID" value="460"/>
     <property name="RIGHT_ID" value="486"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="513">
@@ -3329,7 +3329,7 @@
     <property name="REAR_ID" value="461"/>
     <property name="RIGHT_ID" value="487"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="514">
@@ -3339,7 +3339,7 @@
     <property name="REAR_ID" value="462"/>
     <property name="RIGHT_ID" value="488"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="515">
@@ -3349,7 +3349,7 @@
     <property name="REAR_ID" value="463"/>
     <property name="RIGHT_ID" value="489"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="516">
@@ -3359,7 +3359,7 @@
     <property name="REAR_ID" value="464"/>
     <property name="RIGHT_ID" value="490"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="517">
@@ -3369,7 +3369,7 @@
     <property name="REAR_ID" value="465"/>
     <property name="RIGHT_ID" value="491"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="518">
@@ -3379,7 +3379,7 @@
     <property name="REAR_ID" value="466"/>
     <property name="RIGHT_ID" value="492"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="519">
@@ -3387,13 +3387,13 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="520">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="521">
@@ -3401,85 +3401,85 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="522">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="523">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="524">
    <properties>
     <property name="tileType" value="WATER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="525">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="526">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="527">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="528">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="529">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="530">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="531">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="532">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="533">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="534">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="535">
@@ -3488,7 +3488,7 @@
     <property name="lvl" value="15"/>
     <property name="pokemon" value="SNORLAX"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="536">
@@ -3496,7 +3496,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="537">
@@ -3504,7 +3504,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="538">
@@ -3514,7 +3514,7 @@
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="539">
@@ -3524,7 +3524,7 @@
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="540">
@@ -3534,7 +3534,7 @@
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="541">
@@ -3544,31 +3544,31 @@
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="542">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="543">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="544">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="545">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="546">
@@ -3576,13 +3576,13 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="547">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="548">
@@ -3590,7 +3590,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="549">
@@ -3598,7 +3598,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="550">
@@ -3606,55 +3606,55 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="551">
    <properties>
     <property name="tileType" value="MARKET"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="552">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="553">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="554">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="555">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="556">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="557">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="558">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="559">
@@ -3663,7 +3663,7 @@
     <property name="lvl" value="45"/>
     <property name="pokemon" value="MEWTWO"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="560">
@@ -3672,7 +3672,7 @@
     <property name="lvl" value="50"/>
     <property name="pokemon" value="RAYQUAZA"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="561">
@@ -3681,7 +3681,7 @@
     <property name="lvl" value="5"/>
     <property name="pokemon" value="MEW"/>
     <property name="tileType" value="ENCOUNTER"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="562">
@@ -3689,7 +3689,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="563">
@@ -3697,7 +3697,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="564">
@@ -3707,7 +3707,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="590"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="565">
@@ -3717,7 +3717,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="591"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="566">
@@ -3727,7 +3727,7 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="592"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="567">
@@ -3737,31 +3737,31 @@
     <property name="REAR_ID" value="-1"/>
     <property name="RIGHT_ID" value="593"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="568">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="569">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="570">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="571">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="572">
@@ -3769,7 +3769,7 @@
     <property name="X" value="16"/>
     <property name="Y" value="292"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="573">
@@ -3777,7 +3777,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="574">
@@ -3785,7 +3785,7 @@
     <property name="X" value="32"/>
     <property name="Y" value="285"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="575">
@@ -3793,7 +3793,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="576">
@@ -3801,7 +3801,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="577">
@@ -3809,7 +3809,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="578">
@@ -3817,7 +3817,7 @@
     <property name="X" value="39"/>
     <property name="Y" value="65"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="579">
@@ -3825,7 +3825,7 @@
     <property name="X" value="57"/>
     <property name="Y" value="41"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="580">
@@ -3833,7 +3833,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="581">
@@ -3841,25 +3841,25 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="582">
    <properties>
     <property name="tileType" value="START"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="583">
    <properties>
     <property name="tileType" value="TERRAIN"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="584">
    <properties>
     <property name="tileType" value="DEFEAT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="585">
@@ -3867,7 +3867,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="586">
@@ -3875,7 +3875,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="587">
@@ -3883,7 +3883,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="588">
@@ -3891,7 +3891,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="589">
@@ -3899,7 +3899,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="590">
@@ -3909,7 +3909,7 @@
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="591">
@@ -3919,7 +3919,7 @@
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="592">
@@ -3929,7 +3929,7 @@
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="593">
@@ -3939,31 +3939,31 @@
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="-1"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="594">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="595">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="596">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="597">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="598">
@@ -3971,7 +3971,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="599">
@@ -3979,7 +3979,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="600">
@@ -3987,7 +3987,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="601">
@@ -3995,7 +3995,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="602">
@@ -4003,7 +4003,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="603">
@@ -4011,13 +4011,13 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="604">
    <properties>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="true"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="605">
@@ -4025,7 +4025,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="606">
@@ -4033,7 +4033,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="607">
@@ -4041,7 +4041,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="608">
@@ -4049,7 +4049,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="609">
@@ -4057,7 +4057,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="610">
@@ -4065,7 +4065,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="611">
@@ -4073,7 +4073,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="612">
@@ -4081,7 +4081,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="613">
@@ -4089,7 +4089,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="614">
@@ -4097,7 +4097,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="615">
@@ -4105,7 +4105,7 @@
     <property name="X" value="0"/>
     <property name="Y" value="0"/>
     <property name="tileType" value="TELEPORT"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="616">
@@ -4115,7 +4115,7 @@
     <property name="REAR_ID" value="564"/>
     <property name="RIGHT_ID" value="590"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="617">
@@ -4125,7 +4125,7 @@
     <property name="REAR_ID" value="565"/>
     <property name="RIGHT_ID" value="591"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="618">
@@ -4135,7 +4135,7 @@
     <property name="REAR_ID" value="566"/>
     <property name="RIGHT_ID" value="592"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="619">
@@ -4145,42 +4145,42 @@
     <property name="REAR_ID" value="567"/>
     <property name="RIGHT_ID" value="593"/>
     <property name="tileType" value="NPC"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="620">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="621">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="622">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
   <tile id="623">
    <properties>
     <property name="tileType" value="WALL"/>
-    <property name="walkable" value="false"/>
+    <property name="walkable" type="bool" value="false"/>
    </properties>
   </tile>
  </tileset>
  <layer name="background" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   H4sIAAAAAAAAC+2dy6slxR2AqydZ5Y4hZDsJzEbwsR4iLn0QZjUqzGbQmVklojCoq+xixDHjY/InhBN8IJNlEiGocL37JLpuJcskCpIYCAO6SLWe9tSt2139qqrfr/p8H3xc7znn9uNM92d13759njTGPInFCrBPNNv82UqXZ8z6vL/q9zMzrP8zZwy9gv2j2eZD+5KE0m1J2avT5rj0CqagdVy+ne4mpn3zke4TvZrfK9yvY/FmvjerZabq1dLl8pZx0zcf6T7Rq3m9SuGfcZT0Kv5y0Ss9htaXXpWnZK/+Xp30Z+b4159vv/5q+/X57ddfJlr2ZppTlqFrHVzpFb0aY9VhrH38c2XenvjeaO7VFFP1auly0Ss9ltQrd79ca69um/J79ZuCe/X21vOndv/99sJeTd0fY+3X0m3J3atQu3I3ve2T/3VNvbptyu6Vu3/7+3kpvUoxvtLcK+lrxOZYSq9819arvvHVxZ73pH1cS684HiyrV9LHqymV7pW/X8ZUulFD46zbHbqP06u0y0WvyrOrV/71D/QqTbNCfm7oVerlolflqaFXqZol3aa5zWpfp6VXGq91jbBMG9+++Uzt1VHHY/SKXpXaq1Cz3Ndo6NW+s6bxVep9eOl6ldSrFM2SbtJS6ZU89Ep/r6TWlV7RK23k6tXYadIrPb2K3Szp3tCr8qFXunp13lN6XekVvdKE26uLRn+vDiqzaSytV2P1eyW9PPSKXmmitPHV2nvlHw9KL0/MZkn3hl6VT6hXTRfoFb2K1Szp3vQ55toreqWD0nrlTote0atUndJ6ffu+U8rxoPs4vaJXOVul6e8H952hXp0boduT0PND0+ybDr2Sd029mnMvGXqlg6HfD9IrekWv6JUWGF/pkl7J9cq//5X7Pb3SAb3SJb3K16suP+6Q81d6oFe6pFeyzaJXuqFXulxzr/raFXvaS7zeYdfr6JUMXM+gS3qVx39b/7P1C+dxeqWbWL0a0yF6VW6vuo6TYinRq+/Z7eXOyhw22mZt6FUZ0Ctd0qusvfraKb1q3w96JYO2Xo3p2D736mDA1L1q/luiL7G1x4DNuOprvxjZK/f9iN2rWPdll76Pe2ro1XKHGjJFv1cxp72kdW6v1tKsLrt61fV+pOhV7u2WXsn2aurnl9Kr+b3yle4MvZr+udX0SrZXc5Tqld+lPkvpVYnN6lqHtfXqFeurjq8lXIcc0Ct6FatXJTRsaHnX1qtnrM86PpdwHXJAr+hVyl5paNmUZaJXy9Yh9Tn+UK+mng8KuWSaflvo1Tp6Nbdlc6Z3wZirY6RXy9bhZhU2Za+0ueZe5exSCb2KbV+LXEvvVZe5e3Wp6vf39GpUe65F6pKmXlUL3Ode9Y1j19ir9rMOtPTqUqReSW9LU409VhrzN90h5zTjhjEb1xRdolc797FXjZrGV7F61aX09hVyjb1K0SV6tXMfeqXh/FXqXvXNV3r7Ckmvhj3qeOyioVf0Ku060KuT0ivGV1Md06s+u6ZXSq/esL7p+FbidXDb9MFWerW+XuU6d0Wv9qtXIVNff/XC1tR/Y71vvVpqqt8PaurV6QlKbx9djrmeobRevW/M4XvWd61z3pOU17fnvA8EvZomvaJXSxl7bXjX+KVrDJPjWnMt0Ksye+WfY+865x7qVd+x0ljpVT7W2p450Ksye7V0fLX2Xs1VY69gB72iV2vrVWzplR7o1Xp7NWWZ6BW9KgF6paNXMZs1Z5noFb0qAXqlp1cxmjV3megVvSqBUK/OVielV2l7taRZS5aJXtGrEujrVV8ncrdCwzJo6dXQc/SKXq0dekWv6BW9KgXJXrXHmHaaz3cdezrP06vA8zGWiV7RqxKQ6lVo+mOkV/SKXu0fQ706cKRX9IpegSRD1zO4vYq5DdArelWK9EoPUtdf0St6VYr0Sg/0il7RK3pVCvSKXtErelUKWnp1jV7RK6XSKz1o6RXjK3qlVXp1nO09AzdDppo3vaJXU623SrekpF7NvY9xbGOsx80qLL2iVzF7tfR9qM26ehV6T2L26iPrnZU5HONnA6+d+v+YjyKtSzONS3bD+0XV/bmDt+gVvQo8Xwsq3ZmY/659z8Xsle3M5i779Z4B7x147fb5q1ObFbNXIekVvaJXef5d/edi9+oB+/Vu6xNbH+r4/uGe13rPf9urseM1ekWvpHs1Z5mk+6DVXL1qezPw/bf/7W4/7uu3rRocs7XjMXo1T3pFrzSqsVcPml1z+nr1wPa583YcdeB4fjuual+folc/PUWv6FV/k+hVvn/f5jHJXj1uTh4D9vXKtmnTfP99x23DrqbsFeMrvb2ao9+rMT9Tm/7zRKHnMJ4KetV8f+JnFPRq8NorekWvxjyH8VTQq/ZcuapeSUKv0junV4216e5Rbfa3V2crk/SzT7QcD7bnrFovm+O98p93X0ev4kuvhq0NvQptNymmr+F8e3vOyvfK9jV9z7fnuehV2u2OXnVbG3rl2v5+ofnb+K7fSSy1mYd0r9ptZOz1VBwP5pFeDVsbeuWaolFdvZI+Hpxw/TvnrzJJr4atDb1yzdErV8nzV/417aHr2+lVeunVsLWhV65r7VVzPuqK6e2X8Txx/OhdL3rsMxea72NfLyqJVK+GvFZYk0LSqziu9HjQPy/VeT7LP1fl9yp0Dt49V0+v0rim67HpVRxz9cqfb4pe9V2P4F+74G87d22fb37+XnOsY9/qjq/cxz+LuC5SaOvVuYRKrRO9iuNaejU0FnLHQ/620/zsUfWNV8zJbavR7ZX/HL2KK73aWRt65bqG48Ht/fpG2dWi5vFbW/tec8t5jft4rPv1SUKv0kuv4pijV64peqXBkqFX6aVXcSy9V7AcepXerjH7GG9s9R+vEyj97z7G0o8HYTnaehVDekWvlvTKny+90gO9ole1gn+zMYZa84r11YCvDfw8vSoDeqXXemvsXh11PBZjef/XYcz3I9SaZ6zPGrPp87mBn6dXZUCv9Fqb6b36ZISXq2++uj+3dFl/UPUb6/2Y0qtD7/uhXvnnrFzplR7olV5rk6ZXre7PLV1Wbb1ifLVO6JVeazO/V6HXdLl0WaV79Yb1zYBvDfw8vSoDeqXX2tAr11y/H+R6hn6215yO+ryJFJ9DQa/0WpvyeuX+7VqJvXKlVydp3oub1Xzp1UnpVf5etbq9iv1+0Ct5mvfiUjVfenXSlNfI57ymvm1JSb1KKceD8tAretVn2xJ6lbdX/nzp1Q56Ra/6bFtCr+iVFugVveqzbQm9yifHg2Ho1XqkV+uSXp2EXq1HerUu6dVJmt4s7NXS+YtvF2tRU6+m/k2O9HunRY4Hw0QYXy2ev/Q2shbpVflyvj1MqFdHjvRKv/SqfFP1Svqe7bHu3R6a9guOqZaBXsVTa68uBh5vf076vdNiquPBZhofC5tynJiijX3zkd5G1qLWXjG+mie90ge9iie9Wpf0Sh/0Kp6aeuUf1/jSq25LPB68vD3H3fWVXk2z+TuHoWvA5/7thDbpVfmmPN+eqld9rTqiV5Ns23J6wDm90tgselWefp9K7BXjq+W6XWm75L9maa+WGnudNfWK81fjWuUe9/mPlXI8yPgqXqv8Xh05r5PuVexu0auy7OqV/3zzVXuvGF+l69WY48GjjsdKaJaGXo2VXpXfq4PKbFoZX8Xv1dD5q7us90T03o5lydmrpdNrW0Kv0veqz+Z1JfSK8VW8Xvn2/V7wAevd1ici+JD14RHLMtSrku5/5X9uc9fnONOr6WrtFeev8vSqz6ZXUxoTc1p961JSrz4Z+N5/jl6to1ecv6JXrSX0auo5ds63r6tXjK/i9mrs+XN6Ra80qr1XjK/i9Krv/Pll64MTHp/j1Gk1r/c7oMUbxmxcU8xDugma1d4rxldxejX1/PlDE18fc1rN61N0IIb0il7FkF4N92rKMdmY14/5HfTBjHn3rcvS48EY1zUMHQ9K789rl17pocRe3Tb9nfphRa8wrpK9et+Yw/es71rpVZm9CnWK8RXGNvV9hGPcY3isudYjFaX2yu+TP+6iVxhLqXFJzg6MpVmGm1XYNffqaMTr3ddw/ope5VZDJ7TQvBepP7NraP6x/33d/ky9piDm9QxjexVaF3qF9GrHmnv1uEl7DcKQV8yyVjXSK6RXO9bYq8axx2FTz1/FcMp60CukVzvW2qvWHL2S3p5TS69kpVc71t6rLmP2SnpbziG9kpVe7fB79cHWtfYq5vhKejvOJb2SlV7t6Ls+rOTrr0LG6pX0NpxTeiUrvepG4tow6V4NXX/VdS8a6e03t/RKVnqlB6ledd1rJnT9lXsvduntN7f0SlZ6pQepXnVdmxW6/sq9lkp6+80tvZKVXulB+nhwzvkr6e03t/RKVnqlh9J6Jb3tSkivZKVXeqBX+qVXstIrPZR0vaj0dislvZKVXumBXumXXslKr/Qg0avGqb2S3mYlpVey0is9SPWqcWyvpLdXaemVrJK90niPUUkke+Xq90p6eTRJr2SVvH974xOndkrfv10aeqVfeiVrrF4N3Yely2afOKh2PjxzOqnvm5ALTb1qrnlvr2OXXh5N0itZ6ZUetPQK+6VXskr36nNHeiW/PWBYeiVril4dOd9/aczmgR6bewC4vRr6PJavjLnaTveioVeYX3ola4pe+eOmFPpjMXoVz9Oe0ssTy7PVdP1p0CtZ6ZUe6FU6a+v91XRrbzpLeuW/r0NKv2caTdGrsZ9119xjyW3QlM+7u2Li92p7XcRmjhFmr7ZXa9jP6gW606FXssbaz/1/R9dY59tD84i1HkOfR9/zGfWbCLOnVwmtJ3itSterKmAJ76O0MXv1kd1v3X/L9vuYveqbh+TvOemV/v2sXqA7naFehXo0Ru3vo7SMr46vB72iV77udOiVrPTq+HrQq3m6+9mBguXxrRfoTodeycrx4PH1oFeMr1z96dArWRlfHV8PerXOXjXWE+2aBufbZeXvcZavB70qZz+rJ9j181zPICu9OrYeG6l5b+cvvj3M2a9K28/qBd6w24ir/3zM91X6fdIovVq+HmvvlfTypLCeaahX0uu0D9KrcetxtJVe7bf+8aD08uybkr360v7cB9XOr2ZOJ2av+nzBMdW9TemVfumVrKn38yGHOjDFVOScj/T20FhCry445pwvvZI15f43RM7mlIDWXmlr1oUOc82bXsm6743QhFSvDmYouc02fbrDkV7tj/RKD/RqnG2v3K+55k2vZKVXeojZq0qRsbdZjgf3V3qlB3o1zgs9X3NIr2SlV3qgV5Pd5N5f6JWs9EoP9GqyG8/k+0sJvTo3oPTyLZFe6SFlr446HltBr1w3ZzJ0i17JSq/0kKpX12c6pUmhHmbepjdnEjaLXslKr/SgrVexOiewXW9STZteyUqv9KDl/NVKerVJMW16JSu90oO2XhV2/sp3k2K69EpWeqUHehXVTYrp0itZ6ZUe6FVUNymmW0Kv1iy90kOKXvV9PseYc1X06qT0SlZ6pQd6FdVNiunSK1nplR7oVVQ3KaZLr2SVvr9oLNcAvYrqJsV06ZWssXr1uaD06qRze3Vk6FVIeiUrvdKDhl4xvgpLr2SV6NVvK3P4kvW69cWtT1ufsj5mvc9Kr5ZJr+jVGpXo1U9sj75r/dSYww+t71gftd8/Yj1lrejVYunVuF5NvY6SXslKr/Sg5XrR2Epv4yHpVVnSKz3Qq/zSq7KkV3rQ8vmD2C+9kpVe6YFe6ZdeySrZq3PWH1t/ZD1j/Q69Et8eMCy9klWiV/+y46l/Wv9h/Zv1r9a/WP9k/aP1D4ZeoU7plawSvbI9MrZLxvbJ2E4Z2ytju2Vsv4ztWNOzSdOjV5hLeiWrRK/s8Z6xx33GHv8Zexxo7PGgsceFxh4fGnuc2Bwv0itUKb2SVbJXj1gftb5jH/vQ+qmhV9LbA4alV7LSKz3QK/3SK1nplR7olX7plaz0Sg/0Sr/0SlZ6pQd6pV96JatEr+6zPXrM+pT1aeuLW69bX6q+vt8MvUKV0itZuV+fHuiVfumVrNK9Oqp20iv57QHD0itZpT9v4la1k8+bkN8eMCy9klVyX19rd+aypNeI+yIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6OPJhWpbnlTLBQDyNPv2r6t5purV3OVJuVwAIA+9AoBSGNuH1xX26ga9AtgrGF8BQCnQKwAoBXoFAKWgtVd956boFcD+EurVy5U5ZHwFAFrQdl0mvQKAUuD6dgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJCEe6UDQClo+wxCAIA+2l7919Ft0uv0CgCUMNQrxlcAoAW3V3ecmt4ryc9WlRYA8uKev5rSKunzXDE+C1rbOgFAGHqlZ50AIMySXoWOlTT1KvQ7A3oFUA5LexWa5suVOdTQq9bfOdIrgPJI1asc59vpFcB+Uer1ovQKYP8ovVdTzk3RK4CyKb1XUtIrgPysuVft+f6ldk2HXgHkp+ReSQsAeQn1amh8wj4LADlhjAEAAAAAAAAAAAAAAACwDv4PibHzY0B+BQA=
   </data>
  </layer>
  <layer name="foreground" width="300" height="300">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="doorLayer">
@@ -4687,7 +4687,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="signLayer">
+ <objectgroup name="signLayer" visible="0">
   <object id="132" x="512" y="1824" width="16" height="16">
    <properties>
     <property name="signMessage" value="Developers' home"/>
@@ -4908,8 +4908,13 @@
     <property name="signMessage" value="PokeMarket"/>
    </properties>
   </object>
+  <object id="296" x="1568" y="720" width="16" height="16">
+   <properties>
+    <property name="signMessage" value="GymLeader -&gt; SOUTH"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="pokemonEncounterLayer">
+ <objectgroup name="pokemonEncounterLayer" visible="0">
   <object id="148" x="128" y="368" width="528" height="96">
    <properties>
     <property name="avgLvl" value="12"/>
@@ -5051,7 +5056,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="zoneLayer">
+ <objectgroup name="zoneLayer" visible="0">
   <object id="161" x="4400" y="48" width="304" height="144">
    <properties>
     <property name="music" value="center.mp3"/>
@@ -5161,7 +5166,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="trainerLayer">
+ <objectgroup name="trainerLayer" visible="0">
   <object id="197" type="GYM_LEADER" x="4016" y="1184" width="16" height="16">
    <properties>
     <property name="1_POKEMON=LVL" value="WARTORTLE=31"/>

@@ -142,9 +142,9 @@ public class BagMenu extends JWindow implements MyFrame {
                             selectItem(this.i);
                             if (MainController.getController().getStatusController().getState() == State.FIGHTING) {
                                 if (this.i.getType() == ItemType.POKEBALL) {
-                                    useItem(MainController.getController().getEnemyPokemonInFight());
+                                    useItem(MainController.getController().getEnemyPokemonInFight().get());
                                 } else if (this.i.getType() == ItemType.BOOST) {
-                                    useItem(MainController.getController().getPlayer().getSquad().getPokemonList().get(0));
+                                    useItem(MainController.getController().getPlayer().get().getSquad().getPokemonList().get(0));
                                 } else {
                                     selectItem(this.i);
                                     TeamMenu sq = new TeamMenu(true, true);
@@ -176,11 +176,11 @@ public class BagMenu extends JWindow implements MyFrame {
     }
     
     private void forCycles(final ItemType it) {
-        for (Item i : MainController.getController().getInventory().getSubInventory(it).keySet()) { 
-            if (MainController.getController().getInventory().getSubInventory(it).get(i) != 0) {
+        for (Item i : MainController.getController().getInventory().get().getSubInventory(it).keySet()) { 
+            if (MainController.getController().getInventory().get().getSubInventory(it).get(i) != 0) {
                 this.name1.add(i.getType().name()); 
                 this.name2.add(i.toString()); 
-                this.qnt.add("" + MainController.getController().getInventory().getSubInventory(it).get(i));
+                this.qnt.add("" + MainController.getController().getInventory().get().getSubInventory(it).get(i));
                 this.it.add(i);
             }
         }  

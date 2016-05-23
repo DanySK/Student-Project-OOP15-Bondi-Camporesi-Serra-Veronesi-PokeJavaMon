@@ -37,13 +37,13 @@ public class Menu extends JWindow implements MyFrame {
         this.setContentPane(this.panel);     
         this.panel.setBorder(new LineBorder(Color.GRAY, 4));
         this.panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
-        this.name = new JLabel("Name: " + MainController.getController().getPlayer().getName());
+        this.name = new JLabel("Name: " + MainController.getController().getPlayer().get().getName());
         this.name.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.name);
-        this.money = new JLabel("Money: " + MainController.getController().getPlayer().getMoney());
+        this.money = new JLabel("Money: " + MainController.getController().getPlayer().get().getMoney());
         this.money.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.money);
-        this.badges = new JLabel("Badges: " + MainController.getController().getPlayer().getLastBadge());
+        this.badges = new JLabel("Badges: " + MainController.getController().getPlayer().get().getLastBadge());
         this.badges.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.getContentPane().add(this.badges);
         this.add(Box.createVerticalGlue());
@@ -53,7 +53,7 @@ public class Menu extends JWindow implements MyFrame {
         this.getContentPane().add(this.box);
         this.box.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                if (MainController.getController().getBox().getBoxSize() < 1) {
+                if (MainController.getController().getBox().get().getBoxSize() < 1) {
                     View.getView().hideCurrent();
                     View.getView().addNew(new MessageFrame(null, "NO PKMN IN BOX"));
                     View.getView().showCurrent();

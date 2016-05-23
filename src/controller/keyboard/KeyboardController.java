@@ -7,7 +7,8 @@ import view.sprite.PlayerSprite;
 
 /**
  * This interface explains the methods each {@link KeyboardController} has to implement
- * to operate on user imput
+ * to operate on user input.
+ * This interface extends {@link InputProcessor}
  */
 public interface KeyboardController extends InputProcessor {
     
