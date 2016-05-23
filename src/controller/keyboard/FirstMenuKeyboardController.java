@@ -10,6 +10,8 @@ import controller.parameters.State;
  */
 public class FirstMenuKeyboardController extends AbstractKeyboardController {
     
+    private final String name = "FirstMenuKeyboardController";
+    
     @Override
     public boolean keyUp(final int keycode) {
         switch(keycode) {
@@ -25,5 +27,10 @@ public class FirstMenuKeyboardController extends AbstractKeyboardController {
             break;
         }
         return false;
+    }
+    
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

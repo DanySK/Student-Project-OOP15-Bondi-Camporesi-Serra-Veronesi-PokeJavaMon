@@ -33,7 +33,7 @@ public class SaveTest {
         boosts.put(Stat.ATK.name()+"X", 20);
         Map<String, Integer> balls = new HashMap<String, Integer>();
         balls.put(Pokeball.PokeballType.Ultraball.name(), 35);
-        MainController.getController().getModel().getPlayer().getInventory().initializeInventory(potions, boosts, balls);
+        MainController.getController().getInventory().get().initializeInventory(potions, boosts, balls);
         List<Pokemon> box = new ArrayList<Pokemon>();
         box.add(StaticPokemonFactory.createPokemon(Pokedex.CHARIZARD, 30));
         box.add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 30));

@@ -183,7 +183,7 @@ public class MainLoadController implements LoadController {
     public void load() {
         setup();
         try {
-            MainController.getController().getModel().loadSave(getMoney(), getName(), getBadges(), getPosition(), 
+            MainController.getController().loadSave(getMoney(), getName(), getBadges(), getPosition(), 
                     getTeam(), getTrainers(), getBox(), getPokeballs(), getBoosts(), getPotions(), getDefeatedEncounterTiles());
         } catch (SquadFullException e) {
             System.out.println("TEAM IS FULL");

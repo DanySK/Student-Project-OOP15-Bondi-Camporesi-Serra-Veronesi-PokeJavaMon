@@ -1,8 +1,10 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import controller.fight.MainFightController;
@@ -32,6 +34,7 @@ import model.items.Potion;
 import model.items.Potion.PotionType;
 import model.map.Drawable.Direction;
 import model.map.PokeMap;
+import model.map.Position;
 import model.map.tile.Tile.TileType;
 import model.player.Box;
 import model.player.Inventory;
@@ -54,7 +57,7 @@ import view.sprite.PlayerSprite;
 public final class MainController implements Controller {
 
     private static final int OFFSET = 1;
-    private static final int DEFAULT_LVL = 45;
+    private static final int DEFAULT_LVL = 5;
     private static final int DEFAULT_QUANTITY = 10;
     private static final int NO_ITEM = 0;
     private static final int NO_SPEED = 0;
@@ -96,12 +99,12 @@ public final class MainController implements Controller {
     }
     
     @Override
-    public Fight getFight() {
+    public Optional<Fight> getFight() {
         return this.fightController.getFight();
     }
     
     @Override
-    public Pokemon getEnemyPokemonInFight() {
+    public Optional<Pokemon> getEnemyPokemonInFight() {
         return this.fightController.getEnemyPokemon();
     }
     
@@ -192,28 +195,46 @@ public final class MainController implements Controller {
     }
 
     @Override
-    public TiledMap getMap() {
-        return this.map;
+    public Optional<TiledMap> getMap() {
+        if (this.map == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.map);
+        }
     }
 
     @Override
-    public PokeMap getPokeMap() {
-        return this.model.getMap();
+    public Optional<PokeMap> getPokeMap() {
+        if (modelNotInitialized()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.model.getMap());
+        }
+    }
+
+    /**
+     * @return true if {@link Model} is initialized, false otherwise
+     */
+    private boolean modelNotInitialized() {
+        return this.model == null;
     }
 
     @Override
-    public Player getPlayer() {
-        return this.model.getPlayer();
+    public Optional<Player> getPlayer() {
+        if(modelNotInitialized()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.model.getPlayer());
+        }
     }
     
     @Override
-    public Inventory getInventory() {
-        return this.model.getPlayer().getInventory();
-    }
-    
-    @Override
-    public Model getModel() {
-        return this.model;
+    public Optional<Inventory> getInventory() {
+        if (modelNotInitialized()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.model.getPlayer().getInventory());
+        }
     }
     
     @Override
@@ -224,20 +245,28 @@ public final class MainController implements Controller {
 
     @Override
     public void effectItem(final Item i, final Pokemon p) throws PokemonNotFoundException {
-        if (i.getType() == ItemType.POTION) {
-            ((Potion) i).effect(this.model.getPlayer(), (PokemonInBattle) p);
-            this.model.getPlayer().getInventory().consumeItem(i);
+        if (!modelNotInitialized()) {
+            if (i.getType() == ItemType.POTION) {
+                ((Potion) i).effect(this.model.getPlayer(), (PokemonInBattle) p);
+                this.model.getPlayer().getInventory().consumeItem(i);
+            }
         }
     }
 
     @Override
-    public Box getBox() {
-        return this.model.getPlayer().getBox();
+    public Optional<Box> getBox() {
+        if (modelNotInitialized()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.model.getPlayer().getBox());
+        }
     }
 
     @Override
     public void withdrawPokemon(final Pokemon p) throws PokemonNotFoundException, SquadFullException {
-        this.model.getPlayer().getBox().withdrawPokemon(p, this.model.getPlayer().getSquad());
+        if (modelNotInitialized()) {
+            this.model.getPlayer().getBox().withdrawPokemon(p, this.model.getPlayer().getSquad());
+        }
     }
 
     @Override
@@ -247,49 +276,63 @@ public final class MainController implements Controller {
     
     @Override
     public void buyItem(final Item i) throws NotEnoughMoneyException {
-        this.model.getPlayer().buyItem(i);
+        if (modelNotInitialized()) {
+            this.model.getPlayer().buyItem(i);
+        }
     }
 
     @Override
-    public Squad getSquad() {
-        return this.model.getPlayer().getSquad();
+    public Optional<Squad> getSquad() {
+        if (modelNotInitialized()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(this.model.getPlayer().getSquad());
+        }
     }
     
     @Override
     public void switchPokemon(final int index1, final int index2) {
-        this.model.getPlayer().getSquad().switchPokemon(index1, index2);
+        if (!modelNotInitialized()) {
+            this.model.getPlayer().getSquad().switchPokemon(index1, index2);
+        }
     }
 
     @Override
     public void depositPokemon(final Pokemon p) throws PokemonNotFoundException, OnlyOnePokemonInSquadException {
-        this.model.getPlayer().getBox().depositPokemon(p, this.model.getPlayer().getSquad());
+        if (!modelNotInitialized()) {
+            this.model.getPlayer().getBox().depositPokemon(p, this.model.getPlayer().getSquad());
+        }
     }
     
     @Override
     public void teleportToCenter() {
-        final int x = MainController.getController().getPokeMap().getPokemonCenterSpawnPosition().getX();
-        final int y = MainController.getController().getPokeMap().getPokemonCenterSpawnPosition().getY();
-        PlayerSprite.getSprite().setPlayerPosition(x, y);
-        PlayerSprite.getSprite().setVelocity(NO_SPEED, NO_SPEED);
-        this.model.getPlayer().setPosition(x, y);
-        this.model.getPlayer().getSquad().healAllPokemon(MainController.getController().getPokeMap());
+        if (!modelNotInitialized()) {
+            final int x = this.model.getMap().getPokemonCenterSpawnPosition().getX();
+            final int y = this.model.getMap().getPokemonCenterSpawnPosition().getY();
+            PlayerSprite.getSprite().setPlayerPosition(x, y);
+            PlayerSprite.getSprite().setVelocity(NO_SPEED, NO_SPEED);
+            this.model.getPlayer().setPosition(x, y);
+            this.model.getPlayer().getSquad().healAllPokemon(this.model.getMap());
+        }
     }
 
     @Override
     public void initInventory() {
-        Map<String, Integer> potionList = new HashMap<>();
-        Map<String, Integer> boostList = new HashMap<>();
-        Map<String, Integer> ballList = new HashMap<>();
-        potionList.put(PotionType.Potion.name(), DEFAULT_QUANTITY);
-        potionList.put(PotionType.Superpotion.name(), NO_ITEM);
-        potionList.put(PotionType.Hyperpotion.name(), NO_ITEM);
-        boostList.put(Stat.SPD.name() + "X", NO_ITEM);
-        boostList.put(Stat.DEF.name() + "X", NO_ITEM);
-        boostList.put(Stat.ATK.name() + "X", NO_ITEM);
-        ballList.put(PokeballType.Greatball.name(), NO_ITEM);
-        ballList.put(PokeballType.Ultraball.name(), NO_ITEM);
-        ballList.put(PokeballType.Pokeball.name(), DEFAULT_QUANTITY);     
-        this.model.getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+        if (!modelNotInitialized()) {
+            Map<String, Integer> potionList = new HashMap<>();
+            Map<String, Integer> boostList = new HashMap<>();
+            Map<String, Integer> ballList = new HashMap<>();
+            potionList.put(PotionType.Potion.name(), DEFAULT_QUANTITY);
+            potionList.put(PotionType.Superpotion.name(), NO_ITEM);
+            potionList.put(PotionType.Hyperpotion.name(), NO_ITEM);
+            boostList.put(Stat.SPD.name() + "X", NO_ITEM);
+            boostList.put(Stat.DEF.name() + "X", NO_ITEM);
+            boostList.put(Stat.ATK.name() + "X", NO_ITEM);
+            ballList.put(PokeballType.Greatball.name(), NO_ITEM);
+            ballList.put(PokeballType.Ultraball.name(), NO_ITEM);
+            ballList.put(PokeballType.Pokeball.name(), DEFAULT_QUANTITY);     
+            this.model.getPlayer().getInventory().initializeInventory(potionList, boostList, ballList);
+        }
     }
 
     @Override
@@ -304,7 +347,9 @@ public final class MainController implements Controller {
 
     @Override
     public void addPokemonToSquad(final Pokedex p) throws SquadFullException {
-        this.model.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(p, DEFAULT_LVL));
+        if (!modelNotInitialized()) {
+            this.model.getPlayer().getSquad().add(StaticPokemonFactory.createPokemon(p, DEFAULT_LVL));
+        }
     }
 
     @Override
@@ -319,9 +364,21 @@ public final class MainController implements Controller {
     
     @Override
     public void checkLegendaryAndDelete() {
-        final PokeMap map = this.model.getMap();
-        if (map.getTileNextToPlayer(Direction.NORTH) == TileType.ENCOUNTER) {
-            map.deleteEncounterTile(this.model.getPlayer().getTileX(), this.model.getPlayer().getTileY() - OFFSET);
+        if (!modelNotInitialized()) {
+            final PokeMap map = this.model.getMap();
+            if (map.getTileNextToPlayer(Direction.NORTH) == TileType.ENCOUNTER) {
+                map.deleteEncounterTile(this.model.getPlayer().getTileX(), this.model.getPlayer().getTileY() - OFFSET);
+            }
+        }
+    }
+
+    @Override
+    public void loadSave(final int money, final String name, final int badges, final Position position, final List<Pokemon> team,
+            final Map<Integer, Boolean> trainers, final List<Pokemon> box, final Map<String, Integer> pokeballs,
+            final Map<String, Integer> boosts, final Map<String, Integer> potions, final Set<String> defeatedEncounterTiles)
+                    throws SquadFullException {
+        if (!modelNotInitialized()) {
+            this.model.loadSave(money, name, badges, position, team, trainers, box, pokeballs, boosts, potions, defeatedEncounterTiles);
         }
     }
 }

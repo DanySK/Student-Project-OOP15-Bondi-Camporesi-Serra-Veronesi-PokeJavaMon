@@ -27,6 +27,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
     private static final int INCREMENT = 1;
     private static final int SPEED = 2;
     private static final int NULL_SPEED = 0;
+    private final String name = "WalkingKeyboardController";
     private WalkingKeyboardControllerResolver resolver;
     private int keys;
     private int x;
@@ -43,9 +44,10 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
     
     public WalkingKeyboardController() {
         this.resolver = new WalkingKeyboardControllerResolver();
-        this.player = MainController.getController().getPlayer();
+        this.player = MainController.getController().getPlayer().get();
         this.direction = this.player.getDirection();
         this.oppositeDirection = resolver.changeOppositeDirection();
+        this.pm = MainController.getController().getPokeMap().get();
     }
     
     @Override
@@ -86,26 +88,25 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                 break;
             case Keys.ENTER:
                 if (!PlayerSprite.getSprite().isMoving()) {
-                    MainController.getController().getPokeMap();
-                    final TileType t = MainController.getController().getPokeMap().getTileNextToPlayer(direction);
+                    final TileType t = this.pm.getTileNextToPlayer(direction);
                     switch (direction) {
                     case EAST:
-                        x = this.player.getTileX() + INCREMENT;
-                        y = this.player.getTileY();
+                        this.x = this.player.getTileX() + INCREMENT;
+                        this.y = this.player.getTileY();
                         break;
                     case NONE:
                         break;
                     case NORTH:
-                        x = this.player.getTileX();
-                        y = this.player.getTileY() - INCREMENT;
+                        this.x = this.player.getTileX();
+                        this.y = this.player.getTileY() - INCREMENT;
                         break;
                     case SOUTH:
-                        x = this.player.getTileX();
-                        y = this.player.getTileY() + INCREMENT;
+                        this.x = this.player.getTileX();
+                        this.y = this.player.getTileY() + INCREMENT;
                         break;
                     case WEST:
-                        x = this.player.getTileX() - INCREMENT;
-                        y = this.player.getTileY();
+                        this.x = this.player.getTileX() - INCREMENT;
+                        this.y = this.player.getTileY();
                         break;
                     default:
                         break;
@@ -179,7 +180,6 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
 
     @Override
     public void updateSpeed() {
-        this.pm = MainController.getController().getPokeMap();
         PlayerSprite.getSprite().updatePosition();
         this.t = pm.getTileType(player.getTileX(), player.getTileY());
         if (this.t == TileType.TELEPORT && this.pm.getTeleport(this.player.getTileX(), this.player.getTileY()).isPresent() 
@@ -196,24 +196,17 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
         }
         if (this.up) {
             this.direction = Direction.NORTH;
-            this.oppositeDirection = resolver.changeOppositeDirection();
-            this.resolver.resolveMove(Direction.NORTH);
-            this.player.move(Direction.NORTH, pm);
         } else if (this.down) {
             this.direction = Direction.SOUTH;
-            this.oppositeDirection = resolver.changeOppositeDirection();
-            this.resolver.resolveMove(Direction.SOUTH);
-            this.player.move(Direction.SOUTH, pm);
         } else if (this.left) {
             this.direction = Direction.WEST;
-            this.oppositeDirection = resolver.changeOppositeDirection();
-            this.resolver.resolveMove(Direction.WEST);
-            this.player.move(Direction.WEST, pm);
         } else if (this.right) {
             this.direction = Direction.EAST;
+        } 
+        if (this.up || this.down || this.left || this.right) {
             this.oppositeDirection = resolver.changeOppositeDirection();
-            this.resolver.resolveMove(Direction.EAST);
-            this.player.move(Direction.EAST, pm);
+            this.resolver.resolveMove(this.direction);
+            this.player.move(this.direction, this.pm);
         } else {
             PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
         }
@@ -226,10 +219,9 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
     
     @Override
     public void checkEncounter() {
-        this.pm = MainController.getController().getPokeMap();
         PlayerSprite.getSprite().updatePosition();
         this.t = this.pm.getTileType(this.player.getTileX(), this.player.getTileY());
-        if (this.t == TileType.POKEMON_ENCOUNTER /*&& (this.up || this.down || this.left || this.right )*/) {
+        if (this.t == TileType.POKEMON_ENCOUNTER) {
             int x; 
             int y;
             x = this.player.getTileX();
@@ -245,6 +237,11 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                 PlayerSprite.getSprite().setVelocity(NULL_SPEED, NULL_SPEED);
             }
         }
+    }
+    
+    @Override
+    public String toString() {
+        return this.name;
     }
     
     /**
@@ -283,7 +280,6 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
          * an npc
          */
         private void resolveNPC() {
-//        	System.out.println(pm.getTileType(x, y));
             if (pm.getTrainer(x, y).isPresent()) {
                 if (direction != Direction.NONE) {
                     pm.getTrainer(x, y).get().turn(oppositeDirection);
@@ -317,7 +313,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
                 }
                 if (pm.getGymLeader(x, y).get().isDefeated()) {
                     MainController.getController().updateStatus(State.READING);
-                    View.getView().addNew(new MessageFrame(State.WALKING, "GYM LEADER ALREADY DEFEATED"));
+                    View.getView().addNew(new MessageFrame(State.WALKING, pm.getTrainer(x, y).get().getName() + ": " + pm.getTrainer(x, y).get().getTtrainerLostMessage()));
                     View.getView().showCurrent();
                 } else {
                     MainController.getController().updateStatus(State.FIGHTING);
@@ -361,7 +357,6 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
          * Resolve the case player selects to move
          */
         private void resolveMove(final Direction direction) {
-            pm = MainController.getController().getPokeMap();
             t = pm.getTileNextToPlayer(direction);
             if (pm.isWalkableNextToPlayer(direction)) {
             	switch (direction) {

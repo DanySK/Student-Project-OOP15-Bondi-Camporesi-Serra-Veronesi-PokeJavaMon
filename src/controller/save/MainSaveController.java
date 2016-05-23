@@ -30,6 +30,7 @@ import model.trainer.Trainer;
 public class MainSaveController implements SaveController {
     private static final String FILE_NAME = Folder.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
+    private static final String IDENTIFIER = "N";
     private Document document;
     private Element root;
     private FileOutputStream fos;
@@ -109,7 +110,7 @@ public class MainSaveController implements SaveController {
         final Set<Trainer> l = this.sv.getTrainers();
         for (final Trainer t : l) {
             if (t != null) {
-                allenatori.setAttribute("N" + t.getID(),Boolean.toString(t.isDefeated()));
+                allenatori.setAttribute(IDENTIFIER + t.getID(),Boolean.toString(t.isDefeated()));
             }
         }
         this.root.addContent(allenatori);
@@ -185,7 +186,7 @@ public class MainSaveController implements SaveController {
         final Element e = new Element(XMLParameters.ENCOUNTER.getName());
         int counter = 0;
         for (final EncounterTile et : sv.getEncounterTilesToBeRemoved()) {
-            e.setAttribute("N" + Integer.toString(counter), et.getPokemon().getPokedexEntry().name());
+            e.setAttribute(IDENTIFIER + Integer.toString(counter), et.getPokemon().getPokedexEntry().name());
             counter ++;
         }
         this.root.addContent(e);

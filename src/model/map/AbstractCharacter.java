@@ -44,7 +44,7 @@ public abstract class AbstractCharacter implements Character {
 		if (this.direction == d) {
 			return;
 		}
-	    PokeMap pm = MainController.getController().getPokeMap();
+	    PokeMap pm = MainController.getController().getPokeMap().get();
 	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
 	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
 	    int val = -1;

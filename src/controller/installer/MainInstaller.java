@@ -33,10 +33,11 @@ public class MainInstaller implements Installer {
      * Installs the required folders
      */
     private void installFolders() {
-        for (Folder f : Folder.values()) {
+        for (final Folder f : Folder.values()) {
             if(!Files.exists(Paths.get(f.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 this.success = new File(f.getAbsolutePath()).mkdirs();
                 if (!this.success) {
+                    System.out.println("FAILED INSTALLING FOLDER");
                     return;
                 }
             }

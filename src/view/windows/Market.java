@@ -52,22 +52,22 @@ public class Market extends JWindow implements MyFrame {
         this.Prz.add("PRICE");
         this.Qnt.add("QUANTITY");
         this.it.add(null); 
-        for (Item i : MainController.getController().getPokeMap().getPokeMarket().getAvailableItems()) {         
+        for (Item i : MainController.getController().getPokeMap().get().getPokeMarket().getAvailableItems()) {         
         	this.Name1.add(i.getType().name()); 
         	this.Name2.add(i.toString()); 
         	this.Prz.add("" + i.getPrice());
             if (i.getType() == ItemType.POTION) {
-            	this.Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POTION).get(i));
+            	this.Qnt.add("" + MainController.getController().getInventory().get().getSubInventory(ItemType.POTION).get(i));
             } else if (i.getType() == ItemType.POKEBALL) {
-            	this.Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.POKEBALL).get(i));
+            	this.Qnt.add("" + MainController.getController().getInventory().get().getSubInventory(ItemType.POKEBALL).get(i));
             } else {
-            	this.Qnt.add("" + MainController.getController().getInventory().getSubInventory(ItemType.BOOST).get(i));
+            	this.Qnt.add("" + MainController.getController().getInventory().get().getSubInventory(ItemType.BOOST).get(i));
             }
             it.add(i);
         }
         for(int j = 0; j<Name1.size();j++) {           
             if (j==0) {
-            	this.panel.add(new JLabel("Money: "+ MainController.getController().getPlayer().getMoney()));
+            	this.panel.add(new JLabel("Money: "+ MainController.getController().getPlayer().get().getMoney()));
             	this.panel.add(new JLabel(this.Name2.get(j)));
             	this.panel.add(new JLabel(this.Prz.get(j)));
             	this.panel.add(new JLabel(this.Qnt.get(j)));
