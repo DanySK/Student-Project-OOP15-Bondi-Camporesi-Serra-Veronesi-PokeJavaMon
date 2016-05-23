@@ -18,20 +18,53 @@ import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.items.Item.ItemType;
 import view.View;
-
+/**
+ * MarketClass
+ */
 public class Market extends JWindow implements MyFrame {
-        
+	/**
+	 * serialVersionUID
+	 */   
     private static final long serialVersionUID = 8636920096874072291L;
+    /**
+     * panel
+     */
     private JPanel panel;
+    /**
+     * Name1
+     */
     private final ArrayList<String>Name1;
+    /**
+     * Name2
+     */
     private final ArrayList<String>Name2;
+    /**
+     * Prz
+     */
     private final ArrayList<String>Prz;
+    /**
+     * Qnt
+     */
     private final ArrayList<String>Qnt;
+    /**
+     * it
+     */
     private final ArrayList<Item> it;
+    /**
+     * cols
+     */
     private int cols;
+    /**
+     * use
+     */
     private JButton use;
+    /**
+     * exit
+     */
     private JButton exit;
-    
+	/**
+	 * Market
+	 */
     public Market() {
         this.Name1 = new ArrayList<String>();
         this.Name2 = new ArrayList<String>();

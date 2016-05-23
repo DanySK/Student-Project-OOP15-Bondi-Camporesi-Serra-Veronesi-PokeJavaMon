@@ -16,25 +16,44 @@ import javax.swing.border.LineBorder;
 
 import view.View;
 import view.windows.MyFrame;
-
+/**
+ * CreditsClass
+ */
 public class Credits extends JWindow implements MyFrame {
-
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 313390316550029L;
+    /**
+	 * panel
+	 */
     private final JPanel panel;
-    
+	/**
+	 * Credits
+	 */
     public Credits() {
     	this.panel = new CreditBackground();
     	this.panel.setBorder(new LineBorder(Color.GRAY, 4));
     }
-    
+	/**
+	 * CreditBackgroundClass
+	 */
     private class CreditBackground extends JPanel {
     	/**
-		 * 
+		 * serialVersionUID
 		 */
 		private static final long serialVersionUID = -7371702206859570082L;
+		/**
+		 * bgImage
+		 */
 		private Image bgImage = null;
+		/**
+		 * back
+		 */
     	private final JButton back;
-    	
+    	/**
+    	 * CreditBackground
+    	 */
     	public CreditBackground() {
 		    final MediaTracker mt = new MediaTracker(this);
 		    try {

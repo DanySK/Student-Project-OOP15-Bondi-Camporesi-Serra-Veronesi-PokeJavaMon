@@ -8,14 +8,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
-
+/**
+ * LoadingScreenClass
+ */
 public class LoadingScreen extends JWindow {
-
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 7074031785079664583L;
+	/**
+	 * panel
+	 */
     private JPanel panel;
+	/**
+	 * label1
+	 */
     private JLabel label1;
+	/**
+	 * label2
+	 */
     private JLabel label2;
-    
+	/**
+	 * showLoadingScreen
+	 */
     public void showLoadingScreen() {
         this.setMinimumSize(new Dimension(300,150));
         this.setLocationRelativeTo(null);
@@ -29,7 +44,9 @@ public class LoadingScreen extends JWindow {
         this.getContentPane().add(panel);
         this.setVisible(true);
     }
-    
+	/**
+	 * disposeWindow
+	 */
     public void disposeWindow() {
         this.dispose();
     }

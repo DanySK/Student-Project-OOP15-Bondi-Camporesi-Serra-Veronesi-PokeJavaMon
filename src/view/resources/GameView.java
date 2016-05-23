@@ -1,11 +1,17 @@
 package view.resources;
 
 import com.badlogic.gdx.Game;
-
+/**
+ * GameViewClass
+ */
 public class GameView extends Game {       
-        
+	/**
+	 * MainGameView
+	 */
     private MainGameView pl;      
-        
+	/**
+	 * GameView
+	 */
     public GameView(boolean bl) {
         this.pl = new MainGameView(bl);
     }

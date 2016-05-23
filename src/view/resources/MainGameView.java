@@ -19,23 +19,65 @@ import controller.parameters.Maps;
 import controller.parameters.State;
 import exceptions.SquadFullException;
 import view.sprite.PlayerSprite;
-
+/**
+ * MainGameViewClass
+ */
 public class MainGameView implements Screen {  
-	
+	/**
+	 * renderer
+	 */
     private OrthogonalTiledMapRenderer renderer;
+    /**
+     * camera
+     */
     private OrthographicCamera camera;
+    /**
+     * background&foreground
+     */
     private int[] background = new int[] {0}, foreground = new int[] {1};
+    /**
+     * sr
+     */
     private ShapeRenderer sr;
+    /**
+     * newGame
+     */
     private boolean newGame;
+    /**
+     * toDispose
+     */
     private boolean toDispose;
+    /**
+     * pls
+     */
     private PlayerSprite pls;
+    /**
+     * sp
+     */
     private static Sprite sp;
+    /**
+     * tx
+     */
     private Texture tx;
+    /**
+     * startX
+     */
     private int startX;
+    /**
+     * startY
+     */
     private int startY;
+    /**
+     * defaultStartX
+     */
     private int defaultStartX;
+    /**
+     * defaultStartY
+     */
     private int defaultStartY;
-    
+	/**
+	 * MainGameView
+	 */
     public MainGameView(boolean b) {
         this.newGame = b;    
         this.toDispose = true;
@@ -53,12 +95,16 @@ public class MainGameView implements Screen {
         this.renderer.getBatch().end();
         this.renderer.render(this.foreground); 
     } 
-		
+	/**
+	 * resize
+	 */	
     public void resize(int width, int height) {		
         this.camera.viewportWidth = width / 2.5f;
         this.camera.viewportHeight = height / 2.5f;
     }
-    
+	/**
+	 * initConstants
+	 */
     private void initConstants() {
         this.startX = MainController.getController().getInitialPosition().getX();
         this.startY = MainController.getController().getInitialPosition().getY();
@@ -126,15 +172,21 @@ public class MainGameView implements Screen {
     public void hide() {		
         this.dispose();
     }
-
+	/**
+	 * getXPosition
+	 */
     public float getXPosition() {    
 	return this.pls.getX();
     }
-	
+	/**
+	 * getYPosition
+	 */
     public float getYPosition() {	    
 	return this.pls.getY();
     }
-	
+	/**
+	 * setPosition
+	 */
     public void setPosition(float x, float y) {	    
         this.pls.setPlayerPosition(x, y);
     }
@@ -144,11 +196,15 @@ public class MainGameView implements Screen {
 	this.renderer.dispose();
 	this.sr.dispose();
     }
-	
+	/**
+	 * updateKeyListener
+	 */
     public static void updateKeyListener() {
         Gdx.input.setInputProcessor(MainController.getController().getStatusController().getCurrentController());
     }
-	
+	/**
+	 * getSprite
+	 */
     public static Sprite getSprite() {
         return sp;
     }

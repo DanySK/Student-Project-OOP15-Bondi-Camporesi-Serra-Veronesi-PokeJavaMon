@@ -3,17 +3,31 @@ package view;
 import java.util.Stack;
 
 import view.windows.MyFrame;
-
+/**
+ * View
+ */
 public class View implements ViewInterface {
-
+	/**
+	 * parent
+	 */
     private MyFrame parent;
+    /**
+     * stack
+     */
     private Stack<MyFrame> stack;
+    /**
+     * singleton
+     */
     private static ViewInterface singleton;
-    
+	/**
+	 * View
+	 */
     private View() {
         this.stack = new Stack<MyFrame>();
     }
-    
+    /**
+     * getView
+     */
     public static ViewInterface getView() {
         if (singleton == null) {
             synchronized (View.class) {

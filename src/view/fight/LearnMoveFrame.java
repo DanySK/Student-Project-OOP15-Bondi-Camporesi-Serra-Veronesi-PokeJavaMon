@@ -18,25 +18,73 @@ import model.pokemon.Move;
 import model.pokemon.Pokemon;
 import view.View;
 import view.windows.MyFrame;
-
+/**
+ * LearnMoveFrameClass
+ */
 public class LearnMoveFrame extends JWindow implements MyFrame {        
-        
+		/**
+		 * serialVersionUID
+		 */
         private static final long serialVersionUID = -4826245459412294421L;
+        /**
+		 * panel
+		 */
         private JPanel panel;
+        /**
+		 * move1
+		 */
         private JButton move1;
+        /**
+		 * move2
+		 */
         private JButton move2;
+        /**
+		 * move3
+		 */
         private JButton move3;
+        /**
+		 * move4
+		 */
         private JButton move4;
+        /**
+		 * move5
+		 */
         private JButton move5;
+        /**
+		 * tooltip
+		 */
         private JLabel tooltip;
+        /**
+		 * forget1
+		 */
         private JLabel forget1;
+        /**
+		 * forget2
+		 */
         private JLabel forget2;
+        /**
+		 * forget3
+		 */
         private JLabel forget3;
+        /**
+		 * forget4
+		 */
         private JLabel forget4;
+        /**
+		 * forget5
+		 */
         private JLabel forget5;
+        /**
+		 * newMove
+		 */
         private Move newMove;
+        /**
+		 * pk
+		 */
         private Pokemon pk;
-        
+    	/**
+    	 * LearnMoveFrame
+    	 */
         public LearnMoveFrame(final Move mv) {
             this.newMove = mv;
             this.pk = MainController.getController().getPlayer().get().getSquad().getPokemonList().get(0);
@@ -77,7 +125,9 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
                 this.setButton(this.forget4, this.move4, 3);
                 this.setVisible(true);
         }
-        
+    	/**
+    	 * setButton
+    	 */
         private void setButton(JLabel l, JButton b, int x) {
             l = new JLabel("Forget:");
             l.setAlignmentX(Component.CENTER_ALIGNMENT);

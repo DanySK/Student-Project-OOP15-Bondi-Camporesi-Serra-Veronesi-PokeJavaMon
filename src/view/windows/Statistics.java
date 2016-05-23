@@ -22,22 +22,61 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-
+/**
+ * StatisticsClass
+ */
 public class Statistics extends JWindow implements MyFrame {
-	
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 3339649136760979503L;
+    /**
+     * IMMAGINEPKMNPANEL
+     */
     private MyPanel2 IMMAGINEPKMNPANEL;
+    /**
+     * panel
+     */
     private JPanel panel;
+    /**
+     * pkmnName
+     */
     private JLabel pkmnName;
+    /**
+     * type
+     */
     private JLabel type;
+    /**
+     * typeValue
+     */
     private JLabel typeValue;
+    /**
+     * levelValue
+     */
     private JLabel levelValue;
+    /**
+     * level
+     */
     private JLabel level;
+    /**
+     * exp
+     */
     private JLabel exp;
+    /**
+     * expValue
+     */
     private JLabel expValue;
+    /**
+     * exit
+     */
     private JButton exit;
+    /**
+     * Statistics
+     */
     private final Pokemon pk;
-    
+	/**
+	 * Statistics
+	 */
     public Statistics(Pokemon ID) { 
         this.pk = ID;
     }
@@ -102,16 +141,35 @@ public class Statistics extends JWindow implements MyFrame {
         this.setVisible(true);
     }
 }
-
+/**
+ * statsPanel
+ */
 class statsPanel extends JPanel {
     
     private static final long serialVersionUID = 1L;
+    /**
+     * moves
+     */
     private ArrayList<String> moves = new ArrayList<String>();
+    /**
+     * names
+     */
     private ArrayList<String> names = new ArrayList<String>();
+    /**
+     * stats
+     */
     private ArrayList<String> stats = new ArrayList<String>();
+    /**
+     * values
+     */
     private ArrayList<String> values = new ArrayList<String>();
+    /**
+     * cols
+     */
     private int cols = 1;
-
+	/**
+	 * statsPanel
+	 */
     public statsPanel(Pokemon ID) {	 
     	this.setBorder(new LineBorder(Color.GRAY, 3));
     	this.stats.add(Stat.MAX_HP.name());
@@ -152,13 +210,25 @@ class statsPanel extends JPanel {
         setLayout(new GridLayout(4,cols));
     }
 }
-
+/**
+ * MyPanel2
+ */
 class MyPanel2 extends JPanel{
-
+	/**
+	 * serialVersionUID
+	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * image
+	 */
 	private BufferedImage image;
+	/**
+	 * pk
+	 */
 	private Pokemon pk;
-	
+	/**
+	 * MyPanel2
+	 */
 	public MyPanel2(final Pokemon pk) {
 	    this.pk = pk;
 	}

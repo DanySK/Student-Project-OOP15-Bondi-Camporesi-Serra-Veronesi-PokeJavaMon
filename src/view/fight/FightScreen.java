@@ -11,13 +11,17 @@ import view.View;
 import view.windows.MessageFrame;
 import view.windows.MyFrame;
 import view.windows.TeamMenu;
-
+/**
+ * FightScreenClass
+ */
 public class FightScreen extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = -3997502312610503237L;	 
     
     private FightPanel mainPanel;
-    
+	/**
+	 * FightScreen
+	 */
     	public FightScreen() {
             this.setAlwaysOnTop(true);
             this.setFocusable(true);
@@ -30,11 +34,15 @@ public class FightScreen extends JWindow implements MyFrame {
             this.mainPanel.setBorder(new LineBorder(Color.GRAY, 4));
             this.getContentPane().add(mainPanel);
     	}
-    
+    	/**
+    	 * repaintFrame
+    	 */
         public void repaintFrame() {       	
             this.mainPanel.refresh();       	
         }
-        
+    	/**
+    	 * showMessage
+    	 */
         public void showMessage(String... message) {
             View.getView().hideCurrent();
             if (MainController.getController().getSquad().get().getPokemonList().get(0).getCurrentHP() == 0) {
