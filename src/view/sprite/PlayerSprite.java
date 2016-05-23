@@ -12,18 +12,45 @@ import controller.parameters.Img;
 import model.map.Drawable.Direction;
 import model.utilities.Pair;
 import view.resources.MainGameView;
-
+/**
+ * PlayerSpriteClass
+ */
 public class PlayerSprite extends Sprite {
-    
+	/**
+	 * velocity
+	 */
     private Vector2 velocity;
+    /**
+	 * left, right, up, down, left_s, right_s, up_s, down_s
+	 */
     private Animation left, right, up, down, left_s, right_s, up_s, down_s;
+    /**
+	 * playerAtlas
+	 */
     private TextureAtlas playerAtlas;
+    /**
+	 * animationTime
+	 */
     private float animationTime;
+    /**
+	 * pos
+	 */
     private int pos;
+    /**
+	 * position
+	 */
     private Pair<Float, Float> position;
+    /**
+	 * update
+	 */
     private boolean update;
+    /**
+	 * SINGLETON
+	 */
     private static PlayerSprite SINGLETON;
-    
+	/**
+	 * getSprite
+	 */
     public static PlayerSprite getSprite() {
         if (SINGLETON == null) {
             synchronized (PlayerSprite.class) {
@@ -34,7 +61,9 @@ public class PlayerSprite extends Sprite {
         }
         return SINGLETON;
     }
-
+	/**
+	 * PlayerSprite
+	 */
     private PlayerSprite(final Sprite st) {
         super(st);
         super.setSize(16, 16);
@@ -44,7 +73,9 @@ public class PlayerSprite extends Sprite {
         this.pos = 0;
         this.update = true;
     }
-    
+	/**
+	 * update
+	 */
     public void update(final SpriteBatch spriteBatch) {
         if (this.pos == 0) {
             MainController.getController().getStatusController().updateSpeed();
@@ -63,15 +94,21 @@ public class PlayerSprite extends Sprite {
             this.update = false;
         }
     }
-    
+	/**
+	 * updatePosition
+	 */
     public void updatePosition() {
         this.position = new Pair<>(super.getX(),super.getY());
     }
-    
+	/**
+	 * isMoving
+	 */
     public boolean isMoving() {
         return (this.velocity.x != 0 || this.velocity.y != 0);
     }
-
+	/**
+	 * setupAnimation
+	 */
     private void setupAnimation() {
         try {
             this.playerAtlas = new TextureAtlas(Img.PACK.getAbsolutePath());
@@ -97,16 +134,22 @@ public class PlayerSprite extends Sprite {
         this.down_s.setPlayMode(Animation.PlayMode.LOOP);
         setRegion(down_s.getKeyFrame(animationTime));
     }
-    
+	/**
+	 * getPosition
+	 */
     public Pair<Float, Float> getPosition() {
         return this.position;
     }
-
+	/**
+	 * setPlayerPosition
+	 */
     public void setPlayerPosition(final float x, final float y) {
         super.setX(x * 16);
         super.setY((299 - y) * 16);
     }
-    
+	/**
+	 * setOrientation
+	 */
     private void setOrientation(final Direction d) {
         switch (d) {
         case NORTH:
@@ -125,7 +168,9 @@ public class PlayerSprite extends Sprite {
             break;
         }
     }
-    
+	/**
+	 * move
+	 */
     private void move() {
         if (this.velocity.x > 0) {
             super.setX(super.getX() + this.velocity.x);
@@ -148,7 +193,9 @@ public class PlayerSprite extends Sprite {
             MainController.getController().getStatusController().updateMusic();
         }
     }
-    
+	/**
+	 * setVelocity
+	 */
     public void setVelocity(final float x, final float y) {
         this.velocity.x = x;
         this.velocity.y = y;

@@ -13,12 +13,21 @@ import model.pokemon.Pokemon;
 import view.View;
 import view.windows.MessageFrame;
 import view.windows.MyFrame;
-
+/**
+ * InFightMessagesClass
+ */
 public class InFightMessages implements InFightMessagesInterface {
-    
+	/**
+	 * message
+	 */
     private List<String> message;
+    /**
+	 * moveToLearn
+	 */
     private Move moveToLearn;
-    
+	/**
+	 * InFightMessages
+	 */
     public InFightMessages() {
         this.message = new ArrayList<>();
     }
@@ -209,16 +218,18 @@ public class InFightMessages implements InFightMessagesInterface {
             }
         }
     }
-    
-    // PRIVATE METHODS
-    
+	/**
+	 * showMessage
+	 */
     private void showMessage() {
         String[] array = new String[this.message.size()];
         this.message.toArray(array);
         MyFrame fs = View.getView().getCurrent();
         ((FightScreen) fs).showMessage(array); 
     }
-    
+	/**
+	 * learnedMessage
+	 */
     private void learnedMessage() {
         MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
         this.message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
@@ -227,7 +238,9 @@ public class InFightMessages implements InFightMessagesInterface {
         MyFrame fs = View.getView().getCurrent();
         ((FightScreen) fs).showMessage(array);
     }
-    
+	/**
+	 * lostMessage
+	 */
     private void lostMessage() {
         MainController.getController().getFightController().healEnemy();
         this.message.add("You lost!");
@@ -243,7 +256,9 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().showCurrent();
         MainController.getController().teleportToCenter();
     }
-    
+	/**
+	 * learnedMoveAndWalking
+	 */
     private void learnedMoveAndWalking() {
         MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
         this.message.add("Your pokemon learned the move: " + moveToLearn.name() + "!");  
@@ -252,7 +267,9 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().addNew(new MessageFrame(State.WALKING, array));
         View.getView().showCurrent();
     }
-    
+	/**
+	 * newMoveMessage
+	 */
     private void newMoveMessage() {
         String[] array = new String[this.message.size()];
         this.message.toArray(array);
@@ -262,7 +279,9 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().addNew(new LearnMoveFrame(this.moveToLearn));
         View.getView().showCurrent();
     }
-    
+	/**
+	 * winningMessage
+	 */
     private void winningMessage() {
         String[] array = new String[this.message.size()];
         this.message.toArray(array);

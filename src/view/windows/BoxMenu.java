@@ -13,22 +13,65 @@ import exceptions.SquadFullException;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;  
-  
+/**
+ * 
+ * BoxMenuClass
+ * 
+ * @author User
+ *
+ */
 public class BoxMenu extends JWindow implements MyFrame {
-
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 6312860320430410019L;
+    /**
+	 * panel
+	 */
     private JPanel panel;
+    /**
+	 * pn
+	 */
     private JScrollPane pn;
+    /**
+	 * names
+	 */
     private final ArrayList<String> names;
+    /**
+	 * lvl
+	 */
     private final ArrayList<String> lvl;
+    /**
+	 * cHP
+	 */
     private final ArrayList<String> cHP;
+    /**
+	 * mHP
+	 */
     private final ArrayList<String> mHP;
+    /**
+	 * pk
+	 */
     private final ArrayList<Pokemon> pk;
+    /**
+	 * cols
+	 */
     private int cols = 1;
+    /**
+	 * info
+	 */
     private JButton info;
+    /**
+	 * withdraw
+	 */
     private JButton withdraw;
+    /**
+	 * exit
+	 */
     private JButton exit;
-    
+	/**
+	 * BoxMenu
+	 */
     public BoxMenu() {
         this.names = new ArrayList<String>();
         this.lvl = new ArrayList<String>();

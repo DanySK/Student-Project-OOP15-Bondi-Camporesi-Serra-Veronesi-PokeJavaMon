@@ -16,24 +16,69 @@ import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;
 import view.fight.FightScreen;
-
+/**
+ * TeamMenuClass
+ */
 public class TeamMenu extends JWindow implements MyFrame {
-        
+	/**
+	 * serialVersionUID
+	 */   
     private static final long serialVersionUID = 4848482754813638374L;
+    /**
+     * panel
+     */
     private JPanel panel;
+    /**
+     * names
+     */
     private final ArrayList<String>names;
+    /**
+     * lvl
+     */
     private final ArrayList<String>lvl;
+    /**
+     * cHP
+     */
     private final ArrayList<String>cHP;
+    /**
+     * mHP
+     */
     private final ArrayList<String>mHP;
+    /**
+     * pk
+     */
     private final ArrayList<Pokemon> pk;
+    /**
+     * cols
+     */
     private int cols = 1;
+    /**
+     * info
+     */
     private JButton info;
+    /**
+     * set
+     */
     private JButton set;
+    /**
+     * deposit
+     */
     private JButton deposit;
+    /**
+     * select
+     */
     private JButton select;
+    /**
+     * exit
+     */
     private JButton exit;
+    /**
+     * canExit, isChangingPoke
+     */
     private boolean canExit, isChangingPoke;
-    
+	/**
+	 * TeamMenu
+	 */
     public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;
         this.isChangingPoke = b2;

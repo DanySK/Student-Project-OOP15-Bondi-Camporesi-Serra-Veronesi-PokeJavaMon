@@ -16,16 +16,37 @@ import javax.swing.border.LineBorder;
 import controller.MainController;
 import controller.parameters.State;
 import view.View;
-
+/**
+ * MessageFrameClass
+ */
 public class MessageFrame extends JWindow implements MyFrame {
-	
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 1370776687087493267L;
+    /**
+     * panel
+     */
     private JPanel panel;
+    /**
+     * labels
+     */
     private final List<JLabel> labels = new ArrayList<>();
+    /**
+     * ok
+     */
     private JButton ok;
+    /**
+     * msgs
+     */
     private String[] msgs;
+    /**
+     * st
+     */
     private State st;
-	
+	/**
+	 * MessageFrame
+	 */
     public MessageFrame(State st, String... strs) {
         this.st = st;
         this.msgs = strs;

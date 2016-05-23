@@ -14,19 +14,53 @@ import view.View;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Component;
-
+/**
+ * MenuClass
+ */
 public class Menu extends JWindow implements MyFrame {
-
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 3868831254532069974L;
+    /**
+     * panel
+     */
     private JPanel panel;
+    /**
+     * box
+     */
     private JButton box;
+    /**
+     * team
+     */
     private JButton team;
+    /**
+     * bag
+     */
     private JButton bag;
+    /**
+     * save
+     */
     private JButton save;
+    /**
+     * resume
+     */
     private JButton resume;
+    /**
+     * music
+     */
     private JButton music;
+    /**
+     * name
+     */
     private JLabel name;
+    /**
+     * money
+     */
     private JLabel money;
+    /**
+     * badges
+     */
     private JLabel badges;
     
     @Override

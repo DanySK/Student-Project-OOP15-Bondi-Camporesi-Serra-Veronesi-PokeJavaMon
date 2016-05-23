@@ -29,38 +29,113 @@ import view.View;
 import view.windows.BagMenu;
 import view.windows.MessageFrame;
 import view.windows.TeamMenu;
-
+/**
+ * FightPanel
+ */
 public class FightPanel extends JPanel {
-
+	/**
+	 * serialVersionUID
+	 */
     private static final long serialVersionUID = 849521658746630224L;
+    /**
+	 * FIGHT
+	 */
     private static final int FIGHT = 0;
+    /**
+	 * BAG
+	 */
     private static final int BAG = 1;
+    /**
+	 * serialVersiSQUADonUID
+	 */
     private static final int SQUAD = 2;
+    /**
+	 * RUN
+	 */
     private static final int RUN = 3;
-	
+    /**
+	 * fc
+	 */
     private final FightController fc;
+    /**
+	 * ctrl
+	 */
     private final Controller ctrl;
+    /**
+	 * enemyLvl
+	 */
     private JLabel enemyLvl;
+    /**
+	 * enemyName
+	 */
     private JLabel enemyName;
+    /**
+	 * enemyHealthBar
+	 */
     private HealthBar enemyHealthBar;
+    /**
+	 * enemyFrontSprite
+	 */
     private JLabel enemyFrontSprite;
+    /**
+	 * allyLvl
+	 */
     private JLabel allyLvl;
+    /**
+	 * allyName
+	 */
     private JLabel allyName;
+    /**
+	 * allyHP
+	 */
     private JLabel allyHP;
+    /**
+	 * allyHealthBar
+	 */
     private HealthBar allyHealthBar;
+    /**
+	 * allyExpBar
+	 */
     private JProgressBar allyExpBar;
+    /**
+	 * allyBackSprite
+	 */
     private JLabel allyBackSprite;
+    /**
+	 * subPanel
+	 */
     private JPanel subPanel;	
+    /**
+	 * choicesList
+	 */
     private List<JButton> choicesList = new ArrayList<>(); 
+    /**
+	 * choice1
+	 */
     private JButton choice1;
+    /**
+	 * choice2
+	 */
     private JButton choice2;
+    /**
+	 * choice3
+	 */
     private JButton choice3;
+    /**
+	 * choice4
+	 */
     private JButton choice4;  
+    /**
+	 * fightMenuListeners
+	 */
     private final Map<Integer, ActionListener> fightMenuListeners;
+    /**
+	 * moveListener
+	 */
     private final ActionListener moveListener;
     
     /**
-     * Create the panel.
+     * Create the FightPanel.
      */
     public FightPanel(final Pokemon enemy, final Pokemon ally) {
         setLayout(new MigLayout("", "[78px,grow][][53px][10px][][][][][][][][]", "[14px][14px][10px][][][][][][][][grow][][][]"));    
@@ -169,7 +244,9 @@ public class FightPanel extends JPanel {
         }
         setGroupLayout4Buttons(this.subPanel, this.choice1, this.choice2, this.choice3, this.choice4);		
     }
-	
+	/**
+	 * setGroupLayout4Buttons
+	 */
     private static void setGroupLayout4Buttons(final JPanel panel, final JButton b1, final JButton b2, final JButton b3, final JButton b4) {
         final GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(
@@ -202,9 +279,12 @@ public class FightPanel extends JPanel {
         );
         panel.setLayout(gl_panel);
     }
-
+	/**
+	 * set4MovesToButtons
+	 */
     private void set4MovesToButtons() {
         final List<Move> moves = this.ctrl.getSquad().get().getPokemonList().get(0).getCurrentMoves();
+
         int count = 0;
         for (final JButton b : this.choicesList) {
             if (b.getText().equals("FIGHT")) {
@@ -230,7 +310,9 @@ public class FightPanel extends JPanel {
             }
         }
     }
-	
+	/**
+	 * setMenuButtons
+	 */
     public void setMenuButtons() {
         JButton tmp = choicesList.get(FIGHT);
         tmp.setText("FIGHT");
@@ -253,7 +335,9 @@ public class FightPanel extends JPanel {
         tmp.addActionListener(fightMenuListeners.get(RUN));
         tmp.setEnabled(true);
     }
-    
+	/**
+	 * refresh
+	 */
     public void refresh() {
         final Pokemon currentEnemy = this.ctrl.getEnemyPokemonInFight().get();
         final Pokemon currentAlly = this.ctrl.getSquad().get().getPokemonList().get(0);

@@ -21,41 +21,88 @@ import javax.swing.border.LineBorder;
 
 import view.View;
 import view.windows.MyFrame;
-
+/**
+ * HowToPlayClass
+ */
 public class HowToPlay extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = -8605835642465055987L;
+	/**
+	 * mainPanel
+	 */
     private JPanel mainPanel;
-    
+	/**
+	 * HowToPlay
+	 */
     public HowToPlay() {
     	this.mainPanel = new HowToPlayPanel();
     }
-    
+	/**
+	 * HowToPlayPanelClass
+	 */
     public class HowToPlayPanel extends JPanel {
-
     	/**
-		 * 
-		 */
+    	 * serialVersionUID
+    	 */
 		private static final long serialVersionUID = 2304161775966955920L;
+		/**
+		 * moveUp
+		 */
 		private final JLabel moveUp;
-    	private final JLabel up;
-    	private final JLabel moveLeft;
-    	private final JLabel left;
-    	private final JLabel moveDown;
-    	private final JLabel down;
-    	private final JLabel moveRight;
-    	private final JLabel right;
-    	private final JLabel interact;
-    	private final JLabel enter;
-    	private final JLabel menu;
-    	private final JLabel esc;
-    	
+		/**
+		 * up
+		 */
+		private final JLabel up;
+		/**
+		 * moveLeft
+		 */
+		private final JLabel moveLeft;
+		/**
+		 * left
+		 */
+		private final JLabel left;
+		/**
+		 * moveDown
+		 */
+		private final JLabel moveDown;
+		/**
+		 * down
+		 */
+		private final JLabel down;
+		/**
+		 * moveRight
+		 */
+		private final JLabel moveRight;
+		/**
+		 * right
+		 */
+		private final JLabel right;
+		/**
+		 * interact
+		 */
+		private final JLabel interact;
+		/**
+		 * enter
+		 */
+		private final JLabel enter;
+		/**
+		 * menu
+		 */
+		private final JLabel menu;
+		/**
+		 * esc
+		 */
+		private final JLabel esc;
+		/**
+		 * back
+		 */
     	private final JButton back;
-    	
-    	private Image bgImage = null;
-    	
     	/**
-    	 * Create the panel.
+    	 * bgImage
+    	 */
+    	private Image bgImage = null;
+    	/**
+    	 * Create the HowToPlayPanel.
     	 */
     	public HowToPlayPanel() {
     		setMinimumSize(new Dimension(600, 400));
@@ -169,7 +216,9 @@ public class HowToPlay extends JWindow implements MyFrame {
 		    }
 
     	}
-    	
+    	/**
+    	 * createLabel
+    	 */
     	private JLabel createLabel(final String text) {
     		final JLabel l = new JLabel(text);
     		l.setFont(new Font("Verdana", Font.BOLD, 14));
