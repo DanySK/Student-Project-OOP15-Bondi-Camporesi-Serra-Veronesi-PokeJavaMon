@@ -38,9 +38,9 @@ public class FightVsTrainer extends AbstractFight {
     protected FightVsTrainer(final Trainer trainer) {
         super();
         this.trainer = trainer;
-        enemyPkm = this.trainer.getSquad().getPokemonList().get(FIRST_ELEM);
+        this.enemyPkm = this.trainer.getSquad().getPokemonList().get(FIRST_ELEM);
         for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
-            enemyPkmsBoosts.put(pkm, createBoostsMap());
+            this.enemyPkmsBoosts.put(pkm, createBoostsMap());
         }
     }
 
@@ -56,31 +56,31 @@ public class FightVsTrainer extends AbstractFight {
         final List<Integer> movesDamages = new ArrayList<>();
         int movDam = BOOST_MOVE_DAMAGE;
         int movPos = FIRST_ELEM;
-        for (final Move move : enemyPkm.getCurrentMoves()) {
+        for (final Move move : this.enemyPkm.getCurrentMoves()) {
             if (move.getStat() == Stat.MAX_HP) {
-                movesDamages.add(damageCalculation(enemyPkm, allyPkm, getEnemyBoost(Stat.ATK), getAllyBoost(Stat.DEF),
-                        move, stabCalculation(enemyPkm, move), isEffective(enemyPkm, allyPkm, move)));
+                movesDamages.add(damageCalculation(this.enemyPkm, this.allyPkm, getEnemyBoost(Stat.ATK), getAllyBoost(Stat.DEF),
+                        move, stabCalculation(this.enemyPkm, move), isEffective(this.enemyPkm, this.allyPkm, move)));
             } else {
                 movesDamages.add(BOOST_MOVE_DAMAGE);
             }
         }
-        for (int i = FIRST_ELEM; i < enemyPkm.getCurrentMoves().size(); i++) {
+        for (int i = FIRST_ELEM; i < this.enemyPkm.getCurrentMoves().size(); i++) {
             if (movDam < movesDamages.get(i)) {
                 movDam = movesDamages.get(i);
                 movPos = i;
             }
         }
-        return enemyPkm.getCurrentMoves().get(movPos);
+        return this.enemyPkm.getCurrentMoves().get(movPos);
     }
 
     @Override
     public double getEnemyBoost(final Stat stat) {
-        return enemyPkmsBoosts.get(enemyPkm).get(stat);
+        return this.enemyPkmsBoosts.get(this.enemyPkm).get(stat);
     }
 
     @Override
     public void setEnemyBoost(final Stat stat, final Double d) {
-        enemyPkmsBoosts.get(enemyPkm).replace(stat, d);
+        this.enemyPkmsBoosts.get(this.enemyPkm).replace(stat, d);
     }
 
     @Override
@@ -107,33 +107,33 @@ public class FightVsTrainer extends AbstractFight {
         while (attacksDone < ATTACKS_TO_DO && !isEnd) {
             if (turnOrder) {
                 allyTurn(move);
-                if (isEnemyExhausted) {
-                    final PokemonInBattle allyPkmNotUpdated = allyPkm;
-                    final Map<Stat, Double> allyPkmBoost = allyPkmsBoosts.remove(allyPkmNotUpdated);
-                    final int hpBeforeLvUp = allyPkm.getStat(Stat.MAX_HP);
+                if (this.isEnemyExhausted) {
+                    final PokemonInBattle allyPkmNotUpdated = this.allyPkm;
+                    final Map<Stat, Double> allyPkmBoost = this.allyPkmsBoosts.remove(allyPkmNotUpdated);
+                    final int hpBeforeLvUp = this.allyPkm.getStat(Stat.MAX_HP);
                     if (giveExpAndCheckLvlUp(getExp())) {
                         this.levelUp = true;
-                        int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
+                        int hpAfterLvUp = this.allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
-                        allyPkm.heal(hpAfterLvUp);
-                        if (allyPkm.getPokedexEntry().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
-                            moveToLearn = allyPkm.getPokedexEntry().getMoveset().get(allyPkm.getStat(Stat.LVL));
+                        this.allyPkm.heal(hpAfterLvUp);
+                        if (this.allyPkm.getPokedexEntry().getMoveset().containsKey(this.allyPkm.getStat(Stat.LVL))) {
+                            this.moveToLearn = this.allyPkm.getPokedexEntry().getMoveset().get(this.allyPkm.getStat(Stat.LVL));
                         }
                         else {
-                            moveToLearn = Move.NULLMOVE;
+                            this.moveToLearn = Move.NULLMOVE;
                         }
-                        if (allyPkm.checkIfEvolves()) {
-                            pkmsThatMustEvolve.add(allyPkm);
+                        if (this.allyPkm.checkIfEvolves()) {
+                            this.pkmsThatMustEvolve.add(this.allyPkm);
                         }
                     } else {
-                        moveToLearn = Move.NULLMOVE;
+                        this.moveToLearn = Move.NULLMOVE;
                     }
                     isEnd = true;
-                    allyPkmsBoosts.put(allyPkm, allyPkmBoost);
+                    this.allyPkmsBoosts.put(allyPkm, allyPkmBoost);
                 }
             } else {
                 enemyTurn();
-                if (isAllyExhausted) {
+                if (this.isAllyExhausted) {
                     isEnd = true;
                 }
             }
@@ -141,94 +141,90 @@ public class FightVsTrainer extends AbstractFight {
             attacksDone += 1;
         }
         if (attacksDone == ATTACKS_TO_DO) {
-            if (isAllyFastest) {
-                if (isAllyExhausted) {
-                    //alleato attacca, nemico attacca, pokemon alleato esausto
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null, null);
+            if (this.isAllyFastest) {
+                if (this.isAllyExhausted) {
+                    //ally pokemon attacks, enemy pokemon attacks, ally pokemon is exhausted
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, null, null);
                 } else {
-                    //alleato attacca, nemico attacca, pokemon alleato sopravvive
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, null);
+                    //ally pokemon attacks, enemy pokemon attacks
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, false, null, null, null);
                 }
             } else {
-                if (isEnemyExhausted) {
-                    //nemico attacca, alleato attacca, pokemon nemico esausto
-                    if (checkLose(trainer.getSquad())) {
-                        player.beatTrainer(trainer);
-                        trainer.defeat();
-                        if (trainer instanceof GymLeader) {
-                            player.addBadge();
-                            if (levelUp) {
-                                MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
-                                        EXP_MESSAGE + getExp() + " - Level up! - " + TRAINER_DEFEAT_MESS + trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, moveToLearn);
-                                this.levelUp = false;
+                if (this.isEnemyExhausted) {
+                    //enemy pokemon attacks, ally pokemon attacks, enemy pokemon is exhausted
+                    if (checkLose(this.trainer.getSquad())) {
+                        //trainer is defeated
+                        this.player.beatTrainer(this.trainer);
+                        this.trainer.defeat();
+                        if (this.trainer instanceof GymLeader) {
+                            this.player.addBadge();
+                            if (this.levelUp) {
+                                MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, 
+                                        EXP_MESSAGE + getExp() + LVL_UP_MESS + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, this.moveToLearn);
                             } else {
-                                MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
-                                        EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, moveToLearn);
+                                MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, 
+                                        EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, this.moveToLearn);
                             }
                         } else {
-                            if (levelUp) {
-                                MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
-                                        EXP_MESSAGE + getExp() + " - Level up! - " + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
-                                this.levelUp = false;
+                            if (this.levelUp) {
+                                MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, 
+                                        EXP_MESSAGE + getExp() + LVL_UP_MESS + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney(), this.moveToLearn);
                             } else {
-                                MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, 
-                                        EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
+                                MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, 
+                                        EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney(), this.moveToLearn);
                             }
                         }
                     } else {
+                        //trainer is not defeated
                         trainerChange();
                         if (levelUp) {
-                            MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, 
-                                    EXP_MESSAGE + getExp() + " - Level up!", moveToLearn);
-                            this.levelUp = false;
+                            MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, this.enemyPkm, 
+                                    EXP_MESSAGE + getExp() + LVL_UP_MESS, this.moveToLearn);
                         } else {
-                            MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, enemyPkm, 
-                                    EXP_MESSAGE + getExp(), moveToLearn);
+                            MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, this.enemyPkm, 
+                                    EXP_MESSAGE + getExp(), this.moveToLearn);
                         }
                      }
                 } else {
-                    //nemico attacca, alleato attacca, pokemon nemico sopravvive
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, null);
+                    //enemy pokemon attacks, ally pokemon attacks
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, false, null, null, null);
                 }
             }
         } else {
-            if (isAllyFastest) {
-                //alleato attacca per primo, pkm nemico esausto
-                if (checkLose(trainer.getSquad())) {
-                    player.beatTrainer(trainer);
-                    trainer.defeat();
-                    if (trainer instanceof GymLeader) {
-                        player.addBadge();
-                        if (levelUp) {
-                            MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
-                                    EXP_MESSAGE + getExp() + " - Level up! - " + TRAINER_DEFEAT_MESS + trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, moveToLearn);
-                            this.levelUp = false;
+            if (this.isAllyFastest) {
+                //ally pokemon attacks, enemy pokemon is exhausted
+                if (checkLose(this.trainer.getSquad())) {
+                    this.player.beatTrainer(this.trainer);
+                    this.trainer.defeat();
+                    if (this.trainer instanceof GymLeader) {
+                        this.player.addBadge();
+                        if (this.levelUp) {
+                            MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, true, null, 
+                                    EXP_MESSAGE + getExp() + LVL_UP_MESS + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, this.moveToLearn);
                         } else {
-                            MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
-                                    EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, moveToLearn);
+                            MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, true, null, 
+                                    EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney() + " - " + GYM_LEADER_DEFEAT_MESS, this.moveToLearn);
                         }
                     } else {
-                        if (levelUp) {
-                            MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
-                                    EXP_MESSAGE + getExp() + " - Level up! - " + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
-                            this.levelUp = false;
+                        if (this.levelUp) {
+                            MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, true, null, 
+                                    EXP_MESSAGE + getExp() + LVL_UP_MESS + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney(), this.moveToLearn);
                         } else {
-                            MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, true, null, 
-                                    EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + trainer.getMoney(), moveToLearn);
+                            MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, true, null, 
+                                    EXP_MESSAGE + getExp() + " - " + TRAINER_DEFEAT_MESS + this.trainer.getMoney(), this.moveToLearn);
                         }
                     }
                 } else {
                     trainerChange();
-                    if (levelUp) {
-                        MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, enemyPkm, EXP_MESSAGE + getExp() + " - Level up!", moveToLearn);
-                        this.levelUp = false;
+                    if (this.levelUp) {
+                        MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, false, this.enemyPkm, EXP_MESSAGE + getExp() + LVL_UP_MESS, this.moveToLearn);
                     } else {
-                        MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, enemyPkm, EXP_MESSAGE + getExp(), moveToLearn);
+                        MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, false, this.enemyPkm, EXP_MESSAGE + getExp(), this.moveToLearn);
                     }
                 }
             } else {
-                //nemico attacca per primo, pkm alleato esausto
-                MainController.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null, null);
+                //enemy pokemon attacks, ally pokemon is exhausted
+                MainController.getController().getFightController().resolveAttack(null, null, this.enemyMove, this.enemyEff, this.isAllyFastest, false, null, null, null);
             }
         }
         reset();
@@ -245,19 +241,19 @@ public class FightVsTrainer extends AbstractFight {
      * If method don't find any pokemon, send the first pokemon in the list which can battle.
      */
     protected void trainerChange() {
-        for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
+        for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
             if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
-                    pkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())
+                    pkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getSecondType())
                     || STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
-                            pkm.getPokedexEntry().getSecondType(), allyPkm.getPokedexEntry().getFirstType(), allyPkm.getPokedexEntry().getSecondType())) {
-                enemyPkm = pkm;
+                            pkm.getPokedexEntry().getSecondType(), this.allyPkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getSecondType())) {
+                this.enemyPkm = pkm;
                 break;
             }
         }
-        if (enemyPkm.getCurrentHP() == 0) {
-            for (final PokemonInBattle pkm : trainer.getSquad().getPokemonList()) {
+        if (this.enemyPkm.getCurrentHP() == 0) {
+            for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
                 if (pkm.getCurrentHP() > 0) {
-                    enemyPkm = pkm;
+                    this.enemyPkm = pkm;
                     break;
                 }
             }

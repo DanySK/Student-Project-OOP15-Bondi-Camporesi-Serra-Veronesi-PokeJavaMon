@@ -21,6 +21,7 @@ import model.squad.Squad;
 
 /**
  * Abstract class which must be extended for create a concrete fight class.
+ * It contains some template method.
  * 
  * This class is extended by {@link model.fight.FightVsWildPkm}.
  * This class is extended by {@link model.fight.FightVsTrainer}.
@@ -40,6 +41,10 @@ public abstract class AbstractFight extends BasicFight implements Fight {
      */
     protected static final String EXP_MESSAGE = "Exp gained: ";
     /**
+     * The string to show when an ally pokemon gains a level.
+     */
+    protected static final String LVL_UP_MESS = " - Level up!";
+    /**
      * The list of pokemon that must contains the ally pokemons,
      * which must evolve at the end of fight.
      */
@@ -48,7 +53,6 @@ public abstract class AbstractFight extends BasicFight implements Fight {
      * The value which indicates if the ally if escape from fight.
      */
     protected boolean runValue;
-    protected boolean levelUp = false;
 
     /**
      * A simple constructor for AbstractFight, it just call the superclass constructor
@@ -69,6 +73,11 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         return true;
     }
 
+    /**
+     * This is a template method. It used the method applyRun() specialized by subclasses.
+     * 
+     * @see {@link Fight#runTurn()}
+     */
     @Override
     public void runTurn() throws CannotEscapeFromTrainerException {
         reset();
@@ -82,19 +91,19 @@ public abstract class AbstractFight extends BasicFight implements Fight {
     public void applyChange(final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonIsFightingException {
         if (pkm.getCurrentHP() == 0) {
             throw new PokemonIsExhaustedException();
-        } else if (pkm.equals(allyPkm)) {
+        } else if (pkm.equals(this.allyPkm)) {
             throw new PokemonIsFightingException();
         }
-        allyPkm = pkm;
+        this.allyPkm = pkm;
         int pkmPos = 0;
-        for (final PokemonInBattle p : player.getSquad().getPokemonList()) {
+        for (final PokemonInBattle p : this.player.getSquad().getPokemonList()) {
             if (pkm.equals(p)) {
                 break;
             }
             pkmPos += 1;
         }
-        player.getSquad().switchPokemon(0, pkmPos);
-        allyPkm = pkm;
+        this.player.getSquad().switchPokemon(0, pkmPos);
+        this.allyPkm = pkm;
     }
 
     @Override
@@ -102,14 +111,14 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         reset();
         applyChange(pkm);
         enemyTurn();
-        MainController.getController().getFightController().resolvePokemon(allyPkm, enemyMove, isAllyExhausted);
+        MainController.getController().getFightController().resolvePokemon(this.allyPkm, this.enemyMove, this.isAllyExhausted);
     }
 
     @Override
     public void itemTurn(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException, IllegalStateException {
         reset();
-        player.getInventory().consumeItem(itemToUse);
-        if (applyItem(itemToUse, pkm)) { 
+        this.player.getInventory().consumeItem(itemToUse);
+        if (applyItem(itemToUse, pkm)) {
             if (itemToUse.getType() == ItemType.POKEBALL) {
                 MainController.getController().getFightController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
                 return;
@@ -125,14 +134,14 @@ public abstract class AbstractFight extends BasicFight implements Fight {
 
     @Override
     public List<PokemonInBattle> getPkmsThatMustEvolve() {
-        return pkmsThatMustEvolve;
+        return this.pkmsThatMustEvolve;
     }
 
     @Override
     public void evolvePkms() {
         int hpBeforeEvolution;
         int hpGainedByLvl;
-        for (PokemonInBattle pkm : pkmsThatMustEvolve) {
+        for (PokemonInBattle pkm : this.pkmsThatMustEvolve) {
             hpBeforeEvolution = pkm.getStat(Stat.MAX_HP);
             pkm.evolve();
             hpGainedByLvl = pkm.getStat(Stat.MAX_HP) - hpBeforeEvolution;
@@ -142,7 +151,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
 
     @Override
     public Pokemon getCurrentEnemyPokemon() {
-        return enemyPkm;
+        return this.enemyPkm;
     }
 
     @Override
@@ -160,7 +169,8 @@ public abstract class AbstractFight extends BasicFight implements Fight {
     protected abstract boolean applyRun() throws CannotEscapeFromTrainerException;
 
     /**
-     * Resolve the use of an item.
+     * Resolve the use of an item. This is a template method.
+     * It used the method useBall() specialized by subclasses.
      * 
      * @param itemToUse                         The target {@link model.items.Item}.
      * @param pkm                               The target {@link model.pokemon.Pokemon}(if it is present).
@@ -179,9 +189,9 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         case POKEBALL:
             if (useBall(itemToUse)) {
                 try {
-                    player.getSquad().add(enemyPkm);
+                    this.player.getSquad().add(this.enemyPkm);
                 } catch (SquadFullException e) {
-                    player.getBox().putCapturedPokemon(enemyPkm);
+                    this.player.getBox().putCapturedPokemon(this.enemyPkm);
                 }
                 return true;
             }
@@ -191,7 +201,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
                 throw new PokemonIsExhaustedException();
             }
             final Potion potion = (Potion) itemToUse;
-            potion.effect(player, pkm);
+            potion.effect(this.player, pkm);
         }
         return true;
     }
@@ -203,7 +213,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
      * @return                                  True if enemy {@link model.pokemon.Pokemon} is caught.
      * @throws CannotCaughtTrainerPkmException  If the user fight in a {@link FightVsTrainer}.
      */
-    protected abstract boolean useBall(Item itemToUse) throws CannotCaughtTrainerPkmException;
+    protected abstract boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException;
 
     /**
      * Calculate the exp gained by defeating a pokemon.

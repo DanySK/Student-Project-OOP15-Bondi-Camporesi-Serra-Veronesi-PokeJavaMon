@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Abstract class which provides the basic method for perform operation in fight classes 
- * that implements the interface {@link Fight}.
+ * Abstract class which provides the basic methods for perform the operations declared in
+ * {@link Fight}. It contains some template method.
  * 
  * This class is extended by {@link AbstractFight}.
  */
@@ -98,6 +98,10 @@ public abstract class BasicFight {
      */
     protected Move enemyMove;
     /**
+     * The value which indicates if the ally pokemon gain a level.
+     */
+    protected boolean levelUp = false;
+    /**
      * The map which contains all boost of all pokemon in the player squad.
      */
     protected Map<PokemonInBattle, Map<Stat, Double>> allyPkmsBoosts = new HashMap<>();
@@ -111,9 +115,9 @@ public abstract class BasicFight {
      * A simple constructor for BasicFight, it just initialize some ally parameters.
      */
     protected BasicFight() {
-        moveToLearn = Move.NULLMOVE;
-        allyPkm = player.getSquad().getPokemonList().get(FIRST_ELEM);
-        for (final PokemonInBattle pkm : player.getSquad().getPokemonList()) {
+        this.moveToLearn = Move.NULLMOVE;
+        this.allyPkm = this.player.getSquad().getPokemonList().get(FIRST_ELEM);
+        for (final PokemonInBattle pkm : this.player.getSquad().getPokemonList()) {
             this.allyPkmsBoosts.put(pkm, createBoostsMap());
         }
     }
@@ -135,10 +139,11 @@ public abstract class BasicFight {
      * Reset the previous battle turn. 
      */
     protected void reset() {
-        isAllyExhausted = false;
-        isEnemyExhausted = false;
-        allyEff = Effectiveness.NORMAL;
-        enemyEff = Effectiveness.NORMAL;
+        this.isAllyExhausted = false;
+        this.isEnemyExhausted = false;
+        this.allyEff = Effectiveness.NORMAL;
+        this.enemyEff = Effectiveness.NORMAL;
+        this.levelUp = false;
     }
 
     
@@ -152,10 +157,11 @@ public abstract class BasicFight {
     }
 
     /**
-     * Resolve an enemy turn using a move.
+     * Resolve an enemy turn using a move. This is a template method.
+     * It used the method calculationEnemyMove() specialized by subclasses.
      */
     public void enemyTurn() {
-        enemyMove = calculationEnemyMove();
+        this.enemyMove = calculationEnemyMove();
         applyMove(enemyMove, enemyPkm, allyPkm);
     }
 
@@ -182,10 +188,10 @@ public abstract class BasicFight {
      * @param pkm       The {@link model.pokemon.Pokemon} that must be checked.
      */
     public void checkAndSetIsExhausted(final PokemonInBattle pkm) {
-        if (pkm.equals(allyPkm)) {
-            isAllyExhausted = pkm.getCurrentHP() == 0;
+        if (pkm.equals(this.allyPkm)) {
+            this.isAllyExhausted = pkm.getCurrentHP() == 0;
         } else {
-            isEnemyExhausted = pkm.getCurrentHP() == 0;
+            this.isEnemyExhausted = pkm.getCurrentHP() == 0;
         }
     }
 
@@ -219,7 +225,7 @@ public abstract class BasicFight {
      * @return          The relative battle stat value.
      */
     public double getAllyBoost(final Stat stat) {
-        return allyPkmsBoosts.get(allyPkm).get(stat);
+        return this.allyPkmsBoosts.get(this.allyPkm).get(stat);
     }
 
     /**
@@ -229,11 +235,12 @@ public abstract class BasicFight {
      * @param d         The new battle stat value to set.
      */
     public void setAllyBoost(final Stat stat, final Double d) {
-        allyPkmsBoosts.get(allyPkm).replace(stat, d);
+        this.allyPkmsBoosts.get(this.allyPkm).replace(stat, d);
     }
 
     /**
-     * Resolve a move which target a boost stat.
+     * Resolve a move which target a boost stat. This is a template method.
+     * It used the methods setEnemyBoost() and getEnemyBoost() specialized by subclasses.
      * 
      * @param striker   The {@link model.pokemon.Pokemon} which use the move.
      * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
@@ -243,19 +250,19 @@ public abstract class BasicFight {
             final Move move) {
         double newBoostValue;
         double moveValue = move.getValue() * BOOST_COEFF;
-        if (allyPkm.equals(striker)) {
+        if (this.allyPkm.equals(striker)) {
             if (move.isOnEnemy()) {
                 newBoostValue = getEnemyBoost(move.getStat()) - moveValue;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
-                    allyEff = Effectiveness.CANNOTDECREASE;
+                    this.allyEff = Effectiveness.CANNOTDECREASE;
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             } else {
                 newBoostValue = getAllyBoost(move.getStat()) + (moveValue * BOOST_COEFF_INCR);
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
-                    allyEff = Effectiveness.CANNOTINCREASE;
+                    this.allyEff = Effectiveness.CANNOTINCREASE;
                 }
                 setAllyBoost(move.getStat(), newBoostValue);
             }
@@ -264,14 +271,14 @@ public abstract class BasicFight {
                 newBoostValue = getAllyBoost(move.getStat()) - moveValue;
                 if (newBoostValue < MIN_BOOST_VALUE) {
                     newBoostValue = MIN_BOOST_VALUE;
-                    enemyEff = Effectiveness.CANNOTDECREASE;
+                    this.enemyEff = Effectiveness.CANNOTDECREASE;
                 }
                 setAllyBoost(move.getStat(), newBoostValue);
             } else {
                 newBoostValue = getEnemyBoost(move.getStat()) + moveValue;
                 if (newBoostValue > MAX_BOOST_VALUE) {
                     newBoostValue = MAX_BOOST_VALUE;
-                    enemyEff = Effectiveness.CANNOTINCREASE;
+                    this.enemyEff = Effectiveness.CANNOTINCREASE;
                 }
                 setEnemyBoost(move.getStat(), newBoostValue);
             }
@@ -279,7 +286,8 @@ public abstract class BasicFight {
     }
 
     /**
-     * Resolve a move which do damage.
+     * Resolve a move which do damage. This is a template method.
+     * It used the methods getEnemyBoost() specialized by subclasses.
      * 
      * @param striker   The {@link model.pokemon.Pokemon} which use the move.
      * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
@@ -290,7 +298,7 @@ public abstract class BasicFight {
         isEffective(striker, stricken, move);
         final double atkBoost;
         final double defBoost;
-        if (striker.equals(allyPkm)) {
+        if (striker.equals(this.allyPkm)) {
             atkBoost = getAllyBoost(Stat.ATK);
             defBoost = getEnemyBoost(Stat.DEF);
         } else {
@@ -316,35 +324,35 @@ public abstract class BasicFight {
         final double effectiveValue = WeaknessTable.getWeaknessTable().getMultiplierAttack(move.getType(), stricken.getPokedexEntry().getFirstType(),
                 stricken.getPokedexEntry().getSecondType());
         if (effectiveValue >= SUPER_EFFECTIVE) {
-            if (striker.equals(allyPkm)) {
-                allyEff = Effectiveness.SUPEREFFECTIVE;
+            if (striker.equals(this.allyPkm)) {
+                this.allyEff = Effectiveness.SUPEREFFECTIVE;
             } else {
-                enemyEff = Effectiveness.SUPEREFFECTIVE;
+                this.enemyEff = Effectiveness.SUPEREFFECTIVE;
             }
         } else if (effectiveValue <= IMMUNE) {
-            if (striker.equals(allyPkm)) {
-                allyEff = Effectiveness.IMMUNE;
+            if (striker.equals(this.allyPkm)) {
+                this.allyEff = Effectiveness.IMMUNE;
             } else {
                 enemyEff = Effectiveness.IMMUNE;
             }
         } else if (effectiveValue <= LESS_EFFECTIVE) {
-            if (striker.equals(allyPkm)) {
-                allyEff = Effectiveness.LESSEFFECTIVE;
+            if (striker.equals(this.allyPkm)) {
+                this.allyEff = Effectiveness.LESSEFFECTIVE;
             } else {
                 enemyEff = Effectiveness.LESSEFFECTIVE;
             }
         } else {
-            if (striker.equals(allyPkm)) {
-                allyEff = Effectiveness.NORMAL;
+            if (striker.equals(this.allyPkm)) {
+                this.allyEff = Effectiveness.NORMAL;
             } else {
-                enemyEff = Effectiveness.NORMAL;
+                this.enemyEff = Effectiveness.NORMAL;
             }
         }
         if (move.equals(Move.SPLASH)) {
-            if (striker.equals(allyPkm)) {
-                allyEff = Effectiveness.NONE;
+            if (striker.equals(this.allyPkm)) {
+                this.allyEff = Effectiveness.NONE;
             } else {
-                enemyEff = Effectiveness.NONE;
+                this.enemyEff = Effectiveness.NONE;
             }
         }
         return effectiveValue;
@@ -366,7 +374,8 @@ public abstract class BasicFight {
     }
 
     /**
-     * Calculate the damage done.
+     * Calculate the damage done. This is a template method.
+     * It used the methods getEnemyMove() specialized by subclasses.
      * 
      * @param striker   The {@link model.pokemon.Pokemon} which use the move.
      * @param stricken  The {@link model.pokemon.Pokemon} which is stricken by the move.
@@ -391,8 +400,8 @@ public abstract class BasicFight {
      * @return  The boolean variable which indicate what pokemon is faster.
      */
     public boolean setIsAllyFastest() {
-        return isAllyFastest = (allyPkm.getStat(Stat.SPD) * getAllyBoost(Stat.SPD))
-                >= (enemyPkm.getStat(Stat.SPD) * getEnemyBoost(Stat.SPD));
+        return this.isAllyFastest = (this.allyPkm.getStat(Stat.SPD) * getAllyBoost(Stat.SPD))
+                >= (this.enemyPkm.getStat(Stat.SPD) * getEnemyBoost(Stat.SPD));
     }
 
     /**
@@ -403,12 +412,12 @@ public abstract class BasicFight {
      * @return          True, if ally {@link model.pokemon.Pokemon} level up.
      */
     public boolean giveExpAndCheckLvlUp(final int exp) {
-        if (allyPkm.getNecessaryExp() <= exp) {
-            allyPkm.setExp(exp - allyPkm.getNecessaryExp());
-            allyPkm.levelUp();
+        if (this.allyPkm.getNecessaryExp() <= exp) {
+            this.allyPkm.setExp(exp - this.allyPkm.getNecessaryExp());
+            this.allyPkm.levelUp();
             return true;
         }
-        allyPkm.setExp(allyPkm.getStat(Stat.EXP) + exp);
+        this.allyPkm.setExp(this.allyPkm.getStat(Stat.EXP) + exp);
         return false;
     }
 
@@ -419,9 +428,8 @@ public abstract class BasicFight {
      * @see {@link AbstractFight#getExp()}
      */
     protected double expBaseCalculation() {
-        //TODO testare se è bilanciata la quantità di baseExp
         double baseExp;
-        switch(enemyPkm.getPokedexEntry().getRarity()){
+        switch(this.enemyPkm.getPokedexEntry().getRarity()){
         case COMMON:
             baseExp = 100;
             break;
@@ -446,7 +454,7 @@ public abstract class BasicFight {
         default:
             baseExp = 0;
         }
-        baseExp = baseExp * enemyPkm.getStat(Stat.LVL);
+        baseExp = baseExp * this.enemyPkm.getStat(Stat.LVL);
         return baseExp;
     }
 

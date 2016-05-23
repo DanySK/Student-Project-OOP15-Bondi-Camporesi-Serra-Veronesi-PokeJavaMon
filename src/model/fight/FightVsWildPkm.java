@@ -33,7 +33,7 @@ public class FightVsWildPkm extends AbstractFight {
      */
     protected FightVsWildPkm(final Pokemon pkm) {
         super();
-        enemyPkm = (PokemonInBattle) pkm;
+        this.enemyPkm = (PokemonInBattle) pkm;
     }
 
     /**
@@ -45,7 +45,7 @@ public class FightVsWildPkm extends AbstractFight {
     protected Move calculationEnemyMove() {
         final Random numberMove = new Random();
         final List<Move> moves = new ArrayList<>();
-        for (final Move m : enemyPkm.getCurrentMoves()) {
+        for (final Move m : this.enemyPkm.getCurrentMoves()) {
             if (m != Move.NULLMOVE) {
                 moves.add(m);
             }
@@ -56,19 +56,19 @@ public class FightVsWildPkm extends AbstractFight {
 
     @Override
     public double getEnemyBoost(final Stat stat) {
-        return enemyPkmBoosts.get(stat);
+        return this.enemyPkmBoosts.get(stat);
     }
 
     @Override
     public void setEnemyBoost(final Stat stat, final Double d) {
-        enemyPkmBoosts.replace(stat, d);
+        this.enemyPkmBoosts.replace(stat, d);
     }
 
     @Override
     public boolean applyRun() throws CannotEscapeFromTrainerException {
         final Random escapeRoll = new Random();
-        final int escapeChance = (32 * allyPkm.getStat(Stat.SPD)) / (enemyPkm.getStat(Stat.SPD) / 4) + 30;
-        return runValue = escapeChance > escapeRoll.nextInt(RUN_PROB_COEFF);
+        final int escapeChance = (32 * this.allyPkm.getStat(Stat.SPD)) / (this.enemyPkm.getStat(Stat.SPD) / 4) + 30;
+        return this.runValue = escapeChance > escapeRoll.nextInt(RUN_PROB_COEFF);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class FightVsWildPkm extends AbstractFight {
     @Override
     protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
         final Pokeball ball = (Pokeball) itemToUse;
-        return ball.isCaptured(enemyPkm);
+        return ball.isCaptured(this.enemyPkm);
     }
 
     @Override
@@ -91,30 +91,30 @@ public class FightVsWildPkm extends AbstractFight {
         while (attacksDone < ATTACKS_TO_DO && !isEnd) {
             if (turnOrder) {
                 allyTurn(move);
-                if (isEnemyExhausted) {
-                    final int hpBeforeLvUp = allyPkm.getStat(Stat.MAX_HP);
+                if (this.isEnemyExhausted) {
+                    final int hpBeforeLvUp = this.allyPkm.getStat(Stat.MAX_HP);
                     if (giveExpAndCheckLvlUp(getExp())) {
                         this.levelUp = true;
-                        int hpAfterLvUp = allyPkm.getStat(Stat.MAX_HP);
+                        int hpAfterLvUp = this.allyPkm.getStat(Stat.MAX_HP);
                         hpAfterLvUp = hpAfterLvUp - hpBeforeLvUp;
-                        allyPkm.heal(hpAfterLvUp);
-                        if (allyPkm.getPokedexEntry().getMoveset().containsKey(allyPkm.getStat(Stat.LVL))) {
-                            moveToLearn = allyPkm.getPokedexEntry().getMoveset().get(allyPkm.getStat(Stat.LVL));
+                        this.allyPkm.heal(hpAfterLvUp);
+                        if (this.allyPkm.getPokedexEntry().getMoveset().containsKey(this.allyPkm.getStat(Stat.LVL))) {
+                            this.moveToLearn = this.allyPkm.getPokedexEntry().getMoveset().get(this.allyPkm.getStat(Stat.LVL));
                         }
                         else {
-                            moveToLearn = Move.NULLMOVE;
+                            this.moveToLearn = Move.NULLMOVE;
                         }
-                        if (allyPkm.checkIfEvolves()) {
-                            pkmsThatMustEvolve.add(allyPkm);
+                        if (this.allyPkm.checkIfEvolves()) {
+                            this.pkmsThatMustEvolve.add(this.allyPkm);
                         }
                     } else {
-                        moveToLearn = Move.NULLMOVE;
+                        this.moveToLearn = Move.NULLMOVE;
                     }
                     isEnd = true;
                 }
             } else {
                 enemyTurn();
-                if (isAllyExhausted) {
+                if (this.isAllyExhausted) {
                     isEnd = true;
                 }
             }
@@ -122,40 +122,38 @@ public class FightVsWildPkm extends AbstractFight {
             attacksDone += 1;
         }
         if (attacksDone == ATTACKS_TO_DO) {
-            if (isAllyFastest) {
-                if (isAllyExhausted) {
-                    //alleato attacca, nemico attacca, pokemon alleato esausto
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, null, moveToLearn);
+            if (this.isAllyFastest) {
+                if (this.isAllyExhausted) {
+                    //ally pokemon attacks, enemy pokemon attacks, ally pokemon is exhausted
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, null, this.moveToLearn);
                 } else {
-                    //alleato attacca, nemico attacca, pokemon alleato sopravvive
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
+                    //ally pokemon attacks, enemy pokemon attacks
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, false, null, null, this.moveToLearn);
                 }
             } else {
-                if (isEnemyExhausted) {
-                    //nemico attacca, alleato attacca, pokemon nemico esausto
-                    if (levelUp) {
-                        MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp() + " - Level up!", moveToLearn);
-                        this.levelUp = false;
+                if (this.isEnemyExhausted) {
+                    //enemy pokemon attacks, ally pokemon attacks, enemy pokemon is exhausted
+                    if (this.levelUp) {
+                        MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, EXP_MESSAGE + getExp() + LVL_UP_MESS, this.moveToLearn);
                     } else {
-                        MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, true, null, EXP_MESSAGE + getExp(), moveToLearn);
+                        MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, true, null, EXP_MESSAGE + getExp(), this.moveToLearn);
                     }
                 } else {
-                    //nemico attacca, alleato attacca, pokemon nemico sopravvive
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
+                    //enemy pokemon attacks, ally pokemon attacks
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, this.enemyMove, this.enemyEff, this.isAllyFastest, false, null, null, this.moveToLearn);
                 }
             }
         } else {
-            if (isAllyFastest) {
-                //alleato attacca per primo, pkm nemico esausto
-                if (levelUp) {
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp() + " - Level up!", moveToLearn);
-                    this.levelUp = false;
+            if (this.isAllyFastest) {
+                //ally pokemon attacks, enemy pokemon is exhausted
+                if (this.levelUp) {
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, false, null, EXP_MESSAGE + getExp() + LVL_UP_MESS, this.moveToLearn);
                 } else {
-                    MainController.getController().getFightController().resolveAttack(move, allyEff, null, null, isAllyFastest, false, null, EXP_MESSAGE + getExp(), moveToLearn);
+                    MainController.getController().getFightController().resolveAttack(move, this.allyEff, null, null, this.isAllyFastest, false, null, EXP_MESSAGE + getExp(), this.moveToLearn);
                 }
             } else {
-                //nemico attaccata per primo, pkm alleato esausto
-                MainController.getController().getFightController().resolveAttack(null, null, enemyMove, enemyEff, isAllyFastest, false, null, null, moveToLearn);
+                //enemy pokemon attacks, ally pokemon is exhausted
+                MainController.getController().getFightController().resolveAttack(null, null, this.enemyMove, this.enemyEff, this.isAllyFastest, false, null, null, this.moveToLearn);
             }
         }
     }
