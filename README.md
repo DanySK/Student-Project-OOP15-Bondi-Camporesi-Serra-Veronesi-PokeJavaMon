@@ -23,6 +23,9 @@ Michael Camporesi: Controller
 # CONTACTS #
 
 Christian Serra: [christian.serra2@studio.unibo.it](Link URL)
+
 Daniel Veronesi: [daniel.veronesi@studio.unibo.it](Link URL)
+
 Davide Bondi: [davide.bondi3@studio.unibo.it](Link URL)
+
 Michael Camporesi: [michael.camporesi@studio.unibo.it](Link URL)
