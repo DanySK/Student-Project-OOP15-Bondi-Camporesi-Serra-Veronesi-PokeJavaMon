@@ -30,7 +30,7 @@ For any further information about the licence of this game see http://www.gnu.or
 
 # CONTACTS #
 
-**Christian Serra**: [https://bitbucket.org/CastFx/](Link URL)
+**Christian Serra**: [https://bitbucket.org/CastFx/](https://bitbucket.org/CastFx/)
 
 **Daniel Veronesi**: [https://bitbucket.org/DanielVero/](Link URL)
 
