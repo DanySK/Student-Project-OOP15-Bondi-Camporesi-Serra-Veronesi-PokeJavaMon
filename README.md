@@ -30,10 +30,10 @@ For any further information about the licence of this game see http://www.gnu.or
 
 # CONTACTS #
 
-**Christian Serra**: [https://bitbucket.org/CastFx/](https://bitbucket.org/CastFx/)
+**Christian Serra**: [christian.serra2@studio.unibo.it](https://bitbucket.org/CastFx/)
 
-**Daniel Veronesi**: [https://bitbucket.org/DanielVero/](Link URL)
+**Daniel Veronesi**: [daniel.veronesi@studio.unibo.it](https://bitbucket.org/DanielVero/)
 
-**Davide Bondi**: [https://bitbucket.org/devidvd/](Link URL)
+**Davide Bondi**: [davide.bondi3@studio.unibo.it](https://bitbucket.org/devidvd/)
 
-**Michael Camporesi**: [https://bitbucket.org/Sfigaman/](Link URL)
+**Michael Camporesi**: [michael.camporesi@studio.unibo.it](https://bitbucket.org/Sfigaman/)
