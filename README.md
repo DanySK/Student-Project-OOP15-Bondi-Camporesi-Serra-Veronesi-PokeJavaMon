@@ -1,5 +1,9 @@
 # README #
 
+
+```
+#!java
+
 # LICENCE #
 
 PokeJavaMon Copyright (C) 2016
@@ -12,6 +16,8 @@ PokeJavaMon is distributed as a University project, and it is NOT INTENDED to be
 See the GNU General Public License for more details.
 
 For any further information about the licence of this game see http://www.gnu.org/licenses/.
+```
+
 
 # CONTRIBUTIONS #
 
