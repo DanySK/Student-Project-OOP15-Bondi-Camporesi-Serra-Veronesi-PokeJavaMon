@@ -264,7 +264,7 @@ public final class MainController implements Controller {
 
     @Override
     public void withdrawPokemon(final Pokemon p) throws PokemonNotFoundException, SquadFullException {
-        if (modelNotInitialized()) {
+        if (!modelNotInitialized()) {
             this.model.getPlayer().getBox().withdrawPokemon(p, this.model.getPlayer().getSquad());
         }
     }
@@ -276,7 +276,7 @@ public final class MainController implements Controller {
     
     @Override
     public void buyItem(final Item i) throws NotEnoughMoneyException {
-        if (modelNotInitialized()) {
+        if (!modelNotInitialized()) {
             this.model.getPlayer().buyItem(i);
         }
     }
