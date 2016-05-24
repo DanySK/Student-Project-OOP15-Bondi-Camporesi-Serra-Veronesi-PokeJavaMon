@@ -11,21 +11,24 @@ the Free Software Foundation.
 PokeJavaMon is distributed as a University project, and it is NOT INTENDED to be sold.
 See the GNU General Public License for more details.
 
-For any further information about the licence of this game see http://www.gnu.org/licenses/
+For any further information about the licence of this game see http://www.gnu.org/licenses/.
 
 # CONTRIBUTIONS #
 
-Christian Serra: Model
-Daniel Veronesi: View and Testing
-Davide Bondi: Fight and Tests
-Michael Camporesi: Controller
+**Christian Serra**: Model
+
+**Daniel Veronesi**: View and Testing
+
+**Davide Bondi**: Fight and Tests
+
+**Michael Camporesi**: Controller
 
 # CONTACTS #
 
-Christian Serra: [christian.serra2@studio.unibo.it](Link URL)
+**Christian Serra**: [christian.serra2@studio.unibo.it](Link URL)
 
-Daniel Veronesi: [daniel.veronesi@studio.unibo.it](Link URL)
+**Daniel Veronesi**: [daniel.veronesi@studio.unibo.it](Link URL)
 
-Davide Bondi: [davide.bondi3@studio.unibo.it](Link URL)
+**Davide Bondi**: [davide.bondi3@studio.unibo.it](Link URL)
 
-Michael Camporesi: [michael.camporesi@studio.unibo.it](Link URL)
+**Michael Camporesi**: [michael.camporesi@studio.unibo.it](Link URL)
