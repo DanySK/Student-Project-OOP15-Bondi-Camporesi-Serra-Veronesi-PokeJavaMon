@@ -48,7 +48,8 @@ public class MainViewController implements ViewController {
     @Override
     public void secondMenu() {
         MainController.getController().updateStatus(State.SECOND_MENU);
-        new SecondMenu();
+        View.getView().addNew(new SecondMenu());
+        View.getView().showCurrent();
     }
     
     @Override
