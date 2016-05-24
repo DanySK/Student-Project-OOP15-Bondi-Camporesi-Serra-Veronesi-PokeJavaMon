@@ -8,7 +8,8 @@
 
 PokeJavaMon Copyright (C) 2016
 
-PokeJavaMon is a free software: you can redistribute it and/or modify it under the terms of the GNU General Public License, as published by the Free Software Foundation.
+PokeJavaMon is a free software: you can redistribute it and/or modify it under the terms of 
+the GNU General Public License, as published by the Free Software Foundation.
 
 PokeJavaMon is distributed as a University project, and it is NOT INTENDED to be sold.
 See the GNU General Public License for more details.
