@@ -203,6 +203,7 @@ public class BagMenu extends JWindow implements MyFrame {
             }       
             this.panel.setLayout(new GridLayout(name1.size(), cols));
             this.setSize(600,60 * name1.size());
+            this.setLocationRelativeTo(null);
             this.setVisible(true);
         } else {
             View.getView().disposeCurrent();
@@ -224,7 +225,7 @@ public class BagMenu extends JWindow implements MyFrame {
             }
         }  
     }
-
+    
     @Override
     public void disposeFrame() {
         this.dispose();

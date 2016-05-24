@@ -167,6 +167,7 @@ public class Menu extends JWindow implements MyFrame {
             }
         });     
         this.add(Box.createVerticalGlue());
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

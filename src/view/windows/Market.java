@@ -147,6 +147,7 @@ public class Market extends JWindow implements MyFrame {
         this.panel.setLayout(new GridLayout(this.Name1.size(), cols));
         this.panel.setBorder(new LineBorder(Color.GRAY, 4));
         this.setSize(100 * Name1.size(), 600);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

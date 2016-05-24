@@ -123,6 +123,7 @@ public class Statistics extends JWindow implements MyFrame {
 		//è possibile aggiungere anche exp corrente
 		this.panel.add(expValue);
 		this.add(new statsPanel(pk));
+		this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     

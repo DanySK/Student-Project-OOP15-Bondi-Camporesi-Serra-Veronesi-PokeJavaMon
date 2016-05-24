@@ -51,7 +51,6 @@ public class SecondMenu {
 	this.insertName.setBounds(130, 41, 190, 35);
 	this.f.getContentPane().add(this.insertName);
 	nickname.setBounds(102, 106, 190, 22);
-	this.f.setLocationRelativeTo(null);
 	this.f.getContentPane().add(nickname);
 	nickname.setColumns(40);    	
 	this.firstStarter = new JButton("Bulbasaur");
@@ -70,6 +69,7 @@ public class SecondMenu {
 	this.addListener(firstStarter, Pokedex.BULBASAUR);
 	this.addListener(secondStarter, Pokedex.CHARMANDER);
 	this.addListener(thirdStarter, Pokedex.SQUIRTLE);
+	this.f.setLocationRelativeTo(null);
 	this.f.setVisible(true);
     }
     

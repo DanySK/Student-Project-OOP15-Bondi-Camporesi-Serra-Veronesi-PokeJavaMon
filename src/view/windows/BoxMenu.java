@@ -169,6 +169,7 @@ public class BoxMenu extends JWindow implements MyFrame {
         } else {
             this.setSize(800,100 * this.names.size());
         }
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

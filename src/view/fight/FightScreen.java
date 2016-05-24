@@ -67,11 +67,13 @@ public class FightScreen extends JWindow implements MyFrame {
         @Override
         public void hideFrame() {
             this.setVisible(false);
+            this.setEnabled(false);
         }
 
         @Override
         public void resumeFrame() {
             this.repaintFrame();
+            this.setEnabled(true);
             this.setVisible(true);
         }
 }

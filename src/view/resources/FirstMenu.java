@@ -70,7 +70,6 @@ public class FirstMenu extends JFrame implements MyFrame {
 
 	@Override
 	public void showFrame() {
-            this.setLocationRelativeTo(null);
 	    try {
 		    this.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
 		} catch (Exception e) {
@@ -86,8 +85,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setContentPane(contentPane);
 		final SpringLayout sl_contentPane = new SpringLayout();
-		contentPane.setLayout(sl_contentPane);
-		
+		contentPane.setLayout(sl_contentPane);		
 		this.newGame = new JButton("New Game");
 		this.newGame.setIcon(new ImageIcon(FirstMenu.class.getResource("/gui/Pokeball.png")));
 		sl_contentPane.putConstraint(SpringLayout.EAST, this.newGame, 140, SpringLayout.WEST, contentPane);
@@ -105,8 +103,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 		this.newGame.setFont(new Font("Verdana", Font.PLAIN, 14));
 		sl_contentPane.putConstraint(SpringLayout.NORTH, this.newGame, 100, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, this.newGame, 10, SpringLayout.WEST, contentPane);
-		this.contentPane.add(this.newGame);
-		
+		this.contentPane.add(this.newGame);		
 		this.continueGame = new JButton("Continue");
 		sl_contentPane.putConstraint(SpringLayout.NORTH, this.continueGame, 100, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, this.continueGame, -140, SpringLayout.EAST, contentPane);
@@ -128,8 +125,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 		if (!MainController.getController().saveExists()) {
             this.continueGame.setEnabled(false);
         }
-		this.contentPane.add(this.continueGame);
-		
+		this.contentPane.add(this.continueGame);		
 		this.credits = new JButton("Credits");
 		sl_contentPane.putConstraint(SpringLayout.WEST, this.credits, 80, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, this.credits, 94, SpringLayout.SOUTH, this.newGame);
@@ -148,8 +144,7 @@ public class FirstMenu extends JFrame implements MyFrame {
             	View.getView().showCurrent();
             }     
         });
-		this.contentPane.add(this.credits);
-		
+		this.contentPane.add(this.credits);	
 		this.howToPlay = new JButton("How to Play");
 		sl_contentPane.putConstraint(SpringLayout.NORTH, this.credits, 0, SpringLayout.NORTH, this.howToPlay);
 		sl_contentPane.putConstraint(SpringLayout.EAST, this.credits, -13, SpringLayout.WEST, this.howToPlay);
@@ -168,8 +163,7 @@ public class FirstMenu extends JFrame implements MyFrame {
             	View.getView().showCurrent();
             }     
         });
-		this.contentPane.add(this.howToPlay);
-		
+		this.contentPane.add(this.howToPlay);	
 		this.welcomeLabel = new JLabel("Welcome to PokeJava!");
 		this.welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.welcomeLabel.setFocusable(false);
@@ -178,6 +172,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 		sl_contentPane.putConstraint(SpringLayout.WEST, this.welcomeLabel, 0, SpringLayout.WEST, this.credits);
 		this.welcomeLabel.setFont(new Font("Verdana", Font.PLAIN, 24));
 		this.contentPane.add(this.welcomeLabel);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
 
