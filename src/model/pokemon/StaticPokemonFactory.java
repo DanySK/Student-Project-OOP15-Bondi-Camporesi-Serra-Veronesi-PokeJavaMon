@@ -50,7 +50,7 @@ public final class StaticPokemonFactory {
             moveset[i] = Move.NULLMOVE;
         }
         for (final Move m : moveset) {
-        	if (!pokemonID.getMoveset().containsValue(m)) {
+        	if (m!= Move.NULLMOVE && !pokemonID.getMoveset().containsValue(m)) {
         		throw new IllegalArgumentException("Move " + m + " is not present in " + pokemonID + " moveset");
         	}
         }
