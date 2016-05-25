@@ -35,7 +35,7 @@ public class WeaknessTable {
         }
     }
 	
-    /**
+    /*
      * Rows are attacking Types, Columns are defending types
      */
     private double[][] table;
@@ -82,10 +82,13 @@ public class WeaknessTable {
      * <i>GRASS</i> vs <i>GROUND</i> is <b>2x</b> and <i>GRASS</i> vs <i>WATER</i> is <b>2x</b>
      * In the same way a <i>GROUND</i> {@link Move} against a {@link Pokemon} with <i>FIRE</i> and <i>FLYING</i> types will do <b>0x</b> damage
      * because <i>FLYING</i> is immune to <i>GROUND</i> and even if <i>GROUND</i> is super-effective against <i>FIRE</i> the {@link Move} will do <b>0</b> damage.
-     * @param move 			attacking {@link Move}
-     * @param enemyType1	defending first {@link PokemonType}
-     * @param enemyType2 	defending second {@link PokemonType}, can be {@link PokemonType}.NONE
-     * @return				damage multiplier 
+     * @param move 			
+     * 			attacking {@link Move}
+     * @param enemyType1	
+     * 			defending first {@link PokemonType}
+     * @param enemyType2 	
+     * 			defending second {@link PokemonType}, can be {@link PokemonType}.NONE
+     * @return	damage multiplier 
      * @see	PokemonType
      * @see Pokemon
      */

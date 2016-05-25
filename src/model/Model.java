@@ -85,7 +85,7 @@ public class Model implements ModelInterface {
         }
         this.map.initTrainers(idTrainer_isDefeated);
         this.map.initGymLeaders(badges);
-        this.player.getBox().setPokemons(box);
+        this.player.getBox().initializePokemons(box);
         this.player.getInventory().initializeInventory(potions, boosts, pokeballs);
         this.map.setDeletedEncounterTiles(deletedEncounterTiles);
     }

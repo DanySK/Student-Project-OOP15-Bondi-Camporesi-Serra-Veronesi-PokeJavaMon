@@ -32,40 +32,46 @@ public interface Squad {
     
     /**
      * Removes a certain {@link Pokemon} from the {@link Squad}, if it is not present it does nothing
-     * If it is the only {@link Pokemon} left it throws a {@link OnlyOnePokemonInSquadException}
-     * @param pkmn the {@link Pokemon} to be removed
-     * @throws OnlyOnePokemonInSquadException
+     * @param pkmn 
+     * 			the {@link Pokemon} to be removed
+     * @throws OnlyOnePokemonInSquadException 
+     * 			if it is the only {@link Pokemon} left
      */
     public void remove(final Pokemon pkmn) throws OnlyOnePokemonInSquadException;
     
     /**
      * Adds a {@link Pokemon} to the squad
-     * If the {@link Squad} is already full it throws a {@link SquadFullException}
-     * @param pkmn {@link Pokemon} to be added
-     * @throws SquadFullException
+     * @param pkmn 
+     * 			{@link Pokemon} to be added
+     * @throws SquadFullException 
+     * 			if the {@link Squad} is already full
      */
     public void add(final Pokemon pkmn) throws SquadFullException;
     
     /**
      * Checks if a certain {@link Pokemon} is present in the {@link Squad}
-     * @param pkmn {@link Pokemon} to be checked
+     * @param pkmn 
+     * 			{@link Pokemon} to be checked
      * @return true if there is, false otherwise
      */
     public boolean contains(final Pokemon pkmn);
 
     /**
      * Switches the order of two {@link Pokemon} given the positions of those two.
-     * Throws IndexOutOfBoundsException if an index not in the range of [0-squadSize-1]
-     * @param index1	index of the first {@link Pokemon} to be swapped
-     * @param index2	index of the second {@link Pokemon} to be swapped
-     * @throws IndexOutOfBoundsException
+     * @param index1	
+     * 			index of the first {@link Pokemon} to be swapped
+     * @param index2	
+     * 			index of the second {@link Pokemon} to be swapped
+     * @throws IndexOutOfBoundsException 
+     * 			if an index not in the range of [0-squadSize-1]
      */
     public void switchPokemon(final int index1, final int index2) throws IndexOutOfBoundsException;
 
     /**
      * Heals all the {@link Pokemon} in {@link Squad} to max HP.
      * Takes a {@link PokeMap} as argument to verify that the player is in a PokemonCenter Zone
-     * @param pm {@link PokeMap} 
+     * @param pm 
+     * 			{@link PokeMap} 
      */
     public void healAllPokemon(final PokeMap pm);
     

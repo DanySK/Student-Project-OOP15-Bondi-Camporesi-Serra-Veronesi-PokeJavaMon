@@ -9,7 +9,6 @@ import controller.MainController;
 import exceptions.SquadFullException;
 import model.items.Potion;
 import model.items.Pokeball;
-import model.player.BoxImpl;
 import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Pokedex;
@@ -37,7 +36,7 @@ public class SaveTest {
         List<Pokemon> box = new ArrayList<Pokemon>();
         box.add(StaticPokemonFactory.createPokemon(Pokedex.CHARIZARD, 30));
         box.add(StaticPokemonFactory.createPokemon(Pokedex.VENUSAUR, 30));
-        BoxImpl.getBox().setPokemons(box);
+        PlayerImpl.getPlayer().getBox().initializePokemons(box);
         MainController.getController().save();
     }
 }

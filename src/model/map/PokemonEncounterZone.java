@@ -53,8 +53,7 @@ public class PokemonEncounterZone extends AbstractZone {
         }
         return false;
     }
-    
-    //TODO: Need testing
+
     public PokemonInBattle getPokemonEncounter() {
         if (!encountered) {
             throw new IllegalStateException("Cannot encounter Pokemon if the value is false");

@@ -7,14 +7,15 @@ import model.pokemon.PokemonInBattle;
 
 public abstract class AbstractItem implements Item {
 
-    protected int price;
-    protected Item.ItemType type;
-    protected boolean isOnEnemy;
+    protected final int price;
+    protected final Item.ItemType type;
+    protected final boolean isOnEnemy;
     
     
     public AbstractItem(final int price, final Item.ItemType type, final boolean isOnEnemy) {
         this.price = price;
         this.type = type;
+        this.isOnEnemy = isOnEnemy;
     }
     
     @Override

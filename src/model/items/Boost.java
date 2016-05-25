@@ -7,17 +7,18 @@ import model.pokemon.Stat;
 
 public class Boost extends AbstractItem {
 
-    final Stat stat;
-    final double coeff;
-    final String name;
+    private static final int PRICE = 500;
+    private static final double COEFF = 0.30;
+	
+    private final Stat stat;
+    private final String name;
     
     public Boost(final Stat stat) {
-        super(500, Item.ItemType.BOOST, false);
+        super(PRICE, Item.ItemType.BOOST, false);
         if (stat == Stat.EXP || stat == Stat.MAX_HP || stat == Stat.LVL) {
             throw new IllegalArgumentException();
         }
         this.stat = stat;
-        this.coeff = 0.30;
         this.name = stat.toString() + "X";
     }
 
@@ -38,7 +39,7 @@ public class Boost extends AbstractItem {
     }
     
     public double getCoeff() {
-        return this.coeff;
+        return COEFF;
     }
 
     public String getName() {

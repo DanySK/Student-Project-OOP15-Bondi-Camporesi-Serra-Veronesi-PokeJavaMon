@@ -13,17 +13,22 @@ import model.items.Pokeball.PokeballType;
 import model.items.Potion.PotionType;
 import model.pokemon.Stat;
 
+/**
+ * Class that implements {@link Inventory} interface, uses {@link HashMap} to store {@link Pokeball}, {@link Boost}, {@link Potion}
+ *  @see Inventory
+ *  @see Player
+ */
 public class InventoryImpl implements Inventory {
 
-    protected Map<Pokeball, Integer> pokeballs;
-    protected Map<Potion, Integer> potions;
-    protected Map<Boost, Integer> boosts;
+    private Map<Pokeball, Integer> pokeballs;
+    private Map<Potion, Integer> potions;
+    private Map<Boost, Integer> boosts;
     private boolean isSet = false;
     
-    
-    private static Inventory SINGLETON;
-    
-    private InventoryImpl() {
+    /**
+     * Creates an empty Inventory
+     */
+    public InventoryImpl() {
         this.pokeballs = new HashMap<>();
         for (final Pokeball.PokeballType p : Pokeball.PokeballType.values()) {
             pokeballs.put(new Pokeball(p), 0);
@@ -43,21 +48,8 @@ public class InventoryImpl implements Inventory {
         isSet = false;
     }
 
-    public static Inventory getInventory() {
-        if (SINGLETON == null) {
-            synchronized (InventoryImpl.class) {
-                if (SINGLETON == null) {
-                    SINGLETON = new InventoryImpl();
-                }
-            }
-        }
-        return SINGLETON;
-    }
-
     @Override
-    public void initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList) {
-		final Inventory i = InventoryImpl.getInventory();
-		
+    public void initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList) throws IllegalStateException{
 		if (this.isSet) {
 			throw new IllegalStateException("Can't initialize Inventory more than once");
 		}
@@ -72,7 +64,7 @@ public class InventoryImpl implements Inventory {
 					}
 				}
 			}
-			i.setPotions(pot);
+			this.setPotions(pot);
 		}
 			
 		if (boostList != null) {
@@ -87,7 +79,7 @@ public class InventoryImpl implements Inventory {
 					}
 				}
 			}
-			i.setBoosts(boo);
+			this.setBoosts(boo);
 		}
 		
 		if (ballList != null) {
@@ -99,13 +91,11 @@ public class InventoryImpl implements Inventory {
 					}
 				}
 			}
-		        i.setPokeballs(bal);
+		        this.setPokeballs(bal);
 		}
 		this.isSet = true;
 	}
 
-    
-    
     @Override
     public Map<Item, Integer> getSubInventory(ItemType type) {
         switch (type) {
@@ -130,38 +120,38 @@ public class InventoryImpl implements Inventory {
     }
 
     private void changeQty(Item item, int qty) {
-        System.out.println(item);
+    	final String ex = "Cannot remove another item";
         switch (item.getType()) {
         case BOOST :
             if (this.boosts.get(item) + qty < 0) {
-                throw new IllegalStateException();
+                throw new IllegalStateException(ex);
             }
             this.boosts.replace((Boost) item, this.boosts.get(item) + qty);
             break;
         case POTION :
             if (this.potions.get(item) + qty < 0) {
-                throw new IllegalStateException();
+                throw new IllegalStateException(ex);
             }
             this.potions.replace((Potion) item, this.potions.get(item) + qty);
             break;
         case POKEBALL :
             if (this.pokeballs.get(item) + qty < 0) {
-                throw new IllegalStateException();
+                throw new IllegalStateException(ex);
             }
             this.pokeballs.replace((Pokeball) item, this.pokeballs.get(item) + qty);
             break;
         }
     }
     
-    public void setPokeballs(final Map<Pokeball, Integer> pokeballs) {
+    private void setPokeballs(final Map<Pokeball, Integer> pokeballs) {
         this.pokeballs = pokeballs;
     }
     
-    public void setPotions(final Map<Potion, Integer> potions) {
+    private void setPotions(final Map<Potion, Integer> potions) {
         this.potions = potions;
     }
     
-    public void setBoosts(final Map<Boost, Integer> boosts) {
+    private void setBoosts(final Map<Boost, Integer> boosts) {
         this.boosts = boosts;
     }
     
