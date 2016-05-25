@@ -31,7 +31,7 @@ public class Credits extends JWindow implements MyFrame {
 	 */
     private final JPanel panel;
 	/**
-	 * Constructs a new window with authors' information.
+	 * Constructs a new window with authors' informations.
 	 */
     public Credits() {
     	this.panel = new CreditBackground();

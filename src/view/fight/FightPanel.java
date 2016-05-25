@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JWindow;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controller.Controller;
@@ -30,7 +31,7 @@ import view.windows.BagMenu;
 import view.windows.MessageFrame;
 import view.windows.TeamMenu;
 /**
- * FightPanel
+ * This {@link JPanel} handles every buttons of the {@link FightScreen} and all the other informations.
  * 
  * @author Daniel Veronesi
  */
@@ -64,43 +65,43 @@ public class FightPanel extends JPanel {
 	 */
     private final Controller ctrl;
     /**
-	 * enemyLvl
+	 * The level of the ally pokémon who is currently fighting.
 	 */
     private JLabel enemyLvl;
     /**
-	 * enemyName
+	 * The name of the enemy pokémon who is currently fighting.
 	 */
     private JLabel enemyName;
     /**
-	 * enemyHealthBar
+	 * The health bar of the enemy pokémon who is currently fighting.
 	 */
     private HealthBar enemyHealthBar;
     /**
-	 * enemyFrontSprite
+	 * The sprite of the enemy pokémon who is currently fighting.
 	 */
     private JLabel enemyFrontSprite;
     /**
-	 * allyLvl
+	 * The level of the ally pokémon who is currently fighting.
 	 */
     private JLabel allyLvl;
     /**
-	 * allyName
+	 * The name of the ally pokémon who is currently fighting.
 	 */
     private JLabel allyName;
     /**
-	 * allyHP
+	 * It displays the current health points and the maximum health points as numbers.
 	 */
     private JLabel allyHP;
     /**
-	 * allyHealthBar
+	 * The health bar of the ally pokémon who is currently fighting.
 	 */
     private HealthBar allyHealthBar;
     /**
-	 * allyExpBar
+	 * The experience bar of the ally pokémon who is currently fighting.
 	 */
     private JProgressBar allyExpBar;
     /**
-	 * allyBackSprite
+	 * The sprite of the ally pokémon who is currently fighting.
 	 */
     private JLabel allyBackSprite;
     /**
@@ -135,7 +136,9 @@ public class FightPanel extends JPanel {
 	 * moveListener
 	 */
     private final ActionListener moveListener;
-    
+    /**
+     * 
+     */
     private JButton tmp;
     
     /**

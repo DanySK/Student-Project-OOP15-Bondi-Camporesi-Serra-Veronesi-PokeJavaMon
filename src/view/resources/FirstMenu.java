@@ -29,7 +29,7 @@ import view.View;
 import view.windows.MyFrame;
 
 /**
- * It is the main menu of the game. There are new game, continue, credits and controls.
+ * It is the main menu of the game. There are the early options the user can choose.
  * 
  * @author Daniel Veronesi
  */

@@ -12,7 +12,7 @@ import view.windows.MessageFrame;
 import view.windows.MyFrame;
 import view.windows.TeamMenu;
 /**
- * It is the class 
+ * This {@link JWindow} handles the fighting part of the games.
  * 
  * @author Daniel Veronesi
  */
@@ -22,7 +22,7 @@ public class FightScreen extends JWindow implements MyFrame {
     
     private FightPanel mainPanel;
 	/**
-	 * FightScreen
+	 * It creates the window where pokémon and choices are put.
 	 */
     	public FightScreen() {
             this.setAlwaysOnTop(true);
@@ -43,7 +43,7 @@ public class FightScreen extends JWindow implements MyFrame {
             this.mainPanel.refresh();       	
         }
     	/**
-    	 * It is the function that shows the input put.
+    	 * It is the function that shows the input.
     	 * 
     	 * @param message It is the message it will be displayed.
     	 */

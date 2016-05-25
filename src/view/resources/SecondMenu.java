@@ -40,7 +40,7 @@ public class SecondMenu extends JFrame implements MyFrame {
     }
 
     /**
-     * 
+     * serialVersionUID
      */
     private static final long serialVersionUID = -6893200324739176114L;
     /**

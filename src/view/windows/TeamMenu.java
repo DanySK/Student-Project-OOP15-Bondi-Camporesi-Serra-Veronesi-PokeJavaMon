@@ -12,8 +12,6 @@ import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
-import model.player.Player;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;

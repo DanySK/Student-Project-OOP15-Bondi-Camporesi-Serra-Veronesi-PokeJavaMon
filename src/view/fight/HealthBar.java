@@ -34,11 +34,11 @@ public class HealthBar extends JProgressBar {
      */
 	private static final Color MORE_HALF_COLOR = Color.GREEN;
 	/**
-     * ratio
+     * It is compared with the values to get the color of the health bar.
      */
 	private double ratio;
 	/**
-	 * HealthBar
+	 * It creates the health bar that is placed in {@link FightScreen}.
 	 * 
 	 * @param maxHP The maximum amount of health points the pokémon has.
 	 * @param currentHP The current amount of health points the pokémon has.
