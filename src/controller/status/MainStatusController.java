@@ -55,14 +55,14 @@ public class MainStatusController implements StatusController {
                         if (MainController.getController().playing().isPresent()) {
                             if (MainController.getController().playing().get() != Music.TRAINER || MainController.getController().playing().get() != Music.WILD) {
                                 MainController.getController().stopMusic();
-                                if (MainController.getController().getFight().get() instanceof FightVsTrainer) {
+                                if (MainController.getController().getFight().orElse(null) instanceof FightVsTrainer) {
                                     MainController.getController().playMusic(Music.TRAINER);
                                 } else {
                                     MainController.getController().playMusic(Music.WILD);
                                 }
                             }
                         } else {
-                            if (MainController.getController().getFight().get() instanceof FightVsTrainer) {
+                            if (MainController.getController().getFight().orElse(null) instanceof FightVsTrainer) {
                                 MainController.getController().playMusic(Music.TRAINER);
                             } else {
                                 MainController.getController().playMusic(Music.WILD);
