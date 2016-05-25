@@ -6,10 +6,14 @@ import model.pokemon.Move;
 import model.pokemon.Pokemon;
 /**
  * InFightMessagesInterface
+ * 
+ * @author Daniel Veronesi
  */
 public interface InFightMessagesInterface {
 	/**
 	 * resolveMove
+	 * 
+	 * @param
 	 */
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
                             Effectiveness enemyMoveEffectiveness, boolean myMoveFirst,

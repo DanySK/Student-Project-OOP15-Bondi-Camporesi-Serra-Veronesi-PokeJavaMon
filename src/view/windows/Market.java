@@ -20,6 +20,8 @@ import model.items.Item.ItemType;
 import view.View;
 /**
  * MarketClass
+ * 
+ * @author Daniel Veronesi
  */
 public class Market extends JWindow implements MyFrame {
 	/**
@@ -31,19 +33,19 @@ public class Market extends JWindow implements MyFrame {
      */
     private JPanel panel;
     /**
-     * Name1
+     * An array filled with the types of the items.
      */
     private final ArrayList<String>Name1;
     /**
-     * Name2
+     * An array filled with the names of the items.
      */
     private final ArrayList<String>Name2;
     /**
-     * Prz
+     * An array filled with the prizes of the items.
      */
     private final ArrayList<String>Prz;
     /**
-     * Qnt
+     * An array filled with the quantity of the item that the character owns.
      */
     private final ArrayList<String>Qnt;
     /**
@@ -51,15 +53,15 @@ public class Market extends JWindow implements MyFrame {
      */
     private final ArrayList<Item> it;
     /**
-     * cols
+     * The number of columns.
      */
     private int cols;
     /**
-     * use
+     * A button that allows the player to buy the item.
      */
-    private JButton use;
+    private JButton buy;
     /**
-     * exit
+     * A button that allows to exit the market.
      */
     private JButton exit;
 	/**
@@ -122,9 +124,9 @@ public class Market extends JWindow implements MyFrame {
             this.panel.add(new JLabel(this.Name2.get(j)));
             this.panel.add(new JLabel(this.Prz.get(j)));
             this.panel.add(new JLabel(this.Qnt.get(j)));
-            this.use = new JButton("Buy");
-            this.use.setBorderPainted(false);
-            this.use.addActionListener(new ActionListener() {     
+            this.buy = new JButton("Buy");
+            this.buy.setBorderPainted(false);
+            this.buy.addActionListener(new ActionListener() {     
                 Item i = itm;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -142,7 +144,7 @@ public class Market extends JWindow implements MyFrame {
                     }
                 }
             });
-            this.panel.add(this.use);
+            this.panel.add(this.buy);
         }
         this.panel.setLayout(new GridLayout(this.Name1.size(), cols));
         this.panel.setBorder(new LineBorder(Color.GRAY, 4));

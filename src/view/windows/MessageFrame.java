@@ -17,7 +17,9 @@ import controller.MainController;
 import controller.parameters.State;
 import view.View;
 /**
- * MessageFrameClass
+ *This {@link JWindow} implements {@link MyFrame} and is used to display messages in game.
+ *
+ *@author Daniel Veronesi
  */
 public class MessageFrame extends JWindow implements MyFrame {
 	/**
@@ -25,27 +27,30 @@ public class MessageFrame extends JWindow implements MyFrame {
 	 */
     private static final long serialVersionUID = 1370776687087493267L;
     /**
-     * panel
+     * The panel that implements the window.
      */
     private JPanel panel;
     /**
-     * labels
+     * It fills the array with labels.
      */
     private final List<JLabel> labels = new ArrayList<>();
     /**
-     * ok
+     * It is the button that confirm the message is read and it closes it.
      */
     private JButton ok;
     /**
-     * msgs
+     * The message that is displayed
      */
+    // TODO
     private String[] msgs;
     /**
-     * st
+     * ---
      */
     private State st;
 	/**
-	 * MessageFrame
+	 * A function
+	 * @param st
+	 * @param strs
 	 */
     public MessageFrame(State st, String... strs) {
         this.st = st;

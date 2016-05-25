@@ -17,7 +17,7 @@ import view.View;
  * 
  * BoxMenuClass
  * 
- * @author User
+ * @author Daniel Veronesi
  *
  */
 public class BoxMenu extends JWindow implements MyFrame {
@@ -34,19 +34,19 @@ public class BoxMenu extends JWindow implements MyFrame {
 	 */
     private JScrollPane pn;
     /**
-	 * names
+	 * An array filled with the names of the pokémon in the box.
 	 */
     private final ArrayList<String> names;
     /**
-	 * lvl
+	 * An array filled with the levels of the pokémon in the box.
 	 */
     private final ArrayList<String> lvl;
     /**
-	 * cHP
+	 * An array filled with the current health points of the pokémon in the box.
 	 */
     private final ArrayList<String> cHP;
     /**
-	 * mHP
+	 * An array filled with the max health points of the pokémon in the box.
 	 */
     private final ArrayList<String> mHP;
     /**
@@ -54,19 +54,19 @@ public class BoxMenu extends JWindow implements MyFrame {
 	 */
     private final ArrayList<Pokemon> pk;
     /**
-	 * cols
+	 * The number of columns.
 	 */
     private int cols = 1;
     /**
-	 * info
+	 * A button that opens {@link Statistics}.
 	 */
     private JButton info;
     /**
-	 * withdraw
+	 * A button that allows to withdraw the pokémon and put it in the party.
 	 */
     private JButton withdraw;
     /**
-	 * exit
+	 * A button that closes the Box.
 	 */
     private JButton exit;
 	/**

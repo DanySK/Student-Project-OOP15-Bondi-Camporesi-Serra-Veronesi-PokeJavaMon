@@ -1,22 +1,24 @@
 package view.windows;
 /**
- * MyFrame
+ * An interface used to manage frame's actions.
+ * 
+ * @author Daniel Veronesi
  */
 public interface MyFrame {
 	/**
-	 * showFrame
+	 * It shows the frame.
 	 */
     public void showFrame();
 	/**
-	 * disposeFrame
+	 * It disposes the frame.
 	 */
     public void disposeFrame();
 	/**
-	 * hideFrame
+	 * It hides theframe.
 	 */
     public void hideFrame();
 	/**
-	 * resumeFrame
+	 * It resumes the frame.
 	 */
     public void resumeFrame();
 }

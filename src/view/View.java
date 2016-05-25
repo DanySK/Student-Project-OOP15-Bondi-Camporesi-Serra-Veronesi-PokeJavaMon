@@ -4,7 +4,11 @@ import java.util.Stack;
 
 import view.windows.MyFrame;
 /**
- * View
+ * 
+ * This is the view of the game. It contains all the .
+ * 
+ * 
+ * @author Daniel Veronesi
  */
 public class View implements ViewInterface {
 	/**

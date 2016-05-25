@@ -12,7 +12,9 @@ import view.windows.MessageFrame;
 import view.windows.MyFrame;
 import view.windows.TeamMenu;
 /**
- * FightScreenClass
+ * It is the class 
+ * 
+ * @author Daniel Veronesi
  */
 public class FightScreen extends JWindow implements MyFrame {
 
@@ -35,13 +37,15 @@ public class FightScreen extends JWindow implements MyFrame {
             this.getContentPane().add(mainPanel);
     	}
     	/**
-    	 * repaintFrame
+    	 * It updates the informations of the frame.
     	 */
         public void repaintFrame() {       	
             this.mainPanel.refresh();       	
         }
     	/**
-    	 * showMessage
+    	 * It is the function that shows the input put.
+    	 * 
+    	 * @param message It is the message it will be displayed.
     	 */
         public void showMessage(String... message) {
             View.getView().hideCurrent();

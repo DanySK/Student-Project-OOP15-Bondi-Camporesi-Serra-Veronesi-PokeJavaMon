@@ -10,6 +10,8 @@ import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 /**
  * LoadingScreenClass
+ * 
+ * @author Daniel Veronesi
  */
 public class LoadingScreen extends JWindow {
 	/**

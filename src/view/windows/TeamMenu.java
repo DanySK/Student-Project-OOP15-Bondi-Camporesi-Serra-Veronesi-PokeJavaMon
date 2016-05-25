@@ -12,12 +12,16 @@ import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
+import model.player.Player;
+import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;
 import view.fight.FightScreen;
 /**
- * TeamMenuClass
+ * This {@link JWindow} handles the menu with all the pokémon in the team and their relative buttons.
+ * 
+ * @author Daniel Veronesi
  */
 public class TeamMenu extends JWindow implements MyFrame {
 	/**
@@ -25,59 +29,62 @@ public class TeamMenu extends JWindow implements MyFrame {
 	 */   
     private static final long serialVersionUID = 4848482754813638374L;
     /**
-     * panel
+     * It creates the panel with the pokémon in the party and the buttons to perform actions.
      */
     private JPanel panel;
     /**
-     * names
+     * It is an array filled with the names of the pokémon in the party.
      */
     private final ArrayList<String>names;
     /**
-     * lvl
+     * It is an array filled with the levels of the pokémon in the party.
      */
     private final ArrayList<String>lvl;
     /**
-     * cHP
+     * It is an array filled with the current health of the pokémon in the party.
      */
     private final ArrayList<String>cHP;
     /**
-     * mHP
+     * It is an array filled with the max health of the pokémon in the party.
      */
     private final ArrayList<String>mHP;
     /**
-     * pk
+     * It is an array filled with the pokémon in the party.
      */
     private final ArrayList<Pokemon> pk;
     /**
-     * cols
+     * It is the number of columns.
      */
     private int cols = 1;
     /**
-     * info
+     * It represent a button that opens {@link Statistics} when clicked.
      */
     private JButton info;
     /**
-     * set
+     * It represent a button that put the pokémon selected as the first of the party when clicked.
      */
     private JButton set;
     /**
-     * deposit
+     * It represent a button that put the pokémon from the team in {@link BoxMenu} when clicked.
      */
     private JButton deposit;
     /**
-     * select
+     * It represent a button that is available when a potion or a boost is selected
+     * and it permits to choose on what pokémon perform that action.
      */
     private JButton select;
     /**
-     * exit
+     * It represent a button that closes the current window when clicked.
      */
     private JButton exit;
     /**
-     * canExit, isChangingPoke
+     * A boolean that is used to know if the player can perform an exit or a change in the party.
      */
     private boolean canExit, isChangingPoke;
 	/**
-	 * TeamMenu
+	 * It creates the menu of the team with the informations needed
+	 * @param b1 a boolean associated with canExit
+	 * @param b2 a boolean associated with isChangingPoke
 	 */
     public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;

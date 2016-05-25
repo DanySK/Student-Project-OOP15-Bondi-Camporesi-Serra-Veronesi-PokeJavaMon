@@ -23,7 +23,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 /**
- * StatisticsClass
+ * This {@link JWindow} handles the statistics menu with the pokémon selected and his relative informations.
+ * 
+ * @author Daniel Veronesi
  */
 public class Statistics extends JWindow implements MyFrame {
 	/**
@@ -31,51 +33,52 @@ public class Statistics extends JWindow implements MyFrame {
 	 */
     private static final long serialVersionUID = 3339649136760979503L;
     /**
-     * IMMAGINEPKMNPANEL
+     * It is a panel used to get the pokémon's sprite.
      */
-    private MyPanel2 IMMAGINEPKMNPANEL;
+    private MyPanel2 IMAGINEPKMNPANEL;
     /**
-     * panel
+     * It creates the panel with pokémon's informations like moves and stats.
      */
     private JPanel panel;
     /**
-     * pkmnName
+     * A label that gets the name of the pokémon selected previously.
      */
     private JLabel pkmnName;
     /**
-     * type
+     * A label that says "Type".
      */
     private JLabel type;
     /**
-     * typeValue
+     * A label that gets the type (or types) of the pokémon.
      */
     private JLabel typeValue;
     /**
-     * levelValue
+     * A label that gets the level of the pokémon.
      */
     private JLabel levelValue;
     /**
-     * level
+     * A label that says "Level".
      */
     private JLabel level;
     /**
-     * exp
+     * A label that says "Experience".
      */
     private JLabel exp;
     /**
-     * expValue
+     * A label that gets the current experience and the needed experience of the pokémon.
      */
     private JLabel expValue;
     /**
-     * exit
+     * A button that closes Statistics.
      */
     private JButton exit;
     /**
-     * Statistics
+     * The pokémon selected.
      */
     private final Pokemon pk;
 	/**
-	 * Statistics
+	 * A function that get the pokémon from his ID.
+	 * @param ID The identity number of the pokémon.
 	 */
     public Statistics(Pokemon ID) { 
         this.pk = ID;
@@ -115,8 +118,8 @@ public class Statistics extends JWindow implements MyFrame {
 		this.panel.add(level);
 		this.levelValue = new JLabel(""+ this.pk.getStat(Stat.LVL));
 		this.panel.add(levelValue);
-		this.IMMAGINEPKMNPANEL = new MyPanel2(this.pk);
-		this.panel.add(this.IMMAGINEPKMNPANEL);
+		this.IMAGINEPKMNPANEL = new MyPanel2(this.pk);
+		this.panel.add(this.IMAGINEPKMNPANEL);
 		this.exp = new JLabel("Experience");
 		this.panel.add(this.exp);
 		this.expValue = new JLabel (""+ this.pk.getStat(Stat.EXP) + "/" + (this.pk.getNecessaryExp()+this.pk.getStat(Stat.EXP)));
@@ -143,33 +146,34 @@ public class Statistics extends JWindow implements MyFrame {
     }
 }
 /**
- * statsPanel
+ * This {@link JPanel} handles the moves and the 4 stats of the pokémon.
  */
 class statsPanel extends JPanel {
     
     private static final long serialVersionUID = 1L;
     /**
-     * moves
+     * An array filled with the number of the moves.
      */
     private ArrayList<String> moves = new ArrayList<String>();
     /**
-     * names
+     * An array filled with the name of the moves.
      */
     private ArrayList<String> names = new ArrayList<String>();
     /**
-     * stats
+     * An array filled with the number of the statistics.
      */
     private ArrayList<String> stats = new ArrayList<String>();
     /**
-     * values
+     * An array filled with the value of the statistics.
      */
     private ArrayList<String> values = new ArrayList<String>();
     /**
-     * cols
+     * The number of columns.
      */
     private int cols = 1;
 	/**
-	 * statsPanel
+	 * The panel that gets the statistic of the pokémon.
+	 * @param ID The pokémon selected.
 	 */
     public statsPanel(Pokemon ID) {	 
     	this.setBorder(new LineBorder(Color.GRAY, 3));
@@ -212,7 +216,7 @@ class statsPanel extends JPanel {
     }
 }
 /**
- * MyPanel2
+ * This {@link JPanel} is used to get the image of the pokémon.
  */
 class MyPanel2 extends JPanel{
 	/**
@@ -220,15 +224,16 @@ class MyPanel2 extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * image
+	 * The image of the pokémon.
 	 */
 	private BufferedImage image;
 	/**
-	 * pk
+	 * The pokémon selected.
 	 */
 	private Pokemon pk;
 	/**
-	 * MyPanel2
+	 * The panel for the image
+	 * @param pk The pokémon.
 	 */
 	public MyPanel2(final Pokemon pk) {
 	    this.pk = pk;

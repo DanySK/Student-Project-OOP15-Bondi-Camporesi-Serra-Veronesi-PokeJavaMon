@@ -21,6 +21,8 @@ import exceptions.SquadFullException;
 import view.sprite.PlayerSprite;
 /**
  * MainGameViewClass
+ * 
+ * @author Daniel Veronesi
  */
 public class MainGameView implements Screen {  
 	/**

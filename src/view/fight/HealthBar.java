@@ -5,6 +5,8 @@ import java.awt.Color;
 import javax.swing.JProgressBar;
 /**
  * HealthBar
+ * 
+ * @author Daniel Veronesi
  */
 public class HealthBar extends JProgressBar {
 	/**
@@ -12,23 +14,23 @@ public class HealthBar extends JProgressBar {
      */
 	private static final long serialVersionUID = -1998418607308529873L;
 	/**
-     * LOW
+     * It is the value of health points defined as "low".
      */
 	private static final double LOW = 0.25;
 	/**
-     * LOW_COLOR
+     * It is the color of the health bar when the current health points are lower than low. 
      */
 	private static final Color LOW_COLOR = Color.RED;
 	/**
-     * LESS_HALF
+     *  It is the value of health points defined as "lesshalf".
      */
 	private static final double LESS_HALF = 0.5;
 	/**
-     * LESS_HALF_COLOR
+     * It is the color of the health bar when the current health points are between low and more_half_color.
      */
 	private static final Color LESS_HALF_COLOR = Color.YELLOW;
 	/**
-     * MORE_HALF_COLOR
+     * It is the color of the health bar when the current health points are higher than less_half
      */
 	private static final Color MORE_HALF_COLOR = Color.GREEN;
 	/**
@@ -37,6 +39,9 @@ public class HealthBar extends JProgressBar {
 	private double ratio;
 	/**
 	 * HealthBar
+	 * 
+	 * @param maxHP The maximum amount of health points the pokémon has.
+	 * @param currentHP The current amount of health points the pokémon has.
 	 */
 	public HealthBar(final int maxHP, final int currentHP) {
 		super(0, maxHP);
@@ -58,7 +63,9 @@ public class HealthBar extends JProgressBar {
 		setColorRatio(this.ratio);
 	}
 	/**
-	 * setColorRatio
+	 * It paints the bars depending on the percentage of health the pokémon has.
+	 * 
+	 * @param r Current health points.
 	 */
 	private void setColorRatio(final double r) {
 		if (r <= LOW) {

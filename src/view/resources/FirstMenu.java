@@ -28,18 +28,47 @@ import controller.parameters.State;
 import view.View;
 import view.windows.MyFrame;
 
+/**
+ * It is the main menu of the game. There are new game, continue, credits and controls.
+ * 
+ * @author Daniel Veronesi
+ */
+
 public class FirstMenu extends JFrame implements MyFrame {
-
-	//TODO: IMPROVE CODE!!!!!!!!!!
+	/**
+	 * serialVersionUID
+	 */
 	private static final long serialVersionUID = -3171512540755919384L;
+	/**
+	 * The panel where the image is put.
+	 */
 	private ContentPanel contentPane;
-	
+	/**
+	 * It opens {@link SecondMenu}
+	 */
 	private JButton newGame;
+	/**
+	 * It loads the save game, if it exists, and continues the game from where it was interrupted
+	 * It opens {@link GameView}.
+	 */
 	private JButton continueGame;
+	/**
+	 * It opens {@link HowToPlay}
+	 */
 	private JButton howToPlay;
+	/**
+	 * It opens {@link Credits}
+	 */
 	private JButton credits;
+	/**
+	 * The title of the main menu.
+	 */
 	private JLabel welcomeLabel;
-
+	/**
+	 * The panel where the buttons are put.
+	 */
+	private SpringLayout sl_contentPane;
+	
 	private class ContentPanel extends JPanel {
 
 		private static final long serialVersionUID = 3361495155189049313L;
@@ -84,7 +113,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 		this.contentPane = new ContentPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setContentPane(contentPane);
-		final SpringLayout sl_contentPane = new SpringLayout();
+		sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);		
 		this.newGame = new JButton("New Game");
 		this.newGame.setIcon(new ImageIcon(FirstMenu.class.getResource("/gui/Pokeball.png")));

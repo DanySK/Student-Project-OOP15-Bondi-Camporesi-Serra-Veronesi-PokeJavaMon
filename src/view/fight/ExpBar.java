@@ -6,15 +6,17 @@ import java.awt.Graphics2D;
 
 import javax.swing.JProgressBar;
 /**
- * ExpBar
+ * This class creates the experience bar.
+ * 
+ * @author Daniel Veronesi
  */
 public class ExpBar extends JProgressBar {
 	/**
-	 * BG_COLOR
+	 * It specifies the color of the experience needed to raise a pokémon level.
 	 */
 	private static final String BG_COLOR = "#C4C4C4"; //LIGHT_GRAY
 	/**
-	 * FG_COLOR
+	 * It specifies the color of the experience gained since the pokémon levelled up.
 	 */
 	private static final String FG_COLOR = "#006CFF"; //BLUE
 	/**
@@ -22,7 +24,9 @@ public class ExpBar extends JProgressBar {
 	 */
 	private static final long serialVersionUID = 1767168964690866299L;
 	/**
-	 * ExpBar
+	 * It creates the experience bar that is placed in {@link FightScreen}.
+	 * @param lvlEXP It is the total experience needed to level up.
+	 * @param currentEXP It is the experience gained in the level.
 	 */
 	public ExpBar(final int lvlEXP, final int currentEXP) {
 		super(0, lvlEXP);

@@ -23,6 +23,8 @@ import view.View;
 import view.windows.MyFrame;
 /**
  * HowToPlayClass
+ * 
+ * @author Daniel Veronesi
  */
 public class HowToPlay extends JWindow implements MyFrame {
 
@@ -186,7 +188,7 @@ public class HowToPlay extends JWindow implements MyFrame {
     						.addComponent(down))
     					.addGap(35)
     					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-    						.addComponent(moveRight)
+    							.addComponent(moveRight)
     						.addComponent(right))
     					.addGap(35)
     					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)

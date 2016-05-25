@@ -14,6 +14,8 @@ import model.utilities.Pair;
 import view.resources.MainGameView;
 /**
  * PlayerSpriteClass
+ * 
+ * @author Daniel Veronesi
  */
 public class PlayerSprite extends Sprite {
 	/**

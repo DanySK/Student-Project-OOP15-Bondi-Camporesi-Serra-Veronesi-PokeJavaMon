@@ -17,7 +17,9 @@ import javax.swing.border.LineBorder;
 import view.View;
 import view.windows.MyFrame;
 /**
- * CreditsClass
+ * This {@link JWindow} handles the credits window of the game.
+ * 
+ * @author Daniel Veronesi
  */
 public class Credits extends JWindow implements MyFrame {
 	/**
@@ -25,18 +27,18 @@ public class Credits extends JWindow implements MyFrame {
 	 */
     private static final long serialVersionUID = 313390316550029L;
     /**
-	 * panel
+	 * It creates the panel for the credits.
 	 */
     private final JPanel panel;
 	/**
-	 * Credits
+	 * Constructs a new window with authors' information.
 	 */
     public Credits() {
     	this.panel = new CreditBackground();
     	this.panel.setBorder(new LineBorder(Color.GRAY, 4));
     }
 	/**
-	 * CreditBackgroundClass
+	 * This {@link JPanel} handles the credits window of the game.
 	 */
     private class CreditBackground extends JPanel {
     	/**
@@ -44,15 +46,15 @@ public class Credits extends JWindow implements MyFrame {
 		 */
 		private static final long serialVersionUID = -7371702206859570082L;
 		/**
-		 * bgImage
+		 * It is the image of the panel put in the background.
 		 */
 		private Image bgImage = null;
 		/**
-		 * back
+		 * It is the button that allows to come back in the {@link FirstMenu}
 		 */
     	private final JButton back;
     	/**
-    	 * CreditBackground
+    	 * It creates the background of the panel.
     	 */
     	public CreditBackground() {
 		    final MediaTracker mt = new MediaTracker(this);

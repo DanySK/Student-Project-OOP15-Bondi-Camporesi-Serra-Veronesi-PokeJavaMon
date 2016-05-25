@@ -31,6 +31,8 @@ import view.windows.MessageFrame;
 import view.windows.TeamMenu;
 /**
  * FightPanel
+ * 
+ * @author Daniel Veronesi
  */
 public class FightPanel extends JPanel {
 	/**
@@ -133,6 +135,8 @@ public class FightPanel extends JPanel {
 	 * moveListener
 	 */
     private final ActionListener moveListener;
+    
+    private JButton tmp;
     
     /**
      * Create the FightPanel.
@@ -311,10 +315,10 @@ public class FightPanel extends JPanel {
         }
     }
 	/**
-	 * setMenuButtons
+	 * It creates the layout filled with the decisions the player can make during the fight.
 	 */
     public void setMenuButtons() {
-        JButton tmp = choicesList.get(FIGHT);
+        tmp = choicesList.get(FIGHT);
         tmp.setText("FIGHT");
         tmp.removeActionListener(this.moveListener);
         tmp.addActionListener(fightMenuListeners.get(FIGHT));
@@ -336,7 +340,7 @@ public class FightPanel extends JPanel {
         tmp.setEnabled(true);
     }
 	/**
-	 * refresh
+	 * It refreshes the informations of the fight if they changed.
 	 */
     public void refresh() {
         final Pokemon currentEnemy = this.ctrl.getEnemyPokemonInFight().get();

@@ -20,6 +20,8 @@ import view.View;
 import view.windows.MyFrame;
 /**
  * LearnMoveFrameClass
+ * 
+ * @author Daniel Veronesi
  */
 public class LearnMoveFrame extends JWindow implements MyFrame {        
 		/**
@@ -31,23 +33,23 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
 		 */
         private JPanel panel;
         /**
-		 * move1
+		 * A button that display the move number 1 of the pokémon.
 		 */
         private JButton move1;
         /**
-		 * move2
+		 * A button that display the move number 2 of the pokémon.
 		 */
         private JButton move2;
         /**
-		 * move3
+		 * A button that display the move number 3 of the pokémon.
 		 */
         private JButton move3;
         /**
-		 * move4
+		 * A button that display the move number 4 of the pokémon.
 		 */
         private JButton move4;
         /**
-		 * move5
+		 * A button that display the move the pokémon is trying to learn.
 		 */
         private JButton move5;
         /**
@@ -55,23 +57,23 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
 		 */
         private JLabel tooltip;
         /**
-		 * forget1
+		 * A label that say "forget". It is connected with the first move.
 		 */
         private JLabel forget1;
         /**
-		 * forget2
+		 * A label that say "forget". It is connected with the second move.
 		 */
         private JLabel forget2;
         /**
-		 * forget3
+		 * A label that say "forget". It is connected with the third move.
 		 */
         private JLabel forget3;
         /**
-		 * forget4
+		 * A label that say "forget". It is connected with the fourth move.
 		 */
         private JLabel forget4;
         /**
-		 * forget5
+		 * A label that say "forget". It is connected with the move the pokémon is trying to learn.
 		 */
         private JLabel forget5;
         /**
@@ -84,6 +86,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         private Pokemon pk;
     	/**
     	 * LearnMoveFrame
+    	 * @param mv
     	 */
         public LearnMoveFrame(final Move mv) {
             this.newMove = mv;
@@ -127,6 +130,9 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         }
     	/**
     	 * setButton
+    	 * @param l
+    	 * @param b
+    	 * @param x
     	 */
         private void setButton(JLabel l, JButton b, int x) {
             l = new JLabel("Forget:");

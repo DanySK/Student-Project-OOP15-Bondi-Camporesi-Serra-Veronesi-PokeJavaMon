@@ -3,6 +3,8 @@ package view.resources;
 import com.badlogic.gdx.Game;
 /**
  * GameViewClass
+ * 
+ * @author Daniel Veronesi
  */
 public class GameView extends Game {       
 	/**
