@@ -100,8 +100,9 @@ public class PokemonInBattle extends AbstractPokemon{
 
     /**
      * Overriding {@link Object#equals(Object)} to make Pokemon comparison faster
-     * @param obj	the other {@link Pokemon} to make a comparison with	
-     * @return true if the this Pokemon and obj are the same
+     * @param obj	
+     * 			the other {@link Pokemon} to make a comparison with	
+     * @return 	true if the this Pokemon and obj are the same
      */
     @Override
     public boolean equals(Object obj) {

@@ -45,8 +45,8 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     private PlayerImpl() {
         super(START_X != -1 ? START_X : DEFAULT_START_X, START_Y != -1 ? START_Y : DEFAULT_START_Y, Direction.SOUTH);
         this.squad = new SquadImpl();
-        this.box = BoxImpl.getBox();
-        this.inv = InventoryImpl.getInventory();
+        this.box = new BoxImpl();
+        this.inv = new InventoryImpl();
         this.trainersBeaten = new HashSet<>();
         this.badges = 0;    
     }

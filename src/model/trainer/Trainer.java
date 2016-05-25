@@ -25,6 +25,36 @@ public class Trainer extends AbstractCharacter {
     private final int money;
     private final int trainerID;
       
+    /**
+     * Constructor to create trainers, please refer to {@link StaticTrainerFactory} to
+     * create Trainer's instances
+     * 
+     * @param name
+     * 			His name
+     * @param x
+     * 			x-axis coordinate
+     * @param y
+     * 			y-axis coordinaate
+     * @param d
+     * 			His {@link Direction}
+     * @param isDefeated
+     * 			Whether or not he's defeated
+     * @param squad
+     * 			His {@link Squad}
+     * @param initMessage
+     * 			Message he says when first met
+     * @param wonMessage
+     * 			Message he says if he defeated you
+     * @param lostMessage
+     * 			Message he says if you defeated him
+     * @param money
+     * 			Money he gives if defeated
+     * @param trainerID
+     * 			His identifier
+     * 			
+     * 
+     * @see StaticTrainerFactory
+     */
     protected Trainer(final String name, final int x, final int y, final Direction d, final boolean isDefeated, final Squad squad,
                       final String initMessage, final String wonMessage, final String lostMessage, final int money, final int trainerID) {
         super(x,y,d);

@@ -50,17 +50,29 @@ public final class StaticTrainerFactory {
     
 	/**
 	 * Creates a {@link Trainer} with all these parameters.
-	 * @param trainerName	name of the {@link Trainer}
-	 * @param d 	{@link Direction} that the Trainer is facing
-	 * @param isDefeated 	true if it is already defeated false otherwise				
-	 * @param x		xPosition in the {@link PokeMap}						
-	 * @param y		yPosition in the {@link PokeMap}						
-	 * @param pkmnList	a {@link Map}<{@link String}, {@link Integer}> where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
-	 * @param initMessage	the first message he says when you fight him				
-	 * @param trainerDefeatedMessage	the message he says when you defeat him	
-	 * @param trainerWonMessage	the message he says when he defeats you
-	 * @param money	the money you get when you defeat him
-	 * @param id	trainerID
+	 * @param trainerName
+	 * 			name of the {@link Trainer}
+	 * @param d 	
+	 * 			{@link Direction} that the Trainer is facing
+	 * @param isDefeated
+	 * 			true if it is already defeated false otherwise				
+	 * @param x
+	 * 			xPosition in the {@link PokeMap}						
+	 * @param y
+	 * 			yPosition in the {@link PokeMap}						
+	 * @param pkmnList
+	 * 			a {@link Map}<{@link String}, {@link Integer}> where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
+	 * @param initMessage	
+	 * 			the first message he says when you fight him				
+	 * @param trainerDefeatedMessage
+	 * 			the message he says when you defeat him	
+	 * @param trainerWonMessage
+	 * 			the message he says when he defeats you
+	 * @param money
+	 * 			money you get when you defeat him
+	 * @param id	
+	 * 			trainerID
+	 * 
 	 * @return	a newly created {@link Trainer} with such parameters
 	 */
     public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
@@ -71,17 +83,28 @@ public final class StaticTrainerFactory {
     
 	/**
 	 * Creates a {@link Trainer} with all these parameters.
-	 * @param trainerName	name of the {@link Trainer}
-	 * @param d 	{@link Direction} that the Trainer is facing
-	 * @param isDefeated 	true if it is already defeated false otherwise				
-	 * @param x		xPosition in the {@link PokeMap}						
-	 * @param y		yPosition in the {@link PokeMap}						
-	 * @param pkmns_lvl {@link List}<{@link String}> where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
-	 * @param initMessage	the first message he says when you fight him				
-	 * @param trainerDefeatedMessage	the message he says when you defeat him	
-	 * @param trainerWonMessage	the message he says when he defeats you
-	 * @param money	the money you get when you defeat him
-	 * @param id	trainerID
+	 * @param trainerName	
+	 * 			name of the {@link Trainer}
+	 * @param d 	
+	 * 			{@link Direction} that the Trainer is facing
+	 * @param isDefeated 	
+	 * 			true if it is already defeated false otherwise				
+	 * @param x		
+	 * 			xPosition in the {@link PokeMap}						
+	 * @param y		
+	 * 			yPosition in the {@link PokeMap}						
+	 * @param pkmns_lvl 
+	 * 			{@link List}<{@link String}> where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
+	 * @param initMessage	
+	 * 			the first message he says when you fight him				
+	 * @param trainerDefeatedMessage	
+	 * 			the message he says when you defeat him	
+	 * @param trainerWonMessage	
+	 * 			the message he says when he defeats you
+	 * @param money	
+	 * 			money you get when you defeat him
+	 * @param id	
+	 * 			trainerID
 	 * @return	a newly created {@link Trainer} with such parameters
 	 */
     public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
@@ -92,17 +115,28 @@ public final class StaticTrainerFactory {
 	
 	/**
 	 * Creates a {@link Trainer} with all these parameters.
-	 * @param trainerName	name of the {@link Trainer}
-	 * @param d 	{@link Direction} that the Trainer is facing
-	 * @param isDefeated 	true if it is already defeated false otherwise				
-	 * @param x		xPosition in the {@link PokeMap}						
-	 * @param y		yPosition in the {@link PokeMap}						
-	 * @param pkmnList {@link List}<{@link Pokemon}> : all the {@link Pokemon} in the {@link Squad} 			
-	 * @param initMessage	the first message he says when you fight him				
-	 * @param trainerDefeatedMessage	the message he says when you defeat him	
-	 * @param trainerWonMessage	the message he says when he defeats you
-	 * @param money	the money you get when you defeat him
-	 * @param id	trainerID
+	 * @param trainerName
+	 * 			name of the {@link Trainer}
+	 * @param d
+	 * 			{@link Direction} that the Trainer is facing
+	 * @param isDefeated 	
+	 * 			true if it is already defeated false otherwise				
+	 * @param x		
+	 * 			xPosition in the {@link PokeMap}						
+	 * @param y		
+	 * 			yPosition in the {@link PokeMap}						
+	 * @param pkmnList 
+	 * 			{@link List}<{@link Pokemon}> : all the {@link Pokemon} in the {@link Squad} 			
+	 * @param initMessage	
+	 * 			the first message he says when you fight him				
+	 * @param trainerDefeatedMessage	
+	 * 			the message he says when you defeat him	
+	 * @param trainerWonMessage	
+	 * 			the message he says when he defeats you
+	 * @param money	
+	 * 			money you get when you defeat him
+	 * @param id	
+	 * 			trainerID
 	 * @return	a newly created {@link Trainer} with such parameters
 	 */
     public static Trainer createTrainer(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final PokemonInBattle[] pkmnList,
@@ -113,17 +147,28 @@ public final class StaticTrainerFactory {
     
 	/**
 	 * Creates a {@link GymLeader} with all these parameters.
-	 * @param trainerName	name of the {@link GymLeader}
-	 * @param d 	{@link Direction} that the GymLeader is facing
-	 * @param isDefeated 	true if it is already defeated false otherwise				
-	 * @param x		xPosition in the {@link PokeMap}						
-	 * @param y		yPosition in the {@link PokeMap}						
-	 * @param pkmns_lvl {@link List}<{@link String}> where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
-	 * @param initMessage	the first message he says when you fight him				
-	 * @param trainerDefeatedMessage	the message he says when you defeat him	
-	 * @param trainerWonMessage	the message he says when he defeats you
-	 * @param money	the money you get when you defeat him
-	 * @param id	trainerID
+	 * @param trainerName	
+	 * 			name of the {@link GymLeader}
+	 * @param d 	
+	 * 			{@link Direction} that the GymLeader is facing
+	 * @param isDefeated 	
+	 * 			true if it is already defeated false otherwise				
+	 * @param x		
+	 * 			xPosition in the {@link PokeMap}						
+	 * @param y		
+	 * 			yPosition in the {@link PokeMap}						
+	 * @param pkmns_lvl 
+	 * 			{@link List}<{@link String}> where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
+	 * @param initMessage	
+	 * 			the first message he says when you fight him				
+	 * @param trainerDefeatedMessage	
+	 * 			the message he says when you defeat him	
+	 * @param trainerWonMessage	
+	 * 			the message he says when he defeats you
+	 * @param money	
+	 * 			money you get when you defeat him
+	 * @param id	
+	 * 			trainerID
 	 * @return	a newly created {@link GymLeader} with such parameters
 	 */
     public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
@@ -134,17 +179,28 @@ public final class StaticTrainerFactory {
 	
     /**
 	 * Creates a {@link GymLeader} with all these parameters.
-	 * @param trainerName	name of the {@link GymLeader}
-	 * @param d 	{@link Direction} that the GymLeader is facing
-	 * @param isDefeated 	true if it is already defeated false otherwise				
-	 * @param x		xPosition in the {@link PokeMap}						
-	 * @param y		yPosition in the {@link PokeMap}						
-	 * @param pkmnList	a {@link Map}<{@link String}, {@link Integer}> where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
-	 * @param initMessage	the first message he says when you fight him				
-	 * @param trainerDefeatedMessage	the message he says when you defeat him	
-	 * @param trainerWonMessage	the message he says when he defeats you
-	 * @param money	the money you get when you defeat him
-	 * @param id	trainerID
+	 * @param 
+	 * 			trainerName	name of the {@link GymLeader}
+	 * @param d 
+	 * 			{@link Direction} that the GymLeader is facing
+	 * @param isDefeated 
+	 * 			true if it is already defeated false otherwise				
+	 * @param x		
+	 * 			xPosition in the {@link PokeMap}						
+	 * @param y		
+	 * 			yPosition in the {@link PokeMap}						
+	 * @param pkmnList	
+	 * 			a {@link Map}<{@link String}, {@link Integer}> where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
+	 * @param initMessage	
+	 * 			the first message he says when you fight him				
+	 * @param trainerDefeatedMessage	
+	 * 			the message he says when you defeat him	
+	 * @param trainerWonMessage	
+	 * 			the message he says when he defeats you
+	 * @param money	
+	 * 			money you get when you defeat him
+	 * @param id	
+	 * 			trainerID
 	 * @return	a newly created {@link GymLeader} with such parameters
 	 */
     public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
@@ -155,17 +211,28 @@ public final class StaticTrainerFactory {
     
 	/**
 	 * Creates a {@link GymLeader} with all these parameters.
-	 * @param trainerName	name of the {@link GymLeader}
-	 * @param d 	{@link Direction} that the GymLeader is facing
-	 * @param isDefeated 	true if it is already defeated false otherwise				
-	 * @param x		xPosition in the {@link PokeMap}						
-	 * @param y		yPosition in the {@link PokeMap}						
-	 * @param pkmnList {@link List}<{@link Pokemon}> : all the {@link Pokemon} in the {@link Squad} 			
-	 * @param initMessage	the first message he says when you fight him				
-	 * @param trainerDefeatedMessage	the message he says when you defeat him	
-	 * @param trainerWonMessage	the message he says when he defeats you
-	 * @param money	the money you get when you defeat him
-	 * @param id	trainerID
+	 * @param trainerName	
+	 * 			name of the {@link GymLeader}
+	 * @param d 	
+	 * 			{@link Direction} that the GymLeader is facing
+	 * @param isDefeated 	
+	 * 			true if it is already defeated false otherwise				
+	 * @param x		
+	 * 			xPosition in the {@link PokeMap}						
+	 * @param y		
+	 * 			yPosition in the {@link PokeMap}						
+	 * @param pkmnList 
+	 * 			{@link List}<{@link Pokemon}> : all the {@link Pokemon} in the {@link Squad} 			
+	 * @param initMessage	
+	 * 			the first message he says when you fight him				
+	 * @param trainerDefeatedMessage	
+	 * 			the message he says when you defeat him	
+	 * @param trainerWonMessage	
+	 * 			the message he says when he defeats you
+	 * @param money	
+	 * 			money you get when you defeat him
+	 * @param id	
+	 * 			trainerID
 	 * @return	a newly created {@link GymLeader} with such parameters
 	 */
     public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final PokemonInBattle[] pkmnList,
