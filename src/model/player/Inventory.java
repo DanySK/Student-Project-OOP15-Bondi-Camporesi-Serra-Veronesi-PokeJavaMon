@@ -32,17 +32,24 @@ public interface Inventory {
     public void addItem(final Item item);
 
     /**
-     * Uses an {@link Item} and
-     * @param item
+     * removes the {@link Item} from itself
+     * @param item {@link Item} to be used
+     * @throws IllegalStateException if there are no more {@link Item}s to be removed 
      */
-    public void consumeItem(final Item item);
-    
-    public void setPokeballs(final Map<Pokeball, Integer> balls);
-    
-    public void setBoosts(final Map<Boost, Integer> boosts);
-    
-    public void setPotions(final Map<Potion, Integer> potions);
-    
-    public void initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList);
+    public void consumeItem(final Item item) throws IllegalStateException;
+
+    /**
+     * (Only to be used once)
+     * Initialize inventory with {@link Potion}, {@link Pokeball} and {@link Boost} .
+     * @param potionList
+     * 			{@link Map}<{@link String}, {@link Integer}> with potion names as keys and quantities as values 
+     * @param boostList
+     * 			{@link Map}<{@link String}, {@link Integer}> with stat names as keys and quantities as values 
+     * @param ballList
+     * 			{@link Map}<{@link String}, {@link Integer}> with pokeball names as keys and quantities as values 
+     * 
+     * @throws IllegalStateException if it has already been initialized before
+     */
+    public void initializeInventory(final Map<String, Integer> potionList, final Map<String, Integer> boostList, final Map<String, Integer> ballList) throws IllegalStateException;
     	
 }
