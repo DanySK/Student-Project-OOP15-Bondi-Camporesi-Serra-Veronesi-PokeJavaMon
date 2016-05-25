@@ -49,11 +49,6 @@ public final class StaticPokemonFactory {
         for (int i = moves.length; i < AbstractPokemon.MAX_MOVES; i++) {
             moveset[i] = Move.NULLMOVE;
         }
-        for (final Move m : moveset) {
-        	if (m!= Move.NULLMOVE && !pokemonID.getMoveset().containsValue(m)) {
-        		throw new IllegalArgumentException("Move " + m + " is not present in " + pokemonID + " moveset");
-        	}
-        }
         final PokemonInBattle retPkmn = new PokemonInBattle(pokemonID, lvl);
         retPkmn.currentMoves = moveset;
 
