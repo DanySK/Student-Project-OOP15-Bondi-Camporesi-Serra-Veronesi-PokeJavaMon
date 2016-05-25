@@ -32,7 +32,6 @@ import model.items.Item.ItemType;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion;
 import model.items.Potion.PotionType;
-import model.map.Drawable.Direction;
 import model.map.PokeMap;
 import model.map.Position;
 import model.map.tile.Tile.TileType;
@@ -56,7 +55,6 @@ import view.sprite.PlayerSprite;
  */
 public final class MainController implements Controller {
 
-    private static final int OFFSET = 1;
     private static final int DEFAULT_LVL = 5;
     private static final int DEFAULT_QUANTITY = 10;
     private static final int NO_ITEM = 0;
@@ -366,8 +364,27 @@ public final class MainController implements Controller {
     public void checkLegendaryAndDelete() {
         if (!modelNotInitialized()) {
             final PokeMap map = this.model.getMap();
-            if (map.getTileNextToPlayer(Direction.NORTH) == TileType.ENCOUNTER) {
-                map.deleteEncounterTile(this.model.getPlayer().getTileX(), this.model.getPlayer().getTileY() - OFFSET);
+            if (map.getTileNextToPlayer(PlayerImpl.getPlayer().getDirection()) == TileType.ENCOUNTER) {
+            	int offsetX = 0;
+            	int offsetY = 0; 
+            	switch (PlayerImpl.getPlayer().getDirection()) {
+            	case NORTH :
+            		offsetY = 1;
+            		break;
+            	case SOUTH :
+            		offsetY = -1;
+            		break;
+            	case WEST :
+            		offsetX = -1;
+            		break;
+            	case EAST :
+            		offsetX = 1;
+            		break;
+            	default :
+            		throw new IllegalStateException("Player position is " + PlayerImpl.getPlayer().getDirection());
+            		
+            	}
+                map.deleteEncounterTile(this.model.getPlayer().getTileX() + offsetX, this.model.getPlayer().getTileY() + offsetY);
             }
         }
     }
