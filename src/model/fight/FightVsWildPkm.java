@@ -19,7 +19,7 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 
 /**
- * A concrete class which deals operations to manage a {@link Fight} against a wild pokemon.
+ * This class deals operations to manage a {@link Fight} against a wild pokemon.
  */
 public class FightVsWildPkm extends AbstractFight {
 
@@ -27,7 +27,7 @@ public class FightVsWildPkm extends AbstractFight {
     private final Map<Stat, Double> enemyPkmBoosts = new HashMap<>(createBoostsMap());
 
     /**
-     * A constructor for {@link FightVsWildPkm}.
+     * Simple constructor for FightVsWildPkm, it just initialize wild pokemon parameters.
      * 
      * @param pkm       The wild {@link model.pokemon.Pokemon} that appears.
      */
@@ -37,9 +37,9 @@ public class FightVsWildPkm extends AbstractFight {
     }
 
     /**
-     * Calculate the enemy move. A wild pokemon do a random move.
+     * Calculate the enemy move. This method returns a random move.
      * 
-     * @return  The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
+     * @return  The {@link model.pokemon.Move} used by enemy pokemon.
      */
     @Override
     protected Move calculationEnemyMove() {

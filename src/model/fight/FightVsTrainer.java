@@ -19,7 +19,7 @@ import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
 /**
- * A concrete class which deals operations to manage a {@link Fight} against a trainer.
+ * This class deals operations to manage a {@link Fight} against a trainer.
  */
 public class FightVsTrainer extends AbstractFight {
 
@@ -31,7 +31,7 @@ public class FightVsTrainer extends AbstractFight {
     private static final String GYM_LEADER_DEFEAT_MESS = "You gained a badge!";
 
     /**
-     * Constructor for a {@link FightVsTrainer}.
+     * Simple constructor for FightVsTrainer, it just initialize trainer parameters.
      * 
      * @param trainer   The {@link model.trainer.Trainer} challenged.
      */
@@ -45,11 +45,10 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     /**
-     * Calculate the enemy move. A pokemon of a trainer, search and return the move 
-     * which do more damage. If method don't find any move which hit HP, it return 
-     * the first move in the move list.
+     * Calculate the enemy move. This method search and return the move that do more damage.
+     * If method don't find any move that target HP, it returns the first move in list.
      * 
-     * @return  The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
+     * @return  The {@link model.pokemon.Move} used by enemy pokemon.
      */
     @Override
     protected Move calculationEnemyMove() {
@@ -236,8 +235,8 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     /**
-     * Apply the trainer change. The method search and send in battle the first 
-     * pokemon which have the super effective types against the user pokemon. 
+     * Apply the trainer change. This method search and send in battle the first 
+     * pokemon which have the super effective types against the player pokemon. 
      * If method don't find any pokemon, send the first pokemon in the list which can battle.
      */
     protected void trainerChange() {

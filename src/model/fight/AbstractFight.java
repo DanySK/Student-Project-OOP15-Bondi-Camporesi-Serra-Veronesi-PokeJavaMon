@@ -20,16 +20,15 @@ import model.pokemon.Stat;
 import model.squad.Squad;
 
 /**
- * Abstract class which must be extended for create a concrete fight class.
+ * This abstract class can be extended to create a concrete fight class.
  * It contains some template method.
  * 
  * This class is extended by {@link model.fight.FightVsWildPkm}.
  * This class is extended by {@link model.fight.FightVsTrainer}.
  */
 public abstract class AbstractFight extends BasicFight implements Fight {
-
     /**
-     * The standard number of attacks which must be resolve in a battle turn.
+     * The standard number of attacks which must be done in a battle turn.
      */
     protected static final int ATTACKS_TO_DO = 2;
     /**
@@ -37,20 +36,19 @@ public abstract class AbstractFight extends BasicFight implements Fight {
      */
     protected static final int EXP_COEFFICIENT = 7;
     /**
-     * The string to show when an ally pokemon defeat an enemy.
+     * The string to show when the ally pokemon defeats the enemy.
      */
     protected static final String EXP_MESSAGE = "Exp gained: ";
     /**
-     * The string to show when an ally pokemon gains a level.
+     * The string to show when the ally pokemon gains a level.
      */
     protected static final String LVL_UP_MESS = " - Level up!";
     /**
-     * The list of pokemon that must contains the ally pokemons,
-     * which must evolve at the end of fight.
+     * This pokemon list must contains the ally pokemons which must evolve at the end of fight.
      */
     protected List<PokemonInBattle> pkmsThatMustEvolve = new ArrayList<>();
     /**
-     * The value which indicates if the ally if escape from fight.
+     * The value indicates if the player escapes from fight.
      */
     protected boolean runValue;
 

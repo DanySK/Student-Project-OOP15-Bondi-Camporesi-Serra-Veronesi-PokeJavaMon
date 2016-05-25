@@ -15,6 +15,9 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
 
+/**
+ * The class that perform the operation with box.
+ */
 public class TestBox {
     private static final Box box = PlayerImpl.getPlayer().getBox();
     private static final Squad squad = PlayerImpl.getPlayer().getSquad();
@@ -24,7 +27,7 @@ public class TestBox {
 
     /**
      * Test {@link model.player.Box} methods. Tests need an order because they need to manage different 
-     * situations of the squad status, which is changed by the execution of the methods.
+     * situations of squad status, which is changed by the execution of the methods.
      */
     @Test
     public void testBox(){
@@ -33,14 +36,14 @@ public class TestBox {
     }
     
     /**
-     * Test all case of possible {@link model.player.Box#withdrawPokemon(model.pokemon.Pokemon, Squad)}
+     * Test withdraw.
      */
     private void testWithdraw() {
         final PokemonInBattle raticate = StaticPokemonFactory.createPokemon(Pokedex.RATICATE, 25);
         final PokemonInBattle randomRattata = StaticPokemonFactory.createPokemon(Pokedex.RATTATA, 5);
         box.putCapturedPokemon(raticate);
         /*
-         * try to add 7 pokemon in a squad
+         * try to add 7 pokemon in a squad, method must throw the exception!
          * */
         try {
             squad.add(randomRattata);
@@ -51,7 +54,7 @@ public class TestBox {
             fail("The last pokemon addition should throws the exception!");
         } catch (SquadFullException e) {}
         /*
-         * test method withdrawPokemon when the squad have 6 pokemons, code must throw exception
+         * test method withdrawPokemon when the squad have 6 pokemons, method must throw exception!
          * */
         try {
             box.withdrawPokemon(raticate, squad);
@@ -59,7 +62,7 @@ public class TestBox {
             fail("Raticate is in the box and the squad have 6 pokemons! The method should throw SquadIsFullException!");
         } catch (SquadFullException e) {}
         /*
-         * test method withdrawPokemon on a pokemon which isn't in the box
+         * test method withdrawPokemon on a pokemon which isn't in the box, method must throw exception!
          * */
         try {
             box.depositPokemon(randomRattata, squad);
@@ -75,7 +78,8 @@ public class TestBox {
             fail("The squad isn't full and squirtle isn't in the box!");
         }
         /*
-         * test method withdrawPokemon and check if pokemon withdrawed is in the squad
+         * test method withdrawPokemon on a pokemon which can be withdrawn and check 
+         * if pokemon withdrawed is in the squad.
          * */
         try {
             box.withdrawPokemon(raticate, squad);
@@ -86,11 +90,11 @@ public class TestBox {
     }
 
     /**
-     * Test all case of possible {@link model.player.Box#depositPokemon(model.pokemon.Pokemon, Squad)}
+     * Test deposit.
      */
     private void testDeposit() {
         /*
-         * test method depositPokemon on all pokemons in squad, code must throw the exception
+         * test method depositPokemon on all pokemons in squad, method must throw the exception!
          * */
         try {
             for (int i = MAX_PKM_SQUAD; i < MIN_PKM_SQUAD; i--) {
@@ -100,7 +104,7 @@ public class TestBox {
             fail("PokemonNotFoundException is throwed! Something in the procedure is wrong!");
         } catch (OnlyOnePokemonInSquadException e) {}
         /*
-         * test method depositPokemon on a pokemon which is not in the squad, code must throw exception
+         * test method depositPokemon on a pokemon which is not in the squad, method must throw exception!
          * */
         try {
             box.depositPokemon(squirtle, squad);

@@ -34,11 +34,12 @@ import model.trainer.Trainer;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * The class that perform the tests for fight operation.
+ */
 public class TestFight {
     private static final int FIRST_ELEM = 0;
     private static final int SECOND_ELEM = 1;
@@ -50,7 +51,7 @@ public class TestFight {
 
     /**
      * Test all methods. Tests need an order because many methods need to manage different 
-     * situations of the squad status, which is changed by the execution of the methods.
+     * situations of squad status, which is changed by the execution of the methods.
      */
     @Test
     public void fightTest() {
@@ -63,26 +64,25 @@ public class TestFight {
     }
 
     /**
-     * 
-     * @return An instance of FightVsWildPkm {@link model.fight.FightVsWildPkm}
+     * @return An instance of FightVsWildPkm ({@link model.fight.FightVsWildPkm}).
      */
     private Fight createFightVsWildPkm() {
-        return StaticSimpleFightFactory.createFight(StaticPokemonFactory.createPokemon(Pokedex.PIKACHU, 3));
+        return StaticSimpleFightFactory.createFight(StaticPokemonFactory.createPokemon(Pokedex.RATTATA, 1));
     }
 
     /**
-     * 
-     * @return An instance of FightVsTrainer {@link model.fight.FightVsTrainer}
+     * @return An instance of FightVsTrainer ({@link model.fight.FightVsTrainer}).
      */
     private Fight createFightVsTrainer() {
         final Map<String, Integer> trainerPkmList = new HashMap<>();
-        trainerPkmList.put("RATTATA", 3);
+        trainerPkmList.put("RATTATA", 3
+                );
         final Trainer trainer = StaticTrainerFactory.createTrainer("Blue", Direction.SOUTH, false, 0, 0, trainerPkmList, "Hi!", "Bye bye", "Yeah", 0, -1);
         return StaticSimpleFightFactory.createFight(trainer);
     }
 
     /**
-     * Test the method checkLose. {@link}
+     * Test the method checkLose.
      */
     private void testCheckLose() {
         try {
@@ -104,15 +104,15 @@ public class TestFight {
     }
 
     /**
-     * Test for escape from a battle. {@link}
+     * Test for escape from a battle.
      */
     public void testRun() {
         InitializeMoves.getAllMoves();
         final FightVsWildPkm fightWild = (FightVsWildPkm) createFightVsWildPkm();
         final FightVsTrainer fightTrainer = (FightVsTrainer) createFightVsTrainer();
         /*
-         * test run against a wild pokemon at level 3, the ally front pokemon is at level 50,
-         * the method should return true!
+         * test the run against a wild pokemon at level 1, the ally front pokemon is at level 50,
+         * so method must return true!
          * */
         try {
             assertTrue("Checking the method applyRun... the run has failed!", fightWild.applyRun());
@@ -120,7 +120,7 @@ public class TestFight {
             fail("You must be able to do the method applyRun against a wild pokemon! But instead the method throw the exception!");
         }
         /*
-         * test run against a trainer
+         * test run against a trainer.
          * */
         try {
             fightTrainer.applyRun();
@@ -129,7 +129,7 @@ public class TestFight {
     }
 
     /**
-     * Test the pokemon change during a battle. {@link}
+     * Test the pokemon change during battle.
      */
     public void testChange() {
         InitializeMoves.getAllMoves();
@@ -139,7 +139,7 @@ public class TestFight {
         wartortle.damage(A_LOT_OF_HP);
         final Fight fight = createFightVsWildPkm();
         /*
-         * test change on a exhausted pokemon, code must throw the exception
+         * test change on a exhausted pokemon, method must throw the exception!
          * */
         try {
             fight.applyChange(wartortle);
@@ -151,7 +151,7 @@ public class TestFight {
             fail("Wartortle should be exhausted! He should not be in fight!");
         }
         /*
-         * test change on a pokemon in fighting, code must throw the exception
+         * test change on a pokemon in fighting, method must throw the exception!
          * */
         try {
             fight.applyChange(blastoise);
@@ -162,7 +162,7 @@ public class TestFight {
             assertSame("Blastoise must be the pokemon in fight!", player.getSquad().getPokemonList().get(FIRST_ELEM), blastoise);
         }
         /*
-         * test change on a pokemon which can be sent in battle
+         * test change on a pokemon that can be sent in battle.
          * */
         try {
             fight.applyChange(squirtle);
@@ -173,7 +173,7 @@ public class TestFight {
     }
 
     /**
-     * Test the use of an item during a battle. {@link}
+     * Test the use of an item during battle.
      */
     public void testUseItem() {
         InitializeMoves.getAllMoves();
@@ -192,7 +192,7 @@ public class TestFight {
         assertTrue("The potion must be in the inventory!", player.getInventory().getSubInventory(ItemType.POTION).get(potion) == 1);
         assertTrue("The pokeball must be in the inventory!", player.getInventory().getSubInventory(ItemType.POKEBALL).get(pokeball) == 1);
         /*
-         * test the use of a boost
+         * test the use of a boost.
          * */
         final double squirtleAtkBeforeBoost = fightWild.getAllyBoost(Stat.ATK);
         try {
@@ -202,7 +202,7 @@ public class TestFight {
             fail("Boost can't throw any exception!");
         }
         /*
-         * test the use of a potion on an exhausted pokemon
+         * test the use of a potion on an exhausted pokemon, method must throw the exception!
          * (wartortle hp were set at 0, in the change test)
          * */
         try {
@@ -216,7 +216,7 @@ public class TestFight {
             fail("Potion can't throw this exception!");
         }
         /*
-         * test the use of a potion on a pokemon which is not in the squad
+         * test the use of a potion on a pokemon which is not in the squad, method must throw the exception!
          * */
         try {
             fightWild.applyItem(potion, pkmNotInTeam);
@@ -228,7 +228,7 @@ public class TestFight {
             fail("Potion can't throw this exception!");
         }
         /*
-         * test the use of a potion on a pokemon which can be healed
+         * test the use of a potion on a pokemon which can be healed.
          * */
         squirtle.damage(MIN_STAT);
         final int hpBeforeUsePotion = squirtle.getCurrentHP();
@@ -243,7 +243,7 @@ public class TestFight {
             fail("Potion can't throw this exception!");
         }
         /*
-         * test the use of a pokeball against a trainer
+         * test the use of a pokeball against a trainer, method must throw the exception!
          * */
         try {
             fightTr.applyItem(pokeball, null);
@@ -252,13 +252,13 @@ public class TestFight {
             fail("Pokeball can't throw this exception!");
         } catch (CannotCaughtTrainerPkmException e1) {}
         /*
-         * test the use of a pokeball against a wild pokemon
+         * test the use of a pokeball against a wild pokemon.
          * */
         fightWild.getCurrentEnemyPokemon().damage(A_LOT_OF_HP);
         fightWild.getCurrentEnemyPokemon().heal(MIN_STAT);
         /*
-         * test the use of an ultraball against a wild pikachu at level 3,
-         * the method must return true
+         * test the use of an ultraball against a wild rattata at level 1,
+         * so method must return true.
          * */
         try {
             assertTrue("Checking method applyItem, using a pokeball...the pokemon isn't captured!", 
@@ -281,11 +281,11 @@ public class TestFight {
         final FightVsTrainer fightTr = (FightVsTrainer) createFightVsTrainer();
         final int hpBeforeTurn = squirtle.getCurrentHP();
         final double boostBeforeTurn = fightTr.getAllyBoost(Stat.DEF);
-        assertTrue("Squirtle at lv 15 must be faster than a rattata at lv 3!", fightTr.setIsAllyFastest());
+        assertTrue("Squirtle at lv 15 must be faster than a rattata at lv 1!", fightTr.setIsAllyFastest());
         fightTr.enemyTurn();
-        assertTrue("Squirtle HP must be reduced by rattata attack!(rattata at lv 3 has only pound)", 
+        assertTrue("Squirtle HP must be reduced by rattata attack!(rattata at lv 1 has only the move tackle!)", 
                 hpBeforeTurn > squirtle.getCurrentHP());
-        fightTr.allyTurn(Move.HARDEN);
+        fightTr.allyTurn(Move.WITHDRAW);
         assertTrue("Squirtle DEF must be increase by harden!", 
                 boostBeforeTurn < fightTr.getAllyBoost(Stat.DEF));
     }
@@ -297,9 +297,12 @@ public class TestFight {
         final PokemonInBattle squirtle = player.getSquad().getPokemonList().get(FIRST_ELEM);
         final PokemonInBattle wartortle = player.getSquad().getPokemonList().get(SECOND_ELEM);
         final FightVsTrainer fightTr = (FightVsTrainer) createFightVsTrainer();
-        List<PokemonInBattle> pkmsToEvolve = new ArrayList<>();
         squirtle.setExp(squirtle.getNecessaryExp() - MIN_STAT);
-        fightTr.giveExpAndCheckLvlUp(fightTr.getExp());
+        if (fightTr.giveExpAndCheckLvlUp(fightTr.getExp())) {
+            if (squirtle.checkIfEvolves()) {
+                fightTr.getPkmsThatMustEvolve().add(squirtle);
+            }
+        }
         wartortle.heal(A_LOT_OF_HP);
         try {
             fightTr.applyChange(wartortle);
@@ -307,11 +310,14 @@ public class TestFight {
             fail("Something in change going wrong...");
         }
         wartortle.setExp(wartortle.getNecessaryExp() - MIN_STAT);
-        fightTr.giveExpAndCheckLvlUp(fightTr.getExp());
-        pkmsToEvolve = fightTr.getPkmsThatMustEvolve();
+        if (fightTr.giveExpAndCheckLvlUp(fightTr.getExp())) {
+            if (wartortle.checkIfEvolves()) {
+                fightTr.getPkmsThatMustEvolve().add(wartortle);
+            }
+        }
         fightTr.evolvePkms();
-        assertSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE, pkmsToEvolve.get(FIRST_ELEM).getPokedexEntry());
-        assertSame("Squirtle must be evolved in wartortle!", Pokedex.WARTORTLE, pkmsToEvolve.get(SECOND_ELEM).getPokedexEntry());
+        assertSame("Squirtle must be evolved in wartortle!", Pokedex.WARTORTLE, fightTr.getPkmsThatMustEvolve().get(FIRST_ELEM).getPokedexEntry());
+        assertSame("Wartortle must be evolved in blastoise!", Pokedex.BLASTOISE.getName(), fightTr.getPkmsThatMustEvolve().get(SECOND_ELEM).getPokedexEntry().getName());
     }
 
 }

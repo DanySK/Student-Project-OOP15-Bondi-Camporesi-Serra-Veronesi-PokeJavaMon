@@ -14,6 +14,9 @@ import java.util.TreeMap;
 
 import org.junit.Test;
 
+/**
+ * The class that perform the ways to create trainers.
+ */
 public class TestTrainer {
 
     private static final int money = 100;
@@ -27,7 +30,7 @@ public class TestTrainer {
     private static final ArrayList<String> pkmns_lvl = new ArrayList<>();
 
     /**
-     * Test the creation of a trainer. 
+     * Test creation of a trainer. 
      */
     @Test
     public void testStaticTrainerFactory() {
