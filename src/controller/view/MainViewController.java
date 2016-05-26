@@ -14,7 +14,7 @@ import view.resources.GameView;
 import view.resources.FirstMenu;
 
 /**
- * This class controls the menus from the view
+ * This class controls the menus from the view 
  */
 public class MainViewController implements ViewController {
     
