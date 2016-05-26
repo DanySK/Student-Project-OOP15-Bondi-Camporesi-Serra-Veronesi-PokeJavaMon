@@ -207,8 +207,7 @@ public class HowToPlay extends JWindow implements MyFrame {
 		    try {
 				bgImage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/HowToPlay.png"));
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			        System.out.println("FAILED TO SET BACKGROUND");
 			}
 		    mt.addImage(bgImage, 0);
 		    try {

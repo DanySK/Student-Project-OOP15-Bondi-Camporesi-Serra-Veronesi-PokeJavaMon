@@ -35,7 +35,6 @@ import model.pokemon.Move;
 import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
 import model.squad.Squad;
-import model.utilities.Pair;
 
 /**
  * This interface explains all the methods that can be called on {@link MainController}
@@ -232,12 +231,12 @@ public interface Controller {
     /**
      * @return the initial player's position
      */
-    Pair<Integer, Integer> getInitialPosition();
+    Position getInitialPosition();
 
     /**
      * @return the default initial player's position
      */
-    Pair<Integer, Integer> getDefaultInitialPosition();
+    Position getDefaultInitialPosition();
     
     /**
      * @param p the pokemon to add

@@ -204,7 +204,6 @@ public class FightPanel extends JPanel {
                 }
                 fc.attack(m);
                 refresh();
-//	     	View.getView().hideCurrent();
                 setMenuButtons();
             }
         };

@@ -41,7 +41,6 @@ public class MessageFrame extends JWindow implements MyFrame {
     /**
      * The message that is displayed
      */
-    // TODO
     private String[] msgs;
     /**
      * ---

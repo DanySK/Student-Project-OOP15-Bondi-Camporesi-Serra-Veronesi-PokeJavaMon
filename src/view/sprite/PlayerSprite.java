@@ -11,7 +11,7 @@ import controller.MainController;
 import controller.parameters.Img;
 import model.map.Drawable.Direction;
 import model.utilities.Pair;
-import view.resources.MainGameView;
+import view.resources.ScreenView;
 /**
  * PlayerSpriteClass
  * 
@@ -57,7 +57,7 @@ public class PlayerSprite extends Sprite {
         if (SINGLETON == null) {
             synchronized (PlayerSprite.class) {
                 if (SINGLETON == null) {
-                    SINGLETON = new PlayerSprite(MainGameView.getSprite());
+                    SINGLETON = new PlayerSprite(ScreenView.getSprite());
                 }
             }
         }

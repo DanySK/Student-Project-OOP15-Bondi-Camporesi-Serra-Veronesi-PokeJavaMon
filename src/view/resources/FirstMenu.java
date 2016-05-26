@@ -79,8 +79,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 		    try {
 				bgimage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/1stMenuBG.png"));
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			        System.out.println("FAILED TO SET BACKGROUND");
 			}
 		    mt.addImage(bgimage, 0);
 		    try {
@@ -101,8 +100,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 	public void showFrame() {
 	    try {
 		    this.setIconImage(Toolkit.getDefaultToolkit().getImage(Img.PALLA.getAbsolutePath()));
-		} catch (Exception e) {
-		    //TODO: Fare catch di una semplice Exception e' sbagliato
+		} catch (SecurityException e) {
 		    this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(Img.PALLA.getResourcePath()).getPath()));
 		}
 		this.setTitle("PokeJavaMon");

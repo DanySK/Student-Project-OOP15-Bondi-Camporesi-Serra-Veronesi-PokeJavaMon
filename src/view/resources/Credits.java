@@ -61,8 +61,7 @@ public class Credits extends JWindow implements MyFrame {
 		    try {
 				bgImage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/Credits.png"));
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("FAILED TO SET BACKGROUND");
 			}
 		    mt.addImage(bgImage, 0);
 		    try {

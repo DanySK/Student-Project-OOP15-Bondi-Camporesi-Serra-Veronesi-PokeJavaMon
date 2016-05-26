@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
@@ -18,13 +19,14 @@ import controller.parameters.Img;
 import controller.parameters.Maps;
 import controller.parameters.State;
 import exceptions.SquadFullException;
+import model.map.Position;
 import view.sprite.PlayerSprite;
 /**
  * MainGameViewClass
  * 
  * @author Daniel Veronesi
  */
-public class MainGameView implements Screen {  
+public class ScreenView implements Screen {  
 	/**
 	 * renderer
 	 */
@@ -62,25 +64,14 @@ public class MainGameView implements Screen {
      */
     private Texture tx;
     /**
-     * startX
-     */
-    private int startX;
-    /**
-     * startY
-     */
-    private int startY;
-    /**
-     * defaultStartX
-     */
-    private int defaultStartX;
-    /**
-     * defaultStartY
-     */
-    private int defaultStartY;
-	/**
-	 * MainGameView
+	 * ScreenView
 	 */
-    public MainGameView(boolean b) {
+
+    private static final float VIEWPORT_X = 2.5f;
+    private static final float VIEWPORT_Y = 2.5f;
+    
+    
+    public ScreenView(boolean b) {
         this.newGame = b;    
         this.toDispose = true;
     }
@@ -101,17 +92,8 @@ public class MainGameView implements Screen {
 	 * resize
 	 */	
     public void resize(int width, int height) {		
-        this.camera.viewportWidth = width / 2.5f;
-        this.camera.viewportHeight = height / 2.5f;
-    }
-	/**
-	 * initConstants
-	 */
-    private void initConstants() {
-        this.startX = MainController.getController().getInitialPosition().getX();
-        this.startY = MainController.getController().getInitialPosition().getY();
-        this.defaultStartX = MainController.getController().getDefaultInitialPosition().getX();
-        this.defaultStartY = MainController.getController().getDefaultInitialPosition().getY();
+        this.camera.viewportWidth = width / VIEWPORT_X;
+        this.camera.viewportHeight = height / VIEWPORT_Y;
     }
 	
     public void show() {	
@@ -122,7 +104,6 @@ public class MainGameView implements Screen {
         } catch (Exception e) {
             MainController.getController().initializeModel(new TmxMapLoader().load(MainController.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
-        this.initConstants();
         MainController.getController().getViewController().initName();
 	MainController.getController().initializeMusicController();
 	if (toDispose) {
@@ -148,27 +129,11 @@ public class MainGameView implements Screen {
 	} catch (Exception e) {
 	    this.tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
 	}
-	TextureRegion gain = new TextureRegion(tx);
-	sp = new Sprite(gain);		
-	this.pls = PlayerSprite.getSprite();
-	if (newGame) {
-	    //TODO Magic numbers... c'è un metodo nella mappa
-	    this.pls.setBounds(startX > 0 ? startX * 16  : defaultStartX * 16, startY > 0 ? (299 - startY) * 16  : (299 - defaultStartY) * 16, 15.9f, 15.9f);
-	    if (startX < 0) {
-	        System.out.println("Initial Position not found");
-	    } 
-	} else {
-	    if (MainController.getController().saveExists()) {
-		MainController.getController().load();
-		this.pls.setBounds(MainController.getController().getPlayer().get().getTileX()*16, (299 - MainController.getController().getPlayer().get().getTileY()) * 16, 15.9f, 15.9f);
-	    } else {
-	        this.pls.setBounds(28*16, (299 - 177) * 16, 15.9f, 15.9f);
-		if (startX < 0) {
-		    System.out.println("Initial Position not found");
-		}
-		this.pls.setPosition(startX > 0 ? startX * 16 : defaultStartX * 16, startY > 0 ? (299 - startY) * 16 : (299 - defaultStartY) * 16);
-	    }
-	}	        
+	final TextureRegion gain = new TextureRegion(tx);
+	sp = new Sprite(gain);
+        this.pls = PlayerSprite.getSprite();
+        this.setInitialPosition(newGame);
+	        
     }
 
     public void hide() {		
@@ -211,6 +176,32 @@ public class MainGameView implements Screen {
         return sp;
     }
 
+    private void setInitialPosition(final boolean isNewGame) {
+        Position p;
+        if (isNewGame) {
+            p = MainController.getController().getDefaultInitialPosition();
+        } else {
+            if (MainController.getController().saveExists()) {
+                MainController.getController().load();
+                p = MainController.getController().getInitialPosition();
+            } else {
+                throw new IllegalStateException("Cannot continue without a save file");
+            }
+        } 
+        float mapHeight = -1;
+        float tileWidth = -1;
+        float tileHeight = -1;
+        
+        if (MainController.getController().getMap().isPresent()) {
+            final MapProperties prop = MainController.getController().getMap().get().getProperties();
+            mapHeight = (float) prop.get("height", Integer.class);
+            tileWidth = (float) prop.get("tilewidth", Integer.class);
+            tileHeight = (float) prop.get("tileheight", Integer.class);
+        }
+        
+        this.pls.setBounds(p.getX() * tileWidth, (mapHeight - 1 - p.getY()) * tileHeight, PlayerSprite.getSprite().getWidth(), PlayerSprite.getSprite().getHeight());
+    }
+    
     @Override
     public void pause() {
         // EMPTY METHOD

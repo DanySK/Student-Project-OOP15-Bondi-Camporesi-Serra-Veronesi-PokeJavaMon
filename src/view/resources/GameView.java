@@ -8,17 +8,18 @@ import com.badlogic.gdx.Game;
  */
 public class GameView extends Game {       
 	/**
-	 * MainGameView
+	 * ScreenView
 	 */
-    private MainGameView pl;      
+    private ScreenView pl;      
 	/**
 	 * GameView
 	 */
     public GameView(boolean bl) {
-        this.pl = new MainGameView(bl);
+        this.pl = new ScreenView(bl);
     }
         
-    public void create() {	        
+    public void create() {
+        
 	setScreen(this.pl); 
     }
 
