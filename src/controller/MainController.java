@@ -369,10 +369,10 @@ public final class MainController implements Controller {
             	int offsetY = 0; 
             	switch (PlayerImpl.getPlayer().getDirection()) {
             	case NORTH :
-            		offsetY = 1;
+            		offsetY = -1;
             		break;
             	case SOUTH :
-            		offsetY = -1;
+            		offsetY = 1;
             		break;
             	case WEST :
             		offsetX = -1;
