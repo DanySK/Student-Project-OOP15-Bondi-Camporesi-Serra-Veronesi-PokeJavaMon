@@ -56,7 +56,7 @@ public class MainViewController implements ViewController {
     public void map(final boolean newGame) {
         final LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
         cfg.title = "PokeJavaMon";
-        cfg.useGL30 = true;
+        cfg.useGL30 = false;
         cfg.width = WIDTH;
         cfg.height = HEIGHT;
         final GameView tl = new GameView(newGame); 
