@@ -24,58 +24,33 @@ import view.sprite.PlayerSprite;
 /**
  * MainGameViewClass
  * 
- * @author Daniel Veronesi
  */
 public class ScreenView implements Screen {  
-	/**
-	 * renderer
-	 */
     private OrthogonalTiledMapRenderer renderer;
-    /**
-     * camera
-     */
     private OrthographicCamera camera;
-    /**
-     * background&foreground
-     */
     private int[] background = new int[] {0}, foreground = new int[] {1};
-    /**
-     * sr
-     */
     private ShapeRenderer sr;
-    /**
-     * newGame
-     */
     private boolean newGame;
-    /**
-     * toDispose
-     */
     private boolean toDispose;
-    /**
-     * pls
-     */
     private PlayerSprite pls;
-    /**
-     * sp
-     */
     private static Sprite sp;
-    /**
-     * tx
-     */
     private Texture tx;
-    /**
-	 * ScreenView
-	 */
 
     private static final float VIEWPORT_X = 2.5f;
     private static final float VIEWPORT_Y = 2.5f;
     
-    
+    /**
+     * 
+     * @param b
+     */
     public ScreenView(boolean b) {
         this.newGame = b;    
         this.toDispose = true;
     }
 	
+    /**
+     * 
+     */
     public void render(float delta) {		
 	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);                                       
@@ -95,7 +70,9 @@ public class ScreenView implements Screen {
         this.camera.viewportWidth = width / VIEWPORT_X;
         this.camera.viewportHeight = height / VIEWPORT_Y;
     }
-	
+	/**
+	 * 
+	 */
     public void show() {	
         final LoadingScreen ls = new LoadingScreen();
         ls.showLoadingScreen();
@@ -135,7 +112,9 @@ public class ScreenView implements Screen {
         this.setInitialPosition(newGame);
 	        
     }
-
+    /**
+     * 
+     */
     public void hide() {		
         this.dispose();
     }
@@ -157,7 +136,9 @@ public class ScreenView implements Screen {
     public void setPosition(float x, float y) {	    
         this.pls.setPlayerPosition(x, y);
     }
-	
+	/**
+	 * 
+	 */
     public void dispose() {        
 	MainController.getController().getMap().get().dispose();
 	this.renderer.dispose();

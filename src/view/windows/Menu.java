@@ -15,22 +15,14 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Component;
 /**
- * MenuClass
- * 
- * @author Daniel Veronesi
+ * This {@link Window} handles the main menu of the map.
+ * It permits to read the player's informations, to opens
+ * the other menu of the game and it allows to switch the
+ * music on or off. 
  */
 public class Menu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 3868831254532069974L;
-    /**
-     * panel
-     */
     private JPanel panel;
-    /**
-     * A button that opens {@link BoxMenu}.
-     */
     private JButton box;
     /**
      * A button that opens {@link TeamMenu}

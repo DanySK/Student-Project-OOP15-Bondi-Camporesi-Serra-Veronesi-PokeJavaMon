@@ -15,40 +15,15 @@ import view.resources.ScreenView;
 /**
  * PlayerSpriteClass
  * 
- * @author Daniel Veronesi
  */
 public class PlayerSprite extends Sprite {
-	/**
-	 * velocity
-	 */
     private Vector2 velocity;
-    /**
-	 * left, right, up, down, left_s, right_s, up_s, down_s
-	 */
     private Animation left, right, up, down, left_s, right_s, up_s, down_s;
-    /**
-	 * playerAtlas
-	 */
     private TextureAtlas playerAtlas;
-    /**
-	 * animationTime
-	 */
     private float animationTime;
-    /**
-	 * pos
-	 */
     private int pos;
-    /**
-	 * position
-	 */
     private Pair<Float, Float> position;
-    /**
-	 * update
-	 */
     private boolean update;
-    /**
-	 * SINGLETON
-	 */
     private static PlayerSprite SINGLETON;
 	/**
 	 * getSprite
@@ -63,9 +38,6 @@ public class PlayerSprite extends Sprite {
         }
         return SINGLETON;
     }
-	/**
-	 * PlayerSprite
-	 */
     private PlayerSprite(final Sprite st) {
         super(st);
         super.setSize(16, 16);
@@ -108,9 +80,6 @@ public class PlayerSprite extends Sprite {
     public boolean isMoving() {
         return (this.velocity.x != 0 || this.velocity.y != 0);
     }
-	/**
-	 * setupAnimation
-	 */
     private void setupAnimation() {
         try {
             this.playerAtlas = new TextureAtlas(Img.PACK.getAbsolutePath());
@@ -149,9 +118,6 @@ public class PlayerSprite extends Sprite {
         super.setX(x * 16);
         super.setY((299 - y) * 16);
     }
-	/**
-	 * setOrientation
-	 */
     private void setOrientation(final Direction d) {
         switch (d) {
         case NORTH:
@@ -170,9 +136,6 @@ public class PlayerSprite extends Sprite {
             break;
         }
     }
-	/**
-	 * move
-	 */
     private void move() {
         if (this.velocity.x > 0) {
             super.setX(super.getX() + this.velocity.x);

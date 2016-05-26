@@ -7,24 +7,11 @@ import view.windows.MyFrame;
  * 
  * This is the view of the game. It contains all the functions needed to implement the game.
  * 
- * @author Daniel Veronesi
  */
 public class View implements ViewInterface {
-	/**
-	 * It is the previous frame.
-	 */
     private MyFrame parent;
-    /**
-     * It is a stack that is filled with windows.
-     */
     private Stack<MyFrame> stack;
-    /**
-     * singleton
-     */
     private static ViewInterface singleton;
-	/**
-	 * View
-	 */
     private View() {
         this.stack = new Stack<MyFrame>();
     }

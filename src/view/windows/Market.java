@@ -19,53 +19,23 @@ import model.items.Item;
 import model.items.Item.ItemType;
 import view.View;
 /**
- * MarketClass
- * 
- * @author Daniel Veronesi
+ * This {@link JWindow} implements the poké-market, a place where
+ * the player can buy items with the money he earn winning battles.
  */
 public class Market extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */   
     private static final long serialVersionUID = 8636920096874072291L;
-    /**
-     * panel
-     */
     private JPanel panel;
-    /**
-     * An array filled with the types of the items.
-     */
     private final ArrayList<String>Name1;
-    /**
-     * An array filled with the names of the items.
-     */
     private final ArrayList<String>Name2;
-    /**
-     * An array filled with the prizes of the items.
-     */
     private final ArrayList<String>Prz;
-    /**
-     * An array filled with the quantity of the item that the character owns.
-     */
     private final ArrayList<String>Qnt;
-    /**
-     * it
-     */
     private final ArrayList<Item> it;
-    /**
-     * The number of columns.
-     */
     private int cols;
-    /**
-     * A button that allows the player to buy the item.
-     */
     private JButton buy;
-    /**
-     * A button that allows to exit the market.
-     */
     private JButton exit;
 	/**
-	 * Market
+	 * It initializes the arrays where the 
+	 * informations of the items are put.
 	 */
     public Market() {
         this.Name1 = new ArrayList<String>();

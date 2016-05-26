@@ -14,20 +14,17 @@ import view.windows.TeamMenu;
 /**
  * This {@link JWindow} handles the fighting part of the games.
  * 
- * @author Daniel Veronesi
  */
 public class FightScreen extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = -3997502312610503237L;	 
-    
     private FightPanel mainPanel;
 	/**
-	 * It creates the window where pokémon and choices are put.
+	 * It creates the window which is filled with {@link FightPanel}.
 	 */
     	public FightScreen() {
             this.setAlwaysOnTop(true);
             this.setFocusable(true);
-            this.setAlwaysOnTop(true);
             this.setMinimumSize(new Dimension(450, 300));
             this.setLocationRelativeTo(null);
             this.getContentPane().setLayout(null);

@@ -30,116 +30,42 @@ import view.windows.BagMenu;
 import view.windows.MessageFrame;
 import view.windows.TeamMenu;
 /**
- * This {@link JPanel} handles every buttons of the {@link FightScreen} and all the other informations.
+ * This {@link JPanel} handles the {@link FightScreen}.
+ * Here there are:
+ * the choices the player can do in the fight;
+ * the sprites of the pokémon;
+ * their bars;
+ * the moves the player can choose.
+ * Everything is refreshed every turn with the function "refresh".
  * 
- * @author Daniel Veronesi
  */
 public class FightPanel extends JPanel {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 849521658746630224L;
-    /**
-	 * FIGHT
-	 */
     private static final int FIGHT = 0;
-    /**
-	 * BAG
-	 */
     private static final int BAG = 1;
-    /**
-	 * serialVersiSQUADonUID
-	 */
     private static final int SQUAD = 2;
-    /**
-	 * RUN
-	 */
     private static final int RUN = 3;
-    /**
-	 * fc
-	 */
     private final FightController fc;
-    /**
-	 * ctrl
-	 */
     private final Controller ctrl;
-    /**
-	 * The level of the ally pokémon who is currently fighting.
-	 */
     private JLabel enemyLvl;
-    /**
-	 * The name of the enemy pokémon who is currently fighting.
-	 */
     private JLabel enemyName;
-    /**
-	 * The health bar of the enemy pokémon who is currently fighting.
-	 */
     private HealthBar enemyHealthBar;
-    /**
-	 * The sprite of the enemy pokémon who is currently fighting.
-	 */
     private JLabel enemyFrontSprite;
-    /**
-	 * The level of the ally pokémon who is currently fighting.
-	 */
     private JLabel allyLvl;
-    /**
-	 * The name of the ally pokémon who is currently fighting.
-	 */
     private JLabel allyName;
-    /**
-	 * It displays the current health points and the maximum health points as numbers.
-	 */
     private JLabel allyHP;
-    /**
-	 * The health bar of the ally pokémon who is currently fighting.
-	 */
     private HealthBar allyHealthBar;
-    /**
-	 * The experience bar of the ally pokémon who is currently fighting.
-	 */
     private JProgressBar allyExpBar;
-    /**
-	 * The sprite of the ally pokémon who is currently fighting.
-	 */
     private JLabel allyBackSprite;
-    /**
-	 * subPanel
-	 */
     private JPanel subPanel;	
-    /**
-	 * choicesList
-	 */
     private List<JButton> choicesList = new ArrayList<>(); 
-    /**
-	 * choice1
-	 */
     private JButton choice1;
-    /**
-	 * choice2
-	 */
     private JButton choice2;
-    /**
-	 * choice3
-	 */
     private JButton choice3;
-    /**
-	 * choice4
-	 */
     private JButton choice4;  
-    /**
-	 * fightMenuListeners
-	 */
     private final Map<Integer, ActionListener> fightMenuListeners;
-    /**
-	 * moveListener
-	 */
     private final ActionListener moveListener;
-    /**
-     * 
-     */
     private JButton tmp;
-    
     /**
      * Create the FightPanel.
      */
@@ -249,47 +175,43 @@ public class FightPanel extends JPanel {
         }
         setGroupLayout4Buttons(this.subPanel, this.choice1, this.choice2, this.choice3, this.choice4);		
     }
-	/**
-	 * setGroupLayout4Buttons
-	 */
     private static void setGroupLayout4Buttons(final JPanel panel, final JButton b1, final JButton b2, final JButton b3, final JButton b4) {
         final GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-            .addGroup(gl_panel.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-                    .addComponent(b3, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b1, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.UNRELATED)
-                .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-                    .addComponent(b2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(b4, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+    		.addGroup(gl_panel.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+            .addComponent(b3, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+            .addComponent(b1, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(ComponentPlacement.UNRELATED)
+            .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+            .addComponent(b2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(b4, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
             .addContainerGap())
         );
         gl_panel.setVerticalGroup(
-                gl_panel.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-                                .addComponent(b1, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(b2, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
-                        .addGap(18)
-                        .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-                                .addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-                                        .addComponent(b4, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(ComponentPlacement.RELATED, 3, Short.MAX_VALUE))
-                                .addComponent(b3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+    		gl_panel.createParallelGroup(Alignment.LEADING)
+            .addGroup(gl_panel.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+	        .addComponent(b1, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+	        .addComponent(b2, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+	        .addGap(18)
+	        .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+	        .addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+	        .addComponent(b4, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+	        .addPreferredGap(ComponentPlacement.RELATED, 3, Short.MAX_VALUE))
+	        .addComponent(b3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
         );
         panel.setLayout(gl_panel);
     }
-	/**
-	 * set4MovesToButtons
-	 */
+    /**
+     * 
+     */
     private void set4MovesToButtons() {
         final List<Move> moves = this.ctrl.getSquad().get().getPokemonList().get(0).getCurrentMoves();
-
         int count = 0;
         for (final JButton b : this.choicesList) {
             if (b.getText().equals("FIGHT")) {
@@ -319,26 +241,26 @@ public class FightPanel extends JPanel {
 	 * It creates the layout filled with the decisions the player can make during the fight.
 	 */
     public void setMenuButtons() {
-        tmp = choicesList.get(FIGHT);
-        tmp.setText("FIGHT");
-        tmp.removeActionListener(this.moveListener);
-        tmp.addActionListener(fightMenuListeners.get(FIGHT));
-        tmp.setEnabled(true);
-        tmp = choicesList.get(BAG);
-        tmp.setText("BAG");
-        tmp.removeActionListener(this.moveListener);
-        tmp.addActionListener(fightMenuListeners.get(BAG));
-        tmp.setEnabled(true);
-        tmp = choicesList.get(SQUAD);
-        tmp.setText("SQUAD");
-        tmp.removeActionListener(this.moveListener);
-        tmp.addActionListener(fightMenuListeners.get(SQUAD));
-        tmp.setEnabled(true);
-        tmp = choicesList.get(RUN);
-        tmp.setText("RUN");
-        tmp.removeActionListener(this.moveListener);
-        tmp.addActionListener(fightMenuListeners.get(RUN));
-        tmp.setEnabled(true);
+    	this.tmp = choicesList.get(FIGHT);
+    	this.tmp.setText("FIGHT");
+    	this.tmp.removeActionListener(this.moveListener);
+    	this.tmp.addActionListener(fightMenuListeners.get(FIGHT));
+    	this.tmp.setEnabled(true);
+    	this.tmp = choicesList.get(BAG);
+    	this.tmp.setText("BAG");
+    	this.tmp.removeActionListener(this.moveListener);
+    	this.tmp.addActionListener(fightMenuListeners.get(BAG));
+    	this.tmp.setEnabled(true);
+    	this.tmp = choicesList.get(SQUAD);
+    	this.tmp.setText("SQUAD");
+    	this.tmp.removeActionListener(this.moveListener);
+    	this.tmp.addActionListener(fightMenuListeners.get(SQUAD));
+        this.tmp.setEnabled(true);
+        this.tmp = choicesList.get(RUN);
+        this.tmp.setText("RUN");
+        this.tmp.removeActionListener(this.moveListener);
+        this.tmp.addActionListener(fightMenuListeners.get(RUN));
+        this.tmp.setEnabled(true);
     }
 	/**
 	 * It refreshes the informations of the fight if they changed.

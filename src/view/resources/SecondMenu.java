@@ -30,69 +30,28 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
- * 
- * @author Daniel Veronesi
- *
+ * This {@link JWindow} handles the menu in which the user chooses his name
+ * and with what starter he wants to start the game.
  */
-
 public class SecondMenu extends JFrame implements MyFrame {
     public SecondMenu() {
     }
 
-    /**
-     * serialVersionUID
-     */
     private static final long serialVersionUID = -6893200324739176114L;
-    /**
-     * 
-     */
     private static final int COORDINATES_OFFSET = 20;
-    /**
-     * 
-     */
     private static final int DIM_OFFSET = 35;
-    /**
-     * 
-     */
     private static String s;
-    /**
-     * 
-     */
     private JPanel contentPane;
-    /**
-     * A label that gives informations about the lenght of the name the user has to write.
-     */
     private JLabel name;
-    /**
-     * A label with the image of a Bulbasaur.
-     */
     private JLabel bulba_label;
-    /**
-     * A label with the image of a Charmander.
-     */
     private JLabel charm_label;
-    /**
-     * A label with the image of a Squirtle.
-     */
     private JLabel squi_label;
-    /**
-     * The button that starts a new game with the pokémon Squirtle as the only member of the party.
-     */
     private JButton bulba_button;
-    /**
-     * The button that starts a new game with the pokémon Bulbasaur as the only member of the party.
-     */
     private JButton charm_button;
-    /**
-     * The button that starts a new game with the pokémon Charmander as the only member of the party.
-     */
     private JButton squi_button;
-    /**
-     * A field where the player writes his name.
-     */
     private static JTextField textField;
     /**
-     * 
+     * It handles the whole layout of the {@link JWindow}.
      */
     public void showFrame() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(SecondMenu.class.getResource("/img/POKEPALLA.png")));
@@ -150,16 +109,20 @@ public class SecondMenu extends JFrame implements MyFrame {
     }
     /**
      * 
-     * @return
+     * It gets the text written in the textfield.
+     * 
+     * @return a string with the name written.
      */
     public static String getPlayerName() {
         s = textField.getText();
         return s;      
     }
     /**
+     * It adds a listener to the buttons of the game that checks
+     * if the nickname chosen has the right length
      * 
-     * @param b
-     * @param p
+     * @param b The button with the name of the starter pokémon.
+     * @param p The starter pokémon it will be put in the party.
      */
     private void addListener(final JButton b, final Pokedex p) {
         b.addActionListener(new ActionListener() {
@@ -177,19 +140,14 @@ public class SecondMenu extends JFrame implements MyFrame {
         });
     }
     /**
-     * 
+     * The {@link JPanel} where the background image is created
      */
     public class ImagePanel extends JPanel {
-    	/**
-         * serialVersionUID
-         */
         private static final long serialVersionUID = 3361495155189049313L;
-        /**
-         * 
-         */
         private Image bgimage = null;
         /**
-         * 
+         * It sets an image as background.
+         * It throws an exception if it fails to load the picture.
          */
         ImagePanel() {
             final MediaTracker mt = new MediaTracker(this);

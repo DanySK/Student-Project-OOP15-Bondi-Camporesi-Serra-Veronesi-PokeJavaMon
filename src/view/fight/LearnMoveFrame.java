@@ -19,70 +19,27 @@ import model.pokemon.Pokemon;
 import view.View;
 import view.windows.MyFrame;
 /**
- * LearnMoveFrameClass
- * 
- * @author Daniel Veronesi
+ * This {@link JWindow} is used when a pokémon wants to learn a 
+ * new attack but he has already 4 moves.
+ * It displays the whole moveset and the new move it is learning.
+ * The player has to choose between learning the new 
+ * move or remaining with the same old attacks.
  */
 public class LearnMoveFrame extends JWindow implements MyFrame {        
-		/**
-		 * serialVersionUID
-		 */
         private static final long serialVersionUID = -4826245459412294421L;
-        /**
-		 * panel
-		 */
         private JPanel panel;
-        /**
-		 * A button that display the move number 1 of the pokémon.
-		 */
         private JButton move1;
-        /**
-		 * A button that display the move number 2 of the pokémon.
-		 */
         private JButton move2;
-        /**
-		 * A button that display the move number 3 of the pokémon.
-		 */
         private JButton move3;
-        /**
-		 * A button that display the move number 4 of the pokémon.
-		 */
         private JButton move4;
-        /**
-		 * A button that display the move the pokémon is trying to learn.
-		 */
         private JButton move5;
-        /**
-		 * tooltip
-		 */
         private JLabel tooltip;
-        /**
-		 * A label that say "forget". It is connected with the first move.
-		 */
         private JLabel forget1;
-        /**
-		 * A label that say "forget". It is connected with the second move.
-		 */
         private JLabel forget2;
-        /**
-		 * A label that say "forget". It is connected with the third move.
-		 */
         private JLabel forget3;
-        /**
-		 * A label that say "forget". It is connected with the fourth move.
-		 */
         private JLabel forget4;
-        /**
-		 * A label that say "forget". It is connected with the move the pokémon is trying to learn.
-		 */
         private JLabel forget5;
-        /**
-		 * newMove
-		 */
         private Move newMove;
-        /**
-		 * pk
-		 */
         private Pokemon pk;
     	/**
     	 * LearnMoveFrame
@@ -95,44 +52,48 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         
         @Override
         public void showFrame() {
-                this.setAlwaysOnTop(true); 
-                this.setBounds(100, 100, 220, 300);
-                this.panel = new JPanel();
-                this.setContentPane(this.panel);   
-                this.panel.setBorder(new LineBorder(Color.GRAY, 4));
-                this.panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
-                this.getContentPane().add(Box.createVerticalGlue());
-                this.tooltip = new JLabel("Pokemon already knows 4 moves!");
-                this.tooltip.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(this.tooltip);
-                this.getContentPane().add(Box.createVerticalGlue());
-                this.forget5 = new JLabel("Do not learn:");
-                this.forget5.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(this.forget5);
-                this.move5 = new JButton(this.newMove.name());
-                this.move5.setBorderPainted(false);
-                this.move5.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        View.getView().disposeCurrent();
-                        View.getView().removeCurrent();
-                        View.getView().resumeCurrent();
-                    } 
-                });
-                this.move5.setAlignmentX(Component.CENTER_ALIGNMENT);
-                this.getContentPane().add(move5);
-                this.getContentPane().add(Box.createVerticalGlue());
-                this.setButton(this.forget1, this.move1, 0);
-                this.setButton(this.forget2, this.move2, 1);
-                this.setButton(this.forget3, this.move3, 2);
-                this.setButton(this.forget4, this.move4, 3);
-                this.setVisible(true);
+        	this.setAlwaysOnTop(true); 
+            this.setBounds(100, 100, 220, 300);
+            this.panel = new JPanel();
+            this.setContentPane(this.panel);   
+            this.panel.setBorder(new LineBorder(Color.GRAY, 4));
+            this.panel.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));   
+            this.getContentPane().add(Box.createVerticalGlue());
+            this.tooltip = new JLabel("Pokemon already knows 4 moves!");
+            this.tooltip.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.getContentPane().add(this.tooltip);
+            this.getContentPane().add(Box.createVerticalGlue());
+            this.forget5 = new JLabel("Do not learn:");
+            this.forget5.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.getContentPane().add(this.forget5);
+            this.move5 = new JButton(this.newMove.name());
+            this.move5.setBorderPainted(false);
+            this.move5.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    View.getView().disposeCurrent();
+                    View.getView().removeCurrent();
+                    View.getView().resumeCurrent();
+                } 
+            });
+            this.move5.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.getContentPane().add(move5);
+            this.getContentPane().add(Box.createVerticalGlue());
+            this.setButton(this.forget1, this.move1, 0);
+            this.setButton(this.forget2, this.move2, 1);
+            this.setButton(this.forget3, this.move3, 2);
+            this.setButton(this.forget4, this.move4, 3);
+            this.setVisible(true);
         }
     	/**
-    	 * setButton
-    	 * @param l
-    	 * @param b
-    	 * @param x
+    	 * The function adds the labels, the buttons, the name of the
+    	 * moves the pokémon already knows and the action listeners
+    	 * that provides to replace the attack selected with the
+    	 * new move the pokémon is learning.
+    	 * 
+    	 * @param l The labels that explains what pressing the buttons do.
+    	 * @param b The buttons that replace the old move selected with the new one.
+    	 * @param x The number of the move of the pokémon.
     	 */
         private void setButton(JLabel l, JButton b, int x) {
             l = new JLabel("Forget:");

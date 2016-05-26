@@ -17,34 +17,15 @@ import controller.MainController;
 import controller.parameters.State;
 import view.View;
 /**
- *This {@link JWindow} implements {@link MyFrame} and is used to display messages in game.
+ *This {@link JWindow} is used to display messages in game.
  *
- *@author Daniel Veronesi
  */
 public class MessageFrame extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 1370776687087493267L;
-    /**
-     * The panel that implements the window.
-     */
     private JPanel panel;
-    /**
-     * It fills the array with labels.
-     */
     private final List<JLabel> labels = new ArrayList<>();
-    /**
-     * It is the button that confirm the message is read and it closes it.
-     */
     private JButton ok;
-    /**
-     * The message that is displayed
-     */
     private String[] msgs;
-    /**
-     * ---
-     */
     private State st;
 	/**
 	 * A function

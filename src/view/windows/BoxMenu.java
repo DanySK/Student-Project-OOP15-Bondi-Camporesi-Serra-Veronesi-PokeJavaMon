@@ -14,63 +14,27 @@ import model.pokemon.Pokemon;
 import model.pokemon.Stat;
 import view.View;  
 /**
- * 
- * BoxMenuClass
- * 
- * @author Daniel Veronesi
- *
+ * This {@link JWindow} handles the whole storage system that permits 
+ * the user to see all the pokémon deposited and some of its informations.
+ * It allowes to withdraw a pokémon from the box to the party 
+ * or simply to watch his statistics with the use of a button. * 
  */
 public class BoxMenu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 6312860320430410019L;
-    /**
-	 * panel
-	 */
     private JPanel panel;
-    /**
-	 * pn
-	 */
     private JScrollPane pn;
-    /**
-	 * An array filled with the names of the pokémon in the box.
-	 */
     private final ArrayList<String> names;
-    /**
-	 * An array filled with the levels of the pokémon in the box.
-	 */
     private final ArrayList<String> lvl;
-    /**
-	 * An array filled with the current health points of the pokémon in the box.
-	 */
     private final ArrayList<String> cHP;
-    /**
-	 * An array filled with the max health points of the pokémon in the box.
-	 */
     private final ArrayList<String> mHP;
-    /**
-	 * pk
-	 */
     private final ArrayList<Pokemon> pk;
-    /**
-	 * The number of columns.
-	 */
     private int cols = 1;
-    /**
-	 * A button that opens {@link Statistics}.
-	 */
     private JButton info;
-    /**
-	 * A button that allows to withdraw the pokémon and put it in the party.
-	 */
     private JButton withdraw;
-    /**
-	 * A button that closes the Box.
-	 */
     private JButton exit;
 	/**
-	 * BoxMenu
+	 * It initializes the arrays where the informations of
+	 * the pokémon are put.
 	 */
     public BoxMenu() {
         this.names = new ArrayList<String>();

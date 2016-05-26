@@ -19,70 +19,26 @@ import view.fight.FightScreen;
 /**
  * This {@link JWindow} handles the menu with all the pokémon in the team and their relative buttons.
  * 
- * @author Daniel Veronesi
  */
-public class TeamMenu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */   
+public class TeamMenu extends JWindow implements MyFrame {  
     private static final long serialVersionUID = 4848482754813638374L;
-    /**
-     * It creates the panel with the pokémon in the party and the buttons to perform actions.
-     */
     private JPanel panel;
-    /**
-     * It is an array filled with the names of the pokémon in the party.
-     */
     private final ArrayList<String>names;
-    /**
-     * It is an array filled with the levels of the pokémon in the party.
-     */
     private final ArrayList<String>lvl;
-    /**
-     * It is an array filled with the current health of the pokémon in the party.
-     */
     private final ArrayList<String>cHP;
-    /**
-     * It is an array filled with the max health of the pokémon in the party.
-     */
     private final ArrayList<String>mHP;
-    /**
-     * It is an array filled with the pokémon in the party.
-     */
     private final ArrayList<Pokemon> pk;
-    /**
-     * It is the number of columns.
-     */
     private int cols = 1;
-    /**
-     * It represent a button that opens {@link Statistics} when clicked.
-     */
     private JButton info;
-    /**
-     * It represent a button that put the pokémon selected as the first of the party when clicked.
-     */
     private JButton set;
-    /**
-     * It represent a button that put the pokémon from the team in {@link BoxMenu} when clicked.
-     */
     private JButton deposit;
-    /**
-     * It represent a button that is available when a potion or a boost is selected
-     * and it permits to choose on what pokémon perform that action.
-     */
     private JButton select;
-    /**
-     * It represent a button that closes the current window when clicked.
-     */
     private JButton exit;
-    /**
-     * A boolean that is used to know if the player can perform an exit or a change in the party.
-     */
     private boolean canExit, isChangingPoke;
 	/**
 	 * It creates the menu of the team with the informations needed
-	 * @param b1 a boolean associated with canExit
-	 * @param b2 a boolean associated with isChangingPoke
+	 * @param b1 Whether or not the user can exit the menu.
+	 * @param b2 Whether or not the user can change pokémon.
 	 */
     public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;

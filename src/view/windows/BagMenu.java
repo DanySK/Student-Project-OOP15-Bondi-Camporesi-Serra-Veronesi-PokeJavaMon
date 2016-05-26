@@ -21,48 +21,18 @@ import view.View;
 /**
  * BagMenuClass
  * 
- * @author Daniel Veronesi
+ * 
  */
 public class BagMenu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 4403659276705962715L;
-    /**
-	 * It specifies the type of the item chosen.
-	 */
     private Item itemToUse;
-    /**
-	 * The panel that implements the bag.
-	 */
     private JPanel panel;
-    /**
-	 * An array filled with the type of the item.
-	 */
     private final ArrayList<String> name1;
-    /**
-	 * An array filled with the name of the item.
-	 */
     private final ArrayList<String> name2;
-    /**
-	 * An array filled with the quantity of the item.
-	 */
     private final ArrayList<String> qnt;
-    /**
-	 * ---
-	 */
     private final ArrayList<Item> it;
-    /**
-	 * The number of columns
-	 */
     private int cols;
-    /**
-	 * The button that closes the Bag.
-	 */
     private JButton exit;
-    /**
-	 * The button that allow to use the item.
-	 */
     private JButton use;
 	/**
 	 * BagMenu

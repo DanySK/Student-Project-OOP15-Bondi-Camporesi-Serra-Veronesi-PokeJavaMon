@@ -3,9 +3,7 @@ package view;
 import view.windows.MyFrame;
 /**
  * 
- * This interface explains all the methods that can be called on {@link View}
- * 
- * @author Daniel Veronesi
+ * This interface explains all the methods that can be called on {@link View}.
  *
  */
 public interface ViewInterface {
@@ -46,7 +44,7 @@ public interface ViewInterface {
 	 */
     MyFrame getCurrent();
 	/**
-	 * It gets the previous window of the stack.
+	 * It gets the previous frame of the stack.
 	 */
     MyFrame getParent();
 	/**

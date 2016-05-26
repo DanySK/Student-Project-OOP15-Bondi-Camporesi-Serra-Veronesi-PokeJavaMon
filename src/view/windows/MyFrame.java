@@ -2,7 +2,6 @@ package view.windows;
 /**
  * An interface used to manage frame's actions.
  * 
- * @author Daniel Veronesi
  */
 public interface MyFrame {
 	/**

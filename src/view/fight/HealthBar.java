@@ -4,44 +4,23 @@ import java.awt.Color;
 
 import javax.swing.JProgressBar;
 /**
- * HealthBar
+ * This class creates and paints the 2 health bars placed in {@link FightScreen}.
  * 
- * @author Daniel Veronesi
  */
 public class HealthBar extends JProgressBar {
-	/**
-     * serialVersionUID
-     */
 	private static final long serialVersionUID = -1998418607308529873L;
-	/**
-     * It is the value of health points defined as "low".
-     */
 	private static final double LOW = 0.25;
-	/**
-     * It is the color of the health bar when the current health points are lower than low. 
-     */
 	private static final Color LOW_COLOR = Color.RED;
-	/**
-     *  It is the value of health points defined as "lesshalf".
-     */
 	private static final double LESS_HALF = 0.5;
-	/**
-     * It is the color of the health bar when the current health points are between low and more_half_color.
-     */
 	private static final Color LESS_HALF_COLOR = Color.YELLOW;
-	/**
-     * It is the color of the health bar when the current health points are higher than less_half
-     */
 	private static final Color MORE_HALF_COLOR = Color.GREEN;
-	/**
-     * It is compared with the values to get the color of the health bar.
-     */
 	private double ratio;
 	/**
 	 * It creates the health bar that is placed in {@link FightScreen}.
 	 * 
 	 * @param maxHP The maximum amount of health points the pokémon has.
 	 * @param currentHP The current amount of health points the pokémon has.
+	 * @throws IllegalArgumentException if the health is lower than 0.
 	 */
 	public HealthBar(final int maxHP, final int currentHP) {
 		super(0, maxHP);

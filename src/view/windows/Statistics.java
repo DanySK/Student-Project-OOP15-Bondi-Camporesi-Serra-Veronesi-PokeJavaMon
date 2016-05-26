@@ -23,58 +23,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 /**
- * This {@link JWindow} handles the statistics menu with the pokémon selected and his relative informations.
+ * This {@link JWindow} handles the statistics menu of the pokémon selected and his relative informations.
  * 
- * @author Daniel Veronesi
  */
 public class Statistics extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 3339649136760979503L;
-    /**
-     * It is a panel used to get the pokémon's sprite.
-     */
     private MyPanel2 IMAGINEPKMNPANEL;
-    /**
-     * It creates the panel with pokémon's informations like moves and stats.
-     */
     private JPanel panel;
-    /**
-     * A label that gets the name of the pokémon selected previously.
-     */
     private JLabel pkmnName;
-    /**
-     * A label that says "Type".
-     */
     private JLabel type;
-    /**
-     * A label that gets the type (or types) of the pokémon.
-     */
     private JLabel typeValue;
-    /**
-     * A label that gets the level of the pokémon.
-     */
     private JLabel levelValue;
-    /**
-     * A label that says "Level".
-     */
     private JLabel level;
-    /**
-     * A label that says "Experience".
-     */
     private JLabel exp;
-    /**
-     * A label that gets the current experience and the needed experience of the pokémon.
-     */
     private JLabel expValue;
-    /**
-     * A button that closes Statistics.
-     */
     private JButton exit;
-    /**
-     * The pokémon selected.
-     */
     private final Pokemon pk;
 	/**
 	 * A function that get the pokémon from his ID.
@@ -151,25 +114,10 @@ public class Statistics extends JWindow implements MyFrame {
 class statsPanel extends JPanel {
     
     private static final long serialVersionUID = 1L;
-    /**
-     * An array filled with the number of the moves.
-     */
     private ArrayList<String> moves = new ArrayList<String>();
-    /**
-     * An array filled with the name of the moves.
-     */
     private ArrayList<String> names = new ArrayList<String>();
-    /**
-     * An array filled with the number of the statistics.
-     */
     private ArrayList<String> stats = new ArrayList<String>();
-    /**
-     * An array filled with the value of the statistics.
-     */
     private ArrayList<String> values = new ArrayList<String>();
-    /**
-     * The number of columns.
-     */
     private int cols = 1;
 	/**
 	 * The panel that gets the statistic of the pokémon.
@@ -219,17 +167,8 @@ class statsPanel extends JPanel {
  * This {@link JPanel} is used to get the image of the pokémon.
  */
 class MyPanel2 extends JPanel{
-	/**
-	 * serialVersionUID
-	 */
 	private static final long serialVersionUID = 1L;
-	/**
-	 * The image of the pokémon.
-	 */
 	private BufferedImage image;
-	/**
-	 * The pokémon selected.
-	 */
 	private Pokemon pk;
 	/**
 	 * The panel for the image

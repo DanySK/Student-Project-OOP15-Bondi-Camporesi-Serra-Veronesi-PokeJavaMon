@@ -16,16 +16,9 @@ import view.windows.MyFrame;
 /**
  * InFightMessagesClass
  * 
- * @author Daniel Veronesi
  */
 public class InFightMessages implements InFightMessagesInterface {
-	/**
-	 * message
-	 */
     private List<String> message;
-    /**
-	 * moveToLearn
-	 */
     private Move moveToLearn;
 	/**
 	 * InFightMessages
@@ -36,7 +29,7 @@ public class InFightMessages implements InFightMessagesInterface {
     
     @Override
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
-            Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
+    		Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
             Pokemon nextEnemyPokemon, String optionalMessage, final Move moveToLearn) {
         this.message = new ArrayList<>();
         this.moveToLearn = moveToLearn;
