@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * If the current OS is OSX, this class renames a requested lib to permit the execution of 
+ * If the current OS is OSX, this class renames a requested library to permit the execution of 
  * the program
  */
 public class OSResolver {
@@ -16,14 +16,18 @@ public class OSResolver {
     private static final String EXT = ".dylib";
     private static final String os = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
     private List<String> result = new ArrayList<String>();
+    private boolean toInit = true;
         
     /**
-     * Public constructor, controls the OS, and in case itis OSX it calls the method to rename 
+     * Public constructor, controls the OS, and in case it is OSX it calls the method to rename 
      * necessary file
      */
     public OSResolver() {
         if ((os.indexOf("mac") >= 0) || (os.indexOf("darwin") >= 0)) {
-            this.fixOSXLib();
+            if (this.toInit) {
+            	this.fixOSXLib();
+            	this.toInit = false;
+            }
         }
     }
     
@@ -31,8 +35,7 @@ public class OSResolver {
      * Main method, searches and renames the requested file
      */
     private void fixOSXLib() {
-        OSResolver fileSearch = new OSResolver();
-        fileSearch.searchDirectory(new File(DIR));
+        searchDirectory(new File(DIR));
         int count = this.result.size();
         
         if (count > 0) {
@@ -45,11 +48,11 @@ public class OSResolver {
                     System.out.println("FAILED RENAMING FILE");
                     return;
                 } else {
-                    System.out.println("FILE RENAMED SUCCESSFULLY");
+                    System.out.println("ONE FILE RENAMED SUCCESSFULLY");
                 }
             }
         } else {
-            System.out.println("NO FILE FOUND");
+            System.out.println("NO FILE TO RENAME FOUND");
         }
     }
 
