@@ -63,9 +63,10 @@ public interface FightController {
      * Resolve the {@link Fight}'s turn in case of run choice
      * @param success true if run succeed, false otherwise
      * @param enemyMove the enemy's {@link Move} if run fails, null otherwise
+     * @param enemyEff the {@link Effectiveness} of enemy move
      * @param isMyPokemonDead true if player's {@link Pokemon} is exausted, false otherwise
      */
-    void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead);
+    void resolveRun(boolean success, Move enemyMove, Effectiveness enemyEff, boolean isMyPokemonDead);
 
     /**
      * Resolve the {@link Fight}'s turn in case player wants to use an item
@@ -73,20 +74,22 @@ public interface FightController {
      * @param pokemon the {@link Pokemon} to use {@link Item} on
      * @param enemyMove the {@link Move} enemy's {@link Pokemon} does after player has
      * used the {@link Item}
+     * @param enemyEff the {@link Effectiveness} of enemy move
      * @param isMyPokemonDead true if player's {@link Pokemon} is exausted after enemy's
      * {@link Move}, false otherwise
      */
-    void resolveItem(Item item, Pokemon pokemon, Move enemyMove, boolean isMyPokemonDead);
+    void resolveItem(Item item, Pokemon pokemon, Move enemyMove, Effectiveness enemyEff, boolean isMyPokemonDead);
 
     /**
      * Resolve the {@link Fight}'s turn in case player wants to change {@link Pokemon}
      * @param myPokemon new player's {@link Pokemon}
      * @param enemyMove the {@link Move} enemy's {@link Pokemon} does after player has
      * changed {@link Pokemon}
+     * @param enemyEff the {@link Effectiveness} of enemy move
      * @param isMyPokemonDead true if player's {@link Pokemon} is exausted after enemy's
      * {@link Move}, false otherwise
      */
-    void resolvePokemon(Pokemon myPokemon, Move enemyMove, boolean isMyPokemonDead);
+    void resolvePokemon(Pokemon myPokemon, Move enemyMove, Effectiveness enemyEff, boolean isMyPokemonDead);
 
     /**
      * Starts the {@link Fight}'s turn in case player has chosen to attack

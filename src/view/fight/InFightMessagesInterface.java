@@ -31,7 +31,7 @@ public interface InFightMessagesInterface {
 	 * @param enemyMove The move used by the enemy pokémon.
 	 * @param isMyPokemonDead Checks whether or not the ally pokémon is dead at the end of the turn.
 	 */
-    public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove,
+    public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove, Effectiveness eff,
                                      boolean isMyPokemonDead);
 	/**
 	 * 
@@ -40,12 +40,12 @@ public interface InFightMessagesInterface {
 	 * @param enemyMove The move used by the enemy pokémon.
 	 * @param isMyPokemonDead Checks whether or not the ally pokémon is dead at the end of the turn.
 	 */
-    public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, boolean isMyPokemonDead);
+    public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, Effectiveness eff, boolean isMyPokemonDead);
 	/**
 	 * 
 	 * @param success Checks if the trainer can run away from the fight.
 	 * @param enemyMove The move used by the enemy pokémon.
 	 * @param isMyPokemonDead Checks whether or not the ally pokémon is dead at the end of the turn.
 	 */
-    public void resolveRun(boolean success, Move enemyMove, boolean isMyPokemonDead);
+    public void resolveRun(boolean success, Move enemyMove, Effectiveness eff, boolean isMyPokemonDead);
 }

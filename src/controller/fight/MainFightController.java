@@ -61,18 +61,18 @@ public class MainFightController implements FightController {
     }
     
     @Override
-    public void resolveRun(final boolean success, final Move enemyMove, final boolean isMyPokemonDead) {
-        this.view.resolveRun(success, enemyMove, isMyPokemonDead);
+    public void resolveRun(final boolean success, final Move enemyMove, final Effectiveness effectiveness, final boolean isMyPokemonDead) {
+        this.view.resolveRun(success, enemyMove, effectiveness, isMyPokemonDead);
     }
     
     @Override
-    public void resolveItem(final Item item, final Pokemon pokemon, final Move enemyMove, final boolean isMyPokemonDead) {
-        this.view.resolveUseItem(item, pokemon, enemyMove, isMyPokemonDead);
+    public void resolveItem(final Item item, final Pokemon pokemon, final Move enemyMove, final Effectiveness effectiveness, final boolean isMyPokemonDead) {
+        this.view.resolveUseItem(item, pokemon, enemyMove, effectiveness, isMyPokemonDead);
     }
     
     @Override
-    public void resolvePokemon(final Pokemon myPokemon, final Move enemyMove, final boolean isMyPokemonDead) {
-        this.view.resolveChangePokemon(myPokemon, enemyMove, isMyPokemonDead);
+    public void resolvePokemon(final Pokemon myPokemon, final Move enemyMove, final Effectiveness effectiveness, final boolean isMyPokemonDead) {
+        this.view.resolveChangePokemon(myPokemon, enemyMove, effectiveness, isMyPokemonDead);
     }
     
     @Override

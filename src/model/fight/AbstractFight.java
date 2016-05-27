@@ -82,7 +82,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         if (!applyRun()) {
             enemyTurn();
         }
-        MainController.getController().getFightController().resolveRun(runValue, enemyMove, isAllyExhausted);
+        MainController.getController().getFightController().resolveRun(runValue, enemyMove, enemyEff, isAllyExhausted);
     }
 
     @Override
@@ -109,7 +109,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         reset();
         applyChange(pkm);
         enemyTurn();
-        MainController.getController().getFightController().resolvePokemon(this.allyPkm, this.enemyMove, this.isAllyExhausted);
+        MainController.getController().getFightController().resolvePokemon(this.allyPkm, this.enemyMove, this.enemyEff, this.isAllyExhausted);
     }
 
     @Override
@@ -118,15 +118,15 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         this.player.getInventory().consumeItem(itemToUse);
         if (applyItem(itemToUse, pkm)) {
             if (itemToUse.getType() == ItemType.POKEBALL) {
-                MainController.getController().getFightController().resolveItem(itemToUse, pkm, null, isAllyExhausted);
+                MainController.getController().getFightController().resolveItem(itemToUse, pkm, null, null, isAllyExhausted);
                 return;
             } else {
                 enemyTurn();
-                MainController.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+                MainController.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, enemyEff, isAllyExhausted);
             }
         } else {
             enemyTurn();
-            MainController.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, isAllyExhausted);
+            MainController.getController().getFightController().resolveItem(itemToUse, pkm, enemyMove, enemyEff, isAllyExhausted);
         }
     }
 
