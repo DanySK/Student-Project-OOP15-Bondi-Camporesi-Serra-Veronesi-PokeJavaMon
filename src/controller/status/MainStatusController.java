@@ -14,7 +14,7 @@ import controller.parameters.State;
 import model.fight.FightVsTrainer;
 import model.map.Drawable.Direction;
 import model.map.WalkableZone;
-import view.resources.MainGameView;
+import view.resources.ScreenView;
 
 /**
  * This is the status controller of the game
@@ -41,12 +41,12 @@ public class MainStatusController implements StatusController {
                     updateMusic();
                 }
                 this.keyboardController = new WalkingKeyboardController(); 
-                MainGameView.updateKeyListener();
+                ScreenView.updateKeyListener();
                 break;
             case MENU:
                 this.state = s;
                 this.keyboardController = new MenuKeyboardController();
-                MainGameView.updateKeyListener();
+                ScreenView.updateKeyListener();
                 break;
             case FIGHTING:
                 if (this.state != State.FIGHTING) {
@@ -70,13 +70,13 @@ public class MainStatusController implements StatusController {
                         }
                     }
                     this.keyboardController = new FightingKeyboardController();
-                    MainGameView.updateKeyListener();
+                    ScreenView.updateKeyListener();
                 }
                 break;
             case READING:
                 this.state = s;
                 this.keyboardController = new MenuKeyboardController();
-                MainGameView.updateKeyListener();
+                ScreenView.updateKeyListener();
                 break;
             default:
                 break;

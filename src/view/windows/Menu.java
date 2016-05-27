@@ -15,51 +15,45 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Component;
 /**
- * MenuClass
+ * This {@link Window} handles the main menu of the map.
+ * It permits to read the player's informations, to opens
+ * the other menu of the game and it allows to switch the
+ * music on or off. 
  */
 public class Menu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 3868831254532069974L;
-    /**
-     * panel
-     */
     private JPanel panel;
-    /**
-     * box
-     */
     private JButton box;
     /**
-     * team
+     * A button that opens {@link TeamMenu}
      */
     private JButton team;
     /**
-     * bag
+     * A button that opens {@link BagMenu}.
      */
     private JButton bag;
     /**
-     * save
+     * A button that saves the game.
      */
     private JButton save;
     /**
-     * resume
+     * A button that resumes the game.
      */
     private JButton resume;
     /**
-     * music
+     * A button that switches the music on or off.
      */
     private JButton music;
     /**
-     * name
+     * A label that displays the name of the character.
      */
     private JLabel name;
     /**
-     * money
+     * A label that displays the amount of money the character earned.
      */
     private JLabel money;
     /**
-     * badges
+     * A label that displays the amount of badges the character earned.
      */
     private JLabel badges;
     

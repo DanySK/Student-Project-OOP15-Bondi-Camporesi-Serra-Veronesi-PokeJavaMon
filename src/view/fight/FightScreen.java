@@ -12,20 +12,19 @@ import view.windows.MessageFrame;
 import view.windows.MyFrame;
 import view.windows.TeamMenu;
 /**
- * FightScreenClass
+ * This {@link JWindow} handles the fighting part of the games.
+ * 
  */
 public class FightScreen extends JWindow implements MyFrame {
 
     private static final long serialVersionUID = -3997502312610503237L;	 
-    
     private FightPanel mainPanel;
 	/**
-	 * FightScreen
+	 * It creates the window which is filled with {@link FightPanel}.
 	 */
     	public FightScreen() {
             this.setAlwaysOnTop(true);
             this.setFocusable(true);
-            this.setAlwaysOnTop(true);
             this.setMinimumSize(new Dimension(450, 300));
             this.setLocationRelativeTo(null);
             this.getContentPane().setLayout(null);
@@ -35,13 +34,15 @@ public class FightScreen extends JWindow implements MyFrame {
             this.getContentPane().add(mainPanel);
     	}
     	/**
-    	 * repaintFrame
+    	 * It updates the informations of the frame.
     	 */
         public void repaintFrame() {       	
             this.mainPanel.refresh();       	
         }
     	/**
-    	 * showMessage
+    	 * It is the function that shows the input.
+    	 * 
+    	 * @param message It is the message it will be displayed.
     	 */
         public void showMessage(String... message) {
             View.getView().hideCurrent();

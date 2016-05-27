@@ -33,7 +33,12 @@ import model.trainer.Trainer;
 
 public class PokeMapImpl implements PokeMap {
 
-	
+	private static final String BACKGROUND = "background";
+	private static final String FOREGROUND = "foreground";
+	private static final String DOORS = "doorLayer";
+	private static final String SIGNS = "signLayer";
+	private static final String ENCOUNTERS = "pokemonEncounterLayer";
+	private static final String ZONES = "zoneLayer";
 	private Tile.TileType[][] map;
 	private Set<Position> collisions;
 	private Set<Teleport> teleports;
@@ -53,16 +58,14 @@ public class PokeMapImpl implements PokeMap {
 	private final int tileHeight;
 	private final int tileWidth;
 	
-	//TODO: Refactoring strings, code IMPORTER class!!! Trainer/Tiles/...Handler
-	//TODO: Rimuovere public da interfacce
 	public PokeMapImpl(final TiledMap map) {
 		this.tiledMap = map;
-		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));
-		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get("foreground"));
-		final MapLayer doorLayer = ((MapLayer) map.getLayers().get("doorLayer"));
-		final MapLayer signLayer = ((MapLayer) map.getLayers().get("signLayer"));
-		final MapLayer encounterLayer = ((MapLayer) map.getLayers().get("pokemonEncounterLayer"));
-		final MapLayer zoneLayer = ((MapLayer) map.getLayers().get("zoneLayer"));
+		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get(BACKGROUND));
+		final TiledMapTileLayer foreground = ((TiledMapTileLayer) map.getLayers().get(FOREGROUND));
+		final MapLayer doorLayer = ((MapLayer) map.getLayers().get(DOORS));
+		final MapLayer signLayer = ((MapLayer) map.getLayers().get(SIGNS));
+		final MapLayer encounterLayer = ((MapLayer) map.getLayers().get(ENCOUNTERS));
+		final MapLayer zoneLayer = ((MapLayer) map.getLayers().get(ZONES));
 		
 		this.mapHeight = (int) background.getHeight();
 		this.mapWidth = (int) background.getWidth();
@@ -126,8 +129,6 @@ public class PokeMapImpl implements PokeMap {
 			MapProperties mp = c.getTile().getProperties();
 			String cellProperty = (mp.get("tileType", String.class)).toUpperCase();
 			Position p = new Position(tileX, tileY);
-//			System.out.println("CellPROPR=" + cellProperty);
-//			System.out.println();
 			
 			if (cellProperty.equals(TileType.WALL.toString())) {
 				this.collisions.add(p);
@@ -198,8 +199,6 @@ public class PokeMapImpl implements PokeMap {
 						Integer.parseInt(mp.get("lvl", String.class)), tileX, tileY, Direction.SOUTH, mp.get("cry", String.class)));
 				this.map[tileX][tileY] = TileType.ENCOUNTER;
 				this.collisions.add(new Position(tileX, tileY));
-//				System.out.println(new Position(tileX, tileY) + " = EncounterTile of " + mp.get("pokemon", String.class));
-//				System.out.println(this.tileEncounters);
 			}
 		}
 	}

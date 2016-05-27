@@ -19,51 +19,23 @@ import model.items.Item;
 import model.items.Item.ItemType;
 import view.View;
 /**
- * MarketClass
+ * This {@link JWindow} implements the poké-market, a place where
+ * the player can buy items with the money he earn winning battles.
  */
 public class Market extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */   
     private static final long serialVersionUID = 8636920096874072291L;
-    /**
-     * panel
-     */
     private JPanel panel;
-    /**
-     * Name1
-     */
     private final ArrayList<String>Name1;
-    /**
-     * Name2
-     */
     private final ArrayList<String>Name2;
-    /**
-     * Prz
-     */
     private final ArrayList<String>Prz;
-    /**
-     * Qnt
-     */
     private final ArrayList<String>Qnt;
-    /**
-     * it
-     */
     private final ArrayList<Item> it;
-    /**
-     * cols
-     */
     private int cols;
-    /**
-     * use
-     */
-    private JButton use;
-    /**
-     * exit
-     */
+    private JButton buy;
     private JButton exit;
 	/**
-	 * Market
+	 * It initializes the arrays where the 
+	 * informations of the items are put.
 	 */
     public Market() {
         this.Name1 = new ArrayList<String>();
@@ -122,9 +94,9 @@ public class Market extends JWindow implements MyFrame {
             this.panel.add(new JLabel(this.Name2.get(j)));
             this.panel.add(new JLabel(this.Prz.get(j)));
             this.panel.add(new JLabel(this.Qnt.get(j)));
-            this.use = new JButton("Buy");
-            this.use.setBorderPainted(false);
-            this.use.addActionListener(new ActionListener() {     
+            this.buy = new JButton("Buy");
+            this.buy.setBorderPainted(false);
+            this.buy.addActionListener(new ActionListener() {     
                 Item i = itm;
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -142,7 +114,7 @@ public class Market extends JWindow implements MyFrame {
                     }
                 }
             });
-            this.panel.add(this.use);
+            this.panel.add(this.buy);
         }
         this.panel.setLayout(new GridLayout(this.Name1.size(), cols));
         this.panel.setBorder(new LineBorder(Color.GRAY, 4));

@@ -9,27 +9,16 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.border.LineBorder;
 /**
- * LoadingScreenClass
+ * This {@link JWindow} implement the session when the map is loading.
+ * 
  */
 public class LoadingScreen extends JWindow {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 7074031785079664583L;
-	/**
-	 * panel
-	 */
     private JPanel panel;
-	/**
-	 * label1
-	 */
     private JLabel label1;
-	/**
-	 * label2
-	 */
     private JLabel label2;
 	/**
-	 * showLoadingScreen
+	 * It is a panel that informs the user to wait because the screen is loading.
 	 */
     public void showLoadingScreen() {
         this.setMinimumSize(new Dimension(300,150));
@@ -44,9 +33,7 @@ public class LoadingScreen extends JWindow {
         this.getContentPane().add(panel);
         this.setVisible(true);
     }
-	/**
-	 * disposeWindow
-	 */
+
     public void disposeWindow() {
         this.dispose();
     }

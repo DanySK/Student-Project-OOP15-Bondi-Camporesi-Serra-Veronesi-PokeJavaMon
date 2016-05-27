@@ -17,35 +17,20 @@ import controller.MainController;
 import controller.parameters.State;
 import view.View;
 /**
- * MessageFrameClass
+ *This {@link JWindow} is used to display messages in game.
+ *
  */
 public class MessageFrame extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 1370776687087493267L;
-    /**
-     * panel
-     */
     private JPanel panel;
-    /**
-     * labels
-     */
     private final List<JLabel> labels = new ArrayList<>();
-    /**
-     * ok
-     */
     private JButton ok;
-    /**
-     * msgs
-     */
     private String[] msgs;
-    /**
-     * st
-     */
     private State st;
 	/**
-	 * MessageFrame
+	 * A function
+	 * @param st
+	 * @param strs
 	 */
     public MessageFrame(State st, String... strs) {
         this.st = st;

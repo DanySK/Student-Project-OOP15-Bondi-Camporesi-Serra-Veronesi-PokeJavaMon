@@ -23,59 +23,25 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 /**
- * StatisticsClass
+ * This {@link JWindow} handles the statistics menu of the pokémon selected and his relative informations.
+ * 
  */
 public class Statistics extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 3339649136760979503L;
-    /**
-     * IMMAGINEPKMNPANEL
-     */
-    private MyPanel2 IMMAGINEPKMNPANEL;
-    /**
-     * panel
-     */
+    private MyPanel2 IMAGINEPKMNPANEL;
     private JPanel panel;
-    /**
-     * pkmnName
-     */
     private JLabel pkmnName;
-    /**
-     * type
-     */
     private JLabel type;
-    /**
-     * typeValue
-     */
     private JLabel typeValue;
-    /**
-     * levelValue
-     */
     private JLabel levelValue;
-    /**
-     * level
-     */
     private JLabel level;
-    /**
-     * exp
-     */
     private JLabel exp;
-    /**
-     * expValue
-     */
     private JLabel expValue;
-    /**
-     * exit
-     */
     private JButton exit;
-    /**
-     * Statistics
-     */
     private final Pokemon pk;
 	/**
-	 * Statistics
+	 * A function that get the pokémon from his ID.
+	 * @param ID The identity number of the pokémon.
 	 */
     public Statistics(Pokemon ID) { 
         this.pk = ID;
@@ -115,8 +81,8 @@ public class Statistics extends JWindow implements MyFrame {
 		this.panel.add(level);
 		this.levelValue = new JLabel(""+ this.pk.getStat(Stat.LVL));
 		this.panel.add(levelValue);
-		this.IMMAGINEPKMNPANEL = new MyPanel2(this.pk);
-		this.panel.add(this.IMMAGINEPKMNPANEL);
+		this.IMAGINEPKMNPANEL = new MyPanel2(this.pk);
+		this.panel.add(this.IMAGINEPKMNPANEL);
 		this.exp = new JLabel("Experience");
 		this.panel.add(this.exp);
 		this.expValue = new JLabel (""+ this.pk.getStat(Stat.EXP) + "/" + (this.pk.getNecessaryExp()+this.pk.getStat(Stat.EXP)));
@@ -143,33 +109,19 @@ public class Statistics extends JWindow implements MyFrame {
     }
 }
 /**
- * statsPanel
+ * This {@link JPanel} handles the moves and the 4 stats of the pokémon.
  */
 class statsPanel extends JPanel {
     
     private static final long serialVersionUID = 1L;
-    /**
-     * moves
-     */
     private ArrayList<String> moves = new ArrayList<String>();
-    /**
-     * names
-     */
     private ArrayList<String> names = new ArrayList<String>();
-    /**
-     * stats
-     */
     private ArrayList<String> stats = new ArrayList<String>();
-    /**
-     * values
-     */
     private ArrayList<String> values = new ArrayList<String>();
-    /**
-     * cols
-     */
     private int cols = 1;
 	/**
-	 * statsPanel
+	 * The panel that gets the statistic of the pokémon.
+	 * @param ID The pokémon selected.
 	 */
     public statsPanel(Pokemon ID) {	 
     	this.setBorder(new LineBorder(Color.GRAY, 3));
@@ -212,23 +164,15 @@ class statsPanel extends JPanel {
     }
 }
 /**
- * MyPanel2
+ * This {@link JPanel} is used to get the image of the pokémon.
  */
 class MyPanel2 extends JPanel{
-	/**
-	 * serialVersionUID
-	 */
 	private static final long serialVersionUID = 1L;
-	/**
-	 * image
-	 */
 	private BufferedImage image;
-	/**
-	 * pk
-	 */
 	private Pokemon pk;
 	/**
-	 * MyPanel2
+	 * The panel for the image
+	 * @param pk The pokémon.
 	 */
 	public MyPanel2(final Pokemon pk) {
 	    this.pk = pk;

@@ -17,50 +17,38 @@ import javax.swing.border.LineBorder;
 import view.View;
 import view.windows.MyFrame;
 /**
- * CreditsClass
+ * This {@link JWindow} handles the credits of the game.
+ * 
  */
 public class Credits extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 313390316550029L;
-    /**
-	 * panel
-	 */
     private final JPanel panel;
 	/**
-	 * Credits
+	 * It creates a border in the panel.
 	 */
     public Credits() {
     	this.panel = new CreditBackground();
     	this.panel.setBorder(new LineBorder(Color.GRAY, 4));
     }
-	/**
-	 * CreditBackgroundClass
-	 */
+    /**
+     * This {@link JPanel} contains the background image
+     * the name of the authors of the game
+     * the button the come back in {@link FirstMenu}
+     *
+     */
     private class CreditBackground extends JPanel {
-    	/**
-		 * serialVersionUID
-		 */
 		private static final long serialVersionUID = -7371702206859570082L;
-		/**
-		 * bgImage
-		 */
 		private Image bgImage = null;
-		/**
-		 * back
-		 */
     	private final JButton back;
     	/**
-    	 * CreditBackground
+    	 * Throws an exception if it fails to load the image for the background
     	 */
     	public CreditBackground() {
 		    final MediaTracker mt = new MediaTracker(this);
 		    try {
 				bgImage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/Credits.png"));
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("FAILED TO SET BACKGROUND");
 			}
 		    mt.addImage(bgImage, 0);
 		    try {
@@ -68,7 +56,6 @@ public class Credits extends JWindow implements MyFrame {
 		    } catch (InterruptedException e) {
 		      e.printStackTrace();
 		    }
-		    
 		    this.back = new JButton("BACK");
 		    this.back.setBorderPainted(false);
 	        this.back.addActionListener(new ActionListener() {      
@@ -85,8 +72,7 @@ public class Credits extends JWindow implements MyFrame {
     	@Override
     	protected void paintComponent(final Graphics g) {
     		super.paintComponent(g);
-    		g.drawImage(bgImage, 1, 1, 600, 400, null);
-    		
+    		g.drawImage(bgImage, 1, 1, 600, 400, null);	
     	}
     }
 
@@ -96,24 +82,20 @@ public class Credits extends JWindow implements MyFrame {
         this.setLocationRelativeTo(null);
         this.setContentPane(this.panel);
         this.setVisible(true);
-		
 	}
 
 	@Override
 	public void disposeFrame() {
 		this.dispose();
-		
 	}
 
 	@Override
 	public void hideFrame() {
 		this.setVisible(false);
-		
 	}
 
 	@Override
 	public void resumeFrame() {
 		this.setVisible(true);
-		
 	}
 }

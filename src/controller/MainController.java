@@ -7,10 +7,11 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import controller.fight.MainFightController;
+
 import controller.fight.FightController;
-import controller.load.MainLoadController;
+import controller.fight.MainFightController;
 import controller.load.LoadController;
+import controller.load.MainLoadController;
 import controller.music.MainMusicController;
 import controller.music.MusicController;
 import controller.parameters.Music;
@@ -46,7 +47,6 @@ import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
 import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
-import model.utilities.Pair;
 import view.sprite.PlayerSprite;
 
 /**
@@ -334,13 +334,17 @@ public final class MainController implements Controller {
     }
 
     @Override
-    public Pair<Integer, Integer> getInitialPosition() {
-        return new Pair<Integer, Integer>(PlayerImpl.START_X, PlayerImpl.START_Y);
+    public Position getInitialPosition() {
+        Position retPosition = new Position(PlayerImpl.START_X, PlayerImpl.START_Y);
+        if (!modelNotInitialized()) {
+            retPosition = this.model.getPlayer().getPosition();
+        } 
+        return retPosition;
     }
     
     @Override
-    public Pair<Integer, Integer> getDefaultInitialPosition() {
-        return new Pair<Integer, Integer>(PlayerImpl.DEFAULT_START_X, PlayerImpl.DEFAULT_START_Y);
+    public Position getDefaultInitialPosition() {
+        return new Position(PlayerImpl.DEFAULT_START_X, PlayerImpl.DEFAULT_START_Y);
     }
 
     @Override
@@ -369,10 +373,10 @@ public final class MainController implements Controller {
             	int offsetY = 0; 
             	switch (PlayerImpl.getPlayer().getDirection()) {
             	case NORTH :
-            		offsetY = 1;
+            		offsetY = -1;
             		break;
             	case SOUTH :
-            		offsetY = -1;
+            		offsetY = 1;
             		break;
             	case WEST :
             		offsetX = -1;

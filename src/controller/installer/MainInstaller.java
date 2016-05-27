@@ -24,6 +24,7 @@ public class MainInstaller implements Installer {
 
     @Override
     public void install() {
+        new OSResolver();
         installFolders();
         installMusic();
         installResources();

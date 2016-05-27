@@ -19,8 +19,7 @@ public class EnemyBoxLabel extends JLabel{
 		try {
 			this.img = ImageIO.read(EnemyBoxLabel.class.getResource("/gui/AllyInBattle.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		        System.out.println("FAILED TO SET SPRITE");
 		}
 		this.setBounds(30, 30, img.getWidth(this), img.getHeight(this));
 	}

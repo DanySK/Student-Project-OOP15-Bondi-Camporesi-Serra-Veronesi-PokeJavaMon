@@ -20,47 +20,19 @@ import model.pokemon.Pokemon;
 import view.View;
 /**
  * BagMenuClass
+ * 
+ * 
  */
 public class BagMenu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */
     private static final long serialVersionUID = 4403659276705962715L;
-    /**
-	 * itemToUse
-	 */
     private Item itemToUse;
-    /**
-	 * panel
-	 */
     private JPanel panel;
-    /**
-	 * name1
-	 */
     private final ArrayList<String> name1;
-    /**
-	 * name2
-	 */
     private final ArrayList<String> name2;
-    /**
-	 * qnt
-	 */
     private final ArrayList<String> qnt;
-    /**
-	 * it
-	 */
     private final ArrayList<Item> it;
-    /**
-	 * cols
-	 */
     private int cols;
-    /**
-	 * exit
-	 */
     private JButton exit;
-    /**
-	 * use
-	 */
     private JButton use;
 	/**
 	 * BagMenu

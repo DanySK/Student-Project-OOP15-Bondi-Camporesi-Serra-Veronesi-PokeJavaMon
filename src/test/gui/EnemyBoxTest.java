@@ -44,9 +44,7 @@ public class EnemyBoxTest extends JWindow{
 	
 	
 	public static void main(String[] args) throws IOException {
-//		EnemyBoxTest eb = new EnemyBoxTest();
-//		eb.add(new JPanel());
-		Gdx.files = new LwjglFiles();
+	        Gdx.files = new LwjglFiles();
 		FileHandle f = Gdx.files.absolute(EnemyBoxTest.class.getResource("/gui/ExpBar.png").getFile());
 		System.out.println(f.exists());
 	}

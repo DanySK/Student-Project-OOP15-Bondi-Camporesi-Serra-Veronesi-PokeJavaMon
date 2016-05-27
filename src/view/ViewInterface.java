@@ -3,62 +3,60 @@ package view;
 import view.windows.MyFrame;
 /**
  * 
- * ViewInterface
- * 
- * @author User
+ * This interface explains all the methods that can be called on {@link View}.
  *
  */
 public interface ViewInterface {
 	/**
-	 * disposeCurrent
+	 * It disposes the current window of the stack.
 	 */
     void disposeCurrent();
 	/**
-	 * disposeParent
+	 * It disposes the previous window of the stack.
 	 */
     void disposeParent();
 	/**
-	 * showCurrent
+	 * It shows the current window of the stack.
 	 */
     void showCurrent();
 	/**
-	 * showParent
+	 * It shows the previous window of the stack.
 	 */
     void showParent();
 	/**
-	 * hideCurrent
+	 * It hides the current window of the stack.
 	 */
     void hideCurrent();
 	/**
-	 * hideParent
+	 * It hides the previous window of the stack.
 	 */
     void hideParent();
 	/**
-	 * resumeCurrent
+	 * It resumes the current window of the stack.
 	 */
     void resumeCurrent();
 	/**
-	 * resumeParent
+	 * It resumes the previous window of the stack.
 	 */
     void resumeParent();
 	/**
-	 * getCurrent
+	 * It gets the current frame of the stack.
 	 */
     MyFrame getCurrent();
 	/**
-	 * getParent
+	 * It gets the previous frame of the stack.
 	 */
     MyFrame getParent();
 	/**
-	 * removeCurrent
+	 * It removes the current window of the stack.
 	 */
     void removeCurrent();
 	/**
-	 * addNew
+	 * It adds a new Frame in the stacks.
 	 */
     void addNew(MyFrame f);
 	/**
-	 * isEmpty
+	 * It verifies if the stack is empty or not.
 	 */
     boolean isEmpty();
 }

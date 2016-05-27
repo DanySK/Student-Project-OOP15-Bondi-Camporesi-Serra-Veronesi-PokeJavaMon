@@ -29,6 +29,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * This {@link JWindow} handles the menu in which the user chooses his name
+ * and with what starter he wants to start the game.
+ */
 public class SecondMenu extends JFrame implements MyFrame {
     public SecondMenu() {
     }
@@ -38,8 +42,17 @@ public class SecondMenu extends JFrame implements MyFrame {
     private static final int DIM_OFFSET = 35;
     private static String s;
     private JPanel contentPane;
+    private JLabel name;
+    private JLabel bulba_label;
+    private JLabel charm_label;
+    private JLabel squi_label;
+    private JButton bulba_button;
+    private JButton charm_button;
+    private JButton squi_button;
     private static JTextField textField;
-
+    /**
+     * It handles the whole layout of the {@link JWindow}.
+     */
     public void showFrame() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(SecondMenu.class.getResource("/img/POKEPALLA.png")));
         setResizable(false);
@@ -55,43 +68,37 @@ public class SecondMenu extends JFrame implements MyFrame {
         contentPane.setBorder(null);
         setContentPane(contentPane);
         contentPane.setLayout(new MigLayout("", "[89px][50.00px][133px][50.00px][77px]", "[26px][20px][23px][][][][][][][][]"));
-        
-        JLabel name = new JLabel("INSERT NAME ( 4 - 15 CHAR )");
+        name = new JLabel("INSERT NAME ( 4 - 15 CHAR )");
         name.setFont(new Font("Verdana", Font.BOLD, 20));
         name.setForeground(Color.WHITE);
         contentPane.add(name, "cell 0 0 5 1,alignx center,aligny center");
-        
         textField = new JTextField();
         contentPane.add(textField, "cell 2 3,growx,aligny center");
         textField.setColumns(10);
-        
-        JLabel bulba_label = new JLabel("");
+        bulba_label = new JLabel("");
         bulba_label.setHorizontalTextPosition(SwingConstants.CENTER);
         bulba_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F001.png")));
         bulba_label.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(bulba_label, "cell 0 6 1 4,alignx center");
-        
-        JLabel charm_label = new JLabel("");
+        charm_label = new JLabel("");
         charm_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F004.png")));
         contentPane.add(charm_label, "cell 2 7 1 3,alignx center");
-        
-        JLabel squi_label = new JLabel("");
+        squi_label = new JLabel("");
         squi_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F007.png")));
         contentPane.add(squi_label, "cell 4 7 1 3,alignx center");
-        
-        JButton bulba_button = new JButton("Bulbasaur");
+        bulba_button = new JButton("Bulbasaur");
         bulba_button.setFont(new Font("Verdana", Font.BOLD, 10));
         bulba_button.setBorderPainted(false);
         bulba_button.setFocusable(false);
         contentPane.add(bulba_button, "cell 0 10,alignx right,aligny bottom");
         addListener(bulba_button, Pokedex.BULBASAUR);
-        JButton charm_button = new JButton("Charmander");
+        charm_button = new JButton("Charmander");
         charm_button.setFont(new Font("Verdana", Font.BOLD, 10));
         charm_button.setFocusable(false);
         charm_button.setBorderPainted(false);
         contentPane.add(charm_button, "cell 2 10,alignx center,aligny center");
         addListener(charm_button, Pokedex.CHARMANDER);
-        JButton squi_button = new JButton("Squirtle");
+        squi_button = new JButton("Squirtle");
         squi_button.setFont(new Font("Verdana", Font.BOLD, 10));
         squi_button.setFocusable(false);
         squi_button.setBorderPainted(false);
@@ -100,12 +107,23 @@ public class SecondMenu extends JFrame implements MyFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+    /**
+     * 
+     * It gets the text written in the textfield.
+     * 
+     * @return a string with the name written.
+     */
     public static String getPlayerName() {
         s = textField.getText();
         return s;      
     }
-    
+    /**
+     * It adds a listener to the buttons of the game that checks
+     * if the nickname chosen has the right length
+     * 
+     * @param b The button with the name of the starter pokémon.
+     * @param p The starter pokémon it will be put in the party.
+     */
     private void addListener(final JButton b, final Pokedex p) {
         b.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -121,12 +139,16 @@ public class SecondMenu extends JFrame implements MyFrame {
             }
         });
     }
-
+    /**
+     * The {@link JPanel} where the background image is created
+     */
     public class ImagePanel extends JPanel {
-        
         private static final long serialVersionUID = 3361495155189049313L;
         private Image bgimage = null;
-
+        /**
+         * It sets an image as background.
+         * It throws an exception if it fails to load the picture.
+         */
         ImagePanel() {
             final MediaTracker mt = new MediaTracker(this);
             try {

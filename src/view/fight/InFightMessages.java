@@ -15,15 +15,10 @@ import view.windows.MessageFrame;
 import view.windows.MyFrame;
 /**
  * InFightMessagesClass
+ * 
  */
 public class InFightMessages implements InFightMessagesInterface {
-	/**
-	 * message
-	 */
     private List<String> message;
-    /**
-	 * moveToLearn
-	 */
     private Move moveToLearn;
 	/**
 	 * InFightMessages
@@ -34,7 +29,7 @@ public class InFightMessages implements InFightMessagesInterface {
     
     @Override
     public void resolveMove(Move myMove, Effectiveness myMoveEffectiveness, Move enemyMove,
-            Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
+    		Effectiveness enemyMoveEffectiveness, boolean myMoveFirst, boolean lastPokemonKills,
             Pokemon nextEnemyPokemon, String optionalMessage, final Move moveToLearn) {
         this.message = new ArrayList<>();
         this.moveToLearn = moveToLearn;
@@ -228,7 +223,7 @@ public class InFightMessages implements InFightMessagesInterface {
         ((FightScreen) fs).showMessage(array); 
     }
 	/**
-	 * learnedMessage
+	 * It is the message displayed when a pokémon learns a new move.
 	 */
     private void learnedMessage() {
         MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
@@ -239,7 +234,7 @@ public class InFightMessages implements InFightMessagesInterface {
         ((FightScreen) fs).showMessage(array);
     }
 	/**
-	 * lostMessage
+	 * It is the message displayed when the trainer loses a battle.
 	 */
     private void lostMessage() {
         MainController.getController().getFightController().healEnemy();
@@ -257,7 +252,7 @@ public class InFightMessages implements InFightMessagesInterface {
         MainController.getController().teleportToCenter();
     }
 	/**
-	 * learnedMoveAndWalking
+	 * It is the message displayed when a pokémon learns a new move and then it puts the state of the trainer in "WALKING".
 	 */
     private void learnedMoveAndWalking() {
         MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
@@ -268,7 +263,7 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().showCurrent();
     }
 	/**
-	 * newMoveMessage
+	 * ---
 	 */
     private void newMoveMessage() {
         String[] array = new String[this.message.size()];
@@ -280,7 +275,7 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().showCurrent();
     }
 	/**
-	 * winningMessage
+	 *  It is the message displayed when the trainer wins a battle.
 	 */
     private void winningMessage() {
         String[] array = new String[this.message.size()];

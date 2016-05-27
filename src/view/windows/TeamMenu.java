@@ -17,67 +17,28 @@ import model.pokemon.Stat;
 import view.View;
 import view.fight.FightScreen;
 /**
- * TeamMenuClass
+ * This {@link JWindow} handles the menu with all the pokémon in the team and their relative buttons.
+ * 
  */
-public class TeamMenu extends JWindow implements MyFrame {
-	/**
-	 * serialVersionUID
-	 */   
+public class TeamMenu extends JWindow implements MyFrame {  
     private static final long serialVersionUID = 4848482754813638374L;
-    /**
-     * panel
-     */
     private JPanel panel;
-    /**
-     * names
-     */
     private final ArrayList<String>names;
-    /**
-     * lvl
-     */
     private final ArrayList<String>lvl;
-    /**
-     * cHP
-     */
     private final ArrayList<String>cHP;
-    /**
-     * mHP
-     */
     private final ArrayList<String>mHP;
-    /**
-     * pk
-     */
     private final ArrayList<Pokemon> pk;
-    /**
-     * cols
-     */
     private int cols = 1;
-    /**
-     * info
-     */
     private JButton info;
-    /**
-     * set
-     */
     private JButton set;
-    /**
-     * deposit
-     */
     private JButton deposit;
-    /**
-     * select
-     */
     private JButton select;
-    /**
-     * exit
-     */
     private JButton exit;
-    /**
-     * canExit, isChangingPoke
-     */
     private boolean canExit, isChangingPoke;
 	/**
-	 * TeamMenu
+	 * It creates the menu of the team with the informations needed
+	 * @param b1 Whether or not the user can exit the menu.
+	 * @param b2 Whether or not the user can change pokémon.
 	 */
     public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;
