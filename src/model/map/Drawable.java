@@ -6,12 +6,12 @@ public interface Drawable {
         NORTH, EAST, SOUTH, WEST, NONE;
     }
     
-    public int getTileX();
+    int getTileX();
     
-    public int getTileY();
+    int getTileY();
     
-    public Position getPosition();
+    Position getPosition();
     
-    public Direction getDirection();
+    Direction getDirection();
         
 }

@@ -17,58 +17,58 @@ import model.trainer.Trainer;
 
 public interface PokeMap {
     
-    public float getMapHeight();
-    public float getMapWidth();
-    public int getTileWidth();
-    public int getTileHeight();
+    float getMapHeight();
+    float getMapWidth();
+    int getTileWidth();
+    int getTileHeight();
     
-    public boolean isOutOfBounds(final int x, final int y);
-    public Set<Position> getCollisions();
-    public void removeCollision(final Position p);
-    public void addCollision(final Position p);
-    public boolean isWalkable(final int x, final int y);
-    public boolean isWalkableNextToPlayer(final Direction d);
-    public TileType getTileNextToPlayer(final Direction d);
+    boolean isOutOfBounds(final int x, final int y);
+    Set<Position> getCollisions();
+    void removeCollision(final Position p);
+    void addCollision(final Position p);
+    boolean isWalkable(final int x, final int y);
+    boolean isWalkableNextToPlayer(final Direction d);
+    TileType getTileNextToPlayer(final Direction d);
     
-    public Set<Teleport> getTeleports();
-    public Optional<Teleport> getTeleport(final int fromX, final int fromY);
+    Set<Teleport> getTeleports();
+    Optional<Teleport> getTeleport(final int fromX, final int fromY);
     
-    public Set<Sign> getSigns();
-    public Optional<Sign> getSign(final int x, final int y);
+    Set<Sign> getSigns();
+    Optional<Sign> getSign(final int x, final int y);
     
-    public Set<Trainer> getTrainers();
-    public Optional<Trainer> getTrainer(final int x, final int y);
-    public void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated);
+    Set<Trainer> getTrainers();
+    Optional<Trainer> getTrainer(final int x, final int y);
+    void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated);
     
-    public Set<GymLeader> getGymLeaders();
-    public Optional<GymLeader> getGymLeader(final int x, final int y);
-    public void initGymLeaders(final int badges);
+    Set<GymLeader> getGymLeaders();
+    Optional<GymLeader> getGymLeader(final int x, final int y);
+    void initGymLeaders(final int badges);
    
-    public Set<NPC> getNPCs();
-    public Optional<NPC> getNPC(final int x, final int y);
+    Set<NPC> getNPCs();
+    Optional<NPC> getNPC(final int x, final int y);
     
-    public Set<EncounterTile> getEncounterTiles();
-    public Optional<EncounterTile> getEncounterTile(final int x, final int y);
-    public Set<EncounterTile> getRemovedEncounterTiles();
-    public void setDeletedEncounterTiles(final Set<String> pkmnsToBeDeleted);
-    public void deleteEncounterTile(final int x, final int y);
+    Set<EncounterTile> getEncounterTiles();
+    Optional<EncounterTile> getEncounterTile(final int x, final int y);
+    Set<EncounterTile> getRemovedEncounterTiles();
+    void setDeletedEncounterTiles(final Set<String> pkmnsToBeDeleted);
+    void deleteEncounterTile(final int x, final int y);
    
-    public PokeMarket getPokeMarket();
+    PokeMarket getPokeMarket();
     
-    public Set<PokemonEncounterZone> getEncounterZones();
-    public Optional<PokemonEncounterZone> getEncounterZone(final int x, final int y);
+    Set<PokemonEncounterZone> getEncounterZones();
+    Optional<PokemonEncounterZone> getEncounterZone(final int x, final int y);
 
-    public Tile.TileType getTileType(final int x, final int y);
+    Tile.TileType getTileType(final int x, final int y);
     
-    public Set<WalkableZone> getWalkableZones();
-    public Optional<WalkableZone> getWalkableZone(final int x, final int y);
+    Set<WalkableZone> getWalkableZones();
+    Optional<WalkableZone> getWalkableZone(final int x, final int y);
     
-    public int getTileUnitX(final int cellX);
-	public int getTileUnitY(final int cellY);
+    int getTileUnitX(final int cellX);
+	int getTileUnitY(final int cellY);
 
-	public TileType[][] getMap();
+	TileType[][] getMap();
 	
-	public TiledMap getTiledMap();
+	TiledMap getTiledMap();
 	
-	public Position getPokemonCenterSpawnPosition();
+	Position getPokemonCenterSpawnPosition();
 }

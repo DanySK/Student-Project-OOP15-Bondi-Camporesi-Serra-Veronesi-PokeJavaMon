@@ -10,8 +10,8 @@ public interface Item {
         POKEBALL, BOOST, POTION;
     }
     
-    public int getPrice();
-    public ItemType getType();
-    public boolean isOnEnemy();
-    public whenToUse whenToUse();
+    int getPrice();
+    ItemType getType();
+    boolean isOnEnemy();
+    whenToUse whenToUse();
 }

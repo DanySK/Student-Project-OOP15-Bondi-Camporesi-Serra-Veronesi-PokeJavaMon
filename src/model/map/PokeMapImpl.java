@@ -53,7 +53,8 @@ public class PokeMapImpl implements PokeMap {
 	private final int tileHeight;
 	private final int tileWidth;
 	
-	//TODO: Refactoring refactor strings
+	//TODO: Refactoring strings, code IMPORTER class!!! Trainer/Tiles/...Handler
+	//TODO: Rimuovere public da interfacce
 	public PokeMapImpl(final TiledMap map) {
 		this.tiledMap = map;
 		final TiledMapTileLayer background = ((TiledMapTileLayer) map.getLayers().get("background"));

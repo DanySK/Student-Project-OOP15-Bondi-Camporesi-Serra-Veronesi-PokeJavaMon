@@ -15,28 +15,28 @@ public interface Zone {
 	 * 			tileY-axis coordinate
 	 * @return	true if the {@link Position} is inside, false otherwise
 	 */
-	public boolean contains(final int x, final int y);
+	boolean contains(final int x, final int y);
 	
 	/**
 	 * @return Top-left corner x-axis of the rectangle 
 	 */
-	public int getTileX();
+	int getTileX();
 	
 	/**
 	 * @return Top-left corner y-axis of the rectangle
 	 */
-	public int getTileY();
+	int getTileY();
 	
 	/**
 	 * @return zone's width
 	 */
-	public int getZoneWidth();
+	int getZoneWidth();
 	
 	/**
 	 * @return zone's height
 	 */
-	public int getZoneHeight();
+	int getZoneHeight();
 	
-	public Rectangle getRectangle();
-	public String getZoneName();
+	Rectangle getRectangle();
+	String getZoneName();
 }
