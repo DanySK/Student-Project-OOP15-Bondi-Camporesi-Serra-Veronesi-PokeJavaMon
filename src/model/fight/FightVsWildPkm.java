@@ -23,8 +23,12 @@ import model.pokemon.Stat;
  */
 public class FightVsWildPkm extends AbstractFight {
 
+    private static final int RUN_SPD_MULT = 32;
+    private static final int RUN_SPD_DIV = 4;
+    private static final int BALANCE_RUN_VAL = 30;
     private static final int RUN_PROB_COEFF = 255;
     private final Map<Stat, Double> enemyPkmBoosts = new HashMap<>(createBoostsMap());
+    private int runAttempts = 0;
 
     /**
      * Simple constructor for FightVsWildPkm, it just initialize wild pokemon parameters.
@@ -67,7 +71,8 @@ public class FightVsWildPkm extends AbstractFight {
     @Override
     public boolean applyRun() throws CannotEscapeFromTrainerException {
         final Random escapeRoll = new Random();
-        final int escapeChance = (32 * this.allyPkm.getStat(Stat.SPD)) / (this.enemyPkm.getStat(Stat.SPD) / 4) + 30;
+        this.runAttempts++;
+        final int escapeChance = ((RUN_SPD_MULT * this.allyPkm.getStat(Stat.SPD)) / (this.enemyPkm.getStat(Stat.SPD) / RUN_SPD_DIV) + BALANCE_RUN_VAL) * this.runAttempts;
         return this.runValue = escapeChance > escapeRoll.nextInt(RUN_PROB_COEFF);
     }
 
