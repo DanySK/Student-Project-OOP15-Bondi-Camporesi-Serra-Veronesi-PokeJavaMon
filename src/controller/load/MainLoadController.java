@@ -35,6 +35,10 @@ public class MainLoadController implements LoadController {
     private static final int STRING_OFFSET = 1;
     private Element root;
     
+    public MainLoadController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     /**
      * Loads the save file
      */

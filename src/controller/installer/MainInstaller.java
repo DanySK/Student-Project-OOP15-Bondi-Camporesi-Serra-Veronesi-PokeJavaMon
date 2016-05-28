@@ -22,6 +22,10 @@ public class MainInstaller implements Installer {
     private static final int SIZE = 2048;
     private boolean success;
 
+    public MainInstaller() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public void install() {
         new OSResolver();

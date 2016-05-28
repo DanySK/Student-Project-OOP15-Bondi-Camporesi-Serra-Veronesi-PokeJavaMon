@@ -36,6 +36,10 @@ public class MainSaveController implements SaveController {
     private FileOutputStream fos;
     private Save sv;   
     
+    public MainSaveController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public void setSave(final Save save) {
         this.sv = save;

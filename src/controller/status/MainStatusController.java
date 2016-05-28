@@ -24,6 +24,10 @@ public class MainStatusController implements StatusController {
     private State state;
     private KeyboardController keyboardController;
 
+    public MainStatusController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public void updateStatus(final State s) {
         switch (s) {

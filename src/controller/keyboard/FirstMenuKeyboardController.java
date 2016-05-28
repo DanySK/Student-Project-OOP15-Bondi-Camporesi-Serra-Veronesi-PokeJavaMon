@@ -12,6 +12,10 @@ public class FirstMenuKeyboardController extends AbstractKeyboardController {
     
     private final String name = "FirstMenuKeyboardController";
     
+    public FirstMenuKeyboardController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public boolean keyUp(final int keycode) {
         switch(keycode) {

@@ -7,6 +7,10 @@ import model.map.Drawable.Direction;
  */
 public abstract class AbstractKeyboardController implements KeyboardController {
 
+    protected AbstractKeyboardController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public boolean keyDown(final int keycode) {
         return false;
