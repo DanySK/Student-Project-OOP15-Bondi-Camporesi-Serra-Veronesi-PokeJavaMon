@@ -2,14 +2,44 @@ package model.map.tile;
 
 import model.map.Position;
 
+/**
+ * Abstract class that factorize most of {@link Tile}'s needed code.
+ * It contains the basic fields to represent a specific {@link Tile} in the {@link PokeMap}
+ */
 public abstract class AbstractTile implements Tile {
 
-    protected final int tileX;
-    protected final int tileY;
+	/**
+	 * x-axis coordinates in tile-units of its {@link Position}
+	 */
+	protected final int tileX;
+
+	/**
+	 * y-axis coordinates in tile-units of its {@link Position}
+	 */
+	protected final int tileY;
+    
+	/**
+	 * Type of this {@link Tile}
+	 */
     protected final TileType type;
+    
+    /**
+     * {@link Direction} of this {@link Tile}, usually by default it is {@link Direction#SOUTH}
+     */
     protected Direction direction;
     
-    public AbstractTile(final TileType t, final Direction d, final int x, final int y) {
+    /**
+     * Constructor that instantiate it with base fields
+     * @param t
+     * 			{@link TileType} of the {@link Tile}
+     * @param d
+     * 			{@link Direction} of this {@link Tile}
+     * @param x
+     * 			x-axis coordinates in tile-units of its {@link Position}
+     * @param y
+     * 			y-axis coordinates in tile-units of its {@link Position}
+     */
+    protected AbstractTile(final TileType t, final Direction d, final int x, final int y) {
         this.type = t;
         this.tileX = x;
         this.tileY = y;
@@ -17,7 +47,16 @@ public abstract class AbstractTile implements Tile {
         
     }
     
-    public AbstractTile(final TileType t, final Direction d, final Position p) {
+    /**
+     * Constructor that instantiate it with base fields
+     * @param t
+     * 			{@link TileType} of the {@link Tile}
+     * @param d
+     * 			{@link Direction} of this {@link Tile}
+     * @param p
+     * 			{@link Position} of this {@link Tile}
+     */
+    protected AbstractTile(final TileType t, final Direction d, final Position p) {
         this.type = t;
         this.tileX = p.getX();
         this.tileY = p.getY();

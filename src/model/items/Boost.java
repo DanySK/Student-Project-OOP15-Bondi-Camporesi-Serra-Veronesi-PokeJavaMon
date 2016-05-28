@@ -30,8 +30,8 @@ public class Boost extends AbstractItem {
     }
 
     @Override
-    public whenToUse whenToUse() {
-        return Item.whenToUse.BATTLE;
+    public WhenToUse whenToUse() {
+        return Item.WhenToUse.BATTLE;
     }
         
     public Stat getStat() {

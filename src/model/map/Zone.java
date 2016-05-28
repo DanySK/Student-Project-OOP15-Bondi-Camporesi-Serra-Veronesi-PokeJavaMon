@@ -3,7 +3,9 @@ package model.map;
 import java.awt.Rectangle;
 
 /**
- * Interface of a generic rectangular portion of {@link PokeMap}
+ * Interface of a generic portion of {@link PokeMap}, current implementation ({@link AbstractRectangularZone}) is
+ * achieved via {@link Rectangle} but it can be implemented with other polygons/shapes, as long as
+ * the method {@link Zone#contains(int, int)} works
  */
 public interface Zone {
 
@@ -18,12 +20,12 @@ public interface Zone {
 	boolean contains(final int x, final int y);
 	
 	/**
-	 * @return Top-left corner x-axis of the rectangle 
+	 * @return Top-left corner x-axis of the zone 
 	 */
 	int getTileX();
 	
 	/**
-	 * @return Top-left corner y-axis of the rectangle
+	 * @return Top-left corner y-axis of the zone
 	 */
 	int getTileY();
 	
@@ -37,6 +39,8 @@ public interface Zone {
 	 */
 	int getZoneHeight();
 	
-	Rectangle getRectangle();
+	/**
+	 * @return zone's name
+	 */
 	String getZoneName();
 }

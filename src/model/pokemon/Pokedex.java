@@ -252,17 +252,24 @@ public enum Pokedex {
     ;
 	
     private String name;
+    
+    /*
+     * A pokemon can have up to two types 
+     */
     private PokemonType firstType;
     private PokemonType secondType;
     
     /*
-     * Base stats
+     * Base stats (constants over level)
      */
     private int baseHP;
     private int baseATK;
     private int baseDEF;
     private int baseSPD;
     
+    /*
+     * basic constant properties 
+     */
     private PokemonRarity rarity;
     private int evolveLevel;
     private String evolvesTo;

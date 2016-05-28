@@ -30,7 +30,7 @@ public abstract class AbstractPokemon implements Pokemon {
     public static int MAX_LEVEL = 50;
     public static int MIN_LEVEL = 3;
 
-    public AbstractPokemon(final Pokedex pokemon,int lvl) {
+    protected AbstractPokemon(final Pokedex pokemon,int lvl) {
         if (lvl > MAX_LEVEL) {
         	lvl = MAX_LEVEL;
         }
