@@ -3,7 +3,7 @@ package model;
 import model.map.NPC;
 import model.map.PokeMap;
 import model.map.Position;
-import model.map.tile.EncounterTile;
+import model.map.tile.SpecialEncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.player.Player;
@@ -50,6 +50,6 @@ public interface ModelInterface {
     	public Set<Trainer> getTrainers();
     	public Inventory getInventory();
     	public Box getBox();
-    	public Set<EncounterTile> getEncounterTilesToBeRemoved();
+    	public Set<SpecialEncounterTile> getEncounterTilesToBeRemoved();
     }  
 }

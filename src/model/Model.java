@@ -11,7 +11,7 @@ import model.map.NPC;
 import model.map.PokeMap;
 import model.map.PokeMapImpl;
 import model.map.Position;
-import model.map.tile.EncounterTile;
+import model.map.tile.SpecialEncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.player.Player;
@@ -87,7 +87,7 @@ public class Model implements ModelInterface {
         this.map.initGymLeaders(badges);
         this.player.getBox().initializePokemons(box);
         this.player.getInventory().initializeInventory(potions, boosts, pokeballs);
-        this.map.setDeletedEncounterTiles(deletedEncounterTiles);
+        this.map.initDeletedEncounterTiles(deletedEncounterTiles);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class Model implements ModelInterface {
             }
             
             @Override
-            public Set<EncounterTile> getEncounterTilesToBeRemoved() {
+            public Set<SpecialEncounterTile> getEncounterTilesToBeRemoved() {
                 return map.getRemovedEncounterTiles();
             }
         };

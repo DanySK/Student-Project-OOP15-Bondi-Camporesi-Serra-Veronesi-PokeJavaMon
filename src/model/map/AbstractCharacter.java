@@ -1,25 +1,53 @@
 package model.map;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
-
 import controller.MainController;
 
+/**
+ * Abstract class to factorize some code among various subclasses
+ * such as {@link NPC}, {@link Trainer}, etc..
+ */
 public abstract class AbstractCharacter implements Character {
     
+	/**
+	 * current x-axis coordinate in tile-units, made protected to be easily accessible by subclasses
+	 */
     protected int tileX;
+
+	/**
+	 * current y-axis coordinate in tile-units, made protected to be easily accessible by subclasses
+	 */
     protected int tileY;
+    
+    /**
+     * current {@link Direction} he is facing
+     */
     protected Direction direction;
     
-    
-    public AbstractCharacter(final int x, final int y, final Direction d) {
+    /**
+     * Basic constructor to initialize the 3 basic components of a {@link Drawable}
+     * @param x
+     * 			x-axis coordinate in tile-units
+     * @param y
+     * 			y-axis coordinate in tile-units
+     * @param d
+     * 			{@link Direction} to face
+     */
+    protected AbstractCharacter(final int x, final int y, final Direction d) {
         this.tileX = x;
         this.tileY = y;
         this.direction = d;
     }
     
+    /**
+     * Abstract method that each implementation will define on its own
+     * @param d 
+     * 			{@link Direction} to move towards, based on his current {@link Position}
+     * @param pm
+     * 			{@link PokeMap} to apply the movement in the map
+     */
     public abstract void move(final Direction d, final PokeMap pm);
     
+    @Override
     public Direction getDirection() {
         return this.direction;
     }
@@ -44,42 +72,8 @@ public abstract class AbstractCharacter implements Character {
 		if (this.direction == d) {
 			return;
 		}
-	    PokeMap pm = MainController.getController().getPokeMap().get();
-	    TiledMapTileLayer bg = (TiledMapTileLayer) pm.getTiledMap().getLayers().get("foreground");
-	    Cell tr = bg.getCell(pm.getTileUnitX(tileX), pm.getTileUnitY(tileY));
-	    int val = -1;
-	    switch (d) {
-	    case WEST:
-	        val = Integer.parseInt(tr.getTile().getProperties().get("LEFT_ID", String.class));
-	        val++;
-	        if (val > 0) {
-	        	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-	        }
-	        break;
-	    case NORTH:
-	        val = Integer.parseInt(tr.getTile().getProperties().get("REAR_ID", String.class));
-            val++;
-	        if (val > 0) {
-            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-            }
-            break;
-	    case EAST:
-	        val = Integer.parseInt(tr.getTile().getProperties().get("RIGHT_ID", String.class));
-            val++;
-	        if (val > 0) {
-            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-            }
-            break;
-	    case SOUTH:
-            val = Integer.parseInt(tr.getTile().getProperties().get("FRONT_ID", String.class));
-            val++;
-            if(val > 0) {
-            	tr.setTile(pm.getTiledMap().getTileSets().getTile(val));
-            }
-            break;
-        default :
-        	return;
-	    }
+	    PokeMap pm =  MainController.getController().getPokeMap().get();
+	    pm.turnCharacter(this, d);
 	    this.direction = d;
 	}
 	
