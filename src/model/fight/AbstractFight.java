@@ -60,6 +60,68 @@ public abstract class AbstractFight extends BasicFight implements Fight {
         super();
     }
 
+    /**
+     * Resolve the run option.
+     * 
+     * @return                                  True if escape successfully from a {@link FightVsWildPkm}.
+     * @throws CannotEscapeFromTrainerException If the user is in a {@link FightVsTrainer}.
+     */
+    protected abstract boolean applyRun() throws CannotEscapeFromTrainerException;
+
+    /**
+     * Resolve the use of a pokeball.
+     * 
+     * @param itemToUse                         The {@link model.items.Pokeball} to use.
+     * @return                                  True if enemy {@link model.pokemon.Pokemon} is caught.
+     * @throws CannotCaughtTrainerPkmException  If the user fight in a {@link FightVsTrainer}.
+     */
+    protected abstract boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException;
+
+    /**
+     * Calculate the exp gained by defeating a pokemon.
+     * 
+     * @return The exp gained by defeating a {@link model.pokemon.Pokemon}.
+     */
+    protected abstract int getExp();
+
+    /**
+     * Resolve the use of an item. This is a template method.
+     * It used the method useBall() specialized by subclasses.
+     * 
+     * @param itemToUse                         The target {@link model.items.Item}.
+     * @param pkm                               The target {@link model.pokemon.Pokemon}(if it is present).
+     * @return                                  False if item is a {@link model.items.Pokeball} and the wild {@link model.pokemon.Pokemon} isn't captured.
+     * @throws PokemonIsExhaustedException      If the parameter pkm is exhausted.
+     * @throws PokemonNotFoundException         If the parameter pkm was not found.
+     * @throws CannotCaughtTrainerPkmException  If itemToUse is a {@link model.items.Pokeball} and the user is fight in a {@link FightVsTrainer}.
+    */
+    protected boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
+        switch(itemToUse.getType()) {
+        case BOOST:
+            final Boost boost = (Boost) itemToUse;
+            final Double newBoostValue = getAllyBoost(boost.getStat()) + boost.getCoeff();
+            setAllyBoost(boost.getStat(), newBoostValue);
+            break;
+        case POKEBALL:
+            if (useBall(itemToUse)) {
+                try {
+                    this.player.getSquad().add(this.enemyPkm);
+                } catch (SquadFullException e) {
+                    this.player.getBox().putCapturedPokemon(this.enemyPkm);
+                }
+                return true;
+            }
+            return false;
+        case POTION:
+            if(pkm.getCurrentHP() == 0) {
+                throw new PokemonIsExhaustedException();
+            }
+            final Potion potion = (Potion) itemToUse;
+            potion.effect(this.player, pkm);
+        }
+        return true;
+    }
+
     @Override
     public boolean checkLose(final Squad pkmSquad) {
         final List<PokemonInBattle> pkmSquadList = pkmSquad.getPokemonList();
@@ -158,65 +220,4 @@ public abstract class AbstractFight extends BasicFight implements Fight {
     @Override
     public abstract void setEnemyBoost(final Stat stat, final Double d);
 
-    /**
-     * Resolve the run option.
-     * 
-     * @return                                  True if escape successfully from a {@link FightVsWildPkm}.
-     * @throws CannotEscapeFromTrainerException If the user is in a {@link FightVsTrainer}.
-     */
-    protected abstract boolean applyRun() throws CannotEscapeFromTrainerException;
-
-    /**
-     * Resolve the use of an item. This is a template method.
-     * It used the method useBall() specialized by subclasses.
-     * 
-     * @param itemToUse                         The target {@link model.items.Item}.
-     * @param pkm                               The target {@link model.pokemon.Pokemon}(if it is present).
-     * @return                                  False if item is a {@link model.items.Pokeball} and the wild {@link model.pokemon.Pokemon} isn't captured.
-     * @throws PokemonIsExhaustedException      If the parameter pkm is exhausted.
-     * @throws PokemonNotFoundException         If the parameter pkm was not found.
-     * @throws CannotCaughtTrainerPkmException  If itemToUse is a {@link model.items.Pokeball} and the user is fight in a {@link FightVsTrainer}.
-    */
-    protected boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
-        switch(itemToUse.getType()) {
-        case BOOST:
-            final Boost boost = (Boost) itemToUse;
-            final Double newBoostValue = getAllyBoost(boost.getStat()) + boost.getCoeff();
-            setAllyBoost(boost.getStat(), newBoostValue);
-            break;
-        case POKEBALL:
-            if (useBall(itemToUse)) {
-                try {
-                    this.player.getSquad().add(this.enemyPkm);
-                } catch (SquadFullException e) {
-                    this.player.getBox().putCapturedPokemon(this.enemyPkm);
-                }
-                return true;
-            }
-            return false;
-        case POTION:
-            if(pkm.getCurrentHP() == 0) {
-                throw new PokemonIsExhaustedException();
-            }
-            final Potion potion = (Potion) itemToUse;
-            potion.effect(this.player, pkm);
-        }
-        return true;
-    }
-
-    /**
-     * Resolve the use of a pokeball.
-     * 
-     * @param itemToUse                         The {@link model.items.Pokeball} to use.
-     * @return                                  True if enemy {@link model.pokemon.Pokemon} is caught.
-     * @throws CannotCaughtTrainerPkmException  If the user fight in a {@link FightVsTrainer}.
-     */
-    protected abstract boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException;
-
-    /**
-     * Calculate the exp gained by defeating a pokemon.
-     * 
-     * @return The exp gained by defeating a {@link model.pokemon.Pokemon}.
-     */
-    protected abstract int getExp();
 }

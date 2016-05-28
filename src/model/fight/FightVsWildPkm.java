@@ -40,6 +40,12 @@ public class FightVsWildPkm extends AbstractFight {
         this.enemyPkm = (PokemonInBattle) pkm;
     }
 
+    @Override
+    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
+        final Pokeball ball = (Pokeball) itemToUse;
+        return ball.isCaptured(this.enemyPkm);
+    }
+
     /**
      * Calculate the enemy move. This method returns a random move.
      * 
@@ -79,12 +85,6 @@ public class FightVsWildPkm extends AbstractFight {
     @Override
     public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         return super.applyItem(itemToUse, pkm);
-    }
-
-    @Override
-    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
-        final Pokeball ball = (Pokeball) itemToUse;
-        return ball.isCaptured(this.enemyPkm);
     }
 
     @Override

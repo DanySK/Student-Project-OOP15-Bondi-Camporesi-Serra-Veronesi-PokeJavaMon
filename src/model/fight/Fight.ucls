@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.9" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
-  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  associations="false" dependencies="false" nesting-relationships="true" router="FAN">  
   <interface id="1" language="java" name="model.fight.Fight" project="mainrepository" 
     file="/mainrepository/src/model/fight/Fight.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="225" width="329" x="610" y="293"/>    
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="model.fight.FightVsWildPkm" project="mainrepository" 
     file="/mainrepository/src/model/fight/FightVsWildPkm.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="117" y="772"/>    
+    <position height="-1" width="-1" x="116" y="791"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="false" static="true"/>      
@@ -64,33 +64,33 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <realization id="8">    
+  <dependency id="8">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <realization id="10">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <generalization id="9">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="10">    
+  <association id="11">    
     <bendpoint x="472" y="-83"/>    
     <bendpoint x="499" y="-83"/>    
     <bendpoint x="607" y="-83"/>    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="11" name="enemyEff">        
+      <attribute id="12" name="enemyEff">        
         <position height="18" width="56" x="504" y="-105"/>      
       </attribute>      
-      <multiplicity id="12" minimum="0" maximum="1">        
+      <multiplicity id="13" minimum="0" maximum="1">        
         <position height="16" width="23" x="519" y="-79"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
   <association id="14">    
     <bendpoint x="470" y="-42"/>    
     <bendpoint x="470" y="-41"/>    
@@ -106,12 +106,12 @@
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="17">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <generalization id="18">    
+  <generalization id="17">    
     <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

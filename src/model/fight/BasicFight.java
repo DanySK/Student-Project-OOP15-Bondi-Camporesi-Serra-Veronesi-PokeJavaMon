@@ -123,6 +123,13 @@ public abstract class BasicFight {
     }
 
     /**
+     * Calculate the enemy move to use.
+     * 
+     * @return          The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
+     */
+    protected abstract Move calculationEnemyMove();
+
+    /**
      * Create a battle boosts map for a pokemon.
      * 
      * @return  A boost map that store the battle {@link model.pokemon.Stat}.
@@ -146,25 +153,6 @@ public abstract class BasicFight {
         this.levelUp = false;
     }
 
-    
-    /**
-     * Resolve the ally turn using the chosen move by user.
-     * 
-     * @param move      The chosen {@link model.pokemon.Move}.
-     */
-    public void allyTurn(final Move move) {
-        applyMove(move, allyPkm, enemyPkm);
-    }
-
-    /**
-     * Resolve the enemy turn using a move. This is a template method.
-     * It used the method calculationEnemyMove() specialized by subclasses.
-     */
-    public void enemyTurn() {
-        this.enemyMove = calculationEnemyMove();
-        applyMove(enemyMove, enemyPkm, allyPkm);
-    }
-
     /**
      * Resolve the move use.
      * 
@@ -179,63 +167,6 @@ public abstract class BasicFight {
         } else {
             applyMoveOnBoost(striker, stricken, move);
         }
-    }
-
-    /**
-     * Check if the pokemon taken as argument is exhausted and if it is, 
-     * set his exhaust variable true.
-     * 
-     * @param pkm       The {@link model.pokemon.Pokemon} that must be checked.
-     */
-    public void checkAndSetIsExhausted(final PokemonInBattle pkm) {
-        if (pkm.equals(this.allyPkm)) {
-            this.isAllyExhausted = pkm.getCurrentHP() == 0;
-        } else {
-            this.isEnemyExhausted = pkm.getCurrentHP() == 0;
-        }
-    }
-
-    /**
-     * Calculate the enemy move to use.
-     * 
-     * @return          The {@link model.pokemon.Move} used by enemy {@link model.pokemon.Pokemon}.
-     */
-    protected abstract Move calculationEnemyMove();
-
-    /**
-     * Get the enemy battle stat value of the same type of the stat insert as argument.
-     * 
-     * @param stat      The battle {@link model.pokemon.Stat} to get.
-     * @return          The relative battle stat value of enemy pokemon.
-     */
-    public abstract double getEnemyBoost(final Stat stat);
-
-    /**
-     * Replace the enemy battle stat value of the same type of the stat insert as argument.
-     * 
-     * @param stat      The battle {@link model.pokemon.Stat} to modified.
-     * @param d         The battle stat value to replace.
-     */
-    public abstract void setEnemyBoost(final Stat stat, final Double d);
-
-    /**
-     * Get the ally battle stat value of the same type of the stat insert as argument.
-     * 
-     * @param stat      The battle {@link model.pokemon.Stat} to get.
-     * @return          The relative battle stat value of ally pokemon.
-     */
-    public double getAllyBoost(final Stat stat) {
-        return this.allyPkmsBoosts.get(this.allyPkm).get(stat);
-    }
-
-    /**
-     * Replace the ally battle stat value of the same type of the stat insert as argument.
-     * 
-     * @param stat      The battle {@link model.pokemon.Stat} to modified.
-     * @param d         The battle stat value to replace.
-     */
-    public void setAllyBoost(final Stat stat, final Double d) {
-        this.allyPkmsBoosts.get(this.allyPkm).replace(stat, d);
     }
 
     /**
@@ -394,33 +325,6 @@ public abstract class BasicFight {
     }
 
     /**
-     * Calculate, set and return true if ally pokemon is faster than enemy pokemon.
-     * 
-     * @return  The boolean variable which indicate what pokemon is faster.
-     */
-    public boolean setIsAllyFastest() {
-        return this.isAllyFastest = (this.allyPkm.getStat(Stat.SPD) * getAllyBoost(Stat.SPD))
-                >= (this.enemyPkm.getStat(Stat.SPD) * getEnemyBoost(Stat.SPD));
-    }
-
-    /**
-     * Give to ally pokemon the experience of enemy pokemon and if 
-     * is enough to level up, ally pokemon levels up.
-     * 
-     * @param exp       The experience gained ({@link AbstractFight#getExp()}) by beating enemy pokemon.
-     * @return          True, if ally {@link model.pokemon.Pokemon} levels up.
-     */
-    public boolean giveExpAndCheckLvlUp(final int exp) {
-        if (this.allyPkm.getNecessaryExp() <= exp) {
-            this.allyPkm.setExp(exp - this.allyPkm.getNecessaryExp());
-            this.allyPkm.levelUp();
-            return true;
-        }
-        this.allyPkm.setExp(this.allyPkm.getStat(Stat.EXP) + exp);
-        return false;
-    }
-
-    /**
      * Return the experience gained by beating the enemy pokemon according to rarity.
      * 
      * @return          The experience gained.
@@ -454,6 +358,101 @@ public abstract class BasicFight {
         }
         baseExp = baseExp * this.enemyPkm.getStat(Stat.LVL);
         return baseExp;
+    }
+
+    /**
+     * Resolve the ally turn using the chosen move by user.
+     * 
+     * @param move      The chosen {@link model.pokemon.Move}.
+     */
+    public void allyTurn(final Move move) {
+        applyMove(move, allyPkm, enemyPkm);
+    }
+
+    /**
+     * Resolve the enemy turn using a move. This is a template method.
+     * It used the method calculationEnemyMove() specialized by subclasses.
+     */
+    public void enemyTurn() {
+        this.enemyMove = calculationEnemyMove();
+        applyMove(enemyMove, enemyPkm, allyPkm);
+    }
+
+    /**
+     * Check if the pokemon taken as argument is exhausted and if it is, 
+     * set his exhaust variable true.
+     * 
+     * @param pkm       The {@link model.pokemon.Pokemon} that must be checked.
+     */
+    public void checkAndSetIsExhausted(final PokemonInBattle pkm) {
+        if (pkm.equals(this.allyPkm)) {
+            this.isAllyExhausted = pkm.getCurrentHP() == 0;
+        } else {
+            this.isEnemyExhausted = pkm.getCurrentHP() == 0;
+        }
+    }
+
+    /**
+     * Get the enemy battle stat value of the same type of the stat insert as argument.
+     * 
+     * @param stat      The battle {@link model.pokemon.Stat} to get.
+     * @return          The relative battle stat value of enemy pokemon.
+     */
+    public abstract double getEnemyBoost(final Stat stat);
+
+    /**
+     * Replace the enemy battle stat value of the same type of the stat insert as argument.
+     * 
+     * @param stat      The battle {@link model.pokemon.Stat} to modified.
+     * @param d         The battle stat value to replace.
+     */
+    public abstract void setEnemyBoost(final Stat stat, final Double d);
+
+    /**
+     * Get the ally battle stat value of the same type of the stat insert as argument.
+     * 
+     * @param stat      The battle {@link model.pokemon.Stat} to get.
+     * @return          The relative battle stat value of ally pokemon.
+     */
+    public double getAllyBoost(final Stat stat) {
+        return this.allyPkmsBoosts.get(this.allyPkm).get(stat);
+    }
+
+    /**
+     * Replace the ally battle stat value of the same type of the stat insert as argument.
+     * 
+     * @param stat      The battle {@link model.pokemon.Stat} to modified.
+     * @param d         The battle stat value to replace.
+     */
+    public void setAllyBoost(final Stat stat, final Double d) {
+        this.allyPkmsBoosts.get(this.allyPkm).replace(stat, d);
+    }
+
+    /**
+     * Calculate, set and return true if ally pokemon is faster than enemy pokemon.
+     * 
+     * @return  The boolean variable which indicate what pokemon is faster.
+     */
+    public boolean setIsAllyFastest() {
+        return this.isAllyFastest = (this.allyPkm.getStat(Stat.SPD) * getAllyBoost(Stat.SPD))
+                >= (this.enemyPkm.getStat(Stat.SPD) * getEnemyBoost(Stat.SPD));
+    }
+
+    /**
+     * Give to ally pokemon the experience of enemy pokemon and if 
+     * is enough to level up, ally pokemon levels up.
+     * 
+     * @param exp       The experience gained ({@link AbstractFight#getExp()}) by beating enemy pokemon.
+     * @return          True, if ally {@link model.pokemon.Pokemon} levels up.
+     */
+    public boolean giveExpAndCheckLvlUp(final int exp) {
+        if (this.allyPkm.getNecessaryExp() <= exp) {
+            this.allyPkm.setExp(exp - this.allyPkm.getNecessaryExp());
+            this.allyPkm.levelUp();
+            return true;
+        }
+        this.allyPkm.setExp(this.allyPkm.getStat(Stat.EXP) + exp);
+        return false;
     }
 
 }

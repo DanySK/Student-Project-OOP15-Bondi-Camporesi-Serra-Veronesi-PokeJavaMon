@@ -45,6 +45,36 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     /**
+     * Apply the trainer change. This method search and send in battle the first 
+     * pokemon which have the super effective types against the player pokemon. 
+     * If method don't find any pokemon, send the first pokemon in the list which can battle.
+     */
+    protected void trainerChange() {
+        for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
+            if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
+                    pkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getSecondType())
+                    || STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
+                            pkm.getPokedexEntry().getSecondType(), this.allyPkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getSecondType())) {
+                this.enemyPkm = pkm;
+                break;
+            }
+        }
+        if (this.enemyPkm.getCurrentHP() == 0) {
+            for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
+                if (pkm.getCurrentHP() > 0) {
+                    this.enemyPkm = pkm;
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
+        throw new CannotCaughtTrainerPkmException();
+    }
+
+    /**
      * Calculate the enemy move. This method search and return the move that do more damage.
      * If method don't find any move that target HP, it returns the first move in list.
      * 
@@ -90,11 +120,6 @@ public class FightVsTrainer extends AbstractFight {
     @Override
     public boolean applyItem(final Item itemToUse, final PokemonInBattle pkm) throws PokemonIsExhaustedException, PokemonNotFoundException, CannotCaughtTrainerPkmException {
         return super.applyItem(itemToUse, pkm);
-    }
-
-    @Override
-    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
-        throw new CannotCaughtTrainerPkmException();
     }
 
     @Override
@@ -233,30 +258,4 @@ public class FightVsTrainer extends AbstractFight {
     public int getExp() {
         return (int) (expBaseCalculation() * 1.5) / EXP_COEFFICIENT; 
     }
-
-    /**
-     * Apply the trainer change. This method search and send in battle the first 
-     * pokemon which have the super effective types against the player pokemon. 
-     * If method don't find any pokemon, send the first pokemon in the list which can battle.
-     */
-    protected void trainerChange() {
-        for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
-            if (STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
-                    pkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getSecondType())
-                    || STANDARD_EFFECTIVENESS_VALUE < WeaknessTable.getWeaknessTable().getMultiplierAttack(
-                            pkm.getPokedexEntry().getSecondType(), this.allyPkm.getPokedexEntry().getFirstType(), this.allyPkm.getPokedexEntry().getSecondType())) {
-                this.enemyPkm = pkm;
-                break;
-            }
-        }
-        if (this.enemyPkm.getCurrentHP() == 0) {
-            for (final PokemonInBattle pkm : this.trainer.getSquad().getPokemonList()) {
-                if (pkm.getCurrentHP() > 0) {
-                    this.enemyPkm = pkm;
-                    break;
-                }
-            }
-        }
-    }
-
 }
