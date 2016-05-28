@@ -1,12 +1,19 @@
 package model.items;
 
 import exceptions.PokemonNotFoundException;
+import model.map.PokeMarket;
 import model.player.Player;
 import model.pokemon.PokemonInBattle;
 
+/**
+ * Subclass of {@link AbstractItem}, if used on one of {@link Player}'s {@link Pokemon} it heals some HP
+ */
 public class Potion extends AbstractItem {
 
-    public static enum PotionType {
+	/**
+	 * Types of {@link Potion}s available, with healing value and pricing
+	 */
+    public enum PotionType {
         Potion(20, 200), Superpotion(50, 400), Hyperpotion(200, 600);
         
         private PotionType(final int heal, final int cost) {
@@ -17,10 +24,16 @@ public class Potion extends AbstractItem {
         private final int heal;
         private final int cost;
         
+        /**
+         * @return the amount of HP that recovers
+         */
         public int getHeal() {
             return this.heal;
         }
         
+        /**
+         * @return the price to pay to {@link PokeMarket} to buy it
+         */
         public int getCost() {
             return this.cost;
         }
@@ -28,6 +41,10 @@ public class Potion extends AbstractItem {
     
     private final PotionType quality;
     
+    /**
+     * Constructor to initialize TODO
+     * @param quality
+     */
     public Potion(final Potion.PotionType quality) {
         super(quality.cost, Item.ItemType.POTION, false);
         this.quality = quality;
@@ -47,8 +64,8 @@ public class Potion extends AbstractItem {
         return this.quality;
     }
     
-    public whenToUse whenToUse() {
-        return Item.whenToUse.EVERYWHERE;
+    public WhenToUse whenToUse() {
+        return Item.WhenToUse.EVERYWHERE;
     }
     
     @Override

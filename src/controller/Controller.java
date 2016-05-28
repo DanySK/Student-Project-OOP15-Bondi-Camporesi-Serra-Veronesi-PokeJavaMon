@@ -27,7 +27,7 @@ import model.items.Pokeball;
 import model.items.Potion;
 import model.map.PokeMap;
 import model.map.Position;
-import model.map.tile.EncounterTile;
+import model.map.tile.SpecialEncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.player.Player;
@@ -273,7 +273,7 @@ public interface Controller {
      * @param pokeballs the old number of items of {@link Pokeball} type
      * @param boosts the old number of items of {@link Boost} type
      * @param potions the old number of items of {@link Potion} type
-     * @param defeatedEncounterTiles the defeated {@link EncounterTile}s
+     * @param defeatedEncounterTiles the defeated {@link SpecialEncounterTile}s
      * @throws SquadFullException if squad is full
      */
     void loadSave(int money, String name, int badges, Position position, List<Pokemon> team,

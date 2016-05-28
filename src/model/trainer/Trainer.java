@@ -155,7 +155,12 @@ public class Trainer extends AbstractCharacter {
      * @param pm
      */
     @Override
-    public void move(final Direction d, final PokeMap pm) {}
+    public void move(final Direction d, final PokeMap pm) {
+    	/*
+    	 * Empty method
+    	 */
+    }
+    
     
     
     public String toString() {

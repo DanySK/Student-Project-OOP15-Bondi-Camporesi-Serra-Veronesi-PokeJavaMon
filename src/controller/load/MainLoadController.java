@@ -21,7 +21,7 @@ import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import exceptions.SquadFullException;
 import model.map.Position;
-import model.map.tile.EncounterTile;
+import model.map.tile.SpecialEncounterTile;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 
@@ -34,6 +34,10 @@ public class MainLoadController implements LoadController {
     private static final int FACTOR = 1;
     private static final int STRING_OFFSET = 1;
     private Element root;
+    
+    public MainLoadController() {
+        // EMPTY CONSTRUCTOR
+    }
     
     /**
      * Loads the save file
@@ -167,7 +171,7 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * @return the {@link Set} of defeated {@link EncounterTile}'s names
+     * @return the {@link Set} of defeated {@link SpecialEncounterTile}'s names
      */
     private Set<String> getDefeatedEncounterTiles() {
         final Set<String> set = new HashSet<>();

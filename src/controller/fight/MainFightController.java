@@ -31,6 +31,10 @@ public class MainFightController implements FightController {
     private InFightMessagesInterface view;
     private Optional<Trainer> trainer;
     
+    public MainFightController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public void newFightWithTrainer(final Trainer trainer) {
         this.fight = StaticSimpleFightFactory.createFight(trainer);

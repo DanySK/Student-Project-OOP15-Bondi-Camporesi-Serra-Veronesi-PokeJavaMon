@@ -27,6 +27,7 @@ import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.PokemonNotFoundException;
 import exceptions.SquadFullException;
 import model.Model;
+import model.ModelInterface;
 import model.fight.Fight;
 import model.items.Item;
 import model.items.Item.ItemType;
@@ -66,7 +67,7 @@ public final class MainController implements Controller {
     private StatusController statusController;
     private ViewController viewController;
     private TiledMap map;
-    private Model model;
+    private ModelInterface model;
     private Pokedex starter;
     private static Controller singleton;
     

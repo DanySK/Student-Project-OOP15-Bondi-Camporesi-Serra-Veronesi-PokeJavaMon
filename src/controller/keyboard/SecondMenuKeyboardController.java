@@ -17,6 +17,10 @@ public class SecondMenuKeyboardController extends AbstractKeyboardController {
     private static final int MAX = 20;
     private final String name = "SecondMenuKeyboardController";
 
+    public SecondMenuKeyboardController() {
+        // EMPTY CONSTRUCTOR
+    }
+    
     @Override
     public boolean keyUp(final int keycode) {
         if (keycode == Keys.ENTER) {

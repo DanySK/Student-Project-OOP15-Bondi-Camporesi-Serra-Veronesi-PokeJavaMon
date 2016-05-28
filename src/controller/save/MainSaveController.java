@@ -15,7 +15,7 @@ import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import model.ModelInterface.Save;
 import model.items.Item;
-import model.map.tile.EncounterTile;
+import model.map.tile.SpecialEncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.pokemon.Move;
@@ -35,6 +35,10 @@ public class MainSaveController implements SaveController {
     private Element root;
     private FileOutputStream fos;
     private Save sv;   
+    
+    public MainSaveController() {
+        // EMPTY CONSTRUCTOR
+    }
     
     @Override
     public void setSave(final Save save) {
@@ -180,12 +184,12 @@ public class MainSaveController implements SaveController {
     }
     
     /**
-     * Saves the defeated {@link EncounterTile}s
+     * Saves the defeated {@link SpecialEncounterTile}s
      */
     private void setDefeatedEncounterTiles() {
         final Element e = new Element(XMLParameters.ENCOUNTER.getName());
         int counter = 0;
-        for (final EncounterTile et : sv.getEncounterTilesToBeRemoved()) {
+        for (final SpecialEncounterTile et : sv.getEncounterTilesToBeRemoved()) {
         	System.out.println(et.getPokemon().getPokedexEntry().name());
             e.setAttribute(IDENTIFIER + Integer.toString(counter), et.getPokemon().getPokedexEntry().name());
             counter ++;
