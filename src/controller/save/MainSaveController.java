@@ -39,17 +39,6 @@ public class MainSaveController implements SaveController {
     public MainSaveController() {
         this.root = new Element(XMLParameters.TITLE.getName());
         this.document = new Document(this.root);
-        try {
-            this.fos = new FileOutputStream(new File(FILE_NAME));
-        } catch (FileNotFoundException e) {
-            final File f = new File(FILE_NAME);
-            try {
-                f.createNewFile();
-                this.fos = new FileOutputStream(new File(FILE_NAME));
-            } catch (IOException e1) {
-                System.out.println("ERROR PREPARING SAVEFOLDER FILE");
-            }
-        }
     }
     
     @Override
@@ -201,13 +190,28 @@ public class MainSaveController implements SaveController {
         setBadges();
         setBox();
         setDefeatedEncounterTiles();
+        // Tries to open the save file and, if it doesn't exist, tries to create it and to open it
+        try {
+            this.fos = new FileOutputStream(new File(FILE_NAME));
+        } catch (FileNotFoundException e) {
+            final File f = new File(FILE_NAME);
+            try {
+                f.createNewFile();
+                this.fos = new FileOutputStream(new File(FILE_NAME));
+            } catch (IOException e1) {
+                System.out.println("ERROR PREPARING SAVE FILE");
+                return;
+            }
+        }
+        // Tries to save data in file
         try {
             XMLOutputter outputter;
             outputter = new XMLOutputter(); 
             outputter.setFormat(Format.getPrettyFormat());
             outputter.output(this.document, this.fos);
         } catch (IOException e) {
-            System.out.println("ERROR IN SAVEFOLDER");
+            System.out.println("ERROR IN SAVE");
+            return;
         }
     }
 }

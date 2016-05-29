@@ -2,6 +2,9 @@ package controller.load;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,14 +39,18 @@ public class MainLoadController implements LoadController {
     private Element root;
     
     public MainLoadController() {
-        final SAXBuilder builder = new SAXBuilder();
-        try {
-            final Document document = builder.build(new File(FILE_NAME));
-            this.root = document.getRootElement(); 
-        } catch (JDOMException e) {
-            System.out.println("FAILED LOADING SAVEFOLDER");
-        } catch (IOException e) {
-            System.out.println("FAILED LOADING SAVEFOLDER");
+        if (Files.exists(Paths.get(FILE_NAME), LinkOption.NOFOLLOW_LINKS)) {
+            final SAXBuilder builder = new SAXBuilder();
+            try {
+                final Document document = builder.build(new File(FILE_NAME));
+                this.root = document.getRootElement(); 
+            } catch (JDOMException e) {
+                System.out.println("FAILED LOADING SAVEFOLDER");
+            } catch (IOException e) {
+                System.out.println("FAILED LOADING SAVEFOLDER");
+            }
+        } else {
+            System.out.println("NO SAVE FILE DETECTED");
         }
     }
     
