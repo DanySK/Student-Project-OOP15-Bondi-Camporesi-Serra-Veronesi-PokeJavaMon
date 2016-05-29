@@ -107,15 +107,6 @@ public abstract class AbstractFight extends BasicFight implements Fight {
             useBall(ball);
             ball.effect(player, enemyPkm);
             return ball.getCapture();
-            /*if (useBall(ball)) {
-                try {
-                    ball.effect(player, enemyPkm);
-                } catch (SquadFullException e) {
-                    this.player.getBox().putCapturedPokemon(this.enemyPkm);
-                }
-                return true;
-            }
-            return false;*/
         case POTION:
             if(pkm.getCurrentHP() == 0) {
                 throw new PokemonIsExhaustedException();

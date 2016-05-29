@@ -13,14 +13,25 @@ import model.items.Potion.PotionType;
 import model.player.PlayerImpl;
 import model.pokemon.Stat;
 
+/**
+ * Special type of {@link NPC} who sells {@link Item}s.
+ * New {@link Item}s may appear as soon as the {@link Player} gets more badges by defeating {@link GymLeader}s
+ */
 public class PokeMarket extends NPC {
 	
+	//different tiers for different number of badges
 	private final Set<Item> tier0;
 	private final Set<Item> tier1;
 	private final Set<Item> tier2;
 	
-	
-	public PokeMarket(int x, int y) {
+	/**
+	 * Creates a new {@link PokeMarket} seller on the specified {@link Position}
+	 * @param x
+	 * 			x-axis coordinate in tile-units
+	 * @param y
+	 * 			y-axis coordinate in tile-units
+	 */
+	public PokeMarket(final int x, final int y) {
 		super("PokeMarketGuy", x, y, Direction.SOUTH, "Welcome to the PokeMarket!");
 		this.tier0 = new HashSet<>();
 		tier0.add(new Pokeball(PokeballType.Pokeball));
@@ -34,9 +45,11 @@ public class PokeMarket extends NPC {
 		tier2.add(new Pokeball(PokeballType.Ultraball));
 		tier2.add(new Potion(PotionType.Hyperpotion));
 		tier2.add(new Boost(Stat.SPD));
-		
 	}
 
+	/**
+	 * @return the available {@link Item}s to be bought, according to the {@link Player}'s badges
+	 */
 	public Set<Item> getAvailableItems() {
 		switch (PlayerImpl.getPlayer().getLastBadge()) {
 		case 0 :

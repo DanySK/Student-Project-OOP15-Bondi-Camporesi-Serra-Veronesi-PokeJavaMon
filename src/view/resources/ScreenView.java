@@ -82,35 +82,35 @@ public class ScreenView implements Screen {
             MainController.getController().initializeModel(new TmxMapLoader().load(MainController.class.getClass().getResource(Maps.MAP.getResourcePath()).getPath()));
         }
         MainController.getController().getViewController().initName();
-	MainController.getController().initializeMusicController();
-	if (toDispose) {
-	    ls.disposeWindow();
-	    this.toDispose = false;
-	}
+		MainController.getController().initializeMusicController();
+		if (toDispose) {
+		    ls.disposeWindow();
+		    this.toDispose = false;
+		}
         MainController.getController().updateStatus(State.WALKING);
-	if (this.newGame) {
-	    try {
-                MainController.getController().initializeStarter();
-            } catch (SquadFullException e) {
-                System.out.println("FAILED INITIALIZING STARTER POKEMON");
-            }
-	    MainController.getController().initInventory();
-	}
-	this.renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap().get());                    
-        this.sr = new ShapeRenderer();
-	this.sr.setColor(Color.CYAN);
-	Gdx.gl.glLineWidth(3);
-	this.camera = new OrthographicCamera();	
-	try {
-	    this.tx = new Texture(Img.PLAYER.getAbsolutePath());
-	} catch (Exception e) {
-	    this.tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
-	}
-	final TextureRegion gain = new TextureRegion(tx);
-	sp = new Sprite(gain);
-        this.pls = PlayerSprite.getSprite();
-        this.setInitialPosition(newGame);
-	        
+		if (this.newGame) {
+		    try {
+	                MainController.getController().initializeStarter();
+	            } catch (SquadFullException e) {
+	                System.out.println("FAILED INITIALIZING STARTER POKEMON");
+	            }
+		    MainController.getController().initInventory();
+		}
+		this.renderer = new OrthogonalTiledMapRenderer(MainController.getController().getMap().get());                    
+	        this.sr = new ShapeRenderer();
+		this.sr.setColor(Color.CYAN);
+		Gdx.gl.glLineWidth(3);
+		this.camera = new OrthographicCamera();	
+		try {
+		    this.tx = new Texture(Img.PLAYER.getAbsolutePath());
+		} catch (Exception e) {
+		    this.tx = new Texture(this.getClass().getResource(Img.PLAYER.getResourcePath()).getPath());
+		}
+		final TextureRegion gain = new TextureRegion(tx);
+		sp = new Sprite(gain);
+	        this.pls = PlayerSprite.getSprite();
+	        this.setInitialPosition(newGame);
+		        
     }
     /**
      * 
@@ -160,7 +160,7 @@ public class ScreenView implements Screen {
     private void setInitialPosition(final boolean isNewGame) {
         Position p;
         if (isNewGame) {
-            p = MainController.getController().getDefaultInitialPosition();
+            p = MainController.getController().getInitialPosition();
         } else {
             if (MainController.getController().saveExists()) {
                 MainController.getController().load();
@@ -179,7 +179,6 @@ public class ScreenView implements Screen {
             tileWidth = (float) prop.get("tilewidth", Integer.class);
             tileHeight = (float) prop.get("tileheight", Integer.class);
         }
-        
         this.pls.setBounds(p.getX() * tileWidth, (mapHeight - 1 - p.getY()) * tileHeight, PlayerSprite.getSprite().getWidth(), PlayerSprite.getSprite().getHeight());
     }
     

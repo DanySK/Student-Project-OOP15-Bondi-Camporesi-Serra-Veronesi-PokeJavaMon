@@ -42,14 +42,24 @@ public class Potion extends AbstractItem {
     private final PotionType quality;
     
     /**
-     * Constructor to initialize TODO
+     * Constructor to initialize a {@link Potion} based on its quality
      * @param quality
+     * 			{@link PotionType} quality
      */
     public Potion(final Potion.PotionType quality) {
         super(quality.cost, Item.ItemType.POTION, false);
         this.quality = quality;
     }
 
+    /**
+     * Heals a {@link Pokemon} in {@link Player}'s {@link Squad} of the ammount specified 
+     * by its {@link PotionType} quality
+     * @param p 
+     * 			{@link Player}, to check if the {@link Pokemon} belongs to his {@link Squad}
+     * @param pkmn
+     * 			{@link PokemonInBattle} that will be healed
+     * @throws PokemonNotFoundException if the {@link PokemonInBattle} does not appear in {@link Player}'s {@link Squad}
+     */
     @Override
     public void effect(final Player p, final PokemonInBattle pkmn) throws PokemonNotFoundException {
         if (!p.getSquad().getPokemonList().contains(pkmn)) {
@@ -60,14 +70,21 @@ public class Potion extends AbstractItem {
         
     }
     
+    /**
+     * @return {@link PotionType} quality of this {@link Item}
+     */
     public PotionType getQuality() {
         return this.quality;
     }
-    
+
+    @Override
     public WhenToUse whenToUse() {
         return Item.WhenToUse.EVERYWHERE;
     }
     
+    /**
+     * Overrides {@link Object#equals(Object)} in order to speed up searching {@link Item}s in the {@link Inventory}
+     */
     @Override
     public boolean equals(Object object) {
     	if (object == null) {
@@ -76,6 +93,9 @@ public class Potion extends AbstractItem {
         return this.hashCode() == ((Potion) object).hashCode();
     }
     
+    /**
+     * Overrides {@link Object#hashCode()} in order to speed up searching {@link Item}s in the {@link Inventory}
+     */
     @Override
     public int hashCode() {
         switch (this.quality) {

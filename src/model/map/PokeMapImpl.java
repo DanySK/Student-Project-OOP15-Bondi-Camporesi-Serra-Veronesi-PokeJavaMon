@@ -159,9 +159,10 @@ public class PokeMapImpl implements PokeMap {
 		
 		private void addCell(final Cell c, final int tileX, final int tileY, final MapLayer encounterLayer) {
 			if (c != null) {
-				MapProperties mp = c.getTile().getProperties();
-				String cellProperty = (mp.get("tileType", String.class)).toUpperCase();
-				Position p = new Position(tileX, tileY);
+				final MapProperties mp = c.getTile().getProperties();
+				final String cellProperty = (mp.get("tileType", String.class)).toUpperCase();
+				final Position p = new Position(tileX, tileY);
+				final boolean isWalkable = Boolean.valueOf((mp.get("walkable", String.class)));
 				
 				if (cellProperty.equals(TileType.WALL.toString())) {
 					collisions.add(p);
@@ -232,6 +233,9 @@ public class PokeMapImpl implements PokeMap {
 							Integer.parseInt(mp.get("lvl", String.class)), tileX, tileY, Direction.SOUTH, mp.get("cry", String.class)));
 					map[tileX][tileY] = TileType.ENCOUNTER;
 					collisions.add(new Position(tileX, tileY));
+				} else if (!isWalkable) {
+					map[tileX][tileY] = TileType.WALL;
+					collisions.add(p);
 				}
 			}
 		}
