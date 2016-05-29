@@ -38,12 +38,8 @@ public class SpecialEncounterTile extends NPC {
 	
 	/**
 	 * @return {@link Pokemon} that you will fight
-	 * @throws IllegalStateException if you cannot encounter it
 	 */
-	public Pokemon getPokemon() throws IllegalStateException {
-		if (!this.isEncounterable) {
-			throw new IllegalStateException();
-		}
+	public Pokemon getPokemon()  {
 		return this.pokemon;
 	}
 	

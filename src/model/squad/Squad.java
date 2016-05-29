@@ -73,7 +73,7 @@ public interface Squad {
      * @param pm 
      * 			{@link PokeMap} 
      */
-    public void healAllPokemon(final PokeMap pm);
+    public void healAllPokemon();
     
     /**
      * Gives the next alive Pokemon based on position in the {@link List}<{@link Pokemon}>.

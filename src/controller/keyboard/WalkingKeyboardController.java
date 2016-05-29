@@ -258,7 +258,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
             MainController.getController().updateStatus(State.READING);
             View.getView().addNew(new MessageFrame(State.WALKING, "POKEMON'S HEALTH FULLY RESTORED"));
             View.getView().showCurrent();
-            player.getSquad().healAllPokemon(pm);
+            player.getSquad().healAllPokemon();
         }
         
         /**
