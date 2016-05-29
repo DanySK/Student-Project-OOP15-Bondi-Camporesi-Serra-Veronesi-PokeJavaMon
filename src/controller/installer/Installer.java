@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Paths;
 import controller.parameters.Folder;
-import controller.parameters.Music;
+import controller.parameters.MusicPath;
 import controller.parameters.ResourcesGetter;
 import model.utilities.Pair;
 
@@ -51,7 +51,7 @@ public class Installer {
      * Installs the required songs
      */
     private void installMusic() {
-        for (final Music m : Music.values()) {
+        for (final MusicPath m : MusicPath.values()) {
             if (!Files.exists(Paths.get(Folder.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath()), LinkOption.NOFOLLOW_LINKS)) {
                 try(InputStream musicStream = this.getClass().getResourceAsStream(m.getResourcePath());
                         FileOutputStream fos = new FileOutputStream(Folder.MUSICFOLDER.getAbsolutePath() + m.getAbsolutePath())) {

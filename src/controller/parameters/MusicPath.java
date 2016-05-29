@@ -3,7 +3,7 @@ package controller.parameters;
 /**
  * This enum contains all the songs
  */
-public enum Music {   
+public enum MusicPath {   
     HOME("/music/home.mp3", "/home.mp3"), 
     OPENING("/music/opening.mp3", "/opening.mp3"),
     LAB("/music/lab.mp3", "/lab.mp3"),
@@ -18,7 +18,7 @@ public enum Music {
     private final String resPath;
     private final String absPath;
     
-    private Music(final String rp, final String absp) {
+    private MusicPath(final String rp, final String absp) {
         this.resPath = rp;
         this.absPath = absp;
     }

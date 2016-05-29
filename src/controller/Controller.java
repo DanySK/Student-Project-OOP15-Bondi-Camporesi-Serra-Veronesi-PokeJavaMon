@@ -10,7 +10,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import controller.fight.FightController;
 import controller.load.LoadController;
 import controller.music.MusicController;
-import controller.parameters.Music;
+import controller.parameters.MusicPath;
 import controller.parameters.State;
 import controller.save.SaveController;
 import controller.status.StatusController;
@@ -67,13 +67,13 @@ public interface Controller {
     void initializeMusicController();
 
     /**
-     * Plays the selected {@link Music}
-     * @param m the selected {@link Music}
+     * Plays the selected {@link MusicPath}
+     * @param m the selected {@link MusicPath}
      */
-    void playMusic(Music m);
+    void playMusic(MusicPath m);
 
     /**
-     * Stops playing {@link Music}
+     * Stops playing {@link MusicPath}
      */
     void stopMusic();
     
@@ -88,9 +88,9 @@ public interface Controller {
     void resume();
 
     /**
-     * @return the {@link Music} playing
+     * @return the {@link MusicPath} playing
      */
-    Optional<Music> playing();
+    Optional<MusicPath> playing();
     
     /**
      * @return true if music is paused, false otherwise

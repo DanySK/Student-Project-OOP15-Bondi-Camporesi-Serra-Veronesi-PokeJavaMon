@@ -9,7 +9,7 @@ import controller.keyboard.KeyboardController;
 import controller.keyboard.MenuKeyboardController;
 import controller.keyboard.SecondMenuKeyboardController;
 import controller.keyboard.WalkingKeyboardController;
-import controller.parameters.Music;
+import controller.parameters.MusicPath;
 import controller.parameters.State;
 import model.fight.FightVsTrainer;
 import model.map.Drawable.Direction;
@@ -57,19 +57,19 @@ public class MainStatusController implements StatusController {
                     this.state = s;
                     if (!MainController.getController().isPaused()) {
                         if (MainController.getController().playing().isPresent()) {
-                            if (MainController.getController().playing().get() != Music.TRAINER || MainController.getController().playing().get() != Music.WILD) {
+                            if (MainController.getController().playing().get() != MusicPath.TRAINER || MainController.getController().playing().get() != MusicPath.WILD) {
                                 MainController.getController().stopMusic();
                                 if (MainController.getController().getFight().orElse(null) instanceof FightVsTrainer) {
-                                    MainController.getController().playMusic(Music.TRAINER);
+                                    MainController.getController().playMusic(MusicPath.TRAINER);
                                 } else {
-                                    MainController.getController().playMusic(Music.WILD);
+                                    MainController.getController().playMusic(MusicPath.WILD);
                                 }
                             }
                         } else {
                             if (MainController.getController().getFight().orElse(null) instanceof FightVsTrainer) {
-                                MainController.getController().playMusic(Music.TRAINER);
+                                MainController.getController().playMusic(MusicPath.TRAINER);
                             } else {
-                                MainController.getController().playMusic(Music.WILD);
+                                MainController.getController().playMusic(MusicPath.WILD);
                             }
                         }
                     }
@@ -123,7 +123,7 @@ public class MainStatusController implements StatusController {
                 MainController.getController().getPlayer().get().getTileY());
         if (!MainController.getController().isPaused())
             if (zone.isPresent())
-                for (final Music m : Music.values())
+                for (final MusicPath m : MusicPath.values())
                     if (m.getAbsolutePath().equals(zone.get().getMusicPath()) && MainController.getController().getStatusController().getState() != State.FIGHTING)
                         if (MainController.getController().playing().isPresent()) {
                             if (MainController.getController().playing().get() != m) {

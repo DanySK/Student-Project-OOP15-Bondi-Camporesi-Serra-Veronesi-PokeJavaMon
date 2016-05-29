@@ -2,7 +2,7 @@ package controller.music;
 
 import java.util.Optional;
 
-import controller.parameters.Music;
+import controller.parameters.MusicPath;
 
 /**
  * This is the interface that all music controllers for this game must implement
@@ -10,10 +10,10 @@ import controller.parameters.Music;
 public interface MusicController {
     
     /**
-     * ScreenView the selected {@link Music}
-     * @param m the selected {@link Music}
+     * ScreenView the selected {@link MusicPath}
+     * @param m the selected {@link MusicPath}
      */
-    void playMusic(Music m);
+    void playMusic(MusicPath m);
     
     /**
      * Stop playing a song
@@ -31,9 +31,9 @@ public interface MusicController {
     void resume();
     
     /**
-     * @return the {@link Music} that the controller is playing
+     * @return the {@link MusicPath} that the controller is playing
      */
-    Optional<Music> playing();
+    Optional<MusicPath> playing();
     
     /**
      * @return true if music is paused, false otherwise

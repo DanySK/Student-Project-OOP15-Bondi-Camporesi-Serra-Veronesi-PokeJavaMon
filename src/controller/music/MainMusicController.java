@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.audio.Music;
 
 import controller.parameters.Folder;
-import controller.parameters.Music;
+import controller.parameters.MusicPath;
 
 /**
  * This is the main music controller of the game
@@ -17,14 +17,14 @@ import controller.parameters.Music;
 public class MainMusicController implements MusicController {
     
     private static final String SONG = Folder.MAINFOLDER.getAbsolutePath() + File.separator + "music" + File.separator;
-    private Sound s;
-    private Map<Music, Sound> sounds;
-    private Optional<Music> m;
+    private Music m;
+    private Map<MusicPath, Music> musics;
+    private Optional<MusicPath> mp;
     private boolean isInit;
     private boolean isPaused;
     
     public MainMusicController() {
-        this.m = Optional.empty();
+        this.mp = Optional.empty();
         this.isInit = false;
         this.isPaused = false;
     }
@@ -34,42 +34,44 @@ public class MainMusicController implements MusicController {
     	if (this.isInit) {
     	    return;
     	}
-    	this.sounds = new HashMap<>();
-        for (final Music m : Music.values()) {
-            final Sound s = Gdx.audio.newSound(Gdx.files.absolute(SONG + m.getAbsolutePath()));
-            this.sounds.put(m, s);
+    	this.musics = new HashMap<>();
+        for (final MusicPath m : MusicPath.values()) {
+            final Music s = Gdx.audio.newMusic(Gdx.files.absolute(SONG + m.getAbsolutePath()));
+            this.musics.put(m, s);
         }
         this.isInit = true;
     }
     
     @Override
-    public void playMusic(final Music song) {   
-        this.s = this.sounds.get(song);
-        this.s.loop();
-        this.m = Optional.of(song);
+    public void playMusic(final MusicPath song) {   
+        this.m = this.musics.get(song);
+        this.m.play();
+        this.m.setLooping(true);
+        this.mp = Optional.of(song);
     }
     
     @Override
     public void stopMusic() {
-        this.s.stop();
-        this.m = Optional.empty();
+        this.m.stop();
+        this.mp = Optional.empty();
     }
     
     @Override
     public void pause() {
-        this.s.pause();
+        this.m.pause();
         this.isPaused = true;
     }
     
     @Override
     public void resume() {
-        this.s.resume();
+        this.m.play();
+        this.m.setLooping(true);
         this.isPaused = false;
     }
     
     @Override
-    public Optional<Music> playing() {
-        return this.m;
+    public Optional<MusicPath> playing() {
+        return this.mp;
     }
     
     @Override

@@ -14,7 +14,7 @@ import controller.load.LoadController;
 import controller.load.MainLoadController;
 import controller.music.MainMusicController;
 import controller.music.MusicController;
-import controller.parameters.Music;
+import controller.parameters.MusicPath;
 import controller.parameters.State;
 import controller.save.MainSaveController;
 import controller.save.SaveController;
@@ -123,7 +123,7 @@ public final class MainController implements Controller {
     }
     
     @Override
-    public void playMusic(final Music m) {
+    public void playMusic(final MusicPath m) {
         this.musicController.playMusic(m);
     }
     
@@ -148,7 +148,7 @@ public final class MainController implements Controller {
     }
     
     @Override
-    public Optional<Music> playing() {
+    public Optional<MusicPath> playing() {
         return this.musicController.playing();
     }
     
