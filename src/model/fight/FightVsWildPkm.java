@@ -41,9 +41,7 @@ public class FightVsWildPkm extends AbstractFight {
     }
 
     @Override
-    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
-        final Pokeball ball = (Pokeball) itemToUse;
-        return ball.isCaptured(this.enemyPkm);
+    protected void useBall(final Pokeball ball) throws CannotCaughtTrainerPkmException {
     }
 
     /**

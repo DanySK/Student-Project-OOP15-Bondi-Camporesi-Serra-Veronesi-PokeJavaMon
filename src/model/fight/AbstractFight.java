@@ -9,11 +9,11 @@ import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonIsFightingException;
 import exceptions.PokemonNotFoundException;
-import exceptions.SquadFullException;
 import model.items.Boost;
 import model.items.Item;
 import model.items.Potion;
 import model.items.Item.ItemType;
+import model.items.Pokeball;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -75,7 +75,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
      * @return                                  True if enemy {@link model.pokemon.Pokemon} is caught.
      * @throws CannotCaughtTrainerPkmException  If the user fight in a {@link FightVsTrainer}.
      */
-    protected abstract boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException;
+    protected abstract void useBall(final Pokeball ball) throws CannotCaughtTrainerPkmException;
 
     /**
      * Calculate the exp gained by defeating a pokemon.
@@ -103,15 +103,19 @@ public abstract class AbstractFight extends BasicFight implements Fight {
             setAllyBoost(boost.getStat(), newBoostValue);
             break;
         case POKEBALL:
-            if (useBall(itemToUse)) {
+            final Pokeball ball = (Pokeball) itemToUse;
+            useBall(ball);
+            ball.effect(player, enemyPkm);
+            return ball.getCapture();
+            /*if (useBall(ball)) {
                 try {
-                    this.player.getSquad().add(this.enemyPkm);
+                    ball.effect(player, enemyPkm);
                 } catch (SquadFullException e) {
                     this.player.getBox().putCapturedPokemon(this.enemyPkm);
                 }
                 return true;
             }
-            return false;
+            return false;*/
         case POTION:
             if(pkm.getCurrentHP() == 0) {
                 throw new PokemonIsExhaustedException();

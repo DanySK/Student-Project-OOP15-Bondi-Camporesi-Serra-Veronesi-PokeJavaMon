@@ -12,6 +12,8 @@ import model.squad.SquadImpl;
 
 public class Pokeball extends AbstractItem {
 
+    private boolean capture;
+
     public static enum PokeballType {
         Pokeball(1, 50), Greatball(1.5, 100), Ultraball(2, 200);
         
@@ -43,7 +45,7 @@ public class Pokeball extends AbstractItem {
     public boolean isCaptured(final Pokemon pkmn) {
         double x = new Random().nextDouble();
         double y = (double) this.calculateProbabilityCatch(pkmn, pkmn.getCurrentHP() == pkmn.getStat(Stat.MAX_HP));
-        return x <= y;
+        return this.capture = x <= y;
     }
     
     public double calculateProbabilityCatch(final Pokemon pkmn, final boolean isFullHP) {
@@ -62,14 +64,15 @@ public class Pokeball extends AbstractItem {
     }
 
     @Override
-    public void effect(final Player p, final PokemonInBattle pkmn) throws SquadFullException {
+    public void effect(final Player p, final PokemonInBattle pkmn) {
         if (this.isCaptured(pkmn)) {
            if (p.getSquad().getSquadSize() >= SquadImpl.MAX_SIZE) {
                p.getBox().putCapturedPokemon(pkmn);
                return;
            }
-           
-           p.getSquad().add(pkmn);
+           try {
+            p.getSquad().add(pkmn);
+           } catch (SquadFullException e) {}
        }
     }
 
@@ -102,5 +105,9 @@ public class Pokeball extends AbstractItem {
     @Override
     public String toString() {
         return quality.toString();
+    }
+
+    public boolean getCapture() {
+        return this.capture;
     }
 }

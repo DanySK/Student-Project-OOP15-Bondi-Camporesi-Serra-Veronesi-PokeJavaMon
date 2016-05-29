@@ -11,6 +11,7 @@ import exceptions.CannotEscapeFromTrainerException;
 import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonNotFoundException;
 import model.items.Item;
+import model.items.Pokeball;
 import model.pokemon.Move;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -70,7 +71,7 @@ public class FightVsTrainer extends AbstractFight {
     }
 
     @Override
-    protected boolean useBall(final Item itemToUse) throws CannotCaughtTrainerPkmException {
+    protected void useBall(final Pokeball ball) throws CannotCaughtTrainerPkmException {
         throw new CannotCaughtTrainerPkmException();
     }
 
