@@ -116,8 +116,8 @@ public class PlayerSprite extends Sprite {
 	 * TODO MAGIC NUMBERS, DIPENDONO PER FORZA DALLA MAPPA SE CAMBIO LA MAPPA SI ****...............
 	 */
     public void setPlayerPosition(final float x, final float y) {
-        super.setX(x * 16);
-        super.setY((299 - y) * 16);
+        super.setX(MainController.getController().getPokeMap().get().getCorrectedCoordinateX((int) x) * MainController.getController().getPokeMap().get().getTileWidth());
+        super.setY(MainController.getController().getPokeMap().get().getCorrectedCoordinateY((int) y) * MainController.getController().getPokeMap().get().getTileHeight());
     }
     private void setOrientation(final Direction d) {
         switch (d) {

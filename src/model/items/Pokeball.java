@@ -104,14 +104,18 @@ public class Pokeball extends AbstractItem {
      * @param pkmn
      */
     @Override
-    public void effect(final Player p, final PokemonInBattle pkmn) throws SquadFullException {
+    public void effect(final Player p, final PokemonInBattle pkmn) {
         if (this.isCaptured(pkmn)) {
            if (p.getSquad().getSquadSize() >= SquadImpl.MAX_SIZE) {
                p.getBox().putCapturedPokemon(pkmn);
                return;
            }
            
-           p.getSquad().add(pkmn);
+           try {
+			p.getSquad().add(pkmn);
+		} catch (SquadFullException e) {
+			e.printStackTrace();
+		}
        }
     }
 
