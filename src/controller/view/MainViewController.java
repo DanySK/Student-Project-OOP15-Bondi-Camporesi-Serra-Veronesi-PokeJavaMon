@@ -21,7 +21,7 @@ public class MainViewController implements ViewController {
     
     private static final int WIDTH = 1280 / 2;
     private static final int HEIGHT = 720 / 2;
-    private ViewInterface view;
+    private final ViewInterface view;
     private String name;
     
     public MainViewController() {
@@ -31,16 +31,14 @@ public class MainViewController implements ViewController {
     @Override
     public void market() {
         MainController.getController().updateStatus(State.READING);
-        Market m = new Market();
-        this.view.addNew(m);
+        this.view.addNew(new Market());
         this.view.showCurrent();
     }
     
     @Override
     public void showMenu() {
         MainController.getController().updateStatus(State.MENU);
-        Menu m = new Menu();
-        this.view.addNew(m);
+        this.view.addNew(new Menu());
         this.view.showCurrent();
     }
     
@@ -79,29 +77,25 @@ public class MainViewController implements ViewController {
     
     @Override
     public void box() {
-        BoxMenu b = new BoxMenu();
-        this.view.addNew(b);
+        this.view.addNew(new BoxMenu());
         this.view.showCurrent();
     }
     
     @Override
     public void team(final boolean canCloseMenu, final boolean canChangePokemon) {
-        TeamMenu tm = new TeamMenu(canCloseMenu, canChangePokemon);
-        this.view.addNew(tm);
+        this.view.addNew(new TeamMenu(canCloseMenu, canChangePokemon));
         this.view.showCurrent();
     }
     
     @Override
     public void bag() {
-        BagMenu bm = new BagMenu();
-        this.view.addNew(bm);
+        this.view.addNew(new BagMenu());
         this.view.showCurrent();
     }
     
     @Override
     public void stats(final Pokemon pokemon) {
-        Statistics st = new Statistics(pokemon);
-        this.view.addNew(st);
+        this.view.addNew(new Statistics(pokemon));
         this.view.showCurrent();
     }
 
@@ -120,8 +114,7 @@ public class MainViewController implements ViewController {
     @Override
     public void fightScreen() {
         MainController.getController().updateStatus(State.FIGHTING);
-        FightScreen fs = new FightScreen();
-        this.view.addNew(fs);
+        this.view.addNew(new FightScreen());
         this.view.showCurrent();
     }
 }

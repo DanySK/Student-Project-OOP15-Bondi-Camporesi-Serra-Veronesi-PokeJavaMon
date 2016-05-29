@@ -5,10 +5,10 @@ package controller.keyboard;
  */
 public class FightingKeyboardController extends AbstractKeyboardController {
     
-    private final String name = "FightKeyboardController";
+    private final String name;
     
     public FightingKeyboardController() {
-        // EMPTY CONSTRUCTOR
+        this.name = "FightKeyboardController";
     }
     
     @Override

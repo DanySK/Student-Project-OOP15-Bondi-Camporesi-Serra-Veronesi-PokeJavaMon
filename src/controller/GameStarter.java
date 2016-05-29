@@ -1,6 +1,6 @@
 package controller;
 
-import controller.installer.MainInstaller;
+import controller.installer.Installer;
 import controller.parameters.State;
 
 /**
@@ -11,7 +11,7 @@ public final class GameStarter {
     private GameStarter() {}
     
     public static void main(final String... varargs) {
-        new MainInstaller().install();
+        new Installer();
         MainController.getController().updateStatus(State.FIRST_MENU);
         MainController.getController().getViewController().firstMenu();
     }

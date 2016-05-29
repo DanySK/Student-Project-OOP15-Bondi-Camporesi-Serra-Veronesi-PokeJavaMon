@@ -15,8 +15,8 @@ public enum Folder {
     FRONTSPRITEFOLDER(Constants.NONE, MAINFOLDER.getAbsolutePath() + File.separator + "sprites" + File.separator + "front"),
     BACKSPRITEFOLDER(Constants.NONE, MAINFOLDER.getAbsolutePath() + File.separator + "sprites" + File.separator + "back");
     
-    private String jar;
-    private String abs;
+    private final String jar;
+    private final String abs;
     
     private static class Constants {
         public static final String NONE = "NONE";

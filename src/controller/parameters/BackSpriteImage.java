@@ -160,8 +160,8 @@ public enum BackSpriteImage {
     MEW("/sprites/back/B151.png",System.getProperty(Constants.HOME) + File.separator + Constants.MAINFOLDER + File.separator + Constants.SPRITES + File.separator + Constants.BACK + File.separator + "B151.png"),
     RAYQUAZA("/sprites/back/B384.png", System.getProperty(Constants.HOME) + File.separator + Constants.MAINFOLDER + File.separator + Constants.SPRITES + File.separator + Constants.BACK + File.separator + "B384.png");
     
-    private String resourcePath;
-    private String absolutePath;
+    private final String resourcePath;
+    private final String absolutePath;
     
     private static class Constants {
         private static final String BACK = "back";

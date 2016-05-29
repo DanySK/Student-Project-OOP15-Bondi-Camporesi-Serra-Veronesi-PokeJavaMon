@@ -5,10 +5,10 @@ package controller.keyboard;
  */
 public class MenuKeyboardController extends AbstractKeyboardController {
     
-    private final String name = "MenuKeyboardController";
+    private final String name;
     
     public MenuKeyboardController() {
-        // EMPTY CONSTRUCTORs
+        this.name = "MenuKeyboardController";
     }
     
     @Override

@@ -60,12 +60,12 @@ public final class MainController implements Controller {
     private static final int DEFAULT_QUANTITY = 10;
     private static final int NO_ITEM = 0;
     private static final int NO_SPEED = 0;
-    private FightController fightController;
-    private LoadController loadController;
-    private MusicController musicController;
-    private SaveController saveController;
-    private StatusController statusController;
-    private ViewController viewController;
+    private final FightController fightController;
+    private final LoadController loadController;
+    private final MusicController musicController;
+    private final SaveController saveController;
+    private final StatusController statusController;
+    private final ViewController viewController;
     private TiledMap map;
     private ModelInterface model;
     private Pokedex starter;

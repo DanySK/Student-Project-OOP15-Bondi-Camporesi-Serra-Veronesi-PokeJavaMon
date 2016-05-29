@@ -10,10 +10,10 @@ import controller.parameters.State;
  */
 public class FirstMenuKeyboardController extends AbstractKeyboardController {
     
-    private final String name = "FirstMenuKeyboardController";
+    private final String name;
     
     public FirstMenuKeyboardController() {
-        // EMPTY CONSTRUCTOR
+        this.name = "FirstMenuKeyboardController";
     }
     
     @Override

@@ -31,24 +31,12 @@ public class MainSaveController implements SaveController {
     private static final String FILE_NAME = Folder.SAVEFOLDER.getAbsolutePath() + File.separator + "save.xml";
     private static final int MIN_MOVES = 1;
     private static final String IDENTIFIER = "N";
-    private Document document;
-    private Element root;
+    private final Document document;
+    private final Element root;
     private FileOutputStream fos;
     private Save sv;   
     
     public MainSaveController() {
-        // EMPTY CONSTRUCTOR
-    }
-    
-    @Override
-    public void setSave(final Save save) {
-        this.sv = save;
-    }
-    
-    /**
-     * Prepares the save file
-     */
-    private void setup() {
         this.root = new Element(XMLParameters.TITLE.getName());
         this.document = new Document(this.root);
         try {
@@ -62,6 +50,11 @@ public class MainSaveController implements SaveController {
                 System.out.println("ERROR PREPARING SAVEFOLDER FILE");
             }
         }
+    }
+    
+    @Override
+    public void setSave(final Save save) {
+        this.sv = save;
     }
     
     /**
@@ -199,7 +192,6 @@ public class MainSaveController implements SaveController {
     
     @Override
     public void save() {
-        setup();
         setPosition();
         setTeam();
         setTrainers();

@@ -15,10 +15,10 @@ public class SecondMenuKeyboardController extends AbstractKeyboardController {
     
     private static final int MIN = 4;
     private static final int MAX = 20;
-    private final String name = "SecondMenuKeyboardController";
+    private final String name;
 
     public SecondMenuKeyboardController() {
-        // EMPTY CONSTRUCTOR
+        this.name = "SecondMenuKeyboardController";
     }
     
     @Override
@@ -26,7 +26,7 @@ public class SecondMenuKeyboardController extends AbstractKeyboardController {
         if (keycode == Keys.ENTER) {
             final String name = SecondMenu.getPlayerName();
             if (name.length() < MIN || name.length() > MAX) {
-                JOptionPane.showMessageDialog(null,"You Naive Idiot");
+                JOptionPane.showMessageDialog(null,"Insert a valid NAME");
             }
             else {
                 MainController.getController().getViewController().setName(name);

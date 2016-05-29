@@ -11,8 +11,8 @@ public enum Img {
     PLAYER ("/img/player.png", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.IMG + File.separator + "player.png"),
     PALLA ("/img/POKEPALLA.png", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.IMG + File.separator + "POKEPALLA.png");
 	
-    private String jar;
-    private String abs;
+    private final String jar;
+    private final String abs;
     
     private static class Constants {
         public static final String IMG = "img";

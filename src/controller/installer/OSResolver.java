@@ -14,8 +14,8 @@ public class OSResolver {
     private static final String DIR = "/var/folders";
     private static final String FILE = "liblwjgl.jnilib";
     private static final String EXT = ".dylib";
-    private static final String os = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
-    private List<String> result = new ArrayList<String>();
+    private static final String OS = System.getProperty("OS.name", "generic").toLowerCase(Locale.ENGLISH);
+    private final List<String> result = new ArrayList<String>();
     private boolean toInit = true;
         
     /**
@@ -23,7 +23,7 @@ public class OSResolver {
      * necessary file
      */
     public OSResolver() {
-        if ((os.indexOf("mac") >= 0) || (os.indexOf("darwin") >= 0)) {
+        if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
             if (this.toInit) {
             	this.fixOSXLib();
             	this.toInit = false;

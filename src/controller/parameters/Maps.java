@@ -10,8 +10,8 @@ public enum Maps {
     TILESET ("/maps/tileset5.png", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.MAPS + File.separator + "tileset5.png"),
     PSD ("/maps/tileset5.psd", Folder.MAINFOLDER.getAbsolutePath() + File.separator + Constants.MAPS + File.separator + "tileset5.psd");
     
-    private String jar;
-    private String abs;
+    private final String jar;
+    private final String abs;
     
     private static class Constants {
         public static final String MAPS = "maps";

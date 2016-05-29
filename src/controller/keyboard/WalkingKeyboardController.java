@@ -27,7 +27,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
     private static final int INCREMENT = 1;
     private static final int SPEED = 2;
     private static final int NULL_SPEED = 0;
-    private final String name = "WalkingKeyboardController";
+    private final String name;
     private WalkingKeyboardControllerResolver resolver;
     private int keys;
     private int x;
@@ -43,6 +43,7 @@ public class WalkingKeyboardController extends AbstractKeyboardController {
     private boolean down;
     
     public WalkingKeyboardController() {
+        this.name = "WalkingKeyboardController";
         this.resolver = new WalkingKeyboardControllerResolver();
         this.player = MainController.getController().getPlayer().get();
         this.direction = this.player.getDirection();

@@ -36,13 +36,6 @@ public class MainLoadController implements LoadController {
     private Element root;
     
     public MainLoadController() {
-        // EMPTY CONSTRUCTOR
-    }
-    
-    /**
-     * Loads the save file
-     */
-    private void setup() {
         final SAXBuilder builder = new SAXBuilder();
         try {
             final Document document = builder.build(new File(FILE_NAME));
@@ -55,28 +48,28 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * Returns the saved money value
+     * @return the saved money value
      */
     private int getMoney() {
         return Integer.parseInt(this.root.getAttributeValue(XMLParameters.MONEY.getName()));
     }
     
     /**
-     * Returns the saved player's name
+     * @return the saved player's name
      */
     private String getName() {
         return this.root.getAttribute(XMLParameters.NAME.getName()).getValue();
     }
     
     /**
-     * Returns the saved player's badges
+     * @return the saved player's badges
      */
     private int getBadges() {
         return Integer.parseInt(this.root.getAttributeValue(XMLParameters.BADGES.getName()));
     }
     
     /**
-     * Returns the saved player's position
+     * @return the saved player's position
      */
     private Position getPosition() {
         final int x = Integer.parseInt(this.root.getChild(XMLParameters.POSITION.getName()).getAttributeValue(XMLParameters.X.getName()));
@@ -85,7 +78,7 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * Returns the saved team
+     * @return the saved team
      */
     private List<Pokemon> getTeam() {
         List<Pokemon> team = new ArrayList<>();
@@ -104,7 +97,7 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * Returns the trainers that player defeated
+     * @return the trainers that player defeated
      */
     private Map<Integer, Boolean> getTrainers() {
         final Map<Integer, Boolean> trainer_isDefeated = new HashMap<>();
@@ -119,7 +112,7 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * Returns the saved potions
+     * @return the saved potions
      */
     private Map<String, Integer> getPotions() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
@@ -130,7 +123,7 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * Returns the saved boosts
+     * @return the saved boosts
      */
     private Map<String, Integer> getBoosts() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
@@ -141,7 +134,7 @@ public class MainLoadController implements LoadController {
     }
     
     /**
-     * Returns the saved pokeballs
+     * @return the saved pokeballs
      */
     private Map<String, Integer> getPokeballs() {
         final Map<String, Integer> obj = new HashMap<String, Integer>();
@@ -152,7 +145,7 @@ public class MainLoadController implements LoadController {
     }
 
     /**
-     * Returns the saved pokemons in box
+     * @return the saved pokemons in box
      */
     private List<Pokemon> getBox() {
         final List<Pokemon> box = new ArrayList<Pokemon>();
@@ -185,7 +178,6 @@ public class MainLoadController implements LoadController {
     
     @Override
     public void load() {
-        setup();
         try {
             MainController.getController().loadSave(getMoney(), getName(), getBadges(), getPosition(), 
                     getTeam(), getTrainers(), getBox(), getPokeballs(), getBoosts(), getPotions(), getDefeatedEncounterTiles());

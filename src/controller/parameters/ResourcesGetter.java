@@ -1,6 +1,7 @@
 package controller.parameters;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import model.utilities.Pair;
@@ -37,6 +38,6 @@ public class ResourcesGetter {
      * @return the {@link List} of resource's paths
      */
     public List<Pair<String, String>> getResources() {
-        return this.resources;
+        return Collections.unmodifiableList(this.resources);
     }
 }

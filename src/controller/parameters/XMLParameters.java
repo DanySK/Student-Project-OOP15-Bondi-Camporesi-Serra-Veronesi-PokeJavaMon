@@ -30,7 +30,7 @@ public enum XMLParameters {
     ENCOUNTER("ENCOUNTERS"), 
     BADGES("BADGES");
     
-    private String value;
+    private final String value;
     
     private XMLParameters(final String s) {
         this.value = s;
