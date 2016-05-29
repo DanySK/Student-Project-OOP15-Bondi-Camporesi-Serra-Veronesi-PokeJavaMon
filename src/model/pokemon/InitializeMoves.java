@@ -588,8 +588,8 @@ public final class InitializeMoves {
         .build();
         
         jigglypuffMap = ImmutableMap.<Integer, Move>builder()
-            .put(4, Move.DEFENSE_CURL)
-            .put(9, Move.POUND)
+            .put(1, Move.DEFENSE_CURL)
+            .put(2, Move.POUND)
             .put(19, Move.ROLLOUT)
             .put(25, Move.DOUBLE_SLAP)
             .put(34, Move.BODY_SLAM)
