@@ -240,7 +240,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             this.panel.add(this.select);
         }      
         this.panel.setLayout(new GridLayout(this.names.size(), this.cols));
-        this.setSize(900,100 * names.size());
+        this.setSize(800,85 * names.size());
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
