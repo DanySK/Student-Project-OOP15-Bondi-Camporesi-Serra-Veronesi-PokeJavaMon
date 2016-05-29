@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.SquadFullException;
-import model.map.PokeMap;
-import model.player.PlayerImpl;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
@@ -96,17 +94,7 @@ public class SquadImpl implements Squad {
     }
 
 	@Override
-	public void healAllPokemon(PokeMap pm) {
-    	pm.getWalkableZones().forEach(z -> {
-    		if (z.getZoneName() != null && z.getZoneName().equals("POKEMON_CENTER")) {
-    			final int tileX = PlayerImpl.getPlayer().getTileX();
-    			final int tileY = PlayerImpl.getPlayer().getTileY();
-    			if (!z.contains(tileX, tileY)) {
-    				return;
-    			}
-    		}
-    	});
-    	
+	public void healAllPokemon() {
         for (final Pokemon p : this.pokemonInSquad) {
             p.heal(p.getStat(Stat.MAX_HP));
         }	

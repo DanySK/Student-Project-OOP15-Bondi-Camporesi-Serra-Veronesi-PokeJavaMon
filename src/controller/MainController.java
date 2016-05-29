@@ -311,7 +311,7 @@ public final class MainController implements Controller {
             PlayerSprite.getSprite().setPlayerPosition(x, y);
             PlayerSprite.getSprite().setVelocity(NO_SPEED, NO_SPEED);
             this.model.getPlayer().setPosition(x, y);
-            this.model.getPlayer().getSquad().healAllPokemon(this.model.getMap());
+            this.model.getPlayer().getSquad().healAllPokemon();
         }
     }
 
