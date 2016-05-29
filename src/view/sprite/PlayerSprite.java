@@ -113,6 +113,7 @@ public class PlayerSprite extends Sprite {
     }
 	/**
 	 * setPlayerPosition
+	 * TODO MAGIC NUMBERS, DIPENDONO PER FORZA DALLA MAPPA SE CAMBIO LA MAPPA SI ****...............
 	 */
     public void setPlayerPosition(final float x, final float y) {
         super.setX(x * 16);
