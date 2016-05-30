@@ -1,6 +1,7 @@
 package view.resources;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -21,9 +22,9 @@ import controller.parameters.State;
 import exceptions.SquadFullException;
 import model.map.Position;
 import view.sprite.PlayerSprite;
+
 /**
  * MainGameViewClass
- * 
  */
 public class ScreenView implements Screen {  
     private OrthogonalTiledMapRenderer renderer;
@@ -41,17 +42,14 @@ public class ScreenView implements Screen {
     private static final float SPRITE_OFFSET = 0.1f;
     
     /**
-     * 
-     * @param b
+     * @param b true if it is a new game
      */
     public ScreenView(boolean b) {
         this.newGame = b;    
         this.toDispose = true;
     }
 	
-    /**
-     * 
-     */
+    @Override
     public void render(float delta) {		
 	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);                                       
@@ -64,16 +62,14 @@ public class ScreenView implements Screen {
         this.renderer.getBatch().end();
         this.renderer.render(this.foreground); 
     } 
-	/**
-	 * resize
-	 */	
+
+    @Override
     public void resize(int width, int height) {		
         this.camera.viewportWidth = width / VIEWPORT_X;
         this.camera.viewportHeight = height / VIEWPORT_Y;
     }
-	/**
-	 * 
-	 */
+
+    @Override
     public void show() {	
         final LoadingScreen ls = new LoadingScreen();
         ls.showLoadingScreen();
@@ -113,51 +109,60 @@ public class ScreenView implements Screen {
 	        this.setInitialPosition(newGame);
 		        
     }
-    /**
-     * 
-     */
+    
+    @Override
     public void hide() {		
         this.dispose();
     }
-	/**
-	 * getXPosition
-	 */
+	
+    /**
+     * @return the x position of the sprite
+     */
     public float getXPosition() {    
 	return this.pls.getX();
     }
-	/**
-	 * getYPosition
-	 */
+
+    /**
+     * @return the y position of the sprite
+     */
     public float getYPosition() {	    
 	return this.pls.getY();
     }
-	/**
-	 * setPosition
-	 */
+
+    /**
+     * Sets sprite's position
+     * @param x new position on x axe
+     * @param y new position on y axe
+     */
     public void setPosition(float x, float y) {	    
         this.pls.setPlayerPosition(x, y);
     }
-	/**
-	 * 
-	 */
+
+    @Override
     public void dispose() {        
 	MainController.getController().getMap().get().dispose();
 	this.renderer.dispose();
 	this.sr.dispose();
     }
-	/**
-	 * updateKeyListener
-	 */
+
+    /**
+     * Changes the current {@link InputProcessor}
+     */
     public static void updateKeyListener() {
         Gdx.input.setInputProcessor(MainController.getController().getStatusController().getCurrentController());
     }
-	/**
-	 * getSprite
-	 */
+
+    /**
+     * @return the current {@link PlayerSprite}
+     */
     public static Sprite getSprite() {
         return sp;
     }
 
+    /**
+     * Sets inital sprite's position
+     * @param isNewGame if it is new game or not
+     */
     private void setInitialPosition(final boolean isNewGame) {
         Position p;
         if (isNewGame) {

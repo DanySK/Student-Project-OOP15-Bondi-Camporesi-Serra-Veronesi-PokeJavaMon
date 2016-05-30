@@ -43,7 +43,7 @@ public class LearnMoveFrame extends JWindow implements MyFrame {
         private Pokemon pk;
     	/**
     	 * LearnMoveFrame
-    	 * @param mv
+    	 * @param mv the {@link Move} that pokemon wants to learn
     	 */
         public LearnMoveFrame(final Move mv) {
             this.newMove = mv;

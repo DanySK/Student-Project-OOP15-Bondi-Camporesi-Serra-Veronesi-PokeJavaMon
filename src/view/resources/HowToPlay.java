@@ -151,9 +151,6 @@ public class HowToPlay extends JWindow implements MyFrame {
     			.addComponent(back))
     		);
     		this.setLayout(groupLayout);
-    		/**
-    		 * It th
-    		 */
 		    final MediaTracker mt = new MediaTracker(this);
 		    try {
 				bgImage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/HowToPlay.png"));

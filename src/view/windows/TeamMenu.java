@@ -34,15 +34,16 @@ public class TeamMenu extends JWindow implements MyFrame {
     private JButton deposit;
     private JButton select;
     private JButton exit;
-    private boolean canExit, isChangingPoke;
+    private boolean canExit, isNotChangingPoke;
 	/**
 	 * It creates the menu of the team with the informations needed
-	 * @param b1 Whether or not the user can exit the menu.
-	 * @param b2 Whether or not the user can change pokémon.
+	 * @param b1 Whether or not the user can exit the menu
+	 * @param b2 Whether player is changing {@link Pokemon} or not (if true he is 
+	 * selecting a {@link Pokemon} to use an item on it)
 	 */
     public TeamMenu(final boolean b1, final boolean b2) {
         this.canExit = b1;
-        this.isChangingPoke = b2;
+        this.isNotChangingPoke = b2;
         this.names = new ArrayList<String>();
         this.lvl = new ArrayList<String>();
         this.cHP = new ArrayList<String>();
@@ -170,7 +171,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                     }
                 }
             });
-            if (isChangingPoke) {
+            if (isNotChangingPoke) {
             	this.set.setEnabled(false);
             }
             if (index == 0) {
@@ -191,7 +192,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                                 }
                                 View.getView().disposeCurrent();
                                 View.getView().removeCurrent();
-                                TeamMenu sc = new TeamMenu(canExit, isChangingPoke);
+                                TeamMenu sc = new TeamMenu(canExit, isNotChangingPoke);
                                 View.getView().addNew(sc);
                                 View.getView().showCurrent();
                                 return;
@@ -213,7 +214,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             });
-            if (MainController.getController().getStatusController().getState() != State.MENU || isChangingPoke) {
+            if (MainController.getController().getStatusController().getState() != State.MENU || isNotChangingPoke) {
             	deposit.setEnabled(false);
             }
             this.panel.add(this.deposit);
@@ -234,7 +235,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                     } 
                 }
             });
-            if (!isChangingPoke) {
+            if (!isNotChangingPoke) {
             	this.select.setEnabled(false);
             }
             this.panel.add(this.select);
