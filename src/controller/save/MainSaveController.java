@@ -15,7 +15,7 @@ import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import model.ModelInterface.Save;
 import model.items.Item;
-import model.map.tile.SpecialEncounterTile;
+import model.map.SpecialEncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.pokemon.Move;

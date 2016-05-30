@@ -19,7 +19,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import model.map.Drawable.Direction;
 import model.map.tile.BadgeTeleport;
-import model.map.tile.SpecialEncounterTile;
 import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;

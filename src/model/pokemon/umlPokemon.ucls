@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="model.pokemon.AbstractPokemon" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/AbstractPokemon.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="460" width="177" x="442" y="-56"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="2" language="java" name="model.pokemon.Pokedex" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/Pokedex.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="243" y="938"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="3" language="java" name="model.pokemon.StaticPokemonFactory" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/StaticPokemonFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="889" y="517"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="model.pokemon.PokemonInBattle" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/PokemonInBattle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="243" y="523"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="5" language="java" name="model.pokemon.Move" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/Move.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="150" x="456" y="541"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="6" language="java" name="model.pokemon.PokemonType" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/PokemonType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="247" y="1233"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </enumeration>  
+  <interface id="7" language="java" name="model.pokemon.Pokemon" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/Pokemon.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="176" x="173" y="-51"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <enumeration id="8" language="java" name="model.pokemon.Stat" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/Stat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="119" x="603" y="906"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="false" static="true"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="9" language="java" name="model.pokemon.PokemonRarity" project="PokeJavaMonTrial" 
+    file="/PokeJavaMonTrial/src/model/pokemon/PokemonRarity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="461" y="941"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="true" package="false" protected="true" private="false" static="true"/>    
+    </display>  
+  </enumeration>  
+  <association id="10">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="11" name="evolvesTo"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="13">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="14" name="pokemon">        
+        <position height="18" width="53" x="275" y="724"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="16" width="23" x="324" y="741"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="17" name="stat"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="19">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <association id="20">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="21" name="secondType">        
+        <position height="18" width="67" x="302" y="1136"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="16" width="23" x="272" y="1167"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <bendpoint x="298" y="1176"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="24" name="firstType">        
+        <position height="18" width="50" x="209" y="1155"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="16" width="23" x="366" y="1157"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="moveset"/>      
+      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="30" name="rarity"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <bendpoint x="542" y="947"/>    
+    <bendpoint x="505" y="1232"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="33" name="type">        
+        <position height="18" width="29" x="330" y="1241"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="16" width="23" x="338" y="1210"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="36" name="currentMoves"/>      
+      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="true" private="false" static="false"/>    
+    <operations public="true" package="false" protected="true" private="false" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

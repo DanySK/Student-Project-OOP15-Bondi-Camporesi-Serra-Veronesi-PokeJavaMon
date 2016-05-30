@@ -1,6 +1,6 @@
-package model.map.tile;
+package model.map;
 
-import model.map.NPC;
+import model.map.tile.Tile;
 import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonRarity;

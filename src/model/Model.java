@@ -11,7 +11,7 @@ import model.map.NPC;
 import model.map.PokeMap;
 import model.map.PokeMapImpl;
 import model.map.Position;
-import model.map.tile.SpecialEncounterTile;
+import model.map.SpecialEncounterTile;
 import model.player.Box;
 import model.player.Inventory;
 import model.player.Player;

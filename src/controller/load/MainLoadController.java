@@ -24,7 +24,7 @@ import controller.parameters.Folder;
 import controller.parameters.XMLParameters;
 import exceptions.SquadFullException;
 import model.map.Position;
-import model.map.tile.SpecialEncounterTile;
+import model.map.SpecialEncounterTile;
 import model.pokemon.Pokemon;
 import model.pokemon.StaticPokemonFactory;
 
