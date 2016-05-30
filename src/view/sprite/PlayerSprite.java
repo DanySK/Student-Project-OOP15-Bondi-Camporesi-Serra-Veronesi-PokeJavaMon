@@ -12,9 +12,9 @@ import controller.parameters.Img;
 import model.map.Drawable.Direction;
 import model.utilities.Pair;
 import view.resources.ScreenView;
+
 /**
  * PlayerSpriteClass
- * 
  */
 public class PlayerSprite extends Sprite {
     private Vector2 velocity;
@@ -25,9 +25,10 @@ public class PlayerSprite extends Sprite {
     private Pair<Float, Float> position;
     private boolean update;
     private static PlayerSprite SINGLETON;
-	/**
-	 * getSprite
-	 */
+    
+    /**
+     * @return the current {@link PlayerSprite}
+     */
     public static PlayerSprite getSprite() {
         if (SINGLETON == null) {
             synchronized (PlayerSprite.class) {
@@ -38,6 +39,7 @@ public class PlayerSprite extends Sprite {
         }
         return SINGLETON;
     }
+    
     private PlayerSprite(final Sprite st) {
         super(st);
         super.setSize(16, 16);
@@ -47,9 +49,11 @@ public class PlayerSprite extends Sprite {
         this.pos = 0;
         this.update = true;
     }
-	/**
-	 * update
-	 */
+    
+    /**
+     * Updates the {@link PlayerSprite}
+     * @param spriteBatch the current {@link SpriteBatch}
+     */
     public void update(final SpriteBatch spriteBatch) {
         if (this.pos == 0) {
             MainController.getController().getStatusController().updateSpeed();
@@ -68,18 +72,24 @@ public class PlayerSprite extends Sprite {
             this.update = false;
         }
     }
-	/**
-	 * updatePosition
-	 */
+
+    /**
+     * Updates {@link PlayerSprite}'s position
+     */
     public void updatePosition() {
         this.position = new Pair<>(super.getX(),super.getY());
     }
-	/**
-	 * isMoving
-	 */
+	
+    /**
+     * @return true if player is moving
+     */
     public boolean isMoving() {
         return (this.velocity.x != 0 || this.velocity.y != 0);
     }
+    
+    /**
+     * Loads player's animations
+     */
     private void setupAnimation() {
         try {
             this.playerAtlas = new TextureAtlas(Img.PACK.getAbsolutePath());
@@ -105,20 +115,26 @@ public class PlayerSprite extends Sprite {
         this.down_s.setPlayMode(Animation.PlayMode.LOOP);
         setRegion(down_s.getKeyFrame(animationTime));
     }
-	/**
-	 * getPosition
-	 */
+
+    /**
+     * @return Sprite's position
+     */
     public Pair<Float, Float> getPosition() {
         return this.position;
     }
-	/**
-	 * setPlayerPosition
-	 * TODO MAGIC NUMBERS, DIPENDONO PER FORZA DALLA MAPPA SE CAMBIO LA MAPPA SI ****...............
-	 */
+	
+    /**
+     * @param x new x coordinate
+     * @param y new y coordinate
+     */
     public void setPlayerPosition(final float x, final float y) {
         super.setX(MainController.getController().getPokeMap().get().getCorrectedCoordinateX((int) x) * MainController.getController().getPokeMap().get().getTileWidth());
         super.setY(MainController.getController().getPokeMap().get().getCorrectedCoordinateY((int) y) * MainController.getController().getPokeMap().get().getTileHeight());
     }
+    
+    /**
+     * @param d new sprite's {@link Direction}
+     */
     private void setOrientation(final Direction d) {
         switch (d) {
         case NORTH:
@@ -137,6 +153,9 @@ public class PlayerSprite extends Sprite {
             break;
         }
     }
+    /**
+     * Moves the sprite
+     */
     private void move() {
         if (this.velocity.x > 0) {
             super.setX(super.getX() + this.velocity.x);
@@ -159,9 +178,11 @@ public class PlayerSprite extends Sprite {
             MainController.getController().getStatusController().updateMusic();
         }
     }
-	/**
-	 * setVelocity
-	 */
+	
+    /**
+     * @param x new velocity on x axe
+     * @param y new velocity on y axe
+     */
     public void setVelocity(final float x, final float y) {
         this.velocity.x = x;
         this.velocity.y = y;

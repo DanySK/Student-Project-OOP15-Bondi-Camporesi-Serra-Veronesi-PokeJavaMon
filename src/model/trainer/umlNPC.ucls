@@ -91,16 +91,7 @@
       <operations public="true" package="false" protected="true" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="11" language="java" name="model.map.SpecialEncounterTile" project="PokeJavaMonTrial" 
-    file="/PokeJavaMonTrial/src/model/map/SpecialEncounterTile.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="875" y="-3"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="false" protected="true" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="model.map.PokeMarket" project="PokeJavaMonTrial" 
+  <class id="11" language="java" name="model.map.PokeMarket" project="PokeJavaMonTrial" 
     file="/PokeJavaMonTrial/src/model/map/PokeMarket.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="815" y="133"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,57 +100,53 @@
       <operations public="true" package="false" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="12"/>    
+  <generalization id="12">    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
-  <nesting id="14">    
+  <nesting id="13">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="2"/>  
   </nesting>  
-  <generalization id="15">    
+  <generalization id="14">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="16">    
+  <association id="15">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="17" name="direction"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+      <attribute id="16" name="direction"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
+  <association id="18">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="20" name="squad"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
+      <attribute id="19" name="squad"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="22">    
+  <realization id="21">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="10"/>  
   </realization>  
-  <generalization id="23">    
+  <generalization id="22">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <realization id="24">    
+  <realization id="23">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
-  <generalization id="25">    
+  <generalization id="24">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <generalization id="26">    
+  <generalization id="25">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="6"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

@@ -15,13 +15,12 @@ import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Item.ItemType;
-import model.items.Potion;
+import model.items.Item.WhenToUse;
 import model.pokemon.Pokemon;
 import view.View;
+
 /**
  * BagMenuClass
- * 
- * 
  */
 public class BagMenu extends JWindow implements MyFrame {
     private static final long serialVersionUID = 4403659276705962715L;
@@ -34,9 +33,7 @@ public class BagMenu extends JWindow implements MyFrame {
     private int cols;
     private JButton exit;
     private JButton use;
-	/**
-	 * BagMenu
-	 */
+
     public BagMenu() {
         this.name1 = new ArrayList<String>();
         this.name2 = new ArrayList<String>();
@@ -44,15 +41,19 @@ public class BagMenu extends JWindow implements MyFrame {
         this.it = new ArrayList<Item>();
         this.cols = 1;
     }
-	/**
-	 * selectItem
-	 */
+    
+    /**
+     * Selects an {@link Item}
+     * @param it selected {@link Item}
+     */
     public void selectItem(Item it) {
         this.itemToUse = it;
     }
-	/**
-	 * useItem
-	 */
+    
+    /**
+     * Uses the selected {@link Item}
+     * @param p selected {@link Pokemon} to use {@link Item} on
+     */
     public void useItem(Pokemon p) {
         if (this.itemToUse != null) {
             if (MainController.getController().getStatusController().getState() == State.FIGHTING) {
@@ -82,7 +83,7 @@ public class BagMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             } else {
-                if (this.itemToUse instanceof Potion) {
+                if (this.itemToUse.whenToUse() == WhenToUse.OUT_OF_BATTLE) {
                     try {
                         MainController.getController().effectItem(this.itemToUse, p);
                         disposeFrame();
@@ -184,9 +185,7 @@ public class BagMenu extends JWindow implements MyFrame {
             View.getView().showCurrent();
         }
     }
-	/**
-	 * forCycles
-	 */
+
     private void forCycles(final ItemType it) {
         for (Item i : MainController.getController().getInventory().get().getSubInventory(it).keySet()) { 
             if (MainController.getController().getInventory().get().getSubInventory(it).get(i) != 0) {

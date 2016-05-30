@@ -220,9 +220,10 @@ public class InFightMessages implements InFightMessagesInterface {
             }
         }
     }
-	/**
-	 * showMessage
-	 */
+	
+    /**
+     * Shows the default message
+     */
     private void showMessage() {
         String[] array = new String[this.message.size()];
         this.message.toArray(array);
@@ -241,7 +242,7 @@ public class InFightMessages implements InFightMessagesInterface {
         ((FightScreen) fs).showMessage(array);
     }
 	/**
-	 * It is the message displayed when the trainer loses a battle.
+	 * It is the message displayed when the player loses a battle.
 	 */
     private void lostMessage() {
         MainController.getController().getFightController().healEnemy();
@@ -259,7 +260,7 @@ public class InFightMessages implements InFightMessagesInterface {
         MainController.getController().teleportToCenter();
     }
 	/**
-	 * It is the message displayed when a pokémon learns a new move and then it puts the state of the trainer in "WALKING".
+	 * It is the message displayed when a pokémon learns a new move and then it puts the state of the player in "WALKING".
 	 */
     private void learnedMoveAndWalking() {
         MainController.getController().getSquad().get().getPokemonList().get(0).learnMove(Move.NULLMOVE, this.moveToLearn);
@@ -270,7 +271,7 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().showCurrent();
     }
 	/**
-	 * ---
+	 * Shows a new {@link LearnMoveFrame}
 	 */
     private void newMoveMessage() {
         String[] array = new String[this.message.size()];
@@ -282,7 +283,7 @@ public class InFightMessages implements InFightMessagesInterface {
         View.getView().showCurrent();
     }
 	/**
-	 *  It is the message displayed when the trainer wins a battle.
+	 *  It is the message displayed when the player wins a battle.
 	 */
     private void winningMessage() {
         String[] array = new String[this.message.size()];

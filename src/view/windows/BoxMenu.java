@@ -17,7 +17,7 @@ import view.View;
  * This {@link JWindow} handles the whole storage system that permits 
  * the user to see all the pokémon deposited and some of its informations.
  * It allowes to withdraw a pokémon from the box to the party 
- * or simply to watch his statistics with the use of a button. * 
+ * or simply to watch his statistics with the use of a button. 
  */
 public class BoxMenu extends JWindow implements MyFrame {
     private static final long serialVersionUID = 6312860320430410019L;

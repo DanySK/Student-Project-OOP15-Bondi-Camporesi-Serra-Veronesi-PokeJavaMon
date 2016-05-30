@@ -1,52 +1,47 @@
 package view.resources;
 
 import com.badlogic.gdx.Game;
+
 /**
  * GameViewClass
- * 
  */
 public class GameView extends Game {       
 	
     private ScreenView pl;      
-	/**
-	 * GameView
-	 */
+	
+    /**
+     * @param bl true if it is a new game
+     */
     public GameView(boolean bl) {
         this.pl = new ScreenView(bl);
     }
-    /**
-     *     
-     */
+    
+    @Override
     public void create() {
 	setScreen(this.pl); 
     }
-    /**
-     * 
-     */
+    
+    @Override
     public void dispose() {	    
 	super.dispose();
     }
-    /**
-     * 
-     */
+    
+    @Override
     public void render() {	    
 	super.render();
     }
-    /**
-     * 
-     */
+    
+    @Override
     public void resize(int width, int height) {	
 	super.resize(width, height);
     }
-    /**
-     * It disabled the map and it allows to navigate through the windows.
-     */
+    
+    @Override
     public void pause() {		
 	super.pause();
     }
-    /**
-     * It enables the map again after all the windows are closed.
-     */
+    
+    @Override
     public void resume() {	
 	super.resume();
     }

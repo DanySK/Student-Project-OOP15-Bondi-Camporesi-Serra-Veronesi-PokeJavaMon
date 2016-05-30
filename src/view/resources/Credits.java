@@ -41,7 +41,7 @@ public class Credits extends JWindow implements MyFrame {
 		private Image bgImage = null;
     	private final JButton back;
     	/**
-    	 * Throws an exception if it fails to load the image for the background
+    	 * Catches an exception if it fails to load the image for the background
     	 */
     	public CreditBackground() {
 		    final MediaTracker mt = new MediaTracker(this);

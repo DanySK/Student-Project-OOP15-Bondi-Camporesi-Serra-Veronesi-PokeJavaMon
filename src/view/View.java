@@ -15,8 +15,9 @@ public class View implements ViewInterface {
     private View() {
         this.stack = new Stack<MyFrame>();
     }
+    
     /**
-     * getView
+     * @return current {@link View}
      */
     public static ViewInterface getView() {
         if (singleton == null) {

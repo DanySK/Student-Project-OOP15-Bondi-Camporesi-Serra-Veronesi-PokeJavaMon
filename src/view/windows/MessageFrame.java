@@ -28,9 +28,10 @@ public class MessageFrame extends JWindow implements MyFrame {
     private String[] msgs;
     private State st;
 	/**
-	 * A function
-	 * @param st
-	 * @param strs
+	 * Constructor
+	 * @param st the {@link State} to update after the window gets closed, or null 
+	 * if the {@link State} doesn't have to change
+	 * @param strs the message to show
 	 */
     public MessageFrame(State st, String... strs) {
         this.st = st;

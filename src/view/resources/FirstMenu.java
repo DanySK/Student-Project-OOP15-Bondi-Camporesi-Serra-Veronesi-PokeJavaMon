@@ -45,7 +45,7 @@ public class FirstMenu extends JFrame implements MyFrame {
 	private SpringLayout sl_contentPane;
 	/**
 	 * This {@link JPanel} is used to get the background image.
-	 * It throws an exception if it fails to load the picture.
+	 * It catches an exception if it fails to load the picture.
 	 */
 	private class ContentPanel extends JPanel {
 		
