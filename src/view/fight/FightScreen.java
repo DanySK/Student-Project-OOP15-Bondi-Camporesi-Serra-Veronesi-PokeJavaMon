@@ -12,8 +12,7 @@ import view.windows.MessageFrame;
 import view.windows.MyFrame;
 import view.windows.TeamMenu;
 /**
- * This {@link JWindow} handles the fighting part of the games.
- * 
+ * This {@link JWindow} handles the fighting part of the game.
  */
 public class FightScreen extends JWindow implements MyFrame {
 

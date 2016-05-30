@@ -31,13 +31,12 @@ import view.windows.MessageFrame;
 import view.windows.TeamMenu;
 /**
  * This {@link JPanel} handles the {@link FightScreen}.
- * Here there are:
- * the choices the player can do in the fight;
- * the sprites of the pokémon;
- * their bars;
- * the moves the player can choose.
+ * Here there are
+ * the choices the player can do in the fight, 
+ * the sprites of the pokémon, 
+ * their bars and 
+ * the moves the player can choose to attack. 
  * Everything is refreshed every turn with the function "refresh".
- * 
  */
 public class FightPanel extends JPanel {
     private static final long serialVersionUID = 849521658746630224L;
@@ -67,7 +66,8 @@ public class FightPanel extends JPanel {
     private final ActionListener moveListener;
     private JButton tmp;
     /**
-     * Create the FightPanel.
+     * @param enemy The enemy pokémon who is fighting.
+     * @param ally The ally pokémon who is fighting.
      */
     public FightPanel(final Pokemon enemy, final Pokemon ally) {
         setLayout(new MigLayout("", "[78px,grow][][53px][10px][][][][][][][][]", "[14px][14px][10px][][][][][][][][grow][][][]"));    
@@ -138,29 +138,29 @@ public class FightPanel extends JPanel {
         this.choicesList.get(SQUAD).addActionListener(this.fightMenuListeners.get(SQUAD));
         this.choicesList.get(RUN).addActionListener(this.fightMenuListeners.get(RUN));	
         this.enemyName = new JLabel(enemy.getPokedexEntry().getName());
-        add(this.enemyName, "cell 0 0");
+        this.add(this.enemyName, "cell 0 0");
         this.enemyLvl = new JLabel("Lvl " + enemy.getStat(Stat.LVL));
-        add(this.enemyLvl, "cell 1 0,alignx right");	
+        this.add(this.enemyLvl, "cell 1 0,alignx right");	
         this.enemyHealthBar = new HealthBar(enemy.getStat(Stat.MAX_HP),enemy.getCurrentHP());
-        add(this.enemyHealthBar, "cell 0 1 2 1,growx");	
+        this.add(this.enemyHealthBar, "cell 0 1 2 1,growx");	
         this.enemyFrontSprite = new JLabel();
         this.enemyFrontSprite.setIcon(new ImageIcon(FightPanel.class.getResource(enemy.getPokedexEntry().getFrontSprite().getResourcePath())));
-        add(this.enemyFrontSprite, "cell 8 0 2 5,alignx center,aligny center");	
+        this.add(this.enemyFrontSprite, "cell 8 0 2 5,alignx center,aligny center");	
         this.allyBackSprite = new JLabel();
         this.allyBackSprite.setIcon(new ImageIcon(FightPanel.class.getResource(ally.getPokedexEntry().getBackSprite().getResourcePath())));
-        add(this.allyBackSprite, "cell 0 5 3 5,alignx center,growy");		
+        this.add(this.allyBackSprite, "cell 0 5 3 5,alignx center,growy");		
         this.allyName = new JLabel(ally.getPokedexEntry().getName());
-        add(this.allyName, "cell 8 6");		
+        this.add(this.allyName, "cell 8 6");		
         this.allyLvl = new JLabel("Lvl " + ally.getStat(Stat.LVL));
-        add(this.allyLvl, "cell 9 6,alignx right");		
+        this.add(this.allyLvl, "cell 9 6,alignx right");		
         this.allyHealthBar = new HealthBar(ally.getStat(Stat.MAX_HP), ally.getCurrentHP());
-        add(this.allyHealthBar, "cell 8 7 2 1,growx");		
+        this.add(this.allyHealthBar, "cell 8 7 2 1,growx");		
         this.allyHP = new JLabel(ally.getCurrentHP() + "/" + ally.getStat(Stat.MAX_HP));
-        add(this.allyHP, "cell 9 8,alignx right,aligny baseline");		
+        this.add(this.allyHP, "cell 9 8,alignx right,aligny baseline");		
         this.allyExpBar = new ExpBar(ally.getLevelExp(), ally.getStat(Stat.EXP));
         this.add(this.allyExpBar, "cell 8 9 2 1,growx");		
         this.subPanel = new JPanel();
-        add(this.subPanel, "cell 0 10 11 4,grow");
+        this.add(this.subPanel, "cell 0 10 11 4,grow");
         this.choice1 = new JButton("Action1");
         this.choice2 = new JButton("Action2");
         this.choice3 = new JButton("Action3");
@@ -207,9 +207,6 @@ public class FightPanel extends JPanel {
         );
         panel.setLayout(gl_panel);
     }
-    /**
-     * 
-     */
     private void set4MovesToButtons() {
         final List<Move> moves = this.ctrl.getSquad().get().getPokemonList().get(0).getCurrentMoves();
         int count = 0;
@@ -237,9 +234,6 @@ public class FightPanel extends JPanel {
             }
         }
     }
-	/**
-	 * It creates the layout filled with the decisions the player can make during the fight.
-	 */
     public void setMenuButtons() {
     	this.tmp = choicesList.get(FIGHT);
     	this.tmp.setText("FIGHT");

@@ -182,6 +182,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             this.deposit.setBorderPainted(false);
             this.deposit.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     for (final Pokemon pok : MainController.getController().getSquad().get().getPokemonList()) {
                         if (pok != p && pok.getCurrentHP() > 0) {
@@ -222,6 +223,7 @@ public class TeamMenu extends JWindow implements MyFrame {
             this.select.setBorderPainted(false);
             this.select.addActionListener(new ActionListener() {
                 final Pokemon p = pkmn;
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     View.getView().disposeCurrent();
                     View.getView().removeCurrent();

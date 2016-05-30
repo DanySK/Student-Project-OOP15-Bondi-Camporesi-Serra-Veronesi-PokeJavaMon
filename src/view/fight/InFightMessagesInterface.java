@@ -5,11 +5,12 @@ import model.items.Item;
 import model.pokemon.Move;
 import model.pokemon.Pokemon;
 /**
- * InFightMessagesInterface
- * 
+ * This class handles the messages that appears during the fight.
  */
 public interface InFightMessagesInterface {
 	/**
+	 * Resolves the turn of the fight when both pokémon attack.
+	 * 
 	 * @param myMove The move used by the ally pokémon.
 	 * @param myMoveEffectiveness The effectiveness of the move used by the ally pokémon against the enemy.
 	 * @param enemyMove The move used by the enemy pokémon.
@@ -25,6 +26,8 @@ public interface InFightMessagesInterface {
                             boolean lastPokemonKills, Pokemon nextEnemyPokemon,
                             String optionalMessage, final Move moveToLearn);
 	/**
+	 * Resolves the change of the pokémon in the fight.
+	 * 
 	 * @param myPokemon The pokémon is going to replace the one is in battle.
 	 * @param enemyMove The move used by the enemy pokémon.
 	 * @param eff The effectiveness of the move used against the pokémon.
@@ -33,6 +36,8 @@ public interface InFightMessagesInterface {
     public void resolveChangePokemon(Pokemon myPokemon, Move enemyMove, Effectiveness eff,
                                      boolean isMyPokemonDead);
 	/**
+	 * Resolves the use of an item in the fight.
+	 * 
 	 * @param item It is the items used by the player.
 	 * @param pk The pokémon the trainer uses an item on.
 	 * @param enemyMove The move used by the enemy pokémon.
@@ -41,6 +46,8 @@ public interface InFightMessagesInterface {
 	 */
     public void resolveUseItem(Item item, Pokemon pk, Move enemyMove, Effectiveness eff, boolean isMyPokemonDead);
 	/**
+	 * Resolves the run from the fight.
+	 * 
 	 * @param success Checks if the trainer can run away from the fight.
 	 * @param enemyMove The move used by the enemy pokémon.
 	 * @param eff The effectiveness of the move used against the pokémon.

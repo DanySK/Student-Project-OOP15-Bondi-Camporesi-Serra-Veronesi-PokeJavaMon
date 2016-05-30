@@ -14,7 +14,7 @@ import model.utilities.Pair;
 import view.resources.ScreenView;
 
 /**
- * PlayerSpriteClass
+ * This class handles every aspect of the sprite of the playable trainer.
  */
 public class PlayerSprite extends Sprite {
     private Vector2 velocity;
@@ -38,8 +38,7 @@ public class PlayerSprite extends Sprite {
             }
         }
         return SINGLETON;
-    }
-    
+    } 
     private PlayerSprite(final Sprite st) {
         super(st);
         super.setSize(16, 16);

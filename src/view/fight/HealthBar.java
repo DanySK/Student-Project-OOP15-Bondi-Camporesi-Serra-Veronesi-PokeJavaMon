@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.JProgressBar;
 /**
  * This class creates and paints the 2 health bars placed in {@link FightScreen}.
- * 
  */
 public class HealthBar extends JProgressBar {
 	private static final long serialVersionUID = -1998418607308529873L;

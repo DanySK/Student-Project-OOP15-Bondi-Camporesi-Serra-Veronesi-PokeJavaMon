@@ -22,8 +22,7 @@ import javax.swing.border.LineBorder;
 import view.View;
 import view.windows.MyFrame;
 /**
- * This {@link JWindow}
- * 
+ * This {@link JWindow} shows the controls of the game.
  */
 public class HowToPlay extends JWindow implements MyFrame {
 
@@ -35,9 +34,7 @@ public class HowToPlay extends JWindow implements MyFrame {
     public HowToPlay() {
     	this.mainPanel = new HowToPlayPanel();
     }
-	/**
-	 * HowToPlayPanelClass
-	 */
+
     public class HowToPlayPanel extends JPanel {
 		private static final long serialVersionUID = 2304161775966955920L;
 		private final JLabel moveUp;
@@ -55,7 +52,7 @@ public class HowToPlay extends JWindow implements MyFrame {
     	private final JButton back;
     	private Image bgImage = null;
     	/**
-    	 * Create the HowToPlayPanel.
+    	 * Fills the panel with the controls of the game.
     	 */
     	public HowToPlayPanel() {
     		setMinimumSize(new Dimension(600, 400));

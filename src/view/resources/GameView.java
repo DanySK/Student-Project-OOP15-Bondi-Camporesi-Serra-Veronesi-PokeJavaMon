@@ -3,7 +3,7 @@ package view.resources;
 import com.badlogic.gdx.Game;
 
 /**
- * GameViewClass
+ * This class handles the creation, the destruction and the pausing of the frame of the game.
  */
 public class GameView extends Game {       
 	

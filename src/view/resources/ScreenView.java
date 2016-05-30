@@ -24,7 +24,7 @@ import model.map.Position;
 import view.sprite.PlayerSprite;
 
 /**
- * MainGameViewClass
+ * This class controls everything in the main frame of the game.
  */
 public class ScreenView implements Screen {  
     private OrthogonalTiledMapRenderer renderer;

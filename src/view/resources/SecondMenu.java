@@ -61,54 +61,53 @@ public class SecondMenu extends JFrame implements MyFrame {
         setMaximumSize(new Dimension(450, 300));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        contentPane = new ImagePanel();
-        contentPane.setPreferredSize(new Dimension(450, 300));
-        contentPane.setMinimumSize(new Dimension(450, 300));
-        contentPane.setMaximumSize(new Dimension(450, 300));
-        contentPane.setBorder(null);
-        setContentPane(contentPane);
-        contentPane.setLayout(new MigLayout("", "[89px][50.00px][133px][50.00px][77px]", "[26px][20px][23px][][][][][][][][]"));
-        name = new JLabel("INSERT NAME ( 4 - 15 CHAR )");
-        name.setFont(new Font("Verdana", Font.BOLD, 20));
-        name.setForeground(Color.WHITE);
-        contentPane.add(name, "cell 0 0 5 1,alignx center,aligny center");
-        textField = new JTextField();
-        contentPane.add(textField, "cell 2 3,growx,aligny center");
-        textField.setColumns(10);
-        bulba_label = new JLabel("");
-        bulba_label.setHorizontalTextPosition(SwingConstants.CENTER);
-        bulba_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F001.png")));
-        bulba_label.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(bulba_label, "cell 0 6 1 4,alignx center");
-        charm_label = new JLabel("");
-        charm_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F004.png")));
-        contentPane.add(charm_label, "cell 2 7 1 3,alignx center");
-        squi_label = new JLabel("");
-        squi_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F007.png")));
-        contentPane.add(squi_label, "cell 4 7 1 3,alignx center");
-        bulba_button = new JButton("Bulbasaur");
-        bulba_button.setFont(new Font("Verdana", Font.BOLD, 10));
-        bulba_button.setBorderPainted(false);
-        bulba_button.setFocusable(false);
-        contentPane.add(bulba_button, "cell 0 10,alignx right,aligny bottom");
-        addListener(bulba_button, Pokedex.BULBASAUR);
-        charm_button = new JButton("Charmander");
-        charm_button.setFont(new Font("Verdana", Font.BOLD, 10));
-        charm_button.setFocusable(false);
-        charm_button.setBorderPainted(false);
-        contentPane.add(charm_button, "cell 2 10,alignx center,aligny center");
-        addListener(charm_button, Pokedex.CHARMANDER);
-        squi_button = new JButton("Squirtle");
-        squi_button.setFont(new Font("Verdana", Font.BOLD, 10));
-        squi_button.setFocusable(false);
-        squi_button.setBorderPainted(false);
-        contentPane.add(squi_button, "cell 4 10,alignx center,aligny center");
-        addListener(squi_button, Pokedex.SQUIRTLE);
+        this.contentPane = new ImagePanel();
+        this.contentPane.setPreferredSize(new Dimension(450, 300));
+        this.contentPane.setMinimumSize(new Dimension(450, 300));
+        this.contentPane.setMaximumSize(new Dimension(450, 300));
+        this.contentPane.setBorder(null);
+        setContentPane(this.contentPane);
+        this.contentPane.setLayout(new MigLayout("", "[89px][50.00px][133px][50.00px][77px]", "[26px][20px][23px][][][][][][][][]"));
+        this.name = new JLabel("INSERT NAME ( 4 - 15 CHAR )");
+        this.name.setFont(new Font("Verdana", Font.BOLD, 20));
+        this.name.setForeground(Color.WHITE);
+        this.contentPane.add(name, "cell 0 0 5 1,alignx center,aligny center");
+        SecondMenu.textField = new JTextField();
+        this.contentPane.add(textField, "cell 2 3,growx,aligny center");
+        SecondMenu.textField.setColumns(10);
+        this.bulba_label = new JLabel("");
+        this.bulba_label.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.bulba_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F001.png")));
+        this.bulba_label.setHorizontalAlignment(SwingConstants.CENTER);
+        this.contentPane.add(this.bulba_label, "cell 0 6 1 4,alignx center");
+        this.charm_label = new JLabel("");
+        this.charm_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F004.png")));
+        this.contentPane.add(charm_label, "cell 2 7 1 3,alignx center");
+        this.squi_label = new JLabel("");
+        this.squi_label.setIcon(new ImageIcon(SecondMenu.class.getResource("/sprites/front/F007.png")));
+        this.contentPane.add(this.squi_label, "cell 4 7 1 3,alignx center");
+        this.bulba_button = new JButton("Bulbasaur");
+        this.bulba_button.setFont(new Font("Verdana", Font.BOLD, 10));
+        this.bulba_button.setBorderPainted(false);
+        this.bulba_button.setFocusable(false);
+        this.contentPane.add(this.bulba_button, "cell 0 10,alignx right,aligny bottom");
+        addListener(this.bulba_button, Pokedex.BULBASAUR);
+        this.charm_button = new JButton("Charmander");
+        this.charm_button.setFont(new Font("Verdana", Font.BOLD, 10));
+        this.charm_button.setFocusable(false);
+        this.charm_button.setBorderPainted(false);
+        this.contentPane.add(this.charm_button, "cell 2 10,alignx center,aligny center");
+        addListener(this.charm_button, Pokedex.CHARMANDER);
+        this.squi_button = new JButton("Squirtle");
+        this.squi_button.setFont(new Font("Verdana", Font.BOLD, 10));
+        this.squi_button.setFocusable(false);
+        this.squi_button.setBorderPainted(false);
+        this.contentPane.add(this.squi_button, "cell 4 10,alignx center,aligny center");
+        addListener(this.squi_button, Pokedex.SQUIRTLE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
     /**
-     * 
      * It gets the text written in the textfield.
      * 
      * @return a string with the name written.
@@ -147,16 +146,16 @@ public class SecondMenu extends JFrame implements MyFrame {
         private Image bgimage = null;
         /**
          * It sets an image as background.
-         * It throws an exception if it fails to load the picture.
+         * It catches an exception if it fails to load the picture.
          */
         ImagePanel() {
             final MediaTracker mt = new MediaTracker(this);
             try {
-                        bgimage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/pokemon_pokeball.png"));
+            		this.bgimage = ImageIO.read(FirstMenu.class.getResourceAsStream("/gui/pokemon_pokeball.png"));
                 } catch (IOException e1) {
                         e1.printStackTrace();
                 }
-            mt.addImage(bgimage, 0);
+            mt.addImage(this.bgimage, 0);
             try {
               mt.waitForAll();
             } catch (InterruptedException e) {
@@ -167,7 +166,7 @@ public class SecondMenu extends JFrame implements MyFrame {
           @Override
           protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(bgimage, 0 - COORDINATES_OFFSET, 0 - COORDINATES_OFFSET, 450 + DIM_OFFSET, 300 + DIM_OFFSET, null);
+            g.drawImage(this.bgimage, 0 - COORDINATES_OFFSET, 0 - COORDINATES_OFFSET, 450 + DIM_OFFSET, 300 + DIM_OFFSET, null);
           }
     }
 

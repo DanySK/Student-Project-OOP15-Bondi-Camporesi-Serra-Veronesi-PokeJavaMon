@@ -34,7 +34,6 @@ public class Credits extends JWindow implements MyFrame {
      * This {@link JPanel} contains the background image
      * the name of the authors of the game
      * the button the come back in {@link FirstMenu}
-     *
      */
     private class CreditBackground extends JPanel {
 		private static final long serialVersionUID = -7371702206859570082L;

@@ -8,35 +8,35 @@ import view.windows.MyFrame;
  */
 public interface ViewInterface {
 	/**
-	 * It disposes the current window of the stack.
+	 * It disposes the current {@link JWindow} of the stack.
 	 */
     void disposeCurrent();
 	/**
-	 * It disposes the previous window of the stack.
+	 * It disposes the previous {@link JWindow} of the stack.
 	 */
     void disposeParent();
 	/**
-	 * It shows the current window of the stack.
+	 * It shows the current {@link JWindow} of the stack.
 	 */
     void showCurrent();
 	/**
-	 * It shows the previous window of the stack.
+	 * It shows the previous {@link JWindow} of the stack.
 	 */
     void showParent();
 	/**
-	 * It hides the current window of the stack.
+	 * It hides the current {@link JWindow} of the stack.
 	 */
     void hideCurrent();
 	/**
-	 * It hides the previous window of the stack.
+	 * It hides the previous {@link JWindow} of the stack.
 	 */
     void hideParent();
 	/**
-	 * It resumes the current window of the stack.
+	 * It resumes the current {@link JWindow} of the stack.
 	 */
     void resumeCurrent();
 	/**
-	 * It resumes the previous window of the stack.
+	 * It resumes the previous {@link JWindow} of the stack.
 	 */
     void resumeParent();
 	/**

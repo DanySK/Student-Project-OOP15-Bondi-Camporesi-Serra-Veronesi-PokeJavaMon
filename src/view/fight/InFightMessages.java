@@ -15,15 +15,11 @@ import view.View;
 import view.windows.MessageFrame;
 import view.windows.MyFrame;
 /**
- * InFightMessagesClass
- * 
+ * This class handles all the messages that can appear in the game in any situation.
  */
 public class InFightMessages implements InFightMessagesInterface {
     private List<String> message;
     private Move moveToLearn;
-	/**
-	 * InFightMessages
-	 */
     public InFightMessages() {
         this.message = new ArrayList<>();
     }
