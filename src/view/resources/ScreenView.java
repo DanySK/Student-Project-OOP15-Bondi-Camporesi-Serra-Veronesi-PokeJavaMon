@@ -38,6 +38,7 @@ public class ScreenView implements Screen {
 
     private static final float VIEWPORT_X = 2.5f;
     private static final float VIEWPORT_Y = 2.5f;
+    private static final float SPRITE_OFFSET = 0.1f;
     
     /**
      * 
@@ -179,7 +180,7 @@ public class ScreenView implements Screen {
             tileWidth = (float) prop.get("tilewidth", Integer.class);
             tileHeight = (float) prop.get("tileheight", Integer.class);
         }
-        this.pls.setBounds(p.getX() * tileWidth, (mapHeight - 1 - p.getY()) * tileHeight, PlayerSprite.getSprite().getWidth(), PlayerSprite.getSprite().getHeight());
+        this.pls.setBounds(p.getX() * tileWidth, (mapHeight - 1 - p.getY()) * tileHeight, PlayerSprite.getSprite().getWidth() - SPRITE_OFFSET, PlayerSprite.getSprite().getHeight() - SPRITE_OFFSET);
     }
     
     @Override
