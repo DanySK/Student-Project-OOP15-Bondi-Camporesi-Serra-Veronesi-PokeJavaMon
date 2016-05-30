@@ -15,7 +15,7 @@ import exceptions.PokemonIsExhaustedException;
 import exceptions.PokemonNotFoundException;
 import model.items.Item;
 import model.items.Item.ItemType;
-import model.items.Potion;
+import model.items.Item.WhenToUse;
 import model.pokemon.Pokemon;
 import view.View;
 
@@ -83,7 +83,7 @@ public class BagMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             } else {
-                if (this.itemToUse instanceof Potion) {
+                if (this.itemToUse.whenToUse() == WhenToUse.OUT_OF_BATTLE) {
                     try {
                         MainController.getController().effectItem(this.itemToUse, p);
                         disposeFrame();
