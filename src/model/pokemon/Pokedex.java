@@ -11,7 +11,7 @@ import controller.parameters.FrontSpriteImage;
 /**
  * A "database" of all the Pokemons in form of Enumeration.
  * Each type contains up to two {@link PokemonType}s, the base stats, the {@link PokemonRarity}
- * an {@link HashMap}<{@link Integer}, {@link Move}> of all the moves each Pokemon can learn
+ * an {@link HashMap}({@link Integer}, {@link Move}) of all the moves each Pokemon can learn
  * @see Pokemon
  * @see	Move
  * @see PokemonRarity
@@ -382,7 +382,7 @@ public enum Pokedex {
     }
     
     /**
-     * A method that returns an unmodifiable {@link Map}<{@link Integer}, {@link Move}> of all the moves per level
+     * A method that returns an unmodifiable {@link Map}({@link Integer}, {@link Move}) of all the moves per level
      * @return A map with all the moves per level
      */
     public Map<Integer, Move> getMoveset() {
@@ -391,7 +391,7 @@ public enum Pokedex {
     
     /**
      * A method that allows to initialize the move of the Pokemon
-     * @param m {@link Map}<{@link Integer}, {@link Move}> of the moveset of the single Pokemon
+     * @param m {@link Map}({@link Integer}, {@link Move}) of the moveset of the single Pokemon
      */
     public void initializeMoveset(final Map<Integer, Move> m) {
         if (m != null && !m.isEmpty()) {

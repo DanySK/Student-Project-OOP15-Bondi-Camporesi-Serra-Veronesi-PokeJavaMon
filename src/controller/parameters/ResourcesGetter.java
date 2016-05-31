@@ -7,7 +7,7 @@ import java.util.List;
 import model.utilities.Pair;
 
 /**
- * This class is created to return the {@link List}<{@link Pair}<{@link String}, {@link String}>>
+ * This class is created to return the {@link List}({@link Pair}({@link String}, {@link String})
  * where the first {@link String} is the absolute path of a resource, the second is the
  * relative path
  */

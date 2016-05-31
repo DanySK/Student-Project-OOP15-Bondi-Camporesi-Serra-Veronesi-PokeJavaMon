@@ -2,8 +2,11 @@ package model.items;
 
 import exceptions.PokemonNotFoundException;
 import model.map.PokeMarket;
+import model.player.Inventory;
 import model.player.Player;
+import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.squad.Squad;
 
 /**
  * Subclass of {@link AbstractItem}, if used on one of {@link Player}'s {@link Pokemon} it heals some HP

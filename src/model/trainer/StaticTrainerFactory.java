@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import model.map.Drawable.Direction;
+import model.map.PokeMap;
 import model.pokemon.Pokedex;
+import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.StaticPokemonFactory;
 import model.squad.Squad;
@@ -61,7 +63,7 @@ public final class StaticTrainerFactory {
 	 * @param y
 	 * 			yPosition in the {@link PokeMap}						
 	 * @param pkmnList
-	 * 			a {@link Map}<{@link String}, {@link Integer}> where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
+	 * 			a {@link Map}({@link String}, {@link Integer}) where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
 	 * @param initMessage	
 	 * 			the first message he says when you fight him				
 	 * @param trainerDefeatedMessage
@@ -94,7 +96,7 @@ public final class StaticTrainerFactory {
 	 * @param y		
 	 * 			yPosition in the {@link PokeMap}						
 	 * @param pkmns_lvl 
-	 * 			{@link List}<{@link String}> where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
+	 * 			{@link ArrayList}({@link String}) where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
 	 * @param initMessage	
 	 * 			the first message he says when you fight him				
 	 * @param trainerDefeatedMessage	
@@ -126,7 +128,7 @@ public final class StaticTrainerFactory {
 	 * @param y		
 	 * 			yPosition in the {@link PokeMap}						
 	 * @param pkmnList 
-	 * 			{@link List}<{@link Pokemon}> : all the {@link Pokemon} in the {@link Squad} 			
+	 * 			{@link ArrayList}({@link Pokemon}) : all the {@link Pokemon} in the {@link Squad} 			
 	 * @param initMessage	
 	 * 			the first message he says when you fight him				
 	 * @param trainerDefeatedMessage	
@@ -158,7 +160,7 @@ public final class StaticTrainerFactory {
 	 * @param y		
 	 * 			yPosition in the {@link PokeMap}						
 	 * @param pkmns_lvl 
-	 * 			{@link List}<{@link String}> where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
+	 * 			{@link ArrayList}({@link String}) where each {@link String} is formed as "NAME=LVL" where NAME is the {@link Pokedex} value and LVL is the level of the {@link Pokemon}, E.g.: "CHARIZARD=50" 			
 	 * @param initMessage	
 	 * 			the first message he says when you fight him				
 	 * @param trainerDefeatedMessage	
@@ -192,7 +194,7 @@ public final class StaticTrainerFactory {
 	 * @param y		
 	 * 			yPosition in the {@link PokeMap}						
 	 * @param pkmnList	
-	 * 			a {@link Map}<{@link String}, {@link Integer}> where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
+	 * 			a {@link Map}({@link String}, {@link Integer}) where the {@link String} is the name of the {@link Pokemon} in the {@link Pokedex} and the {@link Integer} is the level			
 	 * @param initMessage	
 	 * 			the first message he says when you fight him				
 	 * @param trainerDefeatedMessage	
@@ -226,7 +228,7 @@ public final class StaticTrainerFactory {
 	 * @param y		
 	 * 			yPosition in the {@link PokeMap}						
 	 * @param pkmnList 
-	 * 			{@link List}<{@link Pokemon}> : all the {@link Pokemon} in the {@link Squad} 			
+	 * 			{@link ArrayList}({@link Pokemon}) : all the {@link Pokemon} in the {@link Squad} 			
 	 * @param initMessage	
 	 * 			the first message he says when you fight him				
 	 * @param trainerDefeatedMessage	

@@ -1,5 +1,7 @@
 package model.pokemon;
 
+import model.squad.Squad;
+
 /**
  * A static class that implements the Static Factory Pattern for the creation of {@link Pokemon}. 
  */

@@ -10,6 +10,8 @@ import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
 import model.player.Player;
+import model.map.Position;
+import model.pokemon.Pokemon;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
@@ -208,7 +210,7 @@ public interface PokeMap {
     
     /**
      * 
-     * @param pkmnsToBeDeleted
+     * @param pkmnsToBeDeleted pokemon to be deleted
      */
     void initDeletedEncounterTiles(final Set<String> pkmnsToBeDeleted);
     

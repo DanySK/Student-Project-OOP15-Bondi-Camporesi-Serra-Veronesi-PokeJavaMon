@@ -14,6 +14,8 @@ import java.awt.MediaTracker;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JWindow;
+
 import net.miginfocom.swing.MigLayout;
 import view.windows.MyFrame;
 

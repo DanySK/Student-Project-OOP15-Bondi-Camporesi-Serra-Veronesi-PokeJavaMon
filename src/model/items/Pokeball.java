@@ -5,10 +5,12 @@ import java.util.Random;
 import exceptions.SquadFullException;
 import model.map.PokeMarket;
 import model.player.Box;
+import model.player.Inventory;
 import model.player.Player;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
+import model.squad.Squad;
 import model.squad.SquadImpl;
 
 /**

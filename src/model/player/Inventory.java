@@ -6,6 +6,7 @@ import model.items.Boost;
 import model.items.Item;
 import model.items.Pokeball;
 import model.items.Potion;
+import model.items.Item.ItemType;
 
 /**
  * Interface that describes a {@link Player}'s "bag" where he stores all the different kinds of {@link Item}s
@@ -20,14 +21,14 @@ public interface Inventory {
     
 	/**
 	 * Gives a sub-{@link Map}({@link Item}, {@link Integer}) (where the {@link Integer} is the quantity) based on the {@link ItemType} specified in the argument
-	 * @param type
+	 * @param type item type
 	 * @return a Map filled with all the {@link Item} of a specified {@link ItemType}
 	 */
     public Map<Item, Integer> getSubInventory(final Item.ItemType type);
     
     /**
      * Adds an {@link Item} to the Inventory
-     * @param item
+     * @param item item to be added
      */
     public void addItem(final Item item);
 

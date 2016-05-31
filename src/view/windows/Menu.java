@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Component;
 /**
- * This {@link Window} handles the main menu of the map.
+ * This {@link JWindow} handles the main menu of the map.
  * It permits to read the player's informations, to opens
  * the other menu of the game and it allows to switch the
  * music on or off. 

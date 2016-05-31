@@ -1,6 +1,7 @@
 package model.map;
 
 import controller.MainController;
+import model.trainer.Trainer;
 
 /**
  * Abstract class to factorize some code among various subclasses

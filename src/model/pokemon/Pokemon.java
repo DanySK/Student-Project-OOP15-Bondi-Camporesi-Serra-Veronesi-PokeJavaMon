@@ -46,7 +46,7 @@ public interface Pokemon {
     
     /**
      * The method to call to get the various stats of a {@link Pokemon}
-     * which includes {@link Stat.HP}, {@link Stat.ATK}, {@link Stat.DEF}, {@link Stat.SPD}, {@link Stat.LVL}, {@link Stat.EXP}
+     * which includes {@link Stat#MAX_HP}, {@link Stat#ATK}, {@link Stat#DEF}, {@link Stat#SPD}, {@link Stat#LVL}, {@link Stat#EXP}
      * @param s 	{@link Stat} of the Pokemon
      * @return		the value of the selected {@link Stat}
      * @see 		Stat
@@ -54,7 +54,7 @@ public interface Pokemon {
     public int getStat(Stat s);
     
     /**
-     * A method that returns an unmodifiable copy of the {@link Map}<{@link Stat}, {@link Integer}>
+     * A method that returns an unmodifiable copy of the {@link Map}({@link Stat}, {@link Integer})
      * of the {@link Pokemon}
      * @return		a Map with all the current {@link Stat}
      * @see 		Stat
@@ -63,7 +63,7 @@ public interface Pokemon {
     
     /**
      * A method to get the current {@link Move}s that the {@link Pokemon} has now available to use
-     * @return		a {@link List}<{@link Move}> of the current moveset.
+     * @return		a {@link List}({@link Move}) of the current moveset.
      * @see 		Move
      */
     public List<Move> getCurrentMoves();
@@ -74,7 +74,7 @@ public interface Pokemon {
     public void updateStats();
     
     /**
-     * A method to change the current {@link Stat.EXP} of the {@link Pokemon}
+     * A method to change the current {@link Stat#EXP} of the {@link Pokemon}
      * @param exp	the new ammount of exp
      */
     public void setExp(final int exp);

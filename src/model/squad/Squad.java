@@ -5,9 +5,10 @@ import java.util.Optional;
 
 import exceptions.OnlyOnePokemonInSquadException;
 import exceptions.SquadFullException;
-import model.map.PokeMap;
+import model.player.Player;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.trainer.Trainer;
 
 /**
  * Class that contains all the {@link Pokemon} a {@link Trainer} or the {@link Player} can carry
@@ -25,7 +26,7 @@ public interface Squad {
 	public int getSquadSize();
     
 	/**
-	 * A method to get a {@link List}<{@link Pokemon}> which is unmodifiable
+	 * A method to get a {@link List}({@link Pokemon}) which is unmodifiable
 	 * @return an unmodifiable List of Pokemon
 	 */
     public List<PokemonInBattle> getPokemonList();
@@ -69,16 +70,13 @@ public interface Squad {
 
     /**
      * Heals all the {@link Pokemon} in {@link Squad} to max HP.
-     * Takes a {@link PokeMap} as argument to verify that the player is in a PokemonCenter Zone
-     * @param pm 
-     * 			{@link PokeMap} 
      */
     public void healAllPokemon();
     
     /**
-     * Gives the next alive Pokemon based on position in the {@link List}<{@link Pokemon}>.
+     * Gives the next alive Pokemon based on position in the {@link List}({@link Pokemon}).
      * Returns {@link Optional}.empty() if all {@link Pokemon} are exhausted
-     * @return an {@link Optional}<{@link PokemonInBattle}> that may or may not be there
+     * @return an {@link Optional}({@link PokemonInBattle}) that may or may not be there
      */
     public Optional<PokemonInBattle> getNextAlivePokemon();
     

@@ -42,11 +42,11 @@ public interface ViewInterface {
 	 */
     void resumeParent();
 	/**
-	 * It gets the current frame of the stack.
+	 * @return the current frame of the stack.
 	 */
     MyFrame getCurrent();
 	/**
-	 * It gets the previous frame of the stack.
+	 * @return the previous frame of the stack.
 	 */
     MyFrame getParent();
 	/**
@@ -55,10 +55,11 @@ public interface ViewInterface {
     void removeCurrent();
 	/**
 	 * It adds a new Frame in the stacks.
+	 * @param f frame
 	 */
     void addNew(MyFrame f);
 	/**
-	 * It verifies if the stack is empty or not.
+	 * @return if the stack is empty or not.
 	 */
     boolean isEmpty();
 }

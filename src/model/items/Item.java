@@ -1,5 +1,7 @@
 package model.items;
 
+import model.pokemon.Pokemon;
+
 /**
  * Interface of a usable and disposable "object" that can be used on {@link Pokemon}
  */

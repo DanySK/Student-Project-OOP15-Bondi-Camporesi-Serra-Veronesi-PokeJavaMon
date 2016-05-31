@@ -1,6 +1,7 @@
 package model.items;
 
 import exceptions.PokemonNotFoundException;
+import model.player.Inventory;
 import model.player.Player;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;

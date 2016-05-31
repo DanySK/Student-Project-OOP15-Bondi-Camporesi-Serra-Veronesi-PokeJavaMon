@@ -38,7 +38,7 @@ public interface StatusController {
     void updateSpeed();
 
     /**
-     * @return the current {@link Directions} of the player
+     * @return the current {@link Direction} of the player
      */
     Direction getDirection();
 

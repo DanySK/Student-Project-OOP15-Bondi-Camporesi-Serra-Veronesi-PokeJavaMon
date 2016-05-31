@@ -1,5 +1,6 @@
 package model.trainer;
 
+import model.player.Player;
 import model.player.PlayerImpl;
 import model.squad.Squad;
 

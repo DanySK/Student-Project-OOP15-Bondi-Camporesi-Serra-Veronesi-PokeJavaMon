@@ -1,6 +1,7 @@
 package model.map.tile;
 
 import model.map.Drawable;
+import model.map.PokeMap;
 
 /**
  * The basic space unit of the {@link PokeMap}.
