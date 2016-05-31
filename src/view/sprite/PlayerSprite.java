@@ -17,6 +17,8 @@ import view.resources.ScreenView;
  * PlayerSpriteClass
  */
 public class PlayerSprite extends Sprite {
+    private static final int SIZE = 16;
+    private static final float DURATION = 1 / 6f;
     private Vector2 velocity;
     private Animation left, right, up, down, left_s, right_s, up_s, down_s;
     private TextureAtlas playerAtlas;
@@ -42,7 +44,7 @@ public class PlayerSprite extends Sprite {
     
     private PlayerSprite(final Sprite st) {
         super(st);
-        super.setSize(16, 16);
+        super.setSize(SIZE, SIZE);
         this.setupAnimation();
         this.velocity = new Vector2();
         this.animationTime = 0;
@@ -97,14 +99,14 @@ public class PlayerSprite extends Sprite {
             e.printStackTrace();
             this.playerAtlas = new TextureAtlas(this.getClass().getResource(Img.PACK.getResourcePath()).getPath());
         }
-        this.left = new Animation(1 / 6f, this.playerAtlas.findRegions("left"));
-        this.right = new Animation(1 / 6f, this.playerAtlas.findRegions("right"));
-        this.up = new Animation(1 / 6f, this.playerAtlas.findRegions("up"));
-        this.down = new Animation(1 / 6f, this.playerAtlas.findRegions("down"));
-        this.left_s = new Animation(1 / 6f, this.playerAtlas.findRegions("left_still"));
-        this.right_s = new Animation(1 / 6f, this.playerAtlas.findRegions("right_still"));
-        this.up_s = new Animation(1 / 6f, this.playerAtlas.findRegions("up_still"));
-        this.down_s = new Animation(1 / 6f, this.playerAtlas.findRegions("down_still"));
+        this.left = new Animation(DURATION, this.playerAtlas.findRegions("left"));
+        this.right = new Animation(DURATION, this.playerAtlas.findRegions("right"));
+        this.up = new Animation(DURATION, this.playerAtlas.findRegions("up"));
+        this.down = new Animation(DURATION, this.playerAtlas.findRegions("down"));
+        this.left_s = new Animation(DURATION, this.playerAtlas.findRegions("left_still"));
+        this.right_s = new Animation(DURATION, this.playerAtlas.findRegions("right_still"));
+        this.up_s = new Animation(DURATION, this.playerAtlas.findRegions("up_still"));
+        this.down_s = new Animation(DURATION, this.playerAtlas.findRegions("down_still"));
         this.left.setPlayMode(Animation.PlayMode.LOOP);
         this.right.setPlayMode(Animation.PlayMode.LOOP);
         this.up.setPlayMode(Animation.PlayMode.LOOP);
@@ -172,7 +174,7 @@ public class PlayerSprite extends Sprite {
         }
         this.animationTime += Gdx.graphics.getDeltaTime();
         this.pos ++;
-        if (this.pos == 8) {
+        if (this.pos == SIZE / 2) {
             this.pos = 0;
             MainController.getController().getStatusController().checkEncounter();
             MainController.getController().getStatusController().updateMusic();
