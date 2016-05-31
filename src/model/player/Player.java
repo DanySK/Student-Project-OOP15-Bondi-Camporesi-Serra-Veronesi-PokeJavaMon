@@ -6,7 +6,12 @@ import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.map.Character;
 import model.map.PokeMap;
+import model.map.Position;
+import model.map.tile.Teleport;
+import model.map.tile.Tile;
+import model.pokemon.Pokemon;
 import model.squad.Squad;
+import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
 /**
@@ -58,7 +63,7 @@ public interface Player extends Character{
      * Adds an {@link Item} to the {@link Inventory} only if the Player has 
      * sufficient money
      * @param item	{@link Item} bought
-     * @throws NotEnoughMoneyException
+     * @throws NotEnoughMoneyException if you don't have enough money to buy it.
      */
     public void buyItem(final Item item) throws NotEnoughMoneyException;
     

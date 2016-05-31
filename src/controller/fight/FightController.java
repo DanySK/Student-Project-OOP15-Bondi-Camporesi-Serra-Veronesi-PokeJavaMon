@@ -130,7 +130,7 @@ public interface FightController {
 
     /**
      * Search for {@link Pokemon}s that have to evolve and evolves them
-     * @return the {@link List}<{@link String}> of the names of pokemon that have to evolve 
+     * @return the {@link List}({@link String}) of the names of pokemon that have to evolve 
      */
     List<String> resolveEvolution();
 

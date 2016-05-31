@@ -131,7 +131,7 @@ public abstract class AbstractFight extends BasicFight implements Fight {
     /**
      * This is a template method. It used the method applyRun() specialized by subclasses.
      * 
-     * @see {@link Fight#runTurn()}
+     * @see Fight#runTurn()
      */
     @Override
     public void runTurn() throws CannotEscapeFromTrainerException {

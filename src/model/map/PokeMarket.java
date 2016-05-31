@@ -10,8 +10,10 @@ import model.items.Pokeball;
 import model.items.Pokeball.PokeballType;
 import model.items.Potion;
 import model.items.Potion.PotionType;
+import model.player.Player;
 import model.player.PlayerImpl;
 import model.pokemon.Stat;
+import model.trainer.GymLeader;
 
 /**
  * Special type of {@link NPC} who sells {@link Item}s.

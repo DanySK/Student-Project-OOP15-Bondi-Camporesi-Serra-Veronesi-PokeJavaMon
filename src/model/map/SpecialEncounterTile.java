@@ -1,6 +1,7 @@
 package model.map;
 
 import model.map.tile.Tile;
+import model.player.Player;
 import model.pokemon.Pokedex;
 import model.pokemon.Pokemon;
 import model.pokemon.PokemonRarity;

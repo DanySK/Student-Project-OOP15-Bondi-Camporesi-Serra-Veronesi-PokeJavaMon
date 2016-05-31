@@ -169,6 +169,8 @@ public final class StaticTrainerFactory {
 	 * 			money you get when you defeat him
 	 * @param id	
 	 * 			trainerID
+	 * @param badge
+	 * 			number of badge
 	 * @return	a newly created {@link GymLeader} with such parameters
 	 */
     public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final ArrayList<String> pkmns_lvl,
@@ -201,6 +203,8 @@ public final class StaticTrainerFactory {
 	 * 			money you get when you defeat him
 	 * @param id	
 	 * 			trainerID
+	 * @param badge
+	 * 			number of badge
 	 * @return	a newly created {@link GymLeader} with such parameters
 	 */
     public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final Map<String, Integer> pkmnList,
@@ -233,6 +237,8 @@ public final class StaticTrainerFactory {
 	 * 			money you get when you defeat him
 	 * @param id	
 	 * 			trainerID
+	 * @param badge
+	 * 			number of badge
 	 * @return	a newly created {@link GymLeader} with such parameters
 	 */
     public static GymLeader createGymLeader(final String trainerName, final Direction d, final boolean isDefeated, final int x, final int y, final PokemonInBattle[] pkmnList,

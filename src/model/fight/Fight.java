@@ -22,7 +22,7 @@ public interface Fight {
     /**
      * Control if a pokemon trainer can continue to battle.
      * 
-     * @param pkmSquad  The {@link model.pokemon.Squad} which must be controlled.
+     * @param pkmSquad  The {@link Squad} which must be controlled.
      * @return          True if the pkmSquad does not contain {@link model.pokemon.Pokemon} which can fight.
      */
     public boolean checkLose(final Squad pkmSquad);
