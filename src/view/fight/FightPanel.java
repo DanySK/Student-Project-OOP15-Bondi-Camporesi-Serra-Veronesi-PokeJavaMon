@@ -115,7 +115,7 @@ public class FightPanel extends JPanel {
                     MainController.getController().getFightController().run();
                 } catch (CannotEscapeFromTrainerException e1) {
                     View.getView().hideCurrent();
-                    View.getView().addNew(new MessageFrame(null, "CANNOT ESCAPE FROM TRAINER"));
+                    View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                     View.getView().showCurrent();
                 }
             }

@@ -114,11 +114,11 @@ public class BoxMenu extends JWindow implements MyFrame {
                             View.getView().showCurrent();
                         } catch (PokemonNotFoundException e1) {
                             View.getView().hideCurrent();
-                            View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
+                            View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                             View.getView().showCurrent();
                         } catch (SquadFullException e1) {
                             View.getView().hideCurrent();
-                            View.getView().addNew(new MessageFrame(null, "SQUAD IS FULL"));
+                            View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                             View.getView().showCurrent();
                         }
                     }

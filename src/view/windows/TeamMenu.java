@@ -144,14 +144,14 @@ public class TeamMenu extends JWindow implements MyFrame {
                                 View.getView().addNew(tm);
                                 View.getView().showCurrent();
                                 View.getView().hideCurrent();
-                                View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
+                                View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                                 View.getView().showCurrent();
                             } catch (PokemonIsFightingException e1) {
                                 TeamMenu tm = new TeamMenu(false, false);
                                 View.getView().addNew(tm);
                                 View.getView().showCurrent();
                                 View.getView().hideCurrent();
-                                View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
+                                View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                                 View.getView().showCurrent();
                             }
                         } else {
@@ -161,10 +161,10 @@ public class TeamMenu extends JWindow implements MyFrame {
                                 MainController.getController().getFightController().changePokemon(MainController.getController().getSquad().get().getPokemonList().get(index));
                                 View.getView().resumeCurrent();
                             } catch (PokemonIsExhaustedException e1) {
-                                View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
+                                View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                                 View.getView().showCurrent();
                             } catch (PokemonIsFightingException e1) {
-                                View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
+                                View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                                 View.getView().showCurrent();
                             }
                         }
@@ -199,12 +199,12 @@ public class TeamMenu extends JWindow implements MyFrame {
                                 return;
                             } catch (PokemonNotFoundException e1) {
                                 View.getView().hideCurrent();
-                                View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
+                                View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                                 View.getView().showCurrent();
                                 return;
                             } catch (OnlyOnePokemonInSquadException e1) {
                                 View.getView().hideCurrent();
-                                View.getView().addNew(new MessageFrame(null, "CANNOT DEPOSIT LAST POKEMON"));
+                                View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                                 View.getView().showCurrent();
                                 return;
                             }

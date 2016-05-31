@@ -67,19 +67,19 @@ public class BagMenu extends JWindow implements MyFrame {
                     selectItem(null);
                 } catch (PokemonIsExhaustedException e1) {
                     selectItem(null);
-                    View.getView().addNew(new MessageFrame(null, "POKEMON IS EXAUSTED"));
+                    View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                     View.getView().showCurrent();
                 } catch (PokemonNotFoundException e1) {
                     selectItem(null);
-                    View.getView().addNew(new MessageFrame(null, "POKEMON NOT FOUND"));
+                    View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                     View.getView().showCurrent();
                 } catch (CannotCaughtTrainerPkmException e1) {
                     selectItem(null);
-                    View.getView().addNew(new MessageFrame(null, "CANNOT CATCH TRAINER POKEMON"));
+                    View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                     View.getView().showCurrent();
                 } catch (IllegalStateException e1) {
                     selectItem(null);
-                    View.getView().addNew(new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM"));
+                    View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                     View.getView().showCurrent();
                 }
             } else {
@@ -88,9 +88,9 @@ public class BagMenu extends JWindow implements MyFrame {
                         MainController.getController().effectItem(this.itemToUse, p);
                         disposeFrame();
                     } catch (PokemonNotFoundException e) {
-                        new MessageFrame(null, "POKEMON NOT FOUND");
+                        new MessageFrame(null, e.getMessage());
                     } catch (IllegalStateException ex) {
-                        new MessageFrame(null, "YOU HAVE NO MORE THIS ITEM");
+                        new MessageFrame(null, ex.getMessage());
                         selectItem(null);
                         disposeFrame();
                     }

@@ -109,7 +109,7 @@ public class Market extends JWindow implements MyFrame {
                         View.getView().showCurrent();
                     } catch (NotEnoughMoneyException e1) {
                         View.getView().hideCurrent();
-                        View.getView().addNew(new MessageFrame(null, "NOT ENOUGH MONEY"));
+                        View.getView().addNew(new MessageFrame(null, e1.getMessage()));
                         View.getView().showCurrent();
                     }
                 }
