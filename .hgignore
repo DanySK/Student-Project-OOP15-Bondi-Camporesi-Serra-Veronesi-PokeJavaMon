@@ -1,3 +1,3 @@
-
-syntax: regexp
-\.ucls$
+syntax: glob
+*.class
+*bin/*
