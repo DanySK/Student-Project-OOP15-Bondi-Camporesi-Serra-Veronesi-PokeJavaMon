@@ -1,3 +1,5 @@
 syntax: glob
 *.class
 *bin/**doc/*
+syntax: regexp
+^doc$
