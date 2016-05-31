@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="model.map.PokemonEncounterZone" project="PokeJavaMonTrial" 
     file="/PokeJavaMonTrial/src/model/map/PokemonEncounterZone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="145" width="304" x="-69" y="435"/>    
+    <position height="145" width="304" x="-41" y="224"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="model.map.AbstractRectangularZone" project="PokeJavaMonTrial" 
     file="/PokeJavaMonTrial/src/model/map/AbstractRectangularZone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="213" y="294"/>    
+    <position height="-1" width="-1" x="295" y="99"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <interface id="3" language="java" name="model.map.Zone" project="PokeJavaMonTrial" 
     file="/PokeJavaMonTrial/src/model/map/Zone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="202" y="82"/>    
+    <position height="-1" width="-1" x="19" y="91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -30,7 +30,7 @@
   </interface>  
   <class id="4" language="java" name="model.map.WalkableZone" project="PokeJavaMonTrial" 
     file="/PokeJavaMonTrial/src/model/map/WalkableZone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="92" width="217" x="307" y="433"/>    
+    <position height="92" width="217" x="280" y="223"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -39,29 +39,33 @@
   </class>  
   <enumeration id="5" language="java" name="model.pokemon.Pokedex" project="PokeJavaMonTrial" 
     file="/PokeJavaMonTrial/src/model/pokemon/Pokedex.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="228" x="-30" y="620"/>    
+    <position height="53" width="228" x="2" y="402"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="true" package="false" protected="true" private="false" static="true"/>    
     </display>  
   </enumeration>  
-  <realization id="6">    
+  <generalization id="6">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <realization id="7">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
-  <association id="7">    
+  <association id="8">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="8" name="pokemonList"/>      
-      <multiplicity id="9" minimum="0" maximum="2147483647"/>    
+      <attribute id="9" name="pokemonList">        
+        <position height="0" width="0" x="32" y="-218"/>      
+      </attribute>      
+      <multiplicity id="10" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="32" y="-218"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="10">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
   <generalization id="11">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
