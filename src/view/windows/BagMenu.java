@@ -83,7 +83,7 @@ public class BagMenu extends JWindow implements MyFrame {
                     View.getView().showCurrent();
                 }
             } else {
-                if (this.itemToUse.whenToUse() == WhenToUse.OUT_OF_BATTLE) {
+                if (this.itemToUse.whenToUse() == WhenToUse.OUT_OF_BATTLE || this.itemToUse.whenToUse() == WhenToUse.EVERYWHERE) {
                     try {
                         MainController.getController().effectItem(this.itemToUse, p);
                         disposeFrame();
@@ -163,7 +163,7 @@ public class BagMenu extends JWindow implements MyFrame {
                                     View.getView().showCurrent();
                                 }
                             } else {
-                                new MessageFrame(null, "NON PUOI USARE QUESTO STRUMENTO FUORI DALLA BATTAGLIA");
+                                new MessageFrame(null, "YOU CAN'T USE THIS UTEM OUTSIDE THE BATTLE");
                                 useItem(null);
                             }
                         }
