@@ -93,7 +93,6 @@ public class Pokeball extends AbstractItem {
         if (isFullHP) {
         	prob = ((1 / maxHP * 3) + ((rarity * pokeballRate ) / 3)) / 256;
         } else {
-        	System.out.println(this.quality + " " + pkmn.getPokedexEntry() + ", MaxHP/cHP= " + pkmn.getStat(Stat.MAX_HP) + "/" + pkmn.getCurrentHP() + ", (1+catchRate) / (maxHP*3) / 256 = (" + 1 + "+" + ((maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) + ") / " + (maxHP*3) + " / 256" );
         	prob = (( 1 + ( maxHP * 3 - currentHP * 2 ) * rarity * pokeballRate) / ( maxHP * 3 )) / 256;
         }
         return prob <= 1 ? prob : 1;
