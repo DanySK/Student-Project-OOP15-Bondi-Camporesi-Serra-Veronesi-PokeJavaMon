@@ -1,6 +1,7 @@
 package model.map.tile;
 	
 import model.map.Position;
+import model.player.Player;
 import model.player.PlayerImpl;
 
 /**

@@ -102,7 +102,9 @@ public class Pokeball extends AbstractItem {
      * it gets sent either to the {@link Player}'s {@link Squad} or, if this is full,
      * to the {@link Box}
      * @param p
+     * 			{@link Player} that uses it
      * @param pkmn
+     * 			{@link Pokemon} trying to capture
      */
     @Override
     public void effect(final Player p, final PokemonInBattle pkmn) {

@@ -9,7 +9,7 @@ public interface SaveController {
     
     /**
      * Initializes the {@link Save}
-     * @param save the current {@link Save}
+     * @param s the current {@link Save}
      */
     void setSave(Save s);
     

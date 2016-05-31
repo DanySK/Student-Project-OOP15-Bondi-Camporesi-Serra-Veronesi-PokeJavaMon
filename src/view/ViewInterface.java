@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JWindow;
+
 import view.windows.MyFrame;
 /**
  * 

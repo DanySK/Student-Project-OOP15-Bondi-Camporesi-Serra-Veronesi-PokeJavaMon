@@ -152,7 +152,9 @@ public class Trainer extends AbstractCharacter {
     /**
      * Overriden to do nothing as a {@link Trainer} cannot move
      * @param d
+     * 			{@link Direction}
      * @param pm
+     * 			{@link PokeMap}
      */
     @Override
     public void move(final Direction d, final PokeMap pm) {

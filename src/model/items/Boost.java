@@ -2,8 +2,10 @@ package model.items;
 
 import exceptions.PokemonNotFoundException;
 import model.player.Player;
+import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
 import model.pokemon.Stat;
+import model.squad.Squad;
 
 /**
  * Special kind of {@link Item} that, if used on battle gives a power up of 
@@ -42,8 +44,10 @@ public class Boost extends AbstractItem {
     /**
      * Actually does nothing, the effect is implemented in Fight, needs fixing
      * @param p
+     * 			{@link Player}
      * @param pkmn
-     * @throws PokemonNotFoundException
+     * 			{@link Pokemon}
+     * @throws PokemonNotFoundException if the {@link Pokemon} is not in the {@link Squad}
      */
     @Override  
     public void effect(final Player p, PokemonInBattle pkmn) throws PokemonNotFoundException {

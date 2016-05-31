@@ -9,6 +9,7 @@ import model.map.tile.Sign;
 import model.map.tile.Teleport;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
+import model.player.Player;
 import model.trainer.GymLeader;
 import model.trainer.Trainer;
 
@@ -93,7 +94,7 @@ public interface PokeMap {
     TileType getTileNextToPlayer(final Direction d);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link Teleport}> of all available {@link Teleport}s in the map
+     * @return an unmodifiable {@link Set}({@link Teleport}) of all available {@link Teleport}s in the map
      */
     Set<Teleport> getTeleports();
     
@@ -102,56 +103,56 @@ public interface PokeMap {
      * 			x-axis coordinate of the {@link Teleport} starting point in tile units
      * @param fromY
      * 			y-axis coordinate of the {@link Teleport} starting point in tile units
-     * @return an {@link Optional}<{@link Teleport}> that may or may not be there
+     * @return an {@link Optional}({@link Teleport}) that may or may not be there
      */
     Optional<Teleport> getTeleport(final int fromX, final int fromY);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link Sign}> of all available {@link Sign}s in the map
+     * @return an unmodifiable {@link Set}({@link Sign}) of all available {@link Sign}s in the map
      */
     Set<Sign> getSigns();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link Sign} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link Sign} in tile units
-     * @return an {@link Optional}<{@link Sign}> that may or may not be there
+     * @return an {@link Optional}({@link Sign}) that may or may not be there
      */
     Optional<Sign> getSign(final int x, final int y);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link Trainer}> of all available {@link Trainer}s in the map
+     * @return an unmodifiable {@link Set}({@link Trainer}) of all available {@link Trainer}s in the map
      */
     Set<Trainer> getTrainers();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link Trainer} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link Trainer} in tile units
-     * @return an {@link Optional}<{@link Trainer}> that may or may not be there
+     * @return an {@link Optional}({@link Trainer}) that may or may not be there
      */
     Optional<Trainer> getTrainer(final int x, final int y);
     
     /**
      * initialize all defeated {@link Trainer}s from the save
      * @param trainerID_isDefeated
-     * 			a {@link Map}<{@link Integer}, {@link Boolean}> with {@link Trainer}'id as keys a if he is defeated as values
+     * 			a {@link Map}({@link Integer}, {@link Boolean}) with {@link Trainer}'id as keys a if he is defeated as values
      */
     void initTrainers(final Map<Integer, Boolean> trainerID_isDefeated);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link GymLeader}> of all available {@link GymLeader}s in the map
+     * @return an unmodifiable {@link Set}({@link GymLeader}) of all available {@link GymLeader}s in the map
      */
     Set<GymLeader> getGymLeaders();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link GymLeader} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link GymLeader} in tile units
-     * @return an {@link Optional}<{@link GymLeader}> that may or may not be there
+     * @return an {@link Optional}({@link GymLeader}) that may or may not be there
      */
     Optional<GymLeader> getGymLeader(final int x, final int y);
     
@@ -173,35 +174,35 @@ public interface PokeMap {
     void turnCharacter(final Character c, final Direction d) throws IllegalArgumentException;
     
     /**
-     * @return an unmodifiable {@link Set}<{@link NPC}> of all available {@link NPC}s in the map
+     * @return an unmodifiable {@link Set}({@link NPC}) of all available {@link NPC}s in the map
      */
     Set<NPC> getNPCs();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link NPC} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link NPC} in tile units
-     * @return an {@link Optional}<{@link NPC}> that may or may not be there
+     * @return an {@link Optional}({@link NPC}) that may or may not be there
      */
     Optional<NPC> getNPC(final int x, final int y);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link SpecialEncounterTile}> of all available {@link SpecialEncounterTile}s in the map
+     * @return an unmodifiable {@link Set}({@link SpecialEncounterTile}) of all available {@link SpecialEncounterTile}s in the map
      */
     Set<SpecialEncounterTile> getEncounterTiles();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link SpecialEncounterTile} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link SpecialEncounterTile} in tile units
-     * @return an {@link Optional}<{@link SpecialEncounterTile}> that may or may not be there
+     * @return an {@link Optional}({@link SpecialEncounterTile}) that may or may not be there
      */
     Optional<SpecialEncounterTile> getEncounterTile(final int x, final int y);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link SpecialEncounterTile}> of all removed {@link SpecialEncounterTile}s that no longer belong to the map
+     * @return an unmodifiable {@link Set}({@link SpecialEncounterTile}) of all removed {@link SpecialEncounterTile}s that no longer belong to the map
      */
     Set<SpecialEncounterTile> getRemovedEncounterTiles();
     
@@ -227,16 +228,16 @@ public interface PokeMap {
     PokeMarket getPokeMarket();
     
     /**
-     * @return an unmodifiable {@link Set}<{@link PokemonEncounterZone}> of all available {@link PokemonEncounterZone}s in the map
+     * @return an unmodifiable {@link Set}({@link PokemonEncounterZone}) of all available {@link PokemonEncounterZone}s in the map
      */
     Set<PokemonEncounterZone> getEncounterZones();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link PokemonEncounterZone} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link PokemonEncounterZone} in tile units
-     * @return an {@link Optional}<{@link PokemonEncounterZone}> that may or may not be there
+     * @return an {@link Optional}({@link PokemonEncounterZone}) that may or may not be there
      */
     Optional<PokemonEncounterZone> getEncounterZone(final int x, final int y);
 
@@ -250,16 +251,16 @@ public interface PokeMap {
     Tile.TileType getTileType(final int x, final int y);
     
     /**
-     * @return an unmodifiable {@link Set}<{@link WalkableZone}> of all available {@link WalkableZone}s in the map
+     * @return an unmodifiable {@link Set}({@link WalkableZone}) of all available {@link WalkableZone}s in the map
      */
     Set<WalkableZone> getWalkableZones();
     
     /**
      * @param x
      * 			x-axis coordinate of the {@link WalkableZone} in tile units
-     * @param u
+     * @param y
      * 			y-axis coordinate of the {@link WalkableZone} in tile units
-     * @return an {@link Optional}<{@link WalkableZone}> that may or may not be there
+     * @return an {@link Optional}({@link WalkableZone}) that may or may not be there
      */
     Optional<WalkableZone> getWalkableZone(final int x, final int y);
     

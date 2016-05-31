@@ -1,5 +1,7 @@
 package model.map;
 
+import model.map.tile.Tile;
+
 /**
  * Interface that adds new basic methods to approach a Character from {@link Drawable} interface 
  */

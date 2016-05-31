@@ -19,7 +19,7 @@ import model.items.Potion;
 public interface Inventory {
     
 	/**
-	 * Gives a sub-{@link Map}<{@link Item}, {@link Integer}> (where the {@link Integer} is the quantity) based on the {@link ItemType} specified in the argument
+	 * Gives a sub-{@link Map}({@link Item}, {@link Integer}) (where the {@link Integer} is the quantity) based on the {@link ItemType} specified in the argument
 	 * @param type
 	 * @return a Map filled with all the {@link Item} of a specified {@link ItemType}
 	 */
@@ -42,11 +42,11 @@ public interface Inventory {
      * (Only to be used once)
      * Initialize inventory with {@link Potion}, {@link Pokeball} and {@link Boost} .
      * @param potionList
-     * 			{@link Map}<{@link String}, {@link Integer}> with potion names as keys and quantities as values 
+     * 			{@link Map}({@link String}, {@link Integer}) with potion names as keys and quantities as values 
      * @param boostList
-     * 			{@link Map}<{@link String}, {@link Integer}> with stat names as keys and quantities as values 
+     * 			{@link Map}({@link String}, {@link Integer}) with stat names as keys and quantities as values 
      * @param ballList
-     * 			{@link Map}<{@link String}, {@link Integer}> with pokeball names as keys and quantities as values 
+     * 			{@link Map}({@link String}, {@link Integer}) with pokeball names as keys and quantities as values 
      * 
      * @throws IllegalStateException if it has already been initialized before
      */

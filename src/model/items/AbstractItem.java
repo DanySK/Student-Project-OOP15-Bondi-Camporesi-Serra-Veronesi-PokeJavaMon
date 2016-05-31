@@ -6,7 +6,9 @@ import model.map.PokeMarket;
 import model.map.tile.Tile.TileType;
 import model.player.Inventory;
 import model.player.Player;
+import model.pokemon.Pokemon;
 import model.pokemon.PokemonInBattle;
+import model.squad.Squad;
 
 /**
  * Class to factorize code from all different implementation of {@link Item} such as
@@ -66,8 +68,8 @@ public abstract class AbstractItem implements Item {
      * 			{@link Player} in order to remove the used {@link Item} from his {@link Inventory}
      * @param pkmn
      * 			{@link PokemonInBattle} which will be applied the effect on
-     * @throws PokemonNotFoundException
-     * @throws SquadFullException
+     * @throws PokemonNotFoundException if the {@link Pokemon} is not in the {@link Squad}
+     * @throws SquadFullException if the {@link Squad} is already full
      */
     public abstract void effect(final Player p, final PokemonInBattle pkmn) throws PokemonNotFoundException, SquadFullException;
     

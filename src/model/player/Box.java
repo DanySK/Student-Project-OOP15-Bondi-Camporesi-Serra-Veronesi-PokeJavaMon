@@ -25,7 +25,7 @@ public interface Box {
      * @param squad
      * 			{@link Squad} where the {@link Pokemon} comes from
      * @throws PokemonNotFoundException if the pokemon is not in the squad
-     * @throws OnlyOnePokemonInSquad if you try to deposit last pokemon in your squad
+     * @throws OnlyOnePokemonInSquadException if you try to deposit last pokemon in your squad
      */
     public void depositPokemon(final Pokemon pkmn, final Squad squad) throws PokemonNotFoundException, OnlyOnePokemonInSquadException;
     
@@ -69,7 +69,7 @@ public interface Box {
      * (Can be only initialized once)
      * A method used to initialize the {@link Box} with a {@link List} of {@link Pokemon}
      * @param pokemons
-     * 			{@link List}<{@link Pokemon}> that will go inside
+     * 			{@link List}({@link Pokemon}) that will go inside
      * @throws IllegalStateException if it has already been initialized
      */
     public void initializePokemons(List<Pokemon> pokemons) throws IllegalStateException;

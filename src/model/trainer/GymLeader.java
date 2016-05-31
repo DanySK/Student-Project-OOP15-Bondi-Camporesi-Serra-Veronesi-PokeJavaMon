@@ -32,6 +32,7 @@ public class GymLeader extends Trainer {
     /**
      * Sets the number of the badge
      * @param badge
+     * 				number of badges
      */
     public void setBadge(final int badge) {
         this.badge = badge;

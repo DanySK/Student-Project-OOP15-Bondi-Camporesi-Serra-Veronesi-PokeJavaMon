@@ -247,6 +247,7 @@ public interface Controller {
     /**
      * Selects the initial starter pokemon in {@link Pokedex}
      * @param p
+     * 			{@link Pokedex} entry
      */
     void selectStarter(Pokedex p);
     

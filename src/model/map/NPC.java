@@ -34,7 +34,9 @@ public class NPC extends AbstractCharacter {
     /**
      * Overriden to do nothing as a {@link Trainer} cannot move
      * @param d
+     * 			Direction
      * @param pm
+     * 			PokeMap
      */
     @Override
     public void move(final Direction d, final PokeMap pm) {

@@ -73,7 +73,7 @@ public interface Tile extends Drawable{
     public boolean canPokemonAppear();
     
     /**
-     * return if you can walk on it, false otherwise
+     * @return true if you can walk on it, false otherwise
      */
     public boolean isWalkable();
 }

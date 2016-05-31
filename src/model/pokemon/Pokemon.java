@@ -39,7 +39,7 @@ public interface Pokemon {
     
     /**
      * A method that calcolates the experience left to level up a {@link Pokemon}
-     * Not to be confused with {@link getStat(Stat.EXP)} which returns the total exp needed in the current level.
+     * Not to be confused with {@link Pokemon#getStat(Stat)} with {@link Stat#EXP} which returns the total exp needed in the current level.
      * @return 		the experience necessary to level up
      */
     public int getNecessaryExp();

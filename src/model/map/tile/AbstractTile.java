@@ -1,5 +1,6 @@
 package model.map.tile;
 
+import model.map.PokeMap;
 import model.map.Position;
 
 /**

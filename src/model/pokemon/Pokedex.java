@@ -391,7 +391,7 @@ public enum Pokedex {
     
     /**
      * A method that allows to initialize the move of the Pokemon
-     * @param a {@link Map}<{@link Integer}, {@link Move}> of the moveset of the single Pokemon
+     * @param m {@link Map}<{@link Integer}, {@link Move}> of the moveset of the single Pokemon
      */
     public void initializeMoveset(final Map<Integer, Move> m) {
         if (m != null && !m.isEmpty()) {

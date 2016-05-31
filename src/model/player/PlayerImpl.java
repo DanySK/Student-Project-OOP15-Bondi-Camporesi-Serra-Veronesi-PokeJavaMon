@@ -8,6 +8,8 @@ import exceptions.NotEnoughMoneyException;
 import model.items.Item;
 import model.map.AbstractCharacter;
 import model.map.PokeMap;
+import model.map.Position;
+import model.map.tile.Tile;
 import model.squad.Squad;
 import model.squad.SquadImpl;
 import model.trainer.Trainer;
@@ -53,7 +55,7 @@ public class PlayerImpl extends AbstractCharacter implements Player{
     
     /**
      * Singleton main method, to get the one and only instance of {@link Player}
-     * @return
+     * @return the only instance of {@link Player}
      */
     public static Player getPlayer() {
         if (SINGLETON == null) {

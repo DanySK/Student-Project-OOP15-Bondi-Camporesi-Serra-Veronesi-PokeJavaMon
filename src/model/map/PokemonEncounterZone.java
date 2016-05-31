@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 import com.google.common.collect.Range;
 
+import model.items.Pokeball;
 import model.map.tile.Tile;
 import model.map.tile.Tile.TileType;
 import model.pokemon.Pokedex;
