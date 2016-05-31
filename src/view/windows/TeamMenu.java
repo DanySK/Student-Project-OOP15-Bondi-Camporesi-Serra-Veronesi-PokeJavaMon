@@ -17,7 +17,7 @@ import model.pokemon.Stat;
 import view.View;
 import view.fight.FightScreen;
 /**
- * This {@link JWindow} handles the menu with all the pokémon in the team and their relative buttons.
+ * This {@link JWindow} handles the menu with all the pokï¿½mon in the team and their relative buttons.
  * 
  */
 public class TeamMenu extends JWindow implements MyFrame {  
@@ -127,7 +127,7 @@ public class TeamMenu extends JWindow implements MyFrame {
                             View.getView().showCurrent();
                         } else {
                             View.getView().hideCurrent();
-                            View.getView().addNew(new MessageFrame(null, "CANNOT SELECT THAT POKEMON"));
+                            View.getView().addNew(new MessageFrame(null, new PokemonIsExhaustedException().getMessage()));
                             View.getView().showCurrent();
                         }
                     } else {
